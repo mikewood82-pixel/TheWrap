@@ -26,7 +26,6 @@ export default function Footer() {
                 ['/show', 'The Wrap Show'],
                 ['/vendors', 'Vendor Intel'],
                 ['/labor-market', 'Labor Market'],
-                ['/candidate-spotlight', 'Candidate Spotlight'],
               ].map(([to, label]) => (
                 <li key={to}>
                   <Link to={to} className="text-white/50 hover:text-white transition-colors">{label}</Link>
@@ -43,7 +42,6 @@ export default function Footer() {
                 ['mailto:mike@thewrap.com?subject=Show Sponsorship', 'Show Sponsorship'],
                 ['mailto:mike@thewrap.com?subject=Vendor Deep Dive', 'Vendor Deep Dive'],
                 ['/subscribe', 'Wrap+ Membership'],
-                ['/candidate-spotlight', 'Submit Your Profile'],
               ].map(([href, label]) => (
                 <li key={href}>
                   <a href={href} className="text-white/50 hover:text-white transition-colors">{label}</a>

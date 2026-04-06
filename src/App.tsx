@@ -6,7 +6,6 @@ import ShowPage from './pages/ShowPage'
 import VendorIntelPage from './pages/VendorIntelPage'
 import VendorDeepDivePage from './pages/VendorDeepDivePage'
 import LaborMarketPage from './pages/LaborMarketPage'
-import CandidateSpotlightPage from './pages/CandidateSpotlightPage'
 import SubscribePage from './pages/SubscribePage'
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
           <Route path="vendors" element={<VendorIntelPage />} />
           <Route path="vendors/:slug" element={<VendorDeepDivePage />} />
           <Route path="labor-market" element={<LaborMarketPage />} />
-          <Route path="candidate-spotlight" element={<CandidateSpotlightPage />} />
           <Route path="subscribe" element={<SubscribePage />} />
         </Route>
       </Routes>

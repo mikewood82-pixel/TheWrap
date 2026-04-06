@@ -2,11 +2,10 @@ import { Link, NavLink } from 'react-router-dom'
 import { useWrapPlus } from '../context/WrapPlusContext'
 
 const links = [
-  { to: '/newsletter',          label: 'Newsletter'          },
-  { to: '/show',                label: 'The Show'            },
-  { to: '/vendors',             label: 'Vendor Intel'        },
-  { to: '/labor-market',        label: 'Labor Market'        },
-  { to: '/candidate-spotlight', label: 'Candidate Spotlight' },
+  { to: '/newsletter',   label: 'Newsletter'   },
+  { to: '/show',         label: 'The Show'     },
+  { to: '/vendors',      label: 'Vendor Intel' },
+  { to: '/labor-market', label: 'Labor Market' },
 ]
 
 export default function Nav() {

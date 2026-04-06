@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Play, BarChart2, Users, TrendingUp } from 'lucide-react'
+import { ArrowRight, Play, BarChart2, TrendingUp } from 'lucide-react'
 
 const latestEditions = [
   {
@@ -39,12 +39,30 @@ export default function HomePage() {
       {/* Hero */}
       <section className="border-b border-brand-border">
         {/* Logo hero */}
-        <div className="border-b border-brand-border bg-[#fef9f6] flex items-center justify-center py-10">
-          <img
-            src="/logo.png"
-            alt="The Wrap — HR Tech News"
-            className="h-56 md:h-72 w-auto object-contain"
-          />
+        <div className="border-b border-brand-border bg-[#fef9f6] flex items-center justify-center py-10 px-6">
+          <div className="flex items-center gap-6 md:gap-10">
+            {/* Burrito illustration — cropped from logo */}
+            <div
+              className="shrink-0"
+              style={{
+                width: '160px',
+                height: '160px',
+                backgroundImage: 'url(/logo.png)',
+                backgroundSize: '340px auto',
+                backgroundPosition: 'center top',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+            {/* Brand text */}
+            <div>
+              <div className="font-serif text-5xl md:text-7xl font-bold text-brand-dark leading-none tracking-tight">
+                The Wrap
+              </div>
+              <div className="text-brand-terracotta text-base md:text-xl font-semibold tracking-[0.2em] uppercase mt-2">
+                HR Tech News
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="max-w-6xl mx-auto px-4 py-14 md:py-20">
@@ -104,14 +122,14 @@ export default function HomePage() {
       {/* Three pillars */}
       <section className="border-b border-brand-border bg-brand-surface">
         <div className="max-w-6xl mx-auto px-4 py-10">
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             <Link to="/show" className="group bg-white rounded-xl border border-brand-border p-6 hover:border-brand-terracotta/40 hover:shadow-sm transition-all">
               <div className="w-10 h-10 bg-brand-terracotta/10 rounded-lg flex items-center justify-center mb-4">
                 <Play size={18} className="text-brand-terracotta" />
               </div>
               <h3 className="font-serif text-lg font-bold mb-1 text-brand-dark">The Wrap Show</h3>
               <p className="text-sm text-brand-muted leading-relaxed mb-3">
-                Weekly video — the week in HR tech plus the Candidate Spotlight.
+                Weekly video — the week in HR tech, news anchor style.
               </p>
               <span className="text-xs font-semibold text-brand-terracotta group-hover:underline flex items-center gap-1">
                 Watch <ArrowRight size={12} />
@@ -128,19 +146,6 @@ export default function HomePage() {
               </p>
               <span className="text-xs font-semibold text-brand-terracotta group-hover:underline flex items-center gap-1">
                 Explore <ArrowRight size={12} />
-              </span>
-            </Link>
-
-            <Link to="/candidate-spotlight" className="group bg-white rounded-xl border border-brand-border p-6 hover:border-brand-terracotta/40 hover:shadow-sm transition-all">
-              <div className="w-10 h-10 bg-brand-gold/10 rounded-lg flex items-center justify-center mb-4">
-                <Users size={18} className="text-brand-gold" />
-              </div>
-              <h3 className="font-serif text-lg font-bold mb-1 text-brand-dark">Candidate Spotlight</h3>
-              <p className="text-sm text-brand-muted leading-relaxed mb-3">
-                One featured HR professional every week looking for their next role.
-              </p>
-              <span className="text-xs font-semibold text-brand-terracotta group-hover:underline flex items-center gap-1">
-                Meet them <ArrowRight size={12} />
               </span>
             </Link>
           </div>
