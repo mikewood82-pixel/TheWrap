@@ -42,12 +42,14 @@ export default function NewsletterDetailPage() {
       </div>
 
       <div
-        className="prose prose-lg max-w-none
+        className="article-body prose prose-lg max-w-none
           prose-headings:font-serif prose-headings:text-brand-dark
           prose-p:text-brand-dark/80 prose-p:leading-relaxed
           prose-a:text-brand-terracotta prose-a:no-underline hover:prose-a:underline
           prose-strong:text-brand-dark
-          prose-hr:border-brand-border"
+          prose-hr:border-brand-border
+          prose-img:rounded-xl prose-img:w-full
+          prose-blockquote:border-brand-terracotta prose-blockquote:text-brand-dark/70"
         dangerouslySetInnerHTML={{ __html: edition.body }}
       />
     </div>
