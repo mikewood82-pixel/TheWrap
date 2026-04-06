@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ExternalLink, Lock } from 'lucide-react'
 import { useWrapPlus } from '../context/WrapPlusContext'
-import ProGate from '../components/ProGate'
 
 const categories = ['All', 'HCM', 'ATS', 'HRIS', 'Payroll', 'Perf Mgmt', 'L&D', 'Analytics']
 
