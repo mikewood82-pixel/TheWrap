@@ -6,6 +6,7 @@ import { useWrapPlus } from '../context/WrapPlusContext'
 const categories = ['All', 'HCM', 'ATS', 'HRIS', 'Payroll', 'Perf Mgmt', 'L&D', 'Analytics']
 
 const vendors = [
+  { name: 'Acme Staffing', slug: 'acme-staffing',category: 'ATS',      g2: 4.5, capterra: 4.6, employees: '250+',    news: 6,  deepDive: true  },
   { name: 'Workday',       slug: 'workday',      category: 'HCM',      g2: 4.1, capterra: 4.2, employees: '18,000+', news: 12, deepDive: false },
   { name: 'Rippling',      slug: 'rippling',     category: 'HRIS',     g2: 4.6, capterra: 4.7, employees: '3,000+',  news: 24, deepDive: false },
   { name: 'Greenhouse',    slug: 'greenhouse',   category: 'ATS',      g2: 4.4, capterra: 4.4, employees: '800+',    news: 8,  deepDive: false },
@@ -13,7 +14,6 @@ const vendors = [
   { name: 'UKG',           slug: 'ukg',          category: 'HCM',      g2: 4.0, capterra: 4.1, employees: '15,000+', news: 9,  deepDive: false },
   { name: 'ADP',           slug: 'adp',          category: 'Payroll',  g2: 3.9, capterra: 4.0, employees: '60,000+', news: 18, deepDive: false },
   { name: 'Lever',         slug: 'lever',        category: 'ATS',      g2: 4.3, capterra: 4.3, employees: '400+',    news: 3,  deepDive: false },
-  { name: 'Acme Staffing', slug: 'acme-staffing',category: 'ATS',      g2: 4.5, capterra: 4.6, employees: '250+',    news: 6,  deepDive: true  },
 ]
 
 export default function VendorIntelPage() {
@@ -21,8 +21,8 @@ export default function VendorIntelPage() {
   const { isPro } = useWrapPlus()
 
   const filtered = active === 'All' ? vendors : vendors.filter(v => v.category === active)
-  // Free users see first 4 vendors only
-  const visibleVendors = isPro ? filtered : filtered.slice(0, 4)
+  // Free users see first 4 vendors; deep dive vendors are always visible
+  const visibleVendors = isPro ? filtered : filtered.filter((v, i) => i < 4 || v.deepDive)
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
