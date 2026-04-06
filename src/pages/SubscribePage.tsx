@@ -1,11 +1,12 @@
 import { Check } from 'lucide-react'
+import { useUser, SignInButton } from '@clerk/clerk-react'
 import { useWrapPlus } from '../context/WrapPlusContext'
+import { useSearchParams } from 'react-router-dom'
 
 const freeTier = [
   'Weekly newsletter (The Wrap)',
   'Latest edition on the web',
   'The Wrap Show — all episodes',
-  'Candidate Spotlight',
   'Labor Market data',
   'Vendor list (name, category, G2 score)',
 ]
@@ -22,10 +23,34 @@ const proTier = [
 ]
 
 export default function SubscribePage() {
-  const { isPro, setPro } = useWrapPlus()
+  const { isPro } = useWrapPlus()
+  const { isSignedIn, user } = useUser()
+  const [searchParams] = useSearchParams()
+  const success = searchParams.get('success') === 'true'
+
+  async function handleCheckout(plan: 'monthly' | 'annual') {
+    if (!isSignedIn || !user) return
+    const res = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        plan,
+        clerkUserId: user.id,
+        email: user.primaryEmailAddress?.emailAddress ?? '',
+      }),
+    })
+    const { url } = await res.json()
+    if (url) window.location.href = url
+  }
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-16">
+      {success && (
+        <div className="bg-green-50 border border-green-200 text-green-800 rounded-xl px-6 py-4 mb-8 text-center font-medium">
+          You're on Wrap+! Full vendor intel is now unlocked.
+        </div>
+      )}
+
       <div className="text-center mb-12">
         <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-3">Pricing</div>
         <h1 className="font-serif text-4xl font-bold mb-3">Simple, honest pricing</h1>
@@ -48,18 +73,9 @@ export default function SubscribePage() {
               </li>
             ))}
           </ul>
-          {isPro ? (
-            <button
-              onClick={() => setPro(false)}
-              className="w-full border border-brand-dark/20 text-brand-dark/60 font-medium py-3 rounded-lg text-sm hover:bg-brand-surface transition-colors"
-            >
-              Downgrade to Free
-            </button>
-          ) : (
-            <div className="w-full border border-brand-dark/20 text-brand-dark/40 font-medium py-3 rounded-lg text-sm text-center">
-              Current plan
-            </div>
-          )}
+          <div className="w-full border border-brand-dark/20 text-brand-dark/40 font-medium py-3 rounded-lg text-sm text-center">
+            {isPro ? 'Free plan' : 'Current plan'}
+          </div>
         </div>
 
         {/* Wrap+ Monthly */}
@@ -79,13 +95,19 @@ export default function SubscribePage() {
             <div className="w-full bg-brand-terracotta/10 border border-brand-terracotta/30 text-brand-terracotta font-medium py-3 rounded-lg text-sm text-center">
               Active — you're on Wrap+
             </div>
-          ) : (
+          ) : isSignedIn ? (
             <button
-              onClick={() => setPro(true)}
+              onClick={() => handleCheckout('monthly')}
               className="w-full bg-brand-terracotta text-white font-medium py-3 rounded-lg hover:bg-brand-orange transition-colors"
             >
               Get Wrap+ — $10/mo
             </button>
+          ) : (
+            <SignInButton mode="modal">
+              <button className="w-full bg-brand-terracotta text-white font-medium py-3 rounded-lg hover:bg-brand-orange transition-colors">
+                Get Wrap+ — $10/mo
+              </button>
+            </SignInButton>
           )}
         </div>
 
@@ -110,13 +132,19 @@ export default function SubscribePage() {
             <div className="w-full bg-brand-gold/20 border border-brand-gold/40 text-brand-gold font-medium py-3 rounded-lg text-sm text-center">
               Active — you're on Wrap+
             </div>
-          ) : (
+          ) : isSignedIn ? (
             <button
-              onClick={() => setPro(true)}
+              onClick={() => handleCheckout('annual')}
               className="w-full bg-brand-terracotta text-white font-medium py-3 rounded-lg hover:bg-brand-gold hover:text-brand-dark transition-colors"
             >
               Get Wrap+ — $99/yr
             </button>
+          ) : (
+            <SignInButton mode="modal">
+              <button className="w-full bg-brand-terracotta text-white font-medium py-3 rounded-lg hover:bg-brand-gold hover:text-brand-dark transition-colors">
+                Get Wrap+ — $99/yr
+              </button>
+            </SignInButton>
           )}
         </div>
       </div>
@@ -128,15 +156,15 @@ export default function SubscribePage() {
           {[
             {
               q: 'What makes the vendor intel worth paying for?',
-              a: 'The comparison tool lets you build shortlists, filter by your stack, and see implementation notes from real deployments — not vendor marketing copy. It\'s the research layer that saves hours when you\'re evaluating.'
+              a: "The comparison tool lets you build shortlists, filter by your stack, and see implementation notes from real deployments — not vendor marketing copy. It's the research layer that saves hours when you're evaluating.",
             },
             {
               q: 'Is the newsletter still free?',
-              a: 'Always. The weekly Wrap newsletter, the show, and the Candidate Spotlight are free and will stay free. Wrap+ is about the vendor intelligence layer, not paywalling the editorial.'
+              a: 'Always. The weekly Wrap newsletter and the show are free and will stay free. Wrap+ is about the vendor intelligence layer, not paywalling the editorial.',
             },
             {
-              q: 'Can I cancel?',
-              a: 'Yes, anytime. No questions asked.'
+              q: 'Can I cancel the monthly plan?',
+              a: 'Yes, anytime. No questions asked. The annual plan is billed upfront for the year.',
             },
           ].map(({ q, a }) => (
             <div key={q} className="border-b border-brand-border pb-5">

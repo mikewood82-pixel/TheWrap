@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 import NewsletterPage from './pages/NewsletterPage'
+import NewsletterDetailPage from './pages/NewsletterDetailPage'
 import ShowPage from './pages/ShowPage'
 import VendorIntelPage from './pages/VendorIntelPage'
 import VendorDeepDivePage from './pages/VendorDeepDivePage'
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="newsletter" element={<NewsletterPage />} />
+          <Route path="newsletter/:slug" element={<NewsletterDetailPage />} />
           <Route path="show" element={<ShowPage />} />
           <Route path="vendors" element={<VendorIntelPage />} />
           <Route path="vendors/:slug" element={<VendorDeepDivePage />} />
