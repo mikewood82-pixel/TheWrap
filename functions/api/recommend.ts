@@ -131,7 +131,9 @@ Use only slugs from the provided vendor list. Prioritize fit over popularity.`,
     }
 
     const data = await res.json() as { content: { text: string }[] }
-    const text = data.content?.[0]?.text ?? ''
+    let text = data.content?.[0]?.text ?? ''
+    // Strip markdown code fences if present
+    text = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim()
     const parsed = JSON.parse(text)
 
     return Response.json(parsed, {
