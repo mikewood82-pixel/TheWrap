@@ -29,11 +29,16 @@ function VendorFinderWidget() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query }),
       })
-      if (!res.ok) throw new Error('Request failed')
-      const data: AiResult = await res.json()
-      setAiResult(data)
-    } catch {
-      setError('Unable to get recommendations right now. Try again shortly.')
+      const data = await res.json()
+      if (!res.ok) throw new Error(data?.error ?? 'Request failed')
+      setAiResult(data as AiResult)
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : ''
+      if (msg === 'API key not configured') {
+        setError('AI Vendor Finder is not configured yet — check back soon.')
+      } else {
+        setError('Unable to get recommendations right now. Try again shortly.')
+      }
     } finally {
       setLoading(false)
     }
