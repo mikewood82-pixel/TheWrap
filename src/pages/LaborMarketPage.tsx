@@ -1,40 +1,40 @@
 const metrics = [
-  { label: 'Unemployment Rate', value: '4.1%', change: '-0.1%', trend: 'down',    note: 'Lowest in 8 months' },
-  { label: 'Job Openings',      value: '8.1M', change: '-200K', trend: 'down',    note: 'Cooling but still elevated' },
-  { label: 'Avg. Hourly Wage',  value: '$35.12', change: '+0.3%', trend: 'up',   note: 'Above inflation' },
-  { label: 'Layoffs Rate',      value: '1.2%',  change: '+0.1%', trend: 'up',    note: 'Worth watching' },
-  { label: 'Quits Rate',        value: '2.2%',  change: '-0.1%', trend: 'down',  note: 'Great Resignation is over' },
-  { label: 'Jobs Added (ADP)',  value: '192K',  change: '-8K',   trend: 'down',   note: 'Below consensus' },
+  { label: 'Unemployment Rate', value: '4.3%',   change: '-0.1%',  trend: 'down', note: 'Edged down in March' },
+  { label: 'Job Openings',      value: '6.9M',   change: '-300K',  trend: 'down', note: 'Lowest since early 2021' },
+  { label: 'Avg. Hourly Wage',  value: '$37.38', change: '+0.2%',  trend: 'up',   note: '+3.5% year-over-year' },
+  { label: 'Layoffs Rate',      value: '1.1%',   change: '0.0%',   trend: 'flat', note: 'Stable but elevated' },
+  { label: 'Quits Rate',        value: '1.9%',   change: '-0.1%',  trend: 'down', note: 'Lowest since 2015' },
+  { label: 'Jobs Added (ADP)',  value: '62K',    change: '-4K',    trend: 'down', note: 'Well below historical avg' },
 ]
 
 const implications = [
   {
-    headline: 'Talent market is cooling, not crashing',
-    body: 'Job openings declining steadily is a normalization story, not a crisis. Sourcing teams should expect more applicants per req through Q3.',
+    headline: 'ADP at 62K is a warning sign, not a blip',
+    body: 'Private sector job creation has slowed dramatically — 62K in March is less than half the long-run average. Combined with February\'s BLS revision to -133K, the picture is of an employer base that has stopped hiring. Workforce planning assumptions built on 150K+ monthly additions need to be revisited.',
   },
   {
-    headline: 'Wage growth still outpaces most comp bands',
-    body: 'If you haven\'t refreshed your salary ranges in 18 months, you\'re likely losing offers. Market data is moving faster than annual comp cycles.',
+    headline: 'Quits at 1.9% — retention pressure has inverted',
+    body: 'The quits rate is at its lowest level in over a decade. Employees are staying put because options have narrowed, not because engagement has improved. HR teams that have been deferring compensation reviews are getting a temporary reprieve — but suppressed quit rates historically precede a wave of exits when conditions shift.',
   },
   {
-    headline: 'Layoffs ticking up — monitor closely',
-    body: 'Still low historically, but the month-over-month uptick in the layoffs rate is the one number in this dataset that tells a different story than the headline.',
+    headline: 'Wage growth holding at 3.5% YoY — but the mix is shifting',
+    body: 'Headline wage growth looks healthy, but it\'s increasingly concentrated in healthcare and a handful of other sectors. ADP data shows job-changers getting 6.6% while job-stayers are at 4.5% — the premium for switching has returned. If your comp bands haven\'t been refreshed, you\'re already behind for any role with active external demand.',
   },
 ]
 
 const historical = [
-  { month: 'Jan 2025', unemployment: '4.2%', openings: '8.4M', wages: '$34.82', quits: '2.3%' },
-  { month: 'Feb 2025', unemployment: '4.2%', openings: '8.3M', wages: '$34.91', quits: '2.3%' },
-  { month: 'Mar 2025', unemployment: '4.1%', openings: '8.2M', wages: '$35.01', quits: '2.2%' },
-  { month: 'Apr 2025', unemployment: '4.2%', openings: '8.3M', wages: '$35.05', quits: '2.2%' },
-  { month: 'May 2025', unemployment: '4.1%', openings: '8.1M', wages: '$35.12', quits: '2.2%', current: true },
+  { month: 'Nov 2025', unemployment: '4.6%', openings: '7.6M', wages: '$36.41', quits: '2.1%' },
+  { month: 'Dec 2025', unemployment: '4.4%', openings: '7.4M', wages: '$36.71', quits: '2.0%' },
+  { month: 'Jan 2026', unemployment: '4.4%', openings: '7.2M', wages: '$37.01', quits: '2.0%' },
+  { month: 'Feb 2026', unemployment: '4.4%', openings: '6.9M', wages: '$37.29', quits: '1.9%' },
+  { month: 'Mar 2026', unemployment: '4.3%', openings: '6.9M', wages: '$37.38', quits: '1.9%', current: true },
 ]
 
 export default function LaborMarketPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
       <div className="mb-8">
-        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Data</div>
+        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Data · Updated April 2026</div>
         <h1 className="font-serif text-4xl font-bold mb-3">U.S. Labor Market</h1>
         <p className="text-brand-dark/60">BLS data, updated monthly. What the numbers mean for HR leaders.</p>
       </div>
@@ -45,7 +45,11 @@ export default function LaborMarketPage() {
           <div key={m.label} className="bg-white border border-brand-cream rounded-xl p-4">
             <div className="text-xs text-brand-dark/40 mb-1">{m.label}</div>
             <div className="font-serif text-3xl font-bold mb-1">{m.value}</div>
-            <div className={`text-xs font-medium mb-1 ${m.trend === 'up' ? 'text-amber-600' : 'text-green-600'}`}>
+            <div className={`text-xs font-medium mb-1 ${
+              m.trend === 'up' ? 'text-amber-600' :
+              m.trend === 'down' ? 'text-green-600' :
+              'text-brand-dark/40'
+            }`}>
               {m.change} MoM
             </div>
             <div className="text-xs text-brand-dark/40">{m.note}</div>
@@ -65,7 +69,7 @@ export default function LaborMarketPage() {
       </div>
 
       {/* Historical table */}
-      <h2 className="font-serif text-2xl font-bold mb-4">12-Month Trend</h2>
+      <h2 className="font-serif text-2xl font-bold mb-4">6-Month Trend</h2>
       <div className="overflow-x-auto rounded-xl border border-brand-cream">
         <table className="w-full text-sm">
           <thead className="bg-brand-dark text-brand-cream">
@@ -88,7 +92,7 @@ export default function LaborMarketPage() {
           </tbody>
         </table>
       </div>
-      <p className="text-xs text-brand-dark/30 mt-2">Source: U.S. Bureau of Labor Statistics. Updated monthly.</p>
+      <p className="text-xs text-brand-dark/30 mt-2">Source: U.S. Bureau of Labor Statistics, ADP National Employment Report. Updated April 2026. Oct 2025 excluded — BLS household survey not collected due to federal government shutdown.</p>
     </div>
   )
 }
