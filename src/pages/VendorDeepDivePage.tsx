@@ -1,9 +1,23 @@
 import { useParams, Link } from 'react-router-dom'
-import { ExternalLink, ArrowLeft, Star, Globe, TrendingUp, TrendingDown } from 'lucide-react'
+import { ExternalLink, ArrowLeft, Star, Globe, TrendingUp, TrendingDown, Newspaper, Puzzle, Users } from 'lucide-react'
 import { useState } from 'react'
 import { vendors } from '../data/vendors'
 import { vendorHighlights } from '../data/vendorHighlights'
+import { vendorDetails } from '../data/vendorDetails'
 import RatingChart, { generateHistory } from '../components/RatingChart'
+
+function CapabilityBar({ label, score }: { label: string; score: number }) {
+  const color = score >= 85 ? 'bg-brand-terracotta' : score >= 65 ? 'bg-brand-gold' : 'bg-brand-dark/30'
+  return (
+    <div className="flex items-center gap-3">
+      <div className="w-32 text-xs text-brand-dark/60 text-right shrink-0">{label}</div>
+      <div className="flex-1 bg-brand-cream rounded-full h-2 overflow-hidden">
+        <div className={`h-2 rounded-full transition-all ${color}`} style={{ width: `${score}%` }} />
+      </div>
+      <div className="w-7 text-xs text-brand-dark/50 tabular-nums shrink-0">{score}</div>
+    </div>
+  )
+}
 
 // Sponsored editorial content (only for deepDive vendors)
 const deepDiveContent: Record<string, { mikesTake: string[]; features: string[] }> = {
@@ -75,6 +89,7 @@ export default function VendorDeepDivePage() {
   const editorial = deepDiveContent[vendor.slug]
   const isSponsored = vendor.deepDive && !!editorial
   const highlights = vendorHighlights[vendor.slug]
+  const details = vendorDetails[vendor.slug]
 
   // Root domain for Clearbit logo
   const domain = vendor.website.split('/')[0]
@@ -129,7 +144,80 @@ export default function VendorDeepDivePage() {
         </div>
       </div>
 
-      <p className="text-brand-dark/70 text-base leading-relaxed mb-10">{vendor.description}</p>
+      <p className="text-brand-dark/70 text-base leading-relaxed mb-8">{vendor.description}</p>
+
+      {details && (
+        <>
+          {/* Capabilities */}
+          <div className="bg-white border border-brand-cream rounded-xl p-6 mb-6">
+            <div className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium mb-4">Capability Overview</div>
+            <div className="space-y-3">
+              {details.capabilities.map(c => (
+                <CapabilityBar key={c.label} label={c.label} score={c.score} />
+              ))}
+            </div>
+            <p className="text-xs text-brand-dark/30 mt-4">Scores reflect editorial assessment based on product depth, user reviews, and market positioning. Not vendor-provided.</p>
+          </div>
+
+          {/* Ideal Customer + Integrations side by side */}
+          <div className="grid sm:grid-cols-2 gap-6 mb-6">
+            <div className="bg-white border border-brand-cream rounded-xl p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Users size={13} className="text-brand-dark/40" />
+                <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">Ideal Customer</span>
+              </div>
+              <div className="space-y-3">
+                <div>
+                  <div className="text-xs text-brand-dark/40 mb-1">Company Size</div>
+                  <div className="text-sm font-medium text-brand-dark">{details.idealCustomer.size}</div>
+                </div>
+                <div>
+                  <div className="text-xs text-brand-dark/40 mb-1.5">Top Industries</div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {details.idealCustomer.industries.map(ind => (
+                      <span key={ind} className="text-xs bg-brand-cream text-brand-dark/70 px-2.5 py-1 rounded-full">{ind}</span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs text-brand-dark/40 mb-1">Best For</div>
+                  <p className="text-sm text-brand-dark/70 leading-relaxed">{details.idealCustomer.useCase}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white border border-brand-cream rounded-xl p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Puzzle size={13} className="text-brand-dark/40" />
+                <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">Popular Integrations</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {details.integrations.map(int => (
+                  <span key={int} className="inline-flex items-center text-xs bg-brand-gold/10 border border-brand-gold/20 text-brand-dark/70 px-3 py-1.5 rounded-lg font-medium">{int}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Newsroom */}
+          <div className="bg-white border border-brand-cream rounded-xl p-6 mb-6">
+            <div className="flex items-center gap-2 mb-4">
+              <Newspaper size={13} className="text-brand-dark/40" />
+              <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">From the Newsroom</span>
+            </div>
+            <div className="space-y-3">
+              {details.news.map((item, i) => (
+                <div key={i} className="flex items-start gap-3 pb-3 border-b border-brand-cream last:border-0 last:pb-0">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-brand-dark/80 leading-snug mb-1">{item.headline}</p>
+                    <p className="text-xs text-brand-dark/40">{item.source} · {item.date}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
 
       {/* G2 Section */}
       <div className="bg-white border border-brand-cream rounded-xl p-6 mb-6">
