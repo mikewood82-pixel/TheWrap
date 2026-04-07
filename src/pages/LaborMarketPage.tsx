@@ -1,25 +1,11 @@
-const metrics = [
+// ─── BLS Key Metrics ──────────────────────────────────────────────────────────
+const blsMetrics = [
   { label: 'Unemployment Rate', value: '4.3%',   change: '-0.1%',  trend: 'down', note: 'Edged down in March' },
   { label: 'Job Openings',      value: '6.9M',   change: '-300K',  trend: 'down', note: 'Lowest since early 2021' },
   { label: 'Avg. Hourly Wage',  value: '$37.38', change: '+0.2%',  trend: 'up',   note: '+3.5% year-over-year' },
   { label: 'Layoffs Rate',      value: '1.1%',   change: '0.0%',   trend: 'flat', note: 'Stable but elevated' },
   { label: 'Quits Rate',        value: '1.9%',   change: '-0.1%',  trend: 'down', note: 'Lowest since 2015' },
-  { label: 'Jobs Added (ADP)',  value: '62K',    change: '-4K',    trend: 'down', note: 'Well below historical avg' },
-]
-
-const implications = [
-  {
-    headline: 'ADP at 62K is a warning sign, not a blip',
-    body: 'Private sector job creation has slowed dramatically — 62K in March is less than half the long-run average. Combined with February\'s BLS revision to -133K, the picture is of an employer base that has stopped hiring. Workforce planning assumptions built on 150K+ monthly additions need to be revisited.',
-  },
-  {
-    headline: 'Quits at 1.9% — retention pressure has inverted',
-    body: 'The quits rate is at its lowest level in over a decade. Employees are staying put because options have narrowed, not because engagement has improved. HR teams that have been deferring compensation reviews are getting a temporary reprieve — but suppressed quit rates historically precede a wave of exits when conditions shift.',
-  },
-  {
-    headline: 'Wage growth holding at 3.5% YoY — but the mix is shifting',
-    body: 'Headline wage growth looks healthy, but it\'s increasingly concentrated in healthcare and a handful of other sectors. ADP data shows job-changers getting 6.6% while job-stayers are at 4.5% — the premium for switching has returned. If your comp bands haven\'t been refreshed, you\'re already behind for any role with active external demand.',
-  },
+  { label: 'Jobs Added (BLS)',  value: '178K',   change: '-15K',   trend: 'down', note: 'Above ADP, below consensus' },
 ]
 
 const historical = [
@@ -30,18 +16,93 @@ const historical = [
   { month: 'Mar 2026', unemployment: '4.3%', openings: '6.9M', wages: '$37.38', quits: '1.9%', current: true },
 ]
 
+// ─── ADP ──────────────────────────────────────────────────────────────────────
+const adpMetrics = [
+  { label: 'Private Jobs Added', value: '62K',   note: 'March 2026 · well below historical avg of ~180K' },
+  { label: 'Job-Stayer Pay Growth', value: '4.5%', note: 'YoY · stable for 10 consecutive months' },
+  { label: 'Job-Changer Pay Growth', value: '6.6%', note: 'YoY · premium for switching narrowest since 2020' },
+  { label: 'Annual Pay (All)',    value: '4.5%',  note: 'YoY overall pay growth, March 2026' },
+]
+
+const adpSectors = [
+  { sector: 'Education & Health', jobs: '+54K', direction: 'up' },
+  { sector: 'Small Business (<20 employees)', jobs: '+112K', direction: 'up' },
+  { sector: 'Trade, Transport & Utilities', jobs: '-58K', direction: 'down' },
+  { sector: 'Mid-size Business (50–249)', jobs: '-26K', direction: 'down' },
+]
+
+// ─── Revelio Labs ─────────────────────────────────────────────────────────────
+const revelioMetrics = [
+  { label: 'RPLS Jobs Gained (Mar)', value: '+19.4K', note: 'Derived from 100M+ U.S. LinkedIn-style profiles' },
+  { label: 'New Posting Salaries',   value: '-2.6%',  note: 'MoM decline in advertised salaries, March 2026' },
+  { label: 'Hiring Rate',            value: 'Low',    note: 'Low-hire, low-fire environment persists' },
+  { label: 'Attrition Rate',         value: 'Low',    note: 'Both hiring and attrition ticked down in March' },
+]
+
+const revelioSectors = [
+  { sector: 'Healthcare & Social Services', trend: 'Growing', direction: 'up' },
+  { sector: 'Tech / Knowledge Work', trend: 'Stable', direction: 'flat' },
+  { sector: 'Retail Trade', trend: 'Declining', direction: 'down' },
+  { sector: 'Leisure & Hospitality', trend: 'Declining', direction: 'down' },
+  { sector: 'Public Administration', trend: 'Declining', direction: 'down' },
+]
+
+// ─── Aspen Tech Labs ──────────────────────────────────────────────────────────
+const aspenInsights = [
+  {
+    headline: 'Healthcare postings defy broader cooling trend',
+    body: 'JobMarketPulse data from 275,000+ career sites shows healthcare vacancy levels remained elevated in March despite overall posting volume declining. Direct employer postings up ~1.2% YoY while agency-driven postings slid ~5.7%.',
+  },
+  {
+    headline: 'AI roles bucked the 2025 pullback — up 92% in vacancies',
+    body: 'While total job posting activity cooled across most of the economy in 2025, Aspen\'s AI 50 index tracked a 92%+ increase in AI-related vacancies. Demand in this segment continues to diverge sharply from broader market trends.',
+  },
+  {
+    headline: 'Google for Jobs continues to favor direct employer career sites',
+    body: 'Aspen Tech Labs data shows Google for Jobs increasingly surfaces direct employer career site postings over aggregators, reinforcing the value of career site optimization for talent acquisition teams.',
+  },
+]
+
+// ─── HR Implications ──────────────────────────────────────────────────────────
+const implications = [
+  {
+    headline: 'ADP at 62K is a warning sign, not a blip',
+    body: 'Private sector job creation has slowed dramatically. Combined with Revelio\'s RPLS showing only +19.4K net jobs and declining advertised salaries, the picture is of an employer base that has broadly stopped hiring. Workforce planning assumptions built on 150K+ monthly additions need to be revisited.',
+  },
+  {
+    headline: 'Quits at 1.9% — retention pressure has inverted',
+    body: 'Revelio\'s low-hire, low-fire signal aligns with BLS: employees are staying put because options have narrowed. ADP data shows the job-changer pay premium is the smallest since 2020. The case for switching is weaker — but when conditions shift, suppressed quit rates historically precede a surge.',
+  },
+  {
+    headline: 'Two-speed market: healthcare and AI vs. everyone else',
+    body: 'Aspen Tech Labs JobMarketPulse data makes the divergence clear. Healthcare and AI roles are holding or growing while retail, hospitality, and public sector shed jobs. HR leaders in those growth sectors face a supply squeeze; everyone else is in a buyer\'s market for talent.',
+  },
+]
+
+function TrendIndicator({ direction }: { direction: string }) {
+  if (direction === 'up') return <span className="text-green-600 font-bold">↑</span>
+  if (direction === 'down') return <span className="text-red-500 font-bold">↓</span>
+  return <span className="text-brand-dark/40 font-bold">→</span>
+}
+
 export default function LaborMarketPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
-      <div className="mb-8">
+
+      {/* Header */}
+      <div className="mb-10">
         <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Data · Updated April 2026</div>
         <h1 className="font-serif text-4xl font-bold mb-3">U.S. Labor Market</h1>
-        <p className="text-brand-dark/60">BLS data, updated monthly. What the numbers mean for HR leaders.</p>
+        <p className="text-brand-dark/60 text-lg">BLS, ADP, Revelio Labs, and Aspen Tech Labs data — what the numbers mean for HR leaders.</p>
       </div>
 
-      {/* Key metrics */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
-        {metrics.map((m) => (
+      {/* ── BLS ─────────────────────────────────────────────────────────────── */}
+      <div className="flex items-center gap-3 mb-4">
+        <h2 className="font-serif text-2xl font-bold">Bureau of Labor Statistics</h2>
+        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Official · March 2026</span>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+        {blsMetrics.map((m) => (
           <div key={m.label} className="bg-white border border-brand-cream rounded-xl p-4">
             <div className="text-xs text-brand-dark/40 mb-1">{m.label}</div>
             <div className="font-serif text-3xl font-bold mb-1">{m.value}</div>
@@ -49,32 +110,18 @@ export default function LaborMarketPage() {
               m.trend === 'up' ? 'text-amber-600' :
               m.trend === 'down' ? 'text-green-600' :
               'text-brand-dark/40'
-            }`}>
-              {m.change} MoM
-            </div>
+            }`}>{m.change} MoM</div>
             <div className="text-xs text-brand-dark/40">{m.note}</div>
           </div>
         ))}
       </div>
 
-      {/* Implications */}
-      <h2 className="font-serif text-2xl font-bold mb-4">What This Means for HR</h2>
-      <div className="space-y-4 mb-12">
-        {implications.map((imp) => (
-          <div key={imp.headline} className="bg-brand-cream rounded-xl p-5 border-l-4 border-brand-terracotta">
-            <div className="font-serif font-semibold mb-1">{imp.headline}</div>
-            <p className="text-sm text-brand-dark/60 leading-relaxed">{imp.body}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Historical table */}
-      <h2 className="font-serif text-2xl font-bold mb-4">6-Month Trend</h2>
-      <div className="overflow-x-auto rounded-xl border border-brand-cream">
+      {/* BLS Historical table */}
+      <div className="overflow-x-auto rounded-xl border border-brand-cream mb-12">
         <table className="w-full text-sm">
           <thead className="bg-brand-dark text-brand-cream">
             <tr>
-              {['Month', 'Unemployment', 'Job Openings', 'Avg. Wage', 'Quits Rate'].map((h) => (
+              {['Month', 'Unemployment', 'Job Openings', 'Avg. Wage', 'Quits Rate'].map(h => (
                 <th key={h} className="text-left px-4 py-3 font-medium">{h}</th>
               ))}
             </tr>
@@ -92,7 +139,99 @@ export default function LaborMarketPage() {
           </tbody>
         </table>
       </div>
-      <p className="text-xs text-brand-dark/30 mt-2">Source: U.S. Bureau of Labor Statistics, ADP National Employment Report. Updated April 2026. Oct 2025 excluded — BLS household survey not collected due to federal government shutdown.</p>
+
+      {/* ── ADP ─────────────────────────────────────────────────────────────── */}
+      <div className="flex items-center gap-3 mb-4">
+        <h2 className="font-serif text-2xl font-bold">ADP Research</h2>
+        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Private Sector · March 2026</span>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5">
+        {adpMetrics.map(m => (
+          <div key={m.label} className="bg-white border border-brand-cream rounded-xl p-4">
+            <div className="text-xs text-brand-dark/40 mb-1">{m.label}</div>
+            <div className="font-serif text-2xl font-bold mb-1">{m.value}</div>
+            <div className="text-xs text-brand-dark/40 leading-relaxed">{m.note}</div>
+          </div>
+        ))}
+      </div>
+      <div className="bg-white border border-brand-cream rounded-xl overflow-hidden mb-12">
+        <div className="px-5 py-3 bg-brand-cream/50 text-xs text-brand-dark/50 uppercase tracking-wide font-medium">Sector Breakdown — March 2026</div>
+        {adpSectors.map(s => (
+          <div key={s.sector} className="flex items-center justify-between px-5 py-3 border-t border-brand-cream">
+            <span className="text-sm text-brand-dark/70">{s.sector}</span>
+            <span className={`text-sm font-semibold flex items-center gap-1.5 ${s.direction === 'up' ? 'text-green-600' : 'text-red-500'}`}>
+              <TrendIndicator direction={s.direction} /> {s.jobs}
+            </span>
+          </div>
+        ))}
+        <div className="px-5 py-2.5 border-t border-brand-cream">
+          <a href="https://adpemploymentreport.com" target="_blank" rel="noopener noreferrer" className="text-xs text-brand-dark/40 hover:text-brand-terracotta transition-colors">Full report at adpemploymentreport.com →</a>
+        </div>
+      </div>
+
+      {/* ── Revelio Labs ─────────────────────────────────────────────────────── */}
+      <div className="flex items-center gap-3 mb-4">
+        <h2 className="font-serif text-2xl font-bold">Revelio Labs — RPLS</h2>
+        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">100M+ Profiles · March 2026</span>
+      </div>
+      <p className="text-sm text-brand-dark/50 mb-5 leading-relaxed">Revelio Public Labor Statistics (RPLS) is built from 100M+ U.S. workforce profiles — covering ~67% of employed Americans vs. ~27% for BLS establishment surveys. It captures workforce transitions that official surveys miss.</p>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5">
+        {revelioMetrics.map(m => (
+          <div key={m.label} className="bg-white border border-brand-cream rounded-xl p-4">
+            <div className="text-xs text-brand-dark/40 mb-1">{m.label}</div>
+            <div className="font-serif text-2xl font-bold mb-1">{m.value}</div>
+            <div className="text-xs text-brand-dark/40 leading-relaxed">{m.note}</div>
+          </div>
+        ))}
+      </div>
+      <div className="bg-white border border-brand-cream rounded-xl overflow-hidden mb-12">
+        <div className="px-5 py-3 bg-brand-cream/50 text-xs text-brand-dark/50 uppercase tracking-wide font-medium">Sector Employment Trends — March 2026</div>
+        {revelioSectors.map(s => (
+          <div key={s.sector} className="flex items-center justify-between px-5 py-3 border-t border-brand-cream">
+            <span className="text-sm text-brand-dark/70">{s.sector}</span>
+            <span className={`text-sm font-semibold flex items-center gap-1.5 ${
+              s.direction === 'up' ? 'text-green-600' :
+              s.direction === 'down' ? 'text-red-500' :
+              'text-brand-dark/40'
+            }`}>
+              <TrendIndicator direction={s.direction} /> {s.trend}
+            </span>
+          </div>
+        ))}
+        <div className="px-5 py-2.5 border-t border-brand-cream">
+          <a href="https://www.reveliolabs.com/public-labor-statistics/" target="_blank" rel="noopener noreferrer" className="text-xs text-brand-dark/40 hover:text-brand-terracotta transition-colors">Full RPLS data at reveliolabs.com →</a>
+        </div>
+      </div>
+
+      {/* ── Aspen Tech Labs ───────────────────────────────────────────────────── */}
+      <div className="flex items-center gap-3 mb-4">
+        <h2 className="font-serif text-2xl font-bold">Aspen Tech Labs — JobMarketPulse</h2>
+        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">275K+ Career Sites · Q1 2026</span>
+      </div>
+      <p className="text-sm text-brand-dark/50 mb-5 leading-relaxed">JobMarketPulse tracks live job postings directly from 275,000+ employer career sites globally — capturing hiring intent at the source before aggregators pick it up.</p>
+      <div className="space-y-4 mb-12">
+        {aspenInsights.map(item => (
+          <div key={item.headline} className="bg-white border border-brand-cream rounded-xl p-5 border-l-4 border-l-brand-gold">
+            <div className="font-serif font-semibold mb-1">{item.headline}</div>
+            <p className="text-sm text-brand-dark/60 leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+        <div className="px-1 pt-1">
+          <a href="https://aspentechlabs.com" target="_blank" rel="noopener noreferrer" className="text-xs text-brand-dark/40 hover:text-brand-terracotta transition-colors">Full JobMarketPulse data at aspentechlabs.com →</a>
+        </div>
+      </div>
+
+      {/* ── HR Implications ───────────────────────────────────────────────────── */}
+      <h2 className="font-serif text-2xl font-bold mb-4">What This Means for HR</h2>
+      <div className="space-y-4 mb-4">
+        {implications.map(imp => (
+          <div key={imp.headline} className="bg-brand-cream rounded-xl p-5 border-l-4 border-brand-terracotta">
+            <div className="font-serif font-semibold mb-1">{imp.headline}</div>
+            <p className="text-sm text-brand-dark/60 leading-relaxed">{imp.body}</p>
+          </div>
+        ))}
+      </div>
+      <p className="text-xs text-brand-dark/30 mt-4">Sources: U.S. Bureau of Labor Statistics · ADP National Employment Report · Revelio Public Labor Statistics (RPLS) · Aspen Tech Labs JobMarketPulse. Updated April 2026.</p>
     </div>
   )
 }
