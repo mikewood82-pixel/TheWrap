@@ -52,13 +52,13 @@ function VendorFinderWidget() {
     : []
 
   return (
-    <div className="bg-brand-dark text-brand-cream rounded-xl p-6 mb-8">
+    <div className="bg-brand-gold/10 border border-brand-gold/30 rounded-xl p-6 mb-8">
       <div className="flex items-center gap-2 mb-1">
-        <Sparkles size={14} className="text-brand-gold" />
-        <span className="text-brand-gold text-xs uppercase tracking-widest font-medium">AI Vendor Finder</span>
+        <Sparkles size={14} className="text-brand-terracotta" />
+        <span className="text-brand-terracotta text-xs uppercase tracking-widest font-medium">AI Vendor Finder</span>
       </div>
-      <h2 className="font-serif text-xl font-bold mb-1">Find the right vendor for your situation</h2>
-      <p className="text-brand-cream/50 text-sm mb-5">
+      <h2 className="font-serif text-xl font-bold mb-1 text-brand-dark">Find the right vendor for your situation</h2>
+      <p className="text-brand-dark/60 text-sm mb-5">
         Describe your business and what you're looking for — company size, industry, pain points, or tools you're replacing — and we'll find the right solutions.
       </p>
 
@@ -69,9 +69,9 @@ function VendorFinderWidget() {
             onChange={e => setQuery(e.target.value)}
             placeholder="e.g. We're a 200-person SaaS company looking to replace Greenhouse. We need better reporting and want something that integrates with Workday..."
             rows={3}
-            className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-sm text-brand-cream placeholder:text-brand-cream/30 focus:outline-none focus:ring-2 focus:ring-brand-gold/40 resize-none"
+            className="w-full bg-white border border-brand-cream rounded-lg px-4 py-3 text-sm text-brand-dark placeholder:text-brand-dark/30 focus:outline-none focus:ring-2 focus:ring-brand-terracotta/30 resize-none"
           />
-          {error && <p className="text-red-400 text-xs">{error}</p>}
+          {error && <p className="text-red-600 text-xs">{error}</p>}
           <button
             type="submit"
             disabled={loading || !query.trim()}
@@ -92,31 +92,31 @@ function VendorFinderWidget() {
         </form>
       ) : (
         <div>
-          <p className="text-brand-cream/70 text-sm mb-5 leading-relaxed">{aiResult.summary}</p>
+          <p className="text-brand-dark/70 text-sm mb-5 leading-relaxed">{aiResult.summary}</p>
           <div className="grid sm:grid-cols-2 gap-3 mb-5">
             {matchedVendors.map(({ vendor, reason }) => (
               <Link
                 key={vendor!.slug}
                 to={`/vendors/${vendor!.slug}`}
-                className="bg-white/10 hover:bg-white/15 border border-white/10 rounded-lg p-4 transition-colors group"
+                className="bg-white hover:border-brand-terracotta/40 border border-brand-cream rounded-lg p-4 transition-colors group hover:shadow-sm"
               >
                 <div className="flex items-start justify-between gap-2 mb-1">
-                  <span className="font-serif font-semibold text-brand-cream leading-tight">{vendor!.name}</span>
-                  <span className="text-xs text-brand-cream/40 shrink-0">{vendor!.category}</span>
+                  <span className="font-serif font-semibold text-brand-dark leading-tight">{vendor!.name}</span>
+                  <span className="text-xs text-brand-dark/40 shrink-0">{vendor!.category}</span>
                 </div>
-                <p className="text-xs text-brand-cream/60 leading-relaxed mb-2">{reason}</p>
-                <div className="flex items-center gap-3 text-xs text-brand-cream/40">
+                <p className="text-xs text-brand-dark/60 leading-relaxed mb-2">{reason}</p>
+                <div className="flex items-center gap-3 text-xs text-brand-dark/40">
                   <span>G2 {vendor!.g2}</span>
                   <span>·</span>
                   <span>{vendor!.reviews >= 1000 ? `${(vendor!.reviews / 1000).toFixed(1)}k` : vendor!.reviews} reviews</span>
-                  <span className="ml-auto text-brand-gold opacity-0 group-hover:opacity-100 transition-opacity">View profile →</span>
+                  <span className="ml-auto text-brand-terracotta opacity-0 group-hover:opacity-100 transition-opacity">View profile →</span>
                 </div>
               </Link>
             ))}
           </div>
           <button
             onClick={reset}
-            className="inline-flex items-center gap-1.5 text-xs text-brand-cream/40 hover:text-brand-cream transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs text-brand-dark/40 hover:text-brand-dark transition-colors"
           >
             <X size={12} /> Start over
           </button>
