@@ -107,7 +107,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
+        model: 'claude-haiku-4-5',
         max_tokens: 700,
         system: `You are an HR technology advisor helping buyers find the right software vendors. Given a list of HR tech vendors and a buyer description of their needs, identify the 3–5 best-fit vendors.
 
@@ -124,6 +124,12 @@ Use only slugs from the provided vendor list. Prioritize fit over popularity.`,
       }),
     })
 
+    if (!res.ok) {
+      const errData = await res.json() as { error?: { message?: string } }
+      const msg = errData?.error?.message ?? `API error ${res.status}`
+      return Response.json({ error: msg }, { status: 502 })
+    }
+
     const data = await res.json() as { content: { text: string }[] }
     const text = data.content?.[0]?.text ?? ''
     const parsed = JSON.parse(text)
@@ -132,7 +138,8 @@ Use only slugs from the provided vendor list. Prioritize fit over popularity.`,
       headers: { 'Access-Control-Allow-Origin': '*' },
     })
   } catch (err) {
-    return Response.json({ error: 'Failed to get recommendations' }, { status: 500 })
+    const msg = err instanceof Error ? err.message : 'Unknown error'
+    return Response.json({ error: msg }, { status: 500 })
   }
 }
 
