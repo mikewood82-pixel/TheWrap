@@ -37,7 +37,7 @@ function VendorFinderWidget() {
       if (msg === 'API key not configured') {
         setError('AI Vendor Finder is not configured yet — check back soon.')
       } else {
-        setError('Unable to get recommendations right now. Try again shortly.')
+        setError(msg || 'Unable to get recommendations right now. Try again shortly.')
       }
     } finally {
       setLoading(false)
