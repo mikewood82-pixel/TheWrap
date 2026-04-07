@@ -1,6 +1,2 @@
 name = "the-wrap"
 pages_build_output_dir = "dist"
-
-[[kv_namespaces]]
-binding = "SUBSCRIPTIONS"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
