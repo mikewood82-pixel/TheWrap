@@ -219,20 +219,35 @@ export default function VendorDeepDivePage() {
         </>
       )}
 
-      {/* Pain Points */}
-      {highlights?.painPoints?.length ? (
-        <div className="bg-red-50 border border-red-100 rounded-xl p-6 mb-6">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-red-500 text-xs uppercase tracking-wide font-medium">⚠ Watch Out For</span>
-          </div>
-          <div className="space-y-4">
-            {highlights.painPoints.map((h, i) => (
-              <div key={i} className="pl-3 border-l-2 border-red-200">
-                <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{h.text}"</p>
-                <p className="text-xs text-brand-dark/40">— {h.role}</p>
+      {/* Gain Points + Pain Points */}
+      {(highlights?.gainPoints?.length || highlights?.painPoints?.length) ? (
+        <div className="grid sm:grid-cols-2 gap-4 mb-6">
+          {highlights?.gainPoints?.length ? (
+            <div className="bg-green-50 border border-green-100 rounded-xl p-5">
+              <div className="text-green-700 text-xs uppercase tracking-wide font-medium mb-4">✓ What Customers Love</div>
+              <div className="space-y-4">
+                {highlights.gainPoints.map((h, i) => (
+                  <div key={i} className="pl-3 border-l-2 border-green-200">
+                    <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{h.text}"</p>
+                    <p className="text-xs text-brand-dark/40">— {h.role}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ) : null}
+          {highlights?.painPoints?.length ? (
+            <div className="bg-red-50 border border-red-100 rounded-xl p-5">
+              <div className="text-red-500 text-xs uppercase tracking-wide font-medium mb-4">⚠ Watch Out For</div>
+              <div className="space-y-4">
+                {highlights.painPoints.map((h, i) => (
+                  <div key={i} className="pl-3 border-l-2 border-red-200">
+                    <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{h.text}"</p>
+                    <p className="text-xs text-brand-dark/40">— {h.role}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
       ) : null}
 
