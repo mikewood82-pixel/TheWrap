@@ -13,8 +13,8 @@ export default function NewsletterPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
       <div className="mb-10">
-        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">The Newsletter</div>
-        <h1 className="font-serif text-4xl font-bold mb-3">The Wrap Archive</h1>
+        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Newsletter Archive</div>
+        <h1 className="font-serif text-4xl font-bold mb-3">Newsletter Archive</h1>
         <p className="text-brand-dark/60 text-lg">
           Every edition, every Friday. Mike's take on what's moving in HR technology.
         </p>
