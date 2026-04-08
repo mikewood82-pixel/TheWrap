@@ -55,10 +55,10 @@ export default function HomePage() {
             />
             {/* Brand text */}
             <div>
-              <div className="font-serif text-5xl md:text-7xl font-bold text-brand-dark leading-none tracking-tight">
+              <div className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold text-brand-dark leading-none tracking-tight whitespace-nowrap">
                 The Wrap
               </div>
-              <div className="text-brand-terracotta text-base md:text-xl font-semibold tracking-[0.2em] uppercase mt-2">
+              <div className="text-brand-terracotta text-sm sm:text-base md:text-xl font-semibold tracking-[0.2em] uppercase mt-2 whitespace-nowrap">
                 HR Tech News
               </div>
             </div>
