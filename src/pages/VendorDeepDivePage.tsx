@@ -219,6 +219,23 @@ export default function VendorDeepDivePage() {
         </>
       )}
 
+      {/* Pain Points */}
+      {highlights?.painPoints?.length ? (
+        <div className="bg-red-50 border border-red-100 rounded-xl p-6 mb-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-red-500 text-xs uppercase tracking-wide font-medium">⚠ Watch Out For</span>
+          </div>
+          <div className="space-y-4">
+            {highlights.painPoints.map((h, i) => (
+              <div key={i} className="pl-3 border-l-2 border-red-200">
+                <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{h.text}"</p>
+                <p className="text-xs text-brand-dark/40">— {h.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
+
       {/* G2 Section */}
       <div className="bg-white border border-brand-cream rounded-xl p-6 mb-6">
         <div className="flex items-center justify-between mb-1">

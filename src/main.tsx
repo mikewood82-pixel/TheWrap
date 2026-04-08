@@ -4,6 +4,7 @@ import { ClerkProvider } from '@clerk/clerk-react'
 import './index.css'
 import App from './App.tsx'
 import { WrapPlusProvider } from './context/WrapPlusContext.tsx'
+import { CompareProvider } from './context/CompareContext.tsx'
 
 const CLERK_PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -15,7 +16,9 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
       <WrapPlusProvider>
-        <App />
+        <CompareProvider>
+          <App />
+        </CompareProvider>
       </WrapPlusProvider>
     </ClerkProvider>
   </StrictMode>,

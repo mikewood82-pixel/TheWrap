@@ -1,16 +1,25 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Lock, ArrowRight, Sparkles, X } from 'lucide-react'
+import { Lock, ArrowRight, Sparkles, X, GitCompare, Plus, Check, Search } from 'lucide-react'
 import { useWrapPlus } from '../context/WrapPlusContext'
+import { useCompare } from '../context/CompareContext'
 import { vendors, activityFeed } from '../data/vendors'
+import { vendorDetails } from '../data/vendorDetails'
+import CompareModal from '../components/CompareModal'
 
 const categories = ['All', 'HCM', 'ATS', 'HRIS', 'Payroll', 'Perf Mgmt', 'L&D', 'Analytics']
+
+// All known integration tools across all vendors (deduplicated)
+const ALL_INTEGRATIONS = Array.from(
+  new Set(Object.values(vendorDetails).flatMap(d => d.integrations))
+).sort()
 
 interface AiResult {
   summary: string
   results: { slug: string; reason: string }[]
 }
 
+// ─── AI Vendor Finder ─────────────────────────────────────────────────────────
 function VendorFinderWidget() {
   const [query, setQuery] = useState('')
   const [loading, setLoading] = useState(false)
@@ -57,7 +66,7 @@ function VendorFinderWidget() {
     : []
 
   return (
-    <div className="bg-brand-gold/10 border border-brand-gold/30 rounded-xl p-6 mb-8">
+    <div className="bg-brand-gold/10 border border-brand-gold/30 rounded-xl p-6 mb-6">
       <div className="flex items-center gap-2 mb-1">
         <Sparkles size={14} className="text-brand-terracotta" />
         <span className="text-brand-terracotta text-xs uppercase tracking-widest font-medium">AI Vendor Finder</span>
@@ -88,10 +97,7 @@ function VendorFinderWidget() {
                 Finding matches…
               </>
             ) : (
-              <>
-                <Sparkles size={13} />
-                Find vendors
-              </>
+              <><Sparkles size={13} /> Find vendors</>
             )}
           </button>
         </form>
@@ -119,10 +125,7 @@ function VendorFinderWidget() {
               </Link>
             ))}
           </div>
-          <button
-            onClick={reset}
-            className="inline-flex items-center gap-1.5 text-xs text-brand-dark/40 hover:text-brand-dark transition-colors"
-          >
+          <button onClick={reset} className="inline-flex items-center gap-1.5 text-xs text-brand-dark/40 hover:text-brand-dark transition-colors">
             <X size={12} /> Start over
           </button>
         </div>
@@ -131,15 +134,145 @@ function VendorFinderWidget() {
   )
 }
 
+// ─── Tech Stack Filter ────────────────────────────────────────────────────────
+function TechStackFilter({ selected, onChange }: { selected: string[]; onChange: (tags: string[]) => void }) {
+  const [input, setInput] = useState('')
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  const suggestions = input.length > 0
+    ? ALL_INTEGRATIONS.filter(t => t.toLowerCase().includes(input.toLowerCase()) && !selected.includes(t)).slice(0, 8)
+    : []
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
+
+  function add(tag: string) {
+    onChange([...selected, tag])
+    setInput('')
+    setOpen(false)
+  }
+
+  function remove(tag: string) {
+    onChange(selected.filter(t => t !== tag))
+  }
+
+  return (
+    <div className="bg-white border border-brand-cream rounded-xl p-4 mb-6">
+      <div className="flex items-center gap-2 mb-3">
+        <Search size={13} className="text-brand-dark/40" />
+        <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">Filter by your tech stack</span>
+        {selected.length > 0 && (
+          <button onClick={() => onChange([])} className="ml-auto text-xs text-brand-dark/30 hover:text-brand-terracotta transition-colors">
+            Clear all
+          </button>
+        )}
+      </div>
+      <div ref={ref} className="relative">
+        <div className="flex flex-wrap gap-2 mb-2">
+          {selected.map(tag => (
+            <span key={tag} className="inline-flex items-center gap-1.5 bg-brand-terracotta/10 text-brand-terracotta text-xs font-medium px-3 py-1.5 rounded-full">
+              {tag}
+              <button onClick={() => remove(tag)} className="hover:opacity-70"><X size={11} /></button>
+            </span>
+          ))}
+        </div>
+        <input
+          type="text"
+          value={input}
+          onChange={e => { setInput(e.target.value); setOpen(true) }}
+          onFocus={() => setOpen(true)}
+          placeholder={selected.length === 0 ? 'Type a tool you use (e.g. Slack, Salesforce, Workday)…' : 'Add another tool…'}
+          className="w-full text-sm border border-brand-cream rounded-lg px-3 py-2 text-brand-dark placeholder:text-brand-dark/30 focus:outline-none focus:ring-2 focus:ring-brand-terracotta/20"
+        />
+        {open && suggestions.length > 0 && (
+          <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-brand-cream rounded-lg shadow-lg z-20 overflow-hidden">
+            {suggestions.map(s => (
+              <button
+                key={s}
+                onClick={() => add(s)}
+                className="w-full text-left px-4 py-2.5 text-sm hover:bg-brand-cream transition-colors text-brand-dark/70"
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+      {selected.length > 0 && (
+        <p className="text-xs text-brand-dark/40 mt-2">
+          Showing vendors that integrate with: {selected.join(', ')}
+        </p>
+      )}
+    </div>
+  )
+}
+
+// ─── Compare Bar ──────────────────────────────────────────────────────────────
+function CompareBar({ onCompare }: { onCompare: () => void }) {
+  const { slugs, toggle, clear } = useCompare()
+  const selected = slugs.map(s => vendors.find(v => v.slug === s)).filter(Boolean) as typeof vendors
+
+  if (selected.length === 0) return null
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-40 bg-brand-dark text-white shadow-2xl border-t border-white/10">
+      <div className="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
+        <div className="flex items-center gap-2 shrink-0">
+          <GitCompare size={15} className="text-brand-gold" />
+          <span className="text-sm font-medium">{selected.length} selected</span>
+        </div>
+        <div className="flex items-center gap-2 flex-1 flex-wrap">
+          {selected.map(v => (
+            <span key={v.slug} className="inline-flex items-center gap-1.5 bg-white/10 text-white text-xs px-3 py-1.5 rounded-full">
+              {v.name}
+              <button onClick={() => toggle(v.slug)} className="hover:opacity-70"><X size={11} /></button>
+            </span>
+          ))}
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
+          <button onClick={clear} className="text-xs text-white/40 hover:text-white transition-colors">Clear</button>
+          <button
+            onClick={onCompare}
+            disabled={selected.length < 2}
+            className="flex items-center gap-2 bg-brand-terracotta text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-brand-gold hover:text-brand-dark transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          >
+            <GitCompare size={14} /> Compare {selected.length < 2 ? '(select 2+)' : 'now'}
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Main Page ────────────────────────────────────────────────────────────────
 export default function VendorIntelPage() {
   const [active, setActive] = useState('All')
+  const [techStack, setTechStack] = useState<string[]>([])
+  const [showCompare, setShowCompare] = useState(false)
   const { isPro } = useWrapPlus()
+  const { toggle, isSelected, isFull } = useCompare()
 
-  const filtered = active === 'All' ? vendors : vendors.filter(v => v.category === active)
+  // Filter by category
+  let filtered = active === 'All' ? vendors : vendors.filter(v => v.category === active)
+
+  // Filter by tech stack
+  if (techStack.length > 0) {
+    filtered = filtered.filter(v => {
+      const integrations = vendorDetails[v.slug]?.integrations ?? []
+      return techStack.some(tool => integrations.some(int => int.toLowerCase() === tool.toLowerCase()))
+    })
+  }
+
   const visibleVendors = isPro ? filtered : filtered.slice(0, 4)
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
+    <div className="max-w-6xl mx-auto px-4 py-12 pb-24">
       <div className="mb-8">
         <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Vendor Intelligence</div>
         <h1 className="font-serif text-4xl font-bold mb-3">HR Tech Vendor Database</h1>
@@ -150,8 +283,10 @@ export default function VendorIntelPage() {
 
       <VendorFinderWidget />
 
+      <TechStackFilter selected={techStack} onChange={setTechStack} />
+
       {/* Category filter */}
-      <div className="flex gap-2 flex-wrap mb-8">
+      <div className="flex gap-2 flex-wrap mb-6">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -165,6 +300,12 @@ export default function VendorIntelPage() {
             {cat}
           </button>
         ))}
+      </div>
+
+      {/* Compare hint */}
+      <div className="flex items-center gap-2 mb-4 text-xs text-brand-dark/40">
+        <GitCompare size={12} />
+        <span>Click the <strong className="text-brand-dark/60">+</strong> on any vendor card to add it to your comparison shortlist</span>
       </div>
 
       {/* Free tier banner */}
@@ -183,44 +324,70 @@ export default function VendorIntelPage() {
         </div>
       )}
 
+      {/* No results */}
+      {filtered.length === 0 && (
+        <div className="text-center py-16 text-brand-dark/40">
+          <p className="text-lg font-medium mb-1">No vendors match your tech stack filter</p>
+          <p className="text-sm">Try removing a tool or broadening your search</p>
+        </div>
+      )}
+
       {/* Vendor grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
-        {visibleVendors.map((v) => (
-          <Link
-            key={v.slug}
-            to={`/vendors/${v.slug}`}
-            className="bg-white border border-brand-cream rounded-xl p-5 relative hover:border-brand-terracotta/40 hover:shadow-sm transition-all group"
-          >
-            {v.deepDive && (
-              <div className="absolute top-3 right-3 bg-brand-gold text-brand-dark text-xs font-bold px-2 py-0.5 rounded">
-                Deep Dive
-              </div>
-            )}
-            <div className="text-xs text-brand-dark/40 uppercase tracking-wide mb-1">{v.category}</div>
-            <div className="font-serif text-xl font-semibold mb-1">{v.name}</div>
-            <div className="text-xs text-brand-dark/50 mb-3 line-clamp-2">{v.description}</div>
-            <div className="grid grid-cols-3 gap-2 mb-4 text-center">
-              <div className="bg-brand-light rounded-lg p-2">
-                <div className="font-bold text-lg">{v.g2}</div>
-                <div className="text-xs text-brand-dark/40">G2</div>
-              </div>
-              <div className="bg-brand-light rounded-lg p-2">
-                <div className="font-bold text-lg">{v.capterra}</div>
-                <div className="text-xs text-brand-dark/40">Capterra</div>
-              </div>
-              <div className="bg-brand-light rounded-lg p-2">
-                <div className="font-bold text-lg">{v.news}</div>
-                <div className="text-xs text-brand-dark/40">News</div>
-              </div>
+        {visibleVendors.map((v) => {
+          const selected = isSelected(v.slug)
+          return (
+            <div key={v.slug} className="relative">
+              <Link
+                to={`/vendors/${v.slug}`}
+                className={`block bg-white border rounded-xl p-5 hover:shadow-sm transition-all group ${selected ? 'border-brand-terracotta/50 ring-2 ring-brand-terracotta/20' : 'border-brand-cream hover:border-brand-terracotta/40'}`}
+              >
+                {v.deepDive && (
+                  <div className="absolute top-3 right-10 bg-brand-gold text-brand-dark text-xs font-bold px-2 py-0.5 rounded">
+                    Deep Dive
+                  </div>
+                )}
+                <div className="text-xs text-brand-dark/40 uppercase tracking-wide mb-1">{v.category}</div>
+                <div className="font-serif text-xl font-semibold mb-1 pr-6">{v.name}</div>
+                <div className="text-xs text-brand-dark/50 mb-3 line-clamp-2">{v.description}</div>
+                <div className="grid grid-cols-3 gap-2 mb-4 text-center">
+                  <div className="bg-brand-light rounded-lg p-2">
+                    <div className="font-bold text-lg">{v.g2}</div>
+                    <div className="text-xs text-brand-dark/40">G2</div>
+                  </div>
+                  <div className="bg-brand-light rounded-lg p-2">
+                    <div className="font-bold text-lg">{v.capterra}</div>
+                    <div className="text-xs text-brand-dark/40">Capterra</div>
+                  </div>
+                  <div className="bg-brand-light rounded-lg p-2">
+                    <div className="font-bold text-lg">{v.news}</div>
+                    <div className="text-xs text-brand-dark/40">News</div>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="text-xs text-brand-dark/40">{v.employees} employees</div>
+                  <span className="flex items-center gap-1 text-brand-terracotta text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                    View profile <ArrowRight size={12} />
+                  </span>
+                </div>
+              </Link>
+
+              {/* Compare button */}
+              <button
+                onClick={() => toggle(v.slug)}
+                disabled={isFull && !selected}
+                title={selected ? 'Remove from compare' : isFull ? 'Max 4 vendors' : 'Add to compare'}
+                className={`absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center transition-all border text-xs font-bold
+                  ${selected
+                    ? 'bg-brand-terracotta border-brand-terracotta text-white'
+                    : 'bg-white border-brand-cream text-brand-dark/40 hover:border-brand-terracotta hover:text-brand-terracotta'
+                  } ${isFull && !selected ? 'opacity-30 cursor-not-allowed' : ''}`}
+              >
+                {selected ? <Check size={12} /> : <Plus size={12} />}
+              </button>
             </div>
-            <div className="flex items-center justify-between">
-              <div className="text-xs text-brand-dark/40">{v.employees} employees</div>
-              <span className="flex items-center gap-1 text-brand-terracotta text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                View profile <ArrowRight size={12} />
-              </span>
-            </div>
-          </Link>
-        ))}
+          )
+        })}
       </div>
 
       {/* Activity Feed */}
@@ -262,6 +429,10 @@ export default function VendorIntelPage() {
           Inquire about a Deep Dive
         </a>
       </div>
+
+      {/* Compare bar + modal */}
+      <CompareBar onCompare={() => setShowCompare(true)} />
+      {showCompare && <CompareModal onClose={() => setShowCompare(false)} />}
     </div>
   )
 }
