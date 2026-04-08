@@ -45,10 +45,10 @@ export default function HomePage() {
             <div
               className="shrink-0"
               style={{
-                width: '160px',
-                height: '160px',
+                width: '240px',
+                height: '240px',
                 backgroundImage: 'url(/logo.png)',
-                backgroundSize: '340px auto',
+                backgroundSize: '500px auto',
                 backgroundPosition: 'center top',
                 backgroundRepeat: 'no-repeat',
               }}
