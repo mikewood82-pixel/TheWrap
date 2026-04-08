@@ -8,6 +8,7 @@ import VendorIntelPage from './pages/VendorIntelPage'
 import VendorDeepDivePage from './pages/VendorDeepDivePage'
 import LaborMarketPage from './pages/LaborMarketPage'
 import SubscribePage from './pages/SubscribePage'
+import AboutPage from './pages/AboutPage'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="vendors/:slug" element={<VendorDeepDivePage />} />
           <Route path="labor-market" element={<LaborMarketPage />} />
           <Route path="subscribe" element={<SubscribePage />} />
+          <Route path="about" element={<AboutPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

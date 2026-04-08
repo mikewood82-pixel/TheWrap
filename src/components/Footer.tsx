@@ -26,6 +26,7 @@ export default function Footer() {
                 ['/show', 'The Wrap Show'],
                 ['/vendors', 'Vendor Intel'],
                 ['/labor-market', 'Labor Market'],
+                ['/about', 'About'],
               ].map(([to, label]) => (
                 <li key={to}>
                   <Link to={to} className="text-white/50 hover:text-white transition-colors">{label}</Link>

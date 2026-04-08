@@ -3,10 +3,11 @@ import { SignInButton, UserButton, useUser } from '@clerk/clerk-react'
 import { useWrapPlus } from '../context/WrapPlusContext'
 
 const links = [
-  { to: '/newsletter',   label: 'Newsletter Archive'   },
-  { to: '/show',         label: 'The Show'     },
-  { to: '/vendors',      label: 'Vendor Intel' },
-  { to: '/labor-market', label: 'Labor Market' },
+  { to: '/newsletter',   label: 'Newsletter Archive' },
+  { to: '/show',         label: 'The Show'          },
+  { to: '/vendors',      label: 'Vendor Intel'      },
+  { to: '/labor-market', label: 'Labor Market'      },
+  { to: '/about',        label: 'About'             },
 ]
 
 export default function Nav() {
