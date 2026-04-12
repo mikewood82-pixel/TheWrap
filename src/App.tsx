@@ -10,6 +10,8 @@ import LaborMarketPage from './pages/LaborMarketPage'
 import SubscribePage from './pages/SubscribePage'
 import AboutPage from './pages/AboutPage'
 import SponsorshipPage from './pages/SponsorshipPage'
+import ReferralPage from './pages/ReferralPage'
+import AssistantPage from './pages/AssistantPage'
 import { FEATURES } from './config/features'
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
             </>
           )}
           <Route path="sponsorship" element={<SponsorshipPage />} />
+          <Route path="referral" element={<ReferralPage />} />
+          <Route path="assistant" element={<AssistantPage />} />
           <Route path="labor-market" element={<LaborMarketPage />} />
           <Route path="about" element={<AboutPage />} />
         </Route>

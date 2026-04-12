@@ -280,6 +280,9 @@ export default function HomePage() {
             <p className="text-red-400 text-sm mt-3">Something went wrong — try again.</p>
           )}
           <p className="text-white/30 text-xs mt-4">No spam. Unsubscribe anytime.</p>
+          <p className="text-white/20 text-xs mt-2">
+            Already a reader? <a href="/referral" className="text-brand-gold hover:underline">Refer 3 friends</a> and get a free month of Wrap+.
+          </p>
         </div>
       </section>
     </div>
