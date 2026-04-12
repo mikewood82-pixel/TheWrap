@@ -1,8 +1,15 @@
+import { useMemo } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Clock } from 'lucide-react'
 import { newsletters } from '../data/newsletters'
 import { archive } from '../data/archive'
 import SEO from '../components/SEO'
+
+function estimateReadTime(html: string): number {
+  const text = html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
+  const words = text.split(' ').length
+  return Math.max(1, Math.round(words / 238))
+}
 
 function ShareButtons({ title }: { title: string }) {
   const url = window.location.href
@@ -37,6 +44,7 @@ function ShareButtons({ title }: { title: string }) {
 export default function NewsletterDetailPage() {
   const { slug } = useParams()
   const edition = [...newsletters, ...archive].find(n => n.slug === (slug ?? ''))
+  const readTime = useMemo(() => edition ? estimateReadTime(edition.body) : 0, [edition])
 
   if (!edition) {
     return (
@@ -69,6 +77,9 @@ export default function NewsletterDetailPage() {
             {edition.tag}
           </span>
           <span className="text-sm text-brand-muted">{edition.date}</span>
+          <span className="text-sm text-brand-muted flex items-center gap-1">
+            <Clock size={12} /> {readTime} min read
+          </span>
         </div>
         <h1 className="font-serif text-4xl font-bold text-brand-dark leading-tight mb-4">
           {edition.title}

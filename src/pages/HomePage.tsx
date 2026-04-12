@@ -247,8 +247,11 @@ export default function HomePage() {
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-3">
             Get The Wrap in your inbox
           </h2>
-          <p className="text-white/60 mb-8 text-lg">
+          <p className="text-white/60 mb-2 text-lg">
             HR tech news, vendor signals, and the labor market — no fluff, no vendor spin.
+          </p>
+          <p className="text-white/40 text-sm mb-8">
+            Join 1,200+ HR tech professionals who read The Wrap every Friday.
           </p>
           {subState === 'success' ? (
             <div className="bg-white/10 text-white rounded-lg px-6 py-4 max-w-md mx-auto">
