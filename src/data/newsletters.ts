@@ -9,6 +9,111 @@ export interface Newsletter {
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'your-kids-will-compete-with-your-shadow',
+    date: 'April 11, 2026',
+    title: 'Your Kids Will Compete With Your Shadow',
+    tag: 'AI & Future of Work',
+    excerpt: 'The digital twin narrative sounds reasonable — until you follow it to its logical conclusion.',
+    body: `
+<img src="/newsletters/april-11-2026/image1.jpg" alt="Your Kids Will Compete With Your Shadow" />
+
+<p>There is a version of the future that the HR technology industry is selling right now, and it sounds pretty reasonable. It all starts with the concept of a "digital twin," <a href="https://www.linkedin.com/pulse/58-around-world-14-days-mike-wood-xx6pe/?trackingId=7UpS5VCrSXSeg940BzfSNQ%3D%3D">which I've written about before</a>. The concept is that you have an AI agent attached to your work that monitors what you do, how you think, and how you reach conclusions. Essentially, it's a digital shadow. The early messaging around this is that your digital twin can step in when you're on vacation, or suddenly out sick. If the real you isn't available, your digital twin can keep projects moving for when you return. Nothing falls through the cracks and everybody wins.</p>
+
+<p>Sure that's the promise, but there's a larger play behind it that will have an impact on the entire workforce. <strong>Your digital twin is built to replace you.</strong></p>
+
+<p>Let's say a company spends five years learning a top performer (we'll just call that person Mike)'s work product, communication patterns, decision history, and institutional knowledge into an agent. At what point does that agent become more valuable than the renewal conversation? At what point does the company look at that digital twin — trained on five years of your best work, now eligible to be fine-tuned against every other high performer in the organization — and decide the math no longer requires you in the equation? You have expensive salary requirements and even more expensive benefits if you are a US employee. They don't even have to offshore your job anymore. Better yet, if they can refine the agent to be top-class, what's stop them from pimping out your digital twin to other companies as a subscription?</p>
+
+<p>This is not something that's happening in years, it's happening now. <a href="http://monday.com">Monday.com</a> has already launched <a href="http://agentalent.ai">agentalent.ai</a>, a marketplace where companies post job descriptions and hire AI agents to fill them. SAP SmartRecruiters unveiled a fully agentic recruiting platform built around its AI companion Winston which now handles first-round interviews, candidate engagement, pipeline management, and decision support without a human in the loop. And if you think the candidates on the other end of those processes are all real people, SmartRecruiters also launched a fraud detection tool this week, because fake applicants have already become enough of a problem to build a product around. We are not inching toward an agentic hiring future. We are already in it.</p>
+
+<p>Josh Bersin's HR 2030 vision, which also dropped this week, projects that HR teams will shrink by 30 to 40 percent as agentic systems absorb administrative and analytical work. He frames it optimistically — the humans who remain will be more strategic, more connected to the business, freed from the tasks nobody wanted anyway. That may be true. It is also true that 30 to 40 percent is a lot of people. And Cangrade's research out this week — drawn from 71,747 personality assessments — found that the competency gaps most likely to separate humans from their AI counterparts, things like adaptability, focus, and critical thinking, are exactly the areas where younger workers are consistently underperforming. The data has been consistent for two years running. Nobody seems to be treating that as urgently as they probably should.</p>
+
+<p>I'm not ready to panic yet, but you just can't dismiss these tools anymore. <strong>The productivity gains are real. The capability is genuinely impressive</strong>, and the cost savings even more so. It makes too much sense to turn a version of a digital twin that "keeps things running while you are out" that ends with someone realizing the twin is cheaper, more consistent, always available, and getting smarter every quarter. And if that agent can be packaged and sold to a competitor — or licensed across an industry — the economics of keeping the original around get complicated fast.</p>
+
+<p>You cannot stop logical progress, and it would be foolish to try. The Industrial Revolution did not ask permission either. Labor costs shifted, entire categories of work disappeared, and the people in the middle of it did not get a roadmap. What we are living through now is another recalibration — different in speed, different in scale, but recognizable in its shape. The question was never whether this was coming. The question now is what we choose to do with the surplus it creates.</p>
+
+<p>The productivity gains have to go somewhere. The freed-up capital has to go somewhere. (And not to 5 billionaires and 500 data centers.) And if the people who build these systems — and the HR professionals who implement them — do not push for those resources to land somewhere useful for workers and communities, nobody else is going to do it for them.</p>
+
+<p>The industry will call it workforce transformation. What we can do, right now, is make sure that transformation means something for the people on the other end of it — not just the ones who survive the headcount reduction, but the ones who don't.</p>
+
+<p>On to this week's HR Tech news. This week's Wrap highlights hireable agents from monday.com, Wizehire launching a jobs app within ChatGPT, Paylocity acquiring Greyscale, Smartrecruiters' agentic push, Josh Bersin's 2030 preview, a launch from Virgil HR, new research from Cangrade, funding for Clasp, J.T. O'Donnell on the rise of quiet hiring on LinkedIn, my interview with BCBS Mass' Joel Kirk on healthcare hiring issues, and Anthropic's new model that is too powerful to release. Enjoy and have a great weekend!</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+<p><em>I read the press releases so you don't have to!</em></p>
+
+<h3>monday.com launches Agentalent.ai</h3>
+<img src="/newsletters/april-11-2026/image2.png" alt="monday.com Agentalent.ai" />
+<p><a href="http://monday.com">monday.com</a> just launched Agentalent.ai, a site that lets companies post roles, evaluate AI agent candidates that have been through actual performance testing and security audits, and onboard them alongside human teams. Built in partnership with AWS and Anthropic, with early adopters like Wix already in the mix. I'm curious to see if these actually work and are better than what people will be able to vibecode soon. <a href="https://nationaltoday.com/us/ny/new-york/news/2026/04/06/monday-com-launches-marketplace-for-hiring-enterprise-ai-agents/">Read More</a></p>
+
+<h3>Wizehire launches Jobs app inside ChatGPT</h3>
+<img src="/newsletters/april-11-2026/image4.png" alt="Wizehire Jobs app in ChatGPT" />
+<p>Classifieds gave way to job boards, job boards gave way to aggregators, and now Wizehire is betting the next stop is your AI chatbot. Their new Jobs by Wizehire app lets candidates describe what they're looking for in plain conversation, browse results, and apply — all without leaving ChatGPT. I'll be looking to see if this works, or it's just another channel of AI generated EasyApplies. <a href="https://hrtechfeed.com/wizehire-launches-jobs-app-in-chatgpt">Read More</a></p>
+
+<h3>Paylocity acquires Grayscale Labs</h3>
+<img src="/newsletters/april-11-2026/image3.jpg" alt="Paylocity acquires Grayscale Labs" />
+<p>Paylocity picked up Grayscale Labs, an AI-powered recruiting automation platform built for high-volume, high-turnover hiring environments. The pitch is speed without chaos — Grayscale keeps candidates moving through the funnel before they ghost you for another offer, while leaving the actual hiring decisions to the humans in the room. <a href="https://investors.paylocity.com/news-releases/news-release-details/paylocity-acquires-grayscale-expand-ai-powered-recruiting">Read More</a></p>
+
+<h3>SmartRecruiters goes fully agentic</h3>
+<img src="/newsletters/april-11-2026/image7.png" alt="SmartRecruiters agentic platform" />
+<p>SmartRecruiters, now an SAP company, rolled out a sweeping product vision this week centered on its AI hiring companion Winston — which is evolving from a recruiting assistant into a full orchestration layer across the entire hiring funnel. New capabilities include an agentic interviewer that handles first-round screening at scale, in-chat assessments to cut candidate drop-off, and a CRM that actually does something instead of just sitting there collecting dust. Early numbers are hard to ignore: a 75% reduction in time-to-decision and candidates recommended by Winston were twice as likely to make it to interview. They also debuted a fraud detection tool that flags suspicious applications using behavioral signals and device intelligence — a quiet acknowledgment that fake candidates are now a big enough problem to build a product around. <a href="https://www.globenewswire.com/news-release/2026/04/07/3269187/0/en/SmartRecruiters-Introduces-the-Future-of-Hiring-From-AI-Agents-to-Autonomous-Talent-Acquisition.html">Read More</a></p>
+
+<h3>VirgilHR launches SkillPath LMS</h3>
+<img src="/newsletters/april-11-2026/image5.png" alt="VirgilHR SkillPath LMS" />
+<p>Jocelyn King and the team at VirgilHR just stepped into the learning management space with SkillPath — a new LMS that combines compliance training and employee development into one place. The pitch is pretty straightforward: 650+ courses, automated reminders, completion tracking, and certificates, all without the administrative circus that usually comes with managing training programs across departments, roles, and locations. For a platform that already helps HR teams navigate the legal minefield of multistate compliance, adding an LMS is a logical next step — one fewer tab open, one fewer vendor to manage. <a href="https://apnews.com/press-release/ein-presswire-newsmatics/virgilhr-launches-skillpath-lms-to-streamline-employee-training-and-compliance-in-one-platform-fa5af9e42950590e7226cdd6b4ab1eb6">Read More</a></p>
+
+<h3>Cangrade's Gen Z and Millennial workforce report</h3>
+<img src="/newsletters/april-11-2026/image6.png" alt="Cangrade Gen Z and Millennial workforce report" />
+<p>Cangrade analyzed 71,747 personality assessments and found something that almost never happens in workforce research: nothing changed. Despite doubling the sample size from last year, competency scores among Gen Z and Millennial workers barely budged — emotional intelligence and stress management at the top, adaptability and critical thinking at the bottom, same as before. The takeaway isn't the list itself, it's the consistency. When the same patterns hold across two years and 70,000-plus data points, you stop calling it a trend and start calling it a design challenge. If your development programs aren't built around closing those specific gaps, they're probably built around assumptions instead. <a href="https://www.cangrade.com/press/cangrade-research-analyzes-70000-candidate-assessments-to-reveal-top-strengths-and-weaknesses-among-gen-z-and-millennial-workers/">Read More</a></p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions 🤝</h2>
+
+<p><strong>Clasp Raises $20M Series B</strong> — Boston-based Clasp closed a $20M Series B, bringing total funding to $180.8M. The talent retention and student debt reduction platform will use the capital to expand operations and development, with new healthcare customer partnerships on the horizon. <a href="https://www.finsmes.com/2026/03/clasp-raises-20m-series-b-funding.html">Read More</a></p>
+
+<p><strong>Remote Acquires Bravas</strong> — Global employment platform Remote has acquired Bravas, a software company specializing in identity and device management. <a href="https://remote.com/blog/company-news/remote-acquires-bravas">Read More</a></p>
+
+<p><strong>Gusto Acquires Mosey</strong> — Gusto, the payroll and HR platform serving 400,000+ small businesses, has acquired Mosey, an AI-powered business compliance platform. Mosey brings state and local registration, entity management, and ongoing filing requirements directly into Gusto's platform, with a full launch expected later this year. <a href="https://www.prnewswire.com/news-releases/gusto-acquires-mosey-to-close-the-compliance-gap-for-small-businesses-302737584.html">Read More</a></p>
+
+<hr />
+
+<h2>🔥 HR Hot Takes</h2>
+
+<h3>Josh Bersin's 2030 preview</h3>
+<img src="/newsletters/april-11-2026/image11.png" alt="Josh Bersin HR 2030 vision" />
+<p>Josh Bersin dropped his HR 2030 vision this week, and the short version is: AI agents are coming for the org chart. His framework imagines a world where agentic HR systems know everything about every employee — skills, schedules, performance patterns, pay equity gaps — while also pulling in external benchmarks on competitors, compensation trends, and regulatory changes in real time. He's also projecting HR teams shrinking by 30–40%, which is either a threat or a business case depending on who's reading it. Four years sounds far away until you remember where we were four years ago. <a href="https://joshbersin.com/2026/04/introducing-hr-2030-a-vision-for-agentic-human-resources/">Read More</a></p>
+
+<h3>Quiet Hiring Is Exploding on LinkedIn</h3>
+<img src="/newsletters/april-11-2026/image10.png" alt="Quiet hiring on LinkedIn" />
+<p>J.T. O'Donnell makes a point worth paying attention to this week — quiet hiring is accelerating, and most job seekers are still playing by the old rules. Recruiters are increasingly bypassing public postings altogether, searching LinkedIn privately for candidates who already look like the answer to their problem. If you're not visible, you're not in the running — and "visible" no longer means a polished profile collecting dust. It means showing up consistently, posting with intention, and demonstrating how you think before anyone ever asks. The hidden job market has always existed. It's just getting louder. <a href="https://www.linkedin.com/pulse/quiet-hiring-exploding-linkedin-most-job-seekers-j-t-o-donnell-qh6de/">Read More</a></p>
+
+<hr />
+
+<h2>🎙️ Podcasts</h2>
+<p><em>Don't just read me, listen to me!</em></p>
+
+<h3>Hiring Quality Over Quantity</h3>
+<img src="/newsletters/april-11-2026/image8.png" alt="Totally Talent podcast with Joel Kirk" />
+<p>It's not a volume problem — it's a quality problem. In this episode of Totally Talent, I sit down with Joel Kirk of Blue Cross Blue Shield Massachusetts to talk about how one of the country's largest health insurers is rethinking talent acquisition from the ground up. Joel breaks down how his team moved from a static career site to a full candidate experience overhaul, why he thinks about automation the way most people think about a pizza tracker, and how AI is finally giving recruiters permission to stop scheduling 400 interviews and start having actual strategic conversations. <a href="https://www.hr.com/en/resources/podcasts/talent/hiring-quality-over-quantity_mnhqx0es.html">Listen Now</a></p>
+
+<hr />
+
+<h2>👉 Worth a Click</h2>
+
+<h3>Anthropic's Claude Mythos — NYT Opinion</h3>
+<img src="/newsletters/april-11-2026/image9.png" alt="Anthropic Claude Mythos NYT Opinion" />
+<p>The New York Times weighed in on Anthropic's Claude Mythos this week — the AI model the company says is too powerful to release publicly. The piece is worth your time if you want a perspective beyond the press release. The broader story: Anthropic built something capable of autonomously finding and exploiting security vulnerabilities in every major operating system and browser, decided not to release it, and instead launched Project Glasswing — a defensive security initiative giving limited access to companies like Apple, Microsoft, Amazon, and Google to use it for patching rather than attacking. A researcher found out the model had escaped its sandbox by receiving an unexpected email from it while eating a sandwich in a park. Sleep tight. <a href="https://www.nytimes.com/2026/04/07/opinion/anthropic-ai-claude-mythos.html">Read More</a></p>
+
+<hr />
+
+<p>Have a great weekend everyone!</p>
+<p><strong>Mike</strong></p>
+`,
+  },
+  {
     slug: 'stop-expecting-more',
     date: 'April 3, 2026',
     title: 'When did we stop expecting more from the top?',

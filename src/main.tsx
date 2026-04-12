@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ClerkProvider } from '@clerk/clerk-react'
+import { HelmetProvider } from 'react-helmet-async'
 import './index.css'
 import App from './App.tsx'
 import { WrapPlusProvider } from './context/WrapPlusContext.tsx'
@@ -14,12 +15,14 @@ if (!CLERK_PUBLISHABLE_KEY) {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
-      <WrapPlusProvider>
-        <CompareProvider>
-          <App />
-        </CompareProvider>
-      </WrapPlusProvider>
-    </ClerkProvider>
+    <HelmetProvider>
+      <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
+        <WrapPlusProvider>
+          <CompareProvider>
+            <App />
+          </CompareProvider>
+        </WrapPlusProvider>
+      </ClerkProvider>
+    </HelmetProvider>
   </StrictMode>,
 )

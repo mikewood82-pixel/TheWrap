@@ -1,3 +1,5 @@
+import SEO from '../components/SEO'
+
 // ─── BLS Key Metrics ──────────────────────────────────────────────────────────
 const blsMetrics = [
   { label: 'Unemployment Rate', value: '4.3%',   change: '-0.1%',  trend: 'down', note: 'Edged down in March' },
@@ -88,6 +90,11 @@ function TrendIndicator({ direction }: { direction: string }) {
 export default function LaborMarketPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
+      <SEO
+        title="Labor Market"
+        description="Weekly labor market data and HR tech hiring trends — unemployment, job openings, wage growth, and Mike's take."
+        url="/labor-market"
+      />
 
       {/* Header */}
       <div className="mb-10">

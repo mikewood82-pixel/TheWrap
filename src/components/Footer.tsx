@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { FEATURES } from '../config/features'
 
 export default function Footer() {
   return (
@@ -22,11 +23,10 @@ export default function Footer() {
             <div className="text-white/30 text-xs uppercase tracking-widest font-medium mb-4">Content</div>
             <ul className="space-y-2.5 text-sm">
               {[
-                ['/newsletter', 'Newsletter Archive'],
-                ['/show', 'The Wrap Show'],
-                ['/vendors', 'Vendor Intel'],
+                ['/newsletter',  'Archive'],
+                ...(FEATURES.PLUS_ENABLED ? [['/vendors', 'Vendor Intel']] : []),
                 ['/labor-market', 'Labor Market'],
-                ['/about', 'About'],
+                ['/about',       'About'],
               ].map(([to, label]) => (
                 <li key={to}>
                   <Link to={to} className="text-white/50 hover:text-white transition-colors">{label}</Link>
@@ -39,10 +39,11 @@ export default function Footer() {
             <div className="text-white/30 text-xs uppercase tracking-widest font-medium mb-4">Work With Us</div>
             <ul className="space-y-2.5 text-sm">
               {[
-                ['mailto:mike@thewrap.com?subject=Newsletter Sponsorship', 'Newsletter Sponsorship'],
-                ['mailto:mike@thewrap.com?subject=Show Sponsorship', 'Show Sponsorship'],
-                ['mailto:mike@thewrap.com?subject=Vendor Deep Dive', 'Vendor Deep Dive'],
-                ['/subscribe', 'Wrap+ Membership'],
+                ['/sponsorship', 'Sponsorship'],
+                ...(FEATURES.PLUS_ENABLED ? [
+                  ['mailto:mike@thewrap.com?subject=Vendor Deep Dive', 'Vendor Deep Dive'],
+                  ['/subscribe', 'Wrap+ Membership'],
+                ] : []),
               ].map(([href, label]) => (
                 <li key={href}>
                   <a href={href} className="text-white/50 hover:text-white transition-colors">{label}</a>

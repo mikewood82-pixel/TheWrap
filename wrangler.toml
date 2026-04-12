@@ -1,2 +1,7 @@
 name = "the-wrap"
 pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "the-wrap-subscribers"
+database_id = "a664386f-a2c0-46a7-909b-6ebb84ae1037"
