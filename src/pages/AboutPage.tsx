@@ -13,9 +13,9 @@ export default function AboutPage() {
       {/* Header */}
       <div className="mb-12">
         <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">About</div>
-        <h1 className="font-serif text-4xl font-bold mb-4">About The Wrap</h1>
+        <h1 className="font-serif text-4xl font-bold mb-4">About the Wrap</h1>
         <p className="text-brand-dark/60 text-lg leading-relaxed">
-          Built because nobody was writing the HR tech update I actually wanted to read.
+          HR Tech news and shenanigans, tightly wrapped.
         </p>
       </div>
 
@@ -23,8 +23,8 @@ export default function AboutPage() {
       <div className="mb-12">
         <h2 className="font-serif text-2xl font-bold mb-4">How It Started</h2>
         <div className="space-y-4 text-brand-dark/70 leading-relaxed">
-          <p>I spent over a decade on the vendor side of HR tech — and every week I was stitching together industry news from RSS feeds, Google Alerts, and whatever landed in my inbox. It worked, but barely.</p>
-          <p>In July 2024, I decided to just build the thing I'd always wanted.</p>
+          <p>I spent over a decade on the vendor side of HR tech and every week I was stitching together industry news from RSS feeds, Google Alerts, and whatever landed in my inbox. It worked, but barely.</p>
+          <p>In July of 2024, I started The Wrap as a newsletter on LinkedIn to write about everything I'm seeing in the space.</p>
         </div>
       </div>
 
@@ -32,7 +32,7 @@ export default function AboutPage() {
       <div className="mb-12">
         <h2 className="font-serif text-2xl font-bold mb-4">What It Is Now</h2>
         <div className="space-y-4 text-brand-dark/70 leading-relaxed">
-          <p>The Wrap started as a simple weekly newsletter. Eighteen months and a thousand-plus subscribers later, it's grown into something a lot more useful — and a lot more opinionated.</p>
+          <p>I'm building The Wrap to be your one-stop for the latest tech news affecting HR teams. The newsletter is over 1,000 subscribers and I've started a weekly highlights show and am building out the site to include information HR teams, and vendors need to make informed decisions. Oh and we'll have some fun too.</p>
 
           <div className="mt-6 space-y-6">
             <div>
@@ -75,11 +75,10 @@ export default function AboutPage() {
         </div>
 
         {/* Stats row */}
-        <div className="grid grid-cols-3 gap-4 mt-8">
+        <div className="grid grid-cols-2 gap-4 mt-8">
           {[
             { value: '1,000+',  label: 'Subscribers' },
-            { value: '1.5+',    label: 'Years Running' },
-            { value: '[XX+]',   label: 'Editions Published' },
+            { value: '70+',     label: 'Editions Published' },
           ].map(stat => (
             <div key={stat.label} className="bg-brand-cream rounded-xl p-5 text-center">
               <div className="font-serif text-3xl font-bold text-brand-dark mb-1">{stat.value}</div>
@@ -98,10 +97,11 @@ export default function AboutPage() {
         <h2 className="font-serif text-2xl font-bold mb-6">About Mike</h2>
 
         <div className="flex items-start gap-6 mb-6">
-          {/* Photo placeholder */}
-          <div className="w-24 h-24 rounded-xl bg-brand-cream border border-brand-cream flex items-center justify-center shrink-0 text-brand-dark/30 text-xs text-center leading-snug px-2">
-            [Photo]
-          </div>
+          <img
+            src="/mike-wood.jpg"
+            alt="Mike Wood"
+            className="w-24 h-24 rounded-xl object-cover shrink-0"
+          />
           <div>
             <div className="font-serif text-xl font-semibold mb-1">Mike Wood</div>
             <div className="text-sm text-brand-dark/50 mb-3">Founder & Editor, The Wrap</div>
@@ -126,7 +126,7 @@ export default function AboutPage() {
         </div>
 
         <div className="space-y-4 text-brand-dark/70 leading-relaxed">
-          <p>HR tech veteran, newsletter guy, reluctant developer.</p>
+          <p>HR Tech veteran, writer, host, creator.</p>
         </div>
       </div>
 
@@ -134,9 +134,7 @@ export default function AboutPage() {
       <div className="bg-brand-cream rounded-xl p-6 mb-12">
         <h3 className="font-serif text-lg font-semibold mb-3">Editorial Standards</h3>
         <div className="space-y-2 text-sm text-brand-dark/60 leading-relaxed">
-          <p>[Describe your editorial independence policy — e.g. vendors cannot pay for favorable coverage, sponsorships are clearly labeled, etc.]</p>
-          <p>[Explain the difference between editorial content and sponsored content on The Wrap.]</p>
-          <p>[Note on corrections policy, feedback, or how to get in touch about editorial matters.]</p>
+          <p>All information on The Wrap is designed to help you make decisions on what technology is right for you. Any opinion I drop is my own and any sponsorships will be clearly labeled. If you have any feedback or a correction, just reach out to me!</p>
         </div>
       </div>
 
