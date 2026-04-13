@@ -8,7 +8,7 @@ import { archive } from '../data/archive'
 const archivedSlugs = new Set(archive.map(a => a.slug))
 
 // Build a tag lookup from archive data
-const archiveTagMap = new Map(archive.map(a => [a.slug, a.tag]))
+
 
 // Derive the clean local slug from a LinkedIn slug
 function toLocalSlug(linkedinSlug: string): string {

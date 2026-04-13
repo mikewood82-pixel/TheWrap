@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Copy, Check, Gift, Users, ArrowRight } from 'lucide-react'
+import { Copy, Check, Gift, Users } from 'lucide-react'
 import { useUser, SignInButton } from '@clerk/clerk-react'
 import SEO from '../components/SEO'
 
