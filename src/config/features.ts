@@ -3,5 +3,5 @@
  * Vendor Intel and Wrap+ membership, then redeploy.
  */
 export const FEATURES = {
-  PLUS_ENABLED: false,
+  PLUS_ENABLED: true,
 }
