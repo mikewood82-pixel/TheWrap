@@ -1,4 +1,7 @@
 import SEO from '../components/SEO'
+import BLSTrendChart from '../components/BLSTrendChart'
+import SectorBarChart from '../components/SectorBarChart'
+import PayGrowthComparison from '../components/PayGrowthComparison'
 
 // ─── BLS Key Metrics ──────────────────────────────────────────────────────────
 const blsMetrics = [
@@ -123,6 +126,9 @@ export default function LaborMarketPage() {
         ))}
       </div>
 
+      {/* BLS Trend Charts */}
+      <BLSTrendChart data={historical} />
+
       {/* BLS Historical table */}
       <div className="overflow-x-auto rounded-xl border border-brand-cream mb-12">
         <table className="w-full text-sm">
@@ -161,19 +167,21 @@ export default function LaborMarketPage() {
           </div>
         ))}
       </div>
-      <div className="bg-white border border-brand-cream rounded-xl overflow-hidden mb-12">
-        <div className="px-5 py-3 bg-brand-cream/50 text-xs text-brand-dark/50 uppercase tracking-wide font-medium">Sector Breakdown — March 2026</div>
-        {adpSectors.map(s => (
-          <div key={s.sector} className="flex items-center justify-between px-5 py-3 border-t border-brand-cream">
-            <span className="text-sm text-brand-dark/70">{s.sector}</span>
-            <span className={`text-sm font-semibold flex items-center gap-1.5 ${s.direction === 'up' ? 'text-green-600' : 'text-red-500'}`}>
-              <TrendIndicator direction={s.direction} /> {s.jobs}
-            </span>
-          </div>
-        ))}
-        <div className="px-5 py-2.5 border-t border-brand-cream">
-          <a href="https://adpemploymentreport.com" target="_blank" rel="noopener noreferrer" className="text-xs text-brand-dark/40 hover:text-brand-terracotta transition-colors">Full report at adpemploymentreport.com →</a>
-        </div>
+
+      {/* Pay Growth Comparison */}
+      <PayGrowthComparison stayer={4.5} changer={6.6} />
+
+      {/* ADP Sector Bar Chart */}
+      <SectorBarChart
+        title="Sector Breakdown — March 2026"
+        data={adpSectors.map(s => ({
+          sector: s.sector,
+          value: parseInt(s.jobs.replace(/[+K]/g, ''), 10),
+          label: s.jobs,
+        }))}
+      />
+      <div className="px-1 pt-2 pb-12">
+        <a href="https://adpemploymentreport.com" target="_blank" rel="noopener noreferrer" className="text-xs text-brand-dark/40 hover:text-brand-terracotta transition-colors">Full report at adpemploymentreport.com →</a>
       </div>
 
       {/* ── Revelio Labs ─────────────────────────────────────────────────────── */}

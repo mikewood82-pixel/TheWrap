@@ -7,7 +7,10 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <div className="md:col-span-2">
-            <img src="/logo.png" alt="The Wrap" className="h-10 w-auto mb-3 brightness-0 invert" />
+            <div className="flex items-center gap-3 mb-3">
+              <img src="/icon.png" alt="The Wrap" className="h-16 w-16 shrink-0" />
+              <span className="font-serif text-3xl font-bold text-white leading-none">The Wrap</span>
+            </div>
             <p className="text-white/50 text-sm leading-relaxed mb-5 max-w-xs">
               Your weekly source for HR Technology news, vendor intelligence, and labor market signals.
             </p>

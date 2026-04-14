@@ -1,10 +1,11 @@
 import { useParams, Link } from 'react-router-dom'
-import { ExternalLink, ArrowLeft, Star, Globe, TrendingUp, TrendingDown, Newspaper, Puzzle, Users } from 'lucide-react'
+import { ExternalLink, ArrowLeft, Star, Globe, TrendingUp, TrendingDown, Newspaper, Puzzle, Users, HeadphonesIcon, Building2, AlertTriangle } from 'lucide-react'
 import { useState } from 'react'
 import { vendors } from '../data/vendors'
 import { vendorHighlights } from '../data/vendorHighlights'
 import { vendorDetails } from '../data/vendorDetails'
 import RatingChart, { generateHistory } from '../components/RatingChart'
+import VendorLogo from '../components/VendorLogo'
 
 function CapabilityBar({ label, score }: { label: string; score: number }) {
   const color = score >= 85 ? 'bg-brand-terracotta' : score >= 65 ? 'bg-brand-gold' : 'bg-brand-dark/30'
@@ -35,25 +36,6 @@ const deepDiveContent: Record<string, { mikesTake: string[]; features: string[] 
       'Compliance tracking and EEO reporting',
     ],
   },
-}
-
-function VendorLogo({ name, domain }: { name: string; domain: string }) {
-  const [error, setError] = useState(false)
-  const initials = name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase()
-  return (
-    <div className="w-14 h-14 rounded-xl overflow-hidden bg-brand-cream border border-brand-cream flex items-center justify-center flex-shrink-0">
-      {!error ? (
-        <img
-          src={`https://logo.clearbit.com/${domain}`}
-          alt={`${name} logo`}
-          className="w-full h-full object-contain p-1.5"
-          onError={() => setError(true)}
-        />
-      ) : (
-        <span className="text-base font-bold text-brand-dark/50">{initials}</span>
-      )}
-    </div>
-  )
 }
 
 function TrendBadge({ current, history }: { current: number; history: ReturnType<typeof generateHistory> }) {
@@ -146,6 +128,38 @@ export default function VendorDeepDivePage() {
 
       <p className="text-brand-dark/70 text-base leading-relaxed mb-8">{vendor.description}</p>
 
+      {/* Gain Points + Pain Points — moved up for visibility */}
+      {(highlights?.gainPoints?.length || highlights?.painPoints?.length) ? (
+        <div className="grid sm:grid-cols-2 gap-4 mb-6">
+          {highlights?.gainPoints?.length ? (
+            <div className="bg-green-50 border border-green-100 rounded-xl p-5">
+              <div className="text-green-700 text-xs uppercase tracking-wide font-medium mb-4">✓ What Customers Love</div>
+              <div className="space-y-4">
+                {highlights.gainPoints.map((h, i) => (
+                  <div key={i} className="pl-3 border-l-2 border-green-200">
+                    <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{h.text}"</p>
+                    <p className="text-xs text-brand-dark/40">— {h.role}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
+          {highlights?.painPoints?.length ? (
+            <div className="bg-red-50 border border-red-100 rounded-xl p-5">
+              <div className="text-red-500 text-xs uppercase tracking-wide font-medium mb-4">⚠ Watch Out For</div>
+              <div className="space-y-4">
+                {highlights.painPoints.map((h, i) => (
+                  <div key={i} className="pl-3 border-l-2 border-red-200">
+                    <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{h.text}"</p>
+                    <p className="text-xs text-brand-dark/40">— {h.role}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+
       {details && (
         <>
           {/* Capabilities */}
@@ -216,40 +230,135 @@ export default function VendorDeepDivePage() {
               ))}
             </div>
           </div>
+
+          {/* Financial Health */}
+          {details.financialHealth && (
+            <div className="bg-white border border-brand-cream rounded-xl p-6 mb-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Building2 size={13} className="text-brand-dark/40" />
+                <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">Financial Health</span>
+              </div>
+
+              <div className="grid sm:grid-cols-3 gap-4 mb-5">
+                <div className="bg-brand-cream/50 rounded-lg p-3">
+                  <div className="text-xs text-brand-dark/40 mb-1">Funding Stage</div>
+                  <div className="text-sm font-medium text-brand-dark">{details.financialHealth.fundingStage}</div>
+                </div>
+                <div className="bg-brand-cream/50 rounded-lg p-3">
+                  <div className="text-xs text-brand-dark/40 mb-1">Headcount Trend</div>
+                  <div className={`text-sm font-medium ${details.financialHealth.headcountTrend.startsWith('+') ? 'text-green-700' : details.financialHealth.headcountTrend.startsWith('-') ? 'text-red-600' : 'text-brand-dark'}`}>
+                    {details.financialHealth.headcountTrend.startsWith('+') ? <TrendingUp size={12} className="inline mr-1" /> : details.financialHealth.headcountTrend.startsWith('-') ? <TrendingDown size={12} className="inline mr-1" /> : null}
+                    {details.financialHealth.headcountTrend}
+                  </div>
+                </div>
+                <div className="bg-brand-cream/50 rounded-lg p-3">
+                  <div className="text-xs text-brand-dark/40 mb-1">Acquisition Risk</div>
+                  <span className={`inline-flex items-center text-xs font-medium px-2 py-0.5 rounded-full ${
+                    details.financialHealth.acquisitionRisk === 'Low' ? 'bg-green-50 text-green-700' :
+                    details.financialHealth.acquisitionRisk === 'Medium' ? 'bg-yellow-50 text-yellow-700' :
+                    'bg-red-50 text-red-700'
+                  }`}>
+                    {details.financialHealth.acquisitionRisk === 'High' && <AlertTriangle size={10} className="mr-1" />}
+                    {details.financialHealth.acquisitionRisk}
+                  </span>
+                </div>
+              </div>
+
+              {details.financialHealth.lastRaise && (
+                <div className="text-sm text-brand-dark/70 mb-3">
+                  <span className="text-xs text-brand-dark/40">Last raise:</span> {details.financialHealth.lastRaise}
+                </div>
+              )}
+
+              {details.financialHealth.recentLayoffs && (
+                <div className="text-sm text-red-600/80 bg-red-50 rounded-lg px-3 py-2 mb-3">
+                  <AlertTriangle size={11} className="inline mr-1.5" />
+                  {details.financialHealth.recentLayoffs}
+                </div>
+              )}
+
+              <div className="space-y-2 mt-4">
+                <div className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">Key Signals</div>
+                {details.financialHealth.keySignals.map((signal, i) => (
+                  <div key={i} className="flex items-start gap-2 text-sm text-brand-dark/70">
+                    <span className="text-brand-terracotta mt-0.5 shrink-0">→</span> {signal}
+                  </div>
+                ))}
+              </div>
+              <p className="text-xs text-brand-dark/30 mt-5 pt-4 border-t border-brand-cream">
+                Sources: SEC filings, Crunchbase, LinkedIn headcount data, and vendor press releases. Financial data is updated quarterly. Acquisition risk reflects aggregated signals — not financial advice.
+              </p>
+            </div>
+          )}
+
+          {/* Support Quality */}
+          {details.supportQuality && (
+            <div className="bg-white border border-brand-cream rounded-xl p-6 mb-6">
+              <div className="flex items-center gap-2 mb-4">
+                <HeadphonesIcon size={13} className="text-brand-dark/40" />
+                <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">Support Quality</span>
+              </div>
+
+              <div className="flex items-center gap-4 mb-5">
+                <div className="font-serif text-4xl font-bold text-brand-dark">{details.supportQuality.overallScore}</div>
+                <div className="flex-1">
+                  <div className="bg-brand-cream rounded-full h-3 overflow-hidden mb-1">
+                    <div
+                      className={`h-3 rounded-full transition-all ${details.supportQuality.overallScore >= 75 ? 'bg-green-500' : details.supportQuality.overallScore >= 60 ? 'bg-brand-gold' : 'bg-red-400'}`}
+                      style={{ width: `${details.supportQuality.overallScore}%` }}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-brand-dark/40">/ 100</span>
+                    <span className={`inline-flex items-center text-xs font-medium px-2 py-0.5 rounded-full ${
+                      details.supportQuality.supportTrend === 'Improving' ? 'bg-green-50 text-green-700' :
+                      details.supportQuality.supportTrend === 'Declining' ? 'bg-red-50 text-red-700' :
+                      'bg-brand-cream text-brand-dark/50'
+                    }`}>
+                      {details.supportQuality.supportTrend === 'Improving' ? <TrendingUp size={10} className="mr-1" /> : details.supportQuality.supportTrend === 'Declining' ? <TrendingDown size={10} className="mr-1" /> : null}
+                      {details.supportQuality.supportTrend}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-3 gap-4 mb-5">
+                <div>
+                  <div className="text-xs text-brand-dark/40 mb-1">Response Time</div>
+                  <div className="text-sm text-brand-dark/70">{details.supportQuality.responseTime}</div>
+                </div>
+                <div>
+                  <div className="text-xs text-brand-dark/40 mb-1.5">Channels</div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {details.supportQuality.channels.map(ch => (
+                      <span key={ch} className="text-xs bg-brand-cream text-brand-dark/70 px-2 py-0.5 rounded-full">{ch}</span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xs text-brand-dark/40 mb-1">Dedicated CSM</div>
+                  <div className="text-sm text-brand-dark/70">{details.supportQuality.dedicatedCsm}</div>
+                </div>
+              </div>
+
+              {details.supportQuality.highlights.length > 0 && (
+                <div className="mt-5 pt-5 border-t border-brand-cream space-y-4">
+                  <div className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">What customers say about support</div>
+                  {details.supportQuality.highlights.map((h, i) => (
+                    <div key={i} className="pl-3 border-l-2 border-brand-gold/40">
+                      <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{h.text}"</p>
+                      <p className="text-xs text-brand-dark/40">— {h.role}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <p className="text-xs text-brand-dark/30 mt-5 pt-4 border-t border-brand-cream">
+                Sources: G2, Capterra, and Glassdoor reviews, plus vendor-published support documentation. Support scores are composite ratings based on response time, channel availability, and customer sentiment. Updated quarterly.
+              </p>
+            </div>
+          )}
         </>
       )}
-
-      {/* Gain Points + Pain Points */}
-      {(highlights?.gainPoints?.length || highlights?.painPoints?.length) ? (
-        <div className="grid sm:grid-cols-2 gap-4 mb-6">
-          {highlights?.gainPoints?.length ? (
-            <div className="bg-green-50 border border-green-100 rounded-xl p-5">
-              <div className="text-green-700 text-xs uppercase tracking-wide font-medium mb-4">✓ What Customers Love</div>
-              <div className="space-y-4">
-                {highlights.gainPoints.map((h, i) => (
-                  <div key={i} className="pl-3 border-l-2 border-green-200">
-                    <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{h.text}"</p>
-                    <p className="text-xs text-brand-dark/40">— {h.role}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : null}
-          {highlights?.painPoints?.length ? (
-            <div className="bg-red-50 border border-red-100 rounded-xl p-5">
-              <div className="text-red-500 text-xs uppercase tracking-wide font-medium mb-4">⚠ Watch Out For</div>
-              <div className="space-y-4">
-                {highlights.painPoints.map((h, i) => (
-                  <div key={i} className="pl-3 border-l-2 border-red-200">
-                    <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{h.text}"</p>
-                    <p className="text-xs text-brand-dark/40">— {h.role}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : null}
-        </div>
-      ) : null}
 
       {/* G2 Section */}
       <div className="bg-white border border-brand-cream rounded-xl p-6 mb-6">

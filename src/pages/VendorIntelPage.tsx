@@ -6,6 +6,7 @@ import { useCompare } from '../context/CompareContext'
 import { vendors, activityFeed } from '../data/vendors'
 import { vendorDetails } from '../data/vendorDetails'
 import CompareModal from '../components/CompareModal'
+import VendorLogo from '../components/VendorLogo'
 
 const categories = ['All', 'HCM', 'ATS', 'HRIS', 'Payroll', 'Perf Mgmt', 'L&D', 'Analytics']
 
@@ -347,9 +348,14 @@ export default function VendorIntelPage() {
                     Deep Dive
                   </div>
                 )}
-                <div className="text-xs text-brand-dark/40 uppercase tracking-wide mb-1">{v.category}</div>
-                <div className="font-serif text-xl font-semibold mb-1 pr-6">{v.name}</div>
-                <div className="text-xs text-brand-dark/50 mb-3 line-clamp-2">{v.description}</div>
+                <div className="flex items-start gap-3 mb-3">
+                  <VendorLogo name={v.name} domain={v.website.split('/')[0]} size="sm" />
+                  <div className="flex-1 min-w-0 pr-6">
+                    <div className="text-xs text-brand-dark/40 uppercase tracking-wide mb-1">{v.category}</div>
+                    <div className="font-serif text-xl font-semibold mb-1 leading-tight">{v.name}</div>
+                    <div className="text-xs text-brand-dark/50 line-clamp-2">{v.description}</div>
+                  </div>
+                </div>
                 <div className="grid grid-cols-3 gap-2 mb-4 text-center">
                   <div className="bg-brand-light rounded-lg p-2">
                     <div className="font-bold text-lg">{v.g2}</div>

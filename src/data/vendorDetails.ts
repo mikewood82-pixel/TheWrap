@@ -1,9 +1,26 @@
 export type CapabilityScore = { label: string; score: number }
+export type ReviewHighlight = { text: string; role: string }
 export type VendorDetail = {
   capabilities: CapabilityScore[]
   idealCustomer: { size: string; industries: string[]; useCase: string }
   integrations: string[]
   news: { headline: string; date: string; source: string }[]
+  financialHealth?: {
+    fundingStage: string
+    lastRaise?: string
+    headcountTrend: string
+    recentLayoffs?: string
+    acquisitionRisk: string
+    keySignals: string[]
+  }
+  supportQuality?: {
+    overallScore: number
+    responseTime: string
+    channels: string[]
+    dedicatedCsm: string
+    supportTrend: string
+    highlights: ReviewHighlight[]
+  }
 }
 
 export const vendorDetails: Record<string, VendorDetail> = {
@@ -30,6 +47,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Workday expands Illuminate AI assistant across HCM, Finance, and Analytics modules', date: 'Mar 2026', source: 'Workday Newsroom' },
       { headline: 'Workday reports Q4 FY2026 revenue of $2.35B, driven by subscription growth in EMEA', date: 'Feb 2026', source: 'Workday Investor Relations' },
     ],
+    financialHealth: {
+      fundingStage: 'Public (NYSE: WDAY)',
+      headcountTrend: '+5% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'FY2026 revenue $8.4B, up 17% YoY',
+        'Expanding AI portfolio with Workday Illuminate',
+        'Stable executive leadership under CEO Carl Eschenbach',
+      ],
+    },
+    supportQuality: {
+      overallScore: 72,
+      responseTime: '< 4 hours (premium), 24–48 hours (standard)',
+      channels: ['Email', 'Phone', 'Chat', 'Community Forum'],
+      dedicatedCsm: 'Yes, at enterprise tier (1,000+ employees)',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'Our dedicated CSM is responsive and proactive about flagging new features relevant to our setup.', role: 'HRIS Director' },
+        { text: 'Standard support is slow — expect 2-day turnaround for non-critical tickets. Worth upgrading to premium.', role: 'HR Systems Manager' },
+      ],
+    },
   },
 
   'rippling': {
@@ -52,6 +90,28 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Rippling launches Spend Management module to consolidate corporate cards and expense reporting', date: 'Mar 2026', source: 'TechCrunch' },
       { headline: 'Rippling announces native EOR capabilities in 50 additional countries', date: 'Feb 2026', source: 'Rippling Newsroom' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Venture-backed)',
+      lastRaise: '$200M Series F at $13.5B valuation — Apr 2025',
+      headcountTrend: '+30% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Fastest-growing compound HR/IT/Finance platform in the market',
+        'ARR reportedly crossed $350M with aggressive upmarket expansion',
+        'Building proprietary payroll infrastructure to reduce third-party dependency',
+      ],
+    },
+    supportQuality: {
+      overallScore: 68,
+      responseTime: '< 12 hours (standard), < 4 hours (premium)',
+      channels: ['Chat', 'Email', 'Phone (premium only)'],
+      dedicatedCsm: 'Yes, at 200+ employees or premium plan',
+      supportTrend: 'Improving',
+      highlights: [
+        { text: 'Chat support is fast but scripted. For complex payroll or IT policy issues you need to push for a specialist.', role: 'People Ops Lead' },
+        { text: 'The product moves so fast that support sometimes doesn\'t know about features that shipped last week. Growing pains.', role: 'HR Director' },
+      ],
+    },
   },
 
   'bamboohr': {
@@ -74,6 +134,29 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'BambooHR adds payroll support for Canada, marking its first international payroll offering', date: 'Jan 2026', source: 'BambooHR Newsroom' },
       { headline: 'BambooHR partners with Gusto to offer seamless payroll migration for growing companies', date: 'Mar 2026', source: 'HR Tech Insider' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Venture-backed)',
+      lastRaise: '$Series C — undisclosed, 2022',
+      headcountTrend: '-6% YoY',
+      recentLayoffs: 'Reduced workforce by ~15% — Jun 2024',
+      acquisitionRisk: 'High',
+      keySignals: [
+        'Potential acquisition target as mid-market HRIS competition intensifies',
+        'Product velocity slowed noticeably after layoffs',
+        'Still strong brand loyalty among SMB HR teams',
+      ],
+    },
+    supportQuality: {
+      overallScore: 82,
+      responseTime: '< 4 hours (all tiers)',
+      channels: ['Phone', 'Email', 'Chat'],
+      dedicatedCsm: 'No — pooled support model',
+      supportTrend: 'Declining',
+      highlights: [
+        { text: 'Support used to be BambooHR\'s best feature. Response times are still good but the depth of knowledge has dropped since the layoffs.', role: 'HR Coordinator' },
+        { text: 'Chat support is fast and friendly. For complex reporting or integration issues, you may need to escalate.', role: 'People Ops Manager' },
+      ],
+    },
   },
 
   'ukg-pro': {
@@ -96,6 +179,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'UKG announces UKG Bryte AI enhancements for proactive burnout detection in frontline workers', date: 'Jan 2026', source: 'UKG Newsroom' },
       { headline: 'UKG acquires workforce analytics firm Immedis to strengthen global payroll intelligence', date: 'Mar 2026', source: 'Business Wire' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (PE-backed: Hellman & Friedman, Blackstone)',
+      headcountTrend: '+8% YoY',
+      acquisitionRisk: 'Medium',
+      keySignals: [
+        'Estimated $6B+ revenue, IPO rumored for 2026–2027',
+        'Continued integration of Kronos and Ultimate Software platforms',
+        'Investing heavily in UKG Pro WFM unified experience',
+      ],
+    },
+    supportQuality: {
+      overallScore: 74,
+      responseTime: '< 8 hours (standard), < 2 hours (premium)',
+      channels: ['Phone', 'Email', 'Chat', 'UKG Community'],
+      dedicatedCsm: 'Yes, at 500+ employees',
+      supportTrend: 'Improving',
+      highlights: [
+        { text: 'UKG support has gotten noticeably better in the last year. Our CSM actually knows our configuration.', role: 'Payroll Manager' },
+        { text: 'Phone support is solid. Chat can be frustrating for complex issues — they escalate quickly but resolution takes time.', role: 'HR Director' },
+      ],
+    },
   },
 
   'adp': {
@@ -118,6 +222,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'ADP DataCloud adds real-time compensation benchmarking for 140+ job families', date: 'Mar 2026', source: 'ADP Newsroom' },
       { headline: 'ADP reports record Q2 FY2026 new business bookings, citing demand for compliance automation', date: 'Feb 2026', source: 'ADP Investor Relations' },
     ],
+    financialHealth: {
+      fundingStage: 'Public (NASDAQ: ADP)',
+      headcountTrend: '+2% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'FY2025 revenue $19.2B, steady 6% growth',
+        'ADP Lyric next-gen HCM platform rolling out to mid-market',
+        'Massive data advantage from processing 1 in 6 US paychecks',
+      ],
+    },
+    supportQuality: {
+      overallScore: 62,
+      responseTime: '< 24 hours (standard), same-day (dedicated rep)',
+      channels: ['Phone', 'Email', 'Chat', 'ADP Bridge Portal'],
+      dedicatedCsm: 'Yes, at 50+ employees (varies by product tier)',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'If you have a dedicated rep, the experience is good. If you call the general line, prepare to wait and re-explain your setup.', role: 'Payroll Director' },
+        { text: 'Tax filing support is excellent — that team knows their stuff. Product support for the platform itself is inconsistent.', role: 'HR Manager' },
+      ],
+    },
   },
 
   'sap-successfactors': {
@@ -140,6 +265,28 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'SAP SuccessFactors wins HR Tech Platinum Award for Best Global HCM Suite for fifth consecutive year', date: 'Oct 2025', source: 'HR Technology Conference' },
       { headline: 'SAP SuccessFactors expands payroll localisation to 17 new countries including Vietnam and Nigeria', date: 'Jan 2026', source: 'SAP Newsroom' },
     ],
+    financialHealth: {
+      fundingStage: 'Public (NYSE: SAP)',
+      headcountTrend: '-4% YoY',
+      recentLayoffs: 'SAP restructured 8,000 roles globally — Jan 2024',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'SAP cloud revenue grew 25% in Q4 2025',
+        'Heavy investment in RISE with SAP and BTP integration',
+        'SuccessFactors being repositioned as part of broader SAP HXM suite',
+      ],
+    },
+    supportQuality: {
+      overallScore: 58,
+      responseTime: '24–72 hours (standard), < 8 hours (premium)',
+      channels: ['Email', 'Phone', 'SAP ONE Support Portal'],
+      dedicatedCsm: 'Yes, at enterprise contracts ($500K+)',
+      supportTrend: 'Declining',
+      highlights: [
+        { text: 'Support tickets bounce between teams. Getting to someone who understands your specific configuration takes persistence.', role: 'SAP HCM Lead' },
+        { text: 'The knowledge base is deep if you can find what you need. Direct support is hit-or-miss depending on the agent.', role: 'HR Technology Director' },
+      ],
+    },
   },
 
   'oracle-hcm-cloud': {
@@ -162,6 +309,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Oracle announces deep integration between HCM Cloud and Oracle Analytics Cloud for workforce insights', date: 'Mar 2026', source: 'Oracle Newsroom' },
       { headline: 'Oracle HCM Cloud adds payroll support for 12 Asia-Pacific countries in latest release', date: 'Feb 2026', source: 'Oracle Blog' },
     ],
+    financialHealth: {
+      fundingStage: 'Public (NYSE: ORCL)',
+      headcountTrend: '+3% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Oracle Cloud revenue crossed $25B annualized run rate',
+        'Aggressive OCI infrastructure expansion fueling HCM growth',
+        'Cerner acquisition driving healthcare vertical HCM bundling',
+      ],
+    },
+    supportQuality: {
+      overallScore: 55,
+      responseTime: '24–48 hours (standard), < 4 hours (Severity 1)',
+      channels: ['My Oracle Support Portal', 'Phone', 'Chat'],
+      dedicatedCsm: 'Yes, at enterprise tier',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'You need to learn the Oracle support system. Once you know how to file tickets properly, response improves significantly.', role: 'HRIS Analyst' },
+        { text: 'Quarterly updates break customizations regularly and support takes too long to acknowledge the issue.', role: 'VP People Operations' },
+      ],
+    },
   },
 
   'ceridian-dayforce': {
@@ -180,10 +348,31 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Microsoft Teams', 'Workato', 'PowerBI', 'Salesforce', 'Okta', 'ADP'],
     news: [
-      { headline: 'Ceridian rebrands to Dayforce, unifying its product and corporate identity under one name', date: 'Oct 2025', source: 'Dayforce Newsroom' },
       { headline: 'Dayforce launches Co-Pilot, an AI assistant for managers to handle schedule exceptions in real time', date: 'Feb 2026', source: 'Dayforce Newsroom' },
       { headline: 'Dayforce reports 22% YoY cloud revenue growth driven by new enterprise wins in healthcare', date: 'Jan 2026', source: 'Dayforce Investor Relations' },
+      { headline: 'Canadian federal government awards Dayforce $350M contract to replace troubled Phoenix payroll system', date: 'Apr 2026', source: 'Globe and Mail' },
     ],
+    financialHealth: {
+      fundingStage: 'Public (NYSE: DAY)',
+      headcountTrend: '+7% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Rebranded from Ceridian to Dayforce in 2024 — all-in on single platform identity',
+        'Cloud revenue $1.2B, up 22% YoY',
+        'Aggressively expanding global payroll capabilities',
+      ],
+    },
+    supportQuality: {
+      overallScore: 65,
+      responseTime: '< 12 hours (standard), < 4 hours (premium)',
+      channels: ['Phone', 'Email', 'Dayforce Hub Portal'],
+      dedicatedCsm: 'Yes, at enterprise tier (750+ employees)',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'The Dayforce Hub has improved self-service dramatically. Most common issues we can resolve ourselves now.', role: 'HRIS Manager' },
+        { text: 'Implementation support was rocky but ongoing product support has been solid once you learn the system.', role: 'VP Human Resources' },
+      ],
+    },
   },
 
   'paychex': {
@@ -206,6 +395,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Paychex Flex adds earned wage access feature in partnership with DailyPay', date: 'Jan 2026', source: 'Paychex Newsroom' },
       { headline: 'Paychex acquires Oasis HR to deepen PEO offering for professional employer services market', date: 'Nov 2025', source: 'Business Wire' },
     ],
+    financialHealth: {
+      fundingStage: 'Public (NASDAQ: PAYX)',
+      headcountTrend: '+3% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'FY2025 revenue $5.3B with steady margin expansion',
+        'Strong SMB retention through bundled HR + payroll offering',
+        'Investing in AI-powered compliance and tax automation',
+      ],
+    },
+    supportQuality: {
+      overallScore: 68,
+      responseTime: '< 24 hours (standard), same-day (dedicated rep)',
+      channels: ['Phone', 'Email', 'Chat'],
+      dedicatedCsm: 'Yes, at 50+ employees',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'Our dedicated payroll specialist knows our setup inside and out. General support is slower but competent.', role: 'Office Manager' },
+        { text: 'Tax filing support is strong. Getting help with the newer HR features takes longer than it should.', role: 'HR Administrator' },
+      ],
+    },
   },
 
   'infor-hcm': {
@@ -228,6 +438,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Infor expands global payroll coverage to 35 countries with new CloudSuite HCM release', date: 'Mar 2026', source: 'Infor Newsroom' },
       { headline: 'Infor HCM earns top marks in Gartner Magic Quadrant for Cloud HCM Suites, improving in Ability to Execute', date: 'Dec 2025', source: 'Gartner' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Koch Industries subsidiary)',
+      headcountTrend: 'Stable',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Backed by Koch Industries — no funding pressure',
+        'Industry-specific focus (manufacturing, healthcare, hospitality) is a moat',
+        'Cloud migration still underway from legacy on-prem installs',
+      ],
+    },
+    supportQuality: {
+      overallScore: 56,
+      responseTime: '24–48 hours (standard)',
+      channels: ['Infor Support Portal', 'Phone', 'Email'],
+      dedicatedCsm: 'Yes, at enterprise tier',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'Support knows the manufacturing-specific modules well. Generic HR questions get routed around too much.', role: 'HRIS Manager' },
+        { text: 'The support portal is functional but dated. Phone support is better for urgent payroll issues.', role: 'HR Director' },
+      ],
+    },
   },
 
   'darwinbox': {
@@ -246,10 +477,32 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Microsoft Teams', 'Slack', 'SAP', 'Salesforce', 'Workato', 'Zoho'],
     news: [
-      { headline: 'Darwinbox raises $140M Series E to expand AI-powered HR platform across Southeast Asia and Middle East', date: 'Feb 2026', source: 'TechCrunch' },
       { headline: 'Darwinbox launches GenAI HR assistant in 14 languages for frontline worker accessibility', date: 'Jan 2026', source: 'Darwinbox Blog' },
       { headline: 'Darwinbox surpasses 3 million employees managed on platform, doubling from 2024', date: 'Mar 2026', source: 'Darwinbox Newsroom' },
+      { headline: 'Darwinbox raises $40M from Ontario Teachers to accelerate North America expansion and AI features', date: 'Apr 2026', source: 'Outlook Business' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Series D)',
+      lastRaise: '$72M Series D — Jan 2024',
+      headcountTrend: '+25% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Fastest-growing HCM platform in Asia-Pacific market',
+        'Expanding into Middle East, Southeast Asia, and Europe',
+        'Strong backing from Technology Crossover Ventures and Salesforce Ventures',
+      ],
+    },
+    supportQuality: {
+      overallScore: 73,
+      responseTime: '< 8 hours (all tiers)',
+      channels: ['Email', 'Chat', 'Phone', 'WhatsApp'],
+      dedicatedCsm: 'Yes, at 500+ employees',
+      supportTrend: 'Improving',
+      highlights: [
+        { text: 'Support is responsive and the team genuinely wants to solve problems. Product knowledge is strong for the core modules.', role: 'HR Manager' },
+        { text: 'WhatsApp support channel is surprisingly effective for quick questions. Complex issues still need email escalation.', role: 'People Ops Lead' },
+      ],
+    },
   },
 
   'namely': {
@@ -272,6 +525,28 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Namely expands managed payroll service to include benefits administration concierge', date: 'Mar 2026', source: 'Namely Newsroom' },
       { headline: 'Namely partners with Ease to deliver enhanced benefits enrollment experience for SMB clients', date: 'Nov 2025', source: 'Business Wire' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (PE-backed: Vistria Group)',
+      headcountTrend: '-12% YoY',
+      recentLayoffs: 'Multiple rounds of reductions in 2023–2024',
+      acquisitionRisk: 'High',
+      keySignals: [
+        'Acquired by Vistria Group in 2022 after financial struggles',
+        'Product development has slowed significantly',
+        'Existing customer base is sticky but new sales momentum is low',
+      ],
+    },
+    supportQuality: {
+      overallScore: 52,
+      responseTime: '24–48 hours (standard)',
+      channels: ['Email', 'Phone', 'Help Center'],
+      dedicatedCsm: 'No — pooled support model',
+      supportTrend: 'Declining',
+      highlights: [
+        { text: 'Support used to be a differentiator. Now it feels understaffed — longer waits, less product knowledge.', role: 'HR Director' },
+        { text: 'Basic payroll and benefits questions get answered fine. Anything involving configuration or integrations is a struggle.', role: 'People Ops Manager' },
+      ],
+    },
   },
 
   // ─── ATS ───────────────────────────────────────────────────────────────────
@@ -292,10 +567,33 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'LinkedIn', 'Workday', 'BambooHR', 'HireEZ', 'DocuSign'],
     news: [
-      { headline: 'Greenhouse launches Hiring Intelligence suite with AI-driven bias alerts and structured interview scoring', date: 'Feb 2026', source: 'Greenhouse Newsroom' },
       { headline: 'Greenhouse crosses 7,500 customers and announces Series E extension of $110M', date: 'Jan 2026', source: 'TechCrunch' },
       { headline: 'Greenhouse adds native video interviewing powered by Zoom directly in the candidate pipeline', date: 'Mar 2026', source: 'Greenhouse Blog' },
+      { headline: 'Greenhouse ranked #1 ATS in G2 Spring 2026 Reports across Overall, Enterprise, Mid-Market, and EMEA', date: 'Apr 2026', source: 'PR Newswire' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Venture-backed)',
+      lastRaise: '$150M Series E — 2022',
+      headcountTrend: '-10% YoY',
+      recentLayoffs: 'Reduced workforce by ~18% — Jan 2024',
+      acquisitionRisk: 'High',
+      keySignals: [
+        'Market leader in structured hiring but facing margin pressure',
+        'Competing with free ATS tiers from HRIS platforms (Rippling, BambooHR)',
+        'Strong enterprise brand but SMB churn increasing',
+      ],
+    },
+    supportQuality: {
+      overallScore: 76,
+      responseTime: '< 8 hours (all plans), < 2 hours (enterprise)',
+      channels: ['Email', 'Chat', 'Phone (enterprise only)'],
+      dedicatedCsm: 'Yes, at enterprise plan',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'Greenhouse support knows recruiting workflows deeply. They suggest configuration changes, not just answers.', role: 'Talent Acquisition Lead' },
+        { text: 'No phone support on the standard plan is frustrating when you have urgent hiring issues during peak season.', role: 'Recruiting Manager' },
+      ],
+    },
   },
 
   'lever': {
@@ -318,6 +616,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Lever integrates with Handshake to help companies recruit directly from university career portals', date: 'Feb 2026', source: 'Lever Newsroom' },
       { headline: 'Lever named a Leader in Forrester Wave for Talent Acquisition Suites, Q1 2026', date: 'Mar 2026', source: 'Forrester Research' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Acquired by Employ Inc.)',
+      headcountTrend: '-8% YoY',
+      acquisitionRisk: 'Medium',
+      keySignals: [
+        'Merged with JazzHR and Jobvite under Employ Inc. umbrella in 2022',
+        'Integration of three platforms creating uncertainty for existing customers',
+        'Product roadmap influenced by parent company priorities',
+      ],
+    },
+    supportQuality: {
+      overallScore: 66,
+      responseTime: '< 12 hours (standard), < 4 hours (enterprise)',
+      channels: ['Email', 'Chat', 'Phone (enterprise only)'],
+      dedicatedCsm: 'Yes, at enterprise plan',
+      supportTrend: 'Declining',
+      highlights: [
+        { text: 'Support quality has dipped since the Employ acquisition. Agents are less familiar with Lever-specific workflows.', role: 'Talent Acquisition Manager' },
+        { text: 'Chat support is responsive for basic questions. Reporting and integration issues take multiple back-and-forths.', role: 'Recruiting Coordinator' },
+      ],
+    },
   },
 
   'icims': {
@@ -336,10 +655,31 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Workday', 'SAP SuccessFactors', 'LinkedIn', 'Microsoft Teams', 'Paradox', 'DocuSign'],
     news: [
-      { headline: 'iCIMS launches Copilot for Recruiters, an AI assistant embedded directly in the ATS workflow', date: 'Feb 2026', source: 'iCIMS Newsroom' },
       { headline: 'iCIMS acquires conversational AI startup Paradox to power automated candidate screening', date: 'Jan 2026', source: 'Business Wire' },
       { headline: 'iCIMS Talent Cloud surpasses 600 enterprise customers and 4M annual hires processed', date: 'Mar 2026', source: 'iCIMS Newsroom' },
+      { headline: 'iCIMS Copilot AI recruiting assistant debuts at HR Tech — automates JD optimization and interview guides', date: 'Apr 2026', source: 'iCIMS Newsroom' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (PE-backed: Vista Equity, TA Associates)',
+      headcountTrend: '+5% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Estimated $400M+ ARR with strong enterprise foothold',
+        'Acquired multiple point solutions (TextRecruit, Altru, SkillSurvey)',
+        'IPO candidate in the medium term',
+      ],
+    },
+    supportQuality: {
+      overallScore: 63,
+      responseTime: '< 24 hours (standard), < 8 hours (premium)',
+      channels: ['Email', 'Phone', 'iCIMS Community Portal'],
+      dedicatedCsm: 'Yes, at enterprise tier',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'Enterprise support is solid — our CSM is proactive about upcoming changes. Standard tier is more reactive.', role: 'TA Operations Manager' },
+        { text: 'The community portal has good content but direct support for complex integrations can be slow.', role: 'Recruiting Director' },
+      ],
+    },
   },
 
   'workable': {
@@ -362,6 +702,28 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Workable launches HR suite adding onboarding, time off, and employee directory modules', date: 'Feb 2026', source: 'Workable Newsroom' },
       { headline: 'Workable reaches 30,000 customers across 100 countries, reports 28% growth in APAC', date: 'Mar 2026', source: 'Workable Newsroom' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Venture-backed)',
+      lastRaise: '$50M Series C — 2022',
+      headcountTrend: '-5% YoY',
+      acquisitionRisk: 'Medium',
+      keySignals: [
+        'Expanding from ATS into full HR suite (payroll, time off, onboarding)',
+        'Competing on price in a crowded SMB market',
+        'Profitable or near-profitable — not burning cash aggressively',
+      ],
+    },
+    supportQuality: {
+      overallScore: 74,
+      responseTime: '< 8 hours (all plans)',
+      channels: ['Email', 'Chat', 'Phone (premium only)'],
+      dedicatedCsm: 'No — pooled support model',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'Chat support is fast and the agents know the product well. Self-service help docs are also excellent.', role: 'Hiring Manager' },
+        { text: 'For the price point, support quality is above average. They just don\'t offer phone support on the lower tiers.', role: 'HR Coordinator' },
+      ],
+    },
   },
 
   'ashby': {
@@ -384,6 +746,28 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Ashby launches Benchmark product giving companies real-time hiring funnel comparisons by industry and role', date: 'Feb 2026', source: 'Ashby Blog' },
       { headline: 'Ashby surpasses 1,500 paying customers, with notable wins at Notion, Vercel, and Stripe', date: 'Mar 2026', source: 'Ashby Newsroom' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Series C)',
+      lastRaise: '$30M Series C — 2024',
+      headcountTrend: '+40% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Fastest-growing ATS in the mid-market with strong word-of-mouth',
+        'Analytics-first approach differentiating from legacy ATS players',
+        'Expanding beyond ATS into scheduling, CRM, and onboarding',
+      ],
+    },
+    supportQuality: {
+      overallScore: 85,
+      responseTime: '< 4 hours (all plans)',
+      channels: ['Email', 'Chat', 'Slack (enterprise)'],
+      dedicatedCsm: 'Yes, at Growth plan and above',
+      supportTrend: 'Improving',
+      highlights: [
+        { text: 'Best support I\'ve experienced from any HR vendor. They treat every customer like enterprise.', role: 'Head of Talent' },
+        { text: 'Slack-based support for enterprise customers is a game changer. Real-time help during peak hiring.', role: 'Recruiting Operations Manager' },
+      ],
+    },
   },
 
   'smartrecruiters': {
@@ -403,9 +787,32 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['SAP SuccessFactors', 'Workday', 'LinkedIn', 'Microsoft Teams', 'Docusign', 'Paradox'],
     news: [
       { headline: 'SmartRecruiters launches SmartAssistant AI to automate candidate screening and scheduling across 40 languages', date: 'Feb 2026', source: 'SmartRecruiters Newsroom' },
-      { headline: 'SmartRecruiters wins HR Tech Best Recruitment Software award at the 2025 HR Technology Conference', date: 'Oct 2025', source: 'HR Technology Conference' },
       { headline: 'SmartRecruiters expands SmartCRM module with predictive talent pipeline forecasting capabilities', date: 'Mar 2026', source: 'SmartRecruiters Blog' },
+      { headline: 'SmartRecruiters unveils autonomous AI hiring agents and deep SAP SuccessFactors integration', date: 'Apr 2026', source: 'Globe Newswire' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Venture-backed)',
+      lastRaise: '$110M Series E — 2021',
+      headcountTrend: '-7% YoY',
+      recentLayoffs: 'Reduced workforce ~10% — 2023',
+      acquisitionRisk: 'Medium',
+      keySignals: [
+        'Strong enterprise client base but growth has slowed',
+        'Marketplace model differentiates but adds integration complexity',
+        'Potential M&A target as enterprise ATS market consolidates',
+      ],
+    },
+    supportQuality: {
+      overallScore: 64,
+      responseTime: '< 24 hours (standard), < 8 hours (enterprise)',
+      channels: ['Email', 'Phone', 'SmartRecruiters Community'],
+      dedicatedCsm: 'Yes, at enterprise plan',
+      supportTrend: 'Declining',
+      highlights: [
+        { text: 'Our CSM is great but the technical support behind them has thinned out. Escalations take longer than they used to.', role: 'TA Director' },
+        { text: 'Marketplace integration issues are the most frustrating. Support points you to the partner, the partner points back.', role: 'Recruiting Operations Lead' },
+      ],
+    },
   },
 
   'jazzhr': {
@@ -428,6 +835,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'JazzHR integrates with Checkr for one-click background screening directly in the ATS', date: 'Feb 2026', source: 'JazzHR Newsroom' },
       { headline: 'JazzHR parent company Employ Inc. merges JazzHR, Lever, and NXTThing RPO into single platform offering', date: 'Mar 2026', source: 'Business Wire' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Acquired by Employ Inc.)',
+      headcountTrend: 'Stable',
+      acquisitionRisk: 'Medium',
+      keySignals: [
+        'Part of Employ Inc. alongside Lever and Jobvite',
+        'Positioned as the SMB offering in the Employ portfolio',
+        'Product roadmap dependent on Employ parent company strategy',
+      ],
+    },
+    supportQuality: {
+      overallScore: 70,
+      responseTime: '< 12 hours (all plans)',
+      channels: ['Email', 'Chat', 'Phone'],
+      dedicatedCsm: 'No — pooled support',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'For the price, support is perfectly adequate. They resolve most issues within a day.', role: 'Office Manager' },
+        { text: 'Don\'t expect white-glove service but the basics are covered. Help docs fill most gaps.', role: 'HR Generalist' },
+      ],
+    },
   },
 
   'bullhorn': {
@@ -450,6 +878,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Bullhorn acquires Textkernel to strengthen AI-powered candidate matching with semantic CV parsing', date: 'Jan 2026', source: 'Business Wire' },
       { headline: 'Bullhorn reports 18% growth in staffing agency customers, surpassing 10,000 clients globally', date: 'Mar 2026', source: 'Bullhorn Newsroom' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (PE-backed: Insight Partners)',
+      headcountTrend: '+6% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Dominant in staffing/recruiting agency market with 10,000+ customers',
+        'Acquired Textkernel and Mployee for AI talent matching',
+        'IPO candidate as staffing tech consolidates',
+      ],
+    },
+    supportQuality: {
+      overallScore: 66,
+      responseTime: '< 24 hours (standard), < 4 hours (premium)',
+      channels: ['Phone', 'Email', 'Bullhorn Community'],
+      dedicatedCsm: 'Yes, at enterprise tier',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'Support understands staffing workflows deeply. If you\'re a corporate recruiter using Bullhorn, the fit is awkward.', role: 'Staffing Agency Owner' },
+        { text: 'Phone support is reliable for day-to-day issues. Custom report building requires professional services.', role: 'Operations Director' },
+      ],
+    },
   },
 
   'breezy-hr': {
@@ -472,6 +921,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Breezy HR adds custom careers page builder with employer branding templates', date: 'Feb 2026', source: 'Breezy HR Newsroom' },
       { headline: 'Breezy HR recognized in G2 Best Small Business ATS report for fifth straight quarter', date: 'Mar 2026', source: 'G2' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Bootstrapped / Small team)',
+      headcountTrend: 'Stable',
+      acquisitionRisk: 'High',
+      keySignals: [
+        'Small, lean team competing against well-funded ATS players',
+        'Strong product-led growth among SMBs',
+        'Potential acquisition target for larger HRIS/HCM platforms',
+      ],
+    },
+    supportQuality: {
+      overallScore: 77,
+      responseTime: '< 8 hours (all plans)',
+      channels: ['Email', 'Chat'],
+      dedicatedCsm: 'No — pooled support',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'Small team but they punch above their weight. Chat support feels personal and knowledgeable.', role: 'Hiring Manager' },
+        { text: 'No phone support is the only gap. For the price, the responsiveness on chat and email is excellent.', role: 'HR Coordinator' },
+      ],
+    },
   },
 
   'oracle-taleo': {
@@ -494,6 +964,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Oracle offers incentivised migration credits for Taleo customers transitioning to Oracle HCM Cloud Recruiting', date: 'Feb 2026', source: 'Oracle Blog' },
       { headline: 'Oracle Taleo customer base drops below 2,000 as enterprise migrations to modern ATS accelerate', date: 'Mar 2026', source: 'HR Executive' },
     ],
+    financialHealth: {
+      fundingStage: 'Public (NYSE: ORCL)',
+      headcountTrend: '+3% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Legacy product being sunset in favor of Oracle Recruiting (ORC)',
+        'Existing customers being migrated to Oracle HCM Cloud',
+        'New investment going into ORC, not Taleo',
+      ],
+    },
+    supportQuality: {
+      overallScore: 45,
+      responseTime: '24–72 hours (standard)',
+      channels: ['My Oracle Support Portal', 'Phone'],
+      dedicatedCsm: 'Only for large Oracle HCM contracts',
+      supportTrend: 'Declining',
+      highlights: [
+        { text: 'Taleo support feels like an afterthought. Oracle clearly wants everyone on ORC and it shows in the support priority.', role: 'TA Operations Manager' },
+        { text: 'Simple ticket fixes take weeks. Complex issues require Oracle Consulting at billable rates.', role: 'HRIS Analyst' },
+      ],
+    },
   },
 
   'acme-staffing': {
@@ -540,6 +1031,28 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'HiBob raises $150M Series E valuing the company at $2.5B, accelerating US and APAC expansion', date: 'Jan 2026', source: 'TechCrunch' },
       { headline: 'HiBob expands payroll integrations to cover 50 countries in partnership with Papaya Global', date: 'Mar 2026', source: 'HiBob Blog' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Series D)',
+      lastRaise: '$150M Series D at $2.6B valuation — 2024',
+      headcountTrend: '+15% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Well-funded with strong mid-market traction globally',
+        'Expanding payroll capabilities market by market',
+        'Differentiated UX and culture features driving word-of-mouth growth',
+      ],
+    },
+    supportQuality: {
+      overallScore: 78,
+      responseTime: '< 8 hours (all plans)',
+      channels: ['Chat', 'Email', 'Phone (premium)'],
+      dedicatedCsm: 'Yes, at 200+ employees',
+      supportTrend: 'Improving',
+      highlights: [
+        { text: 'Support team knows the product deeply and often suggests features we didn\'t know existed. Rare for an HRIS vendor.', role: 'People Ops Director' },
+        { text: 'Chat is the best channel. Phone support is only available on premium and the wait times are reasonable.', role: 'HR Manager' },
+      ],
+    },
   },
 
   'personio': {
@@ -562,6 +1075,29 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Personio expands into UK and Iberian markets with localised compliance and payroll partnerships', date: 'Feb 2026', source: 'Personio Blog' },
       { headline: 'Personio surpasses 15,000 customers and €1B ARR milestone, announces IPO consideration for 2027', date: 'Mar 2026', source: 'Financial Times' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Series E)',
+      lastRaise: '$200M Series E at $8.5B valuation — 2022',
+      headcountTrend: '-5% YoY',
+      recentLayoffs: 'Reduced workforce ~6% — 2024',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Dominant European SMB HRIS but valuation under pressure from 2022 peak',
+        'Expanding into payroll and recruiting to become full HR suite',
+        'Strong brand in DACH region, growing in UK and Southern Europe',
+      ],
+    },
+    supportQuality: {
+      overallScore: 71,
+      responseTime: '< 12 hours (standard), < 4 hours (premium)',
+      channels: ['Email', 'Chat', 'Phone (enterprise)'],
+      dedicatedCsm: 'Yes, at 200+ employees',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'Support is solid for German labor law and payroll questions. English-language support for non-DACH markets is improving but still catching up.', role: 'HR Manager' },
+        { text: 'The help center documentation is thorough. Direct support response times are reasonable for the price tier.', role: 'People Operations Lead' },
+      ],
+    },
   },
 
   'paycom': {
@@ -584,6 +1120,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Paycom Beti payroll self-service reaches 80% employee adoption across its customer base', date: 'Feb 2026', source: 'Paycom Newsroom' },
       { headline: 'Paycom reports Q4 2025 revenue of $349M, exceeding analyst consensus for third consecutive quarter', date: 'Jan 2026', source: 'Paycom Investor Relations' },
     ],
+    financialHealth: {
+      fundingStage: 'Public (NYSE: PAYC)',
+      headcountTrend: '+4% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'FY2025 revenue $1.9B with strong margin profile',
+        'Beti employee-driven payroll is a genuine product differentiator',
+        'Investing in AI automation for expense management and talent workflows',
+      ],
+    },
+    supportQuality: {
+      overallScore: 71,
+      responseTime: '< 8 hours (all clients)',
+      channels: ['Phone', 'Email', 'In-app messaging'],
+      dedicatedCsm: 'Yes, all clients get a dedicated specialist',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'Having a dedicated specialist from day one is a huge plus. They know our setup and payroll history.', role: 'Payroll Manager' },
+        { text: 'Specialist turnover can be an issue — we\'ve had three in two years. Each transition means re-explaining our setup.', role: 'HR Director' },
+      ],
+    },
   },
 
   'deel': {
@@ -606,6 +1163,28 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Deel reaches $800M ARR and announces plans for direct listing on NYSE in late 2026', date: 'Feb 2026', source: 'Bloomberg' },
       { headline: 'Deel launches Deel AI, automating compliance risk assessment for 150+ countries in real time', date: 'Mar 2026', source: 'Deel Blog' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Series D)',
+      lastRaise: '$300M Series D at $12B valuation — 2023',
+      headcountTrend: '+20% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'ARR reportedly exceeded $500M — one of the fastest-growing HR platforms ever',
+        'Aggressive M&A (acquired PayGroup, Hofy, Assemble)',
+        'Expanding from contractor/EOR into full HRIS and payroll platform',
+      ],
+    },
+    supportQuality: {
+      overallScore: 72,
+      responseTime: '< 8 hours (standard), < 2 hours (premium)',
+      channels: ['Chat', 'Email', 'Slack (enterprise)', 'Phone (premium)'],
+      dedicatedCsm: 'Yes, at enterprise tier',
+      supportTrend: 'Improving',
+      highlights: [
+        { text: 'Chat support is responsive and handles contractor payment questions well. HRIS-specific support is newer and less mature.', role: 'People Ops Manager' },
+        { text: 'The Slack channel for enterprise clients is great for quick answers. Complex compliance questions still need escalation.', role: 'Head of Global HR' },
+      ],
+    },
   },
 
   'paylocity': {
@@ -625,9 +1204,30 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['QuickBooks', 'ADP', 'Microsoft 365', 'Slack', 'Indeed', 'Checkr'],
     news: [
       { headline: 'Paylocity launches Community, a social intranet within the HRIS to connect distributed workforces', date: 'Feb 2026', source: 'Paylocity Newsroom' },
-      { headline: 'Paylocity adds AI-powered salary benchmarking using real-time market data from 500K+ companies', date: 'Jan 2026', source: 'Paylocity Blog' },
       { headline: 'Paylocity reports fiscal Q2 2026 revenue of $380M, citing 19% growth in total HCM customers', date: 'Mar 2026', source: 'Paylocity Investor Relations' },
+      { headline: 'Paylocity acquires Grayscale to expand AI-powered recruiting automation for high-volume hiring', date: 'Apr 2026', source: 'Globe Newswire' },
     ],
+    financialHealth: {
+      fundingStage: 'Public (NASDAQ: PCTY)',
+      headcountTrend: '+10% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'FY2025 revenue $1.4B, up 18% YoY — fastest grower in mid-market payroll',
+        'Community social features differentiating from traditional competitors',
+        'Expanding upmarket into 1,000+ employee segment',
+      ],
+    },
+    supportQuality: {
+      overallScore: 70,
+      responseTime: '< 8 hours (standard), < 4 hours (premium)',
+      channels: ['Phone', 'Email', 'Chat', 'Paylocity Community'],
+      dedicatedCsm: 'Yes, at 100+ employees',
+      supportTrend: 'Improving',
+      highlights: [
+        { text: 'Our implementation specialist transitioned to a dedicated CSM. Continuity makes a huge difference.', role: 'Payroll Manager' },
+        { text: 'Tax support is reliable. Product support for the newer modules (LMS, surveys) is less mature.', role: 'HR Director' },
+      ],
+    },
   },
 
   'zenefits': {
@@ -650,6 +1250,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'TriNet HRCloud (formerly Zenefits) launches AI benefits advisor to guide employees through open enrollment', date: 'Jan 2026', source: 'TriNet Newsroom' },
       { headline: 'TriNet HRCloud expands broker marketplace with 30 new voluntary benefit carriers for small businesses', date: 'Feb 2026', source: 'TriNet Blog' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Rebranded as TriNet Zenefits)',
+      headcountTrend: '-15% YoY',
+      acquisitionRisk: 'High',
+      keySignals: [
+        'Acquired by TriNet in 2022 after years of operational challenges',
+        'Being absorbed into TriNet\'s PEO and HR platform',
+        'Standalone Zenefits product future is uncertain',
+      ],
+    },
+    supportQuality: {
+      overallScore: 48,
+      responseTime: '24–48 hours (standard)',
+      channels: ['Email', 'Phone', 'Help Center'],
+      dedicatedCsm: 'No — pooled support',
+      supportTrend: 'Declining',
+      highlights: [
+        { text: 'Support has degraded significantly since the TriNet acquisition. Long hold times and agents unfamiliar with the platform.', role: 'HR Manager' },
+        { text: 'If you\'re still on Zenefits, start planning your migration. The writing is on the wall.', role: 'People Ops Director' },
+      ],
+    },
   },
 
   'factorial': {
@@ -672,6 +1293,28 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Factorial launches Factorial AI, automating absence management and shift planning for frontline teams', date: 'Feb 2026', source: 'Factorial Blog' },
       { headline: 'Factorial surpasses 10,000 customers across 65 countries, citing strong traction in Brazil and Mexico', date: 'Mar 2026', source: 'Factorial Newsroom' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Series C)',
+      lastRaise: '$120M Series C — 2023',
+      headcountTrend: '+18% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Growing fast in European SMB market, especially Spain and Latin America',
+        'Competing with Personio for European mid-market share',
+        'Building out payroll capabilities country by country',
+      ],
+    },
+    supportQuality: {
+      overallScore: 69,
+      responseTime: '< 12 hours (standard)',
+      channels: ['Chat', 'Email'],
+      dedicatedCsm: 'Yes, at 100+ employees',
+      supportTrend: 'Improving',
+      highlights: [
+        { text: 'Support is friendly and improving. Spanish-language support is excellent, English support is catching up.', role: 'HR Coordinator' },
+        { text: 'Chat is the primary channel and it works well for most issues. Complex payroll questions sometimes need escalation.', role: 'People Operations Manager' },
+      ],
+    },
   },
 
   'humaans': {
@@ -694,6 +1337,28 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Humaans raises $15M Series A to build the API-first HRIS for modern tech companies', date: 'Jan 2026', source: 'TechCrunch' },
       { headline: 'Humaans expands open API ecosystem with 200 pre-built connectors for HR and engineering tools', date: 'Mar 2026', source: 'Humaans Newsroom' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Seed / Series A)',
+      lastRaise: '$15M Series A — 2023',
+      headcountTrend: '+20% YoY',
+      acquisitionRisk: 'Medium',
+      keySignals: [
+        'Small but well-regarded API-first HRIS for tech companies',
+        'Limited runway compared to larger competitors',
+        'Potential acqui-hire or acquisition target by larger HRIS platforms',
+      ],
+    },
+    supportQuality: {
+      overallScore: 80,
+      responseTime: '< 4 hours (all plans)',
+      channels: ['Email', 'Chat', 'Slack (select customers)'],
+      dedicatedCsm: 'No — founder-led support at scale',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'You feel like you\'re talking to the engineering team directly. Issues get fixed, not just acknowledged.', role: 'People Ops Lead' },
+        { text: 'Small team energy — fast response but limited availability outside business hours.', role: 'HR Manager' },
+      ],
+    },
   },
 
   'sage-hr': {
@@ -716,6 +1381,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Sage HR launches performance review automation for companies with dispersed workforces', date: 'Feb 2026', source: 'Sage Blog' },
       { headline: 'Sage HR adds e-signature for contracts and policies, eliminating paper-based HR processes for SMBs', date: 'Mar 2026', source: 'Sage Newsroom' },
     ],
+    financialHealth: {
+      fundingStage: 'Public (LSE: SGE)',
+      headcountTrend: '+2% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Part of Sage Group — $2.5B+ revenue enterprise software company',
+        'Sage HR is a small product within a large portfolio',
+        'Investment priority unclear relative to Sage Intacct and core accounting products',
+      ],
+    },
+    supportQuality: {
+      overallScore: 62,
+      responseTime: '< 24 hours (standard)',
+      channels: ['Email', 'Phone', 'Chat'],
+      dedicatedCsm: 'No — pooled support',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'Basic HR questions get answered quickly. For anything complex, you need to involve your Sage account team.', role: 'HR Administrator' },
+        { text: 'The product is simple enough that you rarely need support. When you do, it\'s adequate but not exceptional.', role: 'Office Manager' },
+      ],
+    },
   },
 
   // ─── PAYROLL ───────────────────────────────────────────────────────────────
@@ -736,10 +1422,33 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['QuickBooks', 'Xero', 'FreshBooks', 'Slack', 'Greenhouse', 'BambooHR'],
     news: [
-      { headline: 'Gusto launches Gusto Global to support US small businesses with EOR services in 12 countries', date: 'Jan 2026', source: 'Gusto Newsroom' },
       { headline: 'Gusto introduces AI payroll assistant to automatically flag anomalies before pay runs are submitted', date: 'Feb 2026', source: 'Gusto Blog' },
-      { headline: 'Gusto surpasses 400,000 businesses on platform, processing over $30B in payroll annually', date: 'Mar 2026', source: 'Gusto Newsroom' },
+      { headline: 'Gusto brings payroll into Claude and Slack — enabling pay runs without leaving the conversation', date: 'Apr 2026', source: 'CPA Practice Advisor' },
+      { headline: 'Gusto acquires Mosey to close the compliance gap for small businesses with AI-powered state filings', date: 'Apr 2026', source: 'PR Newswire' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Series E)',
+      lastRaise: '$80M at reduced valuation — 2023',
+      headcountTrend: '-8% YoY',
+      recentLayoffs: 'Reduced workforce ~10% — 2023',
+      acquisitionRisk: 'Medium',
+      keySignals: [
+        'Dominant SMB payroll brand but facing margin pressure and competition from Rippling',
+        'Expanding into embedded payroll for vertical SaaS partners',
+        'R&D investment shifting toward API/platform play vs. direct SMB',
+      ],
+    },
+    supportQuality: {
+      overallScore: 70,
+      responseTime: '< 8 hours (standard), < 2 hours (premium)',
+      channels: ['Phone', 'Email', 'Chat'],
+      dedicatedCsm: 'No — pooled support (Priority support available at higher tier)',
+      supportTrend: 'Declining',
+      highlights: [
+        { text: 'Gusto support used to be legendary. It\'s still decent but wait times have increased and agent expertise has dipped.', role: 'Small Business Owner' },
+        { text: 'Tax filing support remains strong. Product support for the HR and benefits modules is less reliable.', role: 'Bookkeeper' },
+      ],
+    },
   },
 
   'onpay': {
@@ -762,6 +1471,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'OnPay adds dedicated payroll support for farm and agricultural workers including H-2A visa handling', date: 'Feb 2026', source: 'OnPay Newsroom' },
       { headline: 'OnPay named Best Payroll Software for Small Business by PCMag for third consecutive year', date: 'Mar 2026', source: 'PCMag' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Bootstrapped)',
+      headcountTrend: '+10% YoY',
+      acquisitionRisk: 'Medium',
+      keySignals: [
+        'Profitable and bootstrapped — no investor pressure',
+        'Consistently top-rated on G2 and Capterra for SMB payroll',
+        'Small team limits product velocity but ensures quality',
+      ],
+    },
+    supportQuality: {
+      overallScore: 90,
+      responseTime: '< 2 hours (all customers)',
+      channels: ['Phone', 'Email', 'Chat'],
+      dedicatedCsm: 'No — but all agents handle full account context',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'Best payroll support I\'ve ever experienced. You call, a human answers, and they actually fix your problem.', role: 'Small Business Owner' },
+        { text: 'They proactively flagged a tax filing issue before it became a penalty. That kind of service is rare.', role: 'Bookkeeper' },
+      ],
+    },
   },
 
   'homebase': {
@@ -784,6 +1514,28 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Homebase adds team messaging and tip pooling features to simplify restaurant operations', date: 'Jan 2026', source: 'Homebase Blog' },
       { headline: 'Homebase surpasses 100,000 small business customers and 2.5M hourly workers on platform', date: 'Mar 2026', source: 'Homebase Newsroom' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (Series C)',
+      lastRaise: '$71M Series C — 2022',
+      headcountTrend: '+5% YoY',
+      acquisitionRisk: 'Medium',
+      keySignals: [
+        'Strong position in hourly workforce scheduling and time tracking',
+        'Payroll product is newer but growing fast with existing customer base',
+        'Competing with Toast, 7shifts, and When I Work in restaurant/retail vertical',
+      ],
+    },
+    supportQuality: {
+      overallScore: 72,
+      responseTime: '< 8 hours (all plans)',
+      channels: ['Chat', 'Email', 'Phone (paid plans)'],
+      dedicatedCsm: 'No — pooled support',
+      supportTrend: 'Stable',
+      highlights: [
+        { text: 'Support understands hourly scheduling challenges. They\'re less experienced with the newer payroll features.', role: 'Restaurant Manager' },
+        { text: 'Free plan support is chat-only and can be slow. Paid plan phone support is noticeably better.', role: 'Retail Store Owner' },
+      ],
+    },
   },
 
   'quickbooks-payroll': {
@@ -846,9 +1598,9 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'Workday', 'Greenhouse', 'Rippling', 'BambooHR', 'Okta'],
     news: [
-      { headline: 'Remote launches Remote Equity to manage stock option grants for international employees compliantly', date: 'Feb 2026', source: 'Remote Newsroom' },
       { headline: 'Remote expands EOR coverage to 30 new countries including Saudi Arabia, Vietnam, and Colombia', date: 'Jan 2026', source: 'Remote Blog' },
       { headline: 'Remote reaches $1B ARR milestone driven by rapid adoption of global payroll consolidation', date: 'Mar 2026', source: 'TechCrunch' },
+      { headline: 'Remote acquires Bravas to bring identity and device management into its global employment platform', date: 'Apr 2026', source: 'PR Newswire' },
     ],
   },
 
@@ -868,9 +1620,9 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Workday', 'SAP SuccessFactors', 'Oracle HCM', 'ADP', 'NetSuite', 'HiBob'],
     news: [
-      { headline: 'Papaya Global launches AI-powered payroll variance detection to flag cross-country anomalies instantly', date: 'Jan 2026', source: 'Papaya Global Newsroom' },
       { headline: 'Papaya Global achieves $100M quarterly processing in payments network across 160 countries', date: 'Feb 2026', source: 'Papaya Global Blog' },
       { headline: 'Papaya Global partners with HSBC to offer embedded global payroll payments within banking infrastructure', date: 'Mar 2026', source: 'Business Wire' },
+      { headline: 'Papaya Global and Tech Mahindra partner to modernize global workforce operations and cross-border payments', date: 'Apr 2026', source: 'PR Newswire' },
     ],
   },
 
@@ -1312,9 +2064,9 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['LinkedIn Learning', 'Coursera', 'Cornerstone', 'Workday', 'Microsoft Teams', 'Udemy Business'],
     news: [
-      { headline: 'Degreed launches Skills Intelligence Cloud to map organisational skill inventory in real time using AI', date: 'Feb 2026', source: 'Degreed Newsroom' },
       { headline: 'Degreed partners with Coursera and edX to make 10,000 credential courses directly assignable by HR teams', date: 'Jan 2026', source: 'Degreed Blog' },
       { headline: 'Degreed raises $100M Series D to expand skills-based learning platform into 30 new enterprise accounts', date: 'Mar 2026', source: 'Business Wire' },
+      { headline: 'Degreed named a Strategic Leader in the 2026 Fosway 9-Grid for Learning Systems for fourth year running', date: 'Apr 2026', source: 'Business Wire' },
     ],
   },
 
@@ -1560,6 +2312,27 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Medallia expands Employee Experience suite with always-on listening across email, chat, and HRIS signals', date: 'Jan 2026', source: 'Medallia Blog' },
       { headline: 'Medallia closes $200M strategic investment from Permira to accelerate AI and global growth initiatives', date: 'Mar 2026', source: 'Business Wire' },
     ],
+    financialHealth: {
+      fundingStage: 'Private (PE-backed: Thoma Bravo)',
+      headcountTrend: '-8% YoY',
+      acquisitionRisk: 'Low',
+      keySignals: [
+        'Taken private by Thoma Bravo for $6.4B in 2021',
+        'Primarily customer experience — employee XM is secondary focus',
+        'Cost optimization under PE ownership affecting product investment velocity',
+      ],
+    },
+    supportQuality: {
+      overallScore: 62,
+      responseTime: '< 24 hours (standard), < 8 hours (enterprise)',
+      channels: ['Email', 'Phone', 'Customer Portal'],
+      dedicatedCsm: 'Yes, at enterprise tier',
+      supportTrend: 'Declining',
+      highlights: [
+        { text: 'Support is better for customer XM than employee XM. HR use cases sometimes feel like an afterthought.', role: 'Employee Experience Director' },
+        { text: 'Enterprise support is solid but you need to push for the employee XM specialist team. General agents lack context.', role: 'People Analytics Manager' },
+      ],
+    },
   },
 
   'revelio-labs': {
