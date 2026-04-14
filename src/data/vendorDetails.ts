@@ -1,4 +1,4 @@
-export type CapabilityScore = { label: string; score: number }
+export type CapabilityScore = { label: string; score: number; rationale?: string }
 export type ReviewHighlight = { text: string; role: string }
 export type VendorDetail = {
   capabilities: CapabilityScore[]
@@ -29,12 +29,12 @@ export const vendorDetails: Record<string, VendorDetail> = {
 
   'workday': {
     capabilities: [
-      { label: 'Core HR', score: 96 },
-      { label: 'Payroll', score: 88 },
-      { label: 'Benefits', score: 85 },
-      { label: 'Workforce Mgmt', score: 90 },
-      { label: 'Analytics', score: 92 },
-      { label: 'Global', score: 94 },
+      { label: 'Core HR', score: 96, rationale: 'Industry-leading core HR depth with 20+ years of enterprise refinement. Widest module set in the category and proven at scale across Fortune 500 deployments.' },
+      { label: 'Payroll', score: 88, rationale: 'Native US payroll is strong; global payroll relies on partner network (Safeguard, CloudPay) which creates variable quality. Loses points vs. ADP and Ceridian on direct coverage.' },
+      { label: 'Benefits', score: 85, rationale: 'Solid benefits administration tightly integrated with core HR, but third-party benefits vendors often still needed for decision support and ACA compliance depth.' },
+      { label: 'Workforce Mgmt', score: 90, rationale: 'Scheduling and time tracking are mature but can feel enterprise-heavy for frontline/hourly use cases. Best suited for salaried professional workforces.' },
+      { label: 'Analytics', score: 92, rationale: 'Prism Analytics brings external data into Workday for advanced people analytics. Strong native reporting, though deep custom analytics still require expertise.' },
+      { label: 'Global', score: 94, rationale: 'One of the most sophisticated localization engines on the market — supports 100+ countries with deep language, currency, and regulatory coverage.' },
     ],
     idealCustomer: {
       size: '5,000+ employees',
@@ -72,12 +72,12 @@ export const vendorDetails: Record<string, VendorDetail> = {
 
   'rippling': {
     capabilities: [
-      { label: 'Core HR', score: 88 },
-      { label: 'Payroll', score: 91 },
-      { label: 'Benefits', score: 84 },
-      { label: 'Workforce Mgmt', score: 80 },
-      { label: 'Analytics', score: 79 },
-      { label: 'Global', score: 86 },
+      { label: 'Core HR', score: 88, rationale: 'Compound platform ties HR, IT, and finance to a single employee record, enabling automation no legacy HRIS can match. Depth on complex job architectures and succession still trails Workday.' },
+      { label: 'Payroll', score: 91, rationale: 'Native US payroll is fast and tightly coupled with onboarding and device provisioning. Building proprietary payroll infrastructure is reducing historical reliance on third parties.' },
+      { label: 'Benefits', score: 84, rationale: 'Streamlined benefits admin with broker marketplace, but lacks the depth of carrier integrations and decision-support tools that larger enterprises expect.' },
+      { label: 'Workforce Mgmt', score: 80, rationale: 'Solid time and scheduling for knowledge workers, but shift-heavy industries still favor UKG or Dayforce for advanced labor forecasting.' },
+      { label: 'Analytics', score: 79, rationale: 'Reporting has improved quickly but still trails Workday Prism for cross-domain people analytics. Strength is unified data across HR, IT, and spend.' },
+      { label: 'Global', score: 86, rationale: 'Aggressive EOR and native payroll expansion into 50+ countries, making it increasingly credible for global mid-market. Coverage still thinner than SAP or Oracle at the high end.' },
     ],
     idealCustomer: {
       size: '50–2,000 employees',
@@ -116,12 +116,12 @@ export const vendorDetails: Record<string, VendorDetail> = {
 
   'bamboohr': {
     capabilities: [
-      { label: 'Core HR', score: 87 },
-      { label: 'Payroll', score: 78 },
-      { label: 'Benefits', score: 75 },
-      { label: 'Workforce Mgmt', score: 70 },
-      { label: 'Analytics', score: 72 },
-      { label: 'Global', score: 58 },
+      { label: 'Core HR', score: 87, rationale: 'Gold standard UX for SMB HR teams, with fast implementations and onboarding workflows that users consistently rate best-in-class. Architecture is not built for enterprise-grade job structures.' },
+      { label: 'Payroll', score: 78, rationale: 'US payroll is competent but thinner than specialists like ADP or Gusto, and only recently expanded to Canada. Tax filing and complex pay rules remain weak spots.' },
+      { label: 'Benefits', score: 75, rationale: 'Covers core benefits admin cleanly but relies on broker partners for depth. Lacks the carrier integration library that larger HRIS platforms ship natively.' },
+      { label: 'Workforce Mgmt', score: 70, rationale: 'Time tracking is functional for office workers but not designed for shift-heavy workforces. Scheduling and labor forecasting are minimal.' },
+      { label: 'Analytics', score: 72, rationale: 'Reporting UI is widely praised for ease of use, but the underlying data model limits advanced people analytics. Custom metrics require workarounds.' },
+      { label: 'Global', score: 58, rationale: 'Historically US-centric and only just dipping into international payroll. Multi-country support is a material gap for any company expanding beyond North America.' },
     ],
     idealCustomer: {
       size: '25–1,000 employees',
@@ -161,12 +161,12 @@ export const vendorDetails: Record<string, VendorDetail> = {
 
   'ukg-pro': {
     capabilities: [
-      { label: 'Core HR', score: 91 },
-      { label: 'Payroll', score: 93 },
-      { label: 'Benefits', score: 88 },
-      { label: 'Workforce Mgmt', score: 94 },
-      { label: 'Analytics', score: 84 },
-      { label: 'Global', score: 80 },
+      { label: 'Core HR', score: 91, rationale: 'Strong HR system of record inherited from Ultimate Software, with deep employee experience features. Some friction remains where Ultimate and Kronos data models still meet.' },
+      { label: 'Payroll', score: 93, rationale: 'Mature, high-volume US payroll engine trusted by complex employers in healthcare and retail. Tax and compliance depth is a long-standing strength.' },
+      { label: 'Benefits', score: 88, rationale: 'Robust benefits admin with carrier integrations and strong open enrollment tooling. Occasional rough edges where WFM and HCM overlap.' },
+      { label: 'Workforce Mgmt', score: 94, rationale: 'Kronos heritage shows: arguably the best enterprise WFM on the market for frontline scheduling, labor forecasting, and compliance. Still the primary reason enterprises pick UKG.' },
+      { label: 'Analytics', score: 84, rationale: 'UKG Bryte AI and embedded dashboards are credible, but analytics still trails Workday Prism for cross-domain storytelling and predictive modeling.' },
+      { label: 'Global', score: 80, rationale: 'Immedis acquisition and expanded global payroll partnerships are closing the gap, though SAP and Oracle still win the most complex multi-country deals.' },
     ],
     idealCustomer: {
       size: '1,000–50,000 employees',
@@ -204,12 +204,12 @@ export const vendorDetails: Record<string, VendorDetail> = {
 
   'adp': {
     capabilities: [
-      { label: 'Core HR', score: 85 },
-      { label: 'Payroll', score: 97 },
-      { label: 'Benefits', score: 86 },
-      { label: 'Workforce Mgmt', score: 80 },
-      { label: 'Analytics', score: 76 },
-      { label: 'Global', score: 90 },
+      { label: 'Core HR', score: 85, rationale: 'Capable HR system of record across Workforce Now, Vantage, and the newer Lyric platform, but the fragmented portfolio creates inconsistency depending on which product a customer lands on.' },
+      { label: 'Payroll', score: 97, rationale: 'The undisputed payroll leader: processes roughly 1 in 6 US paychecks, with unmatched tax compliance, jurisdictional coverage, and audit defensibility. This is why customers stay.' },
+      { label: 'Benefits', score: 86, rationale: 'One of the largest benefits marketplaces and carrier networks in the industry, with strong ACA and COBRA tooling. UX in benefits modules can feel dated.' },
+      { label: 'Workforce Mgmt', score: 80, rationale: 'Solid time and attendance, though scheduling and labor forecasting lag behind UKG and Dayforce for complex shift operations.' },
+      { label: 'Analytics', score: 76, rationale: 'ADP DataCloud offers massive benchmarking data thanks to scale, but the analytics experience itself is less modern than Workday or Visier-powered competitors.' },
+      { label: 'Global', score: 90, rationale: 'Native payroll and compliance in dozens of countries through ADP GlobalView and Celergo, making it one of the few credible options for true multi-country payroll.' },
     ],
     idealCustomer: {
       size: '500–100,000+ employees',
@@ -247,12 +247,12 @@ export const vendorDetails: Record<string, VendorDetail> = {
 
   'sap-successfactors': {
     capabilities: [
-      { label: 'Core HR', score: 90 },
-      { label: 'Payroll', score: 84 },
-      { label: 'Benefits', score: 80 },
-      { label: 'Workforce Mgmt', score: 82 },
-      { label: 'Analytics', score: 87 },
-      { label: 'Global', score: 95 },
+      { label: 'Core HR', score: 90, rationale: 'Employee Central is a mature system of record with deep configurability for complex global organizations. The UX is aging and implementations remain professional-services-heavy.' },
+      { label: 'Payroll', score: 84, rationale: 'Employee Central Payroll inherits SAP HCM localization depth across 40+ countries, but modernization of the payroll engine has lagged cloud-native competitors.' },
+      { label: 'Benefits', score: 80, rationale: 'Workable in global benefits scenarios but most US customers pair it with specialist vendors. Not the reason anyone buys SuccessFactors.' },
+      { label: 'Workforce Mgmt', score: 82, rationale: 'Time and attendance is competent and improving through the SAP Time Tracking module, but does not match Kronos or Dayforce for operational scheduling.' },
+      { label: 'Analytics', score: 87, rationale: 'Strong people analytics heritage and tight integration with SAP Analytics Cloud. Talent intelligence is a real strength when paired with the broader HXM suite.' },
+      { label: 'Global', score: 95, rationale: 'Arguably the best global footprint in HCM: unmatched localization, compliance, and multi-country data residency. This is the primary reason global enterprises pick SuccessFactors.' },
     ],
     idealCustomer: {
       size: '5,000+ employees',
@@ -291,12 +291,12 @@ export const vendorDetails: Record<string, VendorDetail> = {
 
   'oracle-hcm-cloud': {
     capabilities: [
-      { label: 'Core HR', score: 89 },
-      { label: 'Payroll', score: 85 },
-      { label: 'Benefits', score: 83 },
-      { label: 'Workforce Mgmt', score: 81 },
-      { label: 'Analytics', score: 88 },
-      { label: 'Global', score: 92 },
+      { label: 'Core HR', score: 89, rationale: 'Deep, configurable HR system built on the Fusion data model, shared with Oracle ERP. Power comes at the cost of complex setup and a steep learning curve.' },
+      { label: 'Payroll', score: 85, rationale: 'Native Oracle Payroll is expanding its country coverage steadily, with strong integration to Fusion Financials. Less mature than ADP or SAP in complex multi-country scenarios.' },
+      { label: 'Benefits', score: 83, rationale: 'Flexible benefits engine that handles complex eligibility rules well, though customer-reported UX and administration complexity drag the score down.' },
+      { label: 'Workforce Mgmt', score: 81, rationale: 'Functional time and labor module, but not a category leader for shift-based operations. Customers in frontline industries usually pair it with a specialist WFM.' },
+      { label: 'Analytics', score: 88, rationale: 'Oracle Analytics Cloud and Autonomous Data Warehouse give HCM Cloud real advantages in embedded analytics and predictive insights when the broader Oracle stack is in place.' },
+      { label: 'Global', score: 92, rationale: 'Among the strongest global HCM footprints, with broad localization and a shared data model across HR and finance. Complex to configure for multinationals but powerful once live.' },
     ],
     idealCustomer: {
       size: '5,000+ employees',
@@ -334,12 +334,12 @@ export const vendorDetails: Record<string, VendorDetail> = {
 
   'ceridian-dayforce': {
     capabilities: [
-      { label: 'Core HR', score: 88 },
-      { label: 'Payroll', score: 91 },
-      { label: 'Benefits', score: 85 },
-      { label: 'Workforce Mgmt', score: 92 },
-      { label: 'Analytics', score: 83 },
-      { label: 'Global', score: 82 },
+      { label: 'Core HR', score: 88, rationale: 'Unified single-database architecture keeps employee data consistent across HR, payroll, and WFM without the sync issues that plague multi-module suites.' },
+      { label: 'Payroll', score: 91, rationale: 'Continuous gross-to-net calculation is a genuine differentiator, eliminating end-of-period batch windows and surfacing pay errors in real time. Canadian federal contract validates the payroll engine at scale.' },
+      { label: 'Benefits', score: 85, rationale: 'Competent benefits admin tightly coupled to the payroll engine, though the benefits marketplace is smaller than ADP or Workday partners.' },
+      { label: 'Workforce Mgmt', score: 92, rationale: 'Best-in-class scheduling and labor forecasting for hourly workforces, with real-time labor cost visibility thanks to continuous payroll. Core strength for retail, hospitality, and healthcare.' },
+      { label: 'Analytics', score: 83, rationale: 'Solid operational reporting and improving AI layer, but people analytics trails Workday Prism for talent intelligence and strategic workforce planning.' },
+      { label: 'Global', score: 82, rationale: 'Strong North American payroll coverage and expanding internationally, but global footprint still trails SAP, Oracle, and ADP at the enterprise tier.' },
     ],
     idealCustomer: {
       size: '1,000–25,000 employees',
@@ -553,12 +553,12 @@ export const vendorDetails: Record<string, VendorDetail> = {
 
   'greenhouse': {
     capabilities: [
-      { label: 'Sourcing', score: 82 },
-      { label: 'Pipeline Mgmt', score: 94 },
-      { label: 'Interview Tools', score: 91 },
-      { label: 'Reporting', score: 88 },
-      { label: 'Candidate CX', score: 87 },
-      { label: 'Integrations', score: 95 },
+      { label: 'Sourcing', score: 82, rationale: 'Competent sourcing with strong LinkedIn and job-board integrations, but sourcing has never been Greenhouse\'s primary identity compared to dedicated tools like HireEZ or Gem.' },
+      { label: 'Pipeline Mgmt', score: 94, rationale: 'Category-defining structured-hiring workflow: stages, scorecards, and approvals that enforce hiring discipline. The reason most talent teams pick Greenhouse in the first place.' },
+      { label: 'Interview Tools', score: 91, rationale: 'Interview kits and scorecards are the industry standard for structured, consistent interviewing. DEI-friendly by design, with strong calibration tooling.' },
+      { label: 'Reporting', score: 88, rationale: 'Rich funnel and source-of-hire analytics with benchmark data from thousands of customers. Custom reporting is improving but still a common reason teams add BI tools on top.' },
+      { label: 'Candidate CX', score: 87, rationale: 'Clean candidate experience with well-designed scheduling, communication, and feedback loops. Video interviewing is now native after the recent Zoom integration.' },
+      { label: 'Integrations', score: 95, rationale: 'Largest recruiting integration marketplace in the industry, with deep partnerships across HRIS, assessments, and sourcing tools. A major switching cost for customers considering compound HRIS alternatives.' },
     ],
     idealCustomer: {
       size: '200–10,000 employees',
@@ -1189,12 +1189,12 @@ export const vendorDetails: Record<string, VendorDetail> = {
 
   'paylocity': {
     capabilities: [
-      { label: 'Employee Records', score: 84 },
-      { label: 'Onboarding', score: 82 },
-      { label: 'Benefits Admin', score: 80 },
-      { label: 'Compliance', score: 81 },
-      { label: 'Self-Service', score: 86 },
-      { label: 'Analytics', score: 77 },
+      { label: 'Employee Records', score: 84, rationale: 'Modern HRIS with clean data model serving US mid-market employers well. Lacks the configurability that enterprise HR teams expect for complex job architectures.' },
+      { label: 'Onboarding', score: 82, rationale: 'Smooth, mobile-friendly onboarding flow that ties naturally into payroll and benefits setup. Task management is solid without the complexity of enterprise suites.' },
+      { label: 'Benefits Admin', score: 80, rationale: 'Competent benefits admin with good carrier integration for a mid-market platform, though depth and marketplace breadth trail ADP and Workday.' },
+      { label: 'Compliance', score: 81, rationale: 'Strong US tax filing and ACA compliance backed by payroll heritage. Multi-state and multi-jurisdiction handling is a known strength in this segment.' },
+      { label: 'Self-Service', score: 86, rationale: 'Community social features and modern mobile experience drive unusually high employee adoption for the segment. A consistent bright spot in customer reviews.' },
+      { label: 'Analytics', score: 77, rationale: 'Operational reporting covers the basics well, but advanced people analytics and predictive insights are thin compared to enterprise competitors. A known gap as Paylocity moves upmarket.' },
     ],
     idealCustomer: {
       size: '50–2,500 employees',

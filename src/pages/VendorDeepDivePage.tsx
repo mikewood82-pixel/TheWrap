@@ -7,15 +7,27 @@ import { vendorDetails } from '../data/vendorDetails'
 import RatingChart, { generateHistory } from '../components/RatingChart'
 import VendorLogo from '../components/VendorLogo'
 
-function CapabilityBar({ label, score }: { label: string; score: number }) {
+function CapabilityBar({ label, score, rationale }: { label: string; score: number; rationale?: string }) {
   const color = score >= 85 ? 'bg-brand-terracotta' : score >= 65 ? 'bg-brand-gold' : 'bg-brand-dark/30'
+  const hasRationale = !!rationale
   return (
-    <div className="flex items-center gap-3">
+    <div className={`group relative flex items-center gap-3 ${hasRationale ? 'cursor-help' : ''}`}>
       <div className="w-32 text-xs text-brand-dark/60 text-right shrink-0">{label}</div>
       <div className="flex-1 bg-brand-cream rounded-full h-2 overflow-hidden">
         <div className={`h-2 rounded-full transition-all ${color}`} style={{ width: `${score}%` }} />
       </div>
       <div className="w-7 text-xs text-brand-dark/50 tabular-nums shrink-0">{score}</div>
+      {hasRationale && (
+        <div
+          role="tooltip"
+          className="pointer-events-none absolute left-1/2 bottom-full z-20 mb-2 w-72 -translate-x-1/2 rounded-lg bg-brand-dark p-3 opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100"
+        >
+          <div className="text-brand-gold text-[10px] uppercase tracking-widest font-semibold mb-1">Why {score}?</div>
+          <p className="text-xs leading-snug text-white">{rationale}</p>
+          {/* Arrow */}
+          <div className="absolute left-1/2 top-full -translate-x-1/2 -mt-px h-0 w-0 border-x-[6px] border-t-[6px] border-x-transparent border-t-brand-dark" />
+        </div>
+      )}
     </div>
   )
 }
@@ -167,7 +179,7 @@ export default function VendorDeepDivePage() {
             <div className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium mb-4">Capability Overview</div>
             <div className="space-y-3">
               {details.capabilities.map(c => (
-                <CapabilityBar key={c.label} label={c.label} score={c.score} />
+                <CapabilityBar key={c.label} label={c.label} score={c.score} rationale={c.rationale} />
               ))}
             </div>
             <p className="text-xs text-brand-dark/30 mt-4">Scores reflect editorial assessment based on product depth, user reviews, and market positioning. Not vendor-provided.</p>
