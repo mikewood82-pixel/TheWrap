@@ -1,11 +1,12 @@
 const headlines = [
-  { text: 'Workday Q2 earnings beat estimates · stock up 4.2%', url: 'https://investor.workday.com' },
-  { text: 'ServiceNow acquires HR analytics startup for $340M', url: 'https://www.servicenow.com/company/media/press-room.html' },
-  { text: 'U.S. unemployment holds at 4.3% · job openings dip to 6.9M', url: 'https://www.bls.gov/news.release/empsit.nr0.htm' },
-  { text: 'Rippling raises $200M Series F at $13.5B valuation', url: 'https://www.rippling.com/blog' },
-  { text: 'ADP reports 62K private sector jobs added in March', url: 'https://adpemploymentreport.com' },
-  { text: 'Greenhouse launches AI-assisted interview scoring', url: 'https://www.greenhouse.com/press' },
-  { text: 'UKG named leader in Gartner Magic Quadrant for HCM', url: 'https://www.ukg.com/about-us/newsroom' },
+  { text: 'Microsoft overhauls HR across 220K employees for AI-first structure', url: 'https://asanify.com/blog/news/ai-first-hr-restructuring-april-13-2026/' },
+  { text: 'Intuit to acquire GoCo.io · expanding HR & benefits for SMBs', url: 'https://news.crunchbase.com/venture/ai-hr-software-startup-funding-ma/' },
+  { text: 'Vensure acquires AI recruiting platform Distro · adds 1.9M-candidate network', url: 'https://www.unleash.ai/hr-technology/the-five-2026-hr-tech-acquisitions-that-put-hr-buyers-in-a-strong-position/' },
+  { text: 'U.S. unemployment falls to 4.3% · 178K jobs added in March', url: 'https://www.bls.gov/news.release/empsit.nr0.htm' },
+  { text: 'Wage growth slows to 3.5% YoY · lowest annual increase since May 2021', url: 'https://www.shrm.org/topics-tools/april-2026-labor-market-review-hiring-springs-forward0' },
+  { text: 'EU AI Act mandatory bias audits for AI hiring tools begin Aug 2026', url: 'https://www.technewsworld.com/story/hrs-2026-playbook-signals-a-human-centric-tech-reset-180063.html' },
+  { text: 'Phenom acquires Be Applied + Included AI · expands DEI hiring capabilities', url: 'https://www.unleash.ai/hr-technology/the-five-2026-hr-tech-acquisitions-that-put-hr-buyers-in-a-strong-position/' },
+  { text: 'Docebo acquires 365Talents · AI-driven talent marketplace play', url: 'https://www.unleash.ai/hr-technology/the-five-2026-hr-tech-acquisitions-that-put-hr-buyers-in-a-strong-position/' },
 ]
 
 export default function NewsTicker() {
