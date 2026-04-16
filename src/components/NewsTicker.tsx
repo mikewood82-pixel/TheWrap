@@ -1,12 +1,12 @@
 const headlines = [
-  { text: 'Microsoft overhauls HR across 220K employees for AI-first structure', url: 'https://asanify.com/blog/news/ai-first-hr-restructuring-april-13-2026/' },
-  { text: 'Intuit to acquire GoCo.io · expanding HR & benefits for SMBs', url: 'https://news.crunchbase.com/venture/ai-hr-software-startup-funding-ma/' },
-  { text: 'Vensure acquires AI recruiting platform Distro · adds 1.9M-candidate network', url: 'https://www.unleash.ai/hr-technology/the-five-2026-hr-tech-acquisitions-that-put-hr-buyers-in-a-strong-position/' },
-  { text: 'U.S. unemployment falls to 4.3% · 178K jobs added in March', url: 'https://www.bls.gov/news.release/empsit.nr0.htm' },
-  { text: 'Wage growth slows to 3.5% YoY · lowest annual increase since May 2021', url: 'https://www.shrm.org/topics-tools/april-2026-labor-market-review-hiring-springs-forward0' },
-  { text: 'EU AI Act mandatory bias audits for AI hiring tools begin Aug 2026', url: 'https://www.technewsworld.com/story/hrs-2026-playbook-signals-a-human-centric-tech-reset-180063.html' },
-  { text: 'Phenom acquires Be Applied + Included AI · expands DEI hiring capabilities', url: 'https://www.unleash.ai/hr-technology/the-five-2026-hr-tech-acquisitions-that-put-hr-buyers-in-a-strong-position/' },
-  { text: 'Docebo acquires 365Talents · AI-driven talent marketplace play', url: 'https://www.unleash.ai/hr-technology/the-five-2026-hr-tech-acquisitions-that-put-hr-buyers-in-a-strong-position/' },
+  { text: 'Findem acquires Glider AI · end-to-end autonomous AI hiring platform', url: 'https://news.crunchbase.com/venture/ai-hr-software-startup-funding-ma/' },
+  { text: 'Alex raises $20M Series A · Peak XV backs AI recruiting startup', url: 'https://hrtechfeed.com/ai-powered-recruiting-startup-lands-20-million/' },
+  { text: 'Payoneer buys Boundless · Remote buys Atlas · EOR consolidation accelerates', url: 'https://www.unleash.ai/hr-technology/the-five-2026-hr-tech-acquisitions-that-put-hr-buyers-in-a-strong-position/' },
+  { text: 'Workday Sana AI agents launch · agentic new front door to enterprise work', url: 'https://hrexecutive.com/what-workdays-biggest-agent-launch-means-for-hr-leaders/' },
+  { text: 'Recruiting platforms lead 2026 HR tech budgets · top priority for CHROs', url: 'https://hrexecutive.com/recruiting-platforms-get-hr-tech-budget-priority-for-2026-plus-people-move-news/' },
+  { text: 'Enterprise learning market in fast AI transformation · Bersin analysis', url: 'https://joshbersin.com/2026/02/the-enterprise-learning-tech-market-quickly-transforms-around-ai/' },
+  { text: 'U.S. adds 178K jobs in March · unemployment holds at 4.3%', url: 'https://www.npr.org/2026/04/03/nx-s1-5772696/jobs-employment-economy-labor-market' },
+  { text: 'EU AI Act bias audits for AI hiring tools · mandatory from August 2026', url: 'https://www.technewsworld.com/story/hrs-2026-playbook-signals-a-human-centric-tech-reset-180063.html' },
 ]
 
 export default function NewsTicker() {
