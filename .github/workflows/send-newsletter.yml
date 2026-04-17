@@ -1,0 +1,67 @@
+name: Send newsletter email
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/data/newsletters.ts'
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for Cloudflare Pages deploy
+        run: sleep 90
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Extract latest newsletter and send
+        env:
+          DEPLOY_SECRET: ${{ secrets.DEPLOY_SECRET }}
+          SITE_URL: https://ilovethewrap.com
+        run: |
+          node -e "
+          const fs = require('fs');
+          const source = fs.readFileSync('src/data/newsletters.ts', 'utf-8');
+
+          // Extract slug and title
+          const slug = source.match(/slug:\s*['\x60\"]([^'\x60\"]+)/)?.[1];
+          const title = source.match(/title:\s*['\x60\"]([^'\x60\"]+)/)?.[1];
+
+          // Extract body (template literal)
+          const bodyMatch = source.match(/body:\s*\x60([\\s\\S]*?)\x60\\s*,?\\s*\\n  \\},/);
+          const body = bodyMatch?.[1]?.trim();
+
+          if (!slug || !title || !body) {
+            console.error('Could not parse newsletter. slug:', slug, 'title:', title, 'body length:', body?.length);
+            process.exit(1);
+          }
+
+          console.log('Sending:', title, '(' + slug + ')');
+
+          fetch(process.env.SITE_URL + '/api/send-newsletter', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-deploy-secret': process.env.DEPLOY_SECRET,
+            },
+            body: JSON.stringify({ slug, subject: title, html: body }),
+          })
+          .then(r => r.json())
+          .then(result => {
+            console.log('Result:', JSON.stringify(result));
+            if (result.skipped) {
+              console.log('Already sent — skipping.');
+            } else if (result.sent !== undefined) {
+              console.log('Sent to ' + result.sent + ' subscribers.');
+            }
+          })
+          .catch(err => {
+            console.error('Send failed:', err);
+            process.exit(1);
+          });
+          "
