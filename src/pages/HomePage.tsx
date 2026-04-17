@@ -5,7 +5,7 @@ import { useState } from 'react'
 import SEO from '../components/SEO'
 
 // Swap this URL out when the latest episode is ready
-const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/YcTLLzrHP1s?si=MFHrBTAJhvC8HPrE'
+const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/Agw6lq-_qFY'
 
 const latestEditions = [
   {
