@@ -9,6 +9,113 @@ export interface Newsletter {
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'hr-techs-moviephone-moment',
+    date: 'April 18, 2026',
+    title: 'HR Tech\'s Moviephone Moment',
+    tag: 'AI & Future of Work',
+    excerpt: 'Once someone experiences hiring at scale without navigating a single workflow menu, the seventeen-step enterprise process starts to feel like a punishment.',
+    body: `
+<img src="/newsletters/april-18-2026-moviephone-moment/image1.jpg" alt="HR Tech's Moviephone Moment" />
+
+<p><strong>Why don't you just tell me the name of the movie you want to see?</strong></p>
+
+<p>There is a moment in the history of technology that does not get enough credit for how perfectly it captures the gap between what a product thinks it is and what users actually need.</p>
+
+<p>Moviephone was a miracle when it launched. You picked up the phone, punched in your zip code, and a voice read you every movie playing at every theater in your area. Revolutionary. Genuinely useful.</p>
+
+<p>And then, almost immediately, maddening. Sitting through each city, and every listing, while you only wanted a part of the information that was relevant to you. Yet, <strong>the experience was designed around the database, not the person trying to use it.</strong></p>
+
+<p>Kramer figured it out before the industry did. <strong>Why don't you just tell me the name of the movie you're looking for?</strong></p>
+
+<p>HR technology is about to have its Moviephone moment.</p>
+
+<p>We have spent the better part of a decade building platforms that are genuinely impressive in their scope and genuinely exhausting in their execution. Want to find a candidate? Log in, navigate the dashboard, set your filters, build your pipeline, configure your workflow, check your integrations, and maybe — after all of that — surface the 3-5 people you were looking for in the first place. The data is there. The problem is that the experience was designed around the software architecture, not the recruiter trying to fill a role by Thursday.</p>
+
+<p>This week alone, both Wizehire and Upwork launched integrations inside ChatGPT that let users describe what they need in plain language and get a useful answer without touching a single dropdown menu. And Fountain launched Cue — an autonomous frontline hiring agent that doesn't wait for you to ask it anything. It sources, screens, schedules, detects shift gaps, and reports back on what it already did.</p>
+
+<p>Remember that we are seeing a flip in HR technology. It's not the tech you have, we've reached parity across the space.</p>
+
+<p>So where do you stand out? UX. Outcomes first. This is my problem, how do I solve it.</p>
+
+<p>Why? Because once someone experiences hiring at scale without navigating a single workflow menu, the seventeen-step enterprise process starts to feel a lot less like a platform and a lot more like a punishment.</p>
+
+<img src="/newsletters/april-18-2026-moviephone-moment/image2.png" alt="Underwear Gnomes" />
+
+<p>Think about it through the lens of the infamous underwear gnomes of early South Park fame. Instead of focusing first on collecting underpants, looking for profit, and having no idea how to get there except for a few ideas, today's tools tell you exactly what to do and how to do it.</p>
+
+<p>So you'd better get comfortable with the prompt box. It is not a feature of AI tools, it's the future of most software. The navigation menus, the filter panels, the configuration screens that took three vendor training sessions to understand — they are not going away overnight, but they are going away.</p>
+
+<p>The Moviephone era of HR tech is ending. The question is how many companies are going to spend the next three years insisting their zip-code-and-press-one experience is still good enough.</p>
+
+<p>Let's move into this week's top stories. In this week's Wrap, IBM's CHRO says don't focus on AI productivity, Upwork comes to ChatGPT, Fountain launches Cue with the prompt box front and center, Achievers brings recognition directly into Workday, new research from Lighthouse Research and Advisory and BambooHR, Humanly makes another acquisition, I talk to the VP of Talent Acquisition at Acadia Healthcare about using Phenom, and thank god Burger King is hiring.</p>
+
+<p><em>Enjoy and have a great weekend!</em></p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>IBM's CHRO Says Stop Chasing Productivity</h3>
+<img src="/newsletters/april-18-2026-moviephone-moment/image3.png" alt="IBM CHRO Nickle LaMoreaux" />
+<p>Nickle LaMoreaux, IBM's CHRO and 2024 HR Executive of the Year, went to the Wall Street Journal's CPO Council Summit and said the quiet part out loud: if your entire AI strategy is built around productivity, you're going to miss the moment. Her argument is that enterprise workflow transformation — not individual task optimization — is where the real value lives. IBM's own AI journey generated $4.5 billion in free cash flow and saved 22 million people hours over three years, but here is where they are different. LaMoreaux's point isn't to pocket the savings. It's to redeploy them. <strong>IBM is tripling entry-level hiring over the next three years precisely because they think freed-up human capacity should be pointed at growth, not just cost reduction</strong>. Sounds promising until you realize it will probably will be outsourcing everything. But I hope I'm wrong! <a href="https://hrexecutive.com/ibm-chro-focus-on-ai-productivity-at-your-own-risk/">Read More</a></p>
+
+<h3>Upwork Comes to ChatGPT</h3>
+<img src="/newsletters/april-18-2026-moviephone-moment/image4.png" alt="Upwork ChatGPT Integration" />
+<p>Wizehire did it for job seekers, now Upwork is doing it for the people doing the hiring. Their new ChatGPT integration lets businesses describe what they need, surface relevant freelance talent from Upwork's 18 million-person marketplace, and draft a job post without ever leaving the conversation. From there, Upwork's AI agent Uma picks up the handoff — scoping projects, generating contracts, getting work started. The throughline here is the same one we saw with Wizehire last week: if people are already starting their work conversations in AI chat, the platforms that show up inside that conversation win. <a href="https://investors.upwork.com/news-releases/news-release-details/upworks-work-marketplace-comes-chatgpt">Read More</a></p>
+
+<h3>Fountain Launches Cue</h3>
+<img src="/newsletters/april-18-2026-moviephone-moment/image5.png" alt="Fountain Cue" />
+<p>Fountain just drew a pretty clear line in the sand between what HR tech was and what it's becoming. Their new product, Cue, isn't a dashboard or an AI assistant layered on top of existing workflows — it's an autonomous agent that runs frontline hiring operations without anyone telling it to. Sourcing, screening, scheduling, shift gap detection, location performance flags — Cue executes, then reports back on what it already did. And the interface, a simple prompt box. Right to the point, I love it. Congrats Peter Eiseman and team. <a href="https://www.businesswire.com/news/home/20260414551881/en/Fountain-Launches-Cue-to-Run-Frontline-Hiring-and-Workforce-Operations">Read More</a></p>
+
+<h3>Workday and Achievers Launch AI-Powered Recognition</h3>
+<img src="/newsletters/april-18-2026-moviephone-moment/image6.png" alt="Workday Achievers Recognition" />
+<p>Workday and Achievers are bringing employee recognition and rewards natively into the Workday HCM experience, and wrapping AI around it to turn peer-to-peer shoutouts into actual workforce intelligence. The pitch is that every recognition moment now feeds a continuous picture of who's contributing what and which skills are making the biggest impact across the org — useful data that typically lives nowhere or gets buried in a separate engagement platform nobody logs into. <a href="https://newsroom.workday.com/2026-04-16-Workday-and-Achievers-Launch-AI-Powered-Recognition-and-Rewards-Solution-to-Boost-Employee-Engagement-and-Retention">Read More</a></p>
+
+<hr />
+
+<h2>📊 Research & Reports</h2>
+
+<h3>TA vs. AI: The Truth About AI Recruiting Mistakes</h3>
+<img src="/newsletters/april-18-2026-moviephone-moment/image7.png" alt="Lighthouse Research AI Recruiting" />
+<p>My friends at Lighthouse Research &amp; Advisory surveyed nearly 1,000 TA leaders about the implementation of AI in their hiring processes, and the results should make every vendor pause. Eight in ten employers said AI underperformed their expectations — but only 22% blamed the technology. The rest pointed squarely at themselves: misalignment with their recruiting operating model, lack of internal readiness, poor change management, and leadership expectations that had no business being set that high. As Ben Eubanks puts it, "AI isn't a light switch." Turns out most companies have been treating it like one. <a href="https://lhra.io/blog/ta-vs-ai-the-truth-about-ai-recruiting-mistakes/">Read More</a></p>
+
+<h3>BambooHR's State of Hiring 2026 — More Applicants, Fewer Hires</h3>
+<img src="/newsletters/april-18-2026-moviephone-moment/image8.png" alt="BambooHR State of Hiring 2026" />
+<p>BambooHR pulled five years of data from 72 million job applications and the headline is counterintuitive: the funnel is fuller than ever and nothing is coming out the other end. Applicants per posting nearly doubled since 2021 — from 46 to 95 — while the hiring rate dropped from 4.5% to 2.8% and completed hires fell more than 20%. Do we have a clog? <a href="https://www.bamboohr.com/resources/data-at-work/data-stories/state-of-hiring-2026">Read More</a></p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions 🤝</h2>
+
+<p><strong>Humanly acquires Anthill</strong> — Seattle-based Humanly, the AI hiring platform built for high-volume frontline environments, has acquired Chicago's Anthill — a post-hire engagement platform that helps frontline managers stay connected with deskless workers across messaging, feedback, and operational support. Congrats to Birch Faber and Prem Kumar on another acquisition. <a href="https://www.humanly.io/blog/humanly-acquires-anthill-ai-hiring-platform">Read More</a></p>
+
+<p><strong>TraqCheck closes $8M Series A</strong> — London and New Delhi-based TraqCheck closed an $8 million Series A led by IvyCap Ventures with IIFL Fintech Fund co-investing, to build what they're calling a Human Operating System — a suite of autonomous AI agents designed to replace enterprise hiring workflows rather than assist them. <a href="https://www.ptinews.com/press-release/iifl-fintech-fund-backs-traqchecks-8m-series-a-to-build-the-ai-infrastructure-layer-for-enterprise-hiring/3569548">Read More</a></p>
+
+<p><strong>Experian acquires Konfir</strong> — Experian acquires Konfir, a UK-based employment and income verification platform that combines open banking, payroll, and tax data to surface up to six years of employment history for employers, lenders, and landlords. <a href="https://www.fintechfutures.com/m-a/experian-bolsters-verification-capabilities-with-konfir-acquisition">Read More</a></p>
+
+<p><strong>Worki raises $2.75M pre-seed</strong> — San Francisco-based Worki closed a $2.75 million pre-seed round to build what they're calling an AI workforce infrastructure layer for healthcare. <a href="https://www.prnewswire.com/news-releases/worki-raises-2-75-million-to-build-the-ai-workforce-unifying-infrastructure-layer-for-healthcare-workforce-operations-302744105.html">Read More</a></p>
+
+<hr />
+
+<h2>🎙️ Podcasts</h2>
+
+<h3>How Acadia Healthcare uses Phenom to recruit talent and stay true to their mission</h3>
+<img src="/newsletters/april-18-2026-moviephone-moment/image9.png" alt="Totally Talent podcast - Acadia Healthcare" />
+<p>In this episode of Totally Talent (filmed at IAMPHENOM), I sat down for a quick discussion with Gareth Holdstock about how Acadia uses Phenom to build talent pipelines ahead of new facility openings, why speed to execution is the difference between a filled role and an empty one, and how leaning into a genuine sense of purpose — "we provide light in people's darkest moments" — has become their most effective recruiting tool. <a href="https://www.hr.com"><strong>Listen Now</strong></a></p>
+
+<hr />
+
+<h2>👉 Worth a Click</h2>
+<p><em>Interesting stories outside of HR</em></p>
+
+<h3>Burger King Is Hiring 60,000</h3>
+<img src="/newsletters/april-18-2026-moviephone-moment/image10.png" alt="Burger King Hiring 60,000" />
+<p>While white-collar workers are watching AI eat their calendars, someone's actually hiring. Burger King announced plans to bring on up to 60,000 workers across its roughly 6,500 U.S. locations — crew and management alike — off the back of its "Reclaim the Flame" turnaround. Frontline hiring is so hot, you might say it's flame-broiled. <a href="https://www.newsweek.com/burger-king-begins-huge-hiring-blitz-11787056">Read More</a></p>
+    `,
+  },
+  {
     slug: 'your-kids-will-compete-with-your-shadow',
     date: 'April 11, 2026',
     title: 'Your Kids Will Compete With Your Shadow',

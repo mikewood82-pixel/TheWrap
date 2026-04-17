@@ -9,12 +9,19 @@ const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/YcTLLzrHP1s'
 
 const latestEditions = [
   {
+    date: 'April 18, 2026',
+    title: 'HR Tech\'s Moviephone Moment',
+    excerpt: 'Once someone experiences hiring at scale without navigating a single workflow menu, the seventeen-step enterprise process starts to feel like a punishment.',
+    slug: 'hr-techs-moviephone-moment',
+    tag: 'AI & Future of Work',
+    image: '/newsletters/april-18-2026-moviephone-moment/image1.jpg',
+  },
+  {
     date: 'April 11, 2026',
     title: 'Your Kids Will Compete With Your Shadow',
     excerpt: 'The digital twin narrative sounds reasonable — until you follow it to its logical conclusion.',
     slug: 'your-kids-will-compete-with-your-shadow',
     tag: 'AI & Future of Work',
-    image: '/newsletters/april-11-2026/image1.jpg',
   },
   {
     date: 'April 3, 2026',
@@ -22,13 +29,6 @@ const latestEditions = [
     excerpt: 'Leadership standards in HR tech are shifting — and not always in the right direction.',
     slug: 'stop-expecting-more',
     tag: 'Leadership',
-  },
-  {
-    date: 'March 27, 2026',
-    title: 'When every demo looks the same, what are you actually buying?',
-    excerpt: 'The commoditization of HR tech demos is a real problem for buyers.',
-    slug: 'every-demo-looks-same',
-    tag: 'Buying',
   },
 ]
 
