@@ -6,7 +6,7 @@ import { classifyEmploymentType, classifyRemote, classifySeniority } from './sen
 // Docs: https://workable.readme.io/reference (public widget is unauth)
 type WkLoc = { city?: string; region?: string; country?: string; hidden?: boolean }
 type WkJob = {
-  id: string
+  id?: string
   shortcode: string
   title: string
   department?: string
@@ -63,7 +63,9 @@ export const workable: AtsConnector = {
       else if (workplace === 'hybrid') remote = 'hybrid'
       else if (workplace === 'on_site' || workplace === 'onsite') remote = 'onsite'
       return {
-        external_id: j.id,
+        // Current widget API returns only `shortcode`; `id` is kept as a
+        // fallback for older tenants that still emit it.
+        external_id: j.id ?? j.shortcode,
         vendor_slug: ref.vendor_slug,
         ats_source: 'workable',
         title: j.title,
