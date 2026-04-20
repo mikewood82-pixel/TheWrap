@@ -12,6 +12,8 @@ import AboutPage from './pages/AboutPage'
 import SponsorshipPage from './pages/SponsorshipPage'
 import ReferralPage from './pages/ReferralPage'
 import AssistantPage from './pages/AssistantPage'
+import JobsPage from './pages/JobsPage'
+import JobDetailPage from './pages/JobDetailPage'
 import { FEATURES } from './config/features'
 
 function App() {
@@ -40,6 +42,9 @@ function App() {
           <Route path="referral" element={<ReferralPage />} />
           <Route path="assistant" element={<AssistantPage />} />
           <Route path="labor-market" element={<LaborMarketPage />} />
+          <Route path="jobs" element={<JobsPage />} />
+          <Route path="jobs/:id/:slug" element={<JobDetailPage />} />
+          <Route path="jobs/:id" element={<JobDetailPage />} />
           <Route path="about" element={<AboutPage />} />
         </Route>
       </Routes>

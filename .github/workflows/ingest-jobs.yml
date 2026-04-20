@@ -1,0 +1,34 @@
+name: Ingest HR Tech jobs
+
+on:
+  schedule:
+    # Daily at 06:00 UTC (≈ 2am ET). Avoids the minute-0 spike.
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+    inputs:
+      site_url:
+        description: 'Site URL (default: production)'
+        required: false
+        default: 'https://ilovethewrap.com'
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install minimal deps
+        # We only need tsx + the packages the connectors rely on (stdlib only).
+        run: npm ci --no-audit --no-fund
+
+      - name: Run ingest
+        env:
+          SITE_URL: ${{ github.event.inputs.site_url || 'https://ilovethewrap.com' }}
+          JOBS_INGEST_TOKEN: ${{ secrets.JOBS_INGEST_TOKEN }}
+        run: npx tsx scripts/ingest-run.mjs

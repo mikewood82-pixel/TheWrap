@@ -7,6 +7,7 @@ import { FEATURES } from '../config/features'
 
 const baseLinks = [
   { to: '/newsletter',    label: 'Archive'       },
+  { to: '/jobs',          label: 'Jobs'          },
   { to: '/sponsorship',   label: 'Sponsorship'   },
   { to: '/labor-market',  label: 'Labor Market'  },
   { to: '/about',         label: 'About'         },
@@ -76,7 +77,7 @@ export default function Nav() {
               )
             ) : (
               <a
-                href="#subscribe"
+                href="/#subscribe"
                 className="bg-brand-terracotta text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-brand-orange transition-colors"
               >
                 Subscribe Free

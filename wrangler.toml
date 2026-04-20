@@ -5,3 +5,9 @@ pages_build_output_dir = "dist"
 binding = "DB"
 database_name = "the-wrap-subscribers"
 database_id = "a664386f-a2c0-46a7-909b-6ebb84ae1037"
+
+[[d1_databases]]
+binding = "JOBS_DB"
+database_name = "the-wrap-jobs"
+database_id = "f83af97f-0c1e-4dc5-ad71-01869e1400b0"
+migrations_dir = "migrations"
