@@ -7,6 +7,27 @@ interface Env {
   DEPLOY_SECRET: string
 }
 
+// Per-recipient email HTML wrapper. `recipient` is inlined into the unsubscribe
+// URL because Resend's {{email}} merge tag only works in Broadcasts, not /emails.
+function bodyHtmlFor(recipient: string, slug: string, html: string): string {
+  return `
+    <div style="font-family: Georgia, serif; max-width: 640px; margin: 0 auto; padding: 40px 20px; color: #1a1a1a;">
+      <a href="https://ilovethewrap.com" style="text-decoration: none;">
+        <img src="https://ilovethewrap.com/logo.png" alt="The Wrap" style="width: 60px; margin-bottom: 24px;" />
+      </a>
+      ${html}
+      <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid #eee; font-size: 12px; color: #999; text-align: center;">
+        <p>You're receiving this because you subscribed at <a href="https://ilovethewrap.com" style="color: #c0623a;">ilovethewrap.com</a></p>
+        <p>
+          <a href="https://ilovethewrap.com/newsletter/${slug}" style="color: #c0623a;">View in browser</a>
+          &nbsp;·&nbsp;
+          <a href="https://ilovethewrap.com/api/unsubscribe?email=${encodeURIComponent(recipient)}" style="color: #999;">Unsubscribe</a>
+        </p>
+      </div>
+    </div>
+  `
+}
+
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const secret = request.headers.get('x-deploy-secret')
   if (secret !== env.DEPLOY_SECRET) {
@@ -18,6 +39,36 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       slug: string
       subject: string
       html: string
+    }
+
+    // Dry-run: ?dry_run_to=email@example.com sends ONE test email and nothing
+    // else — skips the sent_newsletters check and skips recording. Use to
+    // validate formatting before Friday's real 2,362-recipient blast.
+    const url = new URL(request.url)
+    const dryRunTo = url.searchParams.get('dry_run_to')
+    if (dryRunTo) {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(dryRunTo)) {
+        return Response.json({ error: 'Invalid dry_run_to email' }, { status: 400 })
+      }
+      const testHtml = bodyHtmlFor(dryRunTo, slug, html)
+      const res = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'Mike Wood <mike@ilovethewrap.com>',
+          to: [dryRunTo],
+          subject: `[TEST] ${subject}`,
+          html: testHtml,
+        }),
+      })
+      if (!res.ok) {
+        const err = await res.text()
+        return Response.json({ error: 'Resend failed', detail: err }, { status: 502 })
+      }
+      return Response.json({ dry_run: true, sent_to: dryRunTo, subject: `[TEST] ${subject}` })
     }
 
     // Check if already sent
@@ -48,23 +99,6 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     const batchSize = 100
     let sent = 0
 
-    const bodyHtmlFor = (recipient: string) => `
-      <div style="font-family: Georgia, serif; max-width: 640px; margin: 0 auto; padding: 40px 20px; color: #1a1a1a;">
-        <a href="https://ilovethewrap.com" style="text-decoration: none;">
-          <img src="https://ilovethewrap.com/logo.png" alt="The Wrap" style="width: 60px; margin-bottom: 24px;" />
-        </a>
-        ${html}
-        <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid #eee; font-size: 12px; color: #999; text-align: center;">
-          <p>You're receiving this because you subscribed at <a href="https://ilovethewrap.com" style="color: #c0623a;">ilovethewrap.com</a></p>
-          <p>
-            <a href="https://ilovethewrap.com/newsletter/${slug}" style="color: #c0623a;">View in browser</a>
-            &nbsp;·&nbsp;
-            <a href="https://ilovethewrap.com/api/unsubscribe?email=${encodeURIComponent(recipient)}" style="color: #999;">Unsubscribe</a>
-          </p>
-        </div>
-      </div>
-    `
-
     for (let i = 0; i < results.length; i += batchSize) {
       const batch = results.slice(i, i + batchSize)
 
@@ -72,7 +106,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
         from: 'Mike Wood <mike@ilovethewrap.com>',
         to: [r.email],
         subject,
-        html: bodyHtmlFor(r.email),
+        html: bodyHtmlFor(r.email, slug, html),
       }))
 
       const res = await fetch('https://api.resend.com/emails/batch', {

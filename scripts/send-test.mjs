@@ -73,9 +73,12 @@ const res = await fetch(`${SITE_URL}/api/send-newsletter?dry_run_to=${encodeURIC
   },
   body: JSON.stringify({ slug, subject: title, html: body }),
 })
-const result = await res.json().catch(() => res.text())
+// Read body as text first, then try to parse JSON — you can't read a response
+// body twice, so the old `res.json().catch(res.text)` pattern was broken.
+const text = await res.text()
+let result; try { result = JSON.parse(text) } catch { result = text }
 if (!res.ok) {
-  console.error(`❌  ${res.status}:`, result)
+  console.error(`❌  ${res.status} ${res.statusText}:`, result)
   process.exit(1)
 }
-console.log('✓ ', JSON.stringify(result, null, 2))
+console.log('✓ ', typeof result === 'string' ? result : JSON.stringify(result, null, 2))
