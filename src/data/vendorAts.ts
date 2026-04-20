@@ -445,7 +445,7 @@ export const vendorAts: VendorAtsMapping[] = [
   },
   {
     "slug": "trakstar",
-    "name": "Trakstar",
+    "name": "Mitratech (Trakstar)",
     "ats": "greenhouse",
     "handle": "mitratech",
     "careers_url": "https://trakstar.com/careers",
