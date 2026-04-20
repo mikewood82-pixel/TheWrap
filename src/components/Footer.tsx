@@ -15,7 +15,7 @@ export default function Footer() {
               Your weekly source for HR Technology news, vendor intelligence, and labor market signals.
             </p>
             <a
-              href="#subscribe"
+              href="/#subscribe"
               className="inline-block bg-brand-terracotta text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-orange transition-colors"
             >
               Get the Newsletter
@@ -27,6 +27,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm">
               {[
                 ['/newsletter',  'Archive'],
+                ['/jobs',        'Jobs'],
                 ...(FEATURES.PLUS_ENABLED ? [['/vendors', 'Vendor Intel']] : []),
                 ['/labor-market', 'Labor Market'],
                 ['/about',       'About'],
