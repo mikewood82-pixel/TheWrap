@@ -4,14 +4,22 @@ import { classifyEmploymentType, classifyRemote, classifySeniority } from './sen
 // Workable — public Jobs widget endpoint.
 // Pattern: https://apply.workable.com/api/v1/widget/accounts/{handle}?limit=100&offset={n}
 // Docs: https://workable.readme.io/reference (public widget is unauth)
+type WkLoc = { city?: string; region?: string; country?: string; hidden?: boolean }
 type WkJob = {
   id: string
   shortcode: string
   title: string
-  state?: string
   department?: string
   department_hierarchy?: string[]
   employment_type?: string
+  // Current Workable widget returns location fields at the top level plus a
+  // `locations` array. The older nested `location` object is kept as a fallback
+  // in case some tenants still return that shape.
+  city?: string
+  state?: string
+  country?: string
+  telecommuting?: boolean
+  locations?: WkLoc[]
   location?: { city?: string; region?: string; country?: string; telecommuting?: boolean }
   workplace?: string
   published_on?: string
@@ -38,12 +46,20 @@ export const workable: AtsConnector = {
       if (page_jobs.length < limit) break
       offset += limit
     }
-    return all.filter(j => (j.state ?? 'published') === 'published').map((j): NormalizedJob => {
-      const cityRegion = [j.location?.city, j.location?.region, j.location?.country].filter(Boolean).join(', ')
+    // The public widget only returns published jobs, so no status filter is needed here.
+    return all.map((j): NormalizedJob => {
+      // Prefer top-level city/state/country (current API shape); fall back to
+      // locations[0] and then to the legacy nested `location` object.
+      const loc0 = j.locations?.[0]
+      const city    = j.city        ?? loc0?.city        ?? j.location?.city
+      const region  = j.state       ?? loc0?.region      ?? j.location?.region
+      const country = j.country     ?? loc0?.country     ?? j.location?.country
+      const cityRegion = [city, region, country].filter(Boolean).join(', ')
       const location = cityRegion || null
+      const telecommuting = j.telecommuting ?? j.location?.telecommuting ?? false
       const workplace = (j.workplace ?? '').toLowerCase()
       let remote = classifyRemote(location, j.title)
-      if (j.location?.telecommuting || workplace === 'remote') remote = 'remote'
+      if (telecommuting || workplace === 'remote') remote = 'remote'
       else if (workplace === 'hybrid') remote = 'hybrid'
       else if (workplace === 'on_site' || workplace === 'onsite') remote = 'onsite'
       return {

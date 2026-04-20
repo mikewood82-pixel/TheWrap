@@ -348,7 +348,7 @@ export const vendorAts: VendorAtsMapping[] = [
     "slug": "remote",
     "name": "Remote",
     "ats": "greenhouse",
-    "handle": "twinhealth",
+    "handle": "remotecom",
     "careers_url": "https://remote.com/careers",
     "discovery_source": "sniff",
     "discovery_job_count": 21
