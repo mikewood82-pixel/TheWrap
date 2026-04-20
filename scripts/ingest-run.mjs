@@ -24,7 +24,9 @@ const JOBS_INGEST_TOKEN = process.env.JOBS_INGEST_TOKEN
 if (!SITE_URL)          { console.error('SITE_URL env required'); process.exit(1) }
 if (!JOBS_INGEST_TOKEN) { console.error('JOBS_INGEST_TOKEN env required'); process.exit(1) }
 
-const BATCH_SIZE = 100
+// Smaller batches avoid Pages Function CPU / payload limits when Greenhouse
+// descriptions are large and FTS triggers amplify writes on re-ingest.
+const BATCH_SIZE = 25
 const run_id = `run_${Date.now()}`
 const started_at = new Date().toISOString()
 
@@ -52,19 +54,28 @@ async function loadConnectors() {
 }
 
 async function post(body) {
-  const r = await fetch(`${SITE_URL}/api/jobs/ingest`, {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      authorization: `Bearer ${JOBS_INGEST_TOKEN}`,
-    },
-    body: JSON.stringify(body),
-  })
-  if (!r.ok) {
+  const payload = JSON.stringify(body)
+  // Retry once on 5xx — Cloudflare Workers occasionally throw transient
+  // exceptions under CPU pressure. A single backoff usually clears it.
+  let lastErr
+  for (let attempt = 0; attempt < 2; attempt++) {
+    if (attempt > 0) await new Promise(r => setTimeout(r, 2000))
+    const r = await fetch(`${SITE_URL}/api/jobs/ingest`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${JOBS_INGEST_TOKEN}`,
+      },
+      body: payload,
+    })
+    if (r.ok) return r.json()
     const text = await r.text().catch(() => '')
-    throw new Error(`ingest ${r.status}: ${text.slice(0, 500)}`)
+    lastErr = new Error(`ingest ${r.status}: ${text.slice(0, 500)}`)
+    // Only retry server errors; 4xx means the payload is wrong and won't improve.
+    if (r.status < 500) break
+    console.log(`  ! ingest ${r.status}, retrying in 2s...`)
   }
-  return r.json()
+  throw lastErr
 }
 
 function chunk(arr, size) {
