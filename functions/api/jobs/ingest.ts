@@ -119,12 +119,14 @@ async function handleFinalize(
   body: Extract<Body, { action: 'finalize' }>,
 ): Promise<Response> {
   // Close jobs in the scoped vendors that weren't touched this run.
+  // Both sides wrapped in datetime() so ISO ("2026-04-20T17:43:53.459Z") from
+  // Node and SQLite's "2026-04-20 17:43:53" shape compare correctly.
   if (!body.vendor_slugs.length) return Response.json({ ok: true, closed: 0 })
   const placeholders = body.vendor_slugs.map(() => '?').join(',')
   const sql = `UPDATE jobs SET status = 'closed'
                WHERE status = 'open'
                  AND vendor_slug IN (${placeholders})
-                 AND last_seen_at < ?`
+                 AND datetime(last_seen_at) < datetime(?)`
   const stmt = db.prepare(sql).bind(...body.vendor_slugs, body.started_at)
   const res = await stmt.run()
 
