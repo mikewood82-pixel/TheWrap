@@ -27,6 +27,10 @@ if (!JOBS_INGEST_TOKEN) { console.error('JOBS_INGEST_TOKEN env required'); proce
 // Smaller batches avoid Pages Function CPU / payload limits when Greenhouse
 // descriptions are large and FTS triggers amplify writes on re-ingest.
 const BATCH_SIZE = 25
+// Cap each job description so a handful of HTML-heavy Greenhouse posts can't
+// push a batch over Cloudflare's 1 MB worker request-body limit. 30 KB is
+// plenty for readable job copy; anything longer is boilerplate anyway.
+const MAX_DESC_CHARS = 30_000
 const run_id = `run_${Date.now()}`
 const started_at = new Date().toISOString()
 
@@ -121,6 +125,16 @@ async function main() {
     }
   })
 
+  // Truncate each description_html once up front so every batch is bounded.
+  let truncated = 0
+  for (const j of pendingJobs) {
+    if (j.description_html && j.description_html.length > MAX_DESC_CHARS) {
+      j.description_html = j.description_html.slice(0, MAX_DESC_CHARS)
+      truncated++
+    }
+  }
+  if (truncated) console.log(`truncated description_html on ${truncated} job(s) to ${MAX_DESC_CHARS} chars`)
+
   console.log(`\nposting ${pendingJobs.length} jobs in chunks of ${BATCH_SIZE}`)
   const batches = chunk(pendingJobs, BATCH_SIZE)
   for (let i = 0; i < batches.length; i++) {
@@ -131,9 +145,10 @@ async function main() {
     }
     // Include vendor_ats on the first batch only.
     if (i === 0) payload.vendor_ats = vendor_ats
+    const sizeKB = (JSON.stringify(payload).length / 1024).toFixed(0)
     const r = await post(payload)
     totalJobs += r.upserted ?? 0
-    console.log(`  batch ${i + 1}/${batches.length} upserted=${r.upserted}`)
+    console.log(`  batch ${i + 1}/${batches.length} size=${sizeKB}KB upserted=${r.upserted}`)
   }
 
   // Finalize: close jobs we didn't see this run.
