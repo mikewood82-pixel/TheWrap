@@ -28,6 +28,10 @@ export default function JobCard({ job }: { job: JobListItem }) {
   const slug = job.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80)
   const href = `/jobs/${job.id}/${slug}`
 
+  // Some ATSes (e.g. Greenhouse at Gusto) return multi-site locations joined
+  // by semicolons. Show the first and a "+N more" hint so the card stays tight.
+  const locationLabel = formatLocation(job.location)
+
   return (
     <Link
       to={href}
@@ -44,10 +48,10 @@ export default function JobCard({ job }: { job: JobListItem }) {
             </p>
           )}
           <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-xs text-brand-muted">
-            {job.location && (
+            {locationLabel && (
               <span className="flex items-center gap-1">
                 <MapPin size={12} />
-                {job.location}
+                {locationLabel}
               </span>
             )}
             {job.department && (
@@ -64,6 +68,13 @@ export default function JobCard({ job }: { job: JobListItem }) {
       </div>
     </Link>
   )
+}
+
+function formatLocation(raw: string | null): string | null {
+  if (!raw) return null
+  const parts = raw.split(';').map(s => s.trim()).filter(Boolean)
+  if (parts.length <= 1) return parts[0] ?? null
+  return `${parts[0]} +${parts.length - 1} more`
 }
 
 function RemotePill({ v }: { v: string }) {

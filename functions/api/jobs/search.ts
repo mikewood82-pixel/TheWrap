@@ -67,7 +67,10 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
     binds.push(`%${location.toLowerCase()}%`)
   }
   if (postedSince > 0) {
-    where.push(`jobs.posted_at >= datetime('now', ?)`)
+    // Fall back to first_seen_at when the ATS doesn't provide posted_at —
+    // matches the ORDER BY below so "past N days" doesn't silently drop
+    // fresh ingests that happen to have no source-provided posted date.
+    where.push(`COALESCE(jobs.posted_at, jobs.first_seen_at) >= datetime('now', ?)`)
     binds.push(`-${postedSince} days`)
   }
 
