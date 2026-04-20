@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { ArrowLeft, ExternalLink, MapPin, Briefcase } from 'lucide-react'
 import SEO from '../components/SEO'
+import { RoleAgeBadge } from '../components/jobs/JobCard'
 
 type Job = {
   id: number
@@ -100,12 +101,13 @@ export default function JobDetailPage() {
         </Link>
       )}
 
-      <div className="flex flex-wrap gap-x-4 gap-y-1 mt-4 text-sm text-brand-muted">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 text-sm text-brand-muted">
         {job.location && <span className="flex items-center gap-1"><MapPin size={14} />{job.location}</span>}
         {job.department && <span className="flex items-center gap-1"><Briefcase size={14} />{job.department}</span>}
         {job.remote !== 'unknown' && <span className="capitalize">· {job.remote}</span>}
         {job.seniority !== 'unknown' && <span className="capitalize">· {job.seniority}</span>}
         {job.employment_type && <span>· {job.employment_type.replace(/_/g, ' ')}</span>}
+        <RoleAgeBadge firstSeenAt={job.first_seen_at} postedAt={job.posted_at} />
       </div>
 
       <a

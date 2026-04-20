@@ -17,14 +17,6 @@ export type JobListItem = {
 }
 
 export default function JobCard({ job }: { job: JobListItem }) {
-  const posted = job.posted_at ?? job.first_seen_at
-  const daysAgo = Math.max(0, Math.floor((Date.now() - new Date(posted).getTime()) / 86_400_000))
-  const timeLabel =
-    daysAgo === 0 ? 'today' :
-    daysAgo === 1 ? '1 day ago' :
-    daysAgo < 30 ? `${daysAgo} days ago` :
-    `${Math.floor(daysAgo / 30)} mo ago`
-
   const slug = job.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 80)
   const href = `/jobs/${job.id}/${slug}`
 
@@ -64,10 +56,51 @@ export default function JobCard({ job }: { job: JobListItem }) {
             {job.seniority && job.seniority !== 'unknown' && <span className="capitalize">{job.seniority}</span>}
           </div>
         </div>
-        <span className="text-xs text-brand-muted shrink-0">{timeLabel}</span>
+        <RoleAgeBadge firstSeenAt={job.first_seen_at} postedAt={job.posted_at} />
       </div>
     </Link>
   )
+}
+
+// Visible signal for how long a role has been open. "Open" is measured from
+// the earliest of posted_at and first_seen_at so stale ATS postings we've only
+// just started tracking still surface as stale, not fresh.
+//
+//   < 7 days   → no badge (fresh; informational clutter)
+//   7 - 30 d   → muted "Posted Nd ago"
+//   31 - 60 d  → amber pill "Nd old"
+//   > 60 d     → red pill "Open 60+ days"
+export function RoleAgeBadge({
+  firstSeenAt,
+  postedAt,
+}: {
+  firstSeenAt: string
+  postedAt: string | null
+}) {
+  const days = daysOpen(firstSeenAt, postedAt)
+  if (days < 7) return null
+  if (days <= 30) {
+    return <span className="text-xs text-brand-muted shrink-0">Posted {days}d ago</span>
+  }
+  if (days <= 60) {
+    return (
+      <span className="text-[10px] font-semibold bg-amber-50 text-amber-800 border border-amber-200 rounded-full px-2 py-0.5 shrink-0">
+        {days}d old
+      </span>
+    )
+  }
+  return (
+    <span className="text-[10px] font-semibold bg-red-50 text-red-700 border border-red-200 rounded-full px-2 py-0.5 shrink-0">
+      Open 60+ days
+    </span>
+  )
+}
+
+export function daysOpen(firstSeenAt: string, postedAt: string | null): number {
+  const fs = new Date(firstSeenAt).getTime()
+  const pa = postedAt ? new Date(postedAt).getTime() : NaN
+  const earliest = Number.isNaN(pa) ? fs : Math.min(fs, pa)
+  return Math.max(0, Math.floor((Date.now() - earliest) / 86_400_000))
 }
 
 function formatLocation(raw: string | null): string | null {

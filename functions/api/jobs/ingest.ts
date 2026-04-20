@@ -123,17 +123,73 @@ async function handleFinalize(
   // Node and SQLite's "2026-04-20 17:43:53" shape compare correctly.
   if (!body.vendor_slugs.length) return Response.json({ ok: true, closed: 0 })
   const placeholders = body.vendor_slugs.map(() => '?').join(',')
-  const sql = `UPDATE jobs SET status = 'closed'
-               WHERE status = 'open'
-                 AND vendor_slug IN (${placeholders})
-                 AND datetime(last_seen_at) < datetime(?)`
-  const stmt = db.prepare(sql).bind(...body.vendor_slugs, body.started_at)
-  const res = await stmt.run()
+
+  // Pin every date window in this run to the day of started_at so a run that
+  // straddles midnight UTC still bookkeeps into a single consistent snapshot
+  // date. started_at shape: "2026-04-20T17:43:53.459Z" → snapshotDate="2026-04-20".
+  const snapshotDate = body.started_at.slice(0, 10)
+
+  // Count jobs about to be closed per vendor BEFORE the UPDATE — after the
+  // UPDATE there's no way to tell "closed today" from "closed on a prior run".
+  const { results: willCloseRows } = await db.prepare(
+    `SELECT vendor_slug, COUNT(*) AS n
+       FROM jobs
+      WHERE status = 'open'
+        AND vendor_slug IN (${placeholders})
+        AND datetime(last_seen_at) < datetime(?)
+      GROUP BY vendor_slug`
+  ).bind(...body.vendor_slugs, body.started_at).all<{ vendor_slug: string; n: number }>()
+  const closedByVendor = new Map<string, number>(
+    (willCloseRows ?? []).map(r => [r.vendor_slug, r.n]),
+  )
+
+  // Now close the stale rows.
+  const updateRes = await db.prepare(
+    `UPDATE jobs SET status = 'closed'
+     WHERE status = 'open'
+       AND vendor_slug IN (${placeholders})
+       AND datetime(last_seen_at) < datetime(?)`
+  ).bind(...body.vendor_slugs, body.started_at).run()
+
+  // Post-close, roll up open_jobs and jobs_added (first seen today) per vendor.
+  const { results: snapRows } = await db.prepare(
+    `SELECT vendor_slug,
+            SUM(CASE WHEN status = 'open' THEN 1 ELSE 0 END) AS open_jobs,
+            SUM(CASE WHEN date(first_seen_at) = ? THEN 1 ELSE 0 END) AS jobs_added
+       FROM jobs
+      WHERE vendor_slug IN (${placeholders})
+      GROUP BY vendor_slug`
+  ).bind(snapshotDate, ...body.vendor_slugs).all<{
+    vendor_slug: string; open_jobs: number; jobs_added: number
+  }>()
+
+  // UPSERT one snapshot row per vendor for today. Idempotent under retries.
+  const snapSql = `INSERT INTO vendor_snapshots
+      (vendor_slug, snapshot_date, open_jobs, jobs_added, jobs_closed)
+    VALUES (?, ?, ?, ?, ?)
+    ON CONFLICT(vendor_slug, snapshot_date) DO UPDATE SET
+      open_jobs  = excluded.open_jobs,
+      jobs_added = excluded.jobs_added,
+      jobs_closed = excluded.jobs_closed`
+  const snapStmts = (snapRows ?? []).map(row => db.prepare(snapSql).bind(
+    row.vendor_slug,
+    snapshotDate,
+    row.open_jobs ?? 0,
+    row.jobs_added ?? 0,
+    closedByVendor.get(row.vendor_slug) ?? 0,
+  ))
+  if (snapStmts.length) {
+    try { await db.batch(snapStmts) }
+    catch (e) {
+      // Don't let a snapshot failure mask the finalize result — log and continue.
+      console.error(`vendor_snapshots batch failed: ${String(e)}`)
+    }
+  }
 
   await db.prepare(
     `INSERT INTO ingest_runs (started_at, finished_at, vendors_ok, jobs_closed)
      VALUES (?, datetime('now'), ?, ?)`
-  ).bind(body.started_at, body.vendor_slugs.length, res.meta.changes ?? 0).run()
+  ).bind(body.started_at, body.vendor_slugs.length, updateRes.meta.changes ?? 0).run()
 
-  return Response.json({ ok: true, closed: res.meta.changes ?? 0 })
+  return Response.json({ ok: true, closed: updateRes.meta.changes ?? 0 })
 }
