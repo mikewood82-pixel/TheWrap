@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Play, BarChart2, TrendingUp } from 'lucide-react'
+import { ArrowRight, Play, BarChart2, TrendingUp, Briefcase } from 'lucide-react'
 import { FEATURES } from '../config/features'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SEO from '../components/SEO'
+import JobCard, { type JobListItem } from '../components/jobs/JobCard'
 
 // Swap this URL out when the latest episode is ready
 const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/Agw6lq-_qFY'
@@ -42,6 +43,28 @@ const featuredVendors = [
 export default function HomePage() {
   const [email, setEmail] = useState('')
   const [subState, setSubState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  // Live preview of the 6 most recent HR tech jobs. Silently hides on fetch
+  // error so a transient API hiccup can't break the home page.
+  const [jobsPreview, setJobsPreview] = useState<JobListItem[]>([])
+  const [jobsTotal, setJobsTotal] = useState<number | null>(null)
+  const [jobsLoading, setJobsLoading] = useState(true)
+
+  useEffect(() => {
+    const ctrl = new AbortController()
+    fetch('/api/jobs/search?per_page=6', { signal: ctrl.signal })
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then((d: { jobs: JobListItem[]; total: number }) => {
+        setJobsPreview(d.jobs)
+        setJobsTotal(d.total)
+        setJobsLoading(false)
+      })
+      .catch(e => {
+        if ((e as Error).name === 'AbortError') return
+        setJobsLoading(false)
+      })
+    return () => ctrl.abort()
+  }, [])
 
   async function handleSubscribe(e: React.FormEvent) {
     e.preventDefault()
@@ -181,6 +204,41 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* HR Tech Jobs preview — live data from /api/jobs/search */}
+      <section className="border-b border-brand-border">
+        <div className="max-w-6xl mx-auto px-4 py-12">
+          <div className="flex items-center justify-between mb-6 gap-4">
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 mb-1">
+                <Briefcase size={16} className="text-brand-terracotta" />
+                <h2 className="font-serif text-2xl font-bold text-brand-dark">HR Tech Jobs</h2>
+              </div>
+              <p className="text-sm text-brand-muted">
+                Open roles at the HR tech vendors we track, refreshed daily from each company's ATS.
+              </p>
+            </div>
+            <Link
+              to="/jobs"
+              className="text-sm font-semibold text-brand-terracotta hover:underline flex items-center gap-1 whitespace-nowrap shrink-0"
+            >
+              View all{jobsTotal ? ` ${jobsTotal.toLocaleString()}` : ''} <ArrowRight size={14} />
+            </Link>
+          </div>
+
+          {jobsLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="bg-white border border-brand-border rounded-lg h-[92px] animate-pulse" />
+              ))}
+            </div>
+          ) : jobsPreview.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {jobsPreview.map(j => <JobCard key={j.id} job={j} />)}
+            </div>
+          ) : null}
         </div>
       </section>
 
