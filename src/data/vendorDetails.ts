@@ -43,7 +43,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'Salesforce', 'ServiceNow', 'Microsoft Teams', 'Okta', 'ADP'],
     news: [
-      { headline: 'Workday launches AI-powered Skills Cloud to match employees with internal mobility opportunities', date: 'Jan 2026', source: 'Workday Newsroom' },
+      { headline: 'Co-founder Aneel Bhusri returns as Workday CEO as Carl Eschenbach steps down amid steep share decline', date: 'Feb 2026', source: 'CNBC' },
       { headline: 'Workday expands Illuminate AI assistant across HCM, Finance, and Analytics modules', date: 'Mar 2026', source: 'Workday Newsroom' },
       { headline: 'Workday reports Q4 FY2026 revenue of $2.35B, driven by subscription growth in EMEA', date: 'Feb 2026', source: 'Workday Investor Relations' },
     ],
@@ -54,7 +54,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
       keySignals: [
         'FY2026 revenue $8.4B, up 17% YoY',
         'Expanding AI portfolio with Workday Illuminate',
-        'Stable executive leadership under CEO Carl Eschenbach',
+        'Co-founder Aneel Bhusri returned as CEO in Feb 2026; shares down ~40% YoY',
       ],
     },
     supportQuality: {
@@ -176,7 +176,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Microsoft Teams', 'Salesforce', 'ADP', 'ServiceNow', 'Workato', 'Kronos (legacy)'],
     news: [
       { headline: 'UKG Pro integrates Great Place To Work culture data directly into its HCM dashboard', date: 'Feb 2026', source: 'UKG Newsroom' },
-      { headline: 'UKG announces UKG Bryte AI enhancements for proactive burnout detection in frontline workers', date: 'Jan 2026', source: 'UKG Newsroom' },
+      { headline: 'UKG cuts 950 jobs — 6% of workforce — as AI-driven restructuring hits frontline and Canadian staff', date: 'Apr 2026', source: 'HR Executive' },
       { headline: 'UKG acquires workforce analytics firm Immedis to strengthen global payroll intelligence', date: 'Mar 2026', source: 'Business Wire' },
     ],
     financialHealth: {
@@ -262,7 +262,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['SAP S/4HANA', 'Microsoft Teams', 'Concur', 'Qualtrics', 'ServiceNow', 'Okta'],
     news: [
       { headline: 'SAP SuccessFactors embeds Joule AI copilot across all HCM modules for real-time HR guidance', date: 'Feb 2026', source: 'SAP Newsroom' },
-      { headline: 'SAP SuccessFactors wins HR Tech Platinum Award for Best Global HCM Suite for fifth consecutive year', date: 'Oct 2025', source: 'HR Technology Conference' },
+      { headline: 'SAP SuccessFactors 1H 2026 release expands agentic AI suite-wide and adds EU pay transparency reporting tools', date: 'Apr 2026', source: 'SAP News Center' },
       { headline: 'SAP SuccessFactors expands payroll localisation to 17 new countries including Vietnam and Nigeria', date: 'Jan 2026', source: 'SAP Newsroom' },
     ],
     financialHealth: {
@@ -353,13 +353,13 @@ export const vendorDetails: Record<string, VendorDetail> = {
       { headline: 'Canadian federal government awards Dayforce $350M contract to replace troubled Phoenix payroll system', date: 'Apr 2026', source: 'Globe and Mail' },
     ],
     financialHealth: {
-      fundingStage: 'Public (NYSE: DAY)',
+      fundingStage: 'Private (PE: Thoma Bravo — acquired Feb 2026, $12.3B)',
       headcountTrend: '+7% YoY',
       acquisitionRisk: 'Low',
       keySignals: [
-        'Rebranded from Ceridian to Dayforce in 2024 — all-in on single platform identity',
-        'Cloud revenue $1.2B, up 22% YoY',
-        'Aggressively expanding global payroll capabilities',
+        'Taken private by Thoma Bravo in Feb 2026 for $12.3B — delisted from NYSE and TSX',
+        'Cloud revenue $1.2B, up 22% YoY at time of acquisition',
+        'Aggressively expanding global payroll capabilities under PE ownership',
       ],
     },
     supportQuality: {
@@ -1911,7 +1911,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Workday', 'SAP SuccessFactors', 'Microsoft Teams', 'Salesforce', 'Degreed', 'Okta'],
     news: [
       { headline: 'Cornerstone OnDemand launches Cornerstone Galaxy AI platform for personalised skills-based learning paths', date: 'Feb 2026', source: 'Cornerstone Newsroom' },
-      { headline: 'Cornerstone acquires SumTotal Systems to consolidate global talent management market share', date: 'Jan 2026', source: 'Business Wire' },
+      { headline: 'Cornerstone announces global Connect Tour kicking off May 20 in New York City across 15+ cities', date: 'Apr 2026', source: 'Cornerstone Newsroom' },
       { headline: 'Cornerstone reports 40M active learners on platform as compliance training adoption grows post-regulation', date: 'Mar 2026', source: 'Cornerstone Newsroom' },
     ],
   },
@@ -1932,7 +1932,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Salesforce', 'Microsoft Teams', 'Slack', 'Workday', 'Cornerstone', 'Zoom'],
     news: [
-      { headline: 'Docebo launches Shape AI to generate course content from PDFs, videos, and web pages in minutes', date: 'Jan 2026', source: 'Docebo Newsroom' },
+      { headline: 'Docebo April 2026 release ships AI browser sidepanel and MCP integration for in-workflow learning access', date: 'Apr 2026', source: 'Docebo' },
       { headline: 'Docebo reaches 3,600 customers after strong growth in customer training and partner enablement use cases', date: 'Feb 2026', source: 'Docebo Blog' },
       { headline: 'Docebo adds gamification engine with leaderboards and badges to boost learner completion rates', date: 'Mar 2026', source: 'Docebo Newsroom' },
     ],

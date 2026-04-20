@@ -1,12 +1,11 @@
 const headlines = [
-  { text: 'Findem acquires Glider AI · end-to-end autonomous AI hiring platform', url: 'https://news.crunchbase.com/venture/ai-hr-software-startup-funding-ma/' },
-  { text: 'Alex raises $20M Series A · Peak XV backs AI recruiting startup', url: 'https://hrtechfeed.com/ai-powered-recruiting-startup-lands-20-million/' },
-  { text: 'Payoneer buys Boundless · Remote buys Atlas · EOR consolidation accelerates', url: 'https://www.unleash.ai/hr-technology/the-five-2026-hr-tech-acquisitions-that-put-hr-buyers-in-a-strong-position/' },
+  { text: 'UKG cuts 950 jobs — 6% of workforce — amid AI restructuring', url: 'https://hrexecutive.com/ukg-cuts-950-jobs-in-latest-round-of-restructuring/' },
+  { text: 'SAP SuccessFactors 1H 2026 release expands agentic AI suite-wide', url: 'https://news.sap.com/2026/04/sap-successfactors-1h-2026-release/' },
   { text: 'Workday Sana AI agents launch · agentic new front door to enterprise work', url: 'https://hrexecutive.com/what-workdays-biggest-agent-launch-means-for-hr-leaders/' },
-  { text: 'Recruiting platforms lead 2026 HR tech budgets · top priority for CHROs', url: 'https://hrexecutive.com/recruiting-platforms-get-hr-tech-budget-priority-for-2026-plus-people-move-news/' },
-  { text: 'Enterprise learning market in fast AI transformation · Bersin analysis', url: 'https://joshbersin.com/2026/02/the-enterprise-learning-tech-market-quickly-transforms-around-ai/' },
-  { text: 'U.S. adds 178K jobs in March · unemployment holds at 4.3%', url: 'https://www.npr.org/2026/04/03/nx-s1-5772696/jobs-employment-economy-labor-market' },
+  { text: 'Findem acquires Glider AI · end-to-end autonomous AI hiring platform', url: 'https://news.crunchbase.com/venture/ai-hr-software-startup-funding-ma/' },
   { text: 'EU AI Act bias audits for AI hiring tools · mandatory from August 2026', url: 'https://www.technewsworld.com/story/hrs-2026-playbook-signals-a-human-centric-tech-reset-180063.html' },
+  { text: 'U.S. adds 178K jobs in March · unemployment holds at 4.3%', url: 'https://www.npr.org/2026/04/03/nx-s1-5772696/jobs-employment-economy-labor-market' },
+  { text: 'Recruiting platforms lead 2026 HR tech budgets · top priority for CHROs', url: 'https://hrexecutive.com/recruiting-platforms-get-hr-tech-budget-priority-for-2026-plus-people-move-news/' },
 ]
 
 export default function NewsTicker() {
