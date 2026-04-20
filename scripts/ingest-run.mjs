@@ -31,7 +31,10 @@ const started_at = new Date().toISOString()
 // ---------- load vendor-ATS mapping from TS file (no bundler) ----------
 function loadVendorAts() {
   const src = readFileSync(path.join(ROOT, 'src/data/vendorAts.ts'), 'utf8')
-  const start = src.indexOf('[')
+  // Anchor on `= [` to skip past the `VendorAtsMapping[]` type annotation.
+  const eq = src.indexOf('= [')
+  if (eq < 0) throw new Error('vendorAts.ts: could not find "= [" (assignment)')
+  const start = src.indexOf('[', eq)
   let depth = 0, end = start
   for (let i = start; i < src.length; i++) {
     const ch = src[i]
