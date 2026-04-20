@@ -10,6 +10,7 @@
  * If it's already been sent (tracked in D1), the send step is skipped automatically.
  */
 
+import './load-env.mjs'
 import { execSync } from 'child_process'
 import { readFileSync } from 'fs'
 import { resolve, dirname } from 'path'
@@ -19,8 +20,12 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = resolve(__dirname, '..')
 const skipSend = process.argv.includes('--no-send')
 
-const DEPLOY_SECRET = '886ca2390c247983019eb931005595d59861c3603c63a6a45bfc2a7372014cbe'
-const SITE_URL = 'https://ilovethewrap.com'
+const DEPLOY_SECRET = process.env.DEPLOY_SECRET
+if (!DEPLOY_SECRET) {
+  console.error('❌  DEPLOY_SECRET is not set. Put it in .env (gitignored) or export it in your shell.')
+  process.exit(1)
+}
+const SITE_URL = process.env.SITE_URL ?? 'https://ilovethewrap.com'
 
 // ─── 1. Extract latest newsletter from source ─────────────────────────────────
 
