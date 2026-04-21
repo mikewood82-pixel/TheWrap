@@ -1,4 +1,4 @@
-name: Ingest HR Tech voices
+name: Refresh HR Tech voices
 
 on:
   schedule:
@@ -13,22 +13,26 @@ on:
         default: 'https://ilovethewrap.com'
 
 jobs:
-  ingest:
+  refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install minimal deps
-        run: npm ci --no-audit --no-fund
-
-      - name: Run voices ingest
+      - name: POST /api/voices/refresh
         env:
           SITE_URL: ${{ github.event.inputs.site_url || 'https://ilovethewrap.com' }}
           VOICES_INGEST_TOKEN: ${{ secrets.VOICES_INGEST_TOKEN }}
-        run: node scripts/voices-ingest.mjs
+        run: |
+          if [ -z "$VOICES_INGEST_TOKEN" ]; then
+            echo "::error::VOICES_INGEST_TOKEN secret not set"; exit 1
+          fi
+          echo "POSTing ${SITE_URL}/api/voices/refresh"
+          HTTP_CODE=$(curl -s -o /tmp/refresh.out -w "%{http_code}" \
+            --max-time 120 \
+            -X POST "${SITE_URL}/api/voices/refresh" \
+            -H "Authorization: Bearer ${VOICES_INGEST_TOKEN}")
+          echo "Response ($HTTP_CODE):"
+          cat /tmp/refresh.out || true
+          echo
+          if [ "$HTTP_CODE" -lt 200 ] || [ "$HTTP_CODE" -ge 300 ]; then
+            echo "::error::refresh returned ${HTTP_CODE}"; exit 1
+          fi
