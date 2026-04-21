@@ -83,9 +83,9 @@ async function handleUpsertSources(
 ): Promise<Response> {
   if (!body.sources.length) return Response.json({ ok: true, upserted: 0 })
 
-  const sql = `INSERT INTO voices_sources
-      (slug, name, kind, site_url, feed_url, feed_kind, avatar_url, description, updated_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))
+  const upsertSql = `INSERT INTO voices_sources
+      (slug, name, kind, site_url, feed_url, feed_kind, avatar_url, description, active, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, datetime('now'))
     ON CONFLICT(slug) DO UPDATE SET
       name        = excluded.name,
       kind        = excluded.kind,
@@ -94,11 +94,22 @@ async function handleUpsertSources(
       feed_kind   = excluded.feed_kind,
       avatar_url  = excluded.avatar_url,
       description = excluded.description,
+      active      = 1,
       updated_at  = datetime('now')`
 
-  const stmts = body.sources.map(s => db.prepare(sql).bind(
+  const stmts: D1PreparedStatement[] = body.sources.map(s => db.prepare(upsertSql).bind(
     s.slug, s.name, s.kind, s.site_url, s.feed_url, s.feed_kind, s.avatar_url, s.description,
   ))
+
+  // Deactivate sources no longer in the seed. Soft-delete preserves their
+  // items (in case the slug gets re-added later) while hiding them from the
+  // public feed/directory immediately.
+  const slugs = body.sources.map(s => s.slug)
+  const placeholders = slugs.map(() => '?').join(',')
+  stmts.push(db.prepare(
+    `UPDATE voices_sources SET active = 0, updated_at = datetime('now')
+      WHERE active = 1 AND slug NOT IN (${placeholders})`
+  ).bind(...slugs))
 
   try { await db.batch(stmts) }
   catch (e) { return new Response(`sources batch failed: ${String(e)}`, { status: 500 }) }
