@@ -7,6 +7,10 @@
 //   seniority       comma-separated: entry,mid,senior,lead,exec
 //   location        substring match on location (case-insensitive)
 //   posted_since    integer days — e.g. 7 for "past week"
+//   fresh_hours     integer hours — e.g. 24 for "added in the last 24h on OUR board".
+//                   Filters on first_seen_at rather than posted_at so truly new
+//                   arrivals don't get hidden by upstream-ATS publish dates.
+//                   Backs the Wrap+ Early-bird feed on /jobs.
 //   page            1-indexed, default 1
 //   per_page        default 20, max 100
 //   sort            posted_desc (default) | posted_asc
@@ -38,6 +42,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
   const seniority  = splitCsv(qs.get('seniority'))
   const location   = qs.get('location')?.trim() ?? ''
   const postedSince = parseInt(qs.get('posted_since') ?? '', 10) || 0
+  const freshHours = Math.max(0, parseInt(qs.get('fresh_hours') ?? '', 10) || 0)
   const sort = qs.get('sort') === 'posted_asc' ? 'ASC' : 'DESC'
   const page = Math.max(1, parseInt(qs.get('page') ?? '1', 10) || 1)
   const perPage = Math.min(100, Math.max(1, parseInt(qs.get('per_page') ?? '20', 10) || 20))
@@ -72,6 +77,13 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
     // fresh ingests that happen to have no source-provided posted date.
     where.push(`COALESCE(jobs.posted_at, jobs.first_seen_at) >= datetime('now', ?)`)
     binds.push(`-${postedSince} days`)
+  }
+  if (freshHours > 0) {
+    // first_seen_at is always set (DEFAULT datetime('now') on insert), so no
+    // COALESCE needed here. Intentionally separate from posted_since: this is
+    // "new on our board", not "recently posted by the ATS".
+    where.push(`jobs.first_seen_at >= datetime('now', ?)`)
+    binds.push(`-${freshHours} hours`)
   }
 
   const whereSql = `WHERE ${where.join(' AND ')}`

@@ -4,6 +4,7 @@ import { Search, Rss } from 'lucide-react'
 import SEO from '../components/SEO'
 import JobCard, { type JobListItem } from '../components/jobs/JobCard'
 import JobsFilters, { EMPTY_FILTERS, type JobsFilterState } from '../components/jobs/JobsFilters'
+import FreshArrivalsSection from '../components/jobs/FreshArrivalsSection'
 
 type SearchResponse = { jobs: JobListItem[]; total: number; page: number; per_page: number }
 type VendorOpt = { slug: string; name: string; open_jobs: number }
@@ -126,6 +127,11 @@ export default function JobsPage() {
             <Rss size={14} /> RSS
           </a>
         </div>
+
+        {/* Wrap+ Early-bird feed. Self-gates on FEATURES.PLUS_ENABLED + useWrapPlus,
+            so this render is a no-op until Plus launches and the viewer is a member
+            (otherwise shows a paywall card with the live 24h role count). */}
+        <FreshArrivalsSection />
 
         <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] gap-8">
           <JobsFilters
