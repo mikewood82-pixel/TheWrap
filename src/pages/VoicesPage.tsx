@@ -88,7 +88,7 @@ export default function VoicesPage() {
           </h1>
           <p className="text-brand-muted max-w-2xl">
             A curated hub of the writers, analysts, and podcasters we read every week.
-            Every link goes straight to the source \u2014 support their work the same way you support ours.
+            Every link goes straight to the source — support their work the same way you support ours.
           </p>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default function VoicesPage() {
               onClick={() => { setSource(''); setPage(1) }}
               className="ml-auto text-xs text-brand-muted hover:text-brand-dark underline"
             >
-              Clear source: {selectedSource.name} \u00d7
+              Clear source: {selectedSource.name} ×
             </button>
           )}
         </div>
@@ -123,11 +123,11 @@ export default function VoicesPage() {
       {/* Feed */}
       <section className="max-w-6xl mx-auto px-4 py-8">
         {loading && (
-          <div className="text-center py-16 text-brand-muted">Loading the latest voices\u2026</div>
+          <div className="text-center py-16 text-brand-muted">Loading the latest voices…</div>
         )}
         {error && !loading && (
           <div className="text-center py-16 text-red-700 bg-red-50 border border-red-200 rounded-lg">
-            Couldn\u2019t load voices right now. Please try again shortly.
+            Couldn’t load voices right now. Please try again shortly.
           </div>
         )}
         {!loading && !error && data && data.items.length === 0 && (

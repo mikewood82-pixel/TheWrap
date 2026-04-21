@@ -49,8 +49,8 @@ export default function VoiceSourcePage() {
       <section className="max-w-3xl mx-auto px-4 py-20 text-center">
         <SEO title="Voice not found" url={`/voices/${slug}`} />
         <h1 className="font-serif text-2xl font-bold text-brand-dark mb-3">Voice not found</h1>
-        <p className="text-brand-muted mb-6">We don\u2019t track that source (yet).</p>
-        <Link to="/voices" className="text-brand-terracotta underline">\u2190 Back to Voices</Link>
+        <p className="text-brand-muted mb-6">We don’t track that source (yet).</p>
+        <Link to="/voices" className="text-brand-terracotta underline">← Back to Voices</Link>
       </section>
     )
   }
@@ -59,7 +59,7 @@ export default function VoiceSourcePage() {
     <>
       <SEO
         title={source ? source.name : 'Voice'}
-        description={source?.description ?? `Latest posts from ${source?.name ?? 'this voice'} on The Wrap\u2019s curated HR tech hub.`}
+        description={source?.description ?? `Latest posts from ${source?.name ?? 'this voice'} on The Wrap’s curated HR tech hub.`}
         url={`/voices/${slug}`}
       />
 
@@ -96,7 +96,7 @@ export default function VoiceSourcePage() {
 
       <section className="max-w-6xl mx-auto px-4 py-8">
         {loading ? (
-          <div className="text-center py-16 text-brand-muted">Loading posts\u2026</div>
+          <div className="text-center py-16 text-brand-muted">Loading posts…</div>
         ) : items.length === 0 ? (
           <div className="text-center py-16 text-brand-muted">
             No posts yet from this source. New items appear after the next ingest run.
