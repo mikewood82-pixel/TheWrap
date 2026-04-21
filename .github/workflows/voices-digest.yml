@@ -1,0 +1,38 @@
+name: Voices Tuesday digest
+
+on:
+  schedule:
+    # Tuesdays at 13:23 UTC (~9:23am ET) — after the Tue 12:23 UTC feed
+    # refresh so Monday's newest items are already ingested.
+    - cron: '23 13 * * 2'
+  workflow_dispatch:
+    inputs:
+      site_url:
+        description: 'Site URL (default: production)'
+        required: false
+        default: 'https://ilovethewrap.com'
+
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: POST /api/voices/digest/deliver
+        env:
+          SITE_URL: ${{ github.event.inputs.site_url || 'https://ilovethewrap.com' }}
+          VOICES_DIGEST_TOKEN: ${{ secrets.VOICES_DIGEST_TOKEN }}
+        run: |
+          if [ -z "$VOICES_DIGEST_TOKEN" ]; then
+            echo "::error::VOICES_DIGEST_TOKEN secret not set"; exit 1
+          fi
+          echo "POSTing ${SITE_URL}/api/voices/digest/deliver"
+          HTTP_CODE=$(curl -s -o /tmp/digest.out -w "%{http_code}" \
+            --max-time 300 \
+            -X POST "${SITE_URL}/api/voices/digest/deliver" \
+            -H "Authorization: Bearer ${VOICES_DIGEST_TOKEN}")
+          echo "Response ($HTTP_CODE):"
+          cat /tmp/digest.out || true
+          echo
+          if [ "$HTTP_CODE" -lt 200 ] || [ "$HTTP_CODE" -ge 300 ]; then
+            echo "::error::digest delivery returned ${HTTP_CODE}"; exit 1
+          fi

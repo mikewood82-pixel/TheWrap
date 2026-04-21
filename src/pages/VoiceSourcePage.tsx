@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { ExternalLink, ArrowLeft } from 'lucide-react'
 import SEO from '../components/SEO'
 import VoiceCard, { type VoiceListItem } from '../components/voices/VoiceCard'
+import FollowButton from '../components/voices/FollowButton'
 
 type Source = {
   slug: string
@@ -79,14 +80,17 @@ export default function VoiceSourcePage() {
                   <p className="mt-2 text-brand-muted max-w-2xl">{source.description}</p>
                 )}
               </div>
-              <a
-                href={source.site_url}
-                target="_blank"
-                rel="noopener external"
-                className="inline-flex items-center gap-1.5 bg-brand-terracotta text-white text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
-              >
-                Follow on their site <ExternalLink size={14} />
-              </a>
+              <div className="flex items-center gap-2">
+                <FollowButton sourceSlug={source.slug} size="lg" stopPropagation={false} />
+                <a
+                  href={source.site_url}
+                  target="_blank"
+                  rel="noopener external"
+                  className="inline-flex items-center gap-1.5 bg-brand-terracotta text-white text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity"
+                >
+                  Visit their site <ExternalLink size={14} />
+                </a>
+              </div>
             </div>
           ) : (
             <div className="h-24 animate-pulse bg-brand-border/40 rounded" />

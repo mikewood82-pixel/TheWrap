@@ -1,4 +1,5 @@
 import { ExternalLink, Star } from 'lucide-react'
+import FollowButton from './FollowButton'
 
 export type VoiceListItem = {
   id: number
@@ -50,11 +51,14 @@ export default function VoiceCard({ item }: { item: VoiceListItem }) {
               {kindLabel}
             </span>
           </div>
-          {item.featured === 1 && (
-            <span title="Editor's pick" className="shrink-0 text-brand-gold">
-              <Star size={14} fill="currentColor" />
-            </span>
-          )}
+          <div className="flex items-center gap-1 shrink-0">
+            {item.featured === 1 && (
+              <span title="Editor's pick" className="text-brand-gold">
+                <Star size={14} fill="currentColor" />
+              </span>
+            )}
+            <FollowButton sourceSlug={item.source_slug} />
+          </div>
         </div>
 
         <h3 className="font-serif text-lg text-brand-dark font-semibold leading-snug group-hover:text-brand-terracotta transition-colors">

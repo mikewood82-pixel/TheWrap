@@ -18,6 +18,7 @@ import SavedJobsPage from './pages/SavedJobsPage'
 import AlertsPage from './pages/AlertsPage'
 import VoicesPage from './pages/VoicesPage'
 import VoiceSourcePage from './pages/VoiceSourcePage'
+import VoicesFollowingPage from './pages/VoicesFollowingPage'
 import { FEATURES } from './config/features'
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
           {FEATURES.VOICES_ENABLED ? (
             <>
               <Route path="voices" element={<VoicesPage />} />
+              <Route path="voices/following" element={<VoicesFollowingPage />} />
               <Route path="voices/:slug" element={<VoiceSourcePage />} />
             </>
           ) : (
