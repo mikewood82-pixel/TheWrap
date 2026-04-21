@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { MapPin, Briefcase } from 'lucide-react'
+import BookmarkButton from './BookmarkButton'
 
 export type JobListItem = {
   id: number
@@ -56,7 +57,10 @@ export default function JobCard({ job }: { job: JobListItem }) {
             {job.seniority && job.seniority !== 'unknown' && <span className="capitalize">{job.seniority}</span>}
           </div>
         </div>
-        <RoleAgeBadge firstSeenAt={job.first_seen_at} postedAt={job.posted_at} />
+        <div className="flex items-center gap-1 shrink-0">
+          <RoleAgeBadge firstSeenAt={job.first_seen_at} postedAt={job.posted_at} />
+          <BookmarkButton jobId={job.id} size="sm" />
+        </div>
       </div>
     </Link>
   )

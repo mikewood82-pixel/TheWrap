@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async'
 import { ArrowLeft, ExternalLink, MapPin, Briefcase } from 'lucide-react'
 import SEO from '../components/SEO'
 import { RoleAgeBadge } from '../components/jobs/JobCard'
+import BookmarkButton from '../components/jobs/BookmarkButton'
 
 type Job = {
   id: number
@@ -110,16 +111,19 @@ export default function JobDetailPage() {
         <RoleAgeBadge firstSeenAt={job.first_seen_at} postedAt={job.posted_at} />
       </div>
 
-      <a
-        href={job.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={onApply}
-        className="inline-flex items-center gap-2 mt-6 bg-brand-terracotta text-white font-semibold px-5 py-3 rounded-lg hover:bg-brand-orange transition-colors"
-      >
-        Apply on {job.vendor_name ?? 'company site'}
-        <ExternalLink size={16} />
-      </a>
+      <div className="flex items-center gap-3 mt-6">
+        <a
+          href={job.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={onApply}
+          className="inline-flex items-center gap-2 bg-brand-terracotta text-white font-semibold px-5 py-3 rounded-lg hover:bg-brand-orange transition-colors"
+        >
+          Apply on {job.vendor_name ?? 'company site'}
+          <ExternalLink size={16} />
+        </a>
+        <BookmarkButton jobId={job.id} size="lg" stopPropagation={false} />
+      </div>
 
       {job.description_html && (
         <article

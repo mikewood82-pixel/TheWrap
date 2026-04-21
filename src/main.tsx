@@ -5,6 +5,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import './index.css'
 import App from './App.tsx'
 import { WrapPlusProvider } from './context/WrapPlusContext.tsx'
+import { WatchlistProvider } from './context/WatchlistContext.tsx'
 import { CompareProvider } from './context/CompareContext.tsx'
 
 const CLERK_PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
@@ -18,9 +19,11 @@ createRoot(document.getElementById('root')!).render(
     <HelmetProvider>
       <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY}>
         <WrapPlusProvider>
-          <CompareProvider>
-            <App />
-          </CompareProvider>
+          <WatchlistProvider>
+            <CompareProvider>
+              <App />
+            </CompareProvider>
+          </WatchlistProvider>
         </WrapPlusProvider>
       </ClerkProvider>
     </HelmetProvider>

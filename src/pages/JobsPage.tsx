@@ -1,10 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import { Search, Rss } from 'lucide-react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { Search, Rss, Bookmark } from 'lucide-react'
 import SEO from '../components/SEO'
 import JobCard, { type JobListItem } from '../components/jobs/JobCard'
 import JobsFilters, { EMPTY_FILTERS, type JobsFilterState } from '../components/jobs/JobsFilters'
 import FreshArrivalsSection from '../components/jobs/FreshArrivalsSection'
+import { FEATURES } from '../config/features'
+import { useWrapPlus } from '../context/WrapPlusContext'
+import { useWatchlist } from '../context/WatchlistContext'
 
 type SearchResponse = { jobs: JobListItem[]; total: number; page: number; per_page: number }
 type VendorOpt = { slug: string; name: string; open_jobs: number }
@@ -100,11 +103,14 @@ export default function JobsPage() {
       />
 
       <div className="max-w-6xl mx-auto px-4 py-10">
-        <header className="mb-8">
-          <h1 className="font-serif text-4xl text-brand-dark">HR Tech Jobs</h1>
-          <p className="mt-2 text-brand-muted">
-            Open roles from the HR tech vendors we track — aggregated daily, no recruiter spam.
-          </p>
+        <header className="mb-8 flex items-start justify-between gap-4">
+          <div>
+            <h1 className="font-serif text-4xl text-brand-dark">HR Tech Jobs</h1>
+            <p className="mt-2 text-brand-muted">
+              Open roles from the HR tech vendors we track — aggregated daily, no recruiter spam.
+            </p>
+          </div>
+          <SavedJobsLink />
         </header>
 
         {/* Search bar + RSS */}
@@ -187,5 +193,27 @@ export default function JobsPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+/**
+ * Plus-only "Saved (N)" quick link in the page header. Renders nothing when
+ * Plus is disabled globally or the viewer isn't Plus, so the free/public
+ * header stays unchanged.
+ */
+function SavedJobsLink() {
+  const { isPro, isLoaded } = useWrapPlus()
+  const { savedIds } = useWatchlist()
+
+  if (!FEATURES.PLUS_ENABLED || !isLoaded || !isPro) return null
+
+  return (
+    <Link
+      to="/jobs/saved"
+      className="shrink-0 mt-1 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm border border-brand-border rounded-lg bg-white text-brand-muted hover:text-brand-terracotta hover:border-brand-terracotta transition-colors"
+    >
+      <Bookmark size={14} />
+      Saved{savedIds.size > 0 ? ` (${savedIds.size})` : ''}
+    </Link>
   )
 }
