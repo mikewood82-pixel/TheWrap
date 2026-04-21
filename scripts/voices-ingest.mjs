@@ -83,7 +83,10 @@ async function fetchFeed(url) {
   try {
     const r = await fetch(url, {
       headers: {
-        'user-agent': 'TheWrapVoicesBot/1.0 (+https://ilovethewrap.com)',
+        // Substack and several hosting edges 403 non-Mozilla UAs. Prefixing
+        // with Mozilla/5.0 satisfies the common bot filter while the compatible
+        // clause still identifies us for site operators reading logs.
+        'user-agent': 'Mozilla/5.0 (compatible; TheWrapVoicesBot/1.0; +https://ilovethewrap.com/voices)',
         accept: 'application/rss+xml, application/atom+xml, application/xml;q=0.9, */*;q=0.8',
       },
       redirect: 'follow',
