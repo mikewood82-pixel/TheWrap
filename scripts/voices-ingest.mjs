@@ -39,7 +39,10 @@ function loadSources() {
   const marker = 'voicesSources: VoiceSourceSeed[] = '
   const idx = src.indexOf(marker)
   if (idx < 0) throw new Error('voicesSources.ts: could not find assignment')
-  const start = src.indexOf('[', idx)
+  // Search for the opening array bracket AFTER the marker so we skip the
+  // `[]` inside `VoiceSourceSeed[]` type annotation.
+  const start = src.indexOf('[', idx + marker.length)
+  if (start < 0) throw new Error('voicesSources.ts: could not find array start')
   let depth = 0, end = start
   for (let i = start; i < src.length; i++) {
     const ch = src[i]
