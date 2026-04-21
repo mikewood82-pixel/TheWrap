@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import VelocitySparkline, { type HistoryPoint } from './VelocitySparkline'
 import HiringHealthBadge, { type Health } from './HiringHealthBadge'
+import VendorAlertButton from './VendorAlertButton'
 import { FEATURES } from '../../config/features'
 import { useWrapPlus } from '../../context/WrapPlusContext'
 
@@ -188,6 +189,9 @@ function VendorRow({
       {vendor.history && vendor.history.length >= 3 && (
         <VelocitySparkline history={vendor.history} />
       )}
+      {/* Bell only renders for vendors that can produce a verdict — no point
+          alerting on a vendor too small for the health index. */}
+      {showHealth && <VendorAlertButton vendorSlug={vendor.slug} />}
     </label>
   )
 }

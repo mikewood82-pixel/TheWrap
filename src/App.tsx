@@ -16,6 +16,7 @@ import JobsPage from './pages/JobsPage'
 import JobDetailPage from './pages/JobDetailPage'
 import SavedJobsPage from './pages/SavedJobsPage'
 import AlertsPage from './pages/AlertsPage'
+import VendorAlertsPage from './pages/VendorAlertsPage'
 import VoicesPage from './pages/VoicesPage'
 import VoiceSourcePage from './pages/VoiceSourcePage'
 import VoicesFollowingPage from './pages/VoicesFollowingPage'
@@ -50,6 +51,7 @@ function App() {
           <Route path="jobs" element={<JobsPage />} />
           <Route path="jobs/saved" element={<SavedJobsPage />} />
           <Route path="jobs/alerts" element={<AlertsPage />} />
+          <Route path="jobs/vendor-alerts" element={<VendorAlertsPage />} />
           <Route path="jobs/:id/:slug" element={<JobDetailPage />} />
           <Route path="jobs/:id" element={<JobDetailPage />} />
           {FEATURES.VOICES_ENABLED ? (

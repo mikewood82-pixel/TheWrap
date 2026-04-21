@@ -55,3 +55,27 @@ jobs:
           if [ "$HTTP_CODE" -lt 200 ] || [ "$HTTP_CODE" -ge 300 ]; then
             echo "::warning::Alert delivery returned ${HTTP_CODE} — investigate, but not failing the job."
           fi
+
+      - name: Deliver Wrap+ vendor health alerts
+        # Detect verdict changes vs. yesterday and email watchers. Depends on
+        # fresh vendor_snapshots from the ingest step above. Soft-failure
+        # (warning, not failure) for the same reason as the jobs digest.
+        env:
+          SITE_URL: ${{ github.event.inputs.site_url || 'https://ilovethewrap.com' }}
+          VENDOR_ALERT_TOKEN: ${{ secrets.VENDOR_ALERT_TOKEN }}
+        run: |
+          if [ -z "$VENDOR_ALERT_TOKEN" ]; then
+            echo "VENDOR_ALERT_TOKEN not set — skipping vendor-alert delivery."
+            exit 0
+          fi
+          echo "Posting to ${SITE_URL}/api/vendor-alerts/deliver"
+          HTTP_CODE=$(curl -s -o /tmp/vendor-alert.out -w "%{http_code}" \
+            --max-time 120 \
+            -X POST "${SITE_URL}/api/vendor-alerts/deliver" \
+            -H "Authorization: Bearer ${VENDOR_ALERT_TOKEN}")
+          echo "Response ($HTTP_CODE):"
+          cat /tmp/vendor-alert.out || true
+          echo
+          if [ "$HTTP_CODE" -lt 200 ] || [ "$HTTP_CODE" -ge 300 ]; then
+            echo "::warning::Vendor-alert delivery returned ${HTTP_CODE} — investigate, but not failing the job."
+          fi
