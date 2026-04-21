@@ -32,3 +32,26 @@ jobs:
           SITE_URL: ${{ github.event.inputs.site_url || 'https://ilovethewrap.com' }}
           JOBS_INGEST_TOKEN: ${{ secrets.JOBS_INGEST_TOKEN }}
         run: npx tsx scripts/ingest-run.mjs
+
+      - name: Deliver Wrap+ alert digests
+        # Runs after ingest so digests can include the morning's new jobs.
+        # Soft-failure: missing token / non-2xx response logs but doesn't fail
+        # the job — ingest itself has already succeeded at this point.
+        env:
+          SITE_URL: ${{ github.event.inputs.site_url || 'https://ilovethewrap.com' }}
+          ALERT_DELIVERY_TOKEN: ${{ secrets.ALERT_DELIVERY_TOKEN }}
+        run: |
+          if [ -z "$ALERT_DELIVERY_TOKEN" ]; then
+            echo "ALERT_DELIVERY_TOKEN not set — skipping alert delivery."
+            exit 0
+          fi
+          echo "Posting to ${SITE_URL}/api/jobs/alerts/deliver"
+          HTTP_CODE=$(curl -s -o /tmp/deliver.out -w "%{http_code}" \
+            -X POST "${SITE_URL}/api/jobs/alerts/deliver" \
+            -H "Authorization: Bearer ${ALERT_DELIVERY_TOKEN}")
+          echo "Response ($HTTP_CODE):"
+          cat /tmp/deliver.out || true
+          echo
+          if [ "$HTTP_CODE" -lt 200 ] || [ "$HTTP_CODE" -ge 300 ]; then
+            echo "::warning::Alert delivery returned ${HTTP_CODE} — investigate, but not failing the job."
+          fi

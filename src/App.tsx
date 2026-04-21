@@ -15,6 +15,7 @@ import AssistantPage from './pages/AssistantPage'
 import JobsPage from './pages/JobsPage'
 import JobDetailPage from './pages/JobDetailPage'
 import SavedJobsPage from './pages/SavedJobsPage'
+import AlertsPage from './pages/AlertsPage'
 import { FEATURES } from './config/features'
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <Route path="labor-market" element={<LaborMarketPage />} />
           <Route path="jobs" element={<JobsPage />} />
           <Route path="jobs/saved" element={<SavedJobsPage />} />
+          <Route path="jobs/alerts" element={<AlertsPage />} />
           <Route path="jobs/:id/:slug" element={<JobDetailPage />} />
           <Route path="jobs/:id" element={<JobDetailPage />} />
           <Route path="about" element={<AboutPage />} />

@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { Search, Rss, Bookmark } from 'lucide-react'
+import { Search, Rss, Bookmark, Bell } from 'lucide-react'
 import SEO from '../components/SEO'
 import JobCard, { type JobListItem } from '../components/jobs/JobCard'
 import JobsFilters, { EMPTY_FILTERS, type JobsFilterState } from '../components/jobs/JobsFilters'
 import FreshArrivalsSection from '../components/jobs/FreshArrivalsSection'
+import SaveSearchButton from '../components/jobs/SaveSearchButton'
 import { FEATURES } from '../config/features'
 import { useWrapPlus } from '../context/WrapPlusContext'
 import { useWatchlist } from '../context/WatchlistContext'
@@ -125,6 +126,7 @@ export default function JobsPage() {
               className="w-full pl-9 pr-3 py-2.5 bg-white border border-brand-border rounded-lg focus:outline-none focus:border-brand-terracotta"
             />
           </div>
+          <SaveSearchButton filters={filters} />
           <a
             href={rssHref}
             title="RSS feed for the current filters"
@@ -197,9 +199,9 @@ export default function JobsPage() {
 }
 
 /**
- * Plus-only "Saved (N)" quick link in the page header. Renders nothing when
- * Plus is disabled globally or the viewer isn't Plus, so the free/public
- * header stays unchanged.
+ * Plus-only quick links in the page header ("Saved (N)" + "Alerts"). Renders
+ * nothing when Plus is disabled globally or the viewer isn't Plus, so the
+ * free/public header stays unchanged.
  */
 function SavedJobsLink() {
   const { isPro, isLoaded } = useWrapPlus()
@@ -208,12 +210,21 @@ function SavedJobsLink() {
   if (!FEATURES.PLUS_ENABLED || !isLoaded || !isPro) return null
 
   return (
-    <Link
-      to="/jobs/saved"
-      className="shrink-0 mt-1 inline-flex items-center gap-1.5 px-3 py-1.5 text-sm border border-brand-border rounded-lg bg-white text-brand-muted hover:text-brand-terracotta hover:border-brand-terracotta transition-colors"
-    >
-      <Bookmark size={14} />
-      Saved{savedIds.size > 0 ? ` (${savedIds.size})` : ''}
-    </Link>
+    <div className="shrink-0 mt-1 flex flex-wrap gap-2 justify-end">
+      <Link
+        to="/jobs/saved"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm border border-brand-border rounded-lg bg-white text-brand-muted hover:text-brand-terracotta hover:border-brand-terracotta transition-colors"
+      >
+        <Bookmark size={14} />
+        Saved{savedIds.size > 0 ? ` (${savedIds.size})` : ''}
+      </Link>
+      <Link
+        to="/jobs/alerts"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm border border-brand-border rounded-lg bg-white text-brand-muted hover:text-brand-terracotta hover:border-brand-terracotta transition-colors"
+      >
+        <Bell size={14} />
+        Alerts
+      </Link>
+    </div>
   )
 }
