@@ -1,14 +1,6 @@
-import { FEATURES } from '../config/features'
-import SEO from '../components/SEO'
-
 export default function AboutPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <SEO
-        title="About"
-        description="The Wrap was built because nobody was writing the HR tech update Mike Wood actually wanted to read. Here's the story."
-        url="/about"
-      />
 
       {/* Header */}
       <div className="mb-12">
@@ -32,59 +24,46 @@ export default function AboutPage() {
       <div className="mb-12">
         <h2 className="font-serif text-2xl font-bold mb-4">What It Is Now</h2>
         <div className="space-y-4 text-brand-dark/70 leading-relaxed">
-          <p>I'm building The Wrap to be your one-stop for the latest tech news affecting HR teams. The newsletter is over 1,000 subscribers and I've started a weekly highlights show and am building out the site to include information HR teams, and vendors need to make informed decisions. Oh and we'll have some fun too.</p>
-
-          <div className="mt-6 space-y-6">
-            <div>
-              <div className="text-sm font-semibold text-brand-dark mb-3 uppercase tracking-wide">What's included, free</div>
-              <div className="space-y-3">
-                <div>
-                  <div className="font-medium text-brand-dark">Weekly newsletter</div>
-                  <div className="text-sm">The backbone. HR tech news, labor market data, and takes you won't find in a press release.</div>
-                </div>
-                <div>
-                  <div className="font-medium text-brand-dark">The show</div>
-                  <div className="text-sm">A short-form video companion to the newsletter. Same stories, different format.</div>
-                </div>
-              </div>
-            </div>
-
-            {FEATURES.PLUS_ENABLED && (
-              <>
-                <div className="bg-brand-cream rounded-xl p-5">
-                  <div className="flex items-baseline gap-3 mb-4">
-                    <div className="text-sm font-semibold text-brand-dark uppercase tracking-wide">The Wrap Plus</div>
-                    <div className="text-sm text-brand-dark/60">$10 / month</div>
-                  </div>
-                  <ul className="space-y-2 text-sm text-brand-dark/70">
-                    <li className="flex gap-2"><span className="text-brand-terracotta shrink-0">✓</span><span>Vendor Intel tool — capabilities, ratings, and side-by-side profiles for HR tech software, updated weekly.</span></li>
-                    <li className="flex gap-2"><span className="text-brand-terracotta shrink-0">✓</span><span>G2 reviews, surfaced — what real customers like, dislike, and how sentiment is trending over time.</span></li>
-                    <li className="flex gap-2"><span className="text-brand-terracotta shrink-0">✓</span><span>Glassdoor signals — internal company health, pain points, and whether the vendor's own people are happy.</span></li>
-                    <li className="flex gap-2"><span className="text-brand-terracotta shrink-0">✓</span><span>Company news + Reddit mentions — the stuff that doesn't make the press release.</span></li>
-                    <li className="flex gap-2"><span className="text-brand-terracotta shrink-0">✓</span><span>Natural language search — describe your situation, get vendor suggestions. No RFP required.</span></li>
-                  </ul>
-                </div>
-
-                <div>
-                  <div className="font-medium text-brand-dark mb-1">For vendors: deep dive profiles</div>
-                  <div className="text-sm">AI-generated profiles are the floor, not the ceiling. Vendors can purchase an expanded Deep Dive profile that adds a video take on the platform, actual product screenshots, and a direct lead form for buyers who are ready to talk to sales.</div>
-                </div>
-              </>
-            )}
-          </div>
+          <p>I'm building The Wrap to be your one-stop for the latest tech news affecting HR teams. The newsletter is over 2,000 subscribers, I run a weekly highlights show, and I'm building out the site to include information HR teams, and vendors need to make informed decisions. Oh and we'll have some fun too.</p>
         </div>
 
         {/* Stats row */}
-        <div className="grid grid-cols-2 gap-4 mt-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
-            { value: '1,000+',  label: 'Subscribers' },
-            { value: '70+',     label: 'Editions Published' },
+            { value: '2,300+', label: 'Subscribers' },
+            { value: '70+',    label: 'Editions Published' },
+            { value: '1,000+', label: 'Open Roles' },
+            { value: '29',     label: 'HR Tech Vendors' },
           ].map(stat => (
             <div key={stat.label} className="bg-brand-cream rounded-xl p-5 text-center">
               <div className="font-serif text-3xl font-bold text-brand-dark mb-1">{stat.value}</div>
               <div className="text-xs text-brand-dark/50 uppercase tracking-wide">{stat.label}</div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* HR Tech Jobs */}
+      <div className="mb-12">
+        <h2 className="font-serif text-2xl font-bold mb-4">HR Tech Jobs</h2>
+        <div className="space-y-4 text-brand-dark/70 leading-relaxed">
+          <p>
+            In April 2026 I added a jobs board, because if you work in HR tech neither LinkedIn nor Indeed segments the space in a way that's actually useful. You end up wading through hundreds of agency reposts to find a handful of real roles at real vendors.
+          </p>
+          <p>
+            The Wrap's jobs board is different. We pull directly from each company's applicant tracking system — Greenhouse, Lever, Ashby, SmartRecruiters, Workable, Recruitee — and refresh daily. No recruiters, no reposts, no "urgent opening" that was filled six months ago. You can filter by remote / hybrid / onsite, seniority, department, or keyword, and every filter combo has its own RSS feed. Click Apply and you land on the company's own careers page. Same experience, just consolidated.
+          </p>
+          <p>
+            It's the list I wished existed when I was job hunting in HR tech.
+          </p>
+        </div>
+        <div className="mt-6">
+          <a
+            href="/jobs"
+            className="inline-flex items-center gap-2 bg-brand-terracotta text-white font-medium px-6 py-3 rounded-lg hover:bg-brand-gold hover:text-brand-dark transition-colors"
+          >
+            Browse open roles →
+          </a>
         </div>
       </div>
 
@@ -143,7 +122,7 @@ export default function AboutPage() {
         <h3 className="font-serif text-xl font-semibold mb-2">Read The Wrap every Friday</h3>
         <p className="text-brand-dark/50 text-sm mb-5">HR tech news, vendor intelligence, and labor market signals — in your inbox weekly.</p>
         <a
-          href="/subscribe"
+          href="/#subscribe"
           className="inline-flex items-center gap-2 bg-brand-terracotta text-white font-medium px-6 py-3 rounded-lg hover:bg-brand-gold hover:text-brand-dark transition-colors"
         >
           Subscribe free →
