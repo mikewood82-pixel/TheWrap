@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import VelocitySparkline, { type HistoryPoint } from './VelocitySparkline'
 
 export type JobsFilterState = {
   q: string
@@ -32,7 +33,13 @@ const POSTED_OPTS = [
   { v: 30, label: 'Past month' },
 ]
 
-type VendorOpt = { slug: string; name: string; open_jobs: number }
+type VendorOpt = {
+  slug: string
+  name: string
+  open_jobs: number
+  /** Optional last-30d snapshot history for the sparkline column. */
+  history?: HistoryPoint[]
+}
 
 export default function JobsFilters({
   filters, onChange, vendorOptions,
@@ -106,11 +113,11 @@ export default function JobsFilters({
         />
         <div className="max-h-64 overflow-y-auto pr-1 space-y-1">
           {visibleVendors.map(v => (
-            <Checkbox
+            <VendorRow
               key={v.slug}
-              label={`${v.name} (${v.open_jobs})`}
+              vendor={v}
               checked={filters.vendors.includes(v.slug)}
-              onChange={() => toggle('vendors', v.slug)}
+              onToggle={() => toggle('vendors', v.slug)}
             />
           ))}
           {!visibleVendors.length && (
@@ -143,6 +150,31 @@ function Checkbox({ label, checked, onChange }: { label: string; checked: boolea
     <label className="flex items-center gap-2 cursor-pointer">
       <input type="checkbox" className="accent-brand-terracotta" checked={checked} onChange={onChange} />
       <span className="text-brand-muted">{label}</span>
+    </label>
+  )
+}
+
+function VendorRow({
+  vendor, checked, onToggle,
+}: {
+  vendor: VendorOpt
+  checked: boolean
+  onToggle: () => void
+}) {
+  return (
+    <label className="flex items-center gap-2 cursor-pointer">
+      <input
+        type="checkbox"
+        className="accent-brand-terracotta shrink-0"
+        checked={checked}
+        onChange={onToggle}
+      />
+      <span className="text-brand-muted flex-1 min-w-0 truncate">
+        {vendor.name} ({vendor.open_jobs})
+      </span>
+      {vendor.history && vendor.history.length >= 3 && (
+        <VelocitySparkline history={vendor.history} />
+      )}
     </label>
   )
 }

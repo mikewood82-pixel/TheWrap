@@ -11,7 +11,8 @@ import { useWrapPlus } from '../context/WrapPlusContext'
 import { useWatchlist } from '../context/WatchlistContext'
 
 type SearchResponse = { jobs: JobListItem[]; total: number; page: number; per_page: number }
-type VendorOpt = { slug: string; name: string; open_jobs: number }
+type HistoryPoint = { date: string; open_jobs: number }
+type VendorOpt = { slug: string; name: string; open_jobs: number; history?: HistoryPoint[] }
 
 // URL <-> filter serialization keeps the page shareable and back-button friendly.
 function filtersFromParams(p: URLSearchParams): JobsFilterState {
