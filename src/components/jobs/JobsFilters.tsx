@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 import VelocitySparkline, { type HistoryPoint } from './VelocitySparkline'
+import HiringHealthBadge, { type Health } from './HiringHealthBadge'
+import { FEATURES } from '../../config/features'
+import { useWrapPlus } from '../../context/WrapPlusContext'
 
 export type JobsFilterState = {
   q: string
@@ -39,6 +42,8 @@ type VendorOpt = {
   open_jobs: number
   /** Optional last-30d snapshot history for the sparkline column. */
   history?: HistoryPoint[]
+  /** Optional hiring-health verdict. Plus-gated on render. */
+  health?: Health
 }
 
 export default function JobsFilters({
@@ -161,6 +166,13 @@ function VendorRow({
   checked: boolean
   onToggle: () => void
 }) {
+  // Health pill is the Plus value-add; free viewers see the sparkline
+  // "teaser" only. Wrapped in the feature-flag + membership check so the
+  // free-tier layout is unchanged when Plus hasn't launched.
+  const { isPro, isLoaded } = useWrapPlus()
+  const showHealth =
+    FEATURES.PLUS_ENABLED && isLoaded && isPro && !!vendor.health
+
   return (
     <label className="flex items-center gap-2 cursor-pointer">
       <input
@@ -172,6 +184,7 @@ function VendorRow({
       <span className="text-brand-muted flex-1 min-w-0 truncate">
         {vendor.name} ({vendor.open_jobs})
       </span>
+      {showHealth && <HiringHealthBadge health={vendor.health!} />}
       {vendor.history && vendor.history.length >= 3 && (
         <VelocitySparkline history={vendor.history} />
       )}
