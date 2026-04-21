@@ -4,7 +4,7 @@ import SEO from '../components/SEO'
 const packages = [
   {
     name: 'Newsletter Sponsorship',
-    description: 'Your brand in front of 1,000+ HR tech practitioners every Friday. One sponsor per edition, clearly labeled.',
+    description: 'Your brand in front of 2,300+ HR tech practitioners every Friday. One sponsor per edition, clearly labeled.',
     details: [
       'Dedicated sponsor callout at the top of the edition',
       'Your logo, 1–2 sentence description, and link',
@@ -51,7 +51,7 @@ export default function SponsorshipPage() {
     <div className="max-w-3xl mx-auto px-4 py-12">
       <SEO
         title="Sponsorship"
-        description="Reach 1,000+ HR tech professionals with The Wrap. Sponsorship opportunities for the newsletter and show."
+        description="Reach 2,300+ HR tech professionals with The Wrap. Sponsorship opportunities for the newsletter and show."
         url="/sponsorship"
       />
 
@@ -91,7 +91,7 @@ export default function SponsorshipPage() {
         <h3 className="font-serif text-lg font-semibold mb-5">Who reads The Wrap</h3>
         <div className="grid grid-cols-3 gap-4 mb-5">
           {[
-            { value: '1,000+', label: 'Subscribers' },
+            { value: '2,300+', label: 'Subscribers' },
             { value: '18mo',   label: 'Publishing' },
             { value: 'Weekly', label: 'Cadence' },
           ].map((s) => (
