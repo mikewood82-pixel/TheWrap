@@ -16,6 +16,8 @@ import JobsPage from './pages/JobsPage'
 import JobDetailPage from './pages/JobDetailPage'
 import SavedJobsPage from './pages/SavedJobsPage'
 import AlertsPage from './pages/AlertsPage'
+import VoicesPage from './pages/VoicesPage'
+import VoiceSourcePage from './pages/VoiceSourcePage'
 import { FEATURES } from './config/features'
 
 function App() {
@@ -49,6 +51,17 @@ function App() {
           <Route path="jobs/alerts" element={<AlertsPage />} />
           <Route path="jobs/:id/:slug" element={<JobDetailPage />} />
           <Route path="jobs/:id" element={<JobDetailPage />} />
+          {FEATURES.VOICES_ENABLED ? (
+            <>
+              <Route path="voices" element={<VoicesPage />} />
+              <Route path="voices/:slug" element={<VoiceSourcePage />} />
+            </>
+          ) : (
+            <>
+              <Route path="voices" element={<Navigate to="/" replace />} />
+              <Route path="voices/:slug" element={<Navigate to="/" replace />} />
+            </>
+          )}
           <Route path="about" element={<AboutPage />} />
         </Route>
       </Routes>

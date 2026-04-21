@@ -17,7 +17,19 @@ const plusLinks = [
   { to: '/vendors', label: 'Vendor Intel' },
 ]
 
-const links = FEATURES.PLUS_ENABLED ? [...baseLinks.slice(0, 1), ...plusLinks, ...baseLinks.slice(1)] : baseLinks
+const voicesLink = { to: '/voices', label: 'Voices' }
+
+// Compose the nav in the intended reading order. Vendor Intel slots after
+// Archive when enabled; Voices sits between Jobs and Sponsorship when enabled.
+const links = (() => {
+  const [archive, jobs, sponsorship, laborMarket, about] = baseLinks
+  const out = [archive]
+  if (FEATURES.PLUS_ENABLED) out.push(...plusLinks)
+  out.push(jobs)
+  if (FEATURES.VOICES_ENABLED) out.push(voicesLink)
+  out.push(sponsorship, laborMarket, about)
+  return out
+})()
 
 export default function Nav() {
   const { isPro } = useWrapPlus()
