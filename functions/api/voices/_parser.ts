@@ -35,15 +35,20 @@ function parseRss(xml: string): ParsedItem[] {
     const descriptionRaw = extractCdataOrText(firstMatch(body, 'description'))
     const descText = stripTags(descriptionRaw)
     const author = stripTags(firstMatch(body, 'dc:creator')) || stripTags(firstMatch(body, 'author'))
+    // Podcast feeds don't carry a standard <enclosure type="image/...">; cover
+    // art lives in <itunes:image href="..."/>. Prefer in order: generic
+    // enclosure image (rare), media:content/thumbnail, iTunes image, first
+    // <img> in the description HTML.
     const enclosureImg = firstAttr(body, 'enclosure', 'url')
     const mediaImg     = firstAttr(body, 'media:content', 'url') || firstAttr(body, 'media:thumbnail', 'url')
+    const itunesImg    = firstAttr(body, 'itunes:image', 'href')
     const htmlImg      = firstImageFromHtml(contentEncoded || descriptionRaw)
     return {
       guid: guidRaw,
       url: link,
       title,
       excerpt: descText ? clampExcerpt(descText) : null,
-      image_url: enclosureImg || mediaImg || htmlImg || null,
+      image_url: enclosureImg || mediaImg || itunesImg || htmlImg || null,
       author: author || null,
       published_at: toIso(pubDate) ?? '',
     }

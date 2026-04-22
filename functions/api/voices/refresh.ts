@@ -40,11 +40,11 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
   // 2) Load the current active set (post-seed) with their per-source bookkeeping.
   const { results: srcRows } = await env.JOBS_DB.prepare(
-    `SELECT id, slug, feed_url, feed_kind, etag, last_modified
+    `SELECT id, slug, site_url, feed_url, feed_kind, etag, last_modified
        FROM voices_sources
       WHERE active = 1
       ORDER BY id ASC`
-  ).all<{ id: number; slug: string; feed_url: string; feed_kind: string; etag: string | null; last_modified: string | null }>()
+  ).all<{ id: number; slug: string; site_url: string; feed_url: string; feed_kind: string; etag: string | null; last_modified: string | null }>()
 
   const cutoffMs = Date.now() - MAX_AGE_DAYS * 24 * 3600 * 1000
 
@@ -72,7 +72,15 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       }
 
       const parsed = parseFeed(row.feed_kind as 'rss' | 'atom' | 'youtube', fetched.text)
-      const fresh = parsed
+      // Some feeds (notably podcast feeds) omit per-item <link> since the
+      // enclosure is the audio file. Fall back to the source's site_url so
+      // clicking the card lands somewhere useful (e.g. the Apple Podcasts
+      // show page) instead of dropping the item from the feed entirely.
+      const normalized = parsed.map(it => ({
+        ...it,
+        url: it.url || row.site_url,
+      }))
+      const fresh = normalized
         .filter(it => it.url && it.title && it.guid && it.published_at)
         .filter(it => new Date(it.published_at).getTime() >= cutoffMs)
 
