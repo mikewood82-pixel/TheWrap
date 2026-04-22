@@ -278,7 +278,7 @@ export default function VendorPulsePage() {
         <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Vendor Pulse</div>
         <h1 className="font-serif text-4xl font-bold mb-3">HR Tech Vendor Database</h1>
         <p className="text-brand-dark/60 text-lg">
-          Independent ratings across {vendors.length}+ vendors — G2 scores, Capterra, news activity, and Mike's take.
+          Independent ratings across 70+ vendors - G2 scores, Capterra, customer comments, and more.
         </p>
       </div>
 
