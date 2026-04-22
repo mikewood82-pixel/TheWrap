@@ -252,7 +252,7 @@ function CompareBar({ onCompare }: { onCompare: () => void }) {
 }
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
-export default function VendorIntelPage() {
+export default function VendorPulsePage() {
   const [active, setActive] = useState('All')
   const [techStack, setTechStack] = useState<string[]>([])
   const [showCompare, setShowCompare] = useState(false)
@@ -275,7 +275,7 @@ export default function VendorIntelPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-12 pb-24">
       <div className="mb-8">
-        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Vendor Intelligence</div>
+        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Vendor Pulse</div>
         <h1 className="font-serif text-4xl font-bold mb-3">HR Tech Vendor Database</h1>
         <p className="text-brand-dark/60 text-lg">
           Independent ratings across {vendors.length}+ vendors — G2 scores, Capterra, news activity, and Mike's take.

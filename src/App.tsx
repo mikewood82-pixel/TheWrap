@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage'
 import NewsletterPage from './pages/NewsletterPage'
 import NewsletterDetailPage from './pages/NewsletterDetailPage'
 import ShowPage from './pages/ShowPage'
-import VendorIntelPage from './pages/VendorIntelPage'
+import VendorPulsePage from './pages/VendorPulsePage'
 import VendorDeepDivePage from './pages/VendorDeepDivePage'
 import LaborMarketPage from './pages/LaborMarketPage'
 import SubscribePage from './pages/SubscribePage'
@@ -33,7 +33,7 @@ function App() {
           <Route path="show" element={<ShowPage />} />
           {FEATURES.PLUS_ENABLED ? (
             <>
-              <Route path="vendors" element={<VendorIntelPage />} />
+              <Route path="vendors" element={<VendorPulsePage />} />
               <Route path="vendors/:slug" element={<VendorDeepDivePage />} />
               <Route path="subscribe" element={<SubscribePage />} />
             </>

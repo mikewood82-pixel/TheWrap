@@ -14,12 +14,12 @@ const baseLinks = [
 ]
 
 const plusLinks = [
-  { to: '/vendors', label: 'Vendor Intel' },
+  { to: '/vendors', label: 'Vendor Pulse' },
 ]
 
 const voicesLink = { to: '/voices', label: 'Voices' }
 
-// Compose the nav in the intended reading order. Vendor Intel slots after
+// Compose the nav in the intended reading order. Vendor Pulse slots after
 // Archive when enabled; Voices sits between Jobs and Sponsorship when enabled.
 const links = (() => {
   const [archive, jobs, sponsorship, laborMarket, about] = baseLinks

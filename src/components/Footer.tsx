@@ -28,7 +28,7 @@ export default function Footer() {
               {[
                 ['/newsletter',  'Archive'],
                 ['/jobs',        'Jobs'],
-                ...(FEATURES.PLUS_ENABLED ? [['/vendors', 'Vendor Intel']] : []),
+                ...(FEATURES.PLUS_ENABLED ? [['/vendors', 'Vendor Pulse']] : []),
                 ['/labor-market', 'Labor Market'],
                 ['/about',       'About'],
               ].map(([to, label]) => (

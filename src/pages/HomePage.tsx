@@ -242,7 +242,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Vendor Intel card — only shown when Plus is enabled */}
+      {/* Vendor Pulse card — only shown when Plus is enabled */}
       {FEATURES.PLUS_ENABLED && (
         <section className="border-b border-brand-border bg-brand-surface">
           <div className="max-w-6xl mx-auto px-4 py-10">
@@ -251,7 +251,7 @@ export default function HomePage() {
               <div className="w-10 h-10 bg-brand-orange/10 rounded-lg flex items-center justify-center mb-4">
                 <BarChart2 size={18} className="text-brand-orange" />
               </div>
-              <h3 className="font-serif text-lg font-bold mb-1 text-brand-dark">Vendor Intel</h3>
+              <h3 className="font-serif text-lg font-bold mb-1 text-brand-dark">Vendor Pulse</h3>
               <p className="text-sm text-brand-muted leading-relaxed mb-3">
                 Curated information and ratings for HR Tech vendors including capabilities, news, G2 and Glassdoor ratings.
               </p>
@@ -263,13 +263,13 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Vendor Intel preview */}
+      {/* Vendor Pulse preview */}
       {FEATURES.PLUS_ENABLED && (
         <section className="border-b border-brand-border">
           <div className="max-w-6xl mx-auto px-4 py-12">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="font-serif text-2xl font-bold text-brand-dark">Vendor Intel</h2>
+                <h2 className="font-serif text-2xl font-bold text-brand-dark">Vendor Pulse</h2>
                 <p className="text-sm text-brand-muted mt-0.5">Live G2 scores across the HR tech stack</p>
               </div>
               <Link to="/vendors" className="text-sm font-semibold text-brand-terracotta hover:underline flex items-center gap-1">
