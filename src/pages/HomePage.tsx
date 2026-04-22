@@ -4,6 +4,7 @@ import { FEATURES } from '../config/features'
 import { useEffect, useState } from 'react'
 import SEO from '../components/SEO'
 import JobCard, { type JobListItem } from '../components/jobs/JobCard'
+import HiringPulseStrip from '../components/HiringPulseStrip'
 
 // Swap this URL out when the latest episode is ready
 const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/Agw6lq-_qFY'
@@ -141,6 +142,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* This-week pulse strip — aggregate counts, visible to all visitors.
+          Teases the named/personal view sitting behind Wrap+. */}
+      <HiringPulseStrip />
 
       {/* Latest newsletter */}
       <section className="border-b border-brand-border">
