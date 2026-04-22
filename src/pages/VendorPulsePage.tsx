@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Lock, ArrowRight, Sparkles, X, GitCompare, Plus, Check, Search } from 'lucide-react'
 import { useWrapPlus } from '../context/WrapPlusContext'
 import { useCompare } from '../context/CompareContext'
-import { vendors, activityFeed } from '../data/vendors'
+import { vendors } from '../data/vendors'
 import { vendorDetails } from '../data/vendorDetails'
 import CompareModal from '../components/CompareModal'
 import VendorLogo from '../components/VendorLogo'
@@ -282,9 +282,15 @@ export default function VendorPulsePage() {
         </p>
       </div>
 
-      <VendorFinderWidget />
-
-      <TechStackFilter selected={techStack} onChange={setTechStack} />
+      {/* AI vendor finder and tech-stack filter are Plus-only value-adds —
+          free users see the category tiles and the list, Plus users get the
+          personalization layer on top. */}
+      {isPro && (
+        <>
+          <VendorFinderWidget />
+          <TechStackFilter selected={techStack} onChange={setTechStack} />
+        </>
+      )}
 
       {/* Category filter */}
       <div className="flex gap-2 flex-wrap mb-6">
@@ -424,46 +430,6 @@ export default function VendorPulsePage() {
             </div>
           )
         })}
-      </div>
-
-      {/* Activity Feed */}
-      <div className="mb-12">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="font-serif text-2xl font-bold">Recent Activity</h2>
-          <span className="text-xs text-brand-dark/40 uppercase tracking-wide">Vendor News</span>
-        </div>
-        <div className="divide-y divide-brand-cream border border-brand-cream rounded-xl overflow-hidden">
-          {activityFeed.map((item, i) => (
-            <div key={i} className="flex items-start justify-between gap-4 px-5 py-3.5 bg-white hover:bg-brand-light transition-colors">
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-brand-dark leading-snug">{item.headline}</p>
-                <p className="text-xs text-brand-dark/40 mt-0.5">{item.source} · {item.date}</p>
-              </div>
-              <Link
-                to={`/vendors/${vendors.find(v => v.name === item.vendor)?.slug ?? ''}`}
-                className="shrink-0 text-xs bg-brand-cream text-brand-dark/60 px-2.5 py-1 rounded-full hover:bg-brand-terracotta hover:text-white transition-colors"
-                onClick={e => e.stopPropagation()}
-              >
-                {item.vendor}
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Vendor Deep Dive CTA */}
-      <div className="border border-brand-gold/30 bg-brand-gold/5 rounded-xl p-8">
-        <div className="text-brand-gold text-xs uppercase tracking-widest font-medium mb-2">For Vendors</div>
-        <h2 className="font-serif text-2xl font-bold mb-2">Get a Vendor Deep Dive</h2>
-        <p className="text-brand-dark/60 max-w-xl mb-4">
-          A dedicated editorial profile page — Mike's independent take, software preview, third-party review scores, and a direct demo request form for buyers. Sponsored and clearly labeled. Mike's words are his own.
-        </p>
-        <a
-          href="mailto:mike@thewrap.com?subject=Vendor Deep Dive"
-          className="inline-flex items-center gap-2 bg-brand-dark text-brand-cream font-medium px-5 py-2.5 rounded hover:bg-brand-brown transition-colors"
-        >
-          Inquire about a Deep Dive
-        </a>
       </div>
 
       {/* Compare bar + modal */}
