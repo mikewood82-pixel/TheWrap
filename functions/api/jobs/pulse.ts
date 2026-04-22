@@ -24,9 +24,11 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
      ORDER BY vendor_slug ASC, snapshot_date ASC`
     ),
     env.JOBS_DB.prepare(
+      // Rolling 24-hour window instead of a week-to-date figure so the number
+      // reflects real daily flow rather than a launch-period artifact.
       `SELECT COUNT(*) AS n FROM jobs
         WHERE status = 'open'
-          AND first_seen_at >= datetime('now', '-7 days')`
+          AND first_seen_at >= datetime('now', '-1 days')`
     ),
     env.JOBS_DB.prepare(
       `SELECT COUNT(*) AS n FROM vendor_ats WHERE active = 1`
@@ -68,7 +70,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
       slowing,
       freeze,
     },
-    jobs_added_7d: jobsRes.results[0]?.n ?? 0,
+    jobs_added_24h: jobsRes.results[0]?.n ?? 0,
     vendors_analyzed: vendorsAnalyzed,
     vendors_total: vendorRes.results[0]?.n ?? 0,
     as_of: new Date().toISOString(),

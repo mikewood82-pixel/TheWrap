@@ -5,7 +5,7 @@ import { FEATURES } from '../config/features'
 
 type Pulse = {
   verdicts: { trending_up: number; stable: number; slowing: number; freeze: number }
-  jobs_added_7d: number
+  jobs_added_24h: number
   vendors_analyzed: number
   vendors_total: number
   as_of: string
@@ -34,11 +34,19 @@ export default function HiringPulseStrip() {
 
   if (error || !data) return null
 
-  const { verdicts, jobs_added_7d, vendors_analyzed } = data
+  const { verdicts, jobs_added_24h, vendors_analyzed, vendors_total } = data
   // Hide the whole strip if there's literally nothing interesting yet
   // (vendor_snapshots too thin AND no fresh jobs). Prevents an empty-
   // looking homepage module during the first few days after launch.
-  if (vendors_analyzed === 0 && jobs_added_7d === 0) return null
+  if (vendors_analyzed === 0 && jobs_added_24h === 0) return null
+
+  // Fallback headline for the ramp-up period: computeHealth needs ~3 days
+  // of snapshots per vendor, so `vendors_analyzed` is 0 for the first few
+  // days after a fresh launch. Show the universe we're tracking instead of
+  // "What 0 vendors are doing..." in that window.
+  const headline = vendors_analyzed > 0
+    ? `What ${vendors_analyzed} HR tech vendors are doing with headcount`
+    : `Tracking hiring at ${vendors_total} HR tech vendors`
 
   return (
     <section className="bg-brand-surface border-b border-brand-border">
@@ -49,7 +57,7 @@ export default function HiringPulseStrip() {
               This week · HR Tech Pulse
             </div>
             <div className="font-serif text-lg md:text-xl text-brand-dark font-semibold leading-tight">
-              What {vendors_analyzed} HR tech vendors are doing with headcount
+              {headline}
             </div>
           </div>
 
@@ -67,7 +75,7 @@ export default function HiringPulseStrip() {
                     value={verdicts.freeze} label="in freeze" />
             )}
             <Stat icon={<Briefcase size={16} />} iconCls="text-brand-terracotta"
-                  value={jobs_added_7d} label="new roles" />
+                  value={jobs_added_24h} label="new roles today" />
           </div>
         </div>
 
