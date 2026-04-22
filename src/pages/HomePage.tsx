@@ -143,10 +143,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* This-week pulse strip — aggregate counts, visible to all visitors.
-          Teases the named/personal view sitting behind Wrap+. */}
-      <HiringPulseStrip />
-
       {/* Latest newsletter */}
       <section className="border-b border-brand-border">
         <div className="max-w-6xl mx-auto px-4 py-14 md:py-16">
@@ -211,6 +207,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* This-week pulse strip — aggregate counts, visible to all visitors.
+          Teases the named/personal view sitting behind Wrap+. */}
+      <HiringPulseStrip />
 
       {/* HR Tech Jobs preview — live data from /api/jobs/search */}
       <section className="border-b border-brand-border">
