@@ -268,38 +268,38 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Vendor Pulse preview */}
-      {FEATURES.PLUS_ENABLED && (
-        <section className="border-b border-brand-border">
-          <div className="max-w-6xl mx-auto px-4 py-12">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <h2 className="font-serif text-2xl font-bold text-brand-dark">Vendor Pulse</h2>
-                <p className="text-sm text-brand-muted mt-0.5">Live G2 scores across the HR tech stack</p>
-              </div>
-              <Link to="/vendors" className="text-sm font-semibold text-brand-terracotta hover:underline flex items-center gap-1">
-                View all 29 <ArrowRight size={14} />
-              </Link>
+      {/* Vendor Pulse preview — public. Free users see the four featured
+          tiles here and can click through to /vendors for the 4-of-N paywall
+          view; deeper signals (verdicts, sparklines, full list) ship with Plus. */}
+      <section className="border-b border-brand-border">
+        <div className="max-w-6xl mx-auto px-4 py-12">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h2 className="font-serif text-2xl font-bold text-brand-dark">Vendor Pulse</h2>
+              <p className="text-sm text-brand-muted mt-0.5">Live G2 scores across the HR tech stack</p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {featuredVendors.map((v) => (
-                <div key={v.name} className="bg-white border border-brand-border rounded-xl p-4 hover:shadow-sm transition-shadow">
-                  <div className="text-xs text-brand-muted uppercase tracking-wide mb-1">{v.category}</div>
-                  <div className="font-serif font-bold text-lg text-brand-dark mb-2">{v.name}</div>
-                  <div className="flex items-end justify-between">
-                    <span className="text-3xl font-bold text-brand-dark">{v.score}</span>
-                    <span className={`text-xs font-semibold flex items-center gap-0.5 ${v.up ? 'text-green-600' : 'text-red-500'}`}>
-                      <TrendingUp size={12} className={v.up ? '' : 'rotate-180'} />
-                      {v.change}
-                    </span>
-                  </div>
-                  <div className="text-xs text-brand-muted mt-1">G2 Score</div>
-                </div>
-              ))}
-            </div>
+            <Link to="/vendors" className="text-sm font-semibold text-brand-terracotta hover:underline flex items-center gap-1">
+              View all 29 <ArrowRight size={14} />
+            </Link>
           </div>
-        </section>
-      )}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {featuredVendors.map((v) => (
+              <div key={v.name} className="bg-white border border-brand-border rounded-xl p-4 hover:shadow-sm transition-shadow">
+                <div className="text-xs text-brand-muted uppercase tracking-wide mb-1">{v.category}</div>
+                <div className="font-serif font-bold text-lg text-brand-dark mb-2">{v.name}</div>
+                <div className="flex items-end justify-between">
+                  <span className="text-3xl font-bold text-brand-dark">{v.score}</span>
+                  <span className={`text-xs font-semibold flex items-center gap-0.5 ${v.up ? 'text-green-600' : 'text-red-500'}`}>
+                    <TrendingUp size={12} className={v.up ? '' : 'rotate-180'} />
+                    {v.change}
+                  </span>
+                </div>
+                <div className="text-xs text-brand-muted mt-1">G2 Score</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Subscribe CTA */}
       <section id="subscribe" className="bg-brand-dark">

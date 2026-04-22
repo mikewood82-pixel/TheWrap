@@ -31,18 +31,15 @@ function App() {
           <Route path="newsletter" element={<NewsletterPage />} />
           <Route path="newsletter/:slug" element={<NewsletterDetailPage />} />
           <Route path="show" element={<ShowPage />} />
+          {/* Vendor Pulse is public — the page itself shows 4 of N vendors
+              to free users with an upgrade CTA, so the gate lives inside
+              VendorPulsePage rather than on the route. */}
+          <Route path="vendors" element={<VendorPulsePage />} />
+          <Route path="vendors/:slug" element={<VendorDeepDivePage />} />
           {FEATURES.PLUS_ENABLED ? (
-            <>
-              <Route path="vendors" element={<VendorPulsePage />} />
-              <Route path="vendors/:slug" element={<VendorDeepDivePage />} />
-              <Route path="subscribe" element={<SubscribePage />} />
-            </>
+            <Route path="subscribe" element={<SubscribePage />} />
           ) : (
-            <>
-              <Route path="vendors" element={<Navigate to="/" replace />} />
-              <Route path="vendors/:slug" element={<Navigate to="/" replace />} />
-              <Route path="subscribe" element={<Navigate to="/" replace />} />
-            </>
+            <Route path="subscribe" element={<Navigate to="/" replace />} />
           )}
           <Route path="sponsorship" element={<SponsorshipPage />} />
           <Route path="referral" element={<ReferralPage />} />
