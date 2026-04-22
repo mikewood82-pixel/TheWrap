@@ -283,20 +283,40 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {featuredVendors.map((v) => (
-              <div key={v.name} className="bg-white border border-brand-border rounded-xl p-4 hover:shadow-sm transition-shadow">
-                <div className="text-xs text-brand-muted uppercase tracking-wide mb-1">{v.category}</div>
-                <div className="font-serif font-bold text-lg text-brand-dark mb-2">{v.name}</div>
-                <div className="flex items-end justify-between">
-                  <span className="text-3xl font-bold text-brand-dark">{v.score}</span>
-                  <span className={`text-xs font-semibold flex items-center gap-0.5 ${v.up ? 'text-green-600' : 'text-red-500'}`}>
-                    <TrendingUp size={12} className={v.up ? '' : 'rotate-180'} />
-                    {v.change}
-                  </span>
-                </div>
-                <div className="text-xs text-brand-muted mt-1">G2 Score</div>
-              </div>
-            ))}
+            {featuredVendors.map((v) => {
+              const isExample = v.name === 'Workday'
+              const tileClass = `relative bg-white border rounded-xl p-4 transition-all ${
+                isExample
+                  ? 'border-brand-terracotta/40 ring-1 ring-brand-terracotta/20 hover:shadow-sm'
+                  : 'border-brand-border'
+              }`
+              const body = (
+                <>
+                  {isExample && (
+                    <div className="absolute -top-2 right-3 bg-brand-gold text-brand-dark text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">
+                      Sample
+                    </div>
+                  )}
+                  <div className="text-xs text-brand-muted uppercase tracking-wide mb-1">{v.category}</div>
+                  <div className="font-serif font-bold text-lg text-brand-dark mb-2">{v.name}</div>
+                  <div className="flex items-end justify-between">
+                    <span className="text-3xl font-bold text-brand-dark">{v.score}</span>
+                    <span className={`text-xs font-semibold flex items-center gap-0.5 ${v.up ? 'text-green-600' : 'text-red-500'}`}>
+                      <TrendingUp size={12} className={v.up ? '' : 'rotate-180'} />
+                      {v.change}
+                    </span>
+                  </div>
+                  <div className="text-xs text-brand-muted mt-1">
+                    {isExample ? 'See full profile →' : 'G2 Score'}
+                  </div>
+                </>
+              )
+              return isExample ? (
+                <Link key={v.name} to="/vendors/workday" className={tileClass}>{body}</Link>
+              ) : (
+                <div key={v.name} className={tileClass}>{body}</div>
+              )
+            })}
           </div>
         </div>
       </section>

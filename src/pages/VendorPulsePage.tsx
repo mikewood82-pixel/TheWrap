@@ -333,50 +333,80 @@ export default function VendorPulsePage() {
         </div>
       )}
 
-      {/* Vendor grid */}
+      {/* Vendor grid
+          Only the Workday tile links through to its deep-dive right now — a
+          single working example of what Wrap+ unlocks. Other tiles render the
+          same data but are static; a "Wrap+" badge signals that the full
+          profile sits behind the upgrade. When we're ready to open more
+          profiles, flip the `isExample` predicate below. */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
         {visibleVendors.map((v) => {
           const selected = isSelected(v.slug)
+          const isExample = v.slug === 'workday'
+          const tileClass = `block bg-white border rounded-xl p-5 transition-all group ${
+            isExample ? 'hover:shadow-sm' : ''
+          } ${
+            selected
+              ? 'border-brand-terracotta/50 ring-2 ring-brand-terracotta/20'
+              : `border-brand-cream ${isExample ? 'hover:border-brand-terracotta/40' : ''}`
+          }`
+
+          const tileBody = (
+            <>
+              {isExample && (
+                <div className="absolute top-3 right-10 bg-brand-gold text-brand-dark text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">
+                  Sample profile
+                </div>
+              )}
+              {!isExample && (
+                <div className="absolute top-3 right-10 bg-brand-dark/5 text-brand-dark/50 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">
+                  Wrap+
+                </div>
+              )}
+              <div className="flex items-start gap-3 mb-3">
+                <VendorLogo name={v.name} domain={v.website.split('/')[0]} size="sm" />
+                <div className="flex-1 min-w-0 pr-6">
+                  <div className="text-xs text-brand-dark/40 uppercase tracking-wide mb-1">{v.category}</div>
+                  <div className="font-serif text-xl font-semibold mb-1 leading-tight">{v.name}</div>
+                  <div className="text-xs text-brand-dark/50 line-clamp-2">{v.description}</div>
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-2 mb-4 text-center">
+                <div className="bg-brand-light rounded-lg p-2">
+                  <div className="font-bold text-lg">{v.g2}</div>
+                  <div className="text-xs text-brand-dark/40">G2</div>
+                </div>
+                <div className="bg-brand-light rounded-lg p-2">
+                  <div className="font-bold text-lg">{v.capterra}</div>
+                  <div className="text-xs text-brand-dark/40">Capterra</div>
+                </div>
+                <div className="bg-brand-light rounded-lg p-2">
+                  <div className="font-bold text-lg">{v.news}</div>
+                  <div className="text-xs text-brand-dark/40">News</div>
+                </div>
+              </div>
+              <div className="flex items-center justify-between">
+                <div className="text-xs text-brand-dark/40">{v.employees} employees</div>
+                {isExample ? (
+                  <span className="flex items-center gap-1 text-brand-terracotta text-xs font-semibold">
+                    See full profile <ArrowRight size={12} />
+                  </span>
+                ) : (
+                  <span className="text-xs text-brand-dark/30">Full profile with Wrap+</span>
+                )}
+              </div>
+            </>
+          )
+
           return (
             <div key={v.slug} className="relative">
-              <Link
-                to={`/vendors/${v.slug}`}
-                className={`block bg-white border rounded-xl p-5 hover:shadow-sm transition-all group ${selected ? 'border-brand-terracotta/50 ring-2 ring-brand-terracotta/20' : 'border-brand-cream hover:border-brand-terracotta/40'}`}
-              >
-                {v.deepDive && (
-                  <div className="absolute top-3 right-10 bg-brand-gold text-brand-dark text-xs font-bold px-2 py-0.5 rounded">
-                    Deep Dive
-                  </div>
-                )}
-                <div className="flex items-start gap-3 mb-3">
-                  <VendorLogo name={v.name} domain={v.website.split('/')[0]} size="sm" />
-                  <div className="flex-1 min-w-0 pr-6">
-                    <div className="text-xs text-brand-dark/40 uppercase tracking-wide mb-1">{v.category}</div>
-                    <div className="font-serif text-xl font-semibold mb-1 leading-tight">{v.name}</div>
-                    <div className="text-xs text-brand-dark/50 line-clamp-2">{v.description}</div>
-                  </div>
-                </div>
-                <div className="grid grid-cols-3 gap-2 mb-4 text-center">
-                  <div className="bg-brand-light rounded-lg p-2">
-                    <div className="font-bold text-lg">{v.g2}</div>
-                    <div className="text-xs text-brand-dark/40">G2</div>
-                  </div>
-                  <div className="bg-brand-light rounded-lg p-2">
-                    <div className="font-bold text-lg">{v.capterra}</div>
-                    <div className="text-xs text-brand-dark/40">Capterra</div>
-                  </div>
-                  <div className="bg-brand-light rounded-lg p-2">
-                    <div className="font-bold text-lg">{v.news}</div>
-                    <div className="text-xs text-brand-dark/40">News</div>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="text-xs text-brand-dark/40">{v.employees} employees</div>
-                  <span className="flex items-center gap-1 text-brand-terracotta text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                    View profile <ArrowRight size={12} />
-                  </span>
-                </div>
-              </Link>
+              {isExample ? (
+                <Link to={`/vendors/${v.slug}`} className={tileClass}>
+                  {tileBody}
+                </Link>
+              ) : (
+                <div className={tileClass}>{tileBody}</div>
+              )}
 
               {/* Compare button */}
               <button
