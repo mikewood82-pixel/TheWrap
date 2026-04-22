@@ -268,9 +268,10 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* Vendor Pulse preview — public. Free users see the four featured
-          tiles here and can click through to /vendors for the 4-of-N paywall
-          view; deeper signals (verdicts, sparklines, full list) ship with Plus. */}
+      {/* Vendor Pulse preview — gated while Mike rethinks the content.
+          Flip PLUS_ENABLED (or remove this guard) to show the featured
+          tiles + Workday sample link. */}
+      {FEATURES.PLUS_ENABLED && (
       <section className="border-b border-brand-border">
         <div className="max-w-6xl mx-auto px-4 py-12">
           <div className="flex items-center justify-between mb-6">
@@ -320,6 +321,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Subscribe CTA */}
       <section id="subscribe" className="bg-brand-dark">
