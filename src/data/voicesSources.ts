@@ -92,4 +92,12 @@ export const voicesSources: VoiceSourceSeed[] = [
     feed_url: 'https://trishsteed.substack.com/feed',
     description: 'HR industry insight from the co-host of At Work in America.',
   },
+  {
+    slug: 'work-tech-weekly',
+    name: 'Work Tech Weekly',
+    kind: 'podcast',
+    site_url: 'https://podcasts.apple.com/us/podcast/work-tech-weekly/id1867039410',
+    feed_url: 'https://go.repcap.com/podcasts/204382303635/rss.xml',
+    description: 'Steve Smith\u2019s weekly conversations on the business of HR tech.',
+  },
 ]
