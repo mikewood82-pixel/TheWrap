@@ -3,6 +3,8 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { Rss } from 'lucide-react'
 import SEO from '../components/SEO'
 import VoiceCard, { type VoiceListItem } from '../components/voices/VoiceCard'
+import StaffPickHero from '../components/voices/StaffPickHero'
+import { voicesStaffPick, normalizeForMatch } from '../data/voicesStaffPick'
 
 type FeedResponse  = { items: VoiceListItem[]; total: number; page: number; per_page: number }
 type Source = {
@@ -29,6 +31,7 @@ export default function VoicesPage() {
   const [sources, setSources] = useState<Source[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [staffPick, setStaffPick] = useState<VoiceListItem | null>(null)
 
   // Keep URL in sync (shareable links).
   useEffect(() => {
@@ -45,6 +48,28 @@ export default function VoicesPage() {
     fetch('/api/voices/sources')
       .then(r => r.ok ? r.json() : Promise.reject(r.statusText))
       .then((d: { sources: Source[] }) => setSources(d.sources))
+      .catch(() => { /* non-fatal */ })
+  }, [])
+
+  // Staff pick — loaded once. Pulls the configured source's feed and resolves
+  // the pinned item client-side. Non-fatal: if it doesn't resolve, the hero
+  // simply doesn't render.
+  useEffect(() => {
+    if (!voicesStaffPick.enabled) return
+    const qs = new URLSearchParams({ source: voicesStaffPick.sourceSlug, per_page: '50' })
+    fetch(`/api/voices/feed?${qs}`)
+      .then(r => r.ok ? r.json() : Promise.reject(`pick ${r.status}`))
+      .then((d: FeedResponse) => {
+        if (!d.items.length) return
+        const match = voicesStaffPick.matchTitle
+        if (match) {
+          const needle = normalizeForMatch(match)
+          const hit = d.items.find(it => normalizeForMatch(it.title).includes(needle))
+          setStaffPick(hit ?? null)
+        } else {
+          setStaffPick(d.items[0])
+        }
+      })
       .catch(() => { /* non-fatal */ })
   }, [])
 
@@ -68,6 +93,14 @@ export default function VoicesPage() {
   )
 
   const selectedSource = source ? sources.find(s => s.slug === source) : null
+
+  // Show the hero only on the unfiltered first page. Drilling into a kind or
+  // source turns this into an "all of X" view where a pinned hero would feel
+  // out of place.
+  const showStaffPick = !!staffPick && !kind && !source && page === 1
+  const gridItems = showStaffPick && data
+    ? data.items.filter(it => it.id !== staffPick!.id)
+    : data?.items ?? []
 
   return (
     <>
@@ -152,8 +185,11 @@ export default function VoicesPage() {
             )}
             {!loading && !error && data && data.items.length > 0 && (
               <>
+                {showStaffPick && staffPick && (
+                  <StaffPickHero item={staffPick} note={voicesStaffPick.note} />
+                )}
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-                  {data.items.map(it => <VoiceCard key={it.id} item={it} />)}
+                  {gridItems.map(it => <VoiceCard key={it.id} item={it} />)}
                 </div>
 
                 {totalPages > 1 && (
