@@ -45,7 +45,7 @@ export const onRequestPatch: PagesFunction<Env, 'id'> = async ({
     return json({ error: 'invalid_id' }, 400)
   }
 
-  let body: { active?: unknown; name?: unknown }
+  let body: { active?: unknown; name?: unknown; frequency?: unknown; webhook_url?: unknown }
   try { body = (await request.json()) as typeof body }
   catch { return json({ error: 'bad_json' }, 400) }
 
@@ -58,6 +58,23 @@ export const onRequestPatch: PagesFunction<Env, 'id'> = async ({
     const name = body.name.trim().slice(0, 120)
     if (!name) return json({ error: 'invalid_name' }, 400)
     sets.push('name = ?'); binds.push(name)
+  }
+  if (typeof body.frequency === 'string') {
+    const f = body.frequency.trim().toLowerCase()
+    if (f !== 'daily' && f !== 'weekly') return json({ error: 'invalid_frequency' }, 400)
+    sets.push('frequency = ?'); binds.push(f)
+  }
+  if ('webhook_url' in body) {
+    // Allow null/empty to clear. Validate any non-empty value as https://...
+    if (body.webhook_url === null || body.webhook_url === '') {
+      sets.push('webhook_url = NULL')
+    } else if (typeof body.webhook_url === 'string') {
+      const url = body.webhook_url.trim()
+      if (!/^https:\/\//i.test(url)) return json({ error: 'invalid_webhook_url' }, 400)
+      sets.push('webhook_url = ?'); binds.push(url.slice(0, 500))
+    } else {
+      return json({ error: 'invalid_webhook_url' }, 400)
+    }
   }
   if (!sets.length) return json({ error: 'no_fields' }, 400)
 

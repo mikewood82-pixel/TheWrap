@@ -1,6 +1,6 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
-import { Bell, Pause, Play, TrendingUp, Minus, TrendingDown, Snowflake } from 'lucide-react'
+import { Bell, Pause, Play, TrendingUp, Minus, TrendingDown, Snowflake, Zap, ZapOff } from 'lucide-react'
 import SEO from '../components/SEO'
 import { useWrapPlus } from '../context/WrapPlusContext'
 import { useVendorAlerts, type VendorWatch } from '../context/VendorAlertContext'
@@ -12,7 +12,7 @@ import { useVendorAlerts, type VendorWatch } from '../context/VendorAlertContext
  */
 export default function VendorAlertsPage() {
   const { isPro, isLoaded } = useWrapPlus()
-  const { watches, hydrated, toggle, setAllActive, anyActive } = useVendorAlerts()
+  const { watches, hydrated, toggle, setAllActive, anyActive, setWebhook } = useVendorAlerts()
 
   const shouldBounce = isLoaded && !isPro
 
@@ -98,6 +98,7 @@ export default function VendorAlertsPage() {
             title="Active"
             watches={grouped.active}
             onUnwatch={slug => void toggle(slug)}
+            onWebhookChange={(slug, url) => void setWebhook(slug, url)}
           />
         )}
 
@@ -108,6 +109,7 @@ export default function VendorAlertsPage() {
               muted
               watches={grouped.paused}
               onUnwatch={slug => void toggle(slug)}
+              onWebhookChange={(slug, url) => void setWebhook(slug, url)}
             />
           </div>
         )}
@@ -117,11 +119,12 @@ export default function VendorAlertsPage() {
 }
 
 function WatchGroup({
-  title, watches, onUnwatch, muted,
+  title, watches, onUnwatch, onWebhookChange, muted,
 }: {
   title: string
   watches: VendorWatch[]
   onUnwatch: (slug: string) => void
+  onWebhookChange: (slug: string, webhookUrl: string | null) => void
   muted?: boolean
 }) {
   return (
@@ -136,26 +139,105 @@ function WatchGroup({
         {watches.map(w => (
           <div
             key={w.vendor_slug}
-            className="flex items-start justify-between gap-3 bg-white border border-brand-border rounded-lg p-4"
+            className="bg-white border border-brand-border rounded-lg p-4"
           >
-            <div className="min-w-0 flex-1">
-              <div className="font-semibold text-brand-dark truncate">{w.vendor_name}</div>
-              <div className="mt-1.5 flex items-center gap-2 flex-wrap">
-                <VerdictPill verdict={w.latest_verdict} />
-                <span className="text-xs text-brand-muted">
-                  {w.open_jobs} open job{w.open_jobs === 1 ? '' : 's'}
-                </span>
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0 flex-1">
+                <div className="font-semibold text-brand-dark truncate">{w.vendor_name}</div>
+                <div className="mt-1.5 flex items-center gap-2 flex-wrap">
+                  <VerdictPill verdict={w.latest_verdict} />
+                  <span className="text-xs text-brand-muted">
+                    {w.open_jobs} open job{w.open_jobs === 1 ? '' : 's'}
+                  </span>
+                </div>
               </div>
+              <button
+                onClick={() => onUnwatch(w.vendor_slug)}
+                className="text-xs text-brand-muted hover:text-red-600 transition-colors shrink-0"
+              >
+                Remove
+              </button>
             </div>
-            <button
-              onClick={() => onUnwatch(w.vendor_slug)}
-              className="text-xs text-brand-muted hover:text-red-600 transition-colors shrink-0"
-            >
-              Remove
-            </button>
+            <div className="mt-3 pt-3 border-t border-brand-border/60 text-xs">
+              <WebhookControl
+                value={w.webhook_url}
+                onSave={url => onWebhookChange(w.vendor_slug, url)}
+              />
+            </div>
           </div>
         ))}
       </div>
+    </div>
+  )
+}
+
+function WebhookControl({
+  value, onSave,
+}: {
+  value: string | null
+  onSave: (url: string | null) => void
+}) {
+  const [editing, setEditing] = useState(false)
+  const [draft, setDraft] = useState(value ?? '')
+  const [testing, setTesting] = useState<'idle' | 'ok' | 'fail'>('idle')
+
+  if (!editing) {
+    return (
+      <button
+        onClick={() => { setDraft(value ?? ''); setEditing(true) }}
+        className="flex items-center gap-1 text-brand-muted hover:text-brand-terracotta"
+      >
+        {value ? <Zap size={12} className="text-brand-terracotta" /> : <ZapOff size={12} />}
+        {value ? 'Webhook on · edit' : 'Add Slack / webhook'}
+      </button>
+    )
+  }
+
+  async function test() {
+    if (!draft.trim()) return
+    setTesting('idle')
+    try {
+      const r = await fetch(draft.trim(), {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ text: ':white_check_mark: Test from The Wrap — webhook is reachable.' }),
+      })
+      setTesting(r.ok ? 'ok' : 'fail')
+    } catch {
+      setTesting('fail')
+    }
+  }
+
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      <input
+        type="url"
+        value={draft}
+        onChange={e => setDraft(e.target.value)}
+        placeholder="https://hooks.slack.com/services/…"
+        className="flex-1 min-w-[180px] bg-white border border-brand-border rounded px-2 py-1 text-xs text-brand-dark focus:outline-none focus:ring-1 focus:ring-brand-terracotta"
+      />
+      <button
+        onClick={test}
+        disabled={!draft.trim()}
+        className="px-2 py-1 rounded text-xs font-semibold border border-brand-border text-brand-muted hover:border-brand-terracotta/60 disabled:opacity-40"
+      >
+        Test
+      </button>
+      <button
+        onClick={() => { onSave(draft.trim() || null); setEditing(false); setTesting('idle') }}
+        className="px-2 py-1 rounded text-xs font-semibold bg-brand-terracotta text-white hover:opacity-90"
+      >
+        Save
+      </button>
+      <button
+        onClick={() => { setEditing(false); setTesting('idle') }}
+        className="px-2 py-1 rounded text-xs text-brand-muted hover:text-brand-dark"
+      >
+        Cancel
+      </button>
+      {testing === 'ok'   && <span className="text-green-700">✓ reachable</span>}
+      {testing === 'fail' && <span className="text-red-600">✗ failed</span>}
     </div>
   )
 }

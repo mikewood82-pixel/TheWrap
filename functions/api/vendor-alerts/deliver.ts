@@ -21,6 +21,7 @@
 
 import { computeHealth, verdictLabel, type SnapRow, type HealthVerdict } from '../_lib/vendorHealth'
 import { signUserId } from '../_lib/voicesSignature'
+import { deliverWebhook, type WebhookPayloadVendor } from '../_lib/webhook'
 
 interface Env {
   JOBS_DB: D1Database
@@ -36,6 +37,7 @@ type WatchRow = {
   email: string
   vendor_slug: string
   vendor_name: string | null
+  webhook_url: string | null
 }
 
 type PendingAlert = {
@@ -43,6 +45,7 @@ type PendingAlert = {
   vendor_name: string
   verdict: HealthVerdict
   previous_verdict: HealthVerdict | null
+  webhook_url: string | null
 }
 
 const RESEND_API = 'https://api.resend.com/emails'
@@ -137,7 +140,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     const changedSlugs = changes.map(c => c.slug)
     const placeholders = changedSlugs.map(() => '?').join(',')
     const { results: watchers } = await env.JOBS_DB.prepare(
-      `SELECT w.clerk_user_id, w.email, w.vendor_slug, va.vendor_name
+      `SELECT w.clerk_user_id, w.email, w.vendor_slug, w.webhook_url, va.vendor_name
          FROM vendor_watches w
          LEFT JOIN vendor_ats va ON va.vendor_slug = w.vendor_slug
         WHERE w.active = 1
@@ -166,6 +169,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
         vendor_name: w.vendor_name ?? c.name,
         verdict: c.verdict,
         previous_verdict: c.previous,
+        webhook_url: w.webhook_url,
       })
       buckets.set(w.clerk_user_id, b)
     }
@@ -191,6 +195,31 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
       const ok = await sendViaResend(env, { to: bucket.email, subject, html, unsubUrl })
       if (!ok) { errors++; continue }
+
+      // Webhook fan-out: group alerts by distinct webhook URL so one team's
+      // Slack gets a single message containing all their vendor changes,
+      // even if several watches share the same URL.
+      const byWebhook = new Map<string, PendingAlert[]>()
+      for (const a of bucket.alerts) {
+        if (!a.webhook_url) continue
+        const arr = byWebhook.get(a.webhook_url) ?? []
+        arr.push(a)
+        byWebhook.set(a.webhook_url, arr)
+      }
+      for (const [url, alerts] of byWebhook) {
+        const payload: WebhookPayloadVendor = {
+          kind: 'vendor_alert',
+          alerts: alerts.map(a => ({
+            vendor_slug: a.vendor_slug,
+            vendor_name: a.vendor_name,
+            verdict: a.verdict,
+            previous_verdict: a.previous_verdict,
+            vendor_page_url: `https://ilovethewrap.com/jobs?vendor=${encodeURIComponent(a.vendor_slug)}`,
+          })),
+          manage_url: manageUrl,
+        }
+        await deliverWebhook(url, payload)
+      }
 
       const stmts = bucket.alerts.map(a => env.JOBS_DB.prepare(
         `INSERT INTO vendor_health_alerts_sent

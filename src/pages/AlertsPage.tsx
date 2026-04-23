@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SignInButton, useAuth } from '@clerk/clerk-react'
-import { ArrowLeft, ArrowRight, Bell, Trash2 } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Bell, Trash2, Zap, ZapOff } from 'lucide-react'
 import SEO from '../components/SEO'
 import { FEATURES } from '../config/features'
 import { useAuthedFetch, useWrapPlus } from '../context/WrapPlusContext'
@@ -22,6 +22,8 @@ type AlertItem = {
   name: string | null
   active: number
   created_at: string
+  frequency: string
+  webhook_url: string | null
   query: SavedQuery
 }
 
@@ -113,6 +115,33 @@ function AlertsList() {
     }
   }
 
+  async function setFrequency(a: AlertItem, frequency: 'daily' | 'weekly') {
+    setAlerts(prev => prev?.map(x => x.id === a.id ? { ...x, frequency } : x) ?? null)
+    try {
+      const r = await authedFetch(`/api/jobs/alerts/${a.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ frequency }),
+      })
+      if (!r.ok) throw new Error()
+    } catch {
+      setAlerts(prev => prev?.map(x => x.id === a.id ? { ...x, frequency: a.frequency } : x) ?? null)
+    }
+  }
+
+  async function setWebhook(a: AlertItem, webhook_url: string | null) {
+    const prevVal = a.webhook_url
+    setAlerts(prev => prev?.map(x => x.id === a.id ? { ...x, webhook_url } : x) ?? null)
+    try {
+      const r = await authedFetch(`/api/jobs/alerts/${a.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ webhook_url: webhook_url ?? null }),
+      })
+      if (!r.ok) throw new Error()
+    } catch {
+      setAlerts(prev => prev?.map(x => x.id === a.id ? { ...x, webhook_url: prevVal } : x) ?? null)
+    }
+  }
+
   if (error) {
     return <div className="bg-red-50 border border-red-200 text-red-800 rounded-lg p-4 text-sm">Couldn't load alerts ({error}).</div>
   }
@@ -181,9 +210,99 @@ function AlertsList() {
               </button>
             </div>
           </div>
+
+          {/* Delivery settings strip */}
+          <div className="mt-3 pt-3 border-t border-brand-border/60 flex flex-wrap items-center gap-3 text-xs">
+            <label className="flex items-center gap-2 text-brand-muted">
+              Frequency:
+              <select
+                value={a.frequency}
+                onChange={e => setFrequency(a, e.target.value as 'daily' | 'weekly')}
+                className="bg-white border border-brand-border rounded px-2 py-1 text-xs text-brand-dark focus:outline-none focus:ring-1 focus:ring-brand-terracotta"
+              >
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly (Mondays)</option>
+              </select>
+            </label>
+            <WebhookControl
+              value={a.webhook_url}
+              onSave={url => setWebhook(a, url)}
+            />
+          </div>
         </li>
       ))}
     </ul>
+  )
+}
+
+function WebhookControl({
+  value, onSave,
+}: {
+  value: string | null
+  onSave: (url: string | null) => void
+}) {
+  const [editing, setEditing] = useState(false)
+  const [draft, setDraft] = useState(value ?? '')
+  const [testing, setTesting] = useState<'idle' | 'ok' | 'fail'>('idle')
+
+  if (!editing) {
+    return (
+      <button
+        onClick={() => { setDraft(value ?? ''); setEditing(true) }}
+        className="flex items-center gap-1 text-brand-muted hover:text-brand-terracotta"
+      >
+        {value ? <Zap size={12} className="text-brand-terracotta" /> : <ZapOff size={12} />}
+        {value ? 'Webhook on · edit' : 'Add Slack / webhook'}
+      </button>
+    )
+  }
+
+  async function test() {
+    if (!draft.trim()) return
+    setTesting('idle')
+    try {
+      const r = await fetch(draft.trim(), {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ text: ':white_check_mark: Test from The Wrap — webhook is reachable.' }),
+      })
+      setTesting(r.ok ? 'ok' : 'fail')
+    } catch {
+      setTesting('fail')
+    }
+  }
+
+  return (
+    <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
+      <input
+        type="url"
+        value={draft}
+        onChange={e => setDraft(e.target.value)}
+        placeholder="https://hooks.slack.com/services/…"
+        className="flex-1 min-w-[220px] bg-white border border-brand-border rounded px-2 py-1 text-xs text-brand-dark focus:outline-none focus:ring-1 focus:ring-brand-terracotta"
+      />
+      <button
+        onClick={test}
+        disabled={!draft.trim()}
+        className="px-2 py-1 rounded text-xs font-semibold border border-brand-border text-brand-muted hover:border-brand-terracotta/60 disabled:opacity-40"
+      >
+        Test
+      </button>
+      <button
+        onClick={() => { onSave(draft.trim() || null); setEditing(false); setTesting('idle') }}
+        className="px-2 py-1 rounded text-xs font-semibold bg-brand-terracotta text-white hover:opacity-90"
+      >
+        Save
+      </button>
+      <button
+        onClick={() => { setEditing(false); setTesting('idle') }}
+        className="px-2 py-1 rounded text-xs text-brand-muted hover:text-brand-dark"
+      >
+        Cancel
+      </button>
+      {testing === 'ok'   && <span className="text-green-700">✓ reachable</span>}
+      {testing === 'fail' && <span className="text-red-600">✗ failed</span>}
+    </div>
   )
 }
 

@@ -36,6 +36,8 @@ type AlertRow = {
   query_json: string
   active: number
   created_at: string
+  frequency: string
+  webhook_url: string | null
 }
 
 type AlertPayload = Omit<AlertRow, 'clerk_user_id' | 'query_json'> & {
@@ -48,7 +50,8 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
   if (auth instanceof Response) return auth
 
   const { results } = await env.JOBS_DB.prepare(
-    `SELECT id, clerk_user_id, email, name, query_json, active, created_at
+    `SELECT id, clerk_user_id, email, name, query_json, active, created_at,
+            frequency, webhook_url
        FROM alerts
       WHERE clerk_user_id = ?
       ORDER BY created_at DESC`,
@@ -65,7 +68,10 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const auth = await requirePlus(request, env)
   if (auth instanceof Response) return auth
 
-  let body: { email?: unknown; name?: unknown; query?: unknown }
+  let body: {
+    email?: unknown; name?: unknown; query?: unknown;
+    frequency?: unknown; webhook_url?: unknown;
+  }
   try { body = (await request.json()) as typeof body }
   catch { return json({ error: 'bad_json' }, 400) }
 
@@ -75,6 +81,18 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   }
   const name = typeof body.name === 'string' ? body.name.trim().slice(0, 120) : ''
   if (!name) return json({ error: 'missing_name' }, 400)
+
+  const frequency = typeof body.frequency === 'string' && body.frequency.trim().toLowerCase() === 'weekly'
+    ? 'weekly'
+    : 'daily'
+
+  // webhook_url is optional. When present, must be https://... and < 500 chars.
+  let webhookUrl: string | null = null
+  if (typeof body.webhook_url === 'string' && body.webhook_url.trim()) {
+    const url = body.webhook_url.trim()
+    if (!/^https:\/\//i.test(url)) return json({ error: 'invalid_webhook_url' }, 400)
+    webhookUrl = url.slice(0, 500)
+  }
 
   const query = sanitizeQuery(body.query)
   if (!query) return json({ error: 'invalid_query' }, 400)
@@ -89,10 +107,11 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   if (count >= 20) return json({ error: 'alert_limit_reached', limit: 20 }, 409)
 
   const insert = await env.JOBS_DB.prepare(
-    `INSERT INTO alerts (clerk_user_id, email, name, query_json, active)
-     VALUES (?, ?, ?, ?, 1)
-     RETURNING id, clerk_user_id, email, name, query_json, active, created_at`,
-  ).bind(auth.userId, email, name, JSON.stringify(query)).first<AlertRow>()
+    `INSERT INTO alerts (clerk_user_id, email, name, query_json, active, frequency, webhook_url)
+     VALUES (?, ?, ?, ?, 1, ?, ?)
+     RETURNING id, clerk_user_id, email, name, query_json, active, created_at,
+               frequency, webhook_url`,
+  ).bind(auth.userId, email, name, JSON.stringify(query), frequency, webhookUrl).first<AlertRow>()
 
   if (!insert) return json({ error: 'insert_failed' }, 500)
   return json({ alert: rowToPayload(insert) }, 201)
@@ -141,6 +160,8 @@ function rowToPayload(row: AlertRow): AlertPayload {
     name:          row.name,
     active:        row.active,
     created_at:    row.created_at,
+    frequency:     row.frequency ?? 'daily',
+    webhook_url:   row.webhook_url ?? null,
     query,
   }
 }

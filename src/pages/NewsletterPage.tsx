@@ -1,8 +1,11 @@
-import { useState, useMemo } from 'react'
-import { ArrowRight, ExternalLink, Search, X } from 'lucide-react'
+import { useState, useMemo, type ReactNode } from 'react'
+import { ArrowRight, ExternalLink, Search, X, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import { archive } from '../data/archive'
+import { newsletters } from '../data/newsletters'
+import { useWrapPlus } from '../context/WrapPlusContext'
+import { FEATURES } from '../config/features'
 
 // Build a set of slugs that have full local content
 const archivedSlugs = new Set(archive.map(a => a.slug))
@@ -121,18 +124,69 @@ const editions: Edition[] = [
 // Collect unique tags in display order
 const allTags = Array.from(new Set(editions.map(e => e.tag).filter(Boolean) as string[]))
 
+// Full-text body index for Plus-only search. Newsletter bodies are shipped in
+// the client bundle (src/data/newsletters.ts), so no API call or D1 FTS is
+// needed — we strip HTML once at module load and search against plain text.
+const bodyBySlug: Record<string, string> = {}
+for (const n of newsletters) {
+  bodyBySlug[n.slug] = stripHtml(n.body).toLowerCase()
+}
+
+function stripHtml(html: string): string {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&#39;/g, "'").replace(/&quot;/g, '"')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+// Build a ~80-char window around the first body match so the result row shows
+// the matched context, not just the title.
+function bodySnippet(body: string, q: string): string | null {
+  const idx = body.indexOf(q)
+  if (idx < 0) return null
+  const start = Math.max(0, idx - 40)
+  const end   = Math.min(body.length, idx + q.length + 60)
+  const left  = start > 0 ? '…' : ''
+  const right = end < body.length ? '…' : ''
+  return left + body.slice(start, end).trim() + right
+}
+
+type Match = { edition: Edition; snippet: string | null }
+
 export default function NewsletterPage() {
   const [query, setQuery] = useState('')
   const [activeTag, setActiveTag] = useState<string | null>(null)
+  const { isPro, isLoaded } = useWrapPlus()
+  // Gate full-text body search on Plus. Free users keep the existing
+  // title + date match so the search input still works for them.
+  const canFullText = FEATURES.PLUS_ENABLED && isLoaded && isPro
 
-  const filtered = useMemo(() => {
+  const filtered = useMemo<Match[]>(() => {
     const q = query.toLowerCase().trim()
-    return editions.filter(ed => {
-      if (activeTag && ed.tag !== activeTag) return false
-      if (q && !ed.title.toLowerCase().includes(q) && !ed.date.toLowerCase().includes(q)) return false
-      return true
-    })
-  }, [query, activeTag])
+    return editions
+      .map<Match | null>(ed => {
+        if (activeTag && ed.tag !== activeTag) return null
+        if (!q) return { edition: ed, snippet: null }
+
+        const titleHit = ed.title.toLowerCase().includes(q) || ed.date.toLowerCase().includes(q)
+        if (titleHit) return { edition: ed, snippet: null }
+
+        if (canFullText) {
+          const slug = ed.slug ?? (ed.linkedinSlug ? toLocalSlug(ed.linkedinSlug) : undefined)
+          const body = slug ? bodyBySlug[slug] : undefined
+          if (body && body.includes(q)) {
+            return { edition: ed, snippet: bodySnippet(body, q) }
+          }
+        }
+        return null
+      })
+      .filter((x): x is Match => x !== null)
+  }, [query, activeTag, canFullText])
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
@@ -205,8 +259,24 @@ export default function NewsletterPage() {
         </p>
       )}
 
+      {/* Plus tease: free users search titles only. Plus members search the
+          whole body. Shown only while a query is active so it doesn't clutter
+          the empty state. */}
+      {query && FEATURES.PLUS_ENABLED && isLoaded && !isPro && (
+        <div className="mb-4 flex items-center gap-2 text-xs text-brand-muted bg-brand-surface border border-brand-border rounded-lg px-3 py-2">
+          <Sparkles size={12} className="text-brand-terracotta shrink-0" />
+          <span>
+            Searching titles only.{' '}
+            <Link to="/subscribe" className="text-brand-terracotta font-semibold hover:underline">
+              Wrap+ searches the full archive text
+            </Link>
+            .
+          </span>
+        </div>
+      )}
+
       <div className="border-t border-brand-cream">
-        {filtered.map((ed) => {
+        {filtered.map(({ edition: ed, snippet }) => {
           // Determine if we have local full-text content
           const localSlug = ed.slug ?? (ed.linkedinSlug ? toLocalSlug(ed.linkedinSlug) : undefined)
           const hasLocal = !!ed.slug || (!!localSlug && archivedSlugs.has(localSlug))
@@ -216,7 +286,7 @@ export default function NewsletterPage() {
 
           const inner = (
             <div className="flex items-start justify-between gap-4 py-4 border-b border-brand-cream hover:bg-brand-cream/40 px-2 -mx-2 transition-colors group cursor-pointer">
-              <div>
+              <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="text-xs text-brand-dark/40">{ed.date}</span>
                   {ed.tag && (
@@ -229,10 +299,20 @@ export default function NewsletterPage() {
                       <ExternalLink size={10} /> LinkedIn
                     </span>
                   )}
+                  {snippet && (
+                    <span className="text-[10px] uppercase tracking-wide font-semibold text-brand-terracotta">
+                      Match in body
+                    </span>
+                  )}
                 </div>
                 <div className="font-serif text-base font-semibold group-hover:text-brand-terracotta transition-colors text-brand-dark leading-snug">
                   {ed.title}
                 </div>
+                {snippet && (
+                  <p className="mt-1 text-sm text-brand-muted line-clamp-2">
+                    <HighlightedSnippet text={snippet} query={query.trim()} />
+                  </p>
+                )}
               </div>
               <ArrowRight size={16} className="text-brand-dark/20 group-hover:text-brand-terracotta mt-1 shrink-0 transition-colors" />
             </div>
@@ -260,4 +340,28 @@ export default function NewsletterPage() {
       </div>
     </div>
   )
+}
+
+// Wraps each occurrence of `query` in the snippet with a highlight span.
+// Case-insensitive match; query is treated as a literal string (search input
+// comes from the user and can contain regex metacharacters).
+function HighlightedSnippet({ text, query }: { text: string; query: string }) {
+  if (!query) return <>{text}</>
+  const q = query.toLowerCase()
+  const out: ReactNode[] = []
+  let i = 0
+  let n = 0
+  const lower = text.toLowerCase()
+  while (i < text.length) {
+    const next = lower.indexOf(q, i)
+    if (next < 0) { out.push(text.slice(i)); break }
+    if (next > i) out.push(text.slice(i, next))
+    out.push(
+      <mark key={n++} className="bg-brand-terracotta/15 text-brand-dark rounded px-0.5">
+        {text.slice(next, next + query.length)}
+      </mark>
+    )
+    i = next + query.length
+  }
+  return <>{out}</>
 }

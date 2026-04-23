@@ -19,6 +19,7 @@ type WatchRow = {
   vendor_name: string | null
   active: number
   created_at: string
+  webhook_url: string | null
   latest_verdict: string | null
   latest_verdict_date: string | null
   open_jobs: number | null
@@ -36,6 +37,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
             va.vendor_name,
             w.active,
             w.created_at,
+            w.webhook_url,
             (SELECT verdict
                FROM vendor_health_history h
               WHERE h.vendor_slug = w.vendor_slug
@@ -59,6 +61,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
     vendor_name: r.vendor_name ?? r.vendor_slug,
     active: r.active === 1,
     created_at: r.created_at,
+    webhook_url: r.webhook_url,
     latest_verdict: r.latest_verdict,
     latest_verdict_date: r.latest_verdict_date,
     open_jobs: r.open_jobs ?? 0,
@@ -130,15 +133,44 @@ export const onRequestDelete: PagesFunction<Env> = async ({ request, env }) => {
   return json({ ok: true, vendor_slug: slug })
 }
 
-// -------- PATCH: pause/resume all watches for this user --------
+// -------- PATCH --------
+// Two shapes:
+//   { active: boolean }                      → pause/resume all watches
+//   { vendor_slug, webhook_url|null }         → set/clear webhook on one watch
 export const onRequestPatch: PagesFunction<Env> = async ({ request, env }) => {
   const auth = await requirePlus(request, env)
   if (auth instanceof Response) return auth
 
-  let body: { active?: unknown }
+  let body: { active?: unknown; vendor_slug?: unknown; webhook_url?: unknown }
   try { body = (await request.json()) as typeof body }
   catch { return json({ error: 'bad_json' }, 400) }
 
+  // Per-watch webhook update
+  if (typeof body.vendor_slug === 'string') {
+    const slug = body.vendor_slug.trim()
+    if (!slug) return json({ error: 'missing_vendor_slug' }, 400)
+
+    let webhookUrl: string | null = null
+    if (body.webhook_url === null || body.webhook_url === '') {
+      webhookUrl = null
+    } else if (typeof body.webhook_url === 'string') {
+      const url = body.webhook_url.trim()
+      if (!/^https:\/\//i.test(url)) return json({ error: 'invalid_webhook_url' }, 400)
+      webhookUrl = url.slice(0, 500)
+    } else {
+      return json({ error: 'invalid_webhook_url' }, 400)
+    }
+
+    const res = await env.JOBS_DB.prepare(
+      `UPDATE vendor_watches
+          SET webhook_url = ?, updated_at = datetime('now')
+        WHERE clerk_user_id = ? AND vendor_slug = ?`
+    ).bind(webhookUrl, auth.userId, slug).run()
+    if ((res.meta.changes ?? 0) === 0) return json({ error: 'not_found' }, 404)
+    return json({ ok: true, vendor_slug: slug, webhook_url: webhookUrl })
+  }
+
+  // Bulk pause/resume
   if (typeof body.active !== 'boolean') return json({ error: 'missing_active' }, 400)
 
   const res = await env.JOBS_DB.prepare(

@@ -17,6 +17,7 @@
 // Returns a JSON summary: {delivered, skipped_empty, errors, alerts_scanned}.
 
 import { signAlertId } from '../../_lib/alertSignature'
+import { deliverWebhook, type WebhookPayloadJob } from '../../_lib/webhook'
 
 interface Env {
   JOBS_DB: D1Database
@@ -41,6 +42,8 @@ type AlertRow = {
   name: string | null
   query_json: string
   created_at: string
+  frequency: string
+  webhook_url: string | null
 }
 
 type JobMatch = {
@@ -67,10 +70,17 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     return new Response('unauthorized', { status: 401 })
   }
 
+  // Filter by frequency at the SQL level: 'daily' always fires; 'weekly'
+  // only fires on Monday UTC (ISO weekday 1). strftime('%u') returns '1'..'7'
+  // in D1 SQLite; compare as text.
   const { results: alerts } = await env.JOBS_DB.prepare(
-    `SELECT id, email, name, query_json, created_at
+    `SELECT id, email, name, query_json, created_at, frequency, webhook_url
        FROM alerts
       WHERE active = 1
+        AND (
+              frequency = 'daily'
+           OR (frequency = 'weekly' AND strftime('%w', 'now') = '1')
+        )
       ORDER BY id ASC`,
   ).all<AlertRow>()
 
@@ -100,6 +110,27 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
         unsubUrl,
       })
       if (!ok) { errors++; continue }
+
+      // Fire the webhook in addition to the email if configured. Failures are
+      // soft — email already went out and we still record the dedup rows so
+      // the next run doesn't re-fire.
+      if (alert.webhook_url) {
+        const payload: WebhookPayloadJob = {
+          kind: 'jobs_alert',
+          alert_id: alert.id,
+          alert_name: alert.name,
+          matches: matches.map(m => ({
+            id: m.id,
+            title: m.title,
+            vendor_name: m.vendor_name,
+            location: m.location,
+            remote: m.remote,
+            url: `https://ilovethewrap.com/jobs/${m.id}/${slugify(m.title)}`,
+          })),
+          manage_url: manageUrl,
+        }
+        await deliverWebhook(alert.webhook_url, payload)
+      }
 
       // Record sent. Batch-atomic so we never half-record.
       const rec = matches.map(m => env.JOBS_DB.prepare(

@@ -10,6 +10,7 @@ export type VendorWatch = {
   vendor_name: string
   active: boolean
   created_at: string
+  webhook_url: string | null
   latest_verdict: string | null
   latest_verdict_date: string | null
   open_jobs: number
@@ -26,6 +27,8 @@ interface VendorAlertContextType {
   setAllActive: (active: boolean) => Promise<void>
   /** Whether at least one watch is active — tells the UI whether to show "Paused" */
   anyActive: boolean
+  /** Set / clear the webhook URL for a single watched vendor. */
+  setWebhook: (vendorSlug: string, webhookUrl: string | null) => Promise<void>
 }
 
 const noop = async () => {}
@@ -39,6 +42,7 @@ const VendorAlertContext = createContext<VendorAlertContextType>({
   watches: null,
   setAllActive: noop,
   anyActive: false,
+  setWebhook: noop,
 })
 
 /**
@@ -158,11 +162,26 @@ export function VendorAlertProvider({ children }: { children: ReactNode }) {
 
   const anyActive = !!watches && watches.some(w => w.active)
 
+  const setWebhook = useCallback(async (vendorSlug: string, webhookUrl: string | null) => {
+    if (!isPro) return
+    const prev = watches
+    setWatches(p => p ? p.map(w => w.vendor_slug === vendorSlug ? { ...w, webhook_url: webhookUrl } : w) : p)
+    try {
+      const r = await authedFetchRef.current('/api/vendor-alerts', {
+        method: 'PATCH',
+        body: JSON.stringify({ vendor_slug: vendorSlug, webhook_url: webhookUrl }),
+      })
+      if (!r.ok) throw new Error(String(r.status))
+    } catch {
+      setWatches(prev)
+    }
+  }, [isPro, watches])
+
   return (
     <VendorAlertContext.Provider
       value={{
         watchedSlugs, isWatching, toggle, refresh, hydrated,
-        watches, setAllActive, anyActive,
+        watches, setAllActive, anyActive, setWebhook,
       }}
     >
       {children}
