@@ -100,4 +100,12 @@ export const voicesSources: VoiceSourceSeed[] = [
     feed_url: 'https://go.repcap.com/podcasts/204382303635/rss.xml',
     description: 'Steve Smith\u2019s weekly conversations on the business of HR tech.',
   },
+  {
+    slug: 'matt-charney',
+    name: 'Matt Charney',
+    kind: 'blog',
+    site_url: 'https://mattcharney.com',
+    feed_url: 'https://mattcharney.com/feed/',
+    description: 'Snark Attack \u2014 pointed commentary on recruiting and HR tech.',
+  },
 ]
