@@ -1,11 +1,12 @@
 const headlines = [
-  { text: 'UKG cuts 950 jobs — 6% of workforce — amid AI restructuring', url: 'https://hrexecutive.com/ukg-cuts-950-jobs-in-latest-round-of-restructuring/' },
-  { text: 'SAP SuccessFactors 1H 2026 release expands agentic AI suite-wide', url: 'https://news.sap.com/2026/04/sap-successfactors-1h-2026-release/' },
-  { text: 'Workday Sana AI agents launch · agentic new front door to enterprise work', url: 'https://hrexecutive.com/what-workdays-biggest-agent-launch-means-for-hr-leaders/' },
-  { text: 'Findem acquires Glider AI · end-to-end autonomous AI hiring platform', url: 'https://news.crunchbase.com/venture/ai-hr-software-startup-funding-ma/' },
-  { text: 'EU AI Act bias audits for AI hiring tools · mandatory from August 2026', url: 'https://www.technewsworld.com/story/hrs-2026-playbook-signals-a-human-centric-tech-reset-180063.html' },
+  { text: 'Intuit acquires GoCo · HR/benefits platform joins QuickBooks mid-market', url: 'https://investors.intuit.com/news-events/press-releases/detail/1247/intuit-to-acquire-hr-platform-goco' },
+  { text: 'Docebo acquires 365Talents for $55M · AI skills intelligence enters LMS', url: 'https://betakit.com/docebo-deepens-ai-capabilities-with-55-million-usd-365talents-acquisition/' },
+  { text: 'Remote acquires Atlas · global expense management for distributed teams', url: 'https://remote.com/blog/company-news/remote-acquires-atlas' },
+  { text: 'SAP + SmartRecruiters integration live · AI-connected hiring in SuccessFactors', url: 'https://news.sap.com/2026/03/smartrecruiters-for-sap-successfactors-ai-driven-hiring-connected-hcm/' },
+  { text: 'SmartRecruiters · autonomous AI hiring agents handle sourcing to screening', url: 'https://www.globenewswire.com/news-release/2026/04/07/3269187/0/en/SmartRecruiters-Introduces-the-Future-of-Hiring-From-AI-Agents-to-Autonomous-Talent-Acquisition.html' },
+  { text: 'Darwinbox Super Agent · MCP-powered agentic AI for enterprise HR', url: 'https://darwinbox.com/en-us/blog/darwinbox-launches-super-agent' },
   { text: 'U.S. adds 178K jobs in March · unemployment holds at 4.3%', url: 'https://www.npr.org/2026/04/03/nx-s1-5772696/jobs-employment-economy-labor-market' },
-  { text: 'Recruiting platforms lead 2026 HR tech budgets · top priority for CHROs', url: 'https://hrexecutive.com/recruiting-platforms-get-hr-tech-budget-priority-for-2026-plus-people-move-news/' },
+  { text: 'EU AI Act · bias audits for AI hiring tools mandatory August 2026', url: 'https://www.technewsworld.com/story/hrs-2026-playbook-signals-a-human-centric-tech-reset-180063.html' },
 ]
 
 export default function NewsTicker() {
