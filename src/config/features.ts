@@ -3,7 +3,7 @@
  * Vendor Pulse and Wrap+ membership, then redeploy.
  */
 export const FEATURES = {
-  PLUS_ENABLED: true, // TEMP preview window — flip back after Mike signs off
+  PLUS_ENABLED: false,
   // /voices \u2014 curated hub of outbound HR tech writers, analysts, podcasters.
   VOICES_ENABLED: true,
 }
