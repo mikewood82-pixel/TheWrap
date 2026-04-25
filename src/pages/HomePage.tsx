@@ -7,16 +7,23 @@ import JobCard, { type JobListItem } from '../components/jobs/JobCard'
 import HiringPulseStrip from '../components/HiringPulseStrip'
 
 // Swap this URL out when the latest episode is ready
-const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/Agw6lq-_qFY'
+const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/BehToAi0lk0'
 
 const latestEditions = [
+  {
+    date: 'April 24, 2026',
+    title: 'Introducing the Expanded Wrap!',
+    excerpt: 'A full website, a free jobs board across 28 HR tech vendors, a Voices hub, a Vendor Pulse preview — and a premium tier launching May 1.',
+    slug: 'introducing-the-expanded-wrap',
+    tag: 'Inside The Wrap',
+    image: '/newsletters/april-24-2026-expanded-wrap/image1.png',
+  },
   {
     date: 'April 18, 2026',
     title: 'HR Tech\'s Moviephone Moment',
     excerpt: 'Once someone experiences hiring at scale without navigating a single workflow menu, the seventeen-step enterprise process starts to feel like a punishment.',
     slug: 'hr-techs-moviephone-moment',
     tag: 'AI & Future of Work',
-    image: '/newsletters/april-18-2026-moviephone-moment/image1.jpg',
   },
   {
     date: 'April 11, 2026',
@@ -24,13 +31,6 @@ const latestEditions = [
     excerpt: 'The digital twin narrative sounds reasonable — until you follow it to its logical conclusion.',
     slug: 'your-kids-will-compete-with-your-shadow',
     tag: 'AI & Future of Work',
-  },
-  {
-    date: 'April 3, 2026',
-    title: 'When did we stop expecting more from the top?',
-    excerpt: 'Leadership standards in HR tech are shifting — and not always in the right direction.',
-    slug: 'stop-expecting-more',
-    tag: 'Leadership',
   },
 ]
 

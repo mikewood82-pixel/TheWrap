@@ -31,6 +31,8 @@ type Edition = {
 
 const editions: Edition[] = [
   // ── 2026 ────────────────────────────────────────────────────────────────────
+  { date: 'April 24, 2026',    title: 'Introducing the Expanded Wrap!',                        tag: 'Inside The Wrap',     slug: 'introducing-the-expanded-wrap' },
+  { date: 'April 18, 2026',    title: "HR Tech's Moviephone Moment",                           tag: 'AI & Future of Work', slug: 'hr-techs-moviephone-moment' },
   { date: 'April 11, 2026',    title: 'Your Kids Will Compete With Your Shadow',               tag: 'AI & Future of Work', slug: 'your-kids-will-compete-with-your-shadow' },
   { date: 'April 3, 2026',     title: 'When did we stop expecting more from the top?',         tag: 'Leadership',          slug: 'stop-expecting-more' },
   { date: 'March 27, 2026',    title: 'When every demo looks the same, what are you actually buying?', tag: 'Buying',      slug: 'every-demo-looks-same' },

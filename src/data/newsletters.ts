@@ -9,6 +9,100 @@ export interface Newsletter {
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'introducing-the-expanded-wrap',
+    date: 'April 24, 2026',
+    title: 'Introducing the Expanded Wrap!',
+    tag: 'Inside The Wrap',
+    excerpt: 'A full website, a free jobs board across 28 HR tech vendors, a Voices hub, a Vendor Pulse preview — and a premium tier launching May 1.',
+    body: `
+<img src="/newsletters/april-24-2026-expanded-wrap/image1.png" alt="Introducing the expanded Wrap" />
+
+<p>Hi everyone. I don't have a hot take on the industry this week, but I am very excited to share that I've built The Wrap out to be a full website! Head over to <a href="https://ilovethewrap.com">ilovethewrap.com</a> and check it out. In building the website, I wanted to include everything I would want to know if I was in HR tech.</p>
+
+<p><strong>Included for free:</strong></p>
+
+<p>A <strong>jobs board</strong> featuring over 1,000 open roles across 28 HR tech vendors. Every morning, the site pulls straight from each company's listings and refreshes the board. Click Apply and you go right to the company's own ATS. Same experience as going to their careers page, just consolidated.</p>
+
+<p>A consolidation of some of the <strong>voices</strong> I follow in the space — Lance Haun, Steve Smith, Jess Von Bank, Josh Bersin, Laurie Ruettimann, Hung Lee, and more to come.</p>
+
+<p>A preview of the <strong>Vendor Pulse</strong> database, which pulls in the latest public data about each vendor including capabilities, ideal customers, funding, and post-sale customer feedback on implementation and support.</p>
+
+<p>Starting <strong>May 1st</strong>, I'm launching a premium tier ($10/month) that will help you find solutions to fit your specific situation, with extensive vendor profiles featuring deeper dives into vendor capabilities and reputation, filters and alerts, daily digests, and more that I'll announce next week.</p>
+
+<p>My goal as I build this out is the same — to keep you informed and entertained with what's happening in the space. This is just the start of something and I hope you'll join me by supporting The Wrap and the voices in our space.</p>
+
+<p>Now, let's get into this week's stories. This week's Wrap features UKG cutting another 950 people, SeekOut getting a new CEO, Greenhouse taking a responsible step with AI, Humanly raising $25M, George LaRocque's Q1 WorkTech report, hot takes from Steve Smith and Lance Haun, and US talent moving overseas in search of a better deal.</p>
+
+<p>Have a great weekend,</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>UKG cuts another 950 as "ongoing transformation" keeps transforming people out of jobs</h3>
+<img src="/newsletters/april-24-2026-expanded-wrap/image2.jpg" alt="UKG layoffs" />
+<p>Last week, UKG notified roughly 950 employees (6% of its workforce) that their jobs are gone, with close to 600 leaving immediately and another 350 asked to stay through a transition period ending Aug. 31. Notifications landed by email April 15, with staff told to work from home as the messages rolled out.</p>
+<p>I like the people I've worked with at UKG, but this is the sad reality of software companies at the moment, especially ones with PE backing. Chop off an entire layer of talent expenses, and lean into what's left with AI. Instead of having a team working on a project, just have one person playing conductor to an orchestra of agents. Having actual employees doing the task is a financial liability when AI is cheap and scalable. <a href="https://hrexecutive.com/ukg-cuts-950-jobs-in-latest-round-of-restructuring/">Read More</a></p>
+
+<h3>SeekOut taps Sean Thompson as CEO as founder moves to chairman</h3>
+<img src="/newsletters/april-24-2026-expanded-wrap/image3.png" alt="SeekOut CEO transition" />
+<p>SeekOut announced that Sean Thompson will take over as CEO on May 4, with co-founder Anoop Gupta transitioning to Executive Chairman after leading the company since 2017. Co-founder Aravind Bala stays on as CTO. I had the chance to interview Anoop last fall at HR Tech, and it was genuinely one of my more interesting conversations — talking with him was like getting a lesson from a favorite college professor. Cheers on the transition, Anoop, and we'll be keeping an eye on SeekOut under Thompson. <a href="https://www.seekout.com/blog/seekout-welcomes-new-ceo/">Read More</a></p>
+
+<h3>Greenhouse plants a flag with AI Principles Framework</h3>
+<img src="/newsletters/april-24-2026-expanded-wrap/image4.png" alt="Greenhouse AI Principles Framework" />
+<p>Greenhouse dropped its AI Principles Framework this week — five pillars covering structured hiring, reimagined workflows, human-centered design, explicit decision ownership, and explainability. CEO Daniel Chait's framing: AI hasn't delivered on the hype in hiring, and that's a failure of application, not the technology. The receipts back it up: ISO 42001 certification, no customer data used to train models, no composite candidate scores, monthly Warden AI bias audits across ten protected classes with public results, and org-level toggles. In a market where every vendor chants "responsible AI" the way restaurants claim "farm-to-table," Greenhouse is actually publishing the farm address. <a href="https://www.greenhouse.com/newsroom/greenhouse-launches-ai-principles-framework-setting-the-standard-for-responsible-hiring-in-the-ai-era">Read More</a></p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions 🤝</h2>
+
+<p><strong>Humanly raises $25M Series B</strong> bringing total funding to $52M. <a href="https://www.geekwire.com/2026/humanly-raises-25m-to-put-ai-to-work-for-job-seekers-not-just-the-companies-hiring-them/">Read More</a></p>
+
+<p><strong>Gaia acquires SocialJobs for US expansion.</strong> The deal brings an established US footprint in high-volume hiring sectors onto Gaia's full platform — programmatic engine, AI ad engine, real-time analytics across 11 channels. <a href="https://www.iamgaia.com/resources/gaia-acquires-socialjobs-to-accelerate-us-market-expansion">Read More</a></p>
+
+<hr />
+
+<h2>📊 Research &amp; Reports</h2>
+
+<h3>George LaRocque releases Q1 2026 WorkTech VC Report</h3>
+<img src="/newsletters/april-24-2026-expanded-wrap/image5.png" alt="George LaRocque Q1 2026 WorkTech report" />
+<p>George LaRocque at WorkTech dropped his Q1 2026 global work tech VC report, tracking funding flows and trends across the space. Key findings include continued consolidation in AI-powered talent acquisition tools, sustained investor interest in frontline worker platforms despite broader market cooling, and geographic shifts in where deals are getting done. LaRocque is walking through the full results and implications in a webinar next week for anyone wanting the deeper dive beyond the headline numbers. <a href="https://1worktech.com/2026-q1-global-work-tech-vc-report/">Read the report</a></p>
+
+<hr />
+
+<h2>🔥 HR Hot Takes</h2>
+
+<h3>Steve Smith: The SaaSpocalypse isn't a disruption, it's a climate change</h3>
+<img src="/newsletters/april-24-2026-expanded-wrap/image6.png" alt="Steve Smith on the SaaSpocalypse" />
+<p>Steve Smith at Work Tech Weekly put language to something the enterprise SaaS world hasn't fully admitted out loud yet. His line of the week:</p>
+<blockquote><p>"ServiceNow, Salesforce, and the whole Cretaceous layer of enterprise workflow software aren't being disrupted by a better version of themselves. The environment just shifted. AI agents don't just replace the worker. They replace the software that the worker used to need. That's a different kind of disruption than most enterprise SaaS companies are modeled for."</p></blockquote>
+<p>The asteroid didn't pick a fight with the dinosaurs — it changed the climate they were built for. Every HR tech vendor pitching "workflow automation" as their moat should sit with that one for a minute. If the job of the software was to coordinate the humans, and the humans aren't coordinating the work anymore, what exactly are you selling? <a href="https://www.linkedin.com/pulse/ai-and-jobs-convo-gets-real-talking-layoffs-brain-fry-steve-smith-bedjc/">Read More</a></p>
+
+<h3>Lance Haun: You can't automate your way to employee trust</h3>
+<img src="/newsletters/april-24-2026-expanded-wrap/image7.png" alt="Lance Haun on AI and employee trust" />
+<p>Lance Haun torched Meta's latest solution to the scale problem: an AI avatar of Zuckerberg trained on his mannerisms and internal writings so that 79,000 employees can interact with a simulation of the founder. Haun's diagnosis is brutal but accurate: the more power someone accumulates, the less accurate their read of other people becomes — they stop picking up social cues and start confusing their own perspective with reality. Meta has been here before — the metaverse lost $80 billion, Workplace from Meta got shuttered, and now they're building AI Zuck because the pattern never changes, only the technology does. <a href="https://www.reworked.co/employee-experience/meta-mark-zuckerberg-ai-ceo-employee-trust/">Read More</a></p>
+
+<hr />
+
+<h2>🎙️ Podcasts</h2>
+
+<h3>Talking AI agents with Juicebox in Vegas</h3>
+<img src="/newsletters/april-24-2026-expanded-wrap/image8.png" alt="Juicebox podcast" />
+<p>In the first of the many interviews I did in Vegas last month, I got to sit down with Juicebox CEO and co-founder David Paffenholz. David and his co-founder started Juicebox in 2022 with the thesis that there was a better way to match people with opportunities, spending six months shadowing recruiters to understand the workflow before ChatGPT's release convinced them to build an LLM-powered solution. Their core product lets recruiters describe who they're looking for in natural language — "sales manager in Boston who's sold health tech" — and Juicebox creates both hard filters and natural language criteria to find and stack-rank candidates from your ATS plus net new profiles. The AI agent runs the entire top-of-funnel process: configures search, calibrates based on feedback, finds new profiles daily, handles outreach, manages responses, and books first calls with the recruiter. David's pitch is that it's one agent doing a complete workflow rather than multiple agents doing single tasks. Worth a listen if you're thinking about how agents fit into recruiting operations. <a href="https://www.hr.com/en/resources/podcasts/talent/describe-the-role-and-let-ai-do-the-hiring-work_moag4rjk.html">Listen here</a></p>
+
+<hr />
+
+<h2>👉 Worth a Click</h2>
+<p><em>Interesting stories outside of HR</em></p>
+
+<h3>US talent is quietly exiting</h3>
+<img src="/newsletters/april-24-2026-expanded-wrap/image9.png" alt="US talent exiting — Revelio Labs" />
+<p>Revelio Labs tracked what's been happening under the radar: the share of US workers who switch jobs abroad has doubled since 2021, from just under 3% to nearly 6% in 2025. The outflow is led by tech and digital sectors — IT consulting is at nearly 16% of job switchers going abroad, with remote roles significantly more likely to lead to exits. Both US-born and foreign-born workers are leaving, and the pattern is structural, not cyclical. The regression analysis lands where you'd expect: remote work capability and weak internal promotion paths drive exits, while firms with stronger advancement opportunities retain talent. <a href="https://www.reveliolabs.com/news/macro/us-talent-is-quietly-exiting/">Read More</a></p>
+    `,
+  },
+  {
     slug: 'hr-techs-moviephone-moment',
     date: 'April 18, 2026',
     title: 'HR Tech\'s Moviephone Moment',
