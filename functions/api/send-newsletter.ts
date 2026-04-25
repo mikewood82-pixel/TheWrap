@@ -7,6 +7,18 @@ interface Env {
   DEPLOY_SECRET: string
 }
 
+// Prep post HTML for email: absolute-ify root-relative URLs (email clients
+// don't resolve `/newsletters/...`), and stamp a consistent inline width on
+// every <img> so they render at a uniform size rather than each image's
+// intrinsic pixel dimensions.
+const EMAIL_IMG_STYLE = 'display:block;width:100%;max-width:600px;height:auto;margin:16px auto 8px;border-radius:4px;'
+function prepHtmlForEmail(html: string): string {
+  return html
+    .replace(/\bsrc="\/(?!\/)/g, 'src="https://ilovethewrap.com/')
+    .replace(/\bhref="\/(?!\/)/g, 'href="https://ilovethewrap.com/')
+    .replace(/<img\b(?![^>]*\bstyle=)([^>]*)>/gi, `<img$1 style="${EMAIL_IMG_STYLE}">`)
+}
+
 // Per-recipient email HTML wrapper. `recipient` is inlined into the unsubscribe
 // URL because Resend's {{email}} merge tag only works in Broadcasts, not /emails.
 function bodyHtmlFor(recipient: string, slug: string, html: string): string {
@@ -15,7 +27,7 @@ function bodyHtmlFor(recipient: string, slug: string, html: string): string {
       <a href="https://ilovethewrap.com" style="text-decoration: none;">
         <img src="https://ilovethewrap.com/logo.png" alt="The Wrap" style="width: 60px; margin-bottom: 24px;" />
       </a>
-      ${html}
+      ${prepHtmlForEmail(html)}
       <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid #eee; font-size: 12px; color: #999; text-align: center;">
         <p>You're receiving this because you subscribed at <a href="https://ilovethewrap.com" style="color: #c0623a;">ilovethewrap.com</a></p>
         <p>
