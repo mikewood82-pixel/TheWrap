@@ -11,3 +11,7 @@ binding = "JOBS_DB"
 database_name = "the-wrap-jobs"
 database_id = "f83af97f-0c1e-4dc5-ad71-01869e1400b0"
 migrations_dir = "migrations"
+
+[[kv_namespaces]]
+binding = "SUBSCRIPTIONS"
+id = "b42df0c75b2c4b1b9568c4578b59de08"
