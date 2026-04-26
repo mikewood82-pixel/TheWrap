@@ -108,6 +108,14 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
     // /emails/batch: up to 100 email objects per call, each with its own `to`.
     // We also interpolate the per-recipient unsubscribe URL here on the server,
     // because `{{email}}` merge tags only work in Resend Broadcasts, not /emails.
+    //
+    // Idempotency: we record the slug into sent_newsletters AFTER the first
+    // successful batch, then UPDATE the recipient_count after each subsequent
+    // batch. That way a partial-delivery failure still leaves the slug
+    // recorded, the `Already sent` short-circuit above prevents naive retries
+    // from double-sending to the addresses we already reached, and the running
+    // count reflects partial progress. /api/resume-send is the canonical
+    // recovery path for the addresses we didn't reach.
     const batchSize = 100
     let sent = 0
 
@@ -133,16 +141,21 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       if (!res.ok) {
         const err = await res.text()
         console.error('Resend error:', err)
-        throw new Error(`Resend batch failed: ${err}`)
+        throw new Error(`Resend batch failed at offset ${i}: ${err}`)
       }
 
       sent += batch.length
-    }
 
-    // Record as sent
-    await env.DB.prepare(
-      'INSERT INTO sent_newsletters (slug, recipient_count) VALUES (?, ?)'
-    ).bind(slug, sent).run()
+      if (i === 0) {
+        await env.DB.prepare(
+          'INSERT OR IGNORE INTO sent_newsletters (slug, recipient_count) VALUES (?, ?)'
+        ).bind(slug, sent).run()
+      } else {
+        await env.DB.prepare(
+          'UPDATE sent_newsletters SET recipient_count = ? WHERE slug = ?'
+        ).bind(sent, slug).run()
+      }
+    }
 
     return Response.json({ sent, message: `"${subject}" sent to ${sent} subscribers` })
   } catch (err: any) {
