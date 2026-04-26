@@ -5,34 +5,28 @@ import { useEffect, useState } from 'react'
 import SEO from '../components/SEO'
 import JobCard, { type JobListItem } from '../components/jobs/JobCard'
 import HiringPulseStrip from '../components/HiringPulseStrip'
+import { newsletters } from '../data/newsletters'
 
 // Swap this URL out when the latest episode is ready
 const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/BehToAi0lk0'
 
-const latestEditions = [
-  {
-    date: 'April 24, 2026',
-    title: 'Introducing the Expanded Wrap!',
-    excerpt: 'A full website, a free jobs board across 28 HR tech vendors, a Voices hub, a Vendor Pulse preview — and a premium tier launching May 1.',
-    slug: 'introducing-the-expanded-wrap',
-    tag: 'Inside The Wrap',
-    image: '/newsletters/april-24-2026-expanded-wrap/image1.png',
-  },
-  {
-    date: 'April 18, 2026',
-    title: 'HR Tech\'s Moviephone Moment',
-    excerpt: 'Once someone experiences hiring at scale without navigating a single workflow menu, the seventeen-step enterprise process starts to feel like a punishment.',
-    slug: 'hr-techs-moviephone-moment',
-    tag: 'AI & Future of Work',
-  },
-  {
-    date: 'April 11, 2026',
-    title: 'Your Kids Will Compete With Your Shadow',
-    excerpt: 'The digital twin narrative sounds reasonable — until you follow it to its logical conclusion.',
-    slug: 'your-kids-will-compete-with-your-shadow',
-    tag: 'AI & Future of Work',
-  },
-]
+// Pull the first <img src=...> out of a newsletter body HTML string. Used as
+// the hero image for the top "latest edition" tile.
+function firstImageInBody(html: string): string | undefined {
+  return html.match(/<img[^>]+src="([^"]+)"/)?.[1]
+}
+
+// Derived from src/data/newsletters.ts so the homepage can never drift out of
+// sync with the published editions. Top entry gets a hero image; the two
+// follow-ups are title-only by design.
+const latestEditions = newsletters.slice(0, 3).map((n, idx) => ({
+  date: n.date,
+  title: n.title,
+  excerpt: n.excerpt,
+  slug: n.slug,
+  tag: n.tag,
+  image: idx === 0 ? firstImageInBody(n.body) : undefined,
+}))
 
 const featuredVendors = [
   { name: 'Workday',    category: 'HCM',      score: 4.1, change: '+2.3%', up: true  },

@@ -29,16 +29,19 @@ type Edition = {
   linkedinSlug?: string
 }
 
+// Site-hosted editions are derived from src/data/newsletters.ts so the
+// archive can never drift out of sync with the published posts. LinkedIn-only
+// editions (Feb 28, 2026 and earlier) stay hand-curated below.
+const localEditions: Edition[] = newsletters.map(n => ({
+  date: n.date,
+  title: n.title,
+  tag: n.tag,
+  slug: n.slug,
+}))
+
 const editions: Edition[] = [
-  // ── 2026 ────────────────────────────────────────────────────────────────────
-  { date: 'April 24, 2026',    title: 'Introducing the Expanded Wrap!',                        tag: 'Inside The Wrap',     slug: 'introducing-the-expanded-wrap' },
-  { date: 'April 18, 2026',    title: "HR Tech's Moviephone Moment",                           tag: 'AI & Future of Work', slug: 'hr-techs-moviephone-moment' },
-  { date: 'April 11, 2026',    title: 'Your Kids Will Compete With Your Shadow',               tag: 'AI & Future of Work', slug: 'your-kids-will-compete-with-your-shadow' },
-  { date: 'April 3, 2026',     title: 'When did we stop expecting more from the top?',         tag: 'Leadership',          slug: 'stop-expecting-more' },
-  { date: 'March 27, 2026',    title: 'When every demo looks the same, what are you actually buying?', tag: 'Buying',      slug: 'every-demo-looks-same' },
-  { date: 'March 20, 2026',    title: 'Puppies and podcasts at Unleash',                       tag: 'Events',              slug: 'puppies-podcasts-unleash' },
-  { date: 'March 13, 2026',    title: 'From SaaS to WorkOps — Notes from IAMPHENOM in Philadelphia', tag: 'Events',        slug: 'saas-to-workops-phenom' },
-  { date: 'March 6, 2026',     title: 'We Are Living in a Sci-Fi Thriller',                    tag: 'AI & Future of Work', slug: 'sci-fi-thriller' },
+  ...localEditions,
+  // ── LinkedIn archive (pre-site, kept manual) ────────────────────────────────
   { date: 'February 28, 2026', title: 'Nobody picks beige',                                    tag: 'Leadership',          linkedinSlug: 'nobody-picks-beige-mike-wood-voiee' },
   { date: 'February 21, 2026', title: 'Authenticity is the new luxury',                        tag: 'Leadership',          linkedinSlug: 'authenticity-new-luxury-mike-wood-yv9ke' },
   { date: 'February 14, 2026', title: 'The Truth is Beyond the BLS',                           tag: 'Labor Market',        linkedinSlug: 'truth-beyond-bls-mike-wood-5hj8e' },
