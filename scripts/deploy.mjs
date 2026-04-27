@@ -92,10 +92,11 @@ const res = await fetch(`${SITE_URL}/api/send-newsletter`, {
   body: JSON.stringify({ slug, subject: title, html: body }),
 })
 
-const result = await res.json().catch(() => res.text())
+const text = await res.text()
+let result; try { result = JSON.parse(text) } catch { result = text }
 
 if (!res.ok) {
-  console.error('❌  Send failed:', result)
+  console.error('❌  Send failed:', res.status, result)
   process.exit(1)
 }
 
