@@ -1,12 +1,11 @@
 const headlines = [
-  { text: 'Intuit acquires GoCo · HR/benefits platform joins QuickBooks mid-market', url: 'https://investors.intuit.com/news-events/press-releases/detail/1247/intuit-to-acquire-hr-platform-goco' },
-  { text: 'Docebo acquires 365Talents for $55M · AI skills intelligence enters LMS', url: 'https://betakit.com/docebo-deepens-ai-capabilities-with-55-million-usd-365talents-acquisition/' },
-  { text: 'Remote acquires Atlas · global expense management for distributed teams', url: 'https://remote.com/blog/company-news/remote-acquires-atlas' },
-  { text: 'SAP + SmartRecruiters integration live · AI-connected hiring in SuccessFactors', url: 'https://news.sap.com/2026/03/smartrecruiters-for-sap-successfactors-ai-driven-hiring-connected-hcm/' },
-  { text: 'SmartRecruiters · autonomous AI hiring agents handle sourcing to screening', url: 'https://www.globenewswire.com/news-release/2026/04/07/3269187/0/en/SmartRecruiters-Introduces-the-Future-of-Hiring-From-AI-Agents-to-Autonomous-Talent-Acquisition.html' },
-  { text: 'Darwinbox Super Agent · MCP-powered agentic AI for enterprise HR', url: 'https://darwinbox.com/en-us/blog/darwinbox-launches-super-agent' },
-  { text: 'U.S. adds 178K jobs in March · unemployment holds at 4.3%', url: 'https://www.npr.org/2026/04/03/nx-s1-5772696/jobs-employment-economy-labor-market' },
-  { text: 'EU AI Act · bias audits for AI hiring tools mandatory August 2026', url: 'https://www.technewsworld.com/story/hrs-2026-playbook-signals-a-human-centric-tech-reset-180063.html' },
+  { text: 'Thoma Bravo hands Medallia to creditors · $5.1B of $6.4B equity wiped in debt-for-equity swap', url: 'https://www.saastr.com/medallia-is-just-the-opening-act-heres-the-list-of-pe-saas-deals-most-at-risk/' },
+  { text: 'Personio hits profitability · acquires Munich AI startup aurio to accelerate recruiting roadmap', url: 'https://www.personio.com/about-personio/press/personio-profitability-acquisition-aurio/' },
+  { text: 'Visier Outsmart 2026 · Workforce AI next-gen with Glean MCP integration for in-flow analytics', url: 'https://www.prnewswire.com/news-releases/the-next-generation-of-visier-workforce-ai-arrives-the-intelligence-behind-enterprise-workforce-transformation-302438901.html' },
+  { text: 'Gusto hits 500K customers · Spring Showcase ships nearly 75 new SMB features', url: 'https://gusto.com/resources/company-news/spring-showcase-2026' },
+  { text: 'Docebo Inspire 2026 · Companion, MCP Server, AI Tutor, AgentHub debut in biggest release ever', url: 'https://www.docebo.com/learning-network/blog/inspire-2026-announcements/' },
+  { text: 'Oracle Fusion Agentic Apps for HR · 1,000+ AI agents now embedded across HCM at no extra cost', url: 'https://www.uctoday.com/talent-hcm-platforms/oracle-fusion-agentic-applications-for-hr-what-it-means-for-hcm-leaders/' },
+  { text: 'UKG cuts 950 jobs · 6% of workforce gone citing AI transformation and market shifts', url: 'https://hrexecutive.com/ukg-cuts-950-jobs-in-latest-round-of-restructuring/' },
 ]
 
 export default function NewsTicker() {

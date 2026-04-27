@@ -1,5 +1,36 @@
 export type CapabilityScore = { label: string; score: number; rationale?: string }
 export type ReviewHighlight = { text: string; role: string }
+
+// One funding round (or IPO). `valuation` is post-money when known; many
+// later-stage private rounds publish it, earlier rounds usually don't.
+export type FundingRound = {
+  round: string         // 'Seed' | 'Series A' | 'Series B' | … | 'IPO' | 'Acquired'
+  date: string          // 'Mon YYYY' for display, e.g. 'Apr 2025'
+  amount: string        // '$200M', 'undisclosed', 'IPO'
+  leadInvestor?: string // 'Founders Fund', 'Sequoia', etc
+  valuation?: string    // '$13.5B post', if disclosed
+}
+
+// Single leadership row. `departed` is set when the exec has left in the
+// last ~6 months — we surface this as a yellow flag in the UI because
+// recent C-suite churn is a buying signal.
+export type LeadershipMember = {
+  name: string
+  role: string          // 'CEO', 'CTO', 'CHRO', 'CRO', 'Head of Product'
+  tenureYears: number   // years in this role; <1 should be flagged
+  prior?: string        // previous notable employer/role
+  departed?: string     // 'Departed Feb 2026' — when set, render struck-through
+  linkedin?: string     // LinkedIn handle for deep linking
+}
+
+// Customer support issue-volume breakdown. `volume` is a relative weight,
+// not a count — buckets sum to 100 across categories. Sources are
+// editorial/aggregated review analysis, not vendor-provided.
+export type SupportIssueBreakdown = {
+  category: string      // 'Onboarding', 'Integrations', 'Billing', 'Performance', 'Feature requests'
+  volume: number        // 0-100, relative share
+}
+
 export type VendorDetail = {
   capabilities: CapabilityScore[]
   idealCustomer: { size: string; industries: string[]; useCase: string }
@@ -12,6 +43,9 @@ export type VendorDetail = {
     recentLayoffs?: string
     acquisitionRisk: string
     keySignals: string[]
+    fundingHistory?: FundingRound[]   // chronological, oldest first
+    totalRaised?: string              // '$2.6B', for headline display
+    lastValuation?: string            // most recent disclosed valuation
   }
   supportQuality?: {
     overallScore: number
@@ -20,7 +54,10 @@ export type VendorDetail = {
     dedicatedCsm: string
     supportTrend: string
     highlights: ReviewHighlight[]
+    issueBreakdown?: SupportIssueBreakdown[]  // sums to ~100
+    sentimentTrend?: number[]                  // 12 months, 0-100 sentiment scores
   }
+  leadership?: LeadershipMember[]
 }
 
 export const vendorDetails: Record<string, VendorDetail> = {
@@ -45,7 +82,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'Co-founder Aneel Bhusri returns as Workday CEO as Carl Eschenbach steps down amid steep share decline', date: 'Feb 2026', source: 'CNBC' },
       { headline: 'Workday expands Illuminate AI assistant across HCM, Finance, and Analytics modules', date: 'Mar 2026', source: 'Workday Newsroom' },
-      { headline: 'Workday reports Q4 FY2026 revenue of $2.35B, driven by subscription growth in EMEA', date: 'Feb 2026', source: 'Workday Investor Relations' },
+      { headline: 'Workday flagged worst for enterprise data access in Fivetran ODI benchmark, raising AI integration concerns', date: 'Apr 2026', source: 'The Register' },
     ],
     financialHealth: {
       fundingStage: 'Public (NYSE: WDAY)',
@@ -86,7 +123,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'GitHub', 'Google Workspace', 'Salesforce', 'QuickBooks', 'Okta'],
     news: [
-      { headline: 'Rippling raises $450M Series F at $16.8B valuation to accelerate global expansion', date: 'Jan 2026', source: 'Rippling Blog' },
+      { headline: 'Rippling appoints Sonia Parandekar as SVP Engineering and India site lead to accelerate global product expansion', date: 'Apr 2026', source: 'Business Wire' },
       { headline: 'Rippling launches Spend Management module to consolidate corporate cards and expense reporting', date: 'Mar 2026', source: 'TechCrunch' },
       { headline: 'Rippling announces native EOR capabilities in 50 additional countries', date: 'Feb 2026', source: 'Rippling Newsroom' },
     ],
@@ -131,7 +168,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Slack', 'QuickBooks', 'Indeed', 'LinkedIn', 'Google Workspace', 'Zapier'],
     news: [
       { headline: 'BambooHR introduces AI-driven eNPS benchmarking to help SMBs track employee sentiment', date: 'Feb 2026', source: 'BambooHR Blog' },
-      { headline: 'BambooHR adds payroll support for Canada, marking its first international payroll offering', date: 'Jan 2026', source: 'BambooHR Newsroom' },
+      { headline: 'BambooHR launches Broker Partner Program to help benefits brokers extend value through modern HR tech', date: 'Apr 2026', source: 'GlobeNewswire' },
       { headline: 'BambooHR partners with Gusto to offer seamless payroll migration for growing companies', date: 'Mar 2026', source: 'HR Tech Insider' },
     ],
     financialHealth: {
@@ -263,7 +300,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'SAP SuccessFactors embeds Joule AI copilot across all HCM modules for real-time HR guidance', date: 'Feb 2026', source: 'SAP Newsroom' },
       { headline: 'SAP SuccessFactors 1H 2026 release expands agentic AI suite-wide and adds EU pay transparency reporting tools', date: 'Apr 2026', source: 'SAP News Center' },
-      { headline: 'SAP SuccessFactors expands payroll localisation to 17 new countries including Vietnam and Nigeria', date: 'Jan 2026', source: 'SAP Newsroom' },
+      { headline: 'SmartRecruiters now integrated with SAP SuccessFactors with single login, unified navigation, and aligned data', date: 'Apr 2026', source: 'SAP News Center' },
     ],
     financialHealth: {
       fundingStage: 'Public (NYSE: SAP)',
@@ -305,7 +342,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Oracle ERP Cloud', 'Salesforce', 'Microsoft Teams', 'Taleo', 'ServiceNow', 'Okta'],
     news: [
-      { headline: 'Oracle HCM Cloud launches AI-powered Talent Advisor for automated succession planning', date: 'Jan 2026', source: 'Oracle Newsroom' },
+      { headline: 'Oracle launches Fusion Agentic Applications for HR — 1,000+ AI agents now embedded across HCM at no extra cost', date: 'Apr 2026', source: 'UC Today' },
       { headline: 'Oracle announces deep integration between HCM Cloud and Oracle Analytics Cloud for workforce insights', date: 'Mar 2026', source: 'Oracle Newsroom' },
       { headline: 'Oracle HCM Cloud adds payroll support for 12 Asia-Pacific countries in latest release', date: 'Feb 2026', source: 'Oracle Blog' },
     ],
@@ -567,7 +604,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'LinkedIn', 'Workday', 'BambooHR', 'HireEZ', 'DocuSign'],
     news: [
-      { headline: 'Greenhouse crosses 7,500 customers and announces Series E extension of $110M', date: 'Jan 2026', source: 'TechCrunch' },
+      { headline: 'Greenhouse launches AI Principles Framework, setting standard for responsible hiring in the AI era', date: 'Apr 2026', source: 'PR Newswire' },
       { headline: 'Greenhouse adds native video interviewing powered by Zoom directly in the candidate pipeline', date: 'Mar 2026', source: 'Greenhouse Blog' },
       { headline: 'Greenhouse ranked #1 ATS in G2 Spring 2026 Reports across Overall, Enterprise, Mid-Market, and EMEA', date: 'Apr 2026', source: 'PR Newswire' },
     ],
@@ -655,7 +692,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Workday', 'SAP SuccessFactors', 'LinkedIn', 'Microsoft Teams', 'Paradox', 'DocuSign'],
     news: [
-      { headline: 'iCIMS acquires conversational AI startup Paradox to power automated candidate screening', date: 'Jan 2026', source: 'Business Wire' },
+      { headline: 'iCIMS named Best Comprehensive TA Solution by Lighthouse for third year; TechTarget lists Top AI Recruiting Tool', date: 'Apr 2026', source: 'PR Newswire' },
       { headline: 'iCIMS Talent Cloud surpasses 600 enterprise customers and 4M annual hires processed', date: 'Mar 2026', source: 'iCIMS Newsroom' },
       { headline: 'iCIMS Copilot AI recruiting assistant debuts at HR Tech — automates JD optimization and interview guides', date: 'Apr 2026', source: 'iCIMS Newsroom' },
     ],
@@ -1028,7 +1065,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Slack', 'LinkedIn', 'Greenhouse', 'Okta', 'Rippling', 'Carta'],
     news: [
       { headline: 'HiBob launches Bob AI, a conversational HR assistant for managers to get instant workforce insights', date: 'Feb 2026', source: 'HiBob Newsroom' },
-      { headline: 'HiBob raises $150M Series E valuing the company at $2.5B, accelerating US and APAC expansion', date: 'Jan 2026', source: 'TechCrunch' },
+      { headline: 'HiBob launches native US Payroll to cut complexity and drive confidence for SMBs', date: 'Apr 2026', source: 'HiBob Newsroom' },
       { headline: 'HiBob expands payroll integrations to cover 50 countries in partnership with Papaya Global', date: 'Mar 2026', source: 'HiBob Blog' },
     ],
     financialHealth: {
@@ -1071,7 +1108,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'LinkedIn', 'DATEV', 'Workday', 'Greenhouse', 'Okta'],
     news: [
-      { headline: 'Personio launches HR Analytics Pro with turnover prediction models for European mid-market companies', date: 'Jan 2026', source: 'Personio Newsroom' },
+      { headline: 'Personio achieves profitability and acquires Munich AI startup aurio to accelerate recruiting AI roadmap', date: 'Apr 2026', source: 'Personio Newsroom' },
       { headline: 'Personio expands into UK and Iberian markets with localised compliance and payroll partnerships', date: 'Feb 2026', source: 'Personio Blog' },
       { headline: 'Personio surpasses 15,000 customers and €1B ARR milestone, announces IPO consideration for 2027', date: 'Mar 2026', source: 'Financial Times' },
     ],
@@ -1203,7 +1240,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['QuickBooks', 'ADP', 'Microsoft 365', 'Slack', 'Indeed', 'Checkr'],
     news: [
-      { headline: 'Paylocity launches Community, a social intranet within the HRIS to connect distributed workforces', date: 'Feb 2026', source: 'Paylocity Newsroom' },
+      { headline: 'Paylocity launches Elevate Solutions to help HR and payroll teams scale more efficiently', date: 'Apr 2026', source: 'GlobeNewswire' },
       { headline: 'Paylocity reports fiscal Q2 2026 revenue of $380M, citing 19% growth in total HCM customers', date: 'Mar 2026', source: 'Paylocity Investor Relations' },
       { headline: 'Paylocity acquires Grayscale to expand AI-powered recruiting automation for high-volume hiring', date: 'Apr 2026', source: 'Globe Newswire' },
     ],
@@ -1422,7 +1459,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['QuickBooks', 'Xero', 'FreshBooks', 'Slack', 'Greenhouse', 'BambooHR'],
     news: [
-      { headline: 'Gusto introduces AI payroll assistant to automatically flag anomalies before pay runs are submitted', date: 'Feb 2026', source: 'Gusto Blog' },
+      { headline: 'Gusto reaches 500,000 customers and unveils Spring Showcase with nearly 75 new SMB features', date: 'Apr 2026', source: 'CPA Practice Advisor' },
       { headline: 'Gusto brings payroll into Claude and Slack — enabling pay runs without leaving the conversation', date: 'Apr 2026', source: 'CPA Practice Advisor' },
       { headline: 'Gusto acquires Mosey to close the compliance gap for small businesses with AI-powered state filings', date: 'Apr 2026', source: 'PR Newswire' },
     ],
@@ -1688,7 +1725,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'Workday', 'BambooHR', 'Rippling', 'Google Workspace', 'Microsoft Teams'],
     news: [
-      { headline: 'Lattice launches AI Performance Coach, delivering personalised development suggestions based on review data', date: 'Jan 2026', source: 'Lattice Newsroom' },
+      { headline: 'Lattice Spring/Summer 2026 release embeds AI into growth moments — Agent drafts Growth Areas from review data', date: 'Apr 2026', source: 'Lattice Newsroom' },
       { headline: 'Lattice adds HRIS functionality to its platform, becoming a full people management suite', date: 'Feb 2026', source: 'TechCrunch' },
       { headline: 'Lattice crosses $200M ARR with 6,000 customers, citing strong adoption of engagement pulse surveys', date: 'Mar 2026', source: 'Lattice Blog' },
     ],
@@ -1910,7 +1947,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Workday', 'SAP SuccessFactors', 'Microsoft Teams', 'Salesforce', 'Degreed', 'Okta'],
     news: [
-      { headline: 'Cornerstone OnDemand launches Cornerstone Galaxy AI platform for personalised skills-based learning paths', date: 'Feb 2026', source: 'Cornerstone Newsroom' },
+      { headline: 'Cornerstone showcases Galaxy Workforce Agility platform at Learning Technologies London — 7,000 customers, 140M users', date: 'Apr 2026', source: 'Learning Technologies' },
       { headline: 'Cornerstone announces global Connect Tour kicking off May 20 in New York City across 15+ cities', date: 'Apr 2026', source: 'Cornerstone Newsroom' },
       { headline: 'Cornerstone reports 40M active learners on platform as compliance training adoption grows post-regulation', date: 'Mar 2026', source: 'Cornerstone Newsroom' },
     ],
@@ -1932,7 +1969,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Salesforce', 'Microsoft Teams', 'Slack', 'Workday', 'Cornerstone', 'Zoom'],
     news: [
-      { headline: 'Docebo April 2026 release ships AI browser sidepanel and MCP integration for in-workflow learning access', date: 'Apr 2026', source: 'Docebo' },
+      { headline: 'Docebo unveils most significant release in company history at Inspire 2026 — Companion, MCP Server, AI Tutor, AgentHub', date: 'Apr 2026', source: 'Docebo' },
       { headline: 'Docebo reaches 3,600 customers after strong growth in customer training and partner enablement use cases', date: 'Feb 2026', source: 'Docebo Blog' },
       { headline: 'Docebo adds gamification engine with leaderboards and badges to boost learner completion rates', date: 'Mar 2026', source: 'Docebo Newsroom' },
     ],
@@ -2132,7 +2169,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Workday', 'SAP SuccessFactors', 'Oracle HCM', 'ADP', 'Tableau', 'Microsoft Power BI'],
     news: [
-      { headline: 'Visier launches Vee, a generative AI workforce analyst that answers natural language HR questions instantly', date: 'Jan 2026', source: 'Visier Newsroom' },
+      { headline: 'Visier unveils next-gen Workforce AI at Outsmart 2026 with Glean MCP integration for in-flow people analytics', date: 'Apr 2026', source: 'PR Newswire' },
       { headline: 'Visier acquires workforce management analytics vendor Yoi Corp to add capacity planning capabilities', date: 'Feb 2026', source: 'Business Wire' },
       { headline: 'Visier surpasses 75,000 organisations and 25M employee records analysed on platform', date: 'Mar 2026', source: 'Visier Blog' },
     ],
@@ -2308,18 +2345,18 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Salesforce', 'ServiceNow', 'Workday', 'Microsoft Teams', 'Slack', 'Adobe Experience Cloud'],
     news: [
-      { headline: 'Medallia launches Ask Athena GenAI engine to surface employee and customer insights via conversational search', date: 'Feb 2026', source: 'Medallia Newsroom' },
+      { headline: 'Thoma Bravo hands Medallia to creditor consortium in debt-for-equity swap, wiping out $5.1B of $6.4B 2021 take-private', date: 'Apr 2026', source: 'Reuters' },
       { headline: 'Medallia expands Employee Experience suite with always-on listening across email, chat, and HRIS signals', date: 'Jan 2026', source: 'Medallia Blog' },
       { headline: 'Medallia closes $200M strategic investment from Permira to accelerate AI and global growth initiatives', date: 'Mar 2026', source: 'Business Wire' },
     ],
     financialHealth: {
-      fundingStage: 'Private (PE-backed: Thoma Bravo)',
+      fundingStage: 'Private (Creditor-owned after Apr 2026 debt-for-equity swap)',
       headcountTrend: '-8% YoY',
-      acquisitionRisk: 'Low',
+      acquisitionRisk: 'High',
       keySignals: [
-        'Taken private by Thoma Bravo for $6.4B in 2021',
+        'Thoma Bravo handed control to creditor consortium in Apr 2026 — $5.1B of $6.4B equity wiped out',
         'Primarily customer experience — employee XM is secondary focus',
-        'Cost optimization under PE ownership affecting product investment velocity',
+        'Ownership transition creates near-term uncertainty for product roadmap and customer commitments',
       ],
     },
     supportQuality: {
