@@ -18,6 +18,7 @@
 
 import { signAlertId } from '../../_lib/alertSignature'
 import { deliverWebhook, type WebhookPayloadJob } from '../../_lib/webhook'
+import { buildExcludeRemoteOutsideNaClause } from '../../_lib/regionFilter'
 
 interface Env {
   JOBS_DB: D1Database
@@ -168,6 +169,11 @@ async function findMatches(
     `jobs.id NOT IN (SELECT job_id FROM alert_sent WHERE alert_id = ?)`,
   ]
   const binds: unknown[] = [alert.created_at, alert.id]
+
+  // Audience filter: drop remote postings that explicitly target outside US/Canada.
+  const region = buildExcludeRemoteOutsideNaClause('jobs')
+  where.push(region.clause)
+  binds.push(...region.binds)
 
   if (query.q && query.q.trim()) {
     where.push(`jobs.id IN (SELECT rowid FROM jobs_fts WHERE jobs_fts MATCH ?)`)

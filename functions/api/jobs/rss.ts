@@ -2,6 +2,8 @@
 // Supports the same filters as /api/jobs/search so readers can subscribe to,
 // e.g. "Remote Senior PM" by saving the filtered URL.
 
+import { buildExcludeRemoteOutsideNaClause } from '../_lib/regionFilter'
+
 interface Env { JOBS_DB: D1Database }
 
 const SITE = 'https://ilovethewrap.com'
@@ -14,6 +16,10 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
   const seniority = (qs.get('seniority') ?? '').split(',').filter(Boolean)
   const where: string[] = [`jobs.status = 'open'`]
   const binds: unknown[] = []
+  // Audience filter: drop remote postings that explicitly target outside US/Canada.
+  const region = buildExcludeRemoteOutsideNaClause('jobs')
+  where.push(region.clause)
+  binds.push(...region.binds)
   if (vendors.length)   { where.push(`jobs.vendor_slug IN (${vendors.map(()=>'?').join(',')})`);   binds.push(...vendors) }
   if (remote.length)    { where.push(`jobs.remote IN (${remote.map(()=>'?').join(',')})`);         binds.push(...remote) }
   if (seniority.length) { where.push(`jobs.seniority IN (${seniority.map(()=>'?').join(',')})`);   binds.push(...seniority) }

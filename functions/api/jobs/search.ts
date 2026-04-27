@@ -15,6 +15,8 @@
 //   per_page        default 20, max 100
 //   sort            posted_desc (default) | posted_asc
 
+import { buildExcludeRemoteOutsideNaClause } from '../_lib/regionFilter'
+
 interface Env { JOBS_DB: D1Database }
 
 type Row = {
@@ -50,6 +52,11 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
 
   const where: string[] = [`jobs.status = 'open'`]
   const binds: unknown[] = []
+
+  // Audience filter: drop remote postings that explicitly target outside US/Canada.
+  const region = buildExcludeRemoteOutsideNaClause('jobs')
+  where.push(region.clause)
+  binds.push(...region.binds)
 
   if (q) {
     where.push(`jobs.id IN (SELECT rowid FROM jobs_fts WHERE jobs_fts MATCH ?)`)
