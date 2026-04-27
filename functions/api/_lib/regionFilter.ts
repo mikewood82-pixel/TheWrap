@@ -52,29 +52,31 @@ const BLOCK_CODES = [
 // Builds a SQL clause + bind list that, when AND'd into a WHERE, excludes
 // remote jobs whose location matches any blocked token. Pass the table
 // alias used in the host query (defaults to "jobs").
+//
+// Implementation note: the patterns are passed as a single JSON array bind
+// and unfolded inside the query via json_each, so the parse tree stays at
+// constant depth regardless of list size. A naive (?? OR ?? OR ...) chain
+// hits SQLite's SQLITE_LIMIT_EXPR_DEPTH (default 100) once the list grows
+// past ~50 patterns.
 export function buildExcludeRemoteOutsideNaClause(
   alias: string = 'jobs',
 ): { clause: string; binds: string[] } {
-  const binds: string[] = []
-  const likes: string[] = []
-  const col = `LOWER(${alias}.location)`
+  const patterns: string[] = []
 
   // Boundary-aware name match: country/region tokens must appear after a
   // comma or dash, otherwise "india" false-matches "Indianapolis", "mexico"
   // false-matches "New Mexico", etc.
   for (const name of BLOCK_NAMES) {
     const n = name.trim()
-    likes.push(`${col} LIKE ?`); binds.push(`%, ${n}`)
-    likes.push(`${col} LIKE ?`); binds.push(`%, ${n},%`)
-    likes.push(`${col} LIKE ?`); binds.push(`%- ${n}`)
-    likes.push(`${col} LIKE ?`); binds.push(`%- ${n},%`)
+    patterns.push(`%, ${n}`, `%, ${n},%`, `%- ${n}`, `%- ${n},%`)
   }
   for (const code of BLOCK_CODES) {
-    likes.push(`${col} LIKE ?`); binds.push(`%, %, ${code}`)
-    likes.push(`${col} LIKE ?`); binds.push(`%, %, ${code},%`)
+    patterns.push(`%, %, ${code}`, `%, %, ${code},%`)
   }
 
-  const matchAny = `(${likes.join(' OR ')})`
-  const clause = `NOT (${alias}.remote = 'remote' AND ${matchAny})`
-  return { clause, binds }
+  const col = `LOWER(${alias}.location)`
+  const clause = `NOT (${alias}.remote = 'remote' AND EXISTS (
+    SELECT 1 FROM json_each(?) AS pat WHERE ${col} LIKE pat.value
+  ))`
+  return { clause, binds: [JSON.stringify(patterns)] }
 }
