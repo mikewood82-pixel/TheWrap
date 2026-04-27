@@ -340,31 +340,30 @@ export default function VendorPulsePage() {
       )}
 
       {/* Vendor grid
-          Only the Workday tile links through to its deep-dive right now — a
-          single working example of what Wrap+ unlocks. Other tiles render the
-          same data but are static; a "Wrap+" badge signals that the full
-          profile sits behind the upgrade. When we're ready to open more
-          profiles, flip the `isExample` predicate below. */}
+          Wrap+ members can click through to every vendor's deep dive. Free
+          users get the Workday tile as a public sample; other tiles show the
+          public ratings card with a "Wrap+" badge. */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
         {visibleVendors.map((v) => {
           const selected = isSelected(v.slug)
-          const isExample = v.slug === 'workday'
+          const isSample = v.slug === 'workday'
+          const isClickable = isPro || isSample
           const tileClass = `block bg-white border rounded-xl p-5 transition-all group ${
-            isExample ? 'hover:shadow-sm' : ''
+            isClickable ? 'hover:shadow-sm' : ''
           } ${
             selected
               ? 'border-brand-terracotta/50 ring-2 ring-brand-terracotta/20'
-              : `border-brand-cream ${isExample ? 'hover:border-brand-terracotta/40' : ''}`
+              : `border-brand-cream ${isClickable ? 'hover:border-brand-terracotta/40' : ''}`
           }`
 
           const tileBody = (
             <>
-              {isExample && (
+              {isSample && !isPro && (
                 <div className="absolute top-3 right-10 bg-brand-gold text-brand-dark text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">
                   Sample profile
                 </div>
               )}
-              {!isExample && (
+              {!isSample && !isPro && (
                 <div className="absolute top-3 right-10 bg-brand-dark/5 text-brand-dark/50 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">
                   Wrap+
                 </div>
@@ -393,7 +392,7 @@ export default function VendorPulsePage() {
               </div>
               <div className="flex items-center justify-between">
                 <div className="text-xs text-brand-dark/40">{v.employees} employees</div>
-                {isExample ? (
+                {isClickable ? (
                   <span className="flex items-center gap-1 text-brand-terracotta text-xs font-semibold">
                     See full profile <ArrowRight size={12} />
                   </span>
@@ -406,7 +405,7 @@ export default function VendorPulsePage() {
 
           return (
             <div key={v.slug} className="relative">
-              {isExample ? (
+              {isClickable ? (
                 <Link to={`/vendors/${v.slug}`} className={tileClass}>
                   {tileBody}
                 </Link>

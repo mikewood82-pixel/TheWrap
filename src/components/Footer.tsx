@@ -45,7 +45,6 @@ export default function Footer() {
               {[
                 ['/sponsorship', 'Sponsorship'],
                 ...(FEATURES.PLUS_ENABLED ? [
-                  ['mailto:mike@thewrap.com?subject=Vendor Deep Dive', 'Vendor Deep Dive'],
                   ['/subscribe', 'Wrap+ Membership'],
                 ] : []),
               ].map(([href, label]) => (

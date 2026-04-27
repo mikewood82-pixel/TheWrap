@@ -1,11 +1,18 @@
 import { useParams, Link } from 'react-router-dom'
-import { ExternalLink, ArrowLeft, Star, Globe, TrendingUp, TrendingDown, Newspaper, Puzzle, Users, HeadphonesIcon, Building2, AlertTriangle } from 'lucide-react'
+import { ExternalLink, ArrowLeft, Star, Globe, TrendingUp, TrendingDown, Newspaper, Puzzle, Users, HeadphonesIcon, Building2, AlertTriangle, Lock } from 'lucide-react'
 import { useState } from 'react'
 import { vendors } from '../data/vendors'
 import { vendorHighlights } from '../data/vendorHighlights'
 import { vendorDetails } from '../data/vendorDetails'
+import { fundingProfileBySlug, leadershipBySlug, supportProfileBySlug } from '../data/vendorProfiles'
+import { useWrapPlus } from '../context/WrapPlusContext'
 import RatingChart, { generateHistory } from '../components/RatingChart'
 import VendorLogo from '../components/VendorLogo'
+import VendorSnapshotHero from '../components/VendorSnapshotHero'
+import VendorAnchorNav, { type AnchorItem } from '../components/VendorAnchorNav'
+import VendorHiringPulse from '../components/VendorHiringPulse'
+import VendorFundingTimeline from '../components/VendorFundingTimeline'
+import VendorLeadership from '../components/VendorLeadership'
 
 function CapabilityBar({ label, score, rationale }: { label: string; score: number; rationale?: string }) {
   const color = score >= 85 ? 'bg-brand-terracotta' : score >= 65 ? 'bg-brand-gold' : 'bg-brand-dark/30'
@@ -30,6 +37,26 @@ function CapabilityBar({ label, score, rationale }: { label: string; score: numb
       )}
     </div>
   )
+}
+
+// Anchor items shown in the sticky in-page nav. We only surface sections
+// that will actually render for this vendor — no point linking to "Support"
+// for a vendor with no supportQuality data yet.
+type Highlights = (typeof vendorHighlights)[string] | undefined
+type Details = (typeof vendorDetails)[string] | undefined
+
+function buildAnchorItems({ details, highlights }: { details: Details; highlights: Highlights }): AnchorItem[] {
+  const items: AnchorItem[] = [{ id: 'snapshot', label: 'Snapshot' }]
+  items.push({ id: 'hiring', label: 'Hiring' })
+  if (details?.leadership?.length)   items.push({ id: 'leadership', label: 'Leadership' })
+  if (highlights?.gainPoints?.length || highlights?.painPoints?.length) items.push({ id: 'customers', label: 'Customers' })
+  if (details?.capabilities?.length) items.push({ id: 'capabilities', label: 'Capabilities' })
+  if (details?.idealCustomer)        items.push({ id: 'fit', label: 'Fit' })
+  if (details?.financialHealth)      items.push({ id: 'financials', label: 'Funding' })
+  if (details?.supportQuality)       items.push({ id: 'support', label: 'Support' })
+  if (details?.news?.length)         items.push({ id: 'news', label: 'News' })
+  items.push({ id: 'reviews', label: 'Reviews' })
+  return items
 }
 
 // Sponsored editorial content (only for deepDive vendors)
@@ -65,6 +92,7 @@ function TrendBadge({ current, history }: { current: number; history: ReturnType
 export default function VendorDeepDivePage() {
   const { slug } = useParams<{ slug: string }>()
   const [submitted, setSubmitted] = useState(false)
+  const { isPro } = useWrapPlus()
 
   const vendor = vendors.find(v => v.slug === slug)
 
@@ -83,7 +111,33 @@ export default function VendorDeepDivePage() {
   const editorial = deepDiveContent[vendor.slug]
   const isSponsored = vendor.deepDive && !!editorial
   const highlights = vendorHighlights[vendor.slug]
-  const details = vendorDetails[vendor.slug]
+  const baseDetails = vendorDetails[vendor.slug]
+
+  // Merge the side-table augmentations (funding history + leadership) into
+  // the editorial details. Side-table is the source of truth for these
+  // fields when present; falls back to anything declared inline.
+  const fundingProfile = fundingProfileBySlug[vendor.slug]
+  const leadership = leadershipBySlug[vendor.slug] ?? baseDetails?.leadership
+  const supportProfile = supportProfileBySlug[vendor.slug]
+  const details = baseDetails && {
+    ...baseDetails,
+    leadership,
+    financialHealth: baseDetails.financialHealth && {
+      ...baseDetails.financialHealth,
+      fundingHistory: fundingProfile?.history ?? baseDetails.financialHealth.fundingHistory,
+      totalRaised:    fundingProfile?.totalRaised ?? baseDetails.financialHealth.totalRaised,
+      lastValuation:  fundingProfile?.lastValuation ?? baseDetails.financialHealth.lastValuation,
+    },
+    supportQuality: baseDetails.supportQuality && {
+      ...baseDetails.supportQuality,
+      issueBreakdown: supportProfile?.issueBreakdown ?? baseDetails.supportQuality.issueBreakdown,
+      sentimentTrend: supportProfile?.sentimentTrend ?? baseDetails.supportQuality.sentimentTrend,
+    },
+  }
+
+  // Workday is the public sample profile; everything else is Wrap+ only.
+  const isSample = vendor.slug === 'workday'
+  const showFull = isPro || isSample
 
   // Root domain for Clearbit logo
   const domain = vendor.website.split('/')[0]
@@ -107,16 +161,21 @@ export default function VendorDeepDivePage() {
         </div>
       )}
 
-      {/* Header: Logo + Name + Links */}
-      <div className="flex items-start gap-4 mb-6">
-        <VendorLogo name={vendor.name} domain={domain} />
-        <div className="flex-1 min-w-0">
-          <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-1">
-            {isSponsored ? 'Vendor Deep Dive' : 'Vendor Profile'}
+      {/* Header: branded gradient hero with logo + name + links */}
+      <div className="relative -mx-4 sm:mx-0 mb-6 px-4 sm:px-6 py-6 bg-gradient-to-br from-brand-cream via-brand-gold/15 to-brand-terracotta/10 sm:rounded-2xl border-y sm:border border-brand-cream overflow-hidden">
+        <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-brand-terracotta/10 blur-2xl pointer-events-none" />
+        <div className="absolute -bottom-12 -left-8 w-32 h-32 rounded-full bg-brand-gold/15 blur-2xl pointer-events-none" />
+        <div className="relative flex items-start gap-4">
+          <div className="bg-white rounded-xl p-2 shadow-sm border border-brand-cream shrink-0">
+            <VendorLogo name={vendor.name} domain={domain} />
           </div>
-          <h1 className="font-serif text-3xl font-bold leading-tight mb-1">{vendor.name}</h1>
-          <div className="text-brand-dark/40 text-sm mb-3">{vendor.category} · {vendor.employees} employees</div>
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex-1 min-w-0">
+            <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-1">
+              {isSponsored ? 'Vendor Deep Dive' : 'Vendor Profile'}
+            </div>
+            <h1 className="font-serif text-3xl font-bold leading-tight mb-1">{vendor.name}</h1>
+            <div className="text-brand-dark/50 text-sm mb-3">{vendor.category} · {vendor.employees} employees</div>
+            <div className="flex items-center gap-3 flex-wrap">
             <a
               href={`https://${vendor.website}`}
               target="_blank"
@@ -134,48 +193,97 @@ export default function VendorDeepDivePage() {
               <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               LinkedIn
             </a>
+            </div>
           </div>
         </div>
       </div>
 
       <p className="text-brand-dark/70 text-base leading-relaxed mb-8">{vendor.description}</p>
 
-      {/* Gain Points + Pain Points — moved up for visibility */}
+      {showFull ? (
+        <>
+      {/* Snapshot Hero: 6 KPI tiles giving a 3-second verdict before the long scroll */}
+      <VendorSnapshotHero
+        vendor={vendor}
+        details={details}
+        g2Delta={Math.round((vendor.g2 - g2History[0].value) * 10) / 10}
+        glassdoorDelta={Math.round((vendor.glassdoor - glassdoorHistory[0].value) * 10) / 10}
+      />
+
+      {/* Sticky in-page nav */}
+      <VendorAnchorNav items={buildAnchorItems({ details, highlights })} />
+
+      {/* Hiring Pulse — surfaces the live jobs DB right after the snapshot.
+          Self-suppresses if the vendor isn't tracked in the jobs feed. */}
+      <VendorHiringPulse slug={vendor.slug} vendorName={vendor.name} />
+
+      {/* Leadership — surfaces exec stability + recent departures.
+          Self-suppresses if no leadership data is backfilled. */}
+      {details?.leadership?.length ? <VendorLeadership team={details.leadership} /> : null}
+
+      {/* Customers say — unified panel showing love-vs-watch-out ratio at the
+          top, then quotes side-by-side. Replaces the previous stacked-cards
+          layout so the proportion is visible at a glance. */}
       {(highlights?.gainPoints?.length || highlights?.painPoints?.length) ? (
-        <div className="grid sm:grid-cols-2 gap-4 mb-6">
-          {highlights?.gainPoints?.length ? (
-            <div className="bg-green-50 border border-green-100 rounded-xl p-5">
-              <div className="text-green-700 text-xs uppercase tracking-wide font-medium mb-4">✓ What Customers Love</div>
-              <div className="space-y-4">
-                {highlights.gainPoints.map((h, i) => (
-                  <div key={i} className="pl-3 border-l-2 border-green-200">
-                    <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{h.text}"</p>
-                    <p className="text-xs text-brand-dark/40">— {h.role}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : null}
-          {highlights?.painPoints?.length ? (
-            <div className="bg-red-50 border border-red-100 rounded-xl p-5">
-              <div className="text-red-500 text-xs uppercase tracking-wide font-medium mb-4">⚠ Watch Out For</div>
-              <div className="space-y-4">
-                {highlights.painPoints.map((h, i) => (
-                  <div key={i} className="pl-3 border-l-2 border-red-200">
-                    <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{h.text}"</p>
-                    <p className="text-xs text-brand-dark/40">— {h.role}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : null}
+        <div id="customers" className="bg-white border border-brand-cream rounded-xl p-6 mb-6 scroll-mt-24">
+          {(() => {
+            const loveCount = highlights?.gainPoints?.length ?? 0
+            const painCount = highlights?.painPoints?.length ?? 0
+            const total = loveCount + painCount
+            const lovePct = total > 0 ? Math.round((loveCount / total) * 100) : 0
+            return (
+              <>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">Customers say</span>
+                  <span className="text-xs text-brand-dark/40">{lovePct}% positive · {100 - lovePct}% watch-outs</span>
+                </div>
+                <div className="flex h-2 rounded-full overflow-hidden bg-brand-cream mb-5">
+                  {loveCount > 0 && <div className="bg-green-500" style={{ width: `${lovePct}%` }} />}
+                  {painCount > 0 && <div className="bg-red-400" style={{ width: `${100 - lovePct}%` }} />}
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-5">
+                  {highlights?.gainPoints?.length ? (
+                    <div>
+                      <div className="text-green-700 text-[11px] uppercase tracking-wide font-semibold mb-3 flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-green-500" /> What customers love
+                      </div>
+                      <div className="space-y-3">
+                        {highlights.gainPoints.map((h, i) => (
+                          <div key={i} className="pl-3 border-l-2 border-green-200">
+                            <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{h.text}"</p>
+                            <p className="text-xs text-brand-dark/40">— {h.role}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+                  {highlights?.painPoints?.length ? (
+                    <div>
+                      <div className="text-red-600 text-[11px] uppercase tracking-wide font-semibold mb-3 flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-red-400" /> Watch out for
+                      </div>
+                      <div className="space-y-3">
+                        {highlights.painPoints.map((h, i) => (
+                          <div key={i} className="pl-3 border-l-2 border-red-200">
+                            <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{h.text}"</p>
+                            <p className="text-xs text-brand-dark/40">— {h.role}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+              </>
+            )
+          })()}
         </div>
       ) : null}
 
       {details && (
         <>
           {/* Capabilities */}
-          <div className="bg-white border border-brand-cream rounded-xl p-6 mb-6">
+          <div id="capabilities" className="bg-white border border-brand-cream rounded-xl p-6 mb-6 scroll-mt-24">
             <div className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium mb-4">Capability Overview</div>
             <div className="space-y-3">
               {details.capabilities.map(c => (
@@ -186,7 +294,7 @@ export default function VendorDeepDivePage() {
           </div>
 
           {/* Ideal Customer + Integrations side by side */}
-          <div className="grid sm:grid-cols-2 gap-6 mb-6">
+          <div id="fit" className="grid sm:grid-cols-2 gap-6 mb-6 scroll-mt-24">
             <div className="bg-white border border-brand-cream rounded-xl p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Users size={13} className="text-brand-dark/40" />
@@ -226,7 +334,7 @@ export default function VendorDeepDivePage() {
           </div>
 
           {/* Newsroom */}
-          <div className="bg-white border border-brand-cream rounded-xl p-6 mb-6">
+          <div id="news" className="bg-white border border-brand-cream rounded-xl p-6 mb-6 scroll-mt-24">
             <div className="flex items-center gap-2 mb-4">
               <Newspaper size={13} className="text-brand-dark/40" />
               <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">From the Newsroom</span>
@@ -245,7 +353,7 @@ export default function VendorDeepDivePage() {
 
           {/* Financial Health */}
           {details.financialHealth && (
-            <div className="bg-white border border-brand-cream rounded-xl p-6 mb-6">
+            <div id="financials" className="bg-white border border-brand-cream rounded-xl p-6 mb-6 scroll-mt-24">
               <div className="flex items-center gap-2 mb-4">
                 <Building2 size={13} className="text-brand-dark/40" />
                 <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">Financial Health</span>
@@ -297,6 +405,15 @@ export default function VendorDeepDivePage() {
                   </div>
                 ))}
               </div>
+
+              {details.financialHealth.fundingHistory?.length ? (
+                <VendorFundingTimeline
+                  history={details.financialHealth.fundingHistory}
+                  totalRaised={details.financialHealth.totalRaised}
+                  lastValuation={details.financialHealth.lastValuation}
+                />
+              ) : null}
+
               <p className="text-xs text-brand-dark/30 mt-5 pt-4 border-t border-brand-cream">
                 Sources: SEC filings, Crunchbase, LinkedIn headcount data, and vendor press releases. Financial data is updated quarterly. Acquisition risk reflects aggregated signals — not financial advice.
               </p>
@@ -305,7 +422,7 @@ export default function VendorDeepDivePage() {
 
           {/* Support Quality */}
           {details.supportQuality && (
-            <div className="bg-white border border-brand-cream rounded-xl p-6 mb-6">
+            <div id="support" className="bg-white border border-brand-cream rounded-xl p-6 mb-6 scroll-mt-24">
               <div className="flex items-center gap-2 mb-4">
                 <HeadphonesIcon size={13} className="text-brand-dark/40" />
                 <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">Support Quality</span>
@@ -333,6 +450,68 @@ export default function VendorDeepDivePage() {
                   </div>
                 </div>
               </div>
+
+              {/* Issue-volume breakdown + 12mo sentiment trend.
+                  Bars are normalized to the largest category — we're showing
+                  relative pain points, not absolute ticket counts. */}
+              {details.supportQuality.issueBreakdown?.length || details.supportQuality.sentimentTrend?.length ? (
+                <div className="grid md:grid-cols-2 gap-5 mb-5 pb-5 border-b border-brand-cream">
+                  {details.supportQuality.issueBreakdown?.length ? (
+                    <div>
+                      <div className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium mb-3">Top complaint categories</div>
+                      <div className="space-y-2">
+                        {(() => {
+                          const max = Math.max(...details.supportQuality.issueBreakdown!.map(b => b.volume))
+                          return details.supportQuality.issueBreakdown!.map((b, i) => (
+                            <div key={i} className="flex items-center gap-2 text-xs">
+                              <span className="w-40 text-brand-dark/60 truncate">{b.category}</span>
+                              <div className="flex-1 bg-brand-cream rounded-full h-2 overflow-hidden">
+                                <div className="h-2 rounded-full bg-brand-terracotta/80" style={{ width: `${(b.volume / max) * 100}%` }} />
+                              </div>
+                              <span className="w-7 text-right tabular-nums text-brand-dark/40">{b.volume}%</span>
+                            </div>
+                          ))
+                        })()}
+                      </div>
+                    </div>
+                  ) : null}
+
+                  {details.supportQuality.sentimentTrend?.length ? (
+                    <div>
+                      <div className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium mb-3">12-month sentiment trend</div>
+                      {(() => {
+                        const trend = details.supportQuality.sentimentTrend!
+                        const W = 320, H = 64, pad = 6
+                        const cW = W - pad * 2, cH = H - pad * 2
+                        const minV = Math.min(...trend) - 5
+                        const maxV = Math.max(...trend) + 5
+                        const range = (maxV - minV) || 1
+                        const x = (i: number) => pad + (i / (trend.length - 1)) * cW
+                        const y = (v: number) => pad + cH - ((v - minV) / range) * cH
+                        const linePath = trend.map((v, i) => `${i === 0 ? 'M' : 'L'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ')
+                        const areaPath = `${linePath} L${x(trend.length - 1).toFixed(1)},${(pad + cH).toFixed(1)} L${x(0).toFixed(1)},${(pad + cH).toFixed(1)} Z`
+                        const delta = trend[trend.length - 1] - trend[0]
+                        const color = delta >= 0 ? '#16a34a' : '#dc2626'
+                        return (
+                          <>
+                            <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-16" preserveAspectRatio="none">
+                              <path d={areaPath} fill={color} fillOpacity={0.1} />
+                              <path d={linePath} fill="none" stroke={color} strokeWidth={1.8} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                            </svg>
+                            <div className="flex items-center justify-between text-[10px] text-brand-dark/40 mt-1">
+                              <span>12 mo ago: {trend[0]}</span>
+                              <span className={delta >= 0 ? 'text-green-700 font-semibold' : 'text-red-600 font-semibold'}>
+                                {delta >= 0 ? '+' : ''}{delta} pts
+                              </span>
+                              <span>Now: {trend[trend.length - 1]}</span>
+                            </div>
+                          </>
+                        )
+                      })()}
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
 
               <div className="grid sm:grid-cols-3 gap-4 mb-5">
                 <div>
@@ -373,7 +552,7 @@ export default function VendorDeepDivePage() {
       )}
 
       {/* G2 Section */}
-      <div className="bg-white border border-brand-cream rounded-xl p-6 mb-6">
+      <div id="reviews" className="bg-white border border-brand-cream rounded-xl p-6 mb-6 scroll-mt-24">
         <div className="flex items-center justify-between mb-1">
           <div className="flex items-center gap-2">
             <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">G2 Rating</span>
@@ -446,19 +625,45 @@ export default function VendorDeepDivePage() {
         </div>
       </div>
 
-      {/* Capterra + News scores */}
-      <div className="grid grid-cols-3 gap-4 mb-8">
-        {[
-          { label: 'Capterra',      value: vendor.capterra.toString() },
-          { label: 'Total Reviews', value: vendor.reviews >= 1000 ? `${(vendor.reviews / 1000).toFixed(1)}k` : vendor.reviews.toString() },
-          { label: 'News Activity', value: vendor.news.toString() },
-        ].map(s => (
-          <div key={s.label} className="bg-brand-cream rounded-xl p-4 text-center">
-            <div className="font-serif text-3xl font-bold text-brand-dark">{s.value}</div>
-            <div className="text-xs text-brand-dark/40 mt-1">{s.label}</div>
+      {/* Quick stats — Capterra gets a sparkline; reviews + news are static
+          but get small upgrades (icon + gradient) for visual lift. */}
+      {(() => {
+        const capterraHistory = generateHistory(vendor.capterra, vendor.slug + '-capterra')
+        const W = 120, H = 28, pad = 2
+        const cW = W - pad * 2, cH = H - pad * 2
+        const values = capterraHistory.map(d => d.value)
+        const minV = Math.max(1.0, Math.min(...values) - 0.3)
+        const maxV = Math.min(5.0, Math.max(...values) + 0.3)
+        const range = (maxV - minV) || 0.5
+        const x = (i: number) => pad + (i / (capterraHistory.length - 1)) * cW
+        const y = (v: number) => pad + cH - ((v - minV) / range) * cH
+        const linePath = capterraHistory.map((d, i) => `${i === 0 ? 'M' : 'L'}${x(i).toFixed(1)},${y(d.value).toFixed(1)}`).join(' ')
+        const trend = capterraHistory[capterraHistory.length - 1].value - capterraHistory[0].value
+        const trendColor = trend >= 0 ? '#16a34a' : '#dc2626'
+        return (
+          <div className="grid grid-cols-3 gap-4 mb-8">
+            <div className="bg-gradient-to-br from-brand-cream to-brand-cream/40 border border-brand-cream rounded-xl p-4 text-center">
+              <div className="font-serif text-3xl font-bold text-brand-dark">{vendor.capterra}</div>
+              <div className="text-xs text-brand-dark/40 mt-1 mb-2">Capterra</div>
+              <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-7" preserveAspectRatio="none">
+                <path d={linePath} fill="none" stroke={trendColor} strokeWidth={1.5} strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+              </svg>
+            </div>
+            <div className="bg-gradient-to-br from-brand-cream to-brand-cream/40 border border-brand-cream rounded-xl p-4 text-center">
+              <div className="font-serif text-3xl font-bold text-brand-dark">
+                {vendor.reviews >= 1000 ? `${(vendor.reviews / 1000).toFixed(1)}k` : vendor.reviews}
+              </div>
+              <div className="text-xs text-brand-dark/40 mt-1">Total Reviews</div>
+              <div className="text-[10px] text-brand-dark/30 mt-1">Across G2, Capterra, Glassdoor</div>
+            </div>
+            <div className="bg-gradient-to-br from-brand-cream to-brand-cream/40 border border-brand-cream rounded-xl p-4 text-center">
+              <div className="font-serif text-3xl font-bold text-brand-dark">{vendor.news}</div>
+              <div className="text-xs text-brand-dark/40 mt-1">News mentions</div>
+              <div className="text-[10px] text-brand-dark/30 mt-1">Past 90 days</div>
+            </div>
           </div>
-        ))}
-      </div>
+        )
+      })()}
 
       {/* Mike's Take (sponsored only) */}
       {isSponsored && editorial && (
@@ -543,6 +748,50 @@ export default function VendorDeepDivePage() {
           )}
         </div>
       )}
+        </>
+      ) : (
+        <>
+          {/* Free preview: compact ratings summary so visitors see something concrete,
+              then the upgrade card. The full profile (capabilities, financial health,
+              support quality, review highlights, news, demo form, etc.) is Wrap+ only. */}
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="bg-white border border-brand-cream rounded-xl p-5 text-center">
+              <div className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium mb-2">G2 Rating</div>
+              <div className="font-serif text-4xl font-bold">{vendor.g2}</div>
+              <div className="text-xs text-brand-dark/40 mt-1">
+                / 5.0 · {vendor.reviews >= 1000 ? `${(vendor.reviews / 1000).toFixed(1)}k` : vendor.reviews} reviews
+              </div>
+            </div>
+            <div className="bg-white border border-brand-cream rounded-xl p-5 text-center">
+              <div className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium mb-2">Glassdoor</div>
+              <div className="font-serif text-4xl font-bold">{vendor.glassdoor}</div>
+              <div className="text-xs text-brand-dark/40 mt-1">/ 5.0 · employee reviews</div>
+            </div>
+          </div>
+
+          <div className="bg-brand-dark text-white rounded-2xl p-8 text-center mb-8 shadow-lg border border-brand-terracotta/30">
+            <div className="w-12 h-12 bg-brand-terracotta/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Lock size={22} className="text-brand-terracotta" />
+            </div>
+            <div className="text-brand-gold text-xs uppercase tracking-widest font-medium mb-2">Wrap+</div>
+            <h3 className="font-serif text-xl font-bold mb-2 text-white">See the full {vendor.name} profile</h3>
+            <p className="text-white/70 text-sm mb-6 leading-relaxed max-w-md mx-auto">
+              Capability scores, ideal customer fit, integrations, financial health, support quality, review highlights, and the latest news — included with Wrap+.
+            </p>
+            <Link
+              to="/subscribe"
+              className="inline-block bg-brand-terracotta text-white font-medium px-6 py-3 rounded-lg hover:bg-brand-gold hover:text-brand-dark transition-colors"
+            >
+              Upgrade to Wrap+
+            </Link>
+            <div className="mt-4">
+              <Link to="/vendors/workday" className="text-white/40 text-xs hover:text-white transition-colors">
+                See a sample full profile →
+              </Link>
+            </div>
+          </div>
+        </>
+      )}
 
       {/* Footer links */}
       <div className="flex items-center justify-between pt-2">
@@ -554,14 +803,6 @@ export default function VendorDeepDivePage() {
         >
           Visit {vendor.name} <ExternalLink size={14} />
         </a>
-        {!isSponsored && (
-          <a
-            href="mailto:mike@thewrap.com?subject=Vendor Deep Dive"
-            className="text-xs text-brand-dark/40 hover:text-brand-terracotta transition-colors"
-          >
-            {vendor.name} vendor? Get a Deep Dive →
-          </a>
-        )}
       </div>
     </div>
   )
