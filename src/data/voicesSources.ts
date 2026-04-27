@@ -108,4 +108,12 @@ export const voicesSources: VoiceSourceSeed[] = [
     feed_url: 'https://mattcharney.com/feed/',
     description: 'Snark Attack \u2014 pointed commentary on recruiting and HR tech.',
   },
+  {
+    slug: 'brian-fink',
+    name: 'Brian Fink',
+    kind: 'newsletter',
+    site_url: 'https://fwdmotion.substack.com',
+    feed_url: 'https://fwdmotion.substack.com/feed',
+    description: 'FWDmotion \u2014 for those who want to make forward motion in talent and recruiting.',
+  },
 ]
