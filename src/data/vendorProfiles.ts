@@ -41,10 +41,10 @@ export const fundingProfileBySlug: Record<string, FundingProfile> = {
       { round: 'Series C', date: 'Oct 2021', amount: '$250M',  leadInvestor: 'Sequoia',        valuation: '$6.5B' },
       { round: 'Series D', date: 'May 2022', amount: '$250M',  leadInvestor: 'Founders Fund',  valuation: '$11.25B' },
       { round: 'Series E', date: 'Apr 2024', amount: '$200M',  leadInvestor: 'Founders Fund',  valuation: '$13.5B' },
-      { round: 'Series F', date: 'Jan 2026', amount: '$450M',  leadInvestor: 'Coatue',         valuation: '$16.8B' },
+      { round: 'Series G', date: 'May 2025', amount: '$450M',  leadInvestor: 'Sands Capital',  valuation: '$16.8B' },
     ],
     totalRaised: '~$1.35B',
-    lastValuation: '$16.8B (Jan 2026)',
+    lastValuation: '$16.8B (May 2025)',
   },
 
   'bamboohr': {
@@ -94,10 +94,11 @@ export const fundingProfileBySlug: Record<string, FundingProfile> = {
       { round: 'Seed',     date: 'Jul 2020', amount: '$3.5M',  leadInvestor: 'Y Combinator' },
       { round: 'Series A', date: 'Mar 2022', amount: '$15.3M', leadInvestor: 'YC + Lightspeed' },
       { round: 'Series B', date: 'Aug 2023', amount: '$30M',   leadInvestor: 'F-Prime Capital', valuation: '$200M' },
-      { round: 'Series C', date: 'Feb 2026', amount: '$50M',   leadInvestor: 'Lightspeed',      valuation: '$580M' },
+      { round: 'Series C', date: 'Jun 2024', amount: '$30M',   leadInvestor: 'Lachy Groom' },
+      { round: 'Series D', date: '2025',     amount: '$50M',   leadInvestor: 'Undisclosed' },
     ],
-    totalRaised: '~$98M',
-    lastValuation: '$580M (Feb 2026)',
+    totalRaised: '~$129M',
+    lastValuation: 'Undisclosed (Series D, 2025)',
   },
 
   'lattice': {
@@ -142,10 +143,10 @@ export const fundingProfileBySlug: Record<string, FundingProfile> = {
       { round: 'Series A', date: 'Sep 2018', amount: '$17.5M', leadInvestor: 'Battery Ventures' },
       { round: 'Series B', date: 'Sep 2020', amount: '$70M',   leadInvestor: 'Bessemer' },
       { round: 'Series C', date: 'Oct 2021', amount: '$150M',  leadInvestor: 'General Atlantic', valuation: '$1.65B' },
-      { round: 'Series D', date: 'Aug 2024', amount: '$150M',  leadInvestor: 'General Atlantic', valuation: '$2.45B' },
+      { round: 'Series D', date: 'Aug 2022', amount: '$150M',  leadInvestor: 'General Atlantic', valuation: '$2.45B' },
     ],
     totalRaised: '~$425M',
-    lastValuation: '$2.45B (Aug 2024)',
+    lastValuation: '$2.45B (Aug 2022)',
   },
 
   'paylocity': {
@@ -196,7 +197,7 @@ export const fundingProfileBySlug: Record<string, FundingProfile> = {
 export const leadershipBySlug: Record<string, LeadershipMember[]> = {
   'workday': [
     { name: 'Aneel Bhusri',  role: 'CEO',             tenureYears: 0.2, prior: 'Co-founder; returned Feb 2026' },
-    { name: 'Carl Eschenbach', role: 'CEO', tenureYears: 3, prior: 'VMware COO', departed: 'Departed Feb 2026' },
+    { name: 'Carl Eschenbach', role: 'CEO', tenureYears: 2, prior: 'VMware COO', departed: 'Departed Feb 2026' },
     { name: 'Sayan Chakraborty', role: 'CTO',         tenureYears: 4,   prior: 'Workday Engineering EVP' },
     { name: 'Ashley Goldsmith', role: 'CHRO',         tenureYears: 12,  prior: 'Polycom CHRO' },
     { name: 'Pete Schlampp', role: 'Head of Product', tenureYears: 2,   prior: 'Workday Analytics GM' },
@@ -234,8 +235,9 @@ export const leadershipBySlug: Record<string, LeadershipMember[]> = {
   ],
 
   'lever': [
-    { name: 'Nate Smith',    role: 'CEO',             tenureYears: 3,   prior: 'Lever VP Product' },
-    { name: 'Sarah Nahm',    role: 'Founder',         tenureYears: 11,  prior: 'Lever co-founder; stepped back from CEO 2022' },
+    { name: 'Jerry Jao',     role: 'CEO (Employ Inc., parent)', tenureYears: 0.2, prior: 'Appointed Feb 2026' },
+    { name: 'Nate Smith',    role: 'CEO',             tenureYears: 3,   prior: 'Lever VP Product', departed: 'Departed Nov 2022' },
+    { name: 'Sarah Nahm',    role: 'Founder',         tenureYears: 11,  prior: 'Lever co-founder; stepped back from CEO 2018' },
     { name: 'Allison Robinson', role: 'CRO',          tenureYears: 2,   prior: 'Mother\'s Quest Founder' },
   ],
 
@@ -246,8 +248,8 @@ export const leadershipBySlug: Record<string, LeadershipMember[]> = {
   ],
 
   'lattice': [
-    { name: 'Sarah Franklin', role: 'CEO',            tenureYears: 1.5, prior: 'Salesforce President & CMO' },
-    { name: 'Jack Altman',   role: 'Founder',         tenureYears: 9,   prior: 'Lattice founder; stepped back from CEO 2024' },
+    { name: 'Sarah Franklin', role: 'CEO',            tenureYears: 2.3, prior: 'Salesforce President & CMO' },
+    { name: 'Jack Altman',   role: 'Founder',         tenureYears: 9,   prior: 'Lattice founder; stepped back from CEO Dec 2023' },
     { name: 'Ryan Hopkins',  role: 'CTO',             tenureYears: 4,   prior: 'Lattice VP Engineering' },
     { name: 'Cara Brennan Allamano', role: 'CHRO',    tenureYears: 3,   prior: 'Udemy CPO' },
   ],
@@ -256,7 +258,7 @@ export const leadershipBySlug: Record<string, LeadershipMember[]> = {
     { name: 'Joshua Reeves', role: 'CEO',             tenureYears: 13,  prior: 'Co-founder' },
     { name: 'Tomer London', role: 'CPO',              tenureYears: 13,  prior: 'Co-founder' },
     { name: 'Mike Triplett', role: 'CRO',             tenureYears: 5,   prior: 'Box VP Sales' },
-    { name: 'Lexi Reese',    role: 'COO', tenureYears: 6,    prior: 'Google Director', departed: 'Departed Mar 2026' },
+    { name: 'Lexi Reese',    role: 'COO', tenureYears: 6,    prior: 'Google Director', departed: 'Departed 2021' },
   ],
 
   'deel': [
@@ -280,13 +282,14 @@ export const leadershipBySlug: Record<string, LeadershipMember[]> = {
   ],
 
   'culture-amp': [
-    { name: 'Didier Elzinga', role: 'CEO',            tenureYears: 14,  prior: 'Co-founder' },
+    { name: 'Caroline Rawlinson', role: 'CEO',        tenureYears: 0.3, prior: 'Appointed Jan 2026' },
+    { name: 'Didier Elzinga', role: 'Executive Chairman', tenureYears: 14, prior: 'Co-founder; CEO 2010-2025' },
     { name: 'Doug English',  role: 'CTO',             tenureYears: 14,  prior: 'Co-founder' },
     { name: 'Pip Russell',   role: 'CHRO',            tenureYears: 4,   prior: 'Atlassian Head of People' },
   ],
 
   '15five': [
-    { name: 'David Hassell', role: 'CEO',             tenureYears: 14,  prior: 'Co-founder' },
+    { name: 'David Hassell', role: 'CEO',             tenureYears: 0.5, prior: 'Co-founder; returned as CEO Nov 2025' },
     { name: 'Shane Metcalf', role: 'Chief Culture Officer', tenureYears: 14, prior: 'Co-founder' },
     { name: 'Adam Weber',    role: 'CHRO',            tenureYears: 5,   prior: 'Emplify Co-founder' },
   ],
