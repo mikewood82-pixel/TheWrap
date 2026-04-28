@@ -1,11 +1,11 @@
 const headlines = [
-  { text: 'Windmill raises $12M · AI performance review startup nabs combined pre-seed and seed', url: 'https://www.axios.com/pro/enterprise-software-deals/2026/04/28/hr-tech-windmill-performance-ai' },
-  { text: 'Juicebox raises $36M · Sequoia-led Series A scales AI recruiting agents to 2,500 customers', url: 'https://juicebox.ai/blog/series-a' },
-  { text: 'Shapes lands $24M · ex-monday.com execs build AI-native PeopleOS for HR, IT and Finance', url: 'https://techfundingnews.com/shapes-raises-24m-ai-native-peopleos-hr-platform/' },
+  { text: 'Phenom acquires Plum · psychometric assessments join stack to fight AI-resume hiring fraud', url: 'https://hrtechfeed.com/phenom-acquires-plum/' },
+  { text: 'Vensure acquires Compagno · 8th HR/PEO deal of 2026 expands staffing alliance footprint', url: 'https://hrtechfeed.com/vensures-acquisition-spree-continues/' },
+  { text: 'Windmill raises $12M · AI performance-review startup lands combined pre-seed and seed', url: 'https://hrtechfeed.com/performance-management-tool-raises-12m/' },
+  { text: 'Workday Government debuts PAR Agent · slashes federal HR processing cycles by up to 60%', url: 'https://hrtechfeed.com/workday-government-unveils-personnel-action-request-par-agent-to-modernize-federal-hr-and-strengthen-mission-readiness/' },
   { text: 'SAP SuccessFactors 1H 2026 · suite-wide agentic AI rolls in; production deploy May 15', url: 'https://news.sap.com/2026/04/sap-successfactors-1h-2026-release/' },
-  { text: 'Phenom wins HCM Signal Award · H3 HR Advisors names it tops in 2026 AI maturity', url: 'https://www.phenom.com/press-release/phenom-award-for-ai-maturity' },
-  { text: 'Oracle Fusion Agentic Apps for HR · 1,000+ AI agents now embedded across HCM at no extra cost', url: 'https://www.uctoday.com/talent-hcm-platforms/oracle-fusion-agentic-applications-for-hr-what-it-means-for-hcm-leaders/' },
-  { text: 'UKG cuts 950 jobs · 6% of workforce gone citing AI transformation and market shifts', url: 'https://hrexecutive.com/ukg-cuts-950-jobs-in-latest-round-of-restructuring/' },
+  { text: 'CHRO Confidence Index hits 59 · strongest read since 2023 as hiring intent climbs in H1', url: 'https://www.hrdive.com/news/chro-confidence-levels-strongest-tracked-the-conference-board/818654/' },
+  { text: 'Salesforce sued over FMLA · suit alleges company built "negative record" of leave-taker', url: 'https://www.hrdive.com/news/salesforce-negative-record-employee-fmla-leave/818598/' },
   { text: 'March jobs report · +178K nonfarm payrolls, unemployment holds at 4.3% per BLS', url: 'https://www.bls.gov/news.release/empsit.nr0.htm' },
 ]
 
