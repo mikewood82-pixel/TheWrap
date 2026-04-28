@@ -1,11 +1,12 @@
 const headlines = [
-  { text: 'Thoma Bravo hands Medallia to creditors · $5.1B of $6.4B equity wiped in debt-for-equity swap', url: 'https://www.saastr.com/medallia-is-just-the-opening-act-heres-the-list-of-pe-saas-deals-most-at-risk/' },
-  { text: 'Personio hits profitability · acquires Munich AI startup aurio to accelerate recruiting roadmap', url: 'https://www.personio.com/about-personio/press/personio-profitability-acquisition-aurio/' },
-  { text: 'Visier Outsmart 2026 · Workforce AI next-gen with Glean MCP integration for in-flow analytics', url: 'https://www.prnewswire.com/news-releases/the-next-generation-of-visier-workforce-ai-arrives-the-intelligence-behind-enterprise-workforce-transformation-302438901.html' },
-  { text: 'Gusto hits 500K customers · Spring Showcase ships nearly 75 new SMB features', url: 'https://gusto.com/resources/company-news/spring-showcase-2026' },
-  { text: 'Docebo Inspire 2026 · Companion, MCP Server, AI Tutor, AgentHub debut in biggest release ever', url: 'https://www.docebo.com/learning-network/blog/inspire-2026-announcements/' },
+  { text: 'Windmill raises $12M · AI performance review startup nabs combined pre-seed and seed', url: 'https://www.axios.com/pro/enterprise-software-deals/2026/04/28/hr-tech-windmill-performance-ai' },
+  { text: 'Juicebox raises $36M · Sequoia-led Series A scales AI recruiting agents to 2,500 customers', url: 'https://juicebox.ai/blog/series-a' },
+  { text: 'Shapes lands $24M · ex-monday.com execs build AI-native PeopleOS for HR, IT and Finance', url: 'https://techfundingnews.com/shapes-raises-24m-ai-native-peopleos-hr-platform/' },
+  { text: 'SAP SuccessFactors 1H 2026 · suite-wide agentic AI rolls in; production deploy May 15', url: 'https://news.sap.com/2026/04/sap-successfactors-1h-2026-release/' },
+  { text: 'Phenom wins HCM Signal Award · H3 HR Advisors names it tops in 2026 AI maturity', url: 'https://www.phenom.com/press-release/phenom-award-for-ai-maturity' },
   { text: 'Oracle Fusion Agentic Apps for HR · 1,000+ AI agents now embedded across HCM at no extra cost', url: 'https://www.uctoday.com/talent-hcm-platforms/oracle-fusion-agentic-applications-for-hr-what-it-means-for-hcm-leaders/' },
   { text: 'UKG cuts 950 jobs · 6% of workforce gone citing AI transformation and market shifts', url: 'https://hrexecutive.com/ukg-cuts-950-jobs-in-latest-round-of-restructuring/' },
+  { text: 'March jobs report · +178K nonfarm payrolls, unemployment holds at 4.3% per BLS', url: 'https://www.bls.gov/news.release/empsit.nr0.htm' },
 ]
 
 export default function NewsTicker() {
