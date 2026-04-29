@@ -17,8 +17,8 @@ export type VoicesStaffPick = {
 
 export const voicesStaffPick: VoicesStaffPick = {
   enabled: true,
-  sourceSlug: 'beacon-turn',
-  matchTitle: "Don't AI-ify Your CEO",
+  sourceSlug: 'josh-bersin',
+  matchTitle: 'Reinvention of Workday',
 }
 
 // Normalize smart quotes and case so config written with plain ASCII still
