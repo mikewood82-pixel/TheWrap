@@ -9,6 +9,127 @@ export interface Newsletter {
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'ats-napster-moment',
+    date: 'May 1, 2026',
+    title: 'The Platform You Bought in 2021 Was Built for a World That No Longer Exists',
+    tag: 'Vendor Strategy',
+    excerpt: 'The enterprise ATS market just had its Napster moment — and the platforms that bet on AI marketing instead of AI architecture are running out the clock.',
+    body: `
+<img src="/newsletters/may-1-2026-ats-napster-moment/image1.gif" alt="The Platform You Bought in 2021 Was Built for a World That No Longer Exists" />
+
+<p>The enterprise talent acquisition software market has already had its Napster moment. Not the slow-moving disruption kind where incumbents have years to adapt and most of them do. The other kind — where the floor drops out, the rules of competition change overnight, and the companies still playing the old game look up to find the audience has left.</p>
+
+<p>What separated winners from losers in the ATS market three years ago — configurability, integration depth, compliance coverage, implementation support — are table stakes now, or irrelevant. The only question buyers are actually asking in 2026 is: how AI-first is this platform, really? Not "do you have AI features?" Every deck has AI features. The question is whether AI is baked into the architecture or bolted onto the outside of a building that was designed for a different era. Those are not the same product. They do not perform the same way. And the gap between them is widening every quarter.</p>
+
+<p>Here is where it gets complicated for buyers. A significant portion of the enterprise HR tech market is owned by private equity firms that acquired these platforms between 2020 and 2022 — peak valuations, peak leverage, historically low interest rates.</p>
+
+<p><strong>The math made sense at the time. It does not make as much sense now.</strong></p>
+
+<p>Several of those deals are sitting on debt loads that actively constrain R&amp;D investment at exactly the moment when R&amp;D investment is the only thing that matters. You cannot rearchitect a platform from the ground up when your debt service is eating your operating margin. What you can do is cut headcount, install a new CEO with an AI background, and launch a rebrand that signals forward motion without requiring the capital that actual forward motion demands.</p>
+
+<p>The tell, when you're evaluating a platform, is not the product demo. Demos are engineered to impress.</p>
+
+<p>The tell is what the company is <em>not</em> saying. If your vendor is leading with a new brand identity and an AI product name that sounds like it was workshopped by a consulting firm, ask what changed in the codebase. If the answer is a list of AI features rather than a description of architectural change, you have your answer. If the leadership team turned over in the last 18 months, ask why. If the company is PE-backed, ask when the fund needs to exit and what that means for roadmap continuity. These are not impolite questions. They are the questions a procurement team would ask about any other major infrastructure investment, and your talent acquisition platform <em>is</em> a major infrastructure investment.</p>
+
+<p>The reason this matters now, and not later, is that there is a counter-narrative running in parallel — and it is instructive.</p>
+
+<p>SmartRecruiters spent the years immediately before ChatGPT in a difficult place. Customers were leaving. Talent was leaving. It was not a company with obvious momentum. Then they looked hard at where the market was going, made the call to rebuild around AI, and repositioned themselves explicitly as <em>The Recruiting AI Company</em>. The difference between SmartRecruiters and the legacy platforms doing AI rebrands is that SmartRecruiters actually rearchitected. That distinction is what SAP paid for when they completed the acquisition in September 2025. And in October, SAP confirmed they're not treating SmartRecruiters as a feature add-on — they're replacing the entire SuccessFactors recruiting module with it, giving current customers three to five years to migrate. That is a complete changing of the guard in enterprise TA, and it signals something clearly: <strong>the platforms that bet on genuine AI architecture won. The ones that bet on AI marketing are still running the clock</strong>, and by fall conference season, buyers will want to see actual product, not promises.</p>
+
+<p>If you are mid-contract with an enterprise ATS right now, none of this requires panic. Contracts are contracts, implementations take time, and platform stability matters. But if you are 18 months from a renewal, starting a fresh evaluation, or building a three-year TA technology strategy, the questions above deserve real answers before you sign. The category is sorting itself out in real time. Some platforms are going to emerge from this transition stronger and more capable than they were before. Others are going to be acquired, restructured, consolidated into something else, or quietly sunset. Knowing which kind of vendor you're sitting across from is the key.</p>
+
+<p>On to the week that was in HR Tech. In this week's Wrap, we'll go over Phenom's acquisition of Plum, Fama getting a patent, Amazon jumping into mass hiring tools, Workhuman predicting future leaders, Checkr's portable identity verification, Recruitics partnering with ID.me, Klaar adding compensation, LinkedIn's Grad Guide, Josh Bersin's take on what's going on at Workday, we ask Achilles about frontline hiring for the trades, and the absolute trainwreck that is the EEOC.</p>
+
+<p>Have a great weekend!</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Phenom acquires Plum, completes its assessment stack</h3>
+<img src="/newsletters/may-1-2026-ats-napster-moment/image2.jpg" alt="Phenom acquires Plum" />
+<p>Phenom just made its second acquisition in ten weeks, picking up Plum — a psychometric-based talent assessment company — to plug what it calls the biggest gap in modern hiring: <strong>validating the human qualities that resumes can't verify and AI can't replicate</strong>. Plum's proprietary Role Model™ technology maps behavioral blueprints against more than 40,000 real-world jobs, with accuracy reportedly four times greater than resume screening alone. The traits it's trying to surface — empathy, resilience, judgment, adaptability — are exactly the ones that don't show up on a LinkedIn profile and don't survive a 55-minute intake interview.</p>
+<p>With Plum now in the fold alongside Be Applied (acquired in February), Phenom is positioning itself as the owner of a full-spectrum assessment stack: Be Applied covers cognitive and situational judgment, Plum covers behavioral traits and durable skills, and Phenom's own agentic AI handles sourcing, delivery, and interviewing. The idea is a system of checks rather than a single checkpoint — validating what candidates can do, how they'll approach the work, and whether their behavioral profile actually matches what success in the role requires. That's a meaningfully different pitch than "we have assessments." <a href="https://www.phenom.com/blog/phenom-acquires-plum">Read More</a></p>
+
+<h3>Fama Technologies granted foundational patent on AI social media screening</h3>
+<img src="/newsletters/may-1-2026-ats-napster-moment/image3.jpg" alt="Fama Technologies patent" />
+<p>Fama just got the US Patent and Trade office to confirm what it's been arguing for a decade: <em>it invented its category</em>. The Los Angeles-based online screening company was granted a patent covering its core method for searching, analyzing, and classifying online activity with a priority date going all the way back to November 2015. The patent covers 22 claims including extracting PII from source documents, pulling social media activity, transforming image data into structured datasets via object recognition, and classifying content using ML trained on inter-rater agreements.</p>
+<p>"We didn't just enter the online screening market — we created it," said founder and CEO Ben Mones. With the 2023 acquisition of Social Intelligence already in the rearview, Fama has also filed a continuation patent to expand its IP portfolio further. In a market where every vendor is starting to sound the same, owning the foundational IP is a meaningful moat. <a href="https://www.prweb.com/releases/fama-technologies-granted-us-patent-on-foundational-ai-powered-social-media-screening-technology-302752534.html">Read More</a></p>
+
+<h3>Amazon launches Connect Talent to automate mass hiring</h3>
+<img src="/newsletters/may-1-2026-ats-napster-moment/image4.jpg" alt="Amazon Connect Talent" />
+<p>Amazon just introduced Connect Talent, an AI-powered hiring platform designed for companies that need to recruit at scale — think retailers staffing up for peak season. The system conducts AI-led interviews around the clock, screens candidates, and preps recruiter notes, all without a human in the room. Amazon itself hired around 250,000 seasonal workers last holiday season, so this is clearly product development born from internal pain. They're calling their broader AI design philosophy "humorphism" — the idea of humanizing AI to adapt to how people actually work. The irony of branding an interview-replacing AI product around humanization is doing a lot of heavy lifting here.</p>
+<p>As we've covered in the past, frontline hiring is a massive market opportunity. Worth keeping an eye on if Amazon can perfect it and if they would want to expand this tool to other companies. <a href="https://finance.yahoo.com/sectors/technology/articles/amazon-targets-mass-hiring-agentic-160051472.html">Read More</a></p>
+
+<h3>Workhuman launches Future Leaders™ to predict your next VP</h3>
+<img src="/newsletters/may-1-2026-ats-napster-moment/image5.webp" alt="Workhuman Future Leaders" />
+<p>Workhuman just made its biggest bet yet on AI-powered succession planning with Future Leaders™ — a tool built on its proprietary Ascend™ AI that claims to identify VP+ leadership candidates three to five years before they'd traditionally get promoted. Rather than relying on manager gut feel or annual talent reviews, the system analyzes patterns across thousands of workplace interactions already captured in Workhuman's recognition platform — who's influencing others, who's delivering impact, whose behaviors mirror the fingerprints of leaders who actually succeeded. The models are self-learning and recalibrate in real time as roles shift and leaders rise.</p>
+<p>The business case is straightforward: replacing a senior executive costs 200-400% of their annual salary, and roughly half of external executive hires fail within two years anyway. If you can grow your own leaders with this level of predictive confidence, the ROI math isn't complicated. The more interesting question is what it means for the employees being quietly scored — and whether "you've been identified as a future leader" hits differently when you know an algorithm said it first. <a href="https://techrseries.com/hrtechnology/workhuman-launches-future-leaders-redefining-how-organizations-identify-and-elevate-internal-leadership-talent/">Read More</a></p>
+
+<h3>Checkr launches Profiles — portable verified identity that travels with workers</h3>
+<img src="/newsletters/may-1-2026-ats-napster-moment/image6.jpg" alt="Checkr Profiles" />
+<p>This is the move the background check industry has been building toward for years, and Checkr just took the biggest step anyone has taken to get there. Checkr Profiles lets individuals create a verified, portable identity — backed by Checkr's screening infrastructure — that they own, control, and can share proactively with any employer, marketplace, or platform they work with. A caregiver can share it before the first introduction. A freelancer can embed it on their website. A gig worker can arrive on a new platform already verified. For employers, it embeds directly as a "Checkr Verified" badge within job boards and marketplaces. Over 500,000 people have already created a profile since launch, and GigSmart is already using it as the entry point for every flex worker on their platform.</p>
+<p>What's interesting is what comes next: this is a logical extension of what background check companies have always done, but turning that verification into a candidate-owned asset is a fundamentally different model. Expect this space to get crowded fast. Sterling, First Advantage, HireRight, and every other major player in the space now has a roadmap item they can't ignore. The race is on to build the user base — and whoever gets to scale first wins, because a verified identity network is only as valuable as the number of people who have one. Checkr has a meaningful head start. <a href="https://www.prnewswire.com/news-releases/checkr-launches-profiles-giving-people-a-verified-identity-that-travels-with-them-302756790.html">Read More</a></p>
+
+<h3>Recruitics launches AdaptiveApply™ with ID.me</h3>
+<img src="/newsletters/may-1-2026-ats-napster-moment/image7.jpg" alt="Recruitics AdaptiveApply with ID.me" />
+<p>Here's another approach. Recruitics just dropped AdaptiveApply™, an AI-driven application experience that dynamically adjusts questions, length, and flow based on job type and performance data — and embeds identity verification directly into the apply flow before a candidate ever hits your ATS. The launch partner is ID.me, which already has 160 million users representing roughly 60% of the US adult population, meaning a huge chunk of your applicant pool can verify their identity in seconds with credentials they already have.</p>
+<p>This, alongside Checkr Profiles launching the same week, signals something important: verified identity is moving from a background check afterthought to a top-of-funnel expectation. Two different companies, two different approaches, same underlying thesis — trust has to be established earlier in the process than it currently is, and the market is finally building the infrastructure to do it. <a href="https://www.einpresswire.com/article/908497265/recruitics-launches-adaptiveapply-featuring-id-me-to-bring-verified-identity-to-the-top-of-the-hiring-funnel">Read More</a></p>
+
+<blockquote><p>📌 <strong>Editor's Note:</strong> Two stories in this section this week — Checkr Profiles and Recruitics' AdaptiveApply with ID.me — are pointing at the same thing from different angles. Portable, candidate-owned verified identity is becoming a real category. Checkr is building it from the background check side; Recruitics is embedding it at the application layer through ID.me's existing wallet infrastructure. Worth noting: Greenhouse got ahead of both of them, partnering with CLEAR back in June 2025 to embed identity verification directly into its Real Talent hiring solution — matching candidates' selfies to government-issued IDs before they ever hit a recruiter's queue. Three different companies, three different entry points, same destination: a world where your verified credentials travel with you from platform to platform instead of getting re-run by every employer from scratch. The question now isn't whether this becomes standard — it will. The question is who builds the network effect fast enough to make their version of it the one that wins.</p></blockquote>
+
+<h3>Klaar launches compensation module powered by Comprehensive</h3>
+<img src="/newsletters/may-1-2026-ats-napster-moment/image8.png" alt="Klaar compensation module" />
+<p>Klaar, the AI-native performance management platform, just added compensation planning powered by a partnership with Comprehensive, a comp planning and benchmarking platform trusted by the likes of Upwork, T-Mobile, and Vidyard. The core idea is straightforward and long overdue: performance data and compensation decisions should live in the same system, not in parallel spreadsheets that get reconciled once a year during a stressful review cycle. With real-time performance signals now feeding directly into comp planning, Klaar is positioning itself as a platform that connects what someone actually did with what they actually get paid — reducing recency bias, manual work, and the quiet inconsistencies that make comp cycles a nightmare for HR teams and a trust-eroder for employees. <a href="https://www.prnewswire.com/news-releases/klaar-launches-new-compensation-module-powered-by-comprehensive-bringing-compensation-planning-into-its-ai-native-performance-platform-302756424.html">Read More</a></p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions 🤝</h2>
+
+<p><strong>Urfuture raises £1.7M</strong> — Manchester-based HR tech startup urfuture closed a seed round to take on what it sees as a broken entry-level hiring system. The platform ditches CVs and job boards in favor of a behavioral science matching algorithm and what it calls a "social-first Gen Z distribution engine" — designed to surface higher-intent, more diverse candidates. Clients already include Tesco, British Airways, and West Midlands Police. <a href="https://www.uktech.news/funding/urfuture-raises-1-7m-to-rebuild-entry-level-hiring-20260420">Read More</a></p>
+
+<p><strong>TraqCheck raises $8M Series A</strong> — New Delhi-based TraqCheck, an AI-powered background verification platform that bills itself as a "Human Operating System" for hiring, closed an $8M Series A led by IvyCap Ventures with participation from IIFL. <a href="https://www.finsmes.com/2026/04/traqcheck-raises-8m-in-series-a-funding.html">Read More</a></p>
+
+<p><strong>LumApps acquires Comeen</strong> — LumApps, the AI-powered employee hub backed by Bridgepoint, is acquiring Comeen — a workplace experience platform covering space management, digital signage, and visitor services — in a deal expected to close in May. <a href="https://www.bridgepointgroup.com/about-us/news-and-insights/press-releases/2026/lumapps-to-acquire-comeen-to-expand-its-ai-employee-hub">Read More</a></p>
+
+<hr />
+
+<h2>📊 Research &amp; Reports</h2>
+
+<h3>LinkedIn's 2026 Grad's Guide</h3>
+<img src="/newsletters/may-1-2026-ats-napster-moment/image9.jpg" alt="LinkedIn 2026 Grad's Guide" />
+<p>The class of 2026 is entering one of the toughest hiring markets in years, and LinkedIn's annual data snapshot doesn't sugarcoat it. Entry-level hiring is down 6% year-over-year (mid-level is down 10%). Nearly half of Gen Z says the biggest barrier to landing a role isn't skills — it's network. One in five has started a side hustle or business rather than wait for a traditional job to materialize. Another 22% are building apps and projects just to prove they can. The number of LinkedIn members adding "founder" to their profile surged 69% year-over-year, and 72% of young office workers say they're considering skilled trades. Growth industries remain tech, financial services, construction, and real estate. <a href="https://news.linkedin.com/2026/Grads-Guide-2026">Read More</a></p>
+
+<hr />
+
+<h2>🔥 HR Hot Takes</h2>
+
+<h3>Josh Bersin — The Reinvention of Workday: From System of Record to Platform of Agents</h3>
+<img src="/newsletters/may-1-2026-ats-napster-moment/image10.png" alt="Workday + Galileo / Josh Bersin Company" />
+<p>Bersin went deep on Workday's big strategic pivot this week and it's worth your time if you're an HR tech buyer, seller, or watcher. The short version: Workday is repositioning from a system of record into a platform for agents, arguing that the business rules, compliance machinery, and org configuration baked into Workday over twenty years are exactly the "rails" that AI agents need to operate at enterprise scale. It's a compelling argument, and the acquisitions of Paradox and Sana give it real teeth. The more interesting subplot: co-founder Aneel Bhusri came back as CEO because the company lost its startup culture and the AI strategy wasn't clear. He promptly rebuilt the executive team, narrowed fifty agent projects down to fifteen in a single afternoon, and handed the talent acquisition and learning platforms to the CEOs of Paradox and Sana respectively as full general managers with P&amp;L accountability.</p>
+<p>It's a great article and it's clear Bersin is bullish on Workday, but we need to add more context here. <strong>The Josh Bersin Company has a financial relationship with Workday. Its Galileo HR assistant is integrated directly into Workday and the partnership facilitates the sale and use of Galileo within Workday's customer base.</strong> If Workday wants to embed The Wrap premium memberships within its platform, I will also write amazing articles about them. Contact information at the bottom of <a href="https://ilovethewrap.com">ilovethewrap.com</a>. <a href="https://joshbersin.com/2026/04/the-reinvention-of-workday-from-system-of-record-to-platform-of-agents/">Read More</a></p>
+
+<hr />
+
+<h2>🎙️ Podcast of the Week</h2>
+
+<h3>Totally Talent — From Welders to Waitstaff: How AI Screens Better Talent</h3>
+<img src="/newsletters/may-1-2026-ats-napster-moment/image11.webp" alt="Totally Talent — From Welders to Waitstaff with Read Egger" />
+<p>This week features a quick discussion with Read Egger, CEO of Achilles, and what I appreciated most about this conversation is that Read isn't another founder who stumbled into frontline hiring from a PowerPoint deck. He's screened thousands of hourly candidates himself — 5,000 by his own count while expanding a staffing operation into Arizona — and spent years recruiting in oil and gas, skilled trades, and light industrial across 30 states before building the platform he wished he'd had. Achilles plugs into your existing ATS (integration measured in hours, not months, he's quick to point out) and handles the full screening workflow via conversational text — deal breaker questions, skill validation, phone screens — tailored dynamically to the role. <a href="https://www.hr.com/en/resources/podcasts/talent/from-welders-to-waitstaff-how-ai-screens-better-ta_mohh4kn9.html"><strong>Listen Here</strong></a></p>
+
+<hr />
+
+<h2>👇 Worth a Click</h2>
+
+<h3>The EEOC is a designed trainwreck</h3>
+<img src="/newsletters/may-1-2026-ats-napster-moment/image12.jpg" alt="The EEOC is a designed trainwreck" />
+<p>You may remember that <a href="https://www.linkedin.com/pulse/we-living-sci-fi-thriller-mike-wood-sy3be/">I wrote about Andrea Lucas and the EEOC awhile ago</a>. You have to admire her tenacity and push to finally stop the injustice of…(looks at notes)…systemic discrimination of white men?</p>
+<p>A damning New York Times investigation this week details how field staff at the Equal Employment Opportunity Commission are being pressured by chair Andrea Lucas to fast-track cases that match the Trump administration's priorities even when the evidence is thin to nonexistent. In one case described in the piece, staff were forced to justify dropping a complaint from a white man who didn't get a job — a job that went to another white man, with an all-white applicant pool. <em>That's the evidentiary standard we're working with.</em> Lucas has reportedly been scouring the agency's internal case database herself, maintaining a "top 30" priority list that nobody can touch without her sign-off, and providing regular case updates directly to the White House — a break from the firewall that has traditionally existed between the two.</p>
+<p>Meanwhile the agency is at its lowest staffing level in decades, handling 90,000 complaints a year with about 400 investigators. So to recap: Andrea Lucas is dismantling the machinery built to protect workers from discrimination in order to spend its last remaining resources hunting for evidence that white people are being mistreated. All of this while the person who was technically supposed to be running the Department of Labor — Secretary Lori Chavez-DeRemer — just resigned amid an inspector general investigation into allegations including an affair with a member of her security detail, her husband being banned from DOL headquarters following sexual assault allegations from staff, and using government travel as a cover to attend Morgan Wallen concerts. <strong>The White House said she did a phenomenal job.</strong> <a href="https://www.nytimes.com/2026/04/27/us/politics/eeoc-trump-discrimination-cases.html">Read More</a></p>
+    `,
+  },
+  {
     slug: 'introducing-the-expanded-wrap',
     date: 'April 24, 2026',
     title: 'Introducing the Expanded Wrap!',
