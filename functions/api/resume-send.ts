@@ -55,14 +55,21 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const go = url.searchParams.get('go') === '1'
   const cutoff = url.searchParams.get('cutoff') ?? new Date().toISOString().split('T')[0] // default "today"
 
-  // ── 1. Walk Resend's list of emails and collect addresses that already
-  //       received this subject on or after `cutoff`.
+  // ── 1. Walk Resend's list of emails (newest-first) and collect addresses
+  //       that already received this subject on or after `cutoff`. Stop as
+  //       soon as we cross the cutoff date — Resend orders by created_at DESC
+  //       so further pages are strictly older and contribute nothing.
   const delivered = new Set<string>()
   const unmatched: string[] = []
   let cursor: string | null = null
   let pages = 0
-  const MAX_PAGES = 80 // safety cap — ~8000 emails
-  while (pages < MAX_PAGES) {
+  let hitMax = false
+  // 30 pages × 100 emails = 3,000 — covers a 2,500-recipient broadcast plus
+  // a normal day's transactional volume. Larger caps tripped the 30s
+  // worker wall-clock on busy days and returned a CF-generated 502.
+  const MAX_PAGES = 30
+  while (true) {
+    if (pages >= MAX_PAGES) { hitMax = true; break }
     const listUrl = `https://api.resend.com/emails?limit=100${cursor ? `&after=${cursor}` : ''}`
     const r = await fetch(listUrl, {
       headers: { 'Authorization': `Bearer ${env.RESEND_API_KEY}` },
@@ -91,10 +98,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       }
     }
 
-    // If the newest page already reached before the cutoff and we're not
-    // finding matches anymore, stop paging — saves API calls.
-    if (walkedPastCutoff && delivered.size > 0) break
-    if (items.length < 100) break // last page
+    if (walkedPastCutoff) break
+    if (items.length < 100) break
     cursor = items[items.length - 1]?.id ?? null
     if (!cursor) break
     pages++
@@ -114,12 +119,24 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       dry_run: true,
       cutoff,
       pages_walked: pages + 1,
+      hit_max: hitMax,
       total_active_subs: active.length,
       already_delivered: delivered.size,
       to_send_count: missed.length,
       to_send_sample: missed.slice(0, 5),
       unmatched_subjects_sample: unmatched.slice(0, 5),
     })
+  }
+
+  // Refuse to send when we capped pagination — `missed` may include subs who
+  // received the email on un-walked pages, and re-sending double-emails them.
+  if (hitMax) {
+    return Response.json({
+      error: 'pagination cap hit — refusing to send',
+      hint: 'Re-run dry mode with a tighter cutoff (?cutoff=YYYY-MM-DD) so the walk finishes.',
+      pages_walked: pages + 1,
+      already_delivered: delivered.size,
+    }, { status: 409 })
   }
 
   // ── 4. Real send — batch 100 at a time, same pattern as send-newsletter.ts
