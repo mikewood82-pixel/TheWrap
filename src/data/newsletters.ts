@@ -825,3 +825,4 @@ export const newsletters: Newsletter[] = [
 export function getNewsletter(slug: string): Newsletter | undefined {
   return newsletters.find(n => n.slug === slug)
 }
+
