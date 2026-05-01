@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Play, BarChart2, TrendingUp, Briefcase } from 'lucide-react'
+import { ArrowRight, Play, TrendingUp, Briefcase } from 'lucide-react'
 import { FEATURES } from '../config/features'
 import { useEffect, useState } from 'react'
 import SEO from '../components/SEO'
@@ -240,27 +240,6 @@ export default function HomePage() {
           ) : null}
         </div>
       </section>
-
-      {/* Vendor Pulse card — only shown when Plus is enabled */}
-      {FEATURES.PLUS_ENABLED && (
-        <section className="border-b border-brand-border bg-brand-surface">
-          <div className="max-w-6xl mx-auto px-4 py-10">
-            <Link to="/vendors" className="group bg-white rounded-xl border border-brand-border p-6 hover:border-brand-terracotta/40 hover:shadow-sm transition-all relative overflow-hidden max-w-sm">
-              <div className="absolute top-3 right-3 bg-brand-gold text-brand-dark text-xs font-bold px-2.5 py-1 rounded-full">Wrap+</div>
-              <div className="w-10 h-10 bg-brand-orange/10 rounded-lg flex items-center justify-center mb-4">
-                <BarChart2 size={18} className="text-brand-orange" />
-              </div>
-              <h3 className="font-serif text-lg font-bold mb-1 text-brand-dark">Vendor Pulse</h3>
-              <p className="text-sm text-brand-muted leading-relaxed mb-3">
-                Curated information and ratings for HR Tech vendors including capabilities, news, G2 and Glassdoor ratings.
-              </p>
-              <span className="text-xs font-semibold text-brand-terracotta group-hover:underline flex items-center gap-1">
-                Explore <ArrowRight size={12} />
-              </span>
-            </Link>
-          </div>
-        </section>
-      )}
 
       {/* Vendor Pulse preview — gated while Mike rethinks the content.
           Flip PLUS_ENABLED (or remove this guard) to show the featured
