@@ -49,17 +49,15 @@ export default function SubscribePage() {
       )}
 
       {/* Hero */}
-      <div className="grid md:grid-cols-2 gap-8 items-center mb-14">
-        <div className="order-2 md:order-1">
-          <h1 className="font-serif text-4xl md:text-5xl font-bold leading-tight text-brand-dark">
+      <div className="bg-brand-cream rounded-2xl px-6 md:px-10 py-8 md:py-10 mb-12">
+        <div className="grid md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center">
+          <h1 className="font-serif text-3xl md:text-4xl font-bold leading-tight text-brand-dark text-center md:text-left">
             A month of insights for the price of an actual wrap!
           </h1>
-        </div>
-        <div className="order-1 md:order-2 flex justify-center md:justify-end">
           <img
             src="/wrap-mascot.png"
             alt="The Wrap mascot giving a thumbs up"
-            className="w-full max-w-sm md:max-w-md h-auto"
+            className="w-40 md:w-48 h-auto justify-self-center md:justify-self-end"
             loading="eager"
           />
         </div>
