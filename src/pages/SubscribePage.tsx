@@ -48,6 +48,23 @@ export default function SubscribePage() {
         </div>
       )}
 
+      {/* Hero */}
+      <div className="grid md:grid-cols-2 gap-8 items-center mb-14">
+        <div className="order-2 md:order-1">
+          <h1 className="font-serif text-4xl md:text-5xl font-bold leading-tight text-brand-dark">
+            A month of insights for the price of an actual wrap!
+          </h1>
+        </div>
+        <div className="order-1 md:order-2 flex justify-center md:justify-end">
+          <img
+            src="/wrap-mascot.png"
+            alt="The Wrap mascot giving a thumbs up"
+            className="w-full max-w-sm md:max-w-md h-auto"
+            loading="eager"
+          />
+        </div>
+      </div>
+
       <div className="grid md:grid-cols-3 gap-6">
         {/* Free */}
         <div className="bg-white border border-brand-border rounded-2xl p-8">
