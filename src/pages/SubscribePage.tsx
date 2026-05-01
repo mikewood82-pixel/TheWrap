@@ -8,18 +8,15 @@ const freeTier = [
   'Latest edition on the web',
   'The Wrap Show — all episodes',
   'Labor Market data',
-  'Vendor list (name, category, G2 score)',
 ]
 
 const proTier = [
   'Everything in Free',
-  'Full vendor database — 29+ vendors',
+  'Full vendor database',
   'Vendor comparison tool',
-  'Detailed implementation notes',
+  'Detailed customer feedback',
   'Shortlist builder',
-  'Vendor Deep Dive reports',
-  'Premium newsletter content',
-  'Early access to new features',
+  'Access to upgrades as I build this out',
 ]
 
 export default function SubscribePage() {
@@ -50,14 +47,6 @@ export default function SubscribePage() {
           You're on Wrap+! Full vendor intel is now unlocked.
         </div>
       )}
-
-      <div className="text-center mb-12">
-        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-3">Pricing</div>
-        <h1 className="font-serif text-4xl font-bold mb-3">Simple, honest pricing</h1>
-        <p className="text-brand-dark/60 text-lg max-w-xl mx-auto">
-          The newsletter and show are free. Wrap+ unlocks the full vendor intelligence layer — the part that's actually worth paying for.
-        </p>
-      </div>
 
       <div className="grid md:grid-cols-3 gap-6">
         {/* Free */}
