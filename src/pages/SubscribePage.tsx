@@ -72,9 +72,50 @@ export default function SubscribePage() {
       {/* Hero */}
       <div className="bg-brand-cream rounded-2xl px-6 md:px-10 py-8 md:py-10 mb-12">
         <div className="grid md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center">
-          <h1 className="font-serif text-3xl md:text-4xl font-bold leading-tight text-brand-dark text-center md:text-left">
-            A month of insights for the price of an actual wrap!
-          </h1>
+          <div className="text-center md:text-left">
+            <div className="inline-flex items-center gap-2 bg-brand-terracotta text-white text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full mb-3">
+              Wrap+
+            </div>
+            <h1 className="font-serif text-3xl md:text-4xl font-bold leading-tight text-brand-dark mb-3">
+              A month of insights for the price of an actual wrap!
+            </h1>
+            <p className="text-brand-dark/60 mb-5 md:mb-6 text-base md:text-lg">
+              Full vendor database, comparison tool, customer feedback. $10/month or $99/year.
+            </p>
+            {isPro ? (
+              <div className="inline-block bg-brand-terracotta/10 border border-brand-terracotta/30 text-brand-terracotta font-medium py-3 px-5 rounded-lg text-sm">
+                Active — you're on Wrap+
+              </div>
+            ) : isSignedIn ? (
+              <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                <button
+                  onClick={() => handleCheckout('annual')}
+                  className="bg-brand-dark text-white font-semibold py-3 px-6 rounded-lg hover:bg-brand-dark/90 transition-colors"
+                >
+                  Get annual — $99
+                </button>
+                <button
+                  onClick={() => handleCheckout('monthly')}
+                  className="bg-white border border-brand-dark/20 text-brand-dark font-semibold py-3 px-6 rounded-lg hover:border-brand-dark transition-colors"
+                >
+                  $10/month
+                </button>
+              </div>
+            ) : (
+              <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                <SignInButton mode="modal">
+                  <button className="bg-brand-dark text-white font-semibold py-3 px-6 rounded-lg hover:bg-brand-dark/90 transition-colors">
+                    Get annual — $99
+                  </button>
+                </SignInButton>
+                <SignInButton mode="modal">
+                  <button className="bg-white border border-brand-dark/20 text-brand-dark font-semibold py-3 px-6 rounded-lg hover:border-brand-dark transition-colors">
+                    $10/month
+                  </button>
+                </SignInButton>
+              </div>
+            )}
+          </div>
           <img
             src="/wrap-mascot.png"
             alt="The Wrap mascot giving a thumbs up"
