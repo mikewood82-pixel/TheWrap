@@ -70,51 +70,50 @@ export default function SubscribePage() {
       )}
 
       {/* Hero */}
-      <div className="bg-brand-cream rounded-2xl px-6 md:px-10 py-8 md:py-10 mb-12">
+      <div className="bg-brand-cream rounded-2xl px-6 md:px-10 py-8 md:py-10 mb-10">
         <div className="grid md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center">
           <div className="text-center md:text-left">
-            <div className="inline-flex items-center gap-2 bg-brand-terracotta text-white text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full mb-3">
-              Wrap+
+            <div className="inline-flex items-center gap-2 bg-brand-dark/10 text-brand-dark/70 text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full mb-3">
+              Free every Friday
             </div>
             <h1 className="font-serif text-3xl md:text-4xl font-bold leading-tight text-brand-dark mb-3">
-              A month of insights for the price of an actual wrap!
+              Get The Wrap in your inbox
             </h1>
             <p className="text-brand-dark/60 mb-5 md:mb-6 text-base md:text-lg">
-              Full vendor database, comparison tool, customer feedback. $10/month or $99/year.
+              HR tech news, vendor signals, and the labor market — no fluff, no vendor spin. Free every Friday, joining 2,300+ HR pros.
             </p>
-            {isPro ? (
-              <div className="inline-block bg-brand-terracotta/10 border border-brand-terracotta/30 text-brand-terracotta font-medium py-3 px-5 rounded-lg text-sm">
-                Active — you're on Wrap+
-              </div>
-            ) : isSignedIn ? (
-              <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                <button
-                  onClick={() => handleCheckout('annual')}
-                  className="bg-brand-dark text-white font-semibold py-3 px-6 rounded-lg hover:bg-brand-dark/90 transition-colors"
-                >
-                  Get annual — $99
-                </button>
-                <button
-                  onClick={() => handleCheckout('monthly')}
-                  className="bg-white border border-brand-dark/20 text-brand-dark font-semibold py-3 px-6 rounded-lg hover:border-brand-dark transition-colors"
-                >
-                  $10/month
-                </button>
+            {subState === 'success' ? (
+              <div className="bg-green-50 border border-green-200 text-green-800 rounded-lg px-5 py-3 text-sm max-w-md mx-auto md:mx-0">
+                You're in — check your inbox for a welcome email.
               </div>
             ) : (
-              <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
-                <SignInButton mode="modal">
-                  <button className="bg-brand-dark text-white font-semibold py-3 px-6 rounded-lg hover:bg-brand-dark/90 transition-colors">
-                    Get annual — $99
-                  </button>
-                </SignInButton>
-                <SignInButton mode="modal">
-                  <button className="bg-white border border-brand-dark/20 text-brand-dark font-semibold py-3 px-6 rounded-lg hover:border-brand-dark transition-colors">
-                    $10/month
-                  </button>
-                </SignInButton>
+              <form onSubmit={handleFreeSubscribe} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto md:mx-0">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  placeholder="your@email.com"
+                  required
+                  disabled={subState === 'loading'}
+                  className="flex-1 px-4 py-3 border border-brand-dark/20 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-terracotta/40 focus:border-brand-terracotta disabled:opacity-50"
+                />
+                <button
+                  type="submit"
+                  disabled={subState === 'loading'}
+                  className="bg-brand-dark text-white font-semibold py-3 px-6 rounded-lg hover:bg-brand-dark/90 transition-colors disabled:opacity-60 whitespace-nowrap"
+                >
+                  {subState === 'loading' ? 'Subscribing…' : 'Subscribe — free'}
+                </button>
+              </form>
+            )}
+            {subState === 'error' && (
+              <div className="text-xs text-red-600 mt-2">
+                Something went wrong. Please try again or email mike@ilovethewrap.com.
               </div>
             )}
+            <p className="text-xs text-brand-dark/40 mt-4">
+              Need vendor intelligence? <a href="#plans" className="font-semibold text-brand-terracotta hover:underline">Compare plans</a> — Wrap+ starts at $10/month.
+            </p>
           </div>
           <img
             src="/wrap-mascot.png"
@@ -125,7 +124,7 @@ export default function SubscribePage() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div id="plans" className="grid md:grid-cols-3 gap-6 scroll-mt-20">
         {/* Free */}
         <div className="bg-white border border-brand-border rounded-2xl p-8">
           <div className="text-brand-dark/40 text-sm font-medium uppercase tracking-wide mb-2">Free</div>
