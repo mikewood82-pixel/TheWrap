@@ -15,6 +15,7 @@ const baseLinks = [
 
 const plusLinks = [
   { to: '/vendors', label: 'Vendor Pulse' },
+  { to: '/announcements', label: 'Timeline' },
 ]
 
 const voicesLink = { to: '/voices', label: 'Voices' }

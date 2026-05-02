@@ -6,6 +6,7 @@ import NewsletterDetailPage from './pages/NewsletterDetailPage'
 import ShowPage from './pages/ShowPage'
 import VendorPulsePage from './pages/VendorPulsePage'
 import VendorDeepDivePage from './pages/VendorDeepDivePage'
+import AnnouncementsPage from './pages/AnnouncementsPage'
 import LaborMarketPage from './pages/LaborMarketPage'
 import SubscribePage from './pages/SubscribePage'
 import AboutPage from './pages/AboutPage'
@@ -35,12 +36,14 @@ function App() {
             <>
               <Route path="vendors" element={<VendorPulsePage />} />
               <Route path="vendors/:slug" element={<VendorDeepDivePage />} />
+              <Route path="announcements" element={<AnnouncementsPage />} />
               <Route path="subscribe" element={<SubscribePage />} />
             </>
           ) : (
             <>
               <Route path="vendors" element={<Navigate to="/" replace />} />
               <Route path="vendors/:slug" element={<Navigate to="/" replace />} />
+              <Route path="announcements" element={<Navigate to="/" replace />} />
               <Route path="subscribe" element={<Navigate to="/" replace />} />
             </>
           )}

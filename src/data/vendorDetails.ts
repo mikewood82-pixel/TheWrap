@@ -1,6 +1,35 @@
 export type CapabilityScore = { label: string; score: number; rationale?: string }
 export type ReviewHighlight = { text: string; role: string }
 
+// Structured customer feedback synthesized from public review sources
+// (G2, Capterra, TrustRadius, Reddit r/humanresources, LinkedIn).
+// Lives separately from supportQuality.highlights[] which captures
+// support-specific quotes; this captures the broader product/buying
+// signals that shape a purchase decision.
+//
+// quotes: actual practitioner quotes — only populate from REAL public
+//   sources. Empty array is fine; the UI hides the section if empty.
+// redFlags / greenFlags: editorial pattern observations across reviews.
+//   "3+ recent reviews mention pricing surprises" — Mike's synthesis,
+//   not a single quote.
+// pricingNotes / implementationNotes / commonGotchas: structured
+//   editorial fields that don't require sourcing individual quotes.
+export type FeedbackQuote = {
+  text: string         // the quote itself
+  role: string         // 'Director of HR · Series C SaaS' — never a real name
+  source: string       // 'G2 review · Mar 2026', 'Reddit r/humanresources', etc.
+  url?: string         // public link if quotable
+}
+export type CustomerFeedback = {
+  praise?: FeedbackQuote[]
+  complaints?: FeedbackQuote[]
+  redFlags?: string[]            // pattern observations — e.g. "Renewal pricing often jumps 20-40% without negotiation."
+  greenFlags?: string[]          // positive patterns — e.g. "Implementation typically completes within stated timeline."
+  pricingNotes?: string          // 1-2 sentences on pricing posture
+  implementationNotes?: string   // 1-2 sentences on deploy time / lift
+  commonGotchas?: string[]       // specific things buyers regret missing in evaluation
+}
+
 // One funding round (or IPO). `valuation` is post-money when known; many
 // later-stage private rounds publish it, earlier rounds usually don't.
 export type FundingRound = {
@@ -58,6 +87,7 @@ export type VendorDetail = {
     sentimentTrend?: number[]                  // 12 months, 0-100 sentiment scores
   }
   leadership?: LeadershipMember[]
+  customerFeedback?: CustomerFeedback
 }
 
 export const vendorDetails: Record<string, VendorDetail> = {

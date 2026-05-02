@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { ExternalLink, ArrowLeft, Star, Globe, TrendingUp, TrendingDown, Newspaper, Puzzle, Users, HeadphonesIcon, Building2, AlertTriangle, Lock } from 'lucide-react'
+import { ExternalLink, ArrowLeft, Star, Globe, TrendingUp, TrendingDown, Newspaper, Puzzle, Users, HeadphonesIcon, Building2, AlertTriangle, Lock, ThumbsUp, ThumbsDown, MessageSquare } from 'lucide-react'
 import { useState } from 'react'
 import { vendors } from '../data/vendors'
 import { vendorHighlights } from '../data/vendorHighlights'
@@ -45,6 +45,21 @@ function CapabilityBar({ label, score, rationale }: { label: string; score: numb
 type Highlights = (typeof vendorHighlights)[string] | undefined
 type Details = (typeof vendorDetails)[string] | undefined
 
+// True iff at least one customerFeedback subfield has content. Empty schemas
+// shouldn't cause an anchor or a section to render.
+function hasCustomerFeedback(cf: NonNullable<Details>['customerFeedback']): boolean {
+  if (!cf) return false
+  return !!(
+    cf.praise?.length ||
+    cf.complaints?.length ||
+    cf.redFlags?.length ||
+    cf.greenFlags?.length ||
+    cf.commonGotchas?.length ||
+    cf.pricingNotes ||
+    cf.implementationNotes
+  )
+}
+
 function buildAnchorItems({ details, highlights }: { details: Details; highlights: Highlights }): AnchorItem[] {
   const items: AnchorItem[] = [{ id: 'snapshot', label: 'Snapshot' }]
   items.push({ id: 'hiring', label: 'Hiring' })
@@ -54,6 +69,7 @@ function buildAnchorItems({ details, highlights }: { details: Details; highlight
   if (details?.idealCustomer)        items.push({ id: 'fit', label: 'Fit' })
   if (details?.financialHealth)      items.push({ id: 'financials', label: 'Funding' })
   if (details?.supportQuality)       items.push({ id: 'support', label: 'Support' })
+  if (details?.customerFeedback && hasCustomerFeedback(details.customerFeedback)) items.push({ id: 'feedback', label: 'Buyer feedback' })
   if (details?.news?.length)         items.push({ id: 'news', label: 'News' })
   items.push({ id: 'reviews', label: 'Reviews' })
   return items
@@ -545,6 +561,123 @@ export default function VendorDeepDivePage() {
               )}
               <p className="text-xs text-brand-dark/30 mt-5 pt-4 border-t border-brand-cream">
                 Sources: G2, Capterra, and Glassdoor reviews, plus vendor-published support documentation. Support scores are composite ratings based on response time, channel availability, and customer sentiment. Updated quarterly.
+              </p>
+            </div>
+          )}
+
+          {/* Customer Feedback — synthesized from public review sources.
+              Renders only if at least one subfield has content. */}
+          {details.customerFeedback && hasCustomerFeedback(details.customerFeedback) && (
+            <div id="feedback" className="bg-white border border-brand-cream rounded-xl p-6 mb-6 scroll-mt-24">
+              <div className="flex items-center gap-2 mb-5">
+                <MessageSquare size={13} className="text-brand-dark/40" />
+                <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">Buyer feedback</span>
+              </div>
+
+              {/* Green flags + Red flags side-by-side when both present */}
+              {(details.customerFeedback.greenFlags?.length || details.customerFeedback.redFlags?.length) ? (
+                <div className="grid md:grid-cols-2 gap-5 mb-5">
+                  {details.customerFeedback.greenFlags?.length ? (
+                    <div className="bg-green-50/60 border border-green-100 rounded-lg p-4">
+                      <div className="flex items-center gap-1.5 text-xs text-green-700 uppercase tracking-wide font-semibold mb-2">
+                        <ThumbsUp size={12} /> What works
+                      </div>
+                      <ul className="space-y-2">
+                        {details.customerFeedback.greenFlags.map((f, i) => (
+                          <li key={i} className="text-sm text-brand-dark/80 leading-relaxed flex gap-2">
+                            <span className="text-green-600 shrink-0 mt-0.5">▸</span>
+                            <span>{f}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+
+                  {details.customerFeedback.redFlags?.length ? (
+                    <div className="bg-red-50/60 border border-red-100 rounded-lg p-4">
+                      <div className="flex items-center gap-1.5 text-xs text-red-700 uppercase tracking-wide font-semibold mb-2">
+                        <ThumbsDown size={12} /> Watch out for
+                      </div>
+                      <ul className="space-y-2">
+                        {details.customerFeedback.redFlags.map((f, i) => (
+                          <li key={i} className="text-sm text-brand-dark/80 leading-relaxed flex gap-2">
+                            <span className="text-red-600 shrink-0 mt-0.5">▸</span>
+                            <span>{f}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+
+              {/* Pricing + Implementation notes side-by-side when present */}
+              {(details.customerFeedback.pricingNotes || details.customerFeedback.implementationNotes) ? (
+                <div className="grid md:grid-cols-2 gap-5 mb-5">
+                  {details.customerFeedback.pricingNotes ? (
+                    <div>
+                      <div className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium mb-2">Pricing posture</div>
+                      <p className="text-sm text-brand-dark/80 leading-relaxed">{details.customerFeedback.pricingNotes}</p>
+                    </div>
+                  ) : null}
+                  {details.customerFeedback.implementationNotes ? (
+                    <div>
+                      <div className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium mb-2">Implementation</div>
+                      <p className="text-sm text-brand-dark/80 leading-relaxed">{details.customerFeedback.implementationNotes}</p>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+
+              {/* Common gotchas — single-column list */}
+              {details.customerFeedback.commonGotchas?.length ? (
+                <div className="mb-5">
+                  <div className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium mb-2">Common gotchas in evaluation</div>
+                  <ul className="space-y-1.5">
+                    {details.customerFeedback.commonGotchas.map((g, i) => (
+                      <li key={i} className="text-sm text-brand-dark/80 leading-relaxed flex gap-2">
+                        <AlertTriangle size={13} className="text-brand-gold shrink-0 mt-0.5" />
+                        <span>{g}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {/* Praise + complaints quote columns when present */}
+              {(details.customerFeedback.praise?.length || details.customerFeedback.complaints?.length) ? (
+                <div className="grid md:grid-cols-2 gap-5 pt-5 border-t border-brand-cream">
+                  {details.customerFeedback.praise?.length ? (
+                    <div>
+                      <div className="text-xs text-green-700 uppercase tracking-wide font-semibold mb-3">What buyers praise</div>
+                      <div className="space-y-3">
+                        {details.customerFeedback.praise.map((q, i) => (
+                          <div key={i} className="pl-3 border-l-2 border-green-300">
+                            <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{q.text}"</p>
+                            <p className="text-xs text-brand-dark/40">— {q.role} · {q.source}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+                  {details.customerFeedback.complaints?.length ? (
+                    <div>
+                      <div className="text-xs text-red-700 uppercase tracking-wide font-semibold mb-3">What buyers complain about</div>
+                      <div className="space-y-3">
+                        {details.customerFeedback.complaints.map((q, i) => (
+                          <div key={i} className="pl-3 border-l-2 border-red-300">
+                            <p className="text-sm text-brand-dark/80 leading-relaxed mb-1">"{q.text}"</p>
+                            <p className="text-xs text-brand-dark/40">— {q.role} · {q.source}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+
+              <p className="text-xs text-brand-dark/30 mt-5 pt-4 border-t border-brand-cream">
+                Synthesized from public reviews on G2, Capterra, TrustRadius, and Reddit r/humanresources. Pattern observations reflect repeated themes across recent reviews; quotes (when shown) are pulled from public sources with role anonymized.
               </p>
             </div>
           )}
