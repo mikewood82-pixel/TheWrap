@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Check } from 'lucide-react'
 import { useUser, SignInButton } from '@clerk/clerk-react'
 import { useWrapPlus } from '../context/WrapPlusContext'
@@ -24,6 +25,26 @@ export default function SubscribePage() {
   const { isSignedIn, user } = useUser()
   const [searchParams] = useSearchParams()
   const success = searchParams.get('success') === 'true'
+
+  // Free-tier email signup — same pattern as HomePage's #subscribe form.
+  // Idempotent on the API side: re-subscribing is a no-op for active subs.
+  const [email, setEmail] = useState('')
+  const [subState, setSubState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  async function handleFreeSubscribe(e: React.FormEvent) {
+    e.preventDefault()
+    setSubState('loading')
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      setSubState(res.ok ? 'success' : 'error')
+    } catch {
+      setSubState('error')
+    }
+  }
 
   async function handleCheckout(plan: 'monthly' | 'annual') {
     if (!isSignedIn || !user) return
@@ -77,9 +98,35 @@ export default function SubscribePage() {
               </li>
             ))}
           </ul>
-          <div className="w-full border border-brand-dark/20 text-brand-dark/40 font-medium py-3 rounded-lg text-sm text-center">
-            {isPro ? 'Free plan' : 'Current plan'}
-          </div>
+          {subState === 'success' ? (
+            <div className="w-full bg-green-50 border border-green-200 text-green-800 font-medium py-3 rounded-lg text-sm text-center">
+              You're in — check your inbox for a welcome email.
+            </div>
+          ) : (
+            <form onSubmit={handleFreeSubscribe} className="space-y-3">
+              <input
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                required
+                disabled={subState === 'loading'}
+                className="w-full px-4 py-3 border border-brand-dark/20 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-terracotta/40 focus:border-brand-terracotta disabled:opacity-50"
+              />
+              <button
+                type="submit"
+                disabled={subState === 'loading'}
+                className="w-full bg-brand-dark text-white font-medium py-3 rounded-lg text-sm hover:bg-brand-dark/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {subState === 'loading' ? 'Subscribing…' : "Subscribe — it's free"}
+              </button>
+              {subState === 'error' && (
+                <div className="text-xs text-red-600 text-center">
+                  Something went wrong. Please try again or email mike@ilovethewrap.com.
+                </div>
+              )}
+            </form>
+          )}
         </div>
 
         {/* Wrap+ Monthly */}

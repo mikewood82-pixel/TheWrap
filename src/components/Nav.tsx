@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { SignInButton, UserButton, useUser } from '@clerk/clerk-react'
+import { UserButton, useUser } from '@clerk/clerk-react'
 import { Menu, X } from 'lucide-react'
 import { useWrapPlus } from '../context/WrapPlusContext'
 import { FEATURES } from '../config/features'
@@ -63,38 +63,22 @@ export default function Nav() {
           </nav>
 
           <div className="flex items-center gap-3">
-            {FEATURES.PLUS_ENABLED ? (
-              isSignedIn ? (
-                <>
-                  {isPro ? (
-                    <span className="bg-brand-orange/10 text-brand-terracotta text-xs font-bold px-3 py-1.5 rounded-full border border-brand-orange/20">
-                      Wrap+
-                    </span>
-                  ) : (
-                    <Link
-                      to="/subscribe"
-                      className="bg-brand-terracotta text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-brand-orange transition-colors"
-                    >
-                      Subscribe
-                    </Link>
-                  )}
-                  <UserButton afterSignOutUrl="/" />
-                </>
-              ) : (
-                <SignInButton mode="modal">
-                  <button className="bg-brand-terracotta text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-brand-orange transition-colors">
-                    Subscribe
-                  </button>
-                </SignInButton>
-              )
+            {/* Subscribe always routes to /subscribe — never gated behind sign-in.
+                The free newsletter is email-only; Wrap+ checkout signs in lazily
+                via Clerk on the SubscribePage itself. */}
+            {isPro ? (
+              <span className="bg-brand-orange/10 text-brand-terracotta text-xs font-bold px-3 py-1.5 rounded-full border border-brand-orange/20">
+                Wrap+
+              </span>
             ) : (
-              <a
-                href="/#subscribe"
+              <Link
+                to="/subscribe"
                 className="bg-brand-terracotta text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-brand-orange transition-colors"
               >
-                Subscribe Free
-              </a>
+                Subscribe
+              </Link>
             )}
+            {FEATURES.PLUS_ENABLED && isSignedIn && <UserButton afterSignOutUrl="/" />}
 
             <button
               onClick={() => setMobileOpen(o => !o)}
