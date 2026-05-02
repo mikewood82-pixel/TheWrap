@@ -146,6 +146,19 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
       sent += batch.length
 
+      // Record per-recipient delivery so /api/resume-send can diff D1
+      // directly instead of walking Resend's /emails endpoint (which 502s
+      // under load). Failures here log but don't throw — the email already
+      // went out and we'd rather miss a recipient row than abort mid-blast.
+      try {
+        const recipientStmt = env.DB.prepare(
+          'INSERT OR IGNORE INTO sent_newsletter_recipients (slug, email) VALUES (?, ?)'
+        )
+        await env.DB.batch(batch.map(r => recipientStmt.bind(slug, r.email)))
+      } catch (recErr: any) {
+        console.error(`sent_newsletter_recipients insert failed at offset ${i}:`, recErr?.message ?? recErr)
+      }
+
       if (i === 0) {
         await env.DB.prepare(
           'INSERT OR IGNORE INTO sent_newsletters (slug, recipient_count) VALUES (?, ?)'
