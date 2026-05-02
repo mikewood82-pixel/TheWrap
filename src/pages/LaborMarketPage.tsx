@@ -52,6 +52,32 @@ const revelioSectors = [
   { sector: 'Public Administration', trend: 'Declining', direction: 'down' },
 ]
 
+// ─── CHRO Confidence Index ────────────────────────────────────────────────────
+// Conference Board, Q1 2026 release (Apr 23, 2026). 114 CHROs surveyed.
+// Leading indicator — measures HR-leader sentiment vs. BLS/ADP backward-
+// looking actuals. Highest reading since the index began in Q1 2023.
+const chroIndex = [
+  { label: 'Overall Index',      value: '59', change: 'High since Q1 2023', trend: 'up',   note: 'New series record' },
+  { label: 'Hiring component',   value: '63', change: '+3 vs. Q4 2025',     trend: 'up',   note: 'Strongest of the three' },
+  { label: 'Engagement',         value: '60', change: '+4 vs. Q4 2025',     trend: 'up',   note: 'Solid improvement' },
+  { label: 'Retention',          value: '55', change: '+2 vs. Q4 2025',     trend: 'up',   note: 'Modest — the laggard' },
+]
+
+const chroHiringPlans = [
+  { label: '% planning to increase hiring (H1 2026)', value: '59%', note: 'Up from 54% in Q4 2025' },
+  { label: '% expecting retention improvement',        value: '34%', note: 'Half expect no change' },
+  { label: 'Top workforce investment',                  value: 'Leadership dev (50%)', note: 'AI/automation second at 36%' },
+]
+
+// ─── Upcoming Releases ────────────────────────────────────────────────────────
+// Surfaces the next-on-the-calendar BLS/ADP/JOLTS releases so readers know
+// when fresher data lands. Curated manually — refresh dates each cycle.
+const upcomingReleases = [
+  { date: 'Tue May 5',  source: 'BLS JOLTS',       what: 'March 2026 job openings, hires, quits' },
+  { date: 'Tue May 6',  source: 'ADP NER',         what: 'April 2026 private payrolls + pay growth' },
+  { date: 'Fri May 8',  source: 'BLS Employment',  what: 'April 2026 nonfarm payrolls + unemployment' },
+]
+
 // ─── Aspen Tech Labs ──────────────────────────────────────────────────────────
 const aspenInsights = [
   {
@@ -70,6 +96,10 @@ const aspenInsights = [
 
 // ─── HR Implications ──────────────────────────────────────────────────────────
 const implications = [
+  {
+    headline: 'Leading and lagging signals are diverging',
+    body: 'BLS and ADP describe a private sector that has broadly stopped hiring — yet the Conference Board\'s CHRO Confidence Index hit a series-record 59 in Q1, with 59% of HR leaders planning to increase hiring in H1 2026 (up from 54% in Q4 2025). Intent and actuals haven\'t been this far apart since 2023. Either intent is the leading indicator and we see Q2 hiring accelerate — or budget reality forces another reset and the gap closes the other way.',
+  },
   {
     headline: 'ADP at 62K is a warning sign, not a blip',
     body: 'Private sector job creation has slowed dramatically. Combined with Revelio\'s RPLS showing only +19.4K net jobs and declining advertised salaries, the picture is of an employer base that has broadly stopped hiring. Workforce planning assumptions built on 150K+ monthly additions need to be revisited.',
@@ -100,10 +130,27 @@ export default function LaborMarketPage() {
       />
 
       {/* Header */}
-      <div className="mb-10">
-        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Data · Updated April 2026</div>
+      <div className="mb-6">
+        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Data · Updated May 2026</div>
         <h1 className="font-serif text-4xl font-bold mb-3">U.S. Labor Market</h1>
-        <p className="text-brand-dark/60 text-lg">BLS, ADP, Revelio Labs, and Aspen Tech Labs data — what the numbers mean for HR leaders.</p>
+        <p className="text-brand-dark/60 text-lg">BLS, ADP, Conference Board CHRO Index, Revelio Labs, and Aspen Tech Labs — what the numbers mean for HR leaders.</p>
+      </div>
+
+      {/* Upcoming releases callout — next data drops on the calendar */}
+      <div className="bg-brand-cream/60 border border-brand-cream rounded-xl px-5 py-4 mb-10">
+        <div className="text-xs text-brand-dark/50 uppercase tracking-wide font-semibold mb-2">Upcoming releases</div>
+        <ul className="space-y-1.5">
+          {upcomingReleases.map(r => (
+            <li key={r.date} className="text-sm flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
+              <span className="font-semibold text-brand-dark whitespace-nowrap">{r.date}</span>
+              <span className="text-brand-dark/70">
+                <span className="font-medium">{r.source}</span>
+                <span className="text-brand-dark/40"> · </span>
+                {r.what}
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* ── BLS ─────────────────────────────────────────────────────────────── */}
@@ -151,6 +198,38 @@ export default function LaborMarketPage() {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* ── CHRO Confidence Index ───────────────────────────────────────────── */}
+      <div className="flex items-center gap-3 mb-2">
+        <h2 className="font-serif text-2xl font-bold">CHRO Confidence Index</h2>
+        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Conference Board · Q1 2026</span>
+      </div>
+      <p className="text-sm text-brand-dark/60 mb-4">Leading indicator — measures HR-leader sentiment vs. backward-looking BLS/ADP actuals. 114 CHROs surveyed; released April 23, 2026.</p>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5">
+        {chroIndex.map(m => (
+          <div key={m.label} className="bg-white border border-brand-cream rounded-xl p-4">
+            <div className="text-xs text-brand-dark/40 mb-1">{m.label}</div>
+            <div className="font-serif text-3xl font-bold mb-1">{m.value}</div>
+            <div className="text-xs font-medium text-green-600 mb-1">{m.change}</div>
+            <div className="text-xs text-brand-dark/40 leading-relaxed">{m.note}</div>
+          </div>
+        ))}
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+        {chroHiringPlans.map(p => (
+          <div key={p.label} className="bg-white border border-brand-cream rounded-xl p-4">
+            <div className="text-xs text-brand-dark/40 mb-1.5">{p.label}</div>
+            <div className="font-serif text-xl font-bold text-brand-dark mb-1">{p.value}</div>
+            <div className="text-xs text-brand-dark/40 leading-relaxed">{p.note}</div>
+          </div>
+        ))}
+      </div>
+      <div className="bg-brand-cream/40 border-l-4 border-brand-terracotta rounded-r-lg px-5 py-3 mb-12">
+        <p className="text-sm text-brand-dark/80 italic">
+          "Hiring momentum is back, but retention is where the real work begins."
+        </p>
+        <p className="text-xs text-brand-dark/40 mt-1">— Diana Scott, US Human Capital Center Leader, The Conference Board</p>
       </div>
 
       {/* ── ADP ─────────────────────────────────────────────────────────────── */}
