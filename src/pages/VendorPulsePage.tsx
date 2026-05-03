@@ -1,12 +1,69 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { Lock, ArrowRight, Sparkles, X, GitCompare, Plus, Check, Search } from 'lucide-react'
+import { Lock, ArrowRight, Sparkles, X, GitCompare, Plus, Check, Search, Calendar, ExternalLink } from 'lucide-react'
 import { useWrapPlus } from '../context/WrapPlusContext'
 import { useCompare } from '../context/CompareContext'
 import { vendors } from '../data/vendors'
 import { vendorDetails } from '../data/vendorDetails'
 import CompareModal from '../components/CompareModal'
 import VendorLogo from '../components/VendorLogo'
+import { aggregateAnnouncements } from '../lib/announcements'
+
+const ANNOUNCEMENTS_PREVIEW_LIMIT = 6
+
+function AnnouncementsPreview() {
+  const items = useMemo(() => aggregateAnnouncements().slice(0, ANNOUNCEMENTS_PREVIEW_LIMIT), [])
+  if (items.length === 0) return null
+
+  return (
+    <div className="bg-white border border-brand-cream rounded-xl p-6 mb-8">
+      <div className="flex items-center justify-between gap-3 mb-5 flex-wrap">
+        <div>
+          <div className="inline-flex items-center gap-2 text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-1">
+            <Calendar size={12} /> Recent announcements
+          </div>
+          <h2 className="font-serif text-xl font-bold text-brand-dark">What's happening across the stack</h2>
+        </div>
+        <Link
+          to="/announcements"
+          className="inline-flex items-center gap-1 text-sm font-semibold text-brand-terracotta hover:text-brand-dark transition-colors"
+        >
+          View full timeline <ArrowRight size={14} />
+        </Link>
+      </div>
+      <ol className="space-y-4">
+        {items.map((a, i) => (
+          <li key={`${a.vendorSlug}-${i}`} className="flex gap-3 group">
+            <div className="shrink-0 pt-0.5">
+              <VendorLogo name={a.vendorName} domain={a.vendorWebsite} size="sm" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 text-xs text-brand-dark/40 mb-0.5">
+                <Link
+                  to={`/vendors/${a.vendorSlug}`}
+                  className="font-semibold text-brand-dark/70 hover:text-brand-terracotta transition-colors"
+                >
+                  {a.vendorName}
+                </Link>
+                <span>·</span>
+                <span>{a.vendorCategory}</span>
+                <span>·</span>
+                <time dateTime={a.parsedDate.toISOString()}>{a.date}</time>
+              </div>
+              <h3 className="font-serif text-sm md:text-base text-brand-dark leading-snug mb-0.5">
+                {a.headline}
+              </h3>
+              <div className="flex items-center gap-1 text-xs text-brand-dark/40">
+                <ExternalLink size={10} />
+                <span>{a.source}</span>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
+}
 
 const categories = ['All', 'HCM', 'ATS', 'HRIS', 'Payroll', 'Perf Mgmt', 'L&D', 'Analytics']
 
@@ -291,6 +348,8 @@ export default function VendorPulsePage() {
           <TechStackFilter selected={techStack} onChange={setTechStack} />
         </>
       )}
+
+      <AnnouncementsPreview />
 
       {/* Category filter */}
       <div className="flex gap-2 flex-wrap mb-6">

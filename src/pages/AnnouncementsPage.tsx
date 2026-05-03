@@ -1,65 +1,9 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Calendar, ExternalLink, Lock, ArrowRight } from 'lucide-react'
-import { vendors } from '../data/vendors'
-import { vendorDetails } from '../data/vendorDetails'
 import { useWrapPlus } from '../context/WrapPlusContext'
 import VendorLogo from '../components/VendorLogo'
-
-// ─── Date parsing ────────────────────────────────────────────────────────────
-// Vendor news is recorded as 'Mon YYYY' (e.g. 'Apr 2026'). Parse to a Date
-// keyed to the 1st of the month so we can sort chronologically without
-// tripping on locale/timezone.
-const MONTHS: Record<string, number> = {
-  Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
-  Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11,
-}
-
-function parseNewsDate(s: string): Date | null {
-  const m = s.trim().match(/^(\w{3})\s+(\d{4})$/)
-  if (!m) return null
-  const month = MONTHS[m[1]]
-  if (month === undefined) return null
-  const year = parseInt(m[2], 10)
-  if (Number.isNaN(year)) return null
-  return new Date(year, month, 1)
-}
-
-// ─── Aggregation ─────────────────────────────────────────────────────────────
-type Announcement = {
-  vendorSlug: string
-  vendorName: string
-  vendorWebsite: string
-  vendorCategory: string
-  headline: string
-  date: string         // original string for display
-  parsedDate: Date
-  source: string
-}
-
-function aggregateAnnouncements(): Announcement[] {
-  const items: Announcement[] = []
-  for (const [slug, detail] of Object.entries(vendorDetails)) {
-    if (!detail.news?.length) continue
-    const vendor = vendors.find(v => v.slug === slug)
-    if (!vendor) continue
-    for (const item of detail.news) {
-      const parsed = parseNewsDate(item.date)
-      if (!parsed) continue
-      items.push({
-        vendorSlug: slug,
-        vendorName: vendor.name,
-        vendorWebsite: vendor.website,
-        vendorCategory: vendor.category,
-        headline: item.headline,
-        date: item.date,
-        parsedDate: parsed,
-        source: item.source,
-      })
-    }
-  }
-  return items.sort((a, b) => b.parsedDate.getTime() - a.parsedDate.getTime())
-}
+import { aggregateAnnouncements } from '../lib/announcements'
 
 // ─── Free-tier preview limit ─────────────────────────────────────────────────
 // Free visitors see the most recent N items so they understand the value;
