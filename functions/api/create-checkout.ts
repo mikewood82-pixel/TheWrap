@@ -24,7 +24,6 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       customer_email: email,
       metadata: { clerkUserId, plan },
       allow_promotion_codes: true,
-      payment_method_collection: 'if_required',
       subscription_data: { metadata: { clerkUserId, plan } },
       success_url: `${env.SITE_URL}/subscribe?success=true`,
       cancel_url: `${env.SITE_URL}/subscribe`,
