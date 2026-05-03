@@ -677,7 +677,7 @@ export default function VendorDeepDivePage() {
               ) : null}
 
               <p className="text-xs text-brand-dark/30 mt-5 pt-4 border-t border-brand-cream">
-                Synthesized from public reviews on G2, Capterra, TrustRadius, and Reddit r/humanresources. Pattern observations reflect repeated themes across recent reviews; quotes (when shown) are pulled from public sources with role anonymized.
+                Pattern observations synthesized from The Wrap's vendor research and capability analysis. Quotes, when shown, are pulled from public reviews on G2, Capterra, TrustRadius, and Reddit r/humanresources with role anonymized.
               </p>
             </div>
           )}

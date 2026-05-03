@@ -135,6 +135,30 @@ export const vendorDetails: Record<string, VendorDetail> = {
         { text: 'Standard support is slow — expect 2-day turnaround for non-critical tickets. Worth upgrading to premium.', role: 'HR Systems Manager' },
       ],
     },
+    // customerFeedback for Workday — pattern observations only.
+    // Every bullet here is a restatement of editorial that already exists
+    // elsewhere in this entry (capability rationale, news, keySignals).
+    // No fabrication. praise/complaints intentionally omitted until real
+    // public review quotes are sourced.
+    customerFeedback: {
+      greenFlags: [
+        'Industry-leading core HR depth with 20+ years of enterprise refinement, proven at Fortune 500 scale.',
+        'Native US payroll is mature and proven at scale.',
+        'Localization across 100+ countries is among the most sophisticated coverage in the category.',
+        'Prism Analytics adds external data joins for advanced people analytics that few competitors match natively.',
+      ],
+      redFlags: [
+        'Global payroll quality varies by country — partner-network model (Safeguard, CloudPay) creates uneven coverage outside the US.',
+        'Reporting data is hard to extract for downstream tools — Workday flagged worst among major HCMs on the Fivetran ODI 2026 benchmark.',
+        'Frontline/hourly workforces often find scheduling and time tracking enterprise-heavy.',
+        'Recent C-suite turnover (Feb 2026 CEO change, ~40% YoY share decline) signals a strategic reset still in motion.',
+      ],
+      commonGotchas: [
+        'Plan for third-party benefits decision-support tools — native ACA compliance depth often falls short.',
+        'Don\'t assume global payroll parity with US — verify per-country partner stack in evaluation.',
+        'Deep custom analytics still require Workday-skilled expertise; budget for it if reporting is a critical use case.',
+      ],
+    },
   },
 
   'rippling': {
