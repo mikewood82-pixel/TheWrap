@@ -349,8 +349,6 @@ export default function VendorPulsePage() {
         </>
       )}
 
-      <AnnouncementsPreview />
-
       {/* Category filter */}
       <div className="flex gap-2 flex-wrap mb-6">
         {categories.map((cat) => (
@@ -488,6 +486,14 @@ export default function VendorPulsePage() {
             </div>
           )
         })}
+      </div>
+
+      {/* Recent announcements — placed below the vendor grid so the sample
+          profile + tile layout owns the top of the page. Acts as an
+          additional reason to scroll/explore once the user has the lay
+          of the vendor land. */}
+      <div className="mt-12">
+        <AnnouncementsPreview />
       </div>
 
       {/* Compare bar + modal */}
