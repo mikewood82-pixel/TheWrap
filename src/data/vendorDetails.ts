@@ -203,6 +203,25 @@ export const vendorDetails: Record<string, VendorDetail> = {
         { text: 'The product moves so fast that support sometimes doesn\'t know about features that shipped last week. Growing pains.', role: 'HR Director' },
       ],
     },
+    customerFeedback: {
+      greenFlags: [
+        'Compound HR/IT/Finance platform unifies employee data and automation in ways legacy HRIS can\'t match.',
+        'Native US payroll is fast and tightly integrated with onboarding and device provisioning.',
+        'Aggressive global expansion — native EOR + payroll across 50+ additional countries makes it credible for global mid-market.',
+        'Unified data across HR, IT, and spend is a real analytics advantage few competitors can replicate.',
+      ],
+      redFlags: [
+        'Depth on complex job architectures and succession still trails Workday at the enterprise tier.',
+        'Benefits admin lacks the carrier integration depth and decision-support tools larger enterprises expect.',
+        'Shift-heavy industries with advanced labor forecasting needs still favor UKG or Dayforce.',
+        'Product moves fast enough that support sometimes lags behind features shipped last week.',
+      ],
+      commonGotchas: [
+        'If you need enterprise-grade succession planning or complex job architectures, scope this carefully — the platform is broad, not yet deep on every domain.',
+        'Push for a specialist on complex payroll or IT policy issues — first-line chat support is fast but scripted.',
+        'Verify your global country list against current EOR/payroll coverage — they\'re expanding fast but the SAP/Oracle high end is still thinner.',
+      ],
+    },
   },
 
   'bamboohr': {
@@ -246,6 +265,26 @@ export const vendorDetails: Record<string, VendorDetail> = {
       highlights: [
         { text: 'Support used to be BambooHR\'s best feature. Response times are still good but the depth of knowledge has dropped since the layoffs.', role: 'HR Coordinator' },
         { text: 'Chat support is fast and friendly. For complex reporting or integration issues, you may need to escalate.', role: 'People Ops Manager' },
+      ],
+    },
+    customerFeedback: {
+      greenFlags: [
+        'Gold-standard UX for SMB HR teams — fast implementations and onboarding consistently rated best-in-class.',
+        'Strong SMB brand loyalty drives ongoing renewals despite competitive pressure.',
+        'Chat support response times remain fast and friendly for everyday questions.',
+        'Native Gusto payroll migration partnership eases the upgrade path for growing companies.',
+      ],
+      redFlags: [
+        'Architecture isn\'t built for enterprise-grade job structures — moving past 1,000 employees often forces a re-platform decision.',
+        'Multi-country support is a material gap — international expansion will likely outgrow the platform.',
+        'Tax filing and complex pay rules in native payroll remain weak vs. ADP/Gusto specialists.',
+        'Product velocity slowed after the Jun 2024 ~15% layoffs and headcount is still declining; flagged as a potential acquisition target.',
+        'Support knowledge depth has dropped since layoffs — fast response times no longer guarantee deep answers.',
+      ],
+      commonGotchas: [
+        'Don\'t extend BambooHR into shift-heavy workforces — scheduling and labor forecasting are minimal.',
+        'Plan for workarounds on advanced people analytics — the data model limits custom metrics.',
+        'Expect to add a benefits broker — native carrier integration depth is thin compared to larger HRIS.',
       ],
     },
   },
@@ -332,6 +371,25 @@ export const vendorDetails: Record<string, VendorDetail> = {
       highlights: [
         { text: 'If you have a dedicated rep, the experience is good. If you call the general line, prepare to wait and re-explain your setup.', role: 'Payroll Director' },
         { text: 'Tax filing support is excellent — that team knows their stuff. Product support for the platform itself is inconsistent.', role: 'HR Manager' },
+      ],
+    },
+    customerFeedback: {
+      greenFlags: [
+        'Undisputed payroll leader — processes ~1 in 6 US paychecks with unmatched tax compliance, jurisdictional coverage, and audit defensibility.',
+        'Genuine multi-country payroll capability — one of the few platforms credible at the global enterprise tier.',
+        'Tax filing support is excellent — that team consistently rated as knowing the domain deeply.',
+        'Massive benchmarking data advantage from operating at 1-in-6-paycheck scale.',
+      ],
+      redFlags: [
+        'Fragmented product portfolio (Workforce Now / Vantage / Lyric) creates inconsistent experience depending on which platform a customer lands on.',
+        'Benefits and analytics UX feels dated relative to Workday or Visier-powered competitors.',
+        'Scheduling and labor forecasting lag UKG and Dayforce for complex shift operations.',
+        'Without a dedicated rep, general-line support means waiting and re-explaining your setup repeatedly.',
+      ],
+      commonGotchas: [
+        'Verify which ADP product you\'re actually buying — RUN, Workforce Now, Vantage, and Lyric are very different platforms with different roadmaps.',
+        'If you\'re shift-heavy, plan to add a specialist WFM alongside ADP rather than relying on native scheduling.',
+        'Negotiate dedicated-rep coverage early — product support quality drops materially when routed through the general line.',
       ],
     },
   },
@@ -462,6 +520,25 @@ export const vendorDetails: Record<string, VendorDetail> = {
       highlights: [
         { text: 'The Dayforce Hub has improved self-service dramatically. Most common issues we can resolve ourselves now.', role: 'HRIS Manager' },
         { text: 'Implementation support was rocky but ongoing product support has been solid once you learn the system.', role: 'VP Human Resources' },
+      ],
+    },
+    customerFeedback: {
+      greenFlags: [
+        'Unified single-database architecture eliminates sync issues that plague multi-module suites.',
+        'Continuous gross-to-net payroll calculation surfaces pay errors in real time — no end-of-period batch windows.',
+        'Best-in-class scheduling and labor forecasting for hourly workforces, with real-time labor cost visibility.',
+        'Canadian federal government chose Dayforce ($350M contract) to replace the troubled Phoenix payroll system — meaningful scale validation.',
+      ],
+      redFlags: [
+        'Benefits marketplace is smaller than ADP or Workday partner networks.',
+        'People analytics trails Workday Prism for talent intelligence and strategic workforce planning.',
+        'Global footprint still trails SAP, Oracle, and ADP at the enterprise tier.',
+        'Taken private by Thoma Bravo in Feb 2026 for $12.3B — PE ownership creates uncertainty around long-term roadmap and pricing posture.',
+      ],
+      commonGotchas: [
+        'Implementation can be rocky — invest heavily in your own internal expertise during rollout. Post-go-live product support reportedly improves materially.',
+        'If global payroll across 50+ countries is a hard requirement, validate Dayforce\'s expanding footprint per-country rather than assuming SAP/Oracle parity.',
+        'Add a specialist analytics layer if you need predictive talent intelligence — native analytics is operational rather than strategic.',
       ],
     },
   },
@@ -685,6 +762,25 @@ export const vendorDetails: Record<string, VendorDetail> = {
         { text: 'No phone support on the standard plan is frustrating when you have urgent hiring issues during peak season.', role: 'Recruiting Manager' },
       ],
     },
+    customerFeedback: {
+      greenFlags: [
+        'Category-defining structured-hiring workflow — stages, scorecards, and approvals enforce hiring discipline.',
+        'Industry-standard interview kits with strong DEI-friendly calibration tooling.',
+        'Largest recruiting integration marketplace in the industry — a real switching cost vs. compound HRIS alternatives.',
+        'Support team knows recruiting workflows deeply, often suggesting configuration changes rather than just answers.',
+        'Ranked #1 ATS in G2 Spring 2026 across Overall, Enterprise, Mid-Market, and EMEA categories.',
+      ],
+      redFlags: [
+        'Sourcing has never been Greenhouse\'s primary identity — dedicated tools like HireEZ or Gem still outperform on outbound.',
+        'SMB churn rising as free ATS tiers from compound HRIS platforms (Rippling, BambooHR) compress the lower end of the market.',
+        'Recent ~18% layoffs (Jan 2024), -10% YoY headcount, and high acquisition risk signal financial pressure.',
+      ],
+      commonGotchas: [
+        'Custom reporting is improving but most data-mature teams still bolt on a BI tool — budget for it.',
+        'Phone support requires the enterprise plan; standard-plan customers feel the gap during peak hiring crunches.',
+        'If your stack already includes Rippling or BambooHR with native ATS, weigh the integration breadth premium carefully.',
+      ],
+    },
   },
 
   'lever': {
@@ -726,6 +822,21 @@ export const vendorDetails: Record<string, VendorDetail> = {
       highlights: [
         { text: 'Support quality has dipped since the Employ acquisition. Agents are less familiar with Lever-specific workflows.', role: 'Talent Acquisition Manager' },
         { text: 'Chat support is responsive for basic questions. Reporting and integration issues take multiple back-and-forths.', role: 'Recruiting Coordinator' },
+      ],
+    },
+    customerFeedback: {
+      greenFlags: [
+        'Named a Leader in Forrester Wave for Talent Acquisition Suites, Q1 2026.',
+        'AI candidate summaries and Handshake university-recruiting integration extend the sourcing surface.',
+      ],
+      redFlags: [
+        'Three-platform merger under Employ Inc. (Lever + JazzHR + Jobvite) is creating roadmap uncertainty for existing customers.',
+        'Support quality has dipped since the Employ acquisition; agents are less familiar with Lever-specific workflows.',
+        'Reporting and integration issues take multiple back-and-forths to resolve.',
+      ],
+      commonGotchas: [
+        'Ask hard questions about long-term roadmap commitments — product priorities are now influenced by Employ Inc. parent.',
+        'If you depend on Lever-specific reporting workflows, validate that your day-to-day support contact can answer them, not just basic questions.',
       ],
     },
   },
@@ -1144,6 +1255,23 @@ export const vendorDetails: Record<string, VendorDetail> = {
         { text: 'Chat is the best channel. Phone support is only available on premium and the wait times are reasonable.', role: 'HR Manager' },
       ],
     },
+    customerFeedback: {
+      greenFlags: [
+        'Differentiated UX and culture features drive unusually strong word-of-mouth in the mid-market.',
+        'Support team knows the product deeply, often surfacing features customers didn\'t know existed — rare for an HRIS vendor.',
+        'Native US Payroll launched (Apr 2026) plus 50-country payroll integrations via Papaya Global.',
+        'Bob AI conversational HR assistant for managers ships on top of a modern data model.',
+      ],
+      redFlags: [
+        'Native US Payroll is brand new (Apr 2026) — not yet battle-tested at scale.',
+        'Global payroll outside the US still relies on a partner (Papaya Global) rather than native infrastructure.',
+        'Phone support is premium-only — chat is the de facto primary channel.',
+      ],
+      commonGotchas: [
+        'If US Payroll is a primary requirement, weigh the maturity gap against ADP/Gusto/Rippling — HiBob\'s native engine is brand new.',
+        'Verify country-by-country payroll coverage with the Papaya partner stack before assuming HiBob covers your geography natively.',
+      ],
+    },
   },
 
   'personio': {
@@ -1232,6 +1360,22 @@ export const vendorDetails: Record<string, VendorDetail> = {
         { text: 'Specialist turnover can be an issue — we\'ve had three in two years. Each transition means re-explaining our setup.', role: 'HR Director' },
       ],
     },
+    customerFeedback: {
+      greenFlags: [
+        'Beti employee-driven payroll has reached 80% adoption — a genuine product differentiator that flips the verification model.',
+        'Every client gets a dedicated specialist from day one, not just enterprise tier.',
+        'Strong margin profile and consistent revenue beats — financially stable, not at risk of forced consolidation.',
+        'Single-database architecture across HR, payroll, and self-service simplifies the data model relative to multi-product suites.',
+      ],
+      redFlags: [
+        'Specialist turnover is a recurring complaint — customers report 3 specialists in 2 years, each transition meaning re-explaining setup.',
+        'Self-service-first design is a fit for some workforces but creates change-management overhead in environments where employees don\'t want or have time for payroll responsibility.',
+      ],
+      commonGotchas: [
+        'Negotiate continuity guarantees on your specialist assignment — that\'s a known turnover pattern that erodes the dedicated-rep value prop.',
+        'Beti requires real employee adoption to deliver value — confirm your workforce will actually use self-service before betting your payroll posture on it.',
+      ],
+    },
   },
 
   'deel': {
@@ -1274,6 +1418,22 @@ export const vendorDetails: Record<string, VendorDetail> = {
       highlights: [
         { text: 'Chat support is responsive and handles contractor payment questions well. HRIS-specific support is newer and less mature.', role: 'People Ops Manager' },
         { text: 'The Slack channel for enterprise clients is great for quick answers. Complex compliance questions still need escalation.', role: 'Head of Global HR' },
+      ],
+    },
+    customerFeedback: {
+      greenFlags: [
+        'EOR + contractor management + global compliance under one roof — strongest single-vendor option for remote-first companies hiring internationally.',
+        'Real-time compliance risk assessment across 150+ countries via Deel AI.',
+        'One of the fastest-growing HR platforms ever — $800M ARR and direct NYSE listing planned for late 2026.',
+        'Chat support handles contractor payment questions well; enterprise Slack channel is fast for quick answers.',
+      ],
+      redFlags: [
+        'HRIS-specific support is newer and less mature than the contractor/EOR side — feature parity isn\'t there yet.',
+        'Aggressive M&A (PayGroup, Hofy, Assemble, Zavvy) means rapid product surface expansion that customers may not yet feel as a unified experience.',
+      ],
+      commonGotchas: [
+        'Deel\'s strength remains contractor/EOR — if you\'re buying it as a primary domestic HRIS, validate maturity against Rippling, BambooHR, or HiBob feature-by-feature.',
+        'Complex compliance questions still need human escalation — don\'t assume real-time AI assessment substitutes for specialist review on edge cases.',
       ],
     },
   },
