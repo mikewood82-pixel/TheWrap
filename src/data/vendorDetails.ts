@@ -240,7 +240,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'QuickBooks', 'Indeed', 'LinkedIn', 'Google Workspace', 'Zapier'],
     news: [
-      { headline: 'BambooHR introduces AI-driven eNPS benchmarking to help SMBs track employee sentiment', date: 'Feb 2026', source: 'BambooHR Blog' },
+      { headline: 'BambooHR partners with Turn to deliver native AI-driven background checks via TurnOS', date: 'Apr 2026', source: 'GlobeNewswire' },
       { headline: 'BambooHR launches Broker Partner Program to help benefits brokers extend value through modern HR tech', date: 'Apr 2026', source: 'GlobeNewswire' },
       { headline: 'BambooHR partners with Gusto to offer seamless payroll migration for growing companies', date: 'Mar 2026', source: 'HR Tech Insider' },
     ],
@@ -348,7 +348,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Workday', 'SAP SuccessFactors', 'Oracle HCM', 'QuickBooks', 'Microsoft Teams', 'Salesforce'],
     news: [
-      { headline: 'ADP launches generative AI assistant for payroll specialists to reduce query resolution time by 40%', date: 'Jan 2026', source: 'ADP Newsroom' },
+      { headline: 'ADP reports Q3 FY2026 results — revenue up 7% to $5.9B, EPS $3.37 beats; FY guidance raised', date: 'Apr 2026', source: 'ADP Investor Relations' },
       { headline: 'ADP DataCloud adds real-time compensation benchmarking for 140+ job families', date: 'Mar 2026', source: 'ADP Newsroom' },
       { headline: 'ADP reports record Q2 FY2026 new business bookings, citing demand for compliance automation', date: 'Feb 2026', source: 'ADP Investor Relations' },
     ],
@@ -561,7 +561,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'Paychex launches AI-powered HR Advisor to give small business owners instant compliance guidance', date: 'Feb 2026', source: 'Paychex Newsroom' },
       { headline: 'Paychex Flex adds earned wage access feature in partnership with DailyPay', date: 'Jan 2026', source: 'Paychex Newsroom' },
-      { headline: 'Paychex acquires Oasis HR to deepen PEO offering for professional employer services market', date: 'Nov 2025', source: 'Business Wire' },
+      { headline: 'Paychex declares 10% dividend hike to $1.19/share — fifth consecutive double-digit raise', date: 'May 2026', source: 'Paychex IR' },
     ],
     financialHealth: {
       fundingStage: 'Public (NASDAQ: PAYX)',
@@ -736,7 +736,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Slack', 'LinkedIn', 'Workday', 'BambooHR', 'HireEZ', 'DocuSign'],
     news: [
       { headline: 'Greenhouse launches AI Principles Framework, setting standard for responsible hiring in the AI era', date: 'Apr 2026', source: 'PR Newswire' },
-      { headline: 'Greenhouse adds native video interviewing powered by Zoom directly in the candidate pipeline', date: 'Mar 2026', source: 'Greenhouse Blog' },
+      { headline: 'Greenhouse 2026 Candidate AI Interview Report — 63% have faced an AI interview, 38% walked away', date: 'May 2026', source: 'PR Newswire' },
       { headline: 'Greenhouse ranked #1 ATS in G2 Spring 2026 Reports across Overall, Enterprise, Mid-Market, and EMEA', date: 'Apr 2026', source: 'PR Newswire' },
     ],
     financialHealth: {
@@ -2560,7 +2560,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Salesforce', 'ServiceNow', 'Workday', 'Microsoft Teams', 'Slack', 'Adobe Experience Cloud'],
     news: [
       { headline: 'Thoma Bravo hands Medallia to creditor consortium in debt-for-equity swap, wiping out $5.1B of $6.4B 2021 take-private', date: 'Apr 2026', source: 'Reuters' },
-      { headline: 'Medallia expands Employee Experience suite with always-on listening across email, chat, and HRIS signals', date: 'Jan 2026', source: 'Medallia Blog' },
+      { headline: 'Bloomberg: Thoma Bravo refuses fresh capital in Medallia, creditors expected to take keys', date: 'Apr 2026', source: 'Bloomberg' },
       { headline: 'Medallia closes $200M strategic investment from Permira to accelerate AI and global growth initiatives', date: 'Mar 2026', source: 'Business Wire' },
     ],
     financialHealth: {
@@ -2602,7 +2602,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Snowflake', 'Microsoft Power BI', 'Tableau', 'Databricks', 'Workday', 'Python/R APIs'],
     news: [
-      { headline: 'Revelio Labs launches Skills Demand Tracker providing real-time visibility into emerging skill requirements by industry', date: 'Jan 2026', source: 'Revelio Labs Newsroom' },
+      { headline: 'Revelio Labs / CBS News: share of US workers leaving for jobs abroad doubled to 6% (2021–2025)', date: 'May 2026', source: 'CBS News' },
       { headline: 'Revelio Labs partners with BlackRock and Fidelity to provide workforce analytics for ESG investment scoring', date: 'Feb 2026', source: 'Revelio Labs Blog' },
       { headline: 'Revelio Labs raises $30M Series B to expand global labour market data coverage to 90 countries', date: 'Mar 2026', source: 'TechCrunch' },
     ],
