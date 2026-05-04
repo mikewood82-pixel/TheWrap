@@ -1,38 +1,51 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
+import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react'
 import { useAuth, useUser } from '@clerk/clerk-react'
 
 interface WrapPlusContextType {
   isPro: boolean
   isLoaded: boolean
+  refetch: () => Promise<boolean>
 }
 
-const WrapPlusContext = createContext<WrapPlusContextType>({ isPro: false, isLoaded: false })
+const WrapPlusContext = createContext<WrapPlusContextType>({
+  isPro: false,
+  isLoaded: false,
+  refetch: async () => false,
+})
 
 export function WrapPlusProvider({ children }: { children: ReactNode }) {
   const { user, isLoaded: clerkLoaded } = useUser()
   const [isPro, setIsPro] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
 
+  const refetch = useCallback(async () => {
+    if (!user) {
+      setIsPro(false)
+      return false
+    }
+    try {
+      const r = await fetch(`/api/subscription?userId=${user.id}`)
+      const data = (await r.json()) as { active: boolean }
+      const active = data.active === true
+      setIsPro(active)
+      return active
+    } catch {
+      return false
+    }
+  }, [user])
+
   useEffect(() => {
     if (!clerkLoaded) return
-
     if (!user) {
       setIsPro(false)
       setIsLoaded(true)
       return
     }
-
-    fetch(`/api/subscription?userId=${user.id}`)
-      .then(r => r.json())
-      .then((data: { active: boolean }) => {
-        setIsPro(data.active === true)
-        setIsLoaded(true)
-      })
-      .catch(() => setIsLoaded(true))
-  }, [user, clerkLoaded])
+    refetch().finally(() => setIsLoaded(true))
+  }, [user, clerkLoaded, refetch])
 
   return (
-    <WrapPlusContext.Provider value={{ isPro, isLoaded }}>
+    <WrapPlusContext.Provider value={{ isPro, isLoaded, refetch }}>
       {children}
     </WrapPlusContext.Provider>
   )

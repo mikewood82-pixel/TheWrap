@@ -18,23 +18,29 @@ const plusLinks = [
 ]
 
 const voicesLink = { to: '/voices', label: 'Voices' }
+const wrapPlusUpsellLink = { to: '/subscribe#plans', label: 'Wrap+', highlight: true as const }
 
-// Compose the nav in the intended reading order. Vendor Pulse slots after
-// Archive when enabled; Voices sits between Jobs and Sponsorship when enabled.
-const links = (() => {
-  const [archive, jobs, sponsorship, laborMarket, about] = baseLinks
-  const out = [archive]
-  if (FEATURES.PLUS_ENABLED) out.push(...plusLinks)
-  out.push(jobs)
-  if (FEATURES.VOICES_ENABLED) out.push(voicesLink)
-  out.push(sponsorship, laborMarket, about)
-  return out
-})()
+type NavLinkItem = { to: string; label: string; highlight?: boolean }
 
 export default function Nav() {
   const { isPro } = useWrapPlus()
   const { isSignedIn } = useUser()
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  // Compose the nav in reading order. Vendor Pulse slots after Archive when
+  // PLUS_ENABLED; Voices sits between Jobs and Sponsorship when enabled.
+  // Wrap+ upsell link is appended last for non-Pro users so it sits closest
+  // to the right-side CTA.
+  const links: NavLinkItem[] = (() => {
+    const [archive, jobs, sponsorship, laborMarket, about] = baseLinks
+    const out: NavLinkItem[] = [archive]
+    if (FEATURES.PLUS_ENABLED) out.push(...plusLinks)
+    out.push(jobs)
+    if (FEATURES.VOICES_ENABLED) out.push(voicesLink)
+    out.push(sponsorship, laborMarket, about)
+    if (FEATURES.PLUS_ENABLED && !isPro) out.push(wrapPlusUpsellLink)
+    return out
+  })()
 
   return (
     <header className="bg-white border-b border-brand-border sticky top-0 z-50">
@@ -45,7 +51,7 @@ export default function Nav() {
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
-            {links.map(({ to, label }) => (
+            {links.map(({ to, label, highlight }) => (
               <NavLink
                 key={to}
                 to={to}
@@ -53,7 +59,9 @@ export default function Nav() {
                   `text-sm transition-colors ${
                     isActive
                       ? 'text-brand-terracotta font-semibold'
-                      : 'text-brand-muted hover:text-brand-dark'
+                      : highlight
+                        ? 'text-brand-terracotta font-semibold hover:text-brand-orange'
+                        : 'text-brand-muted hover:text-brand-dark'
                   }`
                 }
               >
@@ -98,7 +106,7 @@ export default function Nav() {
       {mobileOpen && (
         <nav className="md:hidden border-t border-brand-border bg-white">
           <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-1">
-            {links.map(({ to, label }) => (
+            {links.map(({ to, label, highlight }) => (
               <NavLink
                 key={to}
                 to={to}
@@ -107,7 +115,9 @@ export default function Nav() {
                   `block px-3 py-2.5 rounded-lg text-sm transition-colors ${
                     isActive
                       ? 'text-brand-terracotta font-semibold bg-brand-surface'
-                      : 'text-brand-muted hover:text-brand-dark hover:bg-brand-surface'
+                      : highlight
+                        ? 'text-brand-terracotta font-semibold hover:bg-brand-surface'
+                        : 'text-brand-muted hover:text-brand-dark hover:bg-brand-surface'
                   }`
                 }
               >
