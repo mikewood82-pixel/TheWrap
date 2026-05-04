@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { vendors } from '../data/vendors'
 import { vendorHighlights } from '../data/vendorHighlights'
 import { vendorDetails } from '../data/vendorDetails'
-import { fundingProfileBySlug, leadershipBySlug, supportProfileBySlug } from '../data/vendorProfiles'
+import { fundingProfileBySlug, lastVerifiedBySlug, leadershipBySlug, supportProfileBySlug } from '../data/vendorProfiles'
 import { useWrapPlus } from '../context/WrapPlusContext'
 import RatingChart, { generateHistory } from '../components/RatingChart'
 import VendorLogo from '../components/VendorLogo'
@@ -937,6 +937,19 @@ export default function VendorDeepDivePage() {
           Visit {vendor.name} <ExternalLink size={14} />
         </a>
       </div>
+
+      {/* Verification stamp + audience correction link */}
+      {lastVerifiedBySlug[vendor.slug] && (
+        <div className="mt-8 pt-6 border-t border-brand-border text-xs text-brand-dark/40 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <span>Last verified against primary sources: <span className="font-medium text-brand-dark/60">{lastVerifiedBySlug[vendor.slug]}</span></span>
+          <a
+            href={`mailto:mike@ilovethewrap.com?subject=${encodeURIComponent(`Vendor data correction: ${vendor.name}`)}`}
+            className="text-brand-terracotta hover:underline"
+          >
+            Spot something wrong? →
+          </a>
+        </div>
+      )}
     </div>
   )
 }

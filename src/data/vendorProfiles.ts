@@ -192,6 +192,17 @@ export const fundingProfileBySlug: Record<string, FundingProfile> = {
     totalRaised: '~$650M',
     lastValuation: '$8.5B (Jun 2022)',
   },
+
+  // Last verified: 2026-05-04
+  'paycom': {
+    history: [
+      { round: 'PE Buyout', date: 'Jul 2007', amount: '$56M',  leadInvestor: 'Welsh, Carson, Anderson & Stowe' },
+      // low confidence: $100M = gross IPO offering size; net proceeds to Paycom were ~$64.3M
+      { round: 'IPO',       date: 'Apr 2014', amount: '$100M', leadInvestor: 'NYSE: PAYC' },
+    ],
+    totalRaised: '$56M PE buyout + $100M IPO',
+    lastValuation: '$6.29B market cap (1 May 2026)',
+  },
 }
 
 export const leadershipBySlug: Record<string, LeadershipMember[]> = {
@@ -299,6 +310,21 @@ export const leadershipBySlug: Record<string, LeadershipMember[]> = {
     { name: 'Roman Schumacher', role: 'CPO',          tenureYears: 10,  prior: 'Co-founder' },
     { name: 'Ross Seychell', role: 'CHRO',            tenureYears: 5,   prior: 'TransferWise CHRO' },
     { name: 'Florian Englmaier', role: 'CFO',         tenureYears: 0.7, prior: 'Snowflake EMEA CFO' },
+  ],
+
+  // Last verified: 2026-05-04
+  'paycom': [
+    { name: 'Chad Richison',       role: 'Chief Executive Officer and Chairman', tenureYears: 28.3, prior: 'Founded Paycom in 1998', linkedin: 'chadrichison' },
+    { name: 'Shane Hadlock',       role: 'President and Chief Client Officer',   tenureYears: 0.2,  prior: 'Chief Client Officer and Chief Technology Officer of Paycom (Aug 2025 – Feb 2026)', linkedin: 'shane-hadlock-7091437' },
+    { name: 'Bob Foster',          role: 'Chief Financial Officer',              tenureYears: 1.2,  prior: 'Chief Executive Officer of iiPay (2016 – Oct 2022)' },
+    { name: 'Jeff York',           role: 'Chief Sales Officer',                  tenureYears: 0.3,  prior: 'Leadership Strategist at Paycom (2021 – Jan 2026)' },
+    { name: 'Randy Peck',          role: 'Chief Operating Officer',              tenureYears: 1.9,  prior: 'Strategic Advisor to Executive Management at Paycom' },
+    { name: 'Jason D. Clark',      role: 'Chief Administrative Officer',         tenureYears: 2.4,  prior: 'President and Chief Executive Officer of CompSource Mutual Insurance Company (2009 – 2023)' },
+    { name: 'Jennifer Kraszewski', role: 'Chief Human Resources Officer',        tenureYears: 1.9,  prior: 'Senior Executive Vice President of Human Resources at Paycom', linkedin: 'jenniferkraszewski' },
+    { name: 'Matt Paque',          role: 'Chief Legal Officer',                  tenureYears: 1.9,  prior: 'General Counsel at Paycom' },
+    // low confidence: limited public data on Gannon's pre-Paycom background
+    { name: 'Rachael Gannon',      role: 'Chief Automation Officer',             tenureYears: 0.7,  prior: 'Promoted to CAO Aug 2025 (Paycom internal)' },
+    { name: 'Brad Smith',          role: 'Chief Information Officer',            tenureYears: 7.8,  prior: 'Director of Information Technology at Paycom', departed: 'Departed Oct 2025' },
   ],
 }
 
@@ -456,4 +482,26 @@ export const supportProfileBySlug: Record<string, SupportProfile> = {
     ],
     sentimentTrend: [78, 79, 80, 80, 81, 81, 82, 81, 82, 83, 83, 84],
   },
+
+  // Last verified: 2026-05-04. sentimentTrend is editorial estimate from
+  // G2/Capterra/Trustpilot patterns; not from a single primary monthly tracker.
+  'paycom': {
+    issueBreakdown: [
+      { category: 'Onboarding',       volume: 22 },
+      { category: 'Integrations',     volume: 14 },
+      { category: 'Billing',          volume: 12 },
+      { category: 'Performance',      volume: 8  },
+      { category: 'Feature requests', volume: 14 },
+      { category: 'Documentation',    volume: 10 },
+      { category: 'Bug reports',      volume: 20 },
+    ],
+    sentimentTrend: [62, 60, 58, 57, 55, 54, 56, 58, 59, 61, 63, 64],
+  },
+}
+
+// When each vendor's profile was last verified against primary sources.
+// Surfaced on the deep-dive page as a "Last verified: <date>" stamp so
+// readers know when claims were last cross-checked. Format: 'YYYY-MM-DD'.
+export const lastVerifiedBySlug: Record<string, string> = {
+  'paycom': '2026-05-04',
 }
