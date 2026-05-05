@@ -504,4 +504,207 @@ export const supportProfileBySlug: Record<string, SupportProfile> = {
 // readers know when claims were last cross-checked. Format: 'YYYY-MM-DD'.
 export const lastVerifiedBySlug: Record<string, string> = {
   'paycom': '2026-05-04',
+  'workday': '2026-05-04',
+}
+
+// ---------- Compliance & Trust Center ----------
+// Built to survive verification: every cell is sourced from the vendor's own
+// trust center or a public attestation registry. Refresh cadence is yearly
+// (most certs are SOC 2 Type II / ISO recertification cycles).
+
+export type ComplianceStatus = 'Certified' | 'In progress' | 'Self-attested' | 'Not pursued' | 'Unknown'
+export type ComplianceCategory = 'Security' | 'Privacy' | 'AI' | 'Government' | 'Industry'
+
+export type ComplianceCertification = {
+  name: string
+  category: ComplianceCategory
+  status: ComplianceStatus
+  scope?: string         // e.g. 'Enterprise Products + Adaptive Planning'
+  attestedDate?: string  // free-form: 'Apr 2025', 'FY24', '2026'
+  note?: string
+}
+
+export type ComplianceProfile = {
+  trustCenterUrl?: string
+  subprocessorsUrl?: string
+  certifications: ComplianceCertification[]
+  notes?: string[]
+  verifiedDate: string   // YYYY-MM-DD
+}
+
+export const complianceProfileBySlug: Record<string, ComplianceProfile> = {
+  // Sourced from workday.com/en-us/why-workday/trust/compliance.html
+  'workday': {
+    trustCenterUrl: 'https://www.workday.com/en-us/why-workday/trust/compliance.html',
+    certifications: [
+      { name: 'SOC 1 Type II',       category: 'Security',   status: 'Certified', scope: 'Enterprise + Adaptive Planning + VNDLY', note: 'ISAE 3402' },
+      { name: 'SOC 2 Type II',       category: 'Security',   status: 'Certified', scope: 'Enterprise + Adaptive Planning + Strategic Sourcing + Peakon + VNDLY + HiredScore + CLM', note: 'Includes NIST CSF + 800-171 mapping' },
+      { name: 'SOC 3',               category: 'Security',   status: 'Certified', scope: 'Enterprise + Adaptive Planning + Peakon + Strategic Sourcing', note: 'Public report' },
+      { name: 'ISO 27001',           category: 'Security',   status: 'Certified', scope: 'Enterprise + Adaptive Planning + Strategic Sourcing + VNDLY + Peakon' },
+      { name: 'ISO 27017',           category: 'Security',   status: 'Certified', scope: 'Enterprise + Adaptive Planning' },
+      { name: 'ISO 27018',           category: 'Privacy',    status: 'Certified', scope: 'Enterprise + Adaptive Planning' },
+      { name: 'ISO 27701',           category: 'Privacy',    status: 'Certified', scope: 'Enterprise + Adaptive Planning' },
+      { name: 'ISO 42001',           category: 'AI',         status: 'Certified', scope: 'HCM + FINS + Student + Spend + Payroll + Talent + Analytics + Platform' },
+      { name: 'NIST AI RMF',         category: 'AI',         status: 'Self-attested', note: 'Company-wide attestation, third-party evaluated' },
+      { name: 'EU-US Data Privacy Framework', category: 'Privacy', status: 'Certified', note: 'TRUSTe verification agent' },
+      { name: 'Global CBPR',         category: 'Privacy',    status: 'Certified', note: 'Cross-border personal information transfer' },
+      { name: 'Global PRP',          category: 'Privacy',    status: 'Certified', note: 'Privacy Recognition for Processors' },
+      { name: 'EU Cloud Code of Conduct', category: 'Privacy', status: 'Certified', note: 'GDPR demonstration; Adherence ID 2019LVL02SCOPE001' },
+      { name: 'HIPAA',               category: 'Industry',   status: 'Certified', note: 'Third-party attestation' },
+      { name: 'FedRAMP Moderate',    category: 'Government', status: 'Certified', scope: 'Workday Government Cloud' },
+      { name: 'UK G-Cloud',          category: 'Government', status: 'Certified', note: 'Public sector procurement framework' },
+      { name: 'Australian IRAP',     category: 'Government', status: 'Certified', note: 'Assessed at PROTECTED level' },
+      { name: 'Canada CCCS CSP ITS', category: 'Government', status: 'Certified', note: 'Protected B / Medium I / Medium A' },
+      { name: 'TX-RAMP Level 2',     category: 'Government', status: 'Certified' },
+      { name: 'Cyber Essentials Plus', category: 'Security', status: 'Certified', note: 'UK government-backed baseline' },
+      { name: 'CSA Trusted Cloud Provider', category: 'Security', status: 'Certified' },
+      { name: 'CSA STAR Level 1',    category: 'Security',   status: 'Certified' },
+      { name: 'TISAX',               category: 'Industry',   status: 'Certified', note: 'European automotive infosec; ENX Portal' },
+    ],
+    notes: [
+      'SIG questionnaire is published annually on the Workday Community portal for prospect security reviews.',
+      'Sub-processor list is not surfaced as a single canonical public URL; available on request via the Trust Center.',
+    ],
+    verifiedDate: '2026-05-04',
+  },
+
+  // Sourced from paycom.com/about/security/ and paycom.com/ai-standards/
+  // Paycom claims five ISO certifications and SOC 1/2/3 audits but does not
+  // publish Type designations, scope statements, or attestation dates on
+  // public pages. Reports are gated behind sales contact.
+  'paycom': {
+    trustCenterUrl: 'https://www.paycom.com/about/security/',
+    certifications: [
+      { name: 'SOC 1',                              category: 'Security',   status: 'Certified', note: 'Type level not stated on public page; report available on request' },
+      { name: 'SOC 2',                              category: 'Security',   status: 'Certified', note: 'Type level not stated on public page; report available on request' },
+      { name: 'SOC 3',                              category: 'Security',   status: 'Certified', note: 'Public report referenced; sales gate to download' },
+      { name: 'ISO 27001',                          category: 'Security',   status: 'Certified', note: 'Information Security Management; annually re-audited' },
+      { name: 'ISO 22301',                          category: 'Security',   status: 'Certified', note: 'Business Continuity Management System' },
+      { name: 'Uptime Institute Tier IV',           category: 'Security',   status: 'Certified', note: 'Two owned data centers; vendor cites as differentiator' },
+      { name: 'ISO 27701',                          category: 'Privacy',    status: 'Certified', note: 'Privacy Information Management System' },
+      { name: 'ISO 42001',                          category: 'AI',         status: 'Certified', note: 'AI Management System standard; among first HRTech vendors to publicize' },
+      { name: 'ISO 9001',                           category: 'Industry',   status: 'Certified', note: 'Quality Management System' },
+      { name: 'AHA Preferred Cybersecurity Provider', category: 'Industry', status: 'Certified', note: 'American Hospital Association recognition (2023)' },
+    ],
+    notes: [
+      'No FedRAMP, StateRAMP, IRAP, HIPAA BAA, or PCI DSS attestation publicly disclosed — Paycom is not positioned for federal cloud or healthcare-payer markets.',
+      'No SOC 2 Type designation on the public page. Annual audit cadence implies Type II but buyers should confirm in the report itself.',
+      'Sub-processor list is not surfaced as a public canonical URL.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+}
+
+// ---------- AI Governance Posture ----------
+// Each field reflects a public, dated answer the vendor publishes. "Unknown"
+// is a legitimate value and should not be inferred to mean "no" — it means
+// "the vendor has not stated this position publicly," which is itself a
+// signal worth surfacing to buyers.
+
+export type AIGovernanceStatus = 'Yes' | 'No' | 'Partial' | 'N/A' | 'Unknown'
+export type AIDataTrainingPosture = 'Never' | 'Opt-in' | 'Opt-out' | 'Yes by default' | 'Unclear'
+
+export type AIGovernanceField = {
+  status: AIGovernanceStatus
+  url?: string
+  note?: string
+}
+
+export type AIGovernanceProfile = {
+  acceptableUsePolicy: AIGovernanceField  // Responsible AI principles or AI AUP published?
+  modelCards: AIGovernanceField           // Per-model fact sheets / system cards?
+  nistAIRMF: AIGovernanceField            // NIST AI RMF aligned?
+  iso42001: AIGovernanceField             // ISO 42001 certified?
+  euAIAct: AIGovernanceField              // EU AI Act readiness page?
+  nycLL144: AIGovernanceField             // NYC Local Law 144 bias audit docs (hiring tools)?
+  customerDataTraining: { posture: AIDataTrainingPosture; url?: string; note?: string }
+  subprocessors: AIGovernanceField        // Public dated sub-processor list?
+  notes?: string[]
+  verifiedDate: string                    // YYYY-MM-DD
+}
+
+export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
+  // Sourced from workday.com/en-us/artificial-intelligence/responsible-ai.html
+  // and the compliance trust center.
+  'workday': {
+    acceptableUsePolicy: {
+      status: 'Yes',
+      url: 'https://www.workday.com/en-us/artificial-intelligence/responsible-ai.html',
+      note: 'Four principles: amplify human potential, positively impact society, promote fairness and transparency, deliver on privacy commitments.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'Public Responsible AI page describes practices and principles, not a per-model fact-sheet library. Buyers should request specifics for HiredScore and Talent Optimization models.',
+    },
+    nistAIRMF: {
+      status: 'Yes',
+      url: 'https://www.workday.com/en-us/why-workday/trust/compliance.html',
+      note: 'Company-wide attestation, third-party evaluated.',
+    },
+    iso42001: {
+      status: 'Yes',
+      url: 'https://www.workday.com/en-us/why-workday/trust/compliance.html',
+      note: 'Certified for HCM, FINS, Student, Spend, Payroll, Talent, Analytics, and Platform.',
+    },
+    euAIAct: {
+      status: 'Partial',
+      note: 'Public commentary and policy engagement during the Act\'s development. No standalone readiness statement / customer playbook published yet.',
+    },
+    nycLL144: {
+      status: 'Unknown',
+      note: 'No public bias-audit posting located for HiredScore or Talent Optimization. Required for NYC employers using AEDTs in hiring — buyers should request the audit during procurement.',
+    },
+    customerDataTraining: {
+      posture: 'Never',
+      url: 'https://www.workday.com/en-us/artificial-intelligence/responsible-ai.html',
+      note: 'Workday states: "We never share customer data to train third-party public models." First-party model training posture should be confirmed in the contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No single canonical public sub-processor list located. Available on request via the Trust Center.',
+    },
+    verifiedDate: '2026-05-04',
+  },
+
+  // Sourced from paycom.com/ai-standards/ and paycom.com/about/security/
+  // Paycom is unusual: ISO 42001 certified (strong) but no NIST AI RMF,
+  // model cards, or LL 144 documentation on public pages. Training-data
+  // posture is unstated, which is itself a buyer signal worth surfacing.
+  'paycom': {
+    acceptableUsePolicy: {
+      status: 'Yes',
+      url: 'https://www.paycom.com/ai-standards/',
+      note: 'Three principles: transparency and explainability, data security and privacy, retaining a human touch (human-in-the-loop). Stated as principles, not a downloadable policy document.',
+    },
+    modelCards: {
+      status: 'No',
+      note: 'No per-model fact sheets located for Beti, Employment Predictor, or Paycom\'s job-description / resume-parsing AI features. Buyers should request specifics during procurement.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on the AI Standards page or in public marketing materials.',
+    },
+    iso42001: {
+      status: 'Yes',
+      url: 'https://www.paycom.com/ai-standards/',
+      note: 'Holds the certification and cites it as a differentiator. Among the earliest HRTech vendors to publicize ISO 42001.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located. Lower priority for a US-centric vendor, but ask if you operate in EU.',
+    },
+    nycLL144: {
+      status: 'Unknown',
+      note: 'No bias-audit posting located despite hiring-relevant AI features (Employment Predictor, resume parsing). NYC employers using AEDTs in hiring decisions are required to post a bias audit — request it during procurement.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'Paycom emphasizes that "all personal client data is self-hosted" on Paycom premises and references strict compliance with their privacy policy, but does not explicitly state whether customer data is used to train Paycom\'s own AI/ML models. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No single canonical public sub-processor list located.',
+    },
+    verifiedDate: '2026-05-05',
+  },
 }
