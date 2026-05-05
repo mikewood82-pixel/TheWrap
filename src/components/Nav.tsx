@@ -8,9 +8,9 @@ import { FEATURES } from '../config/features'
 const baseLinks = [
   { to: '/newsletter',    label: 'Archive'       },
   { to: '/jobs',          label: 'Jobs'          },
-  { to: '/sponsorship',   label: 'Sponsorship'   },
   { to: '/labor-market',  label: 'Labor Market'  },
   { to: '/about',         label: 'About'         },
+  { to: '/sponsorship',   label: 'Sponsorship'   },
 ]
 
 const plusLinks = [
@@ -32,11 +32,11 @@ export default function Nav() {
   // link is appended last for non-Pro users so it sits closest to the
   // right-side CTA.
   const links: NavLinkItem[] = (() => {
-    const [archive, jobs, sponsorship, laborMarket, about] = baseLinks
+    const [archive, jobs, laborMarket, about, sponsorship] = baseLinks
     const out: NavLinkItem[] = [archive]
     if (FEATURES.VOICES_ENABLED) out.push(voicesLink)
     if (FEATURES.PLUS_ENABLED) out.push(...plusLinks)
-    out.push(jobs, sponsorship, laborMarket, about)
+    out.push(jobs, laborMarket, about, sponsorship)
     if (FEATURES.PLUS_ENABLED && !isPro) out.push(wrapPlusUpsellLink)
     return out
   })()
