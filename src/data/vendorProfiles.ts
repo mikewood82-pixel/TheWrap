@@ -658,6 +658,56 @@ export const complianceProfileBySlug: Record<string, ComplianceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from adp.com/about-adp/data-security.aspx. ADP's pattern is
+  // typical of a giant public co: most attestations exist but are gated
+  // behind NDA. The public-page list is short; the actual coverage is
+  // broader once you're in the procurement cycle.
+  'adp': {
+    trustCenterUrl: 'https://www.adp.com/about-adp/data-security.aspx',
+    certifications: [
+      { name: 'SOC 1 Type 2',  category: 'Security', status: 'Certified', note: 'Reports for select products and services; access restricted to customers under NDA' },
+      { name: 'SOC 2 Type 2',  category: 'Security', status: 'Certified', note: 'Reports for select products and services; access restricted to customers under NDA' },
+      { name: 'ISO 9001',      category: 'Industry', status: 'Certified', note: 'Quality Management System; select services and locations' },
+      { name: 'ISO 27001',     category: 'Security', status: 'Certified', note: 'Information Security Management System; select services and locations' },
+      { name: 'ISO 27701',     category: 'Privacy',  status: 'Certified', note: 'Privacy Information Management System; select services and locations' },
+      { name: 'PCI DSS',       category: 'Security', status: 'Certified' },
+      { name: 'Sarbanes-Oxley',category: 'Industry', status: 'Self-attested', note: 'Compliance baseline as a US public company (NASDAQ: ADP)' },
+    ],
+    notes: [
+      'Most ADP attestations are gated by NDA — the public page lists them but the actual reports require a customer relationship.',
+      'No ISO 27017 / 27018 / 42001, FedRAMP, HIPAA BAA, EU-US DPF, or CSA STAR publicly listed — but ADP serves federal and healthcare clients, so deeper coverage may exist behind the NDA.',
+      '"Select services and locations" hedge means the certification scope is narrower than a single global ISMS; buyers should confirm coverage for the specific product they\'re purchasing.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from greenhouse.com/security and trust.greenhouse.com.
+  // Greenhouse has the most comprehensive compliance posture among the
+  // mid-market vendors covered: ISO 27001/27701/42001 trio, EU/UK/Swiss
+  // DPF triple, plus explicit GDPR + CCPA/CPRA. Strong story across
+  // both InfoSec and AI dimensions in one place.
+  'greenhouse': {
+    trustCenterUrl: 'https://trust.greenhouse.com/',
+    certifications: [
+      { name: 'SOC 1 Type 2',                 category: 'Security', status: 'Certified' },
+      { name: 'SOC 2 Type 2',                 category: 'Security', status: 'Certified' },
+      { name: 'ISO 27001:2022',               category: 'Security', status: 'Certified', note: 'Information Security Management System' },
+      { name: 'ISO 27701:2019',               category: 'Privacy',  status: 'Certified', note: 'Privacy Information Management System' },
+      { name: 'ISO 42001:2023',               category: 'AI',       status: 'Certified', note: 'AI Management System standard' },
+      { name: 'PCI DSS',                      category: 'Security', status: 'Certified' },
+      { name: 'GDPR',                         category: 'Privacy',  status: 'Certified', note: 'Explicit on trust portal' },
+      { name: 'CCPA / CPRA',                  category: 'Privacy',  status: 'Certified', note: 'Explicit on trust portal' },
+      { name: 'EU-US Data Privacy Framework', category: 'Privacy',  status: 'Certified' },
+      { name: 'UK Extension to EU-US DPF',    category: 'Privacy',  status: 'Certified' },
+      { name: 'Swiss-US DPF',                 category: 'Privacy',  status: 'Certified' },
+    ],
+    notes: [
+      '11 attestations — strongest published compliance posture among mid-market HRTech vendors. ISO 27001/27701/42001 trio plus EU/UK/Swiss DPF triple plus explicit GDPR + CCPA/CPRA.',
+      'No SOC 3, ISO 27017, ISO 27018, FedRAMP, HIPAA BAA, CSA STAR, or HITRUST publicly listed.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- AI Governance Posture ----------
@@ -901,6 +951,96 @@ export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from adp.com/what-we-offer/ai-solutions/responsible-ai.aspx.
+  // ADP has shipped a real Responsible AI page with seven principles and
+  // even an independent bias audit citation for Candidate Relevancy —
+  // but skips ISO 42001 and most other formal frameworks.
+  'adp': {
+    acceptableUsePolicy: {
+      status: 'Yes',
+      url: 'https://www.adp.com/what-we-offer/ai-solutions/responsible-ai.aspx',
+      note: 'Seven principles published: human oversight, governance, privacy by design, explainability/transparency, data quality, culture of responsible AI, inclusion and training.',
+    },
+    modelCards: {
+      status: 'Partial',
+      note: 'No formal model card library, but ADP publishes a detailed case study for the Candidate Relevancy tool covering development, training data, UI, and testing — closer to a model card than most HRTech peers offer.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public AI pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in ADP\'s public certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located.',
+    },
+    nycLL144: {
+      status: 'Partial',
+      url: 'https://www.adp.com/what-we-offer/ai-solutions/responsible-ai.aspx',
+      note: 'A 2024 independent auditor evaluation of the Candidate Relevancy tool concluded "no statistical evidence of bias in the candidate recommendations." Cited on the Responsible AI page; the audit report itself is not linked publicly.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'Customer-data training posture not explicitly stated on public AI pages. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No canonical public sub-processor list located.',
+    },
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from greenhouse.com/ai-principles, greenhouse.com/bias-audit
+  // -statement, and trust.warden-ai.com/greenhouse. The strongest AI
+  // governance posture among the seven vendors covered so far: ISO
+  // 42001 cert, public continuous bias audits via Warden AI, and the
+  // cleanest training-data statement.
+  'greenhouse': {
+    acceptableUsePolicy: {
+      status: 'Yes',
+      url: 'https://www.greenhouse.com/ai-principles',
+      note: 'Five pillars: structured hiring at the core, hiring reimagined, grounded in human experience, decision ownership is explicit, explainability is non-negotiable. Includes operational specifics: AI Ethics Committee reviews all features pre-launch; no composite numerical candidate scoring; opt-out controls available at organizational level.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located despite the strong principles documentation. Buyers should request specifics during procurement.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on the AI principles page.',
+    },
+    iso42001: {
+      status: 'Yes',
+      url: 'https://trust.greenhouse.com/',
+      note: 'Certified to ISO 42001:2023.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No standalone EU AI Act readiness page; bias audit framework references emerging regulations more broadly.',
+    },
+    nycLL144: {
+      status: 'Yes',
+      url: 'https://trust.warden-ai.com/greenhouse',
+      note: 'Public continuous third-party bias audits via Warden AI covering 10 protected classes, aligned with NYC LL-144, Colorado SB205, and California FEHA. Disparate impact analysis + demographic variable testing. Results published on a public dashboard.',
+    },
+    customerDataTraining: {
+      posture: 'Never',
+      url: 'https://www.greenhouse.com/ai-principles',
+      note: 'Greenhouse explicitly states: "Greenhouse does not use personal data from customers to train internal LLMs, proprietary models or third-party models." The clearest training-data statement among the vendors covered.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No canonical public sub-processor list located.',
+    },
+    notes: [
+      'Strongest AI governance posture among the seven vendors covered. Combines ISO 42001 certification, the strictest customer-data-training language, and a public continuous bias-audit dashboard via Warden AI — addressing NYC LL-144 / Colorado SB205 / California FEHA in one place.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Ecosystem Depth ----------
@@ -1113,6 +1253,76 @@ export const ecosystemProfileBySlug: Record<string, EcosystemProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // ADP Marketplace is the largest in HRTech by partner count. ADP's
+  // public developer portal exists at developers.adp.com but the site
+  // resisted programmatic fetch this pass — partner integration is the
+  // practical path rather than self-service API access.
+  'adp': {
+    ownMarketplace: {
+      name: 'ADP Marketplace',
+      url: 'https://marketplace.adp.com/',
+      appCount: 800,
+      appCountSource: 'ADP press materials cite "over 800 partner solutions" (Feb 2024); current count likely higher',
+      partnerProgramName: 'ADP Marketplace Partner Program',
+      highlightedCategories: ['HR', 'Time & Attendance', 'Talent', 'Benefits', 'Finance', 'AI-Enabled'],
+      note: 'Largest HRTech partner marketplace by raw count. ADP cites recent additions of AI-enabled partner solutions.',
+    },
+    publicAPI: {
+      status: 'Partner-gated',
+      url: 'https://developers.adp.com/',
+      note: 'Developer portal exists at developers.adp.com but production access requires Marketplace Partner Program enrollment.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://developers.adp.com/',
+      note: 'Documentation is publicly readable; building requires partner registration.',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located.',
+    },
+    sandbox: {
+      status: 'Partner-gated',
+      note: 'Sandbox / test environments available to registered partners.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Greenhouse runs a deep ATS-focused marketplace with 448 integrations
+  // (exact count from integrations.greenhouse.com), heavily concentrated
+  // in assessments, video interviewing, and background checks.
+  'greenhouse': {
+    ownMarketplace: {
+      name: 'Greenhouse Marketplace',
+      url: 'https://integrations.greenhouse.com/',
+      appCount: 448,
+      appCountSource: 'Live count from integrations.greenhouse.com (May 2026)',
+      partnerProgramName: 'Greenhouse Partner Program',
+      highlightedCategories: ['Assessments', 'Recruitment optimization & analytics', 'Video interviewing', 'Productivity & collaboration', 'Background checks', 'Job boards'],
+      note: 'Most ATS-focused marketplace in HRTech. Top categories by listing count: Assessments (105), Recruitment optimization (83), Productivity (56), Video interviewing (52), Job boards (47), Background checks (42).',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://developers.greenhouse.io/',
+      note: 'Public REST API documentation; "open API" cited prominently on the integrations marketing page.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://developers.greenhouse.io/',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No machine-readable OpenAPI / Swagger spec link located.',
+    },
+    sandbox: {
+      status: 'Unknown',
+      note: 'No public sandbox / test environment located.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Mobile App Footprint ----------
@@ -1318,6 +1528,84 @@ export const mobileAppProfileBySlug: Record<string, MobileAppProfile> = {
           unverifiedReason: 'Play Store page resisted programmatic fetch in this pass.',
         },
         note: 'Largest bundle (305.5 MB) of the five vendors covered so far — reflects Gusto Wallet, banking, and benefits modules combined into one app. Updated within 1 day of verification — fastest mobile cadence after Rippling.',
+      },
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/adp-mobile-solutions/id444553167)
+  // and Google Play (com.adpmobile.android — 34M+ downloads).
+  'adp': {
+    apps: [
+      {
+        name: 'ADP Mobile Solutions',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/adp-mobile-solutions/id444553167',
+          rating: 4.7,
+          reviewCount: 4_200_000,
+          lastUpdated: 'Apr 27, 2026',
+          version: '26.17.1',
+          size: '159.9 MB',
+          minOSVersion: 'iOS 16.4',
+          publisher: 'ADP, Inc',
+          languages: 2,
+        },
+        android: {
+          platform: 'Android',
+          storeUrl: 'https://play.google.com/store/apps/details?id=com.adpmobile.android',
+          publisher: 'ADP, INC.',
+          unverified: true,
+          unverifiedReason: 'Play Store page resisted programmatic fetch in this pass; aggregator data shows 34M+ downloads.',
+        },
+        note: 'Largest mobile install base in HRTech (4.2M iOS ratings, 34M+ Android downloads per aggregators). Only 2 supported languages despite ADP\'s 140+ country payroll footprint — surprising gap.',
+      },
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Greenhouse Recruiting mobile app is the brutally honest counter-
+  // story to Greenhouse's strong web product: 2.1 / 5 rating with only
+  // 57 ratings, last updated Jan 13 2026 (4 months stale). Mobile is
+  // effectively neglected.
+  'greenhouse': {
+    apps: [
+      {
+        name: 'Greenhouse Recruiting',
+        audience: 'Recruiter + Hiring Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/greenhouse-recruiting/id1112028249',
+          rating: 2.1,
+          reviewCount: 57,
+          lastUpdated: 'Jan 13, 2026',
+          version: '1.8.14',
+          size: '7.7 MB',
+          minOSVersion: 'iOS 14.0',
+          publisher: 'Greenhouse Software Inc',
+          languages: 1,
+        },
+        android: {
+          platform: 'Android',
+          storeUrl: 'https://play.google.com/store/apps/details?id=io.greenhouse.recruiting',
+          publisher: 'Greenhouse Software Inc',
+          unverified: true,
+          unverifiedReason: 'Play Store page resisted programmatic fetch in this pass.',
+        },
+        note: 'Brutally honest engineering-velocity signal: 2.1 / 5 with only 57 iOS ratings, last updated Jan 2026, 7.7 MB bundle (a thin wrapper). The mobile experience is essentially abandoned despite Greenhouse\'s strong web product. Buyers should not plan around mobile-first recruiting workflows here.',
+      },
+      {
+        name: 'Greenhouse Events',
+        audience: 'Recruiting Events',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/greenhouse-events/id1297671795',
+          publisher: 'Greenhouse Software Inc',
+          unverified: true,
+          unverifiedReason: 'Secondary app — full metrics not pulled; primary signal is in the Greenhouse Recruiting app card above.',
+        },
+        note: 'Secondary kiosk-style app for capturing prospect info at recruiting events.',
       },
     ],
     verifiedDate: '2026-05-05',
