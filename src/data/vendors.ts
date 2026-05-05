@@ -20,7 +20,7 @@ const rawVendors = [
   { name: 'SAP SuccessFactors',   slug: 'sap-successfactors',   category: 'HCM',       g2: 3.9, capterra: 4.0, reviews: 1000,  employees: '100,000+', news: 17, deepDive: false, website: 'successfactors.com',                 description: 'Cloud-based HCM suite from SAP for global enterprise workforce management.' },
   { name: 'Oracle HCM Cloud',     slug: 'oracle-hcm-cloud',     category: 'HCM',       g2: 3.7, capterra: 4.0, reviews: 700,   employees: '150,000+', news: 13, deepDive: false, website: 'oracle.com',                         description: "Oracle's global HR platform integrating talent, payroll, and workforce management." },
   { name: 'UKG Pro',              slug: 'ukg-pro',              category: 'HCM',       g2: 4.3, capterra: 4.3, reviews: 2100,  employees: '15,000+',  news: 11, deepDive: false, website: 'ukg.com',                            description: 'Comprehensive HCM platform built from the merger of Ultimate Software and Kronos.' },
-  { name: 'Ceridian Dayforce',    slug: 'ceridian-dayforce',    category: 'HCM',       g2: 4.2, capterra: 4.3, reviews: 1400,  employees: '6,700+',   news: 7,  deepDive: false, website: 'ceridian.com',                       description: 'Unified HCM platform with real-time payroll and workforce management on a single database.' },
+  { name: 'Dayforce',             slug: 'ceridian-dayforce',    category: 'HCM',       g2: 4.2, capterra: 4.3, reviews: 1400,  employees: '6,700+',   news: 7,  deepDive: false, website: 'dayforce.com',                       description: 'Unified HCM platform with real-time payroll and workforce management on a single database. Taken private by Thoma Bravo in Feb 2026 for $12.3B.' },
   { name: 'Paycom',               slug: 'paycom',               category: 'HCM',       g2: 4.2, capterra: 4.4, reviews: 2400,  employees: '6,000+',   news: 8,  deepDive: false, website: 'paycom.com',                         description: 'Single-database HR and payroll solution with strong employee self-service capabilities.' },
   { name: 'Paychex Flex',         slug: 'paychex-flex',         category: 'HCM',       g2: 4.2, capterra: 4.1, reviews: 5400,  employees: '16,000+',  news: 6,  deepDive: false, website: 'paychex.com',                        description: 'Scalable HR and payroll platform for SMBs through enterprise.' },
   { name: 'Infor HCM',            slug: 'infor-hcm',            category: 'HCM',       g2: 3.7, capterra: 3.8, reviews: 300,   employees: '17,000+',  news: 4,  deepDive: false, website: 'infor.com',                          description: 'Industry-specific HCM suite with deep configurability for complex organizations.' },
@@ -116,7 +116,7 @@ const glassdoorRatings: Record<string, number> = {
 /** LinkedIn company slugs by vendor slug */
 const linkedinSlugs: Record<string, string> = {
   'workday': 'workday', 'sap-successfactors': 'sap', 'oracle-hcm-cloud': 'oracle', 'ukg-pro': 'ukg',
-  'ceridian-dayforce': 'ceridian', 'paycom': 'paycom', 'paychex-flex': 'paychex', 'infor-hcm': 'infor',
+  'ceridian-dayforce': 'dayforce', 'paycom': 'paycom', 'paychex-flex': 'paychex', 'infor-hcm': 'infor',
   'darwinbox': 'darwinbox', 'namely': 'namely',
   'greenhouse': 'greenhouse', 'lever': 'lever-co', 'icims': 'icims', 'ashby': 'ashby-inc',
   'smartrecruiters': 'smartrecruiters', 'workable': 'workable', 'jazzhr': 'jazzhr',

@@ -484,15 +484,35 @@ Do not edit the agent's output. Verify and decide.
 ### Day 1 — DONE 2026-05-04
 - Pilot run on Paycom → v1 returned NEEDS_REWORK → v2 prompt → SHIP_WITH_FLAGS → integrated, deployed (`e180745`)
 
-### Day 2 (first half) — Tier 1 batch attempt 1, 2026-05-04
-- Ran SAP SuccessFactors, UKG Pro, Ceridian Dayforce, iCIMS in parallel with v2 prompt
-- Results: 3 NEEDS_REWORK + 1 SHIP_WITH_FLAGS — pipeline failed at scale
-- Failure modes: schema format slop (date, LinkedIn, sentiment scale) + tenure inflation when sources mention long company tenure
-- Two real news items surfaced: **Dayforce was taken private by Thoma Bravo Feb 4 2026 ($12.3B)** and **iCIMS announced CEO transition today (Edelboim out May 17, Thompson in)**
-- v3 prompt above adds embedded sample, hard regex self-checks, and worked tenure-trap examples
-- Re-running the same 4 with v3 next
+### Day 2 — Tier 1 batch attempts halted 2026-05-04
 
-If verifier returns NEEDS_REWORK on a future vendor, stop and rework the prompts. Pipeline failure at scale costs more to clean up than the time saved.
+**Pipeline halted. Will not autonomously expand further. Top 5-10 future vendors will be hand-curated when news drives interest.**
+
+Three iterations on the prompt, each fixed prior failures and surfaced new ones:
+
+| Version | Fixed | New failure mode introduced |
+|---|---|---|
+| v1 | (baseline) | Fabricated valuations ($400M EV inferred from share-price math); narrative `prior` text; schema-fitting role substitutions |
+| v2 | All v1 issues | Date format slop (`YYYY-MM` vs `Mon YYYY`); LinkedIn full URLs vs handles; sentiment scale 1-5 vs 0-100; tenure inflation when sources mention long company tenure |
+| v3 | All v2 issues | **Agents skipping web research entirely.** SAP and UKG agents reported `tool_uses: 0` and produced output from training data. Resulted in fabricated funding rounds, hallucinated priors (Conway from "Vimeo", Morgan from "Lightspeed"), and listing a long-departed exec (Aaron Au) as current CPO. |
+
+Final ship rate: **1 of 5 attempts shipped clean** (Paycom). The verifier did its job on every iteration — the failure was on the research side. There's no near-term prompt-engineering fix because LLM tool use is non-deterministic; without enforced source-locking infrastructure (re-fetch validation of verbatim quotes), the failure rate is structural.
+
+### What we kept
+
+- **Paycom shipped clean** with `// low confidence` comments on the IPO gross-vs-net flag and the Gannon entry. (`e180745`)
+- **Last-verified stamp + correction mailto** is live on every profile with a `lastVerifiedBySlug` entry. Sets honest expectations and gives readers a recovery path.
+- **Two real news items surfaced as side effects of the pipeline runs:**
+  - Dayforce was taken private by Thoma Bravo Feb 4 2026 ($12.3B at $70/share). NYSE:DAY no longer trades. `vendors.ts` updated to reflect rebrand + private status.
+  - iCIMS announced CEO transition May 4 2026 (Edelboim out May 17, Thompson in). Not yet integrated.
+- **v3 prompt + verifier prompt + lessons-learned section** retained above for future hand-research reference. The verifier prompt is solid — useful as a sanity check on hand-curated work.
+
+### Going forward
+
+- **Don't re-run the pipeline autonomously.** Future vendor profiles are added one-at-a-time when there's a buyer-relevance trigger (someone asks, news cycle, etc.).
+- **Hand-research with verifier as safety net.** Use the v3 verifier prompt above as a final check on any human-curated vendor data before integration.
+- **Don't try to fill the long tail (~45 LMS / EX / Analytics vendors).** The deep-dive page hides missing sections gracefully — the cost of not having them is low and most pages won't be opened anyway.
+- **Subscriber survey idea (project_thewrap_idea_backlog 2026-04-30) remains the better long-term differentiator** for vendor intel — not blocked by this halt.
 
 ---
 
