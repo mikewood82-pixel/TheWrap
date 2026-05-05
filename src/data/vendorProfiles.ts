@@ -615,6 +615,49 @@ export const complianceProfileBySlug: Record<string, ComplianceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from trust.bamboohr.com Trust Center. Notable signal:
+  // EU/UK/Swiss DPF triple coverage paired with a complete absence
+  // of ISO certs — unusual for a vendor with 34,000+ customers.
+  'bamboohr': {
+    trustCenterUrl: 'https://trust.bamboohr.com/',
+    certifications: [
+      { name: 'SOC 1',                        category: 'Security', status: 'Certified', note: 'Annually audited' },
+      { name: 'SOC 2 Type 2',                 category: 'Security', status: 'Certified', note: 'Annually audited' },
+      { name: 'PCI DSS',                      category: 'Security', status: 'Certified' },
+      { name: 'EU-US Data Privacy Framework', category: 'Privacy',  status: 'Certified' },
+      { name: 'UK Extension to EU-US DPF',    category: 'Privacy',  status: 'Certified', note: 'Covers UK personal data transfers under DPF' },
+      { name: 'Swiss-US DPF',                 category: 'Privacy',  status: 'Certified', note: 'Covers Swiss personal data transfers' },
+    ],
+    notes: [
+      'No ISO 27001 / 27017 / 27018 / 27701 / 42001 listed — striking absence for a vendor of this size and tenure.',
+      'No FedRAMP, HIPAA BAA, CSA STAR, or HITRUST publicly disclosed.',
+      'EU/UK/Swiss DPF triple coverage is rare among HRTech vendors and a meaningful strength for transatlantic data transfers.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Gusto support docs and gusto.com/security. Public
+  // trust center (trust.gusto.com) resisted programmatic fetch this
+  // pass — many of the implied certs (ISO 27001, EU-US DPF) could
+  // not be confirmed from authoritative sources, so they are NOT
+  // listed here. Conservative coverage to honor the verification
+  // rubric.
+  'gusto': {
+    trustCenterUrl: 'https://trust.gusto.com/',
+    certifications: [
+      { name: 'SOC 2 Type 2', category: 'Security', status: 'Certified', note: 'Reports + bridge letters available on request via Gusto support' },
+      { name: 'PCI DSS',      category: 'Security', status: 'Certified', note: 'Implied by Gusto\'s payroll-card handling; not explicitly dated on public pages' },
+      { name: 'HIPAA BAA',    category: 'Industry', status: 'Certified', note: 'Business Associate Agreements available between employers and Gusto for protected health information' },
+    ],
+    notes: [
+      'Public trust center page resisted programmatic fetch on 2026-05-05; many implied certs (ISO 27001, EU-US DPF) could not be confirmed from authoritative sources and are intentionally omitted.',
+      'No ISO 27001 / 27017 / 27018 / 27701 / 42001 publicly listed. Gusto\'s integration security review docs request these from third-party partners but do not state Gusto holds them.',
+      'No FedRAMP, StateRAMP, CSA STAR, or HITRUST publicly disclosed.',
+      'For procurement, request Gusto\'s SOC reports and bridge letters via support — the public site does not surface attestation dates.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- AI Governance Posture ----------
@@ -771,6 +814,93 @@ export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
     },
     verifiedDate: '2026-05-05',
   },
+
+  // BambooHR has not surfaced a public AI governance posture this
+  // verification pass. The trust center lists no AI-specific cert,
+  // and no Responsible AI page or principles document was located.
+  // For a vendor that ships AI hiring features, "Not stated" across
+  // all seven questions is itself a buyer signal.
+  'bamboohr': {
+    acceptableUsePolicy: {
+      status: 'Unknown',
+      note: 'No public Responsible AI policy or principles document located.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located for BambooHR\'s AI features (e.g. AI hiring recommendations).',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in the BambooHR Trust Center certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located.',
+    },
+    nycLL144: {
+      status: 'Unknown',
+      note: 'No bias-audit posting located. BambooHR\'s ATS / hiring features may be subject to NYC Local Law 144 — buyers in scope should request the audit during procurement.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'No public statement located on whether customer data is used to train AI models. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No single canonical public sub-processor list located.',
+    },
+    notes: [
+      'BambooHR ships AI features but has not publicly surfaced an AI governance posture. For buyers using these features (especially in NYC where AEDT bias audits are required for hiring tools), this is a procurement-time gap.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Gusto has shipped multiple AI features (Gus, AI assistant, AI
+  // payroll automation) and has reached 500K+ businesses, but has not
+  // publicly surfaced an AI governance posture. No Responsible AI
+  // page or principles document was located this verification pass.
+  'gusto': {
+    acceptableUsePolicy: {
+      status: 'Unknown',
+      note: 'No public Responsible AI policy or principles document located.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located for Gusto\'s AI features.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in any public Gusto certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located.',
+    },
+    nycLL144: {
+      status: 'Unknown',
+      note: 'Not directly applicable to Gusto\'s core payroll product, but ask if you use Gusto features that recommend candidates or score employees.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'No public statement located on whether customer data is used to train AI models. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No single canonical public sub-processor list located.',
+    },
+    notes: [
+      'Gusto reached 500,000+ customers and shipped 75 new features in April 2026 — many AI-powered. The pace of shipping has outrun the public AI-governance documentation; buyers should request specifics during procurement.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Ecosystem Depth ----------
@@ -904,6 +1034,83 @@ export const ecosystemProfileBySlug: Record<string, EcosystemProfile> = {
       note: 'Sandbox environment available to Technology Partner Program members after acceptance.',
     },
     unifiedAPIBridges: ['Merge', 'Finch', 'Kombo', 'Knit'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // BambooHR's developer story is unusually open for a mid-market HCM:
+  // self-service developer portal (no partner approval gate) plus public
+  // REST API documentation. Marketplace counts wobble across vendor
+  // sources (125+/140+/150+); conservative number used.
+  'bamboohr': {
+    ownMarketplace: {
+      name: 'BambooHR Marketplace',
+      url: 'https://www.bamboohr.com/integrations/',
+      appCount: 125,
+      appCountSource: 'BambooHR materials cite 125+/140+/150+ across pages; conservative number used',
+      partnerProgramName: 'BambooHR Marketplace Technology Partner Program (with tier system)',
+      highlightedCategories: ['Hiring', 'Onboarding', 'Performance', 'Compensation', 'Benefits'],
+      note: 'BambooHR cites 34,000+ customers as the audience reach for marketplace partners.',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://documentation.bamboohr.com/docs',
+      note: 'RESTful API with HTTP Basic Auth or OAuth. Public documentation; usage requires a BambooHR account (developers can create a test account).',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://documentation.bamboohr.com/docs',
+      note: 'Documentation portal at documentation.bamboohr.com; developer portal at developers.bamboohr.com.',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located.',
+    },
+    sandbox: {
+      status: 'Customer-only',
+      note: 'No dedicated public sandbox; vendor guidance is to create a test BambooHR account to develop against.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Kombo', 'Knit'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Gusto's ecosystem story is unique: a public Embedded Payroll API
+  // that lets other platforms (Plaid, etc.) embed Gusto's payroll
+  // engine, alongside 150+ pre-built integrations on the customer
+  // side. Production access still requires partnership conversation.
+  'gusto': {
+    ownMarketplace: {
+      name: 'Gusto App Directory',
+      url: 'https://gusto.com/product/integrations',
+      appCount: 150,
+      appCountSource: 'Gusto marketing materials cite "150+ integrations" consistently',
+      partnerProgramName: 'Gusto Embedded Payroll partner program (for platforms embedding Gusto)',
+      highlightedCategories: ['Time tracking', 'Banking', 'Accounting', 'Benefits', 'Compliance'],
+      note: 'Gusto reached 500,000+ customers in April 2026 — large potential audience for marketplace partners.',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://docs.gusto.com/embedded-payroll/docs/welcome',
+      note: 'Gusto Embedded Payroll API has public documentation and a self-service demo environment. Production access requires a commercial partnership conversation.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://docs.gusto.com/embedded-payroll/docs/welcome',
+      note: 'Public docs site at docs.gusto.com.',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located on the developer portal.',
+    },
+    sandbox: {
+      status: 'Public',
+      url: 'https://docs.gusto.com/embedded-payroll/docs/getting-started',
+      note: 'Developers can self-register and build against the Demo environment without partner approval.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Plaid', 'Kombo'],
+    notes: [
+      'Plaid integration is bidirectional — Gusto uses Plaid for bank account verification, and Plaid lists Gusto as a partner.',
+      'Gusto Embedded Payroll is positioned as a B2B2B platform — other software vendors can run payroll using Gusto\'s engine, similar in pattern to Stripe Connect.',
+    ],
     verifiedDate: '2026-05-05',
   },
 }
@@ -1046,6 +1253,72 @@ export const mobileAppProfileBySlug: Record<string, MobileAppProfile> = {
     ],
     notes: [
       'Rippling also publishes Rippling Timeclock (apps.apple.com/us/app/rippling-timeclock/id1540084564) as a shared-device kiosk app for hourly workers.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/bamboohr/id587244049)
+  // and Google Play (com.mokinetworks.bamboohr — legacy package name from
+  // BambooHR's pre-rename infrastructure).
+  'bamboohr': {
+    apps: [
+      {
+        name: 'BambooHR',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/bamboohr/id587244049',
+          rating: 4.7,
+          reviewCount: 13_000,
+          lastUpdated: 'Apr 7, 2026',
+          version: '5.22.2',
+          size: '88.5 MB',
+          minOSVersion: 'iOS 17.0',
+          publisher: 'Bamboo HR LLC',
+          languages: 1,
+        },
+        android: {
+          platform: 'Android',
+          storeUrl: 'https://play.google.com/store/apps/details?id=com.mokinetworks.bamboohr',
+          publisher: 'BambooHR LLC',
+          unverified: true,
+          unverifiedReason: 'Play Store page resisted programmatic fetch in this pass.',
+        },
+        note: 'English-only on iOS. Smaller bundle (88.5 MB) than peers — reflects BambooHR\'s tighter SMB feature footprint.',
+      },
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/gusto-mobile/id1478804271)
+  // and Google Play (com.gusto.money — package name reflects the Gusto
+  // Wallet / employee-pay heritage of the app).
+  'gusto': {
+    apps: [
+      {
+        name: 'Gusto Mobile',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/gusto-mobile/id1478804271',
+          rating: 4.8,
+          reviewCount: 42_000,
+          lastUpdated: 'May 4, 2026',
+          version: '3.63.0',
+          size: '305.5 MB',
+          minOSVersion: 'iOS 17.0',
+          publisher: 'Gusto, inc.',
+          languages: 1,
+        },
+        android: {
+          platform: 'Android',
+          storeUrl: 'https://play.google.com/store/apps/details?id=com.gusto.money',
+          publisher: 'Gusto, Inc.',
+          unverified: true,
+          unverifiedReason: 'Play Store page resisted programmatic fetch in this pass.',
+        },
+        note: 'Largest bundle (305.5 MB) of the five vendors covered so far — reflects Gusto Wallet, banking, and benefits modules combined into one app. Updated within 1 day of verification — fastest mobile cadence after Rippling.',
+      },
     ],
     verifiedDate: '2026-05-05',
   },
