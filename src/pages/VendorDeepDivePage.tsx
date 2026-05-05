@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { vendors } from '../data/vendors'
 import { vendorHighlights } from '../data/vendorHighlights'
 import { vendorDetails } from '../data/vendorDetails'
-import { aiGovernanceProfileBySlug, complianceProfileBySlug, fundingProfileBySlug, lastVerifiedBySlug, leadershipBySlug, mobileAppProfileBySlug, supportProfileBySlug } from '../data/vendorProfiles'
+import { aiGovernanceProfileBySlug, complianceProfileBySlug, ecosystemProfileBySlug, fundingProfileBySlug, lastVerifiedBySlug, leadershipBySlug, mobileAppProfileBySlug, supportProfileBySlug } from '../data/vendorProfiles'
 import { useWrapPlus } from '../context/WrapPlusContext'
 import RatingChart, { generateHistory } from '../components/RatingChart'
 import VendorLogo from '../components/VendorLogo'
@@ -16,6 +16,7 @@ import VendorLeadership from '../components/VendorLeadership'
 import VendorCompliance from '../components/VendorCompliance'
 import VendorAIGovernance from '../components/VendorAIGovernance'
 import VendorMobileApp from '../components/VendorMobileApp'
+import VendorEcosystem from '../components/VendorEcosystem'
 
 function CapabilityBar({ label, score, rationale }: { label: string; score: number; rationale?: string }) {
   const color = score >= 85 ? 'bg-brand-terracotta' : score >= 65 ? 'bg-brand-gold' : 'bg-brand-dark/30'
@@ -63,13 +64,14 @@ function hasCustomerFeedback(cf: NonNullable<Details>['customerFeedback']): bool
   )
 }
 
-function buildAnchorItems({ details, highlights, hasCompliance, hasAIGovernance, hasMobile }: { details: Details; highlights: Highlights; hasCompliance: boolean; hasAIGovernance: boolean; hasMobile: boolean }): AnchorItem[] {
+function buildAnchorItems({ details, highlights, hasCompliance, hasAIGovernance, hasMobile, hasEcosystem }: { details: Details; highlights: Highlights; hasCompliance: boolean; hasAIGovernance: boolean; hasMobile: boolean; hasEcosystem: boolean }): AnchorItem[] {
   const items: AnchorItem[] = [{ id: 'snapshot', label: 'Snapshot' }]
   items.push({ id: 'hiring', label: 'Hiring' })
   if (details?.leadership?.length)   items.push({ id: 'leadership', label: 'Leadership' })
   if (highlights?.gainPoints?.length || highlights?.painPoints?.length) items.push({ id: 'customers', label: 'Customers' })
   if (details?.capabilities?.length) items.push({ id: 'capabilities', label: 'Capabilities' })
   if (details?.idealCustomer)        items.push({ id: 'fit', label: 'Fit' })
+  if (hasEcosystem)                  items.push({ id: 'ecosystem', label: 'Ecosystem' })
   if (hasCompliance)                 items.push({ id: 'compliance', label: 'Compliance' })
   if (hasAIGovernance)               items.push({ id: 'ai-governance', label: 'AI Governance' })
   if (hasMobile)                     items.push({ id: 'mobile', label: 'Mobile' })
@@ -144,6 +146,7 @@ export default function VendorDeepDivePage() {
   const complianceProfile = complianceProfileBySlug[vendor.slug]
   const aiGovernanceProfile = aiGovernanceProfileBySlug[vendor.slug]
   const mobileAppProfile = mobileAppProfileBySlug[vendor.slug]
+  const ecosystemProfile = ecosystemProfileBySlug[vendor.slug]
   const details = baseDetails && {
     ...baseDetails,
     leadership,
@@ -236,7 +239,7 @@ export default function VendorDeepDivePage() {
       />
 
       {/* Sticky in-page nav */}
-      <VendorAnchorNav items={buildAnchorItems({ details, highlights, hasCompliance: !!complianceProfile, hasAIGovernance: !!aiGovernanceProfile, hasMobile: !!mobileAppProfile })} />
+      <VendorAnchorNav items={buildAnchorItems({ details, highlights, hasCompliance: !!complianceProfile, hasAIGovernance: !!aiGovernanceProfile, hasMobile: !!mobileAppProfile, hasEcosystem: !!ecosystemProfile })} />
 
       {/* Hiring Pulse — surfaces the live jobs DB right after the snapshot.
           Self-suppresses if the vendor isn't tracked in the jobs feed. */}
@@ -357,6 +360,11 @@ export default function VendorDeepDivePage() {
               </div>
             </div>
           </div>
+
+          {/* Ecosystem Depth — surfaces marketplace gravity + developer
+              surface so buyers can answer "will this fit my stack?"
+              Self-suppresses if no ecosystem profile is backfilled. */}
+          {ecosystemProfile && <VendorEcosystem profile={ecosystemProfile} />}
 
           {/* Compliance & Trust Center — surfaces every public security,
               privacy, AI, and government certification the vendor holds.
@@ -931,7 +939,7 @@ export default function VendorDeepDivePage() {
             <div className="text-brand-gold text-xs uppercase tracking-widest font-medium mb-2">Wrap+</div>
             <h3 className="font-serif text-xl font-bold mb-2 text-white">See the full {vendor.name} profile</h3>
             <p className="text-white/70 text-sm mb-6 leading-relaxed max-w-md mx-auto">
-              Capability scores, ideal customer fit, integrations, compliance & AI governance posture, mobile app footprint, financial health, support quality, review highlights, and the latest news — included with Wrap+.
+              Capability scores, ideal customer fit, ecosystem depth, compliance & AI governance posture, mobile app footprint, financial health, support quality, review highlights, and the latest news — included with Wrap+.
             </p>
             <Link
               to="/subscribe"

@@ -709,6 +709,105 @@ export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
   },
 }
 
+// ---------- Ecosystem Depth ----------
+// "How will this fit my stack?" is the second-most-asked buyer question.
+// Today buyers cobble it together by clicking around marketplaces. We
+// pre-aggregate: vendor's own marketplace size (if they have one),
+// developer-surface availability, and any unified-API bridges that route
+// around a closed ecosystem.
+
+export type EcosystemAvailability = 'Public' | 'Partner-gated' | 'Customer-only' | 'Not offered' | 'Unknown'
+
+export type EcosystemField = {
+  status: EcosystemAvailability
+  url?: string
+  note?: string
+}
+
+export type OwnMarketplace = {
+  name: string
+  url?: string
+  appCount?: number
+  appCountSource?: string         // attribution where the count was sourced
+  partnerProgramName?: string
+  highlightedCategories?: string[]
+  note?: string
+}
+
+export type EcosystemProfile = {
+  ownMarketplace?: OwnMarketplace
+  publicAPI: EcosystemField
+  apiDocs: EcosystemField
+  openAPISpec?: EcosystemField
+  sandbox: EcosystemField
+  unifiedAPIBridges?: string[]    // third-party connector platforms (Merge, Finch, etc.)
+  notes?: string[]
+  verifiedDate: string            // YYYY-MM-DD
+}
+
+export const ecosystemProfileBySlug: Record<string, EcosystemProfile> = {
+  // Workday: largest HCM partner ecosystem; treats marketplace as a
+  // first-class product. Sourced from marketplace.workday.com,
+  // workday.com partner pages, and appmarketplace.com aggregator (cited).
+  'workday': {
+    ownMarketplace: {
+      name: 'Workday Marketplace',
+      url: 'https://marketplace.workday.com/en-US/home',
+      appCount: 262,
+      appCountSource: 'appmarketplace.com aggregator (May 2026); Workday does not publish a canonical count',
+      partnerProgramName: 'Innovation Partners (with Design Approved + Certified Integration badges)',
+      highlightedCategories: ['Talent', 'Payroll', 'Learning', 'Wellbeing', 'AI Agents'],
+      note: 'AI-powered listings make up roughly 16% of the catalog as of 2026-Q2.',
+    },
+    publicAPI: {
+      status: 'Customer-only',
+      note: 'REST API and Web Services (SOAP) are documented publicly but require an active Workday tenant — keys are not issued to non-customers.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://community.workday.com/api',
+      note: 'Documentation is open to read; usage requires a tenant.',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'Workday has not widely published an OpenAPI / Swagger spec for the REST API; partners build against the documented endpoints directly.',
+    },
+    sandbox: {
+      status: 'Partner-gated',
+      note: 'Sandbox tenants available to Workday Innovation Partners; not self-service for outside developers.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Kombo', 'Bindbee'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Paycom: famously closed ecosystem. No public marketplace, no public
+  // API, no OpenAPI spec. Third-party unified-API bridges are the only
+  // realistic integration path for outside developers.
+  'paycom': {
+    publicAPI: {
+      status: 'Partner-gated',
+      note: 'Paycom does not offer a public API to non-customers or non-partners. Customer access is provisioned individually by a Paycom representative.',
+    },
+    apiDocs: {
+      status: 'Partner-gated',
+      note: 'No public API documentation site located. Documentation is shared after a partnership or commercial relationship is in place.',
+    },
+    openAPISpec: {
+      status: 'Not offered',
+    },
+    sandbox: {
+      status: 'Unknown',
+      note: 'No public sandbox or developer test tenant located.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Bindbee', 'Kombo', 'Knit'],
+    notes: [
+      'Paycom does not operate a public partner marketplace.',
+      'For most teams the practical integration path is a unified-API bridge (Merge / Finch / Bindbee), which adds a vendor layer and a recurring cost.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+}
+
 // ---------- Mobile App Footprint ----------
 // Brutally honest engineering-velocity lens: app stores are dated to the day
 // and authoritative. A flagship HR app last-updated 14 months ago tells a
