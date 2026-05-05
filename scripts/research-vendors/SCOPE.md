@@ -92,7 +92,210 @@ If two sources conflict on a fact, prefer the more recent + the more authoritati
 
 ---
 
-## Research agent prompt (template — v2, post-Paycom-pilot)
+## Research agent prompt (template — v3, post-Tier-1-batch)
+
+### Why v3
+
+The v2 prompt fixed v1's fabrication failures (no fabricated valuations, better `prior` fields). But the first Tier 1 batch (SAP SuccessFactors, UKG Pro, Ceridian Dayforce, iCIMS) hit **3-of-4 NEEDS_REWORK** for a different class of problem: agents ignoring schema format details (date format, LinkedIn handle vs URL, sentiment scale 1-5 vs 0-100) AND continued tenure inflation when source quotes mention long company tenure ("20-year veteran", "joined 1994").
+
+v3 adds:
+1. **A verbatim sample copied from the existing data file** — agents copy patterns better than they parse rules
+2. **Hard regex self-checks** the agent must run before returning
+3. **Worked examples** of the tenure-inflation trap
+
+### v3 prompt template (use verbatim — substitute `{VENDOR_NAME}`, `{VENDOR_SLUG}`, `{TODAY_DATE}`)
+
+```
+You are researching the HR-tech vendor **{VENDOR_NAME}** (slug: `{VENDOR_SLUG}`) to
+populate three TypeScript records in src/data/vendorProfiles.ts. This data ships
+on a paid product visible to HR buyers. **Accuracy matters more than completeness.**
+Today's date is **{TODAY_DATE}**.
+
+The pipeline has had 2 prior failure modes — fabrication (v1) and schema-format
+slop (v2). v3 below adds a verbatim sample of the existing data shape (copy this
+pattern exactly) and hard regex self-checks before returning.
+
+## REFERENCE — exact shape, copied from production (Workday entry, verified)
+
+  // fundingProfileBySlug
+  'workday': {
+    history: [
+      { round: 'Series A', date: 'Jan 2008', amount: '$15M', leadInvestor: 'Greylock' },
+      { round: 'Series B', date: 'Aug 2008', amount: '$30M', leadInvestor: 'New Enterprise Associates' },
+      { round: 'Series C', date: 'Jun 2009', amount: '$75M', leadInvestor: 'New Enterprise Associates' },
+      { round: 'Series D', date: 'Oct 2011', amount: '$85M', leadInvestor: 'T. Rowe Price' },
+      { round: 'IPO',      date: 'Oct 2012', amount: 'IPO',  leadInvestor: 'NYSE: WDAY', valuation: '$9.5B at IPO' },
+    ],
+    totalRaised: '$205M (pre-IPO)',
+    lastValuation: '$58B market cap (Apr 2026)',
+  },
+
+  // leadershipProfileBySlug — note: linkedin is a HANDLE only, like 'chadrichison', NOT a full URL
+  'paycom': [
+    { name: 'Chad Richison',  role: 'Chief Executive Officer and Chairman', tenureYears: 28.3, prior: 'Founded Paycom in 1998', linkedin: 'chadrichison' },
+    { name: 'Bob Foster',     role: 'Chief Financial Officer',              tenureYears: 1.2,  prior: 'Chief Executive Officer of iiPay (2016 – Oct 2022)' },
+    { name: 'Brad Smith',     role: 'Chief Information Officer',            tenureYears: 7.8,  prior: 'Director of Information Technology at Paycom', departed: 'Departed Oct 2025' },
+  ],
+
+  // supportProfileBySlug — note: sentimentTrend is on a 0-100 scale, NOT 1-5
+  'workday': {
+    issueBreakdown: [
+      { category: 'Implementation', volume: 32 },
+      { category: 'Reporting',      volume: 24 },
+      { category: 'Integrations',   volume: 18 },
+      { category: 'Performance',    volume: 14 },
+      { category: 'Billing',        volume: 12 },
+    ],
+    sentimentTrend: [70, 71, 69, 68, 70, 72, 73, 71, 70, 72, 71, 72],
+  },
+
+Match this format exactly. Same date format. Same linkedin handle pattern.
+Same 0-100 sentimentTrend range. Same single-string `departed` format.
+
+## CRITICAL ANTI-FABRICATION RULES
+
+1. **Valuation must be directly cited.** Do NOT infer from share-price math,
+   strike-price disclosures, or "implied" reasoning. If you cannot cite the exact
+   figure, set `valuation: undefined` (omit the field). Same for `lastValuation`:
+   omit if you cannot cite. Do NOT use the parent company's market cap when
+   profiling a subsidiary or product line — `lastValuation` should reflect the
+   entity being profiled, not its parent.
+
+2. **`prior` field must be ≤1 short factual phrase from a verifiable source.**
+   Do NOT compose narrative phrases. If you cannot find a citable prior role,
+   OMIT the field. Cross-check the prior employer/role you cite — if a press
+   release says they joined SuccessFactors but their LinkedIn shows the prior
+   role was at Microsoft (not "Qualtrics SWAT Team"), use the LinkedIn-confirmed
+   prior, not a guess.
+
+3. **`role` is free-form** — verbatim title from a primary source.
+
+4. **Tenure must be date-math from the role-start date, NOT the company-start
+   date.** Compute as `({TODAY_DATE} minus role_start_date) / 365.25`, rounded
+   to 1 decimal.
+
+   **Tenure-inflation trap (DO NOT FALL FOR THIS):** Press releases often say
+   "20-year veteran" or "joined the company in 1994". That is COMPANY tenure,
+   not ROLE tenure. The CRO who joined the company in 1994 and was promoted to
+   CRO in 2018 has tenureYears = ~7.0, not ~32.
+
+   Examples of what to do:
+   - "Maryann Abbajay, who has been with SAP for 17 years, was named CRO of
+     SuccessFactors in 2018." → tenureYears: ~7.0 (not 17.0)
+   - "Gregory Swick, a 32-year veteran of UKG, serves as CRO." → look up when
+     he was promoted to CSO/CRO. If 2000, tenureYears: ~26.0 (not 32.0).
+   - "Chris Armstrong, who joined Ceridian in 2004, was named CCO in 2024." →
+     tenureYears: ~2.0 (not 22.0).
+
+   If you cannot find the role-start date, set `tenureYears: 0` and flag in
+   CONFIDENCE NOTES. Do not use company tenure as a fallback.
+
+5. **Founder exception** for tenure > 25 years applies ONLY to verified founders
+   still serving as CEO. Long-tenured non-founder employees do not qualify.
+
+6. **Market cap freshness.** For `lastValuation` on public companies, source
+   dated within past 30 days. Quote the source date. For private companies,
+   cite the most recent disclosed valuation event (PE deal, secondary, etc.)
+   and note the date.
+
+## Required output shapes
+
+```ts
+type FundingRound = { round: string; date: string; amount: string; leadInvestor?: string; valuation?: string }
+type LeadershipMember = { name: string; role: string; tenureYears: number; prior?: string; departed?: string; linkedin?: string }
+type SupportIssueBreakdown = { category: string; volume: number }
+```
+
+## Source allowlist
+
+1. SEC EDGAR (10-K, 10-Q, DEF 14A, 8-K) — ground truth for public companies
+2. Crunchbase — pre-IPO funding history
+3. Vendor IR + official press releases — current leadership
+4. LinkedIn company pages — cross-check current C-suite tenure
+5. Reuters, WSJ, Bloomberg, HR Executive, HR Dive, TechCrunch, Nasdaq.com
+6. G2, Capterra, Trustpilot — support quality signals
+
+**Banned:** Wikipedia (unsourced), Medium, vendor marketing claims, AI summaries.
+
+## Output format
+
+  // ==== fundingProfileBySlug['{VENDOR_SLUG}'] ====
+  '{VENDOR_SLUG}': { history: [...], totalRaised: '...', lastValuation: '...' },
+
+  // ==== leadershipProfileBySlug['{VENDOR_SLUG}'] ====
+  '{VENDOR_SLUG}': [ {...}, ... ],
+
+  // ==== supportProfileBySlug['{VENDOR_SLUG}'] ====
+  '{VENDOR_SLUG}': { issueBreakdown: [...], sentimentTrend: [...] },
+
+  // ==== SOURCES ====
+  // - <url> (used for: <fields>)
+
+  // ==== CONFIDENCE NOTES ====
+  // - <field>: <reason>
+
+## HARD SELF-CHECKS — run these before returning
+
+1. **Date regex check.** Every `date` field must match the regex `^[A-Z][a-z]{2}
+   \d{4}$` (e.g., `Apr 2014`, `Jan 2008`). NOT `2014-04`, NOT `2014-04-15`,
+   NOT `April 2014`. If any fail, fix before returning.
+
+2. **LinkedIn handle check.** Every `linkedin` field must NOT contain `https`,
+   `://`, or `linkedin.com`. It is a handle only (e.g., `chadrichison`,
+   `shane-hadlock-7091437`). If any contain a URL, strip to handle.
+
+3. **Sentiment scale check.** Every value in `sentimentTrend` must be an
+   integer between 0 and 100, inclusive. If you used 1-5, multiply by 20 and
+   round. If any value is < 30 or > 95, double-check it's plausible.
+
+4. **issueBreakdown sum check.** Sum of `volume` values must equal exactly 100.
+   If your sum is 99 or 101, adjust the largest category to fix.
+
+5. **sentimentTrend length check.** Array must have exactly 12 entries.
+
+6. **Departed format check.** Every `departed` field must match
+   `^Departed [A-Z][a-z]{2} \d{4}$` (e.g., `Departed Oct 2025`). NOT a long
+   sentence, NOT a future date.
+
+7. **Tenure plausibility.** No `tenureYears` exceeds 25 unless the person is
+   a verified founder still serving as CEO (rule 5). If > 25 and not a founder,
+   you've fallen for the tenure-inflation trap — fix.
+
+8. **No `valuation` without citation.** Every `valuation` field on a funding
+   round must trace to a primary-source URL in the SOURCES block. If a
+   valuation was inferred (share math, "implied", "approximately based on..."),
+   omit the field.
+
+9. **`lastValuation` is for the entity being profiled.** Not the parent company.
+
+If ANY self-check fails, fix before returning. Do not return output that
+fails its own self-checks.
+
+Be diligent. Real money rides on this data.
+```
+
+### Lessons from prior failures (do not repeat)
+
+The v3 rules above were derived from these specific failures across the Paycom pilot (v1→v2) and Tier 1 batch (v2→v3):
+
+**v1 failures (fixed in v2):**
+- Fabricated valuation: Paycom run 1 wrote `valuation: '$400M enterprise value'` for a 2007 buyout, rationalizing it from S-1 management incentive unit strike-price disclosures. Rule 1 directly bans this.
+- Schema mismatch: Mapped Chief Sales Officer → `'CRO'` because CSO wasn't in an illustrative enum. Rule 3 makes the field free-form.
+- Narrative `prior` text: "Internal Paycom promotion to CAO in 2023" for an external hire. Rule 2 bans composition.
+- Founder exception collision: Capped Chad Richison at 25 years (actual 28). Rule 5 adds the founder exception.
+
+**v2 failures (fixed in v3):**
+- Date format: 3 of 4 Tier 1 vendors used `'YYYY-MM-DD'` or `'YYYY-MM'` instead of `'Mon YYYY'`. Self-check 1 (regex) enforces.
+- LinkedIn full URLs vs handles: 3 of 4 used `'https://linkedin.com/in/...'`. Self-check 2 enforces.
+- Sentiment scale: 2 of 4 used 1-5 instead of 0-100. Self-check 3 enforces.
+- Tenure inflation continued: Maryann Abbajay 17y CRO (actual ~7), Gregory Swick 32y CRO (actual ~26), Chris Armstrong 16y CCO (actual ~2). Rule 4's tenure-inflation trap section + worked examples.
+- `lastValuation` confusion: SAP SuccessFactors run set `lastValuation` to SAP SE's parent market cap ($201B), not SuccessFactors-specific. Rule 1 closing sentence + self-check 9.
+- Fabricated `prior`: Maryann Abbajay's "Head of the Qualtrics SWAT Team" appears wrong (Qualtrics was acquired by SAP in 2019; her career predates that). Rule 2 cross-check guidance.
+- Future-dated departure: iCIMS run 1 wrote `departed: '2026-05-17 (succeeded by Marc Thompson, announced 2026-05-04)'` — long narrative + future date. Self-check 6 enforces format.
+
+---
+
+## Research agent prompt (template — v2, post-Paycom-pilot, kept for history)
 
 The v1 prompt let the research agent ship 4 verifiable errors on the Paycom pilot. v2 below tightens the rules that broke. Use this verbatim for every batch run; substitute `{VENDOR_NAME}`, `{VENDOR_SLUG}`, and `{TODAY_DATE}` (YYYY-MM-DD).
 
@@ -276,20 +479,20 @@ Do not edit the agent's output. Verify and decide.
 
 ---
 
-## Day 1 status — DONE 2026-05-04
+## Status log
 
-- [x] SCOPE.md committed (`4a15e7d`)
-- [x] Pilot research run on Paycom → first iteration returned NEEDS_REWORK (4 verifiable errors)
-- [x] Prompt tightened with anti-fabrication rules (v2 above)
-- [x] Pilot research run v2 → verifier returned SHIP_WITH_FLAGS
-- [x] Paycom integrated into all three maps in `vendorProfiles.ts` with `// low confidence` comments where flagged
-- [x] `lastVerifiedBySlug` map added
-- [x] "Last verified: <date>" stamp + correction mailto live in deep-dive page footer
-- [x] `tsc -b` clean, preview smoke-test passed (`e180745`)
+### Day 1 — DONE 2026-05-04
+- Pilot run on Paycom → v1 returned NEEDS_REWORK → v2 prompt → SHIP_WITH_FLAGS → integrated, deployed (`e180745`)
 
-Wall-clock spend: ~3 hours including the rework iteration. The rework was the high-value step — without it, 4 errors would have shipped.
+### Day 2 (first half) — Tier 1 batch attempt 1, 2026-05-04
+- Ran SAP SuccessFactors, UKG Pro, Ceridian Dayforce, iCIMS in parallel with v2 prompt
+- Results: 3 NEEDS_REWORK + 1 SHIP_WITH_FLAGS — pipeline failed at scale
+- Failure modes: schema format slop (date, LinkedIn, sentiment scale) + tenure inflation when sources mention long company tenure
+- Two real news items surfaced: **Dayforce was taken private by Thoma Bravo Feb 4 2026 ($12.3B)** and **iCIMS announced CEO transition today (Edelboim out May 17, Thompson in)**
+- v3 prompt above adds embedded sample, hard regex self-checks, and worked tenure-trap examples
+- Re-running the same 4 with v3 next
 
-If verifier returns NEEDS_REWORK on a future vendor, stop and rework the prompts. Pilot failure means the pipeline isn't ready and batching errors at scale would cost more to clean up than the time saved.
+If verifier returns NEEDS_REWORK on a future vendor, stop and rework the prompts. Pipeline failure at scale costs more to clean up than the time saved.
 
 ---
 
