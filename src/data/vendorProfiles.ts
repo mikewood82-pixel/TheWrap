@@ -792,6 +792,47 @@ export const complianceProfileBySlug: Record<string, ComplianceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from deel.com/security and trust.deel.com. Deel\'s pattern
+  // is SOC-heavy (full SOC 1+2+3 trio) plus ISO 27001 — strong US/AICPA
+  // posture but no EU-specific certs, mirroring its US-led global EOR
+  // positioning.
+  'deel': {
+    trustCenterUrl: 'https://trust.deel.com/',
+    certifications: [
+      { name: 'SOC 1',     category: 'Security', status: 'Certified', note: 'Annually audited; covers financial controls per AICPA' },
+      { name: 'SOC 2',     category: 'Security', status: 'Certified', note: 'Annually audited; covers Security, Availability, Confidentiality, Processing Integrity, Privacy' },
+      { name: 'SOC 3',     category: 'Security', status: 'Certified', note: 'Public summary report' },
+      { name: 'ISO 27001', category: 'Security', status: 'Certified', note: 'Information Security Management System' },
+      { name: 'GDPR',      category: 'Privacy',  status: 'Certified' },
+    ],
+    notes: [
+      'Strong US/AICPA posture (SOC 1+2+3) plus ISO 27001 baseline. AES-256 encryption-at-rest cited.',
+      'No ISO 27017 / 27018 / 27701 / 42001, FedRAMP, HIPAA BAA, PCI DSS, CCPA, EU-US DPF, UK/Swiss DPF, or CSA STAR publicly listed — surprising for a vendor handling global payroll across 100+ countries.',
+      'No SOC Type designation on the public page; annual audit cadence implies Type II but buyers should confirm.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from trust.personio.com and personio.com/security/. Personio
+  // is the strongest EU compliance posture in the sample so far —
+  // ISO 27001:2022 + 27017 + SoA + GDPR, no SOC certs (consistent with
+  // German vendor heritage where ISO is the dominant framework).
+  'personio': {
+    trustCenterUrl: 'https://trust.personio.com/',
+    certifications: [
+      { name: 'ISO/IEC 27001:2022',     category: 'Security', status: 'Certified', note: 'Information Security Management System' },
+      { name: 'ISO/IEC 27001 SoA',      category: 'Security', status: 'Certified', note: 'Statement of Applicability — uncommon to publicly surface' },
+      { name: 'ISO/IEC 27017:2015',     category: 'Security', status: 'Certified', note: 'Cloud services security controls' },
+      { name: 'GDPR',                   category: 'Privacy',  status: 'Certified', note: 'Data protection and information security at the core of products' },
+    ],
+    notes: [
+      'No SOC 1 / 2 / 3 publicly listed — German vendor heritage where ISO frameworks dominate over AICPA SOC.',
+      'No ISO 27018 / 27701 / 42001, FedRAMP, HIPAA BAA, PCI DSS, CCPA, EU-US DPF (Personio is EU-headquartered, so DPF transfer mechanism is less relevant), or CSA STAR publicly listed.',
+      'Customer data hosted on ISO/IEC 27001-certified servers in Frankfurt; data does not leave the EU.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- AI Governance Posture ----------
@@ -1297,6 +1338,97 @@ export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from deel.com/ai and trust.deel.com. Deel ships AI features
+  // ("Actionable AI" branded product) but the public governance docs are
+  // light — no model cards, no NIST AI RMF, no ISO 42001, no LL 144.
+  'deel': {
+    acceptableUsePolicy: {
+      status: 'Partial',
+      url: 'https://www.deel.com/ai',
+      note: 'Public AI page exists with marketing positioning ("Actionable AI for approving hiring, payroll, IT flows") but no formal Responsible AI principles or policy document linked.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located for Deel\'s AI features.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public AI or trust pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in Deel\'s certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located despite Deel\'s significant EU footprint.',
+    },
+    nycLL144: {
+      status: 'Unknown',
+      note: 'Deel has hiring-adjacent AI features (interview scheduling, contract generation). Buyers using these for NYC-based hiring decisions should request the bias audit.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'No public statement located on whether customer data is used to train AI models. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No canonical public sub-processor list located.',
+    },
+    notes: [
+      'Deel\'s AI documentation lags behind its compliance documentation — strong on SOC + ISO certs but thin on public AI governance specifics.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from personio.com and Personio Help Center. Personio has
+  // the strongest published AI governance posture in the entire 12-vendor
+  // sample to date — explicit no-training, EU-only data residency
+  // via AWS Bedrock + Claude, formal EU AI Act risk classification.
+  'personio': {
+    acceptableUsePolicy: {
+      status: 'Yes',
+      url: 'https://www.personio.com/product/assistant/',
+      note: 'Personio publishes an explicit AI policy document with subsections on AI Overview, AI Training Data and Bias, and AI Security on the Trust Center.',
+    },
+    modelCards: {
+      status: 'Partial',
+      note: 'Public-facing detail on which model powers which feature: Claude (Anthropic) hosted on Personio\'s AWS Bedrock instance for AI Performance Summaries and Personio Assistant. Closer to a model card than most peers offer.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in Personio\'s certification roster.',
+    },
+    euAIAct: {
+      status: 'Yes',
+      url: 'https://support.personio.de/hc/en-us/articles/32032660454813',
+      note: 'Personio has formally classified Personio Assistant as a "Limited Risk AI System" under the EU AI Act and committed to its transparency requirements. Strongest public EU AI Act posture among vendors covered.',
+    },
+    nycLL144: {
+      status: 'N/A',
+      note: 'Personio is an HRIS, not a hiring tool — NYC LL 144 (which targets AEDTs in hiring decisions) does not apply to its core product.',
+    },
+    customerDataTraining: {
+      posture: 'Never',
+      url: 'https://support.personio.de/hc/en-us/articles/32032660454813',
+      note: 'Personio explicitly states: "No customer data is used for training purposes by Personio or any other third party." Zero-storage policy in force with AWS Bedrock; personal data is not stored by Bedrock or the LLM. Among the strictest training-data posture statements in the sample.',
+    },
+    subprocessors: {
+      status: 'Yes',
+      url: 'https://trust.personio.com/',
+      note: 'Sub-processor list published on the Trust Center under Legal section.',
+    },
+    notes: [
+      'Strongest published AI governance posture in the 12-vendor sample to date — only Personio has published a formal EU AI Act risk classification, and the no-training language is more emphatic than even Greenhouse\'s.',
+      'EU-only data residency (Frankfurt) is a meaningful procurement signal for EU buyers concerned about US CLOUD Act exposure.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Ecosystem Depth ----------
@@ -1714,6 +1846,74 @@ export const ecosystemProfileBySlug: Record<string, EcosystemProfile> = {
     unifiedAPIBridges: ['Merge', 'Finch', 'Kombo'],
     verifiedDate: '2026-05-05',
   },
+
+  // Deel positions itself as a developer-friendly platform with public
+  // partner program and API documentation. No specific marketplace count
+  // surfaced; "36,000+ companies reach" is the published statistic.
+  'deel': {
+    ownMarketplace: {
+      name: 'Deel App Store',
+      url: 'https://www.deel.com/integrations/',
+      appCountSource: 'No specific integration count published; Deel cites "36,000+ companies reach" as the marketplace audience size',
+      partnerProgramName: 'Deel API Partner Program',
+      highlightedCategories: ['HR', 'Accounting', 'Payroll', 'Legal', 'Productivity'],
+      note: 'Deel does not publish a canonical integration count. Marketplace reach (36,000+ companies) is the cited stat.',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://developer.deel.com/',
+      note: 'Public Deel Developer Platform with API documentation, guides, and a live API playground.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://developer.deel.com/api/partners/introduction',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located on the developer portal.',
+    },
+    sandbox: {
+      status: 'Public',
+      url: 'https://developer.deel.com/',
+      note: 'Live API playground available on the developer portal — accessible without partnership approval.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Apideck', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Personio runs a full marketplace with public developer hub. 200+
+  // integrations is moderate by ecosystem standards but Personio's 8K+
+  // customer base concentrates marketplace value for partners.
+  'personio': {
+    ownMarketplace: {
+      name: 'Personio Marketplace',
+      url: 'https://www.marketplace.personio.com/',
+      appCount: 200,
+      appCountSource: 'Personio cites "200+ integrations" on the marketplace consistently',
+      partnerProgramName: 'Personio Tech Partner Program',
+      highlightedCategories: ['HRIS', 'Recruiting', 'Performance', 'Productivity', 'Compliance', 'Identity'],
+      note: 'Personio cites 8,000+ customers as the audience reach for marketplace partners.',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://developer.personio.de/',
+      note: 'Public Personio Developer Hub with open APIs. Partners must accept Marketplace Terms of Service and API Security and Use policies.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://developer.personio.de/docs/getting-started-with-the-personio-api',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located on the developer hub.',
+    },
+    sandbox: {
+      status: 'Partner-gated',
+      note: 'Sandbox access tied to the Tech Partner Program onboarding.',
+    },
+    unifiedAPIBridges: ['Merge', 'Apideck', 'Finch', 'Kombo', 'WorkOS'],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Mobile App Footprint ----------
@@ -2059,6 +2259,70 @@ export const mobileAppProfileBySlug: Record<string, MobileAppProfile> = {
     ],
     notes: [
       'No native Android app located in this verification pass.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/deel-global-payroll-hr/id6478083155).
+  // Note: app ID 6478083155 is recent (2024+) — Deel rebuilt or relaunched
+  // its app, which explains the small ratings count for a vendor of this
+  // scale.
+  'deel': {
+    apps: [
+      {
+        name: 'Deel: Global Payroll & HR',
+        audience: 'Employee + Contractor + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/deel-global-payroll-hr/id6478083155',
+          rating: 4.9,
+          reviewCount: 2_300,
+          lastUpdated: 'Apr 27, 2026',
+          version: '2.3.5',
+          size: '75.7 MB',
+          minOSVersion: 'iOS 17.0',
+          publisher: 'Deel, Inc (USA)',
+          languages: 1,
+        },
+        note: 'High 4.9 rating but only 2.3K ratings — app ID 6478083155 indicates a 2024+ rebuild. English-only despite Deel\'s global payroll footprint across 100+ countries.',
+      },
+    ],
+    notes: [
+      'No native Android app located in this verification pass.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/personio/id1470197212).
+  // Personio\'s mobile is unique in the sample: 18 supported languages
+  // (more than any other vendor — even Workday\'s 21 includes English
+  // variants), but only 9 ratings.
+  'personio': {
+    apps: [
+      {
+        name: 'Personio',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/personio/id1470197212',
+          rating: 5.0,
+          reviewCount: 9,
+          lastUpdated: 'Apr 28, 2026',
+          version: '2026.18.0',
+          size: '29.1 MB',
+          minOSVersion: 'iOS 16.0',
+          publisher: 'Personio GmbH',
+          languages: 18,
+        },
+        android: {
+          platform: 'Android',
+          storeUrl: 'https://play.google.com/store/apps/details?id=com.personio',
+          publisher: 'Personio GmbH',
+          unverified: true,
+          unverifiedReason: 'Play Store page resisted programmatic fetch in this pass.',
+        },
+        note: '18 supported languages — most multilingual mobile app in the sample, reflecting Personio\'s pan-European footprint. Only 9 iOS ratings (small sample), but updated within a week of verification — fastest cadence after Rippling and Gusto. Bundle size 29.1 MB is the smallest of any HCM mobile app.',
+      },
     ],
     verifiedDate: '2026-05-05',
   },
