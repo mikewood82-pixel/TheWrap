@@ -593,6 +593,28 @@ export const complianceProfileBySlug: Record<string, ComplianceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from rippling.com/trust/security and trust.rippling.com.
+  // Rippling shipped ISO 42001 early and has CSA STAR Level 2 — an
+  // unusual combination that signals real engineering investment in
+  // both AI governance and cloud security.
+  'rippling': {
+    trustCenterUrl: 'https://www.rippling.com/trust/security',
+    certifications: [
+      { name: 'SOC 1 Type II',  category: 'Security', status: 'Certified', note: 'Annually audited' },
+      { name: 'SOC 2 Type II',  category: 'Security', status: 'Certified', note: 'Trust services categories: Security, Confidentiality, Availability; annually audited' },
+      { name: 'SOC 3',          category: 'Security', status: 'Certified', note: 'Public report downloadable' },
+      { name: 'ISO 27001',      category: 'Security', status: 'Certified', note: 'Information Security Management System' },
+      { name: 'ISO 27018',      category: 'Privacy',  status: 'Certified', note: 'Cloud personal-data processing' },
+      { name: 'ISO 42001',      category: 'AI',       status: 'Certified', note: 'AI Management System; among the early adopters in HRTech' },
+      { name: 'CSA STAR Level 2', category: 'Security', status: 'Certified', note: 'Independent third-party validation against CSA Cloud Controls Matrix' },
+    ],
+    notes: [
+      'No FedRAMP, HIPAA BAA, PCI DSS, or EU-US Data Privacy Framework attestation publicly listed. Buyers in regulated verticals should request specifics.',
+      'No ISO 27017 or ISO 27701 listed alongside ISO 27018 — coverage of the privacy / cloud-controls trio is partial.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- AI Governance Posture ----------
@@ -707,6 +729,48 @@ export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
     },
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from rippling.com/ai and rippling.com/trust/security.
+  // Rippling's training-data posture is the cleanest of the three vendors
+  // we've covered: a flat statement that usage data is not used to train
+  // AI models, with no first-party / third-party hedge.
+  'rippling': {
+    acceptableUsePolicy: {
+      status: 'Unknown',
+      note: 'No standalone Responsible AI policy or principles document located on the public AI page. ISO 42001 certification implies internal governance documentation that is not externally surfaced.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located for Rippling\'s AI features. Buyers should request specifics during procurement.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public AI or trust pages.',
+    },
+    iso42001: {
+      status: 'Yes',
+      url: 'https://www.rippling.com/trust/security',
+      note: 'Listed in Rippling\'s public certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located.',
+    },
+    nycLL144: {
+      status: 'Unknown',
+      note: 'No bias-audit posting located. Rippling\'s recruiting and people products may include AEDTs subject to NYC Local Law 144 — buyers in scope should request the audit.',
+    },
+    customerDataTraining: {
+      posture: 'Never',
+      url: 'https://www.rippling.com/ai',
+      note: 'FAQ explicitly states: "Your usage data will not be used to train AI models." Cleaner phrasing than vendors who hedge between first-party and third-party model training.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No single canonical public sub-processor list located.',
+    },
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Ecosystem Depth ----------
@@ -804,6 +868,42 @@ export const ecosystemProfileBySlug: Record<string, EcosystemProfile> = {
       'Paycom does not operate a public partner marketplace.',
       'For most teams the practical integration path is a unified-API bridge (Merge / Finch / Bindbee), which adds a vendor layer and a recurring cost.',
     ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from rippling.com/app-shop, rippling.com/partners/technology-partners,
+  // and developer.rippling.com. Rippling's ecosystem is the most open of the
+  // three vendors covered so far — public dev portal, sandbox via partner
+  // program, public app shop counts in the hundreds.
+  'rippling': {
+    ownMarketplace: {
+      name: 'Rippling App Shop',
+      url: 'https://www.rippling.com/app-shop',
+      appCount: 600,
+      appCountSource: 'Rippling marketing materials cite "600+" and "650+" interchangeably; conservative number used',
+      partnerProgramName: 'Rippling Technology Partner Program (with "Rippling\'s Choice" tier for premium integrations)',
+      highlightedCategories: ['HR', 'IT', 'Finance', 'Productivity', 'Identity'],
+      note: 'Rippling cites 1,500+ partners across the broader ecosystem (channel + tech + service) on its partner pages.',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://developer.rippling.com/documentation/base-api',
+      note: 'Public Base API documentation is readable without login. Production access requires acceptance into the Technology Partner Program.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://developer.rippling.com/documentation/base-api',
+      note: 'Public developer portal at developer.rippling.com.',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No machine-readable OpenAPI / Swagger spec link located on the public developer portal.',
+    },
+    sandbox: {
+      status: 'Partner-gated',
+      note: 'Sandbox environment available to Technology Partner Program members after acceptance.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Kombo', 'Knit'],
     verifiedDate: '2026-05-05',
   },
 }
@@ -910,6 +1010,42 @@ export const mobileAppProfileBySlug: Record<string, MobileAppProfile> = {
         },
         note: 'Single unified app — Paycom does not split into separate audience apps.',
       },
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/rippling-hr-it-finance/id1231325957)
+  // Rippling also publishes Rippling Timeclock as a secondary device app —
+  // listed primary employee/manager app only here.
+  'rippling': {
+    apps: [
+      {
+        name: 'Rippling — HR, IT & Finance',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/rippling-hr-it-finance/id1231325957',
+          rating: 4.7,
+          reviewCount: 10_000,
+          lastUpdated: 'May 5, 2026',
+          version: '3.0.37',
+          size: '136.8 MB',
+          minOSVersion: 'iOS 15.1',
+          publisher: 'People Center, Inc.',
+          languages: 1,
+        },
+        android: {
+          platform: 'Android',
+          storeUrl: 'https://play.google.com/store/apps/details?id=com.rippling.android',
+          publisher: 'People Center, Inc.',
+          unverified: true,
+          unverifiedReason: 'Play Store page resisted programmatic fetch in this pass.',
+        },
+        note: 'English-only — no other languages supported on the iOS app despite Rippling\'s global payroll footprint. Notable for buyers with non-US-English-speaking workforces.',
+      },
+    ],
+    notes: [
+      'Rippling also publishes Rippling Timeclock (apps.apple.com/us/app/rippling-timeclock/id1540084564) as a shared-device kiosk app for hourly workers.',
     ],
     verifiedDate: '2026-05-05',
   },
