@@ -615,6 +615,27 @@ export const complianceProfileBySlug: Record<string, ComplianceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from trust.bamboohr.com Trust Center. Notable signal:
+  // EU/UK/Swiss DPF triple coverage paired with a complete absence
+  // of ISO certs — unusual for a vendor with 34,000+ customers.
+  'bamboohr': {
+    trustCenterUrl: 'https://trust.bamboohr.com/',
+    certifications: [
+      { name: 'SOC 1',                        category: 'Security', status: 'Certified', note: 'Annually audited' },
+      { name: 'SOC 2 Type 2',                 category: 'Security', status: 'Certified', note: 'Annually audited' },
+      { name: 'PCI DSS',                      category: 'Security', status: 'Certified' },
+      { name: 'EU-US Data Privacy Framework', category: 'Privacy',  status: 'Certified' },
+      { name: 'UK Extension to EU-US DPF',    category: 'Privacy',  status: 'Certified', note: 'Covers UK personal data transfers under DPF' },
+      { name: 'Swiss-US DPF',                 category: 'Privacy',  status: 'Certified', note: 'Covers Swiss personal data transfers' },
+    ],
+    notes: [
+      'No ISO 27001 / 27017 / 27018 / 27701 / 42001 listed — striking absence for a vendor of this size and tenure.',
+      'No FedRAMP, HIPAA BAA, CSA STAR, or HITRUST publicly disclosed.',
+      'EU/UK/Swiss DPF triple coverage is rare among HRTech vendors and a meaningful strength for transatlantic data transfers.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- AI Governance Posture ----------
@@ -771,6 +792,50 @@ export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
     },
     verifiedDate: '2026-05-05',
   },
+
+  // BambooHR has not surfaced a public AI governance posture this
+  // verification pass. The trust center lists no AI-specific cert,
+  // and no Responsible AI page or principles document was located.
+  // For a vendor that ships AI hiring features, "Not stated" across
+  // all seven questions is itself a buyer signal.
+  'bamboohr': {
+    acceptableUsePolicy: {
+      status: 'Unknown',
+      note: 'No public Responsible AI policy or principles document located.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located for BambooHR\'s AI features (e.g. AI hiring recommendations).',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in the BambooHR Trust Center certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located.',
+    },
+    nycLL144: {
+      status: 'Unknown',
+      note: 'No bias-audit posting located. BambooHR\'s ATS / hiring features may be subject to NYC Local Law 144 — buyers in scope should request the audit during procurement.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'No public statement located on whether customer data is used to train AI models. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No single canonical public sub-processor list located.',
+    },
+    notes: [
+      'BambooHR ships AI features but has not publicly surfaced an AI governance posture. For buyers using these features (especially in NYC where AEDT bias audits are required for hiring tools), this is a procurement-time gap.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Ecosystem Depth ----------
@@ -902,6 +967,42 @@ export const ecosystemProfileBySlug: Record<string, EcosystemProfile> = {
     sandbox: {
       status: 'Partner-gated',
       note: 'Sandbox environment available to Technology Partner Program members after acceptance.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Kombo', 'Knit'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // BambooHR's developer story is unusually open for a mid-market HCM:
+  // self-service developer portal (no partner approval gate) plus public
+  // REST API documentation. Marketplace counts wobble across vendor
+  // sources (125+/140+/150+); conservative number used.
+  'bamboohr': {
+    ownMarketplace: {
+      name: 'BambooHR Marketplace',
+      url: 'https://www.bamboohr.com/integrations/',
+      appCount: 125,
+      appCountSource: 'BambooHR materials cite 125+/140+/150+ across pages; conservative number used',
+      partnerProgramName: 'BambooHR Marketplace Technology Partner Program (with tier system)',
+      highlightedCategories: ['Hiring', 'Onboarding', 'Performance', 'Compensation', 'Benefits'],
+      note: 'BambooHR cites 34,000+ customers as the audience reach for marketplace partners.',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://documentation.bamboohr.com/docs',
+      note: 'RESTful API with HTTP Basic Auth or OAuth. Public documentation; usage requires a BambooHR account (developers can create a test account).',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://documentation.bamboohr.com/docs',
+      note: 'Documentation portal at documentation.bamboohr.com; developer portal at developers.bamboohr.com.',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located.',
+    },
+    sandbox: {
+      status: 'Customer-only',
+      note: 'No dedicated public sandbox; vendor guidance is to create a test BambooHR account to develop against.',
     },
     unifiedAPIBridges: ['Merge', 'Finch', 'Kombo', 'Knit'],
     verifiedDate: '2026-05-05',
@@ -1046,6 +1147,39 @@ export const mobileAppProfileBySlug: Record<string, MobileAppProfile> = {
     ],
     notes: [
       'Rippling also publishes Rippling Timeclock (apps.apple.com/us/app/rippling-timeclock/id1540084564) as a shared-device kiosk app for hourly workers.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/bamboohr/id587244049)
+  // and Google Play (com.mokinetworks.bamboohr — legacy package name from
+  // BambooHR's pre-rename infrastructure).
+  'bamboohr': {
+    apps: [
+      {
+        name: 'BambooHR',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/bamboohr/id587244049',
+          rating: 4.7,
+          reviewCount: 13_000,
+          lastUpdated: 'Apr 7, 2026',
+          version: '5.22.2',
+          size: '88.5 MB',
+          minOSVersion: 'iOS 17.0',
+          publisher: 'Bamboo HR LLC',
+          languages: 1,
+        },
+        android: {
+          platform: 'Android',
+          storeUrl: 'https://play.google.com/store/apps/details?id=com.mokinetworks.bamboohr',
+          publisher: 'BambooHR LLC',
+          unverified: true,
+          unverifiedReason: 'Play Store page resisted programmatic fetch in this pass.',
+        },
+        note: 'English-only on iOS. Smaller bundle (88.5 MB) than peers — reflects BambooHR\'s tighter SMB feature footprint.',
+      },
     ],
     verifiedDate: '2026-05-05',
   },
