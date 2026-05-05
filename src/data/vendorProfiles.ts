@@ -749,6 +749,49 @@ export const complianceProfileBySlug: Record<string, ComplianceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from trustcenter.lattice.com. Lattice's public compliance
+  // posture is unusually thin for a vendor with $328M+ raised and 6,000+
+  // customers: only SOC 2, GDPR, and CCPA listed — no ISO certs at all.
+  'lattice': {
+    trustCenterUrl: 'https://trustcenter.lattice.com/',
+    certifications: [
+      { name: 'SOC 2',  category: 'Security', status: 'Certified', note: 'Type level not stated on public Trust Center' },
+      { name: 'GDPR',   category: 'Privacy',  status: 'Certified' },
+      { name: 'CCPA',   category: 'Privacy',  status: 'Certified' },
+    ],
+    notes: [
+      'No ISO 27001 / 27017 / 27018 / 27701 / 42001 publicly listed — notable absence for a vendor with this scale and tenure.',
+      'No SOC 1, SOC 3, FedRAMP, HIPAA BAA, PCI DSS, EU-US DPF, CSA STAR, or HITRUST publicly disclosed.',
+      'Sub-processors named on the Trust Center: Gong, Fivetran, DocRaptor, Courier, Atlassian.',
+      'No SOC 2 Type designation on the public page; buyers should request the report itself to confirm Type II.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from 15five.com/security and trust.15five.com. 15Five's
+  // public list is thin and includes a misleading marketing claim:
+  // "ISO 27001 compliant data centers" — meaning the data centers
+  // (AWS) are ISO 27001 certified, NOT 15Five itself. Important
+  // distinction for procurement.
+  '15five': {
+    trustCenterUrl: 'https://trust.15five.com/',
+    certifications: [
+      { name: 'SOC 2',  category: 'Security', status: 'Certified', note: 'Type level not stated on public Trust Center' },
+      { name: 'SOC 3',  category: 'Security', status: 'Certified', note: 'Public report referenced via Trust Center' },
+      { name: 'CSA CAIQ 4.0.3', category: 'Security', status: 'Self-attested', note: 'Cloud Security Alliance Consensus Assessments Initiative Questionnaire — self-assessment, not full STAR certification' },
+      { name: 'VPAT',   category: 'Industry', status: 'Self-attested', note: 'Voluntary Product Accessibility Template (Section 508 / WCAG conformance disclosure)' },
+      { name: 'GDPR',   category: 'Privacy',  status: 'Certified' },
+      { name: 'CCPA',   category: 'Privacy',  status: 'Certified' },
+      { name: 'PIPEDA', category: 'Privacy',  status: 'Certified', note: 'Canadian Personal Information Protection and Electronic Documents Act' },
+    ],
+    notes: [
+      '15Five does NOT itself hold ISO 27001 — its security page says "ISO 27001 compliant data centers," referring to its AWS infrastructure, not 15Five\'s own certification. Confirm this distinction in procurement.',
+      'No FedRAMP, HIPAA BAA, PCI DSS, EU-US DPF, ISO 42001, or CSA STAR publicly listed.',
+      'PIPEDA listing is unusual — surfaces 15Five\'s focus on the Canadian market alongside US.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- AI Governance Posture ----------
@@ -1170,6 +1213,90 @@ export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from lattice.com/ai. Lattice has shipped AI features for
+  // performance reviews and 1:1s but the public AI documentation is
+  // thin — three high-level principles, no specifics on training data,
+  // bias audits, or formal frameworks.
+  'lattice': {
+    acceptableUsePolicy: {
+      status: 'Partial',
+      url: 'https://lattice.com/ai',
+      note: 'Three high-level principles published: "Elevate human decision-making," "Protect customer data," "Leverage best-in-class technology." More marketing than policy — no detailed enforcement statements.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located for Lattice\'s AI features (review summarization, feedback suggestions, etc.).',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public AI or trust pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in Lattice\'s certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located.',
+    },
+    nycLL144: {
+      status: 'N/A',
+      note: 'Lattice is performance management, not hiring — NYC Local Law 144 (which targets Automated Employment Decision Tools used in hiring decisions) does not apply to its core product.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'No explicit statement on whether customer data is used to train AI models. The Trust Center has an AI section with subsections on "AI Training Data and Bias," "AI Security," and "AI Governance" but the specifics aren\'t publicly readable.',
+    },
+    subprocessors: {
+      status: 'Yes',
+      url: 'https://trustcenter.lattice.com/',
+      note: 'Sub-processors listed on the Trust Center: Gong, Fivetran, DocRaptor, Courier, Atlassian.',
+    },
+    verifiedDate: '2026-05-05',
+  },
+
+  // 15Five has shipped AI features (Adam manager AI assistant) but
+  // the public AI page returned 404 in this verification pass — and no
+  // standalone AI policy or principles document was located.
+  '15five': {
+    acceptableUsePolicy: {
+      status: 'Unknown',
+      note: 'No public Responsible AI page or principles document located on 15Five\'s site this pass (15five.com/ai returns 404).',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located for AI features (Adam AI assistant, etc.).',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in 15Five\'s certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located.',
+    },
+    nycLL144: {
+      status: 'N/A',
+      note: '15Five is performance management, not hiring — NYC Local Law 144 does not apply to its core product.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'No public statement located on whether customer data is used to train AI models. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No canonical public sub-processor list located on the Trust Center this pass.',
+    },
+    notes: [
+      '15Five ships AI features but has not surfaced public AI governance documentation. For buyers using Adam or other AI features, this is a procurement-time gap to flag.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Ecosystem Depth ----------
@@ -1521,6 +1648,72 @@ export const ecosystemProfileBySlug: Record<string, EcosystemProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Lattice's ecosystem is the smallest of the nine vendors covered.
+  // Heavily HRIS-focused (12 HRIS connectors out of ~23 total) — Lattice
+  // is positioned as a layer ON TOP of an existing HRIS, not a hub.
+  'lattice': {
+    ownMarketplace: {
+      name: 'Lattice Ecosystem',
+      url: 'https://lattice.com/integrations',
+      appCount: 23,
+      appCountSource: 'Direct count from lattice.com/integrations (May 2026); no headline number cited',
+      partnerProgramName: 'Lattice Partner Ecosystem',
+      highlightedCategories: ['HRIS', 'Communication', 'Productivity', 'Single Sign-On'],
+      note: 'HRIS-heavy: 12 of ~23 visible integrations are HRIS connectors (Workday, ADP, BambooHR, Gusto, HiBob, Personio, Rippling, etc.). Reflects Lattice\'s positioning as a performance / engagement layer on top of an existing HRIS.',
+    },
+    publicAPI: {
+      status: 'Customer-only',
+      url: 'https://lattice.com/api',
+      note: 'Lattice Public API exists for customers; documentation gated behind login.',
+    },
+    apiDocs: {
+      status: 'Customer-only',
+      note: 'No public API reference URL located; access requires a Lattice customer account.',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec located.',
+    },
+    sandbox: {
+      status: 'Unknown',
+      note: 'No public sandbox / test environment located.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Unified.to', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // 15Five's integrations list is similar in scale to Lattice but
+  // slightly broader (~30 visible). Same HRIS-layer positioning.
+  '15five': {
+    ownMarketplace: {
+      name: '15Five Integrations',
+      url: 'https://www.15five.com/integrations',
+      appCount: 30,
+      appCountSource: 'Direct count from 15five.com/integrations (May 2026); no headline number cited',
+      partnerProgramName: '15Five Integrations',
+      highlightedCategories: ['HRIS', 'Productivity', 'Compensation', 'Learning', 'Recognition'],
+      note: 'HRIS-heavy (16 connectors including ADP, UKG, Gusto, BambooHR, Workday, Rippling, Deel, Hibob, Justworks, Paycor, Paylocity). Slightly broader than Lattice in adjacent categories (compensation, learning, recognition).',
+    },
+    publicAPI: {
+      status: 'Customer-only',
+      note: '15Five offers an API to customers; no public developer portal URL located.',
+    },
+    apiDocs: {
+      status: 'Customer-only',
+      note: 'API documentation gated behind a 15Five account.',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec located.',
+    },
+    sandbox: {
+      status: 'Unknown',
+      note: 'No public sandbox located.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Mobile App Footprint ----------
@@ -1805,6 +1998,67 @@ export const mobileAppProfileBySlug: Record<string, MobileAppProfile> = {
         },
         note: 'Secondary kiosk-style app for capturing prospect info at recruiting events.',
       },
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/lattice-the-people-platform/id1409785530)
+  // Lattice's mobile app is in the same shape as Greenhouse's: low rating
+  // (2.1 / 5), small ratings count (101), and stale (last updated Oct 2025
+  // — 7 months before this verification pass). Mobile is clearly not a
+  // priority area of investment.
+  'lattice': {
+    apps: [
+      {
+        name: 'Lattice — The People Platform',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/lattice-the-people-platform/id1409785530',
+          rating: 2.1,
+          reviewCount: 101,
+          lastUpdated: 'Oct 7, 2025',
+          version: '2.15.0',
+          size: '38.1 MB',
+          minOSVersion: 'iOS 15.1',
+          publisher: 'Degree Inc.',
+          languages: 1,
+        },
+        note: 'Published under "Degree Inc." — Lattice\'s legacy corporate name pre-rebrand. 2.1 / 5 with only 101 ratings, last updated 7 months before verification. Mobile is essentially abandoned despite Lattice\'s otherwise strong web product.',
+      },
+    ],
+    notes: [
+      'No native Android app located in this verification pass — Lattice may rely on mobile web for non-iOS users.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/15five/id1020253220)
+  // 15Five's mobile app has a decent rating (4.7) but is the stalest in
+  // the entire HRTech sample so far — last updated March 19, 2025, which
+  // is ~14 months before this verification pass.
+  '15five': {
+    apps: [
+      {
+        name: '15Five',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/15five/id1020253220',
+          rating: 4.7,
+          reviewCount: 6_600,
+          lastUpdated: 'Mar 19, 2025',
+          version: '4.1.4',
+          size: '56.1 MB',
+          minOSVersion: 'iOS 16.0',
+          publisher: '15Five, Inc',
+          languages: 1,
+        },
+        note: 'Decent 4.7 rating but last updated March 2025 — over a year stale at verification time. Combined with Lattice\'s 7-month-stale app, performance management as a category appears to have deprioritized native mobile.',
+      },
+    ],
+    notes: [
+      'No native Android app located in this verification pass.',
     ],
     verifiedDate: '2026-05-05',
   },
