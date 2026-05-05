@@ -658,6 +658,29 @@ export const complianceProfileBySlug: Record<string, ComplianceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from adp.com/about-adp/data-security.aspx. ADP's pattern is
+  // typical of a giant public co: most attestations exist but are gated
+  // behind NDA. The public-page list is short; the actual coverage is
+  // broader once you're in the procurement cycle.
+  'adp': {
+    trustCenterUrl: 'https://www.adp.com/about-adp/data-security.aspx',
+    certifications: [
+      { name: 'SOC 1 Type 2',  category: 'Security', status: 'Certified', note: 'Reports for select products and services; access restricted to customers under NDA' },
+      { name: 'SOC 2 Type 2',  category: 'Security', status: 'Certified', note: 'Reports for select products and services; access restricted to customers under NDA' },
+      { name: 'ISO 9001',      category: 'Industry', status: 'Certified', note: 'Quality Management System; select services and locations' },
+      { name: 'ISO 27001',     category: 'Security', status: 'Certified', note: 'Information Security Management System; select services and locations' },
+      { name: 'ISO 27701',     category: 'Privacy',  status: 'Certified', note: 'Privacy Information Management System; select services and locations' },
+      { name: 'PCI DSS',       category: 'Security', status: 'Certified' },
+      { name: 'Sarbanes-Oxley',category: 'Industry', status: 'Self-attested', note: 'Compliance baseline as a US public company (NASDAQ: ADP)' },
+    ],
+    notes: [
+      'Most ADP attestations are gated by NDA — the public page lists them but the actual reports require a customer relationship.',
+      'No ISO 27017 / 27018 / 42001, FedRAMP, HIPAA BAA, EU-US DPF, or CSA STAR publicly listed — but ADP serves federal and healthcare clients, so deeper coverage may exist behind the NDA.',
+      '"Select services and locations" hedge means the certification scope is narrower than a single global ISMS; buyers should confirm coverage for the specific product they\'re purchasing.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- AI Governance Posture ----------
@@ -901,6 +924,48 @@ export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from adp.com/what-we-offer/ai-solutions/responsible-ai.aspx.
+  // ADP has shipped a real Responsible AI page with seven principles and
+  // even an independent bias audit citation for Candidate Relevancy —
+  // but skips ISO 42001 and most other formal frameworks.
+  'adp': {
+    acceptableUsePolicy: {
+      status: 'Yes',
+      url: 'https://www.adp.com/what-we-offer/ai-solutions/responsible-ai.aspx',
+      note: 'Seven principles published: human oversight, governance, privacy by design, explainability/transparency, data quality, culture of responsible AI, inclusion and training.',
+    },
+    modelCards: {
+      status: 'Partial',
+      note: 'No formal model card library, but ADP publishes a detailed case study for the Candidate Relevancy tool covering development, training data, UI, and testing — closer to a model card than most HRTech peers offer.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public AI pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in ADP\'s public certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located.',
+    },
+    nycLL144: {
+      status: 'Partial',
+      url: 'https://www.adp.com/what-we-offer/ai-solutions/responsible-ai.aspx',
+      note: 'A 2024 independent auditor evaluation of the Candidate Relevancy tool concluded "no statistical evidence of bias in the candidate recommendations." Cited on the Responsible AI page; the audit report itself is not linked publicly.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'Customer-data training posture not explicitly stated on public AI pages. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No canonical public sub-processor list located.',
+    },
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Ecosystem Depth ----------
@@ -1113,6 +1178,42 @@ export const ecosystemProfileBySlug: Record<string, EcosystemProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // ADP Marketplace is the largest in HRTech by partner count. ADP's
+  // public developer portal exists at developers.adp.com but the site
+  // resisted programmatic fetch this pass — partner integration is the
+  // practical path rather than self-service API access.
+  'adp': {
+    ownMarketplace: {
+      name: 'ADP Marketplace',
+      url: 'https://marketplace.adp.com/',
+      appCount: 800,
+      appCountSource: 'ADP press materials cite "over 800 partner solutions" (Feb 2024); current count likely higher',
+      partnerProgramName: 'ADP Marketplace Partner Program',
+      highlightedCategories: ['HR', 'Time & Attendance', 'Talent', 'Benefits', 'Finance', 'AI-Enabled'],
+      note: 'Largest HRTech partner marketplace by raw count. ADP cites recent additions of AI-enabled partner solutions.',
+    },
+    publicAPI: {
+      status: 'Partner-gated',
+      url: 'https://developers.adp.com/',
+      note: 'Developer portal exists at developers.adp.com but production access requires Marketplace Partner Program enrollment.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://developers.adp.com/',
+      note: 'Documentation is publicly readable; building requires partner registration.',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located.',
+    },
+    sandbox: {
+      status: 'Partner-gated',
+      note: 'Sandbox / test environments available to registered partners.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Mobile App Footprint ----------
@@ -1318,6 +1419,38 @@ export const mobileAppProfileBySlug: Record<string, MobileAppProfile> = {
           unverifiedReason: 'Play Store page resisted programmatic fetch in this pass.',
         },
         note: 'Largest bundle (305.5 MB) of the five vendors covered so far — reflects Gusto Wallet, banking, and benefits modules combined into one app. Updated within 1 day of verification — fastest mobile cadence after Rippling.',
+      },
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/adp-mobile-solutions/id444553167)
+  // and Google Play (com.adpmobile.android — 34M+ downloads).
+  'adp': {
+    apps: [
+      {
+        name: 'ADP Mobile Solutions',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/adp-mobile-solutions/id444553167',
+          rating: 4.7,
+          reviewCount: 4_200_000,
+          lastUpdated: 'Apr 27, 2026',
+          version: '26.17.1',
+          size: '159.9 MB',
+          minOSVersion: 'iOS 16.4',
+          publisher: 'ADP, Inc',
+          languages: 2,
+        },
+        android: {
+          platform: 'Android',
+          storeUrl: 'https://play.google.com/store/apps/details?id=com.adpmobile.android',
+          publisher: 'ADP, INC.',
+          unverified: true,
+          unverifiedReason: 'Play Store page resisted programmatic fetch in this pass; aggregator data shows 34M+ downloads.',
+        },
+        note: 'Largest mobile install base in HRTech (4.2M iOS ratings, 34M+ Android downloads per aggregators). Only 2 supported languages despite ADP\'s 140+ country payroll footprint — surprising gap.',
       },
     ],
     verifiedDate: '2026-05-05',
