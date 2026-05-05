@@ -69,6 +69,23 @@ const chroHiringPlans = [
   { label: 'Top workforce investment',                  value: 'Leadership dev (50%)', note: 'AI/automation second at 36%' },
 ]
 
+// ─── Latest Release ───────────────────────────────────────────────────────────
+// Hero callout for the most recent data drop — surfaces fresh numbers above
+// the fold. Refresh every release cycle.
+const latestRelease = {
+  source: 'BLS JOLTS',
+  period: 'March 2026',
+  releasedOn: 'Tue May 5, 2026',
+  headline: 'Hires jumped, quits and layoffs ticked up, openings held flat',
+  stats: [
+    { label: 'Job Openings', value: '6.9M',  detail: 'unchanged · rate 4.1%' },
+    { label: 'Hires',        value: '5.6M',  detail: '+655K MoM · rate 3.5%' },
+    { label: 'Quits',        value: '3.2M',  detail: 'rate 2.0% · −285K YoY' },
+    { label: 'Layoffs',      value: '1.9M',  detail: 'rate 1.2% · +272K YoY' },
+  ],
+  takeaway: 'Hires posted the biggest move (+655K), more than reversing February\'s drop. Quits and layoffs each edged up a tenth — small, but the first sign of churn returning after a long low-hire, low-fire stretch.',
+}
+
 // ─── Upcoming Releases ────────────────────────────────────────────────────────
 // Surfaces the next-on-the-calendar BLS/ADP/JOLTS releases so readers know
 // when fresher data lands. Curated manually — refresh dates each cycle.
@@ -134,6 +151,28 @@ export default function LaborMarketPage() {
         <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Data · Updated May 2026</div>
         <h1 className="font-serif text-4xl font-bold mb-3">U.S. Labor Market</h1>
         <p className="text-brand-dark/60 text-lg">BLS, ADP, Conference Board CHRO Index, Revelio Labs, and Aspen Tech Labs — what the numbers mean for HR leaders.</p>
+      </div>
+
+      {/* Latest release hero — most recent data drop, called out at the top */}
+      <div className="bg-white border-2 border-brand-terracotta rounded-xl px-6 py-5 mb-5 shadow-sm">
+        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+          <span className="text-xs uppercase tracking-widest font-bold text-brand-terracotta">Just released</span>
+          <span className="text-xs text-brand-dark/40">{latestRelease.releasedOn}</span>
+        </div>
+        <div className="flex flex-wrap items-baseline gap-x-3 mb-3">
+          <h2 className="font-serif text-2xl font-bold text-brand-dark">{latestRelease.source} — {latestRelease.period}</h2>
+        </div>
+        <p className="text-base text-brand-dark/80 mb-4 leading-relaxed">{latestRelease.headline}.</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+          {latestRelease.stats.map(s => (
+            <div key={s.label} className="bg-brand-cream/40 rounded-lg px-3 py-2.5">
+              <div className="text-[11px] uppercase tracking-wide text-brand-dark/40 font-medium mb-0.5">{s.label}</div>
+              <div className="font-serif text-2xl font-bold text-brand-dark leading-tight">{s.value}</div>
+              <div className="text-xs text-brand-dark/50 mt-0.5">{s.detail}</div>
+            </div>
+          ))}
+        </div>
+        <p className="text-sm text-brand-dark/60 leading-relaxed italic">{latestRelease.takeaway}</p>
       </div>
 
       {/* Upcoming releases callout — next data drops on the calendar */}
