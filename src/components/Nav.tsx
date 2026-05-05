@@ -27,17 +27,16 @@ export default function Nav() {
   const { isSignedIn } = useUser()
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  // Compose the nav in reading order. Vendor Pulse slots after Archive when
-  // PLUS_ENABLED; Voices sits between Jobs and Sponsorship when enabled.
-  // Wrap+ upsell link is appended last for non-Pro users so it sits closest
-  // to the right-side CTA.
+  // Compose the nav in reading order. Voices sits immediately after Archive
+  // when enabled; Vendor Pulse slots in next when PLUS_ENABLED. Wrap+ upsell
+  // link is appended last for non-Pro users so it sits closest to the
+  // right-side CTA.
   const links: NavLinkItem[] = (() => {
     const [archive, jobs, sponsorship, laborMarket, about] = baseLinks
     const out: NavLinkItem[] = [archive]
-    if (FEATURES.PLUS_ENABLED) out.push(...plusLinks)
-    out.push(jobs)
     if (FEATURES.VOICES_ENABLED) out.push(voicesLink)
-    out.push(sponsorship, laborMarket, about)
+    if (FEATURES.PLUS_ENABLED) out.push(...plusLinks)
+    out.push(jobs, sponsorship, laborMarket, about)
     if (FEATURES.PLUS_ENABLED && !isPro) out.push(wrapPlusUpsellLink)
     return out
   })()
