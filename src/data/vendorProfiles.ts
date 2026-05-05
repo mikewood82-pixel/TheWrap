@@ -708,6 +708,47 @@ export const complianceProfileBySlug: Record<string, ComplianceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from lever.co/security. Lever rolls up to parent Employ Inc
+  // (which also owns JazzHR and Jobvite); attestations are issued to
+  // Employ Inc, not Lever as a standalone entity. Schellman is the
+  // auditor for both SOC 2 and ISO 27001.
+  'lever': {
+    trustCenterUrl: 'https://www.lever.co/security',
+    certifications: [
+      { name: 'SOC 2 Type 2', category: 'Security', status: 'Certified', note: 'Issued to Employ Inc (Lever\'s parent); audited by Schellman' },
+      { name: 'ISO 27001',    category: 'Security', status: 'Certified', note: 'Issued to Employ Inc; audited by Schellman' },
+      { name: 'CSA CAIQ',     category: 'Security', status: 'Self-attested', note: 'Cloud Security Alliance Consensus Assessments Initiative Questionnaire — self-assessment, not full STAR certification' },
+      { name: 'EU-US Data Privacy Framework', category: 'Privacy', status: 'Certified', note: 'Listed under Employ Inc on dataprivacyframework.gov' },
+    ],
+    notes: [
+      'Compliance is held at the Employ Inc parent level, not Lever specifically — buyers should confirm which scope applies to their Lever contract.',
+      'No SOC 1, SOC 3, ISO 27017 / 27018 / 27701 / 42001, FedRAMP, HIPAA BAA, PCI DSS, or full CSA STAR publicly listed.',
+      'No UK / Swiss DPF extensions surfaced.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from ashbyhq.com/security and trust.ashbyhq.com.
+  // Ashby's compliance posture is intentionally lean and transparent:
+  // SOC 1+2 Type 2 plus the EU/UK/Swiss DPF triple. No ISO certs.
+  'ashby': {
+    trustCenterUrl: 'https://trust.ashbyhq.com/',
+    subprocessorsUrl: 'https://trust.ashbyhq.com/?itemUid=e3fae2ca-94a9-416b-b577-5c90e382df57',
+    certifications: [
+      { name: 'SOC 1 Type 2', category: 'Security', status: 'Certified' },
+      { name: 'SOC 2 Type 2', category: 'Security', status: 'Certified', note: 'Annually audited; report available to customers via Trust Center' },
+      { name: 'EU-US Data Privacy Framework', category: 'Privacy', status: 'Certified' },
+      { name: 'UK Extension to EU-US DPF',    category: 'Privacy', status: 'Certified' },
+      { name: 'Swiss-US DPF',                 category: 'Privacy', status: 'Certified' },
+    ],
+    notes: [
+      'No ISO 27001 / 27017 / 27018 / 27701 / 42001 publicly listed — notable absence given Ashby\'s otherwise strong AI governance posture.',
+      'No FedRAMP, HIPAA BAA, PCI DSS, CSA STAR, or HITRUST publicly disclosed.',
+      'Sub-processor list is published on the Trust Center — the only ATS in the seven covered so far that surfaces this directly.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- AI Governance Posture ----------
@@ -1041,6 +1082,94 @@ export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Lever's AI governance is thinner than its ATS peers Greenhouse and
+  // Ashby. The strongest public commitment is via ADP Marketplace
+  // (where Lever is a partner) rather than a standalone Lever policy.
+  'lever': {
+    acceptableUsePolicy: {
+      status: 'Partial',
+      note: 'No standalone Lever Responsible AI page located. Lever has agreed to comply with the ADP Marketplace AI principles (human oversight, monitoring, privacy, explainability, transparency, bias mitigation) as a partner in that ecosystem.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located for Lever\'s AI Companion (resume screening, interview scheduling, etc.).',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on Lever or Employ Inc public pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in the Lever / Employ Inc certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located.',
+    },
+    nycLL144: {
+      status: 'Unknown',
+      note: 'No public bias audit posting located despite Lever being a hiring tool subject to NYC Local Law 144. Buyers in scope should request the audit during procurement.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'No public statement located on whether Lever uses customer data to train AI models. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No canonical public sub-processor list located.',
+    },
+    notes: [
+      'Lever\'s AI governance documentation lags both Greenhouse (ISO 42001 + Warden AI) and Ashby (FairNow audits + LL 144-compliant) within the ATS category. Notable for buyers who weigh AI governance heavily.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from ashbyhq.com/ai and ashbyhq.com/resources/terms-ai-features.
+  // Ashby pairs cleanly with Greenhouse on AI: explicit no-training-on-
+  // customer-data, third-party bias audits via FairNow, NYC LL 144-
+  // compliant, and proactive EU AI Act preparation.
+  'ashby': {
+    acceptableUsePolicy: {
+      status: 'Yes',
+      url: 'https://www.ashbyhq.com/resources/terms-ai-features',
+      note: 'Published "Terms for AI Features" plus a public AI page with explicit policies on training data, bias mitigation, and product safeguards (in-app warnings around specificity / EEO compliance).',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located despite the otherwise strong AI policy documentation.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public AI pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in Ashby\'s Trust Center certification roster.',
+    },
+    euAIAct: {
+      status: 'Partial',
+      note: 'Ashby publicly states preparation for EU AI Act enforcement (August 2026) — proactive but no formal readiness statement located.',
+    },
+    nycLL144: {
+      status: 'Yes',
+      note: 'Ashby has conducted a NYC Local Law 144-compliant bias audit (via FairNow) and built tooling to support candidate notification and opt-out per the law\'s requirements.',
+    },
+    customerDataTraining: {
+      posture: 'Never',
+      url: 'https://www.ashbyhq.com/ai',
+      note: 'Ashby explicitly states: "Ashby does not train any AI models on customer data." PII is redacted from resumes sent to AI models, and DPAs with sub-processors prevent them from training on customer data either.',
+    },
+    subprocessors: {
+      status: 'Yes',
+      url: 'https://trust.ashbyhq.com/?itemUid=e3fae2ca-94a9-416b-b577-5c90e382df57',
+      note: 'Public sub-processor list on the Trust Center — uncommon transparency for a vendor of Ashby\'s size.',
+    },
+    notes: [
+      'Among ATS vendors covered, Ashby\'s AI posture trails Greenhouse only on ISO 42001 — but matches or exceeds it on training-data clarity, bias audit (FairNow vs Warden AI), sub-processor transparency, and proactive EU AI Act preparation. No ISO 42001 cert is the gap.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Ecosystem Depth ----------
@@ -1321,6 +1450,75 @@ export const ecosystemProfileBySlug: Record<string, EcosystemProfile> = {
       note: 'No public sandbox / test environment located.',
     },
     unifiedAPIBridges: ['Merge', 'Finch', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Lever has 300+ integrations in its Partner Ecosystem (now hosted at
+  // marketplace.lever.co under Employ Inc). Mid-pack on count vs
+  // Greenhouse 448 and Ashby 200+ but with a broader category mix.
+  'lever': {
+    ownMarketplace: {
+      name: 'Lever Partner Ecosystem',
+      url: 'https://marketplace.lever.co/',
+      appCount: 300,
+      appCountSource: 'Lever marketing materials cite "300+" partnerships consistently',
+      partnerProgramName: 'Lever Partner Ecosystem (under parent Employ Inc)',
+      highlightedCategories: ['Background Checks', 'Job Boards', 'HRIS & Payroll', 'Sourcing', 'Video Interviews', 'Assessments', 'Onboarding'],
+      note: 'Now hosted at marketplace.lever.co; lever.co/integrations redirects to Employ Inc\'s partner page.',
+    },
+    publicAPI: {
+      status: 'Customer-only',
+      note: 'Lever offers a REST API to customers; documentation gated behind login.',
+    },
+    apiDocs: {
+      status: 'Customer-only',
+      note: 'Public API docs URL not located; access tied to a Lever customer account.',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec located.',
+    },
+    sandbox: {
+      status: 'Unknown',
+      note: 'No public sandbox / test environment located.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Kombo', 'Apideck'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Ashby positions its API as a first-class product. 200+ pre-built
+  // integrations plus public REST/GraphQL/webhooks documentation.
+  'ashby': {
+    ownMarketplace: {
+      name: 'Ashby Integrations',
+      url: 'https://www.ashbyhq.com/integrations',
+      appCount: 200,
+      appCountSource: 'Ashby marketing materials cite "200+ out-of-the-box integrations"',
+      partnerProgramName: 'Ashby partner program (with Integrated / Preferred designations)',
+      highlightedCategories: ['HRIS', 'Assessments', 'Background Checks', 'Job Boards', 'Video Interviewing', 'Productivity'],
+      note: 'Notable bidirectional integrations with Workday, Rippling, Gusto, HiBob, Deel, Paylocity, BambooHR — covers nearly every major HCM the buyer might already run.',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://developers.ashbyhq.com/',
+      note: 'REST API plus optional GraphQL endpoints. Outbound webhooks fire on key events (application.stage.changed, offer.accepted, etc.). Authentication via scoped API keys or OAuth.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://developers.ashbyhq.com/',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located.',
+    },
+    sandbox: {
+      status: 'Partner-gated',
+      note: 'Sandbox environment provided to integration partners after legal approval.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Unified.to', 'Knit'],
+    notes: [
+      'Ashby\'s open API is positioned as a "core product" with the same design principles as the user-facing platform — unusually developer-first for an ATS.',
+    ],
     verifiedDate: '2026-05-05',
   },
 }
