@@ -5,12 +5,12 @@ import PayGrowthComparison from '../components/PayGrowthComparison'
 
 // ─── BLS Key Metrics ──────────────────────────────────────────────────────────
 const blsMetrics = [
-  { label: 'Unemployment Rate', value: '4.3%',   change: '-0.1%',  trend: 'down', note: 'Edged down in March' },
-  { label: 'Job Openings',      value: '6.9M',   change: '-300K',  trend: 'down', note: 'Lowest since early 2021' },
-  { label: 'Avg. Hourly Wage',  value: '$37.38', change: '+0.2%',  trend: 'up',   note: '+3.5% year-over-year' },
-  { label: 'Layoffs Rate',      value: '1.1%',   change: '0.0%',   trend: 'flat', note: 'Stable but elevated' },
-  { label: 'Quits Rate',        value: '1.9%',   change: '-0.1%',  trend: 'down', note: 'Lowest since 2015' },
-  { label: 'Jobs Added (BLS)',  value: '178K',   change: '-15K',   trend: 'down', note: 'Above ADP, below consensus' },
+  { label: 'Unemployment Rate', value: '4.3%',   change: '-0.1%',     trend: 'down', note: 'Edged down in March' },
+  { label: 'Job Openings',      value: '6.9M',   change: 'unchanged', trend: 'flat', note: 'Rate steady at 4.1%' },
+  { label: 'Avg. Hourly Wage',  value: '$37.38', change: '+0.2%',     trend: 'up',   note: '+3.5% year-over-year' },
+  { label: 'Layoffs Rate',      value: '1.2%',   change: '+0.1%',     trend: 'up',   note: 'Edged up; +272K YoY' },
+  { label: 'Quits Rate',        value: '2.0%',   change: '+0.1%',     trend: 'up',   note: 'Little changed; −285K YoY' },
+  { label: 'Jobs Added (BLS)',  value: '178K',   change: '-15K',      trend: 'down', note: 'Above ADP, below consensus' },
 ]
 
 const historical = [
@@ -18,7 +18,7 @@ const historical = [
   { month: 'Dec 2025', unemployment: '4.4%', openings: '7.4M', wages: '$36.71', quits: '2.0%' },
   { month: 'Jan 2026', unemployment: '4.4%', openings: '7.2M', wages: '$37.01', quits: '2.0%' },
   { month: 'Feb 2026', unemployment: '4.4%', openings: '6.9M', wages: '$37.29', quits: '1.9%' },
-  { month: 'Mar 2026', unemployment: '4.3%', openings: '6.9M', wages: '$37.38', quits: '1.9%', current: true },
+  { month: 'Mar 2026', unemployment: '4.3%', openings: '6.9M', wages: '$37.38', quits: '2.0%', current: true },
 ]
 
 // ─── ADP ──────────────────────────────────────────────────────────────────────
@@ -73,9 +73,9 @@ const chroHiringPlans = [
 // Surfaces the next-on-the-calendar BLS/ADP/JOLTS releases so readers know
 // when fresher data lands. Curated manually — refresh dates each cycle.
 const upcomingReleases = [
-  { date: 'Tue May 5',  source: 'BLS JOLTS',       what: 'March 2026 job openings, hires, quits' },
   { date: 'Tue May 6',  source: 'ADP NER',         what: 'April 2026 private payrolls + pay growth' },
   { date: 'Fri May 8',  source: 'BLS Employment',  what: 'April 2026 nonfarm payrolls + unemployment' },
+  { date: 'Tue Jun 2',  source: 'BLS JOLTS',       what: 'April 2026 job openings, hires, quits' },
 ]
 
 // ─── Aspen Tech Labs ──────────────────────────────────────────────────────────
@@ -105,8 +105,8 @@ const implications = [
     body: 'Private sector job creation has slowed dramatically. Combined with Revelio\'s RPLS showing only +19.4K net jobs and declining advertised salaries, the picture is of an employer base that has broadly stopped hiring. Workforce planning assumptions built on 150K+ monthly additions need to be revisited.',
   },
   {
-    headline: 'Quits at 1.9% — retention pressure has inverted',
-    body: 'Revelio\'s low-hire, low-fire signal aligns with BLS: employees are staying put because options have narrowed. ADP data shows the job-changer pay premium is the smallest since 2020. The case for switching is weaker — but when conditions shift, suppressed quit rates historically precede a surge.',
+    headline: 'Quits at 2.0% — retention pressure still inverted',
+    body: 'JOLTS quits ticked up a tenth to 2.0% in March but remain 285K below a year ago — Revelio\'s low-hire, low-fire signal still aligns with BLS, and ADP data shows the job-changer pay premium is the smallest since 2020. The case for switching is weaker — but when conditions shift, suppressed quit rates historically precede a surge.',
   },
   {
     headline: 'Two-speed market: healthcare and AI vs. everyone else',
@@ -325,7 +325,7 @@ export default function LaborMarketPage() {
           </div>
         ))}
       </div>
-      <p className="text-xs text-brand-dark/30 mt-4">Sources: U.S. Bureau of Labor Statistics · ADP National Employment Report · Revelio Public Labor Statistics (RPLS) · Aspen Tech Labs JobMarketPulse. Updated April 2026.</p>
+      <p className="text-xs text-brand-dark/30 mt-4">Sources: U.S. Bureau of Labor Statistics · ADP National Employment Report · Revelio Public Labor Statistics (RPLS) · Aspen Tech Labs JobMarketPulse. Updated May 2026.</p>
     </div>
   )
 }
