@@ -708,3 +708,110 @@ export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
     verifiedDate: '2026-05-05',
   },
 }
+
+// ---------- Mobile App Footprint ----------
+// Brutally honest engineering-velocity lens: app stores are dated to the day
+// and authoritative. A flagship HR app last-updated 14 months ago tells a
+// story analyst reports never will. Each listing is sourced from the public
+// store page; "unverified" means the listing exists but metrics weren't
+// pulled in this verification pass (e.g. Google Play's JS-heavy page
+// resisted scraping).
+
+export type MobileAppPlatform = 'iOS' | 'Android'
+
+export type MobileAppListing = {
+  platform: MobileAppPlatform
+  storeUrl: string
+  rating?: number               // 0-5
+  reviewCount?: number          // raw count
+  lastUpdated?: string          // free-form, prefer 'MMM D, YYYY'
+  version?: string
+  size?: string                 // include unit, e.g. '196.7 MB'
+  minOSVersion?: string
+  publisher?: string            // dev/seller name as listed on the store
+  languages?: number
+  unverified?: boolean          // true = listing known to exist, metrics not pulled
+  unverifiedReason?: string
+}
+
+export type MobileApp = {
+  name: string                  // 'Workday', 'Paycom'
+  audience?: string             // 'Employee', 'Manager', 'Admin', 'Recruiter'
+  ios?: MobileAppListing
+  android?: MobileAppListing
+  note?: string
+}
+
+export type MobileAppProfile = {
+  apps: MobileApp[]
+  notes?: string[]
+  verifiedDate: string          // YYYY-MM-DD
+}
+
+export const mobileAppProfileBySlug: Record<string, MobileAppProfile> = {
+  // Sourced from Apple App Store (apps.apple.com/us/app/workday/id316800034)
+  // Google Play page resisted programmatic fetch; URL-only entry until
+  // a second verification pass.
+  'workday': {
+    apps: [
+      {
+        name: 'Workday',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/workday/id316800034',
+          rating: 4.7,
+          reviewCount: 1_800_000,
+          lastUpdated: 'Apr 27, 2026',
+          version: '2026.04.1',
+          size: '196.7 MB',
+          minOSVersion: 'iOS 18.0',
+          publisher: 'Workday, Inc',
+          languages: 21,
+        },
+        android: {
+          platform: 'Android',
+          storeUrl: 'https://play.google.com/store/apps/details?id=com.workday.workdroidapp',
+          publisher: 'Workday, Inc.',
+          unverified: true,
+          unverifiedReason: 'Play Store page resisted programmatic fetch; aggregator data conflicts with iOS release cadence so omitted rather than risk staleness.',
+        },
+      },
+    ],
+    notes: [
+      'Workday also publishes Adaptive Planning, Strategic Sourcing, Peakon, and VNDLY apps for specific products — listed primary employee/manager app only here.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/paycom/id1207929487)
+  'paycom': {
+    apps: [
+      {
+        name: 'Paycom',
+        audience: 'Employee + Manager + Client',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/paycom/id1207929487',
+          rating: 4.8,
+          reviewCount: 1_500_000,
+          lastUpdated: 'Apr 1, 2026',
+          version: '7.0.32',
+          size: '165.5 MB',
+          minOSVersion: 'iOS 15.0',
+          publisher: 'Paycom Payroll, LLC',
+          languages: 12,
+        },
+        android: {
+          platform: 'Android',
+          storeUrl: 'https://play.google.com/store/apps/details?id=com.paycom.mobile',
+          publisher: 'Paycom Payroll, LLC',
+          unverified: true,
+          unverifiedReason: 'Play Store page resisted programmatic fetch in this pass.',
+        },
+        note: 'Single unified app — Paycom does not split into separate audience apps.',
+      },
+    ],
+    verifiedDate: '2026-05-05',
+  },
+}

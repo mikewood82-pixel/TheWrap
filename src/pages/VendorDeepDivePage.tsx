@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { vendors } from '../data/vendors'
 import { vendorHighlights } from '../data/vendorHighlights'
 import { vendorDetails } from '../data/vendorDetails'
-import { aiGovernanceProfileBySlug, complianceProfileBySlug, fundingProfileBySlug, lastVerifiedBySlug, leadershipBySlug, supportProfileBySlug } from '../data/vendorProfiles'
+import { aiGovernanceProfileBySlug, complianceProfileBySlug, fundingProfileBySlug, lastVerifiedBySlug, leadershipBySlug, mobileAppProfileBySlug, supportProfileBySlug } from '../data/vendorProfiles'
 import { useWrapPlus } from '../context/WrapPlusContext'
 import RatingChart, { generateHistory } from '../components/RatingChart'
 import VendorLogo from '../components/VendorLogo'
@@ -15,6 +15,7 @@ import VendorFundingTimeline from '../components/VendorFundingTimeline'
 import VendorLeadership from '../components/VendorLeadership'
 import VendorCompliance from '../components/VendorCompliance'
 import VendorAIGovernance from '../components/VendorAIGovernance'
+import VendorMobileApp from '../components/VendorMobileApp'
 
 function CapabilityBar({ label, score, rationale }: { label: string; score: number; rationale?: string }) {
   const color = score >= 85 ? 'bg-brand-terracotta' : score >= 65 ? 'bg-brand-gold' : 'bg-brand-dark/30'
@@ -62,7 +63,7 @@ function hasCustomerFeedback(cf: NonNullable<Details>['customerFeedback']): bool
   )
 }
 
-function buildAnchorItems({ details, highlights, hasCompliance, hasAIGovernance }: { details: Details; highlights: Highlights; hasCompliance: boolean; hasAIGovernance: boolean }): AnchorItem[] {
+function buildAnchorItems({ details, highlights, hasCompliance, hasAIGovernance, hasMobile }: { details: Details; highlights: Highlights; hasCompliance: boolean; hasAIGovernance: boolean; hasMobile: boolean }): AnchorItem[] {
   const items: AnchorItem[] = [{ id: 'snapshot', label: 'Snapshot' }]
   items.push({ id: 'hiring', label: 'Hiring' })
   if (details?.leadership?.length)   items.push({ id: 'leadership', label: 'Leadership' })
@@ -71,6 +72,7 @@ function buildAnchorItems({ details, highlights, hasCompliance, hasAIGovernance 
   if (details?.idealCustomer)        items.push({ id: 'fit', label: 'Fit' })
   if (hasCompliance)                 items.push({ id: 'compliance', label: 'Compliance' })
   if (hasAIGovernance)               items.push({ id: 'ai-governance', label: 'AI Governance' })
+  if (hasMobile)                     items.push({ id: 'mobile', label: 'Mobile' })
   if (details?.financialHealth)      items.push({ id: 'financials', label: 'Funding' })
   if (details?.supportQuality)       items.push({ id: 'support', label: 'Support' })
   if (details?.customerFeedback && hasCustomerFeedback(details.customerFeedback)) items.push({ id: 'feedback', label: 'Buyer feedback' })
@@ -141,6 +143,7 @@ export default function VendorDeepDivePage() {
   const supportProfile = supportProfileBySlug[vendor.slug]
   const complianceProfile = complianceProfileBySlug[vendor.slug]
   const aiGovernanceProfile = aiGovernanceProfileBySlug[vendor.slug]
+  const mobileAppProfile = mobileAppProfileBySlug[vendor.slug]
   const details = baseDetails && {
     ...baseDetails,
     leadership,
@@ -233,7 +236,7 @@ export default function VendorDeepDivePage() {
       />
 
       {/* Sticky in-page nav */}
-      <VendorAnchorNav items={buildAnchorItems({ details, highlights, hasCompliance: !!complianceProfile, hasAIGovernance: !!aiGovernanceProfile })} />
+      <VendorAnchorNav items={buildAnchorItems({ details, highlights, hasCompliance: !!complianceProfile, hasAIGovernance: !!aiGovernanceProfile, hasMobile: !!mobileAppProfile })} />
 
       {/* Hiring Pulse — surfaces the live jobs DB right after the snapshot.
           Self-suppresses if the vendor isn't tracked in the jobs feed. */}
@@ -363,6 +366,10 @@ export default function VendorDeepDivePage() {
           {/* AI Governance Posture — public answers to the seven AI questions
               showing up in 2026 RFPs. Self-suppresses if no profile exists. */}
           {aiGovernanceProfile && <VendorAIGovernance profile={aiGovernanceProfile} />}
+
+          {/* Mobile App Footprint — public app-store metrics as an
+              engineering-velocity lens. Self-suppresses if no profile exists. */}
+          {mobileAppProfile && <VendorMobileApp profile={mobileAppProfile} />}
 
           {/* Newsroom */}
           <div id="news" className="bg-white border border-brand-cream rounded-xl p-6 mb-6 scroll-mt-24">
@@ -924,7 +931,7 @@ export default function VendorDeepDivePage() {
             <div className="text-brand-gold text-xs uppercase tracking-widest font-medium mb-2">Wrap+</div>
             <h3 className="font-serif text-xl font-bold mb-2 text-white">See the full {vendor.name} profile</h3>
             <p className="text-white/70 text-sm mb-6 leading-relaxed max-w-md mx-auto">
-              Capability scores, ideal customer fit, integrations, compliance & AI governance posture, financial health, support quality, review highlights, and the latest news — included with Wrap+.
+              Capability scores, ideal customer fit, integrations, compliance & AI governance posture, mobile app footprint, financial health, support quality, review highlights, and the latest news — included with Wrap+.
             </p>
             <Link
               to="/subscribe"
