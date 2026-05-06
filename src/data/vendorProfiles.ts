@@ -792,6 +792,108 @@ export const complianceProfileBySlug: Record<string, ComplianceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from deel.com/security and trust.deel.com. Deel\'s pattern
+  // is SOC-heavy (full SOC 1+2+3 trio) plus ISO 27001 — strong US/AICPA
+  // posture but no EU-specific certs, mirroring its US-led global EOR
+  // positioning.
+  'deel': {
+    trustCenterUrl: 'https://trust.deel.com/',
+    certifications: [
+      { name: 'SOC 1',     category: 'Security', status: 'Certified', note: 'Annually audited; covers financial controls per AICPA' },
+      { name: 'SOC 2',     category: 'Security', status: 'Certified', note: 'Annually audited; covers Security, Availability, Confidentiality, Processing Integrity, Privacy' },
+      { name: 'SOC 3',     category: 'Security', status: 'Certified', note: 'Public summary report' },
+      { name: 'ISO 27001', category: 'Security', status: 'Certified', note: 'Information Security Management System' },
+      { name: 'GDPR',      category: 'Privacy',  status: 'Certified' },
+    ],
+    notes: [
+      'Strong US/AICPA posture (SOC 1+2+3) plus ISO 27001 baseline. AES-256 encryption-at-rest cited.',
+      'No ISO 27017 / 27018 / 27701 / 42001, FedRAMP, HIPAA BAA, PCI DSS, CCPA, EU-US DPF, UK/Swiss DPF, or CSA STAR publicly listed — surprising for a vendor handling global payroll across 100+ countries.',
+      'No SOC Type designation on the public page; annual audit cadence implies Type II but buyers should confirm.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from trust.personio.com and personio.com/security/. Personio
+  // is the strongest EU compliance posture in the sample so far —
+  // ISO 27001:2022 + 27017 + SoA + GDPR, no SOC certs (consistent with
+  // German vendor heritage where ISO is the dominant framework).
+  'personio': {
+    trustCenterUrl: 'https://trust.personio.com/',
+    certifications: [
+      { name: 'ISO/IEC 27001:2022',     category: 'Security', status: 'Certified', note: 'Information Security Management System' },
+      { name: 'ISO/IEC 27001 SoA',      category: 'Security', status: 'Certified', note: 'Statement of Applicability — uncommon to publicly surface' },
+      { name: 'ISO/IEC 27017:2015',     category: 'Security', status: 'Certified', note: 'Cloud services security controls' },
+      { name: 'GDPR',                   category: 'Privacy',  status: 'Certified', note: 'Data protection and information security at the core of products' },
+    ],
+    notes: [
+      'No SOC 1 / 2 / 3 publicly listed — German vendor heritage where ISO frameworks dominate over AICPA SOC.',
+      'No ISO 27018 / 27701 / 42001, FedRAMP, HIPAA BAA, PCI DSS, CCPA, EU-US DPF (Personio is EU-headquartered, so DPF transfer mechanism is less relevant), or CSA STAR publicly listed.',
+      'Customer data hosted on ISO/IEC 27001-certified servers in Frankfurt; data does not leave the EU.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Paylocity (NASDAQ:PCTY) is ISO 27001:2022 certified per public
+  // sources, but the Trust Center page resisted programmatic fetch
+  // this pass — additional certs likely exist but couldn\'t be confirmed
+  // authoritatively. Conservative listing.
+  'paylocity': {
+    trustCenterUrl: 'https://trust.paylocity.com/',
+    certifications: [
+      { name: 'ISO 27001:2022', category: 'Security', status: 'Certified', note: 'Information Security Management System; framework for data security and risk management' },
+    ],
+    notes: [
+      'Trust Center page (trust.paylocity.com) resisted programmatic fetch on 2026-05-05 — additional certs likely exist but could not be confirmed from authoritative sources, so are intentionally omitted.',
+      'No SOC 1/2/3, ISO 27017/27018/27701/42001, FedRAMP, HIPAA BAA, PCI DSS, GDPR, CCPA, EU-US DPF, or CSA STAR confirmed from authoritative sources. Public-co status (NASDAQ: PCTY) implies SOX baseline.',
+      'For procurement, request the Paylocity Trust Center subscription to receive the full attestation list.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from hibob.com/security. Hibob\'s pattern is unusually
+  // tight: SOC 2 Type II + ISO 27001:2022 + ISO 27018:2019 — all three
+  // covering the privacy + cloud controls combo. Reports gated under NDA.
+  'hibob': {
+    trustCenterUrl: 'https://www.hibob.com/security',
+    certifications: [
+      { name: 'SOC 2 Type II',     category: 'Security', status: 'Certified', note: 'Routine audits; reports available upon request and subject to a signed NDA' },
+      { name: 'ISO 27001:2022',    category: 'Security', status: 'Certified', note: 'Information Security Management System' },
+      { name: 'ISO 27018:2019',    category: 'Privacy',  status: 'Certified', note: 'Cloud personal-data processing — uncommon to find paired with SOC 2 in mid-market HCM' },
+    ],
+    notes: [
+      'Hibob (Israeli vendor, Bessemer + General Atlantic backed) holds the cleanest SOC + ISO combo of the mid-market HCMs covered: SOC 2 Type II for AICPA buyers + ISO 27001:2022 + ISO 27018:2019.',
+      'No SOC 1, SOC 3, ISO 27017 / 27701 / 42001, FedRAMP, HIPAA BAA, PCI DSS, GDPR (as a separate cert), CCPA, EU-US DPF, or CSA STAR publicly listed.',
+      'SOC 2 Type II report and Penetration Test Summary require a signed NDA — typical mid-market gating.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from security.cultureamp.com. Culture Amp has the broadest
+  // global privacy-law coverage in the entire 16-vendor sample (GDPR +
+  // CCPA + LGPD) plus the rare ISO 42001:2023 AI Management cert AND
+  // CSA STAR — only 5 of 16 vendors carry ISO 42001 and only 2 carry
+  // CSA STAR. Strongest engagement-platform compliance posture.
+  'culture-amp': {
+    trustCenterUrl: 'https://security.cultureamp.com/',
+    certifications: [
+      { name: 'SOC 2 Type II',         category: 'Security', status: 'Certified', note: 'Routine audits; reports available via Trust Center' },
+      { name: 'ISO/IEC 27001',         category: 'Security', status: 'Certified', note: 'Information Security Management System' },
+      { name: 'ISO/IEC 27001 SoA',     category: 'Security', status: 'Certified', note: 'Statement of Applicability publicly listed' },
+      { name: 'ISO/IEC 42001:2023',    category: 'AI',       status: 'Certified', note: 'AI Management System standard — among the few HRTech vendors holding this' },
+      { name: 'CSA STAR',              category: 'Security', status: 'Certified', note: 'Cloud Security Alliance trust + assurance certification' },
+      { name: 'GDPR',                  category: 'Privacy',  status: 'Certified' },
+      { name: 'CCPA',                  category: 'Privacy',  status: 'Certified' },
+      { name: 'LGPD',                  category: 'Privacy',  status: 'Certified', note: 'Brazil\'s Lei Geral de Proteção de Dados — uncommon to surface in HRTech trust centers' },
+    ],
+    notes: [
+      '8 attestations including the ISO 42001 + CSA STAR pair — Culture Amp\'s posture is closer to enterprise HCM (Workday, Greenhouse) than to its engagement peers.',
+      'LGPD listing reflects Culture Amp\'s Australian-roots-plus-global footprint; Latin American privacy law coverage is rare in HRTech.',
+      'No SOC 1, SOC 3, ISO 27017 / 27018 / 27701, FedRAMP, HIPAA BAA, PCI DSS, or EU-US DPF publicly listed.',
+      'Sub-processors named on the Trust Center: Datadog, Box, Bugsnag, Amazon, Atlassian.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- AI Governance Posture ----------
@@ -1297,6 +1399,230 @@ export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from deel.com/ai and trust.deel.com. Deel ships AI features
+  // ("Actionable AI" branded product) but the public governance docs are
+  // light — no model cards, no NIST AI RMF, no ISO 42001, no LL 144.
+  'deel': {
+    acceptableUsePolicy: {
+      status: 'Partial',
+      url: 'https://www.deel.com/ai',
+      note: 'Public AI page exists with marketing positioning ("Actionable AI for approving hiring, payroll, IT flows") but no formal Responsible AI principles or policy document linked.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located for Deel\'s AI features.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public AI or trust pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in Deel\'s certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located despite Deel\'s significant EU footprint.',
+    },
+    nycLL144: {
+      status: 'Unknown',
+      note: 'Deel has hiring-adjacent AI features (interview scheduling, contract generation). Buyers using these for NYC-based hiring decisions should request the bias audit.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'No public statement located on whether customer data is used to train AI models. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No canonical public sub-processor list located.',
+    },
+    notes: [
+      'Deel\'s AI documentation lags behind its compliance documentation — strong on SOC + ISO certs but thin on public AI governance specifics.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from personio.com and Personio Help Center. Personio has
+  // the strongest published AI governance posture in the entire 12-vendor
+  // sample to date — explicit no-training, EU-only data residency
+  // via AWS Bedrock + Claude, formal EU AI Act risk classification.
+  'personio': {
+    acceptableUsePolicy: {
+      status: 'Yes',
+      url: 'https://www.personio.com/product/assistant/',
+      note: 'Personio publishes an explicit AI policy document with subsections on AI Overview, AI Training Data and Bias, and AI Security on the Trust Center.',
+    },
+    modelCards: {
+      status: 'Partial',
+      note: 'Public-facing detail on which model powers which feature: Claude (Anthropic) hosted on Personio\'s AWS Bedrock instance for AI Performance Summaries and Personio Assistant. Closer to a model card than most peers offer.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in Personio\'s certification roster.',
+    },
+    euAIAct: {
+      status: 'Yes',
+      url: 'https://support.personio.de/hc/en-us/articles/32032660454813',
+      note: 'Personio has formally classified Personio Assistant as a "Limited Risk AI System" under the EU AI Act and committed to its transparency requirements. Strongest public EU AI Act posture among vendors covered.',
+    },
+    nycLL144: {
+      status: 'N/A',
+      note: 'Personio is an HRIS, not a hiring tool — NYC LL 144 (which targets AEDTs in hiring decisions) does not apply to its core product.',
+    },
+    customerDataTraining: {
+      posture: 'Never',
+      url: 'https://support.personio.de/hc/en-us/articles/32032660454813',
+      note: 'Personio explicitly states: "No customer data is used for training purposes by Personio or any other third party." Zero-storage policy in force with AWS Bedrock; personal data is not stored by Bedrock or the LLM. Among the strictest training-data posture statements in the sample.',
+    },
+    subprocessors: {
+      status: 'Yes',
+      url: 'https://trust.personio.com/',
+      note: 'Sub-processor list published on the Trust Center under Legal section.',
+    },
+    notes: [
+      'Strongest published AI governance posture in the 12-vendor sample to date — only Personio has published a formal EU AI Act risk classification, and the no-training language is more emphatic than even Greenhouse\'s.',
+      'EU-only data residency (Frankfurt) is a meaningful procurement signal for EU buyers concerned about US CLOUD Act exposure.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Paylocity has shipped AI features but no public AI governance
+  // documentation was located in this verification pass. Public-co
+  // status implies internal AI governance via SOX-adjacent controls.
+  'paylocity': {
+    acceptableUsePolicy: {
+      status: 'Unknown',
+      note: 'No public Responsible AI policy or principles document located in this verification pass.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in Paylocity\'s certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located.',
+    },
+    nycLL144: {
+      status: 'Unknown',
+      note: 'Paylocity has applicant tracking and recruiting features potentially in scope for NYC LL 144. Buyers should request the bias audit.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'No public statement located on whether customer data is used to train AI models. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No canonical public sub-processor list located in this verification pass.',
+    },
+    notes: [
+      'Paylocity ships AI features (AI assistant, talent insights) but public AI governance documentation lags meaningfully behind public-co peers. Buyers should request the Trust Center subscription for the full picture.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Hibob has shipped AI features (Bob Pulse, AI Search) but the public
+  // /ai page is more about HOW customers should govern AI than about
+  // Hibob\'s own AI governance posture. Trust center compliance is
+  // strong; AI documentation is thin.
+  'hibob': {
+    acceptableUsePolicy: {
+      status: 'Unknown',
+      note: 'No standalone Responsible AI policy or principles document located. Hibob\'s public AI content is more customer-facing guidance than vendor governance disclosure.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in Hibob\'s certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located despite Hibob\'s significant European customer base.',
+    },
+    nycLL144: {
+      status: 'Unknown',
+      note: 'Hibob has recruiting and ATS-adjacent features potentially in scope for NYC LL 144. Buyers should request the bias audit.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'No explicit public statement located on customer data training. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No canonical public sub-processor list located.',
+    },
+    notes: [
+      'Hibob has strong compliance documentation (SOC 2 + ISO 27001 + ISO 27018) but thin AI governance publicity. Notable gap given Hibob\'s European footprint and proximity to EU AI Act enforcement.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from cultureamp.com/ai and security.cultureamp.com.
+  // Culture Amp has both ISO 42001 AND a public AI policy statement
+  // ("data is not used to train third-party models") — putting it in
+  // a small group with Greenhouse, Workday, Rippling, and Personio
+  // for the strongest AI governance postures in the sample.
+  'culture-amp': {
+    acceptableUsePolicy: {
+      status: 'Yes',
+      url: 'https://www.cultureamp.com/company/legal/our-approach-to-ai',
+      note: '"Our commitment to security, safety, and ethical AI means that our AI features are designed to meet our strict platform security standards." Bias mitigation testing stated as ongoing practice.',
+    },
+    modelCards: {
+      status: 'Partial',
+      note: 'No formal model card library, but Culture Amp publicly identifies its generative-AI partner (Google Vertex AI) and documents data de-identification practices. Closer to a model card than most peers.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public AI or trust pages.',
+    },
+    iso42001: {
+      status: 'Yes',
+      url: 'https://security.cultureamp.com/',
+      note: 'Certified to ISO/IEC 42001:2023 — listed publicly on the Trust Center.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No standalone EU AI Act readiness statement located despite Culture Amp\'s European customer base.',
+    },
+    nycLL144: {
+      status: 'N/A',
+      note: 'Culture Amp is engagement / surveys / performance — not a hiring AEDT — so NYC LL 144 does not apply to the core product.',
+    },
+    customerDataTraining: {
+      posture: 'Never',
+      url: 'https://www.cultureamp.com/company/legal/our-approach-to-ai',
+      note: 'Culture Amp explicitly states: "your data is not used to train third-party models." Generative AI features run on Google Vertex AI with data de-identification.',
+    },
+    subprocessors: {
+      status: 'Yes',
+      url: 'https://security.cultureamp.com/',
+      note: 'Sub-processors listed on the Trust Center: Datadog, Box, Bugsnag, Amazon, Atlassian.',
+    },
+    notes: [
+      'Among the strongest AI governance postures in the 16-vendor sample. ISO 42001:2023 + explicit no-training language + Google Vertex AI partnership disclosure + named sub-processors. Only Personio matches this completeness with a formal EU AI Act risk classification on top.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Ecosystem Depth ----------
@@ -1714,6 +2040,175 @@ export const ecosystemProfileBySlug: Record<string, EcosystemProfile> = {
     unifiedAPIBridges: ['Merge', 'Finch', 'Kombo'],
     verifiedDate: '2026-05-05',
   },
+
+  // Deel positions itself as a developer-friendly platform with public
+  // partner program and API documentation. No specific marketplace count
+  // surfaced; "36,000+ companies reach" is the published statistic.
+  'deel': {
+    ownMarketplace: {
+      name: 'Deel App Store',
+      url: 'https://www.deel.com/integrations/',
+      appCountSource: 'No specific integration count published; Deel cites "36,000+ companies reach" as the marketplace audience size',
+      partnerProgramName: 'Deel API Partner Program',
+      highlightedCategories: ['HR', 'Accounting', 'Payroll', 'Legal', 'Productivity'],
+      note: 'Deel does not publish a canonical integration count. Marketplace reach (36,000+ companies) is the cited stat.',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://developer.deel.com/',
+      note: 'Public Deel Developer Platform with API documentation, guides, and a live API playground.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://developer.deel.com/api/partners/introduction',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located on the developer portal.',
+    },
+    sandbox: {
+      status: 'Public',
+      url: 'https://developer.deel.com/',
+      note: 'Live API playground available on the developer portal — accessible without partnership approval.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Apideck', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Personio runs a full marketplace with public developer hub. 200+
+  // integrations is moderate by ecosystem standards but Personio's 8K+
+  // customer base concentrates marketplace value for partners.
+  'personio': {
+    ownMarketplace: {
+      name: 'Personio Marketplace',
+      url: 'https://www.marketplace.personio.com/',
+      appCount: 200,
+      appCountSource: 'Personio cites "200+ integrations" on the marketplace consistently',
+      partnerProgramName: 'Personio Tech Partner Program',
+      highlightedCategories: ['HRIS', 'Recruiting', 'Performance', 'Productivity', 'Compliance', 'Identity'],
+      note: 'Personio cites 8,000+ customers as the audience reach for marketplace partners.',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://developer.personio.de/',
+      note: 'Public Personio Developer Hub with open APIs. Partners must accept Marketplace Terms of Service and API Security and Use policies.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://developer.personio.de/docs/getting-started-with-the-personio-api',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located on the developer hub.',
+    },
+    sandbox: {
+      status: 'Partner-gated',
+      note: 'Sandbox access tied to the Tech Partner Program onboarding.',
+    },
+    unifiedAPIBridges: ['Merge', 'Apideck', 'Finch', 'Kombo', 'WorkOS'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Paylocity (NASDAQ:PCTY) runs a 300+ partner Integration Marketplace
+  // launched as a formal program. Public dev portal at developer.paylocity
+  // .com with detailed integration-requirements docs.
+  'paylocity': {
+    ownMarketplace: {
+      name: 'Paylocity Integration Marketplace',
+      url: 'https://www.paylocity.com/products/capabilities/integrations/marketplace/',
+      appCount: 300,
+      appCountSource: 'Paylocity press materials cite "more than 300 partners" in the Integration Marketplace',
+      partnerProgramName: 'Paylocity Accelerate Partner Program',
+      highlightedCategories: ['401(k) providers', 'Benefits administration', 'Insurance', 'Retirement', 'ATS', 'TPAs'],
+      note: 'Heavy financial-services partner mix (401(k), benefits, retirement, TPAs) — reflects Paylocity\'s mid-market US payroll positioning. Partner approval requires 3 mutual customer advocates plus 90 days of active integration testing.',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://developer.paylocity.com/integrations/docs/getting-started',
+      note: 'Public Paylocity Developer Portal at developer.paylocity.com with detailed integration documentation, common-use-cases guides, and partner onboarding requirements.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://developer.paylocity.com/',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located.',
+    },
+    sandbox: {
+      status: 'Partner-gated',
+      note: 'Sandbox tied to Accelerate Partner Program onboarding (90-day active integration requirement).',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Hibob runs an integration marketplace at hibob.com/integrations
+  // with public API docs at apidocs.hibob.com. No specific count
+  // surfaced in this pass — Hibob appears to deprioritize raw-count
+  // marketing in favor of named-partner depth.
+  'hibob': {
+    ownMarketplace: {
+      name: 'Hibob Marketplace',
+      url: 'https://www.hibob.com/integrations/',
+      appCountSource: 'No specific integration count published; Hibob favors named-partner depth over raw-count marketing',
+      partnerProgramName: 'Hibob Tech Partner Program',
+      highlightedCategories: ['Payroll', 'Benefits', 'Recruiting', 'Learning', 'Identity (Entra ID)', 'Productivity (Microsoft Teams)'],
+      note: 'Hibob does not publish a canonical count of marketplace partners — uncommon for a vendor of its size. Named partners include Learn Amp, LinkedIn Learning, Entra ID, Microsoft Teams.',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://apidocs.hibob.com/',
+      note: 'Public API documentation at apidocs.hibob.com. Partners receive a demo account, partner documentation, and authentication credentials.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://apidocs.hibob.com/docs/getting-started',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located on the API docs site.',
+    },
+    sandbox: {
+      status: 'Partner-gated',
+      note: 'Demo account provided to vetted Tech Partner Program members.',
+    },
+    unifiedAPIBridges: ['Merge', 'Apideck', 'Finch', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Culture Amp\'s ecosystem documentation is lighter than its
+  // compliance / AI posture would suggest. Marketplace exists at
+  // /integrations but no canonical partner count is published.
+  'culture-amp': {
+    ownMarketplace: {
+      name: 'Culture Amp Integrations',
+      url: 'https://www.cultureamp.com/integrations',
+      appCountSource: 'No specific integration count published; Culture Amp groups integrations by category rather than by raw count',
+      partnerProgramName: 'Culture Amp Partnership Programs',
+      highlightedCategories: ['HRIS', 'Flow-of-work', 'Data control', 'Compensation', 'Learning & development'],
+      note: 'Five-category structure suggests focused ecosystem rather than raw breadth. Slack marketplace presence noted; HRIS depth covers Workday, BambooHR, Rippling, and similar.',
+    },
+    publicAPI: {
+      status: 'Customer-only',
+      url: 'https://www.cultureamp.com/platform/api',
+      note: 'Culture Amp Platform API exists for customers; documentation gated behind login.',
+    },
+    apiDocs: {
+      status: 'Customer-only',
+      note: 'No public API reference URL surfaced; access tied to a Culture Amp customer account.',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located.',
+    },
+    sandbox: {
+      status: 'Unknown',
+      note: 'No public sandbox / demo environment located.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Mobile App Footprint ----------
@@ -2059,6 +2554,155 @@ export const mobileAppProfileBySlug: Record<string, MobileAppProfile> = {
     ],
     notes: [
       'No native Android app located in this verification pass.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/deel-global-payroll-hr/id6478083155).
+  // Note: app ID 6478083155 is recent (2024+) — Deel rebuilt or relaunched
+  // its app, which explains the small ratings count for a vendor of this
+  // scale.
+  'deel': {
+    apps: [
+      {
+        name: 'Deel: Global Payroll & HR',
+        audience: 'Employee + Contractor + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/deel-global-payroll-hr/id6478083155',
+          rating: 4.9,
+          reviewCount: 2_300,
+          lastUpdated: 'Apr 27, 2026',
+          version: '2.3.5',
+          size: '75.7 MB',
+          minOSVersion: 'iOS 17.0',
+          publisher: 'Deel, Inc (USA)',
+          languages: 1,
+        },
+        note: 'High 4.9 rating but only 2.3K ratings — app ID 6478083155 indicates a 2024+ rebuild. English-only despite Deel\'s global payroll footprint across 100+ countries.',
+      },
+    ],
+    notes: [
+      'No native Android app located in this verification pass.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/personio/id1470197212).
+  // Personio\'s mobile is unique in the sample: 18 supported languages
+  // (more than any other vendor — even Workday\'s 21 includes English
+  // variants), but only 9 ratings.
+  'personio': {
+    apps: [
+      {
+        name: 'Personio',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/personio/id1470197212',
+          rating: 5.0,
+          reviewCount: 9,
+          lastUpdated: 'Apr 28, 2026',
+          version: '2026.18.0',
+          size: '29.1 MB',
+          minOSVersion: 'iOS 16.0',
+          publisher: 'Personio GmbH',
+          languages: 18,
+        },
+        android: {
+          platform: 'Android',
+          storeUrl: 'https://play.google.com/store/apps/details?id=com.personio',
+          publisher: 'Personio GmbH',
+          unverified: true,
+          unverifiedReason: 'Play Store page resisted programmatic fetch in this pass.',
+        },
+        note: '18 supported languages — most multilingual mobile app in the sample, reflecting Personio\'s pan-European footprint. Only 9 iOS ratings (small sample), but updated within a week of verification — fastest cadence after Rippling and Gusto. Bundle size 29.1 MB is the smallest of any HCM mobile app.',
+      },
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/paylocity/id652438572).
+  // Paylocity\'s mobile is a sleeper standout: 586K iOS ratings is the
+  // 2nd-largest install base after ADP (4.2M) and Workday (1.8M).
+  // Reflects mid-market US payroll scale.
+  'paylocity': {
+    apps: [
+      {
+        name: 'Paylocity',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/paylocity/id652438572',
+          rating: 4.8,
+          reviewCount: 586_000,
+          lastUpdated: 'Apr 29, 2026',
+          version: '26.4.0',
+          size: '291.9 MB',
+          minOSVersion: 'iOS 16.0',
+          publisher: 'Paylocity Corporation',
+          languages: 4,
+        },
+        note: '586K iOS ratings — 2nd largest install base in HRTech after ADP (4.2M) and Workday (1.8M). 4 supported languages (English, French, Polish, Spanish). Also available on macOS, Apple Vision (visionOS), and Apple Watch — broadest Apple platform coverage in the sample.',
+      },
+    ],
+    notes: [
+      'No native Android app metrics pulled in this pass.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/bob-hr/id1297148884).
+  // Hibob\'s mobile is multilingual (12 languages) reflecting its
+  // pan-European customer base. Updated Apr 26, 2026 — fresh.
+  'hibob': {
+    apps: [
+      {
+        name: 'Bob HR',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/bob-hr/id1297148884',
+          rating: 4.7,
+          reviewCount: 1_300,
+          lastUpdated: 'Apr 26, 2026',
+          version: '7.90.11',
+          size: '88.4 MB',
+          minOSVersion: 'iOS 16.0',
+          publisher: 'Hi Bob Ltd',
+          languages: 12,
+        },
+        note: '12 supported languages (English, French, German, Hungarian, Italian, Polish, Portuguese, Russian, Simplified Chinese, Spanish, Traditional Chinese, Turkish) — strong pan-European + Asian coverage. Also supports Apple Vision (visionOS).',
+      },
+    ],
+    notes: [
+      'No native Android app metrics pulled in this pass.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store via developer ID 1461943895
+  // (Culture Amp Inc). The primary Culture Amp app (id 1490372405)
+  // exists but resisted programmatic metric fetch in this pass —
+  // URL surfaced with unverified flag, matching the pattern used
+  // for Android entries throughout.
+  'culture-amp': {
+    apps: [
+      {
+        name: 'Culture Amp',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/culture-amp/id1490372405',
+          publisher: 'Culture Amp Inc',
+          unverified: true,
+          unverifiedReason: 'App Store page resisted programmatic fetch this verification pass; app exists in the Culture Amp Inc developer catalog (developer ID 1461943895).',
+        },
+        note: 'Available to Culture Amp Performance customers — drives feedback, public praise, and goal updates from mobile.',
+      },
+    ],
+    notes: [
+      'Culture Amp\'s mobile is positioned as a companion to the Performance product rather than a primary surface — typical for engagement-platform vendors.',
     ],
     verifiedDate: '2026-05-05',
   },
