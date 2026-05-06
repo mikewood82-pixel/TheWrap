@@ -868,6 +868,32 @@ export const complianceProfileBySlug: Record<string, ComplianceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from security.cultureamp.com. Culture Amp has the broadest
+  // global privacy-law coverage in the entire 16-vendor sample (GDPR +
+  // CCPA + LGPD) plus the rare ISO 42001:2023 AI Management cert AND
+  // CSA STAR — only 5 of 16 vendors carry ISO 42001 and only 2 carry
+  // CSA STAR. Strongest engagement-platform compliance posture.
+  'culture-amp': {
+    trustCenterUrl: 'https://security.cultureamp.com/',
+    certifications: [
+      { name: 'SOC 2 Type II',         category: 'Security', status: 'Certified', note: 'Routine audits; reports available via Trust Center' },
+      { name: 'ISO/IEC 27001',         category: 'Security', status: 'Certified', note: 'Information Security Management System' },
+      { name: 'ISO/IEC 27001 SoA',     category: 'Security', status: 'Certified', note: 'Statement of Applicability publicly listed' },
+      { name: 'ISO/IEC 42001:2023',    category: 'AI',       status: 'Certified', note: 'AI Management System standard — among the few HRTech vendors holding this' },
+      { name: 'CSA STAR',              category: 'Security', status: 'Certified', note: 'Cloud Security Alliance trust + assurance certification' },
+      { name: 'GDPR',                  category: 'Privacy',  status: 'Certified' },
+      { name: 'CCPA',                  category: 'Privacy',  status: 'Certified' },
+      { name: 'LGPD',                  category: 'Privacy',  status: 'Certified', note: 'Brazil\'s Lei Geral de Proteção de Dados — uncommon to surface in HRTech trust centers' },
+    ],
+    notes: [
+      '8 attestations including the ISO 42001 + CSA STAR pair — Culture Amp\'s posture is closer to enterprise HCM (Workday, Greenhouse) than to its engagement peers.',
+      'LGPD listing reflects Culture Amp\'s Australian-roots-plus-global footprint; Latin American privacy law coverage is rare in HRTech.',
+      'No SOC 1, SOC 3, ISO 27017 / 27018 / 27701, FedRAMP, HIPAA BAA, PCI DSS, or EU-US DPF publicly listed.',
+      'Sub-processors named on the Trust Center: Datadog, Box, Bugsnag, Amazon, Atlassian.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- AI Governance Posture ----------
@@ -1549,6 +1575,54 @@ export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Sourced from cultureamp.com/ai and security.cultureamp.com.
+  // Culture Amp has both ISO 42001 AND a public AI policy statement
+  // ("data is not used to train third-party models") — putting it in
+  // a small group with Greenhouse, Workday, Rippling, and Personio
+  // for the strongest AI governance postures in the sample.
+  'culture-amp': {
+    acceptableUsePolicy: {
+      status: 'Yes',
+      url: 'https://www.cultureamp.com/company/legal/our-approach-to-ai',
+      note: '"Our commitment to security, safety, and ethical AI means that our AI features are designed to meet our strict platform security standards." Bias mitigation testing stated as ongoing practice.',
+    },
+    modelCards: {
+      status: 'Partial',
+      note: 'No formal model card library, but Culture Amp publicly identifies its generative-AI partner (Google Vertex AI) and documents data de-identification practices. Closer to a model card than most peers.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public AI or trust pages.',
+    },
+    iso42001: {
+      status: 'Yes',
+      url: 'https://security.cultureamp.com/',
+      note: 'Certified to ISO/IEC 42001:2023 — listed publicly on the Trust Center.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No standalone EU AI Act readiness statement located despite Culture Amp\'s European customer base.',
+    },
+    nycLL144: {
+      status: 'N/A',
+      note: 'Culture Amp is engagement / surveys / performance — not a hiring AEDT — so NYC LL 144 does not apply to the core product.',
+    },
+    customerDataTraining: {
+      posture: 'Never',
+      url: 'https://www.cultureamp.com/company/legal/our-approach-to-ai',
+      note: 'Culture Amp explicitly states: "your data is not used to train third-party models." Generative AI features run on Google Vertex AI with data de-identification.',
+    },
+    subprocessors: {
+      status: 'Yes',
+      url: 'https://security.cultureamp.com/',
+      note: 'Sub-processors listed on the Trust Center: Datadog, Box, Bugsnag, Amazon, Atlassian.',
+    },
+    notes: [
+      'Among the strongest AI governance postures in the 16-vendor sample. ISO 42001:2023 + explicit no-training language + Google Vertex AI partnership disclosure + named sub-processors. Only Personio matches this completeness with a formal EU AI Act risk classification on top.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Ecosystem Depth ----------
@@ -2102,6 +2176,39 @@ export const ecosystemProfileBySlug: Record<string, EcosystemProfile> = {
     unifiedAPIBridges: ['Merge', 'Apideck', 'Finch', 'Kombo'],
     verifiedDate: '2026-05-05',
   },
+
+  // Culture Amp\'s ecosystem documentation is lighter than its
+  // compliance / AI posture would suggest. Marketplace exists at
+  // /integrations but no canonical partner count is published.
+  'culture-amp': {
+    ownMarketplace: {
+      name: 'Culture Amp Integrations',
+      url: 'https://www.cultureamp.com/integrations',
+      appCountSource: 'No specific integration count published; Culture Amp groups integrations by category rather than by raw count',
+      partnerProgramName: 'Culture Amp Partnership Programs',
+      highlightedCategories: ['HRIS', 'Flow-of-work', 'Data control', 'Compensation', 'Learning & development'],
+      note: 'Five-category structure suggests focused ecosystem rather than raw breadth. Slack marketplace presence noted; HRIS depth covers Workday, BambooHR, Rippling, and similar.',
+    },
+    publicAPI: {
+      status: 'Customer-only',
+      url: 'https://www.cultureamp.com/platform/api',
+      note: 'Culture Amp Platform API exists for customers; documentation gated behind login.',
+    },
+    apiDocs: {
+      status: 'Customer-only',
+      note: 'No public API reference URL surfaced; access tied to a Culture Amp customer account.',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located.',
+    },
+    sandbox: {
+      status: 'Unknown',
+      note: 'No public sandbox / demo environment located.',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Mobile App Footprint ----------
@@ -2570,6 +2677,32 @@ export const mobileAppProfileBySlug: Record<string, MobileAppProfile> = {
     ],
     notes: [
       'No native Android app metrics pulled in this pass.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store via developer ID 1461943895
+  // (Culture Amp Inc). The primary Culture Amp app (id 1490372405)
+  // exists but resisted programmatic metric fetch in this pass —
+  // URL surfaced with unverified flag, matching the pattern used
+  // for Android entries throughout.
+  'culture-amp': {
+    apps: [
+      {
+        name: 'Culture Amp',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/culture-amp/id1490372405',
+          publisher: 'Culture Amp Inc',
+          unverified: true,
+          unverifiedReason: 'App Store page resisted programmatic fetch this verification pass; app exists in the Culture Amp Inc developer catalog (developer ID 1461943895).',
+        },
+        note: 'Available to Culture Amp Performance customers — drives feedback, public praise, and goal updates from mobile.',
+      },
+    ],
+    notes: [
+      'Culture Amp\'s mobile is positioned as a companion to the Performance product rather than a primary surface — typical for engagement-platform vendors.',
     ],
     verifiedDate: '2026-05-05',
   },
