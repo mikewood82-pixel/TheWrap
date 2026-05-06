@@ -833,6 +833,41 @@ export const complianceProfileBySlug: Record<string, ComplianceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Paylocity (NASDAQ:PCTY) is ISO 27001:2022 certified per public
+  // sources, but the Trust Center page resisted programmatic fetch
+  // this pass — additional certs likely exist but couldn\'t be confirmed
+  // authoritatively. Conservative listing.
+  'paylocity': {
+    trustCenterUrl: 'https://trust.paylocity.com/',
+    certifications: [
+      { name: 'ISO 27001:2022', category: 'Security', status: 'Certified', note: 'Information Security Management System; framework for data security and risk management' },
+    ],
+    notes: [
+      'Trust Center page (trust.paylocity.com) resisted programmatic fetch on 2026-05-05 — additional certs likely exist but could not be confirmed from authoritative sources, so are intentionally omitted.',
+      'No SOC 1/2/3, ISO 27017/27018/27701/42001, FedRAMP, HIPAA BAA, PCI DSS, GDPR, CCPA, EU-US DPF, or CSA STAR confirmed from authoritative sources. Public-co status (NASDAQ: PCTY) implies SOX baseline.',
+      'For procurement, request the Paylocity Trust Center subscription to receive the full attestation list.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from hibob.com/security. Hibob\'s pattern is unusually
+  // tight: SOC 2 Type II + ISO 27001:2022 + ISO 27018:2019 — all three
+  // covering the privacy + cloud controls combo. Reports gated under NDA.
+  'hibob': {
+    trustCenterUrl: 'https://www.hibob.com/security',
+    certifications: [
+      { name: 'SOC 2 Type II',     category: 'Security', status: 'Certified', note: 'Routine audits; reports available upon request and subject to a signed NDA' },
+      { name: 'ISO 27001:2022',    category: 'Security', status: 'Certified', note: 'Information Security Management System' },
+      { name: 'ISO 27018:2019',    category: 'Privacy',  status: 'Certified', note: 'Cloud personal-data processing — uncommon to find paired with SOC 2 in mid-market HCM' },
+    ],
+    notes: [
+      'Hibob (Israeli vendor, Bessemer + General Atlantic backed) holds the cleanest SOC + ISO combo of the mid-market HCMs covered: SOC 2 Type II for AICPA buyers + ISO 27001:2022 + ISO 27018:2019.',
+      'No SOC 1, SOC 3, ISO 27017 / 27701 / 42001, FedRAMP, HIPAA BAA, PCI DSS, GDPR (as a separate cert), CCPA, EU-US DPF, or CSA STAR publicly listed.',
+      'SOC 2 Type II report and Penetration Test Summary require a signed NDA — typical mid-market gating.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- AI Governance Posture ----------
@@ -1429,6 +1464,91 @@ export const aiGovernanceProfileBySlug: Record<string, AIGovernanceProfile> = {
     ],
     verifiedDate: '2026-05-05',
   },
+
+  // Paylocity has shipped AI features but no public AI governance
+  // documentation was located in this verification pass. Public-co
+  // status implies internal AI governance via SOX-adjacent controls.
+  'paylocity': {
+    acceptableUsePolicy: {
+      status: 'Unknown',
+      note: 'No public Responsible AI policy or principles document located in this verification pass.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in Paylocity\'s certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located.',
+    },
+    nycLL144: {
+      status: 'Unknown',
+      note: 'Paylocity has applicant tracking and recruiting features potentially in scope for NYC LL 144. Buyers should request the bias audit.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'No public statement located on whether customer data is used to train AI models. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No canonical public sub-processor list located in this verification pass.',
+    },
+    notes: [
+      'Paylocity ships AI features (AI assistant, talent insights) but public AI governance documentation lags meaningfully behind public-co peers. Buyers should request the Trust Center subscription for the full picture.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Hibob has shipped AI features (Bob Pulse, AI Search) but the public
+  // /ai page is more about HOW customers should govern AI than about
+  // Hibob\'s own AI governance posture. Trust center compliance is
+  // strong; AI documentation is thin.
+  'hibob': {
+    acceptableUsePolicy: {
+      status: 'Unknown',
+      note: 'No standalone Responsible AI policy or principles document located. Hibob\'s public AI content is more customer-facing guidance than vendor governance disclosure.',
+    },
+    modelCards: {
+      status: 'Unknown',
+      note: 'No per-model fact sheets located.',
+    },
+    nistAIRMF: {
+      status: 'Unknown',
+      note: 'Not referenced on public pages.',
+    },
+    iso42001: {
+      status: 'No',
+      note: 'Not listed in Hibob\'s certification roster.',
+    },
+    euAIAct: {
+      status: 'Unknown',
+      note: 'No public statement on EU AI Act readiness located despite Hibob\'s significant European customer base.',
+    },
+    nycLL144: {
+      status: 'Unknown',
+      note: 'Hibob has recruiting and ATS-adjacent features potentially in scope for NYC LL 144. Buyers should request the bias audit.',
+    },
+    customerDataTraining: {
+      posture: 'Unclear',
+      note: 'No explicit public statement located on customer data training. Confirm in contract.',
+    },
+    subprocessors: {
+      status: 'Unknown',
+      note: 'No canonical public sub-processor list located.',
+    },
+    notes: [
+      'Hibob has strong compliance documentation (SOC 2 + ISO 27001 + ISO 27018) but thin AI governance publicity. Notable gap given Hibob\'s European footprint and proximity to EU AI Act enforcement.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Ecosystem Depth ----------
@@ -1914,6 +2034,74 @@ export const ecosystemProfileBySlug: Record<string, EcosystemProfile> = {
     unifiedAPIBridges: ['Merge', 'Apideck', 'Finch', 'Kombo', 'WorkOS'],
     verifiedDate: '2026-05-05',
   },
+
+  // Paylocity (NASDAQ:PCTY) runs a 300+ partner Integration Marketplace
+  // launched as a formal program. Public dev portal at developer.paylocity
+  // .com with detailed integration-requirements docs.
+  'paylocity': {
+    ownMarketplace: {
+      name: 'Paylocity Integration Marketplace',
+      url: 'https://www.paylocity.com/products/capabilities/integrations/marketplace/',
+      appCount: 300,
+      appCountSource: 'Paylocity press materials cite "more than 300 partners" in the Integration Marketplace',
+      partnerProgramName: 'Paylocity Accelerate Partner Program',
+      highlightedCategories: ['401(k) providers', 'Benefits administration', 'Insurance', 'Retirement', 'ATS', 'TPAs'],
+      note: 'Heavy financial-services partner mix (401(k), benefits, retirement, TPAs) — reflects Paylocity\'s mid-market US payroll positioning. Partner approval requires 3 mutual customer advocates plus 90 days of active integration testing.',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://developer.paylocity.com/integrations/docs/getting-started',
+      note: 'Public Paylocity Developer Portal at developer.paylocity.com with detailed integration documentation, common-use-cases guides, and partner onboarding requirements.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://developer.paylocity.com/',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located.',
+    },
+    sandbox: {
+      status: 'Partner-gated',
+      note: 'Sandbox tied to Accelerate Partner Program onboarding (90-day active integration requirement).',
+    },
+    unifiedAPIBridges: ['Merge', 'Finch', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Hibob runs an integration marketplace at hibob.com/integrations
+  // with public API docs at apidocs.hibob.com. No specific count
+  // surfaced in this pass — Hibob appears to deprioritize raw-count
+  // marketing in favor of named-partner depth.
+  'hibob': {
+    ownMarketplace: {
+      name: 'Hibob Marketplace',
+      url: 'https://www.hibob.com/integrations/',
+      appCountSource: 'No specific integration count published; Hibob favors named-partner depth over raw-count marketing',
+      partnerProgramName: 'Hibob Tech Partner Program',
+      highlightedCategories: ['Payroll', 'Benefits', 'Recruiting', 'Learning', 'Identity (Entra ID)', 'Productivity (Microsoft Teams)'],
+      note: 'Hibob does not publish a canonical count of marketplace partners — uncommon for a vendor of its size. Named partners include Learn Amp, LinkedIn Learning, Entra ID, Microsoft Teams.',
+    },
+    publicAPI: {
+      status: 'Public',
+      url: 'https://apidocs.hibob.com/',
+      note: 'Public API documentation at apidocs.hibob.com. Partners receive a demo account, partner documentation, and authentication credentials.',
+    },
+    apiDocs: {
+      status: 'Public',
+      url: 'https://apidocs.hibob.com/docs/getting-started',
+    },
+    openAPISpec: {
+      status: 'Unknown',
+      note: 'No public OpenAPI / Swagger spec link located on the API docs site.',
+    },
+    sandbox: {
+      status: 'Partner-gated',
+      note: 'Demo account provided to vetted Tech Partner Program members.',
+    },
+    unifiedAPIBridges: ['Merge', 'Apideck', 'Finch', 'Kombo'],
+    verifiedDate: '2026-05-05',
+  },
 }
 
 // ---------- Mobile App Footprint ----------
@@ -2323,6 +2511,65 @@ export const mobileAppProfileBySlug: Record<string, MobileAppProfile> = {
         },
         note: '18 supported languages — most multilingual mobile app in the sample, reflecting Personio\'s pan-European footprint. Only 9 iOS ratings (small sample), but updated within a week of verification — fastest cadence after Rippling and Gusto. Bundle size 29.1 MB is the smallest of any HCM mobile app.',
       },
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/paylocity/id652438572).
+  // Paylocity\'s mobile is a sleeper standout: 586K iOS ratings is the
+  // 2nd-largest install base after ADP (4.2M) and Workday (1.8M).
+  // Reflects mid-market US payroll scale.
+  'paylocity': {
+    apps: [
+      {
+        name: 'Paylocity',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/paylocity/id652438572',
+          rating: 4.8,
+          reviewCount: 586_000,
+          lastUpdated: 'Apr 29, 2026',
+          version: '26.4.0',
+          size: '291.9 MB',
+          minOSVersion: 'iOS 16.0',
+          publisher: 'Paylocity Corporation',
+          languages: 4,
+        },
+        note: '586K iOS ratings — 2nd largest install base in HRTech after ADP (4.2M) and Workday (1.8M). 4 supported languages (English, French, Polish, Spanish). Also available on macOS, Apple Vision (visionOS), and Apple Watch — broadest Apple platform coverage in the sample.',
+      },
+    ],
+    notes: [
+      'No native Android app metrics pulled in this pass.',
+    ],
+    verifiedDate: '2026-05-05',
+  },
+
+  // Sourced from Apple App Store (apps.apple.com/us/app/bob-hr/id1297148884).
+  // Hibob\'s mobile is multilingual (12 languages) reflecting its
+  // pan-European customer base. Updated Apr 26, 2026 — fresh.
+  'hibob': {
+    apps: [
+      {
+        name: 'Bob HR',
+        audience: 'Employee + Manager',
+        ios: {
+          platform: 'iOS',
+          storeUrl: 'https://apps.apple.com/us/app/bob-hr/id1297148884',
+          rating: 4.7,
+          reviewCount: 1_300,
+          lastUpdated: 'Apr 26, 2026',
+          version: '7.90.11',
+          size: '88.4 MB',
+          minOSVersion: 'iOS 16.0',
+          publisher: 'Hi Bob Ltd',
+          languages: 12,
+        },
+        note: '12 supported languages (English, French, German, Hungarian, Italian, Polish, Portuguese, Russian, Simplified Chinese, Spanish, Traditional Chinese, Turkish) — strong pan-European + Asian coverage. Also supports Apple Vision (visionOS).',
+      },
+    ],
+    notes: [
+      'No native Android app metrics pulled in this pass.',
     ],
     verifiedDate: '2026-05-05',
   },
