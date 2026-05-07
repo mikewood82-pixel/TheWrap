@@ -9,6 +9,129 @@ export interface Newsletter {
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'application-inflation',
+    date: 'May 8, 2026',
+    title: 'Application Inflation Is Devaluing Every Candidate',
+    tag: 'AI & Hiring',
+    excerpt: "AI just 4x'd the application volume — and the resume that ran the ATS industry for two decades has been neutralized as a hiring signal.",
+    body: `
+<img src="/newsletters/may-8-2026-application-inflation/image1.png" alt="Application Inflation Is Devaluing Every Candidate" />
+
+<p>You all know that I read a lot of press releases each week. Well, "read" is a loose term. Most of the information about the release is right in the first two paragraphs. And that's fine. Press releases are mostly boring, "on-the-record" information that companies need to get out in the public. But every once in a while, you catch something that sticks with you. That happened to me this week with Greenhouse's latest release with this simple line:</p>
+
+<p><strong>Applications per recruiter on their platform are up 412% since 2023.</strong></p>
+
+<p>I've been hearing (and seeing anecdotally) that AI has created a massive influx of applications, but 4x is a giant red flag.</p>
+
+<p>So I went digging and it's not just Greenhouse. LinkedIn processes 9,000 applications a minute and turns out about seven hires in the same window. One analysis stated that Easy Apply averages 834 applicants per posting and around 3% get a human eye. For about eight seconds. Time-to-fill keeps stretching too — 41 days in 2023, now 44 and climbing, with tech past 51. And Ashby's analysis of 31 million applications found teams interviewing 40% more candidates per hire than they did in 2021.</p>
+
+<p><strong>More applications. Less attention. Slower hiring. Worse outcomes. Everyone working harder to get further from each other.</strong></p>
+
+<p>No wonder hiring is worse now than it was even two years ago. Two years ago the volume was already too much. Now, it's four times worse.</p>
+
+<p>When you 4x the applications, each candidate is 4x more diluted than they were before. This is application inflation. The Fed prints more dollars, each dollar buys less. AI prints more applications, each one gets less attention. Same dynamic, same outcome. The resume — already a thin proxy for who someone actually is — disappears into a stack nobody is going to read. The recruiter brings in AI to keep up. The candidate brings in AI to keep applying. Both sides are sending GPT-generated emails to GPT-trained screeners and calling that a hiring process.</p>
+
+<p>When everyone's resume is GPT-polished and every job description is keyword-optimized to oblivion, keyword matching stops working. Experience matching stops working. <strong>The signal that ran the entire ATS industry for two decades just got neutralized.</strong></p>
+
+<p>Now, I've written the doom and gloom piece before. I've embraced my Lorax role within HR Tech, warning about the danger coming, but it's no fun to be doom and gloom all the time. So let's have fun and think of a better way.</p>
+
+<p>Imagine if we took the technology of an agent and made it work for both the candidates and hiring teams. Picture an agent that travels with you across your career, actively scanning for the right next role. Companies have their own agents looking for talent. Your agent talks to mine. Parameters get sketched. The two of us only get pulled in once there's a real deal in motion. Just like pro athletes, bring me in when there is a decision to be made. Athletes don't fill out applications. Their information and stats are compiled by their agent who works to get them the best deal based on their needs. Why should the rest of us be relegated to a boring piece of paper and stumbling through ridiculous "got-ya" questions like "what is your biggest weakness?"</p>
+
+<p>The resume needs to come alive too. Right now it's an obituary — past tense, third person, hopeful boilerplate, stripped of anything that sounds like the actual person. Look at what the rest of software has figured out — search, customer service, code, research — all of it has collapsed into a prompt box because conversation is how humans actually want to talk to machines. Hiring, the one category where you most need to understand a person, is still demanding a 40-field form and three uploads. <strong>Less form. More conversation.</strong></p>
+
+<p>While we wait for any of that to be built, hiring teams aren't standing still. They're already looking elsewhere — and the elsewhere is talent intelligence. Some of it the candidate volunteers. A lot of it they don't have to. The candidate doesn't have to tell you anything. Their work tells you. Their network tells you. Their public output tells you. The pitch you write in a cover letter is the least reliable data point in the room — every other source of signal is more honest because nobody curated it for the moment of applying.</p>
+
+<p>The dystopian version of this is digital twins that capture everything you do so the company can replace you with a model of yourself. That's still the risk. But there's an optimistic flip of the same coin.</p>
+
+<p>The same technology that can replicate a person can also represent one. AI that captures who the human actually is — how they think, how they work, what they're great at — so the human can finally be properly seen instead of compressed into a one-page Word doc. A version of this is already happening with what Jeff Taylor and friends are doing at Boomband.</p>
+
+<p>The next chapter doesn't have to look like the last one. <strong>We didn't break hiring with AI. We plugged AI into a process that was already broken and called it innovation.</strong> The next chapter has a chance to do something better.</p>
+
+<p>Let's move on to the week that was in HR Tech. This week's Wrap highlights Greenhouse acquiring voice interviews, iCIMS getting a new CEO, WedgeHR rolling out Candidate Signals, ERIN offering a free version of their referral product, ADP's job numbers, Aspen Tech Labs' job data for Q1 2026, George LaRocque weighs into the "what's next for Workday" debate, a great interview with SmartRecruiters' Allyn Bailey on Winston's rollout, more performative outrage at the EEOC, and the fresh hell of coworkers bonding over botox.</p>
+
+<p>Have a great weekend!</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Greenhouse goes voice-first with Ezra AI Labs</h3>
+<img src="/newsletters/may-8-2026-application-inflation/image2.png" alt="Greenhouse acquires Ezra AI Labs" />
+<p>Greenhouse signed a definitive agreement to acquire Ezra AI Labs, a voice AI interviewing platform that only launched in 2024.</p>
+<p>Pay attention to this one. Greenhouse has spent the last year building the loudest "responsible AI" pitch in the category — ISO 42001 certified, monthly Warden AI bias audits, the AI Principles framework we covered in #73. The bet is that <strong>structured voice conversations at the top of the funnel — where fewer than 7% of applicants currently get any human contact — are the actual upgrade.</strong> That should also help the candidate volume problem. Good move. <a href="https://www.prnewswire.com/news-releases/greenhouse-has-entered-into-a-definitive-agreement-to-acquire-ezra-ai-labs-bringing-conversational-ai-to-the-hiring-process-302762658.html">Read More</a></p>
+
+<h3>iCIMS gets a new CEO</h3>
+<img src="/newsletters/may-8-2026-application-inflation/image3.jpg" alt="iCIMS new CEO" />
+<p>ICIMS (all caps like you're yelling) announced Marc Thompson will take over as CEO effective May 17, succeeding Jason Edelboim. Thompson came in as CFO in September 2024 and has been credited internally with driving the company's AI strategy and operational reset. Before iCIMS he was CFO at EverCommerce through its IPO.</p>
+<p>Read this one in context. TA Associates took iCIMS private back in 2020. Since then, the platform has had its AI overhaul, a brand refresh, and now a CFO running the show. <strong>That's not the playbook for an indefinite hold — that's the playbook for getting dressed up before the dance.</strong> The question is who asks. Workday already grabbed Paradox. SAP has SmartRecruiters. Greenhouse just bought their voice AI play. The list of dance partners with both the cash and the ATS gap to fill is getting short. Oracle is the obvious one. Whoever it is, the clock is ticking. <a href="https://hrtechfeed.com/icims-names-new-ceo/">Read More</a></p>
+
+<h3>ERIN goes free</h3>
+<img src="/newsletters/may-8-2026-application-inflation/image4.jpg" alt="ERIN free AI referral platform" />
+<p>ERIN launched a free version of its AI-powered employee referral platform this week — connect your ATS or HRIS, brand a referral program, go live in minutes. No credit card. You pay nothing until your first three referral hires. Paid plans start at $349/month after that.</p>
+<p>The mechanics are the story. ERIN is shifting referral software from six-week implementations and upfront contracts to instant activation and pay-after-results pricing. The other piece worth flagging: AI Campaigns. Instead of waiting for employees to remember to refer someone, the platform identifies who in the workforce is most likely to know qualified candidates for specific roles and reaches them on SMS, email, Slack, or Teams. <strong>That's how this gets to frontline workers</strong> — the population that traditional referral programs have historically left out because they don't live in the corporate inbox.</p>
+<p>Worth watching. Frontline hiring is one of the last real growth sectors, and a free, AI-driven referral channel that meets workers where they actually are is a credible play for it. <a href="https://apnews.com/press-release/ein-presswire-newsmatics/erin-launches-free-ai-employee-referral-platform-that-goes-live-in-minutes-0a31706f36ba984dcb82605285696d05">Read More</a></p>
+
+<h3>WedgeHR ships Candidate Signals</h3>
+<img src="/newsletters/may-8-2026-application-inflation/image5.png" alt="WedgeHR Candidate Signals" />
+<p>WedgeHR rolled out Candidate Signals this week — an AI feature that analyzes completed one-way video interviews across five interpersonal qualities: self-awareness, collaboration, adaptability, accountability, and motivation. Strongest signals float to the top of the review queue. <a href="https://wedgehr.com/candidate-signals">Read More</a></p>
+
+<hr />
+
+<h2>📊 Research &amp; Reports</h2>
+
+<h3>ADP: 109,000 jobs added in April, but the middle is hollowing</h3>
+<img src="/newsletters/may-8-2026-application-inflation/image6.png" alt="ADP April National Employment Report" />
+<p>ADP's April National Employment Report dropped this morning — 109,000 private sector jobs added, the fastest pace since January 2025. Pay for job-stayers up 4.4%, job-changers up 6.6%. Health care and education carried the report at +61,000, with trade/transportation/utilities rebounding at +25,000. Professional and business services lost 8,000.</p>
+<p>The line worth circling came from ADP chief economist Dr. Nela Richardson: "Small and large employers are hiring, but we're seeing softness in the middle." The numbers back it up — small establishments added 65,000, large added 42,000, and medium-sized companies (50–499 employees) added a combined two thousand. Two. Thousand. <strong>The Middle Migration showing up in the actual data, on the actual day the BLS keeps making harder to trust.</strong> <a href="https://www.prnewswire.com/news-releases/adp-national-employment-report-private-sector-employment-increased-by-109-000-jobs-in-april-annual-pay-was-up-4-4-302764101.html">Read More</a></p>
+
+<h3>Aspen Tech Labs Q1 2026 Job Market Pulse: hiring keeps cooling, BLS keeps revising</h3>
+<img src="/newsletters/may-8-2026-application-inflation/image7.png" alt="Aspen Tech Labs Q1 2026 JobMarketPulse" />
+<p>Aspen Tech Labs dropped their Q1 2026 JobMarketPulse this week — direct-from-employer postings across 225,000+ U.S. companies, no recruitment agency noise, refreshed daily. The headline: U.S. job postings down 2.0% year-over-year, 44 of 51 states posting YoY declines, and the hires rate at 3.1% — the lowest since April 2020.</p>
+<p>The line worth circling is Aspen calling out the BLS directly. Ten of the last eleven monthly payroll prints have been revised, almost all downward. December went from +50K to -17K two months later. Aspen's pitch is exactly what we've been saying for months — real-time, employer-direct hiring signal that doesn't get rewritten in the rearview mirror.</p>
+<p>Two splits worth flagging from the underlying data: <strong>AI Specialist postings up 76.9% YoY because of course they are.</strong> And recruitment agency postings off 9.9% YoY — a much steeper drop than direct employer postings, which says something about who gets cut first when hiring tightens. <a href="https://www.webspidermount.com/wp-content/uploads/2026/04/JobMarketPulse-Report-Q1-2026.pdf">Read More</a></p>
+
+<hr />
+
+<h2>🔥 HR Hot Takes</h2>
+
+<h3>George LaRocque shows up to a vibes-fight with $65 billion in data</h3>
+<img src="/newsletters/may-8-2026-application-inflation/image8.jpg" alt="George LaRocque on the Workday/a16z debate" />
+<p>The Workday/a16z debate has been the hottest argument in HR tech for two weeks — a16z's Joe Schmidt calling Workday the next PeopleSoft, with smart pushback from Thomas Otter, Anita Lettink, Jerome Gouvernel, and Andy Turnbull. Then George LaRocque showed up and brought receipts.</p>
+<p>George has been quietly building the most comprehensive capital dataset in this industry for the better part of a decade — $65 billion in work tech funding across 2,400+ deals. $24.5 billion of that has flowed into the six categories that map to Workday's footprint, and the enterprise ceiling has held every single time. <strong>The punchline lands where Silicon Valley keeps refusing to look:</strong> compliance in enterprise HR isn't a monitoring problem you solve with an agent, it's an accountability and liability problem. Somebody has to be on the hook when payroll runs wrong in Germany.</p>
+<p>George was in this market when PeopleSoft built what Workday eventually replaced. His read on where the next wave actually comes from — and it's not who a16z is funding — is worth a read. <a href="https://1worktech.substack.com/p/the-workday-a16z-debate-has-five">Read More</a></p>
+
+<hr />
+
+<h2>🎙️ Podcast of the Week</h2>
+
+<h3>Allyn Bailey on Winston, Agentic CRM, and the End of Best-of-Breed</h3>
+<img src="/newsletters/may-8-2026-application-inflation/image9.png" alt="Allyn Bailey on Winston" />
+<p>I caught up with Allyn Bailey from SmartRecruiters/SAP at UNLEASH for a check-in on Winston six months in. Customers who've adopted are running about 60% of their jobs through the agent, with strong land-and-expand into adjacent agents. The tease worth circling: agentic CRM is shipping in the next few months. No more hunting through legacy databases for past candidates — you tell the agent who you need, it builds the campaign, runs the nurture, brings them back warm.</p>
+<p>The bigger conversation is where this is heading. Allyn's call: <strong>"transparency is the next right."</strong> Right to access and right to privacy were the GDPR fight. Right to augment and correct what an algorithm thinks about you is the next one. Coming from someone who's spent her career inside the vendor stack, that framing carries weight. We also got into agent-to-agent connectivity, the consumer backlash building around personal data, and the people on TikTok building their own on-prem AI ecosystems. <a href="https://www.hr.com/en/resources/podcasts/talent/integration-is-the-new-sexy-in-hr-tech_moke9p8d.html"><strong>Listen Here</strong></a></p>
+
+<hr />
+
+<h2>👇 Worth a Click</h2>
+
+<h3>The EEOC sues the New York Times. Funny timing.</h3>
+<img src="/newsletters/may-8-2026-application-inflation/image10.jpg" alt="EEOC sues NYT" />
+<p>Tuesday, the EEOC filed suit against the New York Times in the Southern District of New York, alleging the paper passed over a White male employee for promotion in favor of a less-qualified woman to meet diversity goals. The complaint asks for back pay, punitive damages, compensation for "emotional pain" and "mental anguish," and a court order barring the Times from considering race or sex in hiring. EEOC Chair Andrea Lucas — a Trump appointee — kicked off the announcement with "no one is above the law — including 'elite' institutions."</p>
+<p>Read the timeline before you read the filing. The Times has spent months reporting on this exact EEOC under this exact administration. Their field staff told the paper they were being pressured to bring "politically charged cases, even with little evidence." That investigation had been sitting in a drawer for months. Then in late April — right after the Times published — the case quietly accelerated. By Tuesday it was a lawsuit. Filed by the agency, not the employee. <strong>Of note: the agency itself is the plaintiff.</strong></p>
+<p>Keep your eye on this one. The case will get litigated on its merits, and maybe there's something there. But the pattern is the part that should make every HR leader uncomfortable: the agency that's supposed to be enforcing civil rights law is now picking targets that look an awful lot like the targets the White House has been naming out loud. That's not enforcement. That's something else. <a href="https://www.nytimes.com/2026/05/05/business/economy/eeoc-nyt-investigation.html">Read More</a></p>
+
+<h3>Coworkers are bonding over Botox now</h3>
+<img src="/newsletters/may-8-2026-application-inflation/image11.png" alt="Coworkers bonding over Botox" />
+<p>HR Brew dispatch from the new frontier of work-life integration: getting injected with your colleagues. The whiskey rooms of Mad Men gave way to pickleball, pickleball gave way to book club, and now book club has apparently given way to wrinkle paralysis as a team-building exercise.</p>
+<p>I had to share this crazy article just because I can't imagine a world where this is normal. As a 43-year-old man, I may be under a rock with the whole Botox craze, but listen to some of this:</p>
+<p>Sarah Mahoney, a Massachusetts hairdresser, told HR Brew about going for Botox with a new coworker. Her takeaway: it felt "almost like a really vulnerable situation" and brought them closer. They made a day of it. Drinks after.</p>
+<p>Then there's PAN's Laura Beauregard, who hosts quarterly Botox parties at her home with a nurse friend and invites colleagues. Some former PAN employees still show up four times a year for the injections. Her stated rationale: she does her nails and her hair, why not her face. Standard coworker maintenance.</p>
+<p>And a Korn Ferry consultant quoted in the piece offered up another work-adjacent bonding activity she's heard come up not once but twice: doing your taxes. Together. With your coworkers.</p>
+<p>Connection is good. Belonging is good. But a quarterly group Botox at Laura's house is really weird. Maybe I'm out of the loop here, but feel free to ask me at the Wood Summer CookOut and Brazilian Butt Lift gathering this summer. <a href="https://www.hr-brew.com/stories/2026/04/16/some-workers-are-bonding-over-botox-hr-says-that-could-be-good">Read More</a></p>
+    `,
+  },
+  {
     slug: 'ats-napster-moment',
     date: 'May 1, 2026',
     title: 'The Platform You Bought in 2021 Was Built for a World That No Longer Exists',

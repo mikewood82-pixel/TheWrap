@@ -116,4 +116,12 @@ export const voicesSources: VoiceSourceSeed[] = [
     feed_url: 'https://fwdmotion.substack.com/feed',
     description: 'FWDmotion \u2014 for those who want to make forward motion in talent and recruiting.',
   },
+  {
+    slug: 'george-larocque',
+    name: 'George LaRocque',
+    kind: 'analyst',
+    site_url: 'https://1worktech.substack.com',
+    feed_url: 'https://1worktech.substack.com/feed',
+    description: 'WorkTech \u2014 George LaRocque\u2019s analysis of the work tech market, funding, and vendors.',
+  },
 ]
