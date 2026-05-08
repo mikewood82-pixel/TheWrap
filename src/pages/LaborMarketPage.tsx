@@ -23,33 +23,33 @@ const historical = [
 
 // ─── ADP ──────────────────────────────────────────────────────────────────────
 const adpMetrics = [
-  { label: 'Private Jobs Added', value: '62K',   note: 'March 2026 · well below historical avg of ~180K' },
-  { label: 'Job-Stayer Pay Growth', value: '4.5%', note: 'YoY · stable for 10 consecutive months' },
-  { label: 'Job-Changer Pay Growth', value: '6.6%', note: 'YoY · premium for switching narrowest since 2020' },
-  { label: 'Annual Pay (All)',    value: '4.5%',  note: 'YoY overall pay growth, March 2026' },
+  { label: 'Private Jobs Added', value: '109K', note: 'April 2026 · fastest pace since January 2025' },
+  { label: 'Job-Stayer Pay Growth', value: '4.4%', note: 'YoY · down a tenth from March' },
+  { label: 'Job-Changer Pay Growth', value: '6.6%', note: 'YoY · job-switcher premium narrowest since 2020' },
+  { label: 'Annual Pay (All)',    value: '4.4%',  note: 'YoY overall pay growth, April 2026' },
 ]
 
 const adpSectors = [
-  { sector: 'Education & Health', jobs: '+54K', direction: 'up' },
-  { sector: 'Small Business (<20 employees)', jobs: '+112K', direction: 'up' },
-  { sector: 'Trade, Transport & Utilities', jobs: '-58K', direction: 'down' },
-  { sector: 'Mid-size Business (50–249)', jobs: '-26K', direction: 'down' },
+  { sector: 'Education & Health', jobs: '+61K', direction: 'up' },
+  { sector: 'Small Business (<20 employees)', jobs: '+65K', direction: 'up' },
+  { sector: 'Trade, Transport & Utilities', jobs: '+25K', direction: 'up' },
+  { sector: 'Mid-size Business (50–249)', jobs: '+2K', direction: 'flat' },
 ]
 
 // ─── Revelio Labs ─────────────────────────────────────────────────────────────
 const revelioMetrics = [
-  { label: 'RPLS Jobs Gained (Mar)', value: '+19.4K', note: 'Derived from 100M+ U.S. LinkedIn-style profiles' },
-  { label: 'New Posting Salaries',   value: '-2.6%',  note: 'MoM decline in advertised salaries, March 2026' },
-  { label: 'Hiring Rate',            value: 'Low',    note: 'Low-hire, low-fire environment persists' },
-  { label: 'Attrition Rate',         value: 'Low',    note: 'Both hiring and attrition ticked down in March' },
+  { label: 'RPLS Jobs Gained (Apr)', value: '+66.4K', note: 'Derived from 100M+ U.S. LinkedIn-style profiles' },
+  { label: 'New Posting Salaries',   value: '−0.1%',  note: 'MoM · second consecutive monthly decline' },
+  { label: 'Hiring Rate',            value: 'Up',     note: 'Ticked up in April after months of compression' },
+  { label: 'Attrition Rate',         value: 'Flat',   note: 'Hiring up + attrition flat = net positive month' },
 ]
 
 const revelioSectors = [
   { sector: 'Healthcare & Social Services', trend: 'Growing', direction: 'up' },
-  { sector: 'Tech / Knowledge Work', trend: 'Stable', direction: 'flat' },
-  { sector: 'Retail Trade', trend: 'Declining', direction: 'down' },
-  { sector: 'Leisure & Hospitality', trend: 'Declining', direction: 'down' },
-  { sector: 'Public Administration', trend: 'Declining', direction: 'down' },
+  { sector: 'Finance', trend: 'Growing', direction: 'up' },
+  { sector: 'Construction', trend: 'Growing (+12.3K)', direction: 'up' },
+  { sector: 'Retail Trade', trend: 'Declining (−17.9K)', direction: 'down' },
+  { sector: 'Leisure & Hospitality', trend: 'Declining (−26.8K)', direction: 'down' },
 ]
 
 // ─── CHRO Confidence Index ────────────────────────────────────────────────────
@@ -73,61 +73,61 @@ const chroHiringPlans = [
 // Hero callout for the most recent data drop — surfaces fresh numbers above
 // the fold. Refresh every release cycle.
 const latestRelease = {
-  source: 'BLS JOLTS',
-  period: 'March 2026',
-  releasedOn: 'Tue May 5, 2026',
-  headline: 'Hires jumped, quits and layoffs ticked up, openings held flat',
+  source: 'ADP NER',
+  period: 'April 2026',
+  releasedOn: 'Tue May 6, 2026',
+  headline: 'Private payrolls jumped to 109K — fastest pace since January 2025',
   stats: [
-    { label: 'Job Openings', value: '6.9M',  detail: 'unchanged · rate 4.1%' },
-    { label: 'Hires',        value: '5.6M',  detail: '+655K MoM · rate 3.5%' },
-    { label: 'Quits',        value: '3.2M',  detail: 'rate 2.0% · −285K YoY' },
-    { label: 'Layoffs',      value: '1.9M',  detail: 'rate 1.2% · +272K YoY' },
+    { label: 'Private Jobs',    value: '109K', detail: 'April · vs revised 61K in March' },
+    { label: 'Job-Stayer Pay',  value: '4.4%', detail: 'YoY · down a tenth from March' },
+    { label: 'Job-Changer Pay', value: '6.6%', detail: 'YoY · premium narrow but steady' },
+    { label: 'Mid-Size Firms',  value: '+2K',  detail: 'softness in the middle' },
   ],
-  takeaway: 'Hires posted the biggest move (+655K), more than reversing February\'s drop. Quits and layoffs each edged up a tenth — small, but the first sign of churn returning after a long low-hire, low-fire stretch.',
+  takeaway: 'Hiring snapped back — but it\'s lopsided. Small businesses (+65K) and large employers (+42K) drove the entire gain while mid-size firms (50–249) added just 2K. Education & health added 61K alone. Strong headline, narrow base.',
 }
 
 // ─── Upcoming Releases ────────────────────────────────────────────────────────
 // Surfaces the next-on-the-calendar BLS/ADP/JOLTS releases so readers know
 // when fresher data lands. Curated manually — refresh dates each cycle.
 const upcomingReleases = [
-  { date: 'Tue May 6',  source: 'ADP NER',         what: 'April 2026 private payrolls + pay growth' },
   { date: 'Fri May 8',  source: 'BLS Employment',  what: 'April 2026 nonfarm payrolls + unemployment' },
   { date: 'Tue Jun 2',  source: 'BLS JOLTS',       what: 'April 2026 job openings, hires, quits' },
+  { date: 'Thu Jun 4',  source: 'ADP NER',         what: 'May 2026 private payrolls + pay growth' },
 ]
 
 // ─── Aspen Tech Labs ──────────────────────────────────────────────────────────
 const aspenInsights = [
   {
-    headline: 'Healthcare postings defy broader cooling trend',
-    body: 'JobMarketPulse data from 275,000+ career sites shows healthcare vacancy levels remained elevated in March despite overall posting volume declining. Direct employer postings up ~1.2% YoY while agency-driven postings slid ~5.7%.',
+    headline: 'AI Specialist roles up 76.9% YoY — divergence from the broader market',
+    body: 'JobMarketPulse data from 275,000+ career sites shows AI Specialist postings grew 76.9% year-over-year while overall U.S. postings fell 2.0%. Engineering roles broadly grew +8.0% YoY. Demand in AI continues to defy the cooling trend across the rest of the labor market.',
   },
   {
-    headline: 'AI roles bucked the 2025 pullback — up 92% in vacancies',
-    body: 'While total job posting activity cooled across most of the economy in 2025, Aspen\'s AI 50 index tracked a 92%+ increase in AI-related vacancies. Demand in this segment continues to diverge sharply from broader market trends.',
+    headline: 'Remote work rebounds — 12.3% YoY, 22.6% QoQ',
+    body: 'Remote postings now make up 2.43% of all U.S. vacancies, up from 2.12% a year ago. Remote roles rebounded 22.6% quarter-over-quarter, growing faster than the overall market. IT leads remote postings, followed by Marketing and Legal.',
   },
   {
-    headline: 'Google for Jobs continues to favor direct employer career sites',
-    body: 'Aspen Tech Labs data shows Google for Jobs increasingly surfaces direct employer career site postings over aggregators, reinforcing the value of career site optimization for talent acquisition teams.',
+    headline: 'Two-speed wage market — Electricians +8.7%, Nursing roles −5.6%',
+    body: 'Median full-time advertised salaries hit $64,147 in March (+4.3% YoY), but the average masks sharp role-by-role swings. Skilled trades like Electricians saw +8.7% wage growth while Nursing postings fell 5.6% and Marketing roles dropped 6.4% YoY.',
   },
 ]
 
 // ─── HR Implications ──────────────────────────────────────────────────────────
 const implications = [
   {
-    headline: 'Leading and lagging signals are diverging',
-    body: 'BLS and ADP describe a private sector that has broadly stopped hiring — yet the Conference Board\'s CHRO Confidence Index hit a series-record 59 in Q1, with 59% of HR leaders planning to increase hiring in H1 2026 (up from 54% in Q4 2025). Intent and actuals haven\'t been this far apart since 2023. Either intent is the leading indicator and we see Q2 hiring accelerate — or budget reality forces another reset and the gap closes the other way.',
+    headline: 'Leading and lagging signals are converging — upward',
+    body: 'For the first time in months, ADP (109K), Revelio (+66.4K), and the CHRO Confidence Index (series-record 59) are all pointing the same direction. Job-changer pay premium is still the narrowest since 2020 and salaries on new postings are still falling — so the case for switching remains weak — but the supply-demand dynamic is shifting. Workforce plans built on assumptions of continued cooling need stress-testing against a possible Q2 reacceleration.',
   },
   {
-    headline: 'ADP at 62K is a warning sign, not a blip',
-    body: 'Private sector job creation has slowed dramatically. Combined with Revelio\'s RPLS showing only +19.4K net jobs and declining advertised salaries, the picture is of an employer base that has broadly stopped hiring. Workforce planning assumptions built on 150K+ monthly additions need to be revisited.',
+    headline: 'ADP\'s 109K bounce is real but narrow',
+    body: 'Private payrolls jumped to 109K in April — the fastest pace since January 2025 and a clean break from March\'s revised 61K. But the gain was lopsided: small businesses (+65K) and large employers (+42K) carried it while mid-size firms (50–249) added just 2K. Combined with Revelio\'s +66.4K and rising hiring rate, the labor market may have found a floor. The mid-market squeeze is the new story to watch.',
   },
   {
     headline: 'Quits at 2.0% — retention pressure still inverted',
-    body: 'JOLTS quits ticked up a tenth to 2.0% in March but remain 285K below a year ago — Revelio\'s low-hire, low-fire signal still aligns with BLS, and ADP data shows the job-changer pay premium is the smallest since 2020. The case for switching is weaker — but when conditions shift, suppressed quit rates historically precede a surge.',
+    body: 'JOLTS quits ticked up a tenth to 2.0% in March but remain 285K below a year ago. ADP data shows the job-changer pay premium is the smallest since 2020 and Revelio reports salaries on new postings fell again in April. The case for switching is weaker — but with hiring now turning up, suppressed quit rates historically precede a surge once conditions improve.',
   },
   {
-    headline: 'Two-speed market: healthcare and AI vs. everyone else',
-    body: 'Aspen Tech Labs JobMarketPulse data makes the divergence clear. Healthcare and AI roles are holding or growing while retail, hospitality, and public sector shed jobs. HR leaders in those growth sectors face a supply squeeze; everyone else is in a buyer\'s market for talent.',
+    headline: 'Two-speed market: AI and trades vs. everyone else',
+    body: 'Aspen Tech Labs JobMarketPulse data sharpens the divergence. AI Specialist postings are up 76.9% YoY and Electrician wages grew 8.7%, while Nursing (−5.6%), Marketing (−6.4%), and Admin Support (−5.7%) postings shed share. HR leaders in those growth pockets face a supply squeeze; everyone else is in a buyer\'s market for talent.',
   },
 ]
 
@@ -274,7 +274,7 @@ export default function LaborMarketPage() {
       {/* ── ADP ─────────────────────────────────────────────────────────────── */}
       <div className="flex items-center gap-3 mb-4">
         <h2 className="font-serif text-2xl font-bold">ADP Research</h2>
-        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Private Sector · March 2026</span>
+        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Private Sector · April 2026</span>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5">
         {adpMetrics.map(m => (
@@ -287,11 +287,11 @@ export default function LaborMarketPage() {
       </div>
 
       {/* Pay Growth Comparison */}
-      <PayGrowthComparison stayer={4.5} changer={6.6} />
+      <PayGrowthComparison stayer={4.4} changer={6.6} />
 
       {/* ADP Sector Bar Chart */}
       <SectorBarChart
-        title="Sector Breakdown — March 2026"
+        title="Sector Breakdown — April 2026"
         data={adpSectors.map(s => ({
           sector: s.sector,
           value: parseInt(s.jobs.replace(/[+K]/g, ''), 10),
@@ -305,7 +305,7 @@ export default function LaborMarketPage() {
       {/* ── Revelio Labs ─────────────────────────────────────────────────────── */}
       <div className="flex items-center gap-3 mb-4">
         <h2 className="font-serif text-2xl font-bold">Revelio Labs — RPLS</h2>
-        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">100M+ Profiles · March 2026</span>
+        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">100M+ Profiles · April 2026</span>
       </div>
       <p className="text-sm text-brand-dark/50 mb-5 leading-relaxed">Revelio Public Labor Statistics (RPLS) is built from 100M+ U.S. workforce profiles — covering ~67% of employed Americans vs. ~27% for BLS establishment surveys. It captures workforce transitions that official surveys miss.</p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5">
@@ -318,7 +318,7 @@ export default function LaborMarketPage() {
         ))}
       </div>
       <div className="bg-white border border-brand-cream rounded-xl overflow-hidden mb-12">
-        <div className="px-5 py-3 bg-brand-cream/50 text-xs text-brand-dark/50 uppercase tracking-wide font-medium">Sector Employment Trends — March 2026</div>
+        <div className="px-5 py-3 bg-brand-cream/50 text-xs text-brand-dark/50 uppercase tracking-wide font-medium">Sector Employment Trends — April 2026</div>
         {revelioSectors.map(s => (
           <div key={s.sector} className="flex items-center justify-between px-5 py-3 border-t border-brand-cream">
             <span className="text-sm text-brand-dark/70">{s.sector}</span>
