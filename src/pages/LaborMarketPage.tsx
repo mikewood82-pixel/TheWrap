@@ -5,20 +5,20 @@ import PayGrowthComparison from '../components/PayGrowthComparison'
 
 // ─── BLS Key Metrics ──────────────────────────────────────────────────────────
 const blsMetrics = [
-  { label: 'Unemployment Rate', value: '4.3%',   change: '-0.1%',     trend: 'down', note: 'Edged down in March' },
-  { label: 'Job Openings',      value: '6.9M',   change: 'unchanged', trend: 'flat', note: 'Rate steady at 4.1%' },
-  { label: 'Avg. Hourly Wage',  value: '$37.38', change: '+0.2%',     trend: 'up',   note: '+3.5% year-over-year' },
-  { label: 'Layoffs Rate',      value: '1.2%',   change: '+0.1%',     trend: 'up',   note: 'Edged up; +272K YoY' },
-  { label: 'Quits Rate',        value: '2.0%',   change: '+0.1%',     trend: 'up',   note: 'Little changed; −285K YoY' },
-  { label: 'Jobs Added (BLS)',  value: '178K',   change: '-15K',      trend: 'down', note: 'Above ADP, below consensus' },
+  { label: 'Unemployment Rate', value: '4.3%',   change: 'unchanged', trend: 'flat', note: 'Steady for second consecutive month' },
+  { label: 'Job Openings',      value: '6.9M',   change: 'unchanged', trend: 'flat', note: 'March JOLTS · next release Jun 2' },
+  { label: 'Avg. Hourly Wage',  value: '$37.45', change: '+0.2%',     trend: 'up',   note: '+3.6% YoY · cooled a tenth' },
+  { label: 'Layoffs Rate',      value: '1.2%',   change: '+0.1%',     trend: 'up',   note: 'March JOLTS · +272K YoY' },
+  { label: 'Quits Rate',        value: '2.0%',   change: '+0.1%',     trend: 'up',   note: 'March JOLTS · −285K YoY' },
+  { label: 'Jobs Added (BLS)',  value: '115K',   change: '−70K',      trend: 'down', note: 'Beat 55K consensus · Mar revised up to +185K' },
 ]
 
 const historical = [
-  { month: 'Nov 2025', unemployment: '4.6%', openings: '7.6M', wages: '$36.41', quits: '2.1%' },
   { month: 'Dec 2025', unemployment: '4.4%', openings: '7.4M', wages: '$36.71', quits: '2.0%' },
   { month: 'Jan 2026', unemployment: '4.4%', openings: '7.2M', wages: '$37.01', quits: '2.0%' },
   { month: 'Feb 2026', unemployment: '4.4%', openings: '6.9M', wages: '$37.29', quits: '1.9%' },
-  { month: 'Mar 2026', unemployment: '4.3%', openings: '6.9M', wages: '$37.38', quits: '2.0%', current: true },
+  { month: 'Mar 2026', unemployment: '4.3%', openings: '6.9M', wages: '$37.38', quits: '2.0%' },
+  { month: 'Apr 2026', unemployment: '4.3%', openings: '6.9M', wages: '$37.45', quits: '2.0%', current: true },
 ]
 
 // ─── ADP ──────────────────────────────────────────────────────────────────────
@@ -73,26 +73,26 @@ const chroHiringPlans = [
 // Hero callout for the most recent data drop — surfaces fresh numbers above
 // the fold. Refresh every release cycle.
 const latestRelease = {
-  source: 'ADP NER',
+  source: 'BLS Employment Situation',
   period: 'April 2026',
-  releasedOn: 'Tue May 6, 2026',
-  headline: 'Private payrolls jumped to 109K — fastest pace since January 2025',
+  releasedOn: 'Fri May 8, 2026',
+  headline: 'Nonfarm payrolls +115K, more than double the 55K consensus; unemployment holds at 4.3%',
   stats: [
-    { label: 'Private Jobs',    value: '109K', detail: 'April · vs revised 61K in March' },
-    { label: 'Job-Stayer Pay',  value: '4.4%', detail: 'YoY · down a tenth from March' },
-    { label: 'Job-Changer Pay', value: '6.6%', detail: 'YoY · premium narrow but steady' },
-    { label: 'Mid-Size Firms',  value: '+2K',  detail: 'softness in the middle' },
+    { label: 'Nonfarm Payrolls', value: '+115K',  detail: 'beat 55K consensus' },
+    { label: 'Unemployment',     value: '4.3%',   detail: 'unchanged · second month' },
+    { label: 'Avg. Hourly Wage', value: '$37.45', detail: '+0.2% MoM · +3.6% YoY' },
+    { label: 'Participation',    value: '61.8%',  detail: 'lowest since Oct 2021' },
   ],
-  takeaway: 'Hiring snapped back — but it\'s lopsided. Small businesses (+65K) and large employers (+42K) drove the entire gain while mid-size firms (50–249) added just 2K. Education & health added 61K alone. Strong headline, narrow base.',
+  takeaway: 'BLS confirms the ADP bounce: April hiring beat low expectations and March was revised up to +185K. But the household survey shed 226K workers, participation slipped to a 4-year low, and U-6 underemployment climbed to 8.2%. Headline strength + softer internals = a more complicated read than the topline suggests.',
 }
 
 // ─── Upcoming Releases ────────────────────────────────────────────────────────
 // Surfaces the next-on-the-calendar BLS/ADP/JOLTS releases so readers know
 // when fresher data lands. Curated manually — refresh dates each cycle.
 const upcomingReleases = [
-  { date: 'Fri May 8',  source: 'BLS Employment',  what: 'April 2026 nonfarm payrolls + unemployment' },
   { date: 'Tue Jun 2',  source: 'BLS JOLTS',       what: 'April 2026 job openings, hires, quits' },
   { date: 'Thu Jun 4',  source: 'ADP NER',         what: 'May 2026 private payrolls + pay growth' },
+  { date: 'Fri Jun 5',  source: 'BLS Employment',  what: 'May 2026 nonfarm payrolls + unemployment' },
 ]
 
 // ─── Aspen Tech Labs ──────────────────────────────────────────────────────────
@@ -114,12 +114,12 @@ const aspenInsights = [
 // ─── HR Implications ──────────────────────────────────────────────────────────
 const implications = [
   {
-    headline: 'Leading and lagging signals are converging — upward',
-    body: 'For the first time in months, ADP (109K), Revelio (+66.4K), and the CHRO Confidence Index (series-record 59) are all pointing the same direction. Job-changer pay premium is still the narrowest since 2020 and salaries on new postings are still falling — so the case for switching remains weak — but the supply-demand dynamic is shifting. Workforce plans built on assumptions of continued cooling need stress-testing against a possible Q2 reacceleration.',
+    headline: 'BLS confirms the bounce — all four signals now point up',
+    body: 'BLS (+115K, beat 55K consensus), ADP (109K), Revelio (+66.4K), and the CHRO Confidence Index (series-record 59) are all pointing the same direction. March was revised up to +185K, strengthening the floor. Job-changer pay premium remains the narrowest since 2020 and posting salaries are still falling — so the case for switching is still weak — but the supply-demand dynamic is shifting. Workforce plans built on continued-cooling assumptions need stress-testing.',
   },
   {
-    headline: 'ADP\'s 109K bounce is real but narrow',
-    body: 'Private payrolls jumped to 109K in April — the fastest pace since January 2025 and a clean break from March\'s revised 61K. But the gain was lopsided: small businesses (+65K) and large employers (+42K) carried it while mid-size firms (50–249) added just 2K. Combined with Revelio\'s +66.4K and rising hiring rate, the labor market may have found a floor. The mid-market squeeze is the new story to watch.',
+    headline: 'Headline strength, softer internals — read both halves',
+    body: 'The April +115K headline more than doubled consensus, but the household survey shed 226K workers, labor force participation slipped to 61.8% (lowest since October 2021), and U-6 underemployment climbed to 8.2% with part-time-for-economic-reasons up 445K. ADP showed the same split: small (+65K) and large (+42K) firms carried the gain while mid-size (50–249) added just 2K. The labor market may have found a floor, but it\'s not broadly healthy — the mid-market and prime-age participation are the stories to watch.',
   },
   {
     headline: 'Quits at 2.0% — retention pressure still inverted',
@@ -195,7 +195,7 @@ export default function LaborMarketPage() {
       {/* ── BLS ─────────────────────────────────────────────────────────────── */}
       <div className="flex items-center gap-3 mb-4">
         <h2 className="font-serif text-2xl font-bold">Bureau of Labor Statistics</h2>
-        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Official · March 2026</span>
+        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Official · April 2026</span>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
         {blsMetrics.map((m) => (
