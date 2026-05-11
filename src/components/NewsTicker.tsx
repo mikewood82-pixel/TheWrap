@@ -1,12 +1,12 @@
 const headlines = [
-  { text: 'ADP Q3 FY2026 beats · revenue +7% to $5.9B, EPS $3.37 tops estimates, full-year guidance raised', url: 'https://investors.adp.com/news/news-details/2026/ADP-Reports-Third-Quarter-Fiscal-2026-Results/default.aspx' },
-  { text: 'Greenhouse drops 2026 candidate AI report · 63% have faced an AI interview, 38% walked away mid-screen', url: 'https://www.prnewswire.com/news-releases/63-of-job-seekers-have-faced-an-ai-interview-most-havent-had-a-good-one-yet-302760120.html' },
-  { text: 'BambooHR taps Turn for native screening · AI background checks land natively inside TurnOS workflow', url: 'https://www.globenewswire.com/news-release/2026/04/28/3283212/0/en/BambooHR-Partners-with-Turn-to-Deliver-Native-Background-Checks.html' },
-  { text: 'Workday Government debuts PAR Agent · slashes federal HR processing cycles by up to 60%', url: 'https://hrtechfeed.com/workday-government-unveils-personnel-action-request-par-agent-to-modernize-federal-hr-and-strengthen-mission-readiness/' },
-  { text: 'SAP SuccessFactors 1H 2026 · suite-wide agentic AI rolls in; production deploy May 15', url: 'https://news.sap.com/2026/04/sap-successfactors-1h-2026-release/' },
-  { text: 'CHRO Confidence Index hits 59 · strongest read since 2023 as hiring intent climbs in H1', url: 'https://www.hrdive.com/news/chro-confidence-levels-strongest-tracked-the-conference-board/818654/' },
-  { text: 'Salesforce sued over FMLA · suit alleges company built "negative record" of leave-taker', url: 'https://www.hrdive.com/news/salesforce-negative-record-employee-fmla-leave/818598/' },
-  { text: 'March jobs report · +178K nonfarm payrolls, unemployment holds at 4.3% per BLS', url: 'https://www.bls.gov/news.release/empsit.nr0.htm' },
+  { text: 'April jobs report · +115K nonfarm payrolls, unemployment holds at 4.3% per BLS', url: 'https://www.bls.gov/news.release/empsit.nr0.htm' },
+  { text: 'ADP April · private payrolls +109K, biggest monthly gain in 15 months', url: 'https://www.cnbc.com/2026/05/06/private-payrolls-rose-by-109000-in-april-topping-expectations-adp-says.html' },
+  { text: 'ServiceNow debuts Otto at Knowledge 2026 · unified AI agent routes HR, IT, finance work across the platform', url: 'https://newsroom.servicenow.com/press-releases/details/2026/ServiceNow-Otto-creates-the-unified-AI-experience-for-the-enterprise/default.aspx' },
+  { text: 'Microsoft Agent 365 hits GA · $15/user/mo, bundled into new E7 Frontier Suite for governed enterprise agents', url: 'https://www.microsoft.com/en-us/microsoft-365/blog/2026/05/05/microsoft-365-copilot-human-agency-and-the-opportunity-for-every-organization/' },
+  { text: 'SAP SuccessFactors 1H 2026 · suite-wide agentic AI lands in production May 15', url: 'https://news.sap.com/2026/04/sap-successfactors-1h-2026-release/' },
+  { text: 'Carefam exits stealth with $14.5M · AI agents tackle healthcare hiring bottleneck, claims 900% YoY growth', url: 'https://techfundingnews.com/14-5m-for-carefam-ai-agents-to-fix-healthcare-hiring-bottleneck/' },
+  { text: 'Phenom acquires Included AI · agentic people analytics folds into talent experience suite', url: 'https://technical.ly/entrepreneurship/phenom-acquires-included-philadelphia-power-moves/' },
+  { text: 'Remote scoops up Atlas · global expense card and healthcare stack join EOR platform', url: 'https://remote.com/news/remote-acquires-atlas-to-simplify-how-global-teams-spend-and-scale' },
 ]
 
 export default function NewsTicker() {
