@@ -102,10 +102,19 @@ export default function EventsPage() {
   const [category, setCategory] = useState<'all' | EventCategory>('all')
   const [search, setSearch] = useState('')
 
+  // Hero spotlights the next upcoming event Mike is attending. Auto-rotates as
+  // events pass — HRWest first, then RecFest Nashville, then HR Tech Vegas.
+  const featuredEvent = useMemo(() => {
+    return events
+      .filter(e => e.mikeAttending && getEventStatus(e) !== 'past')
+      .sort((a, b) => a.start.localeCompare(b.start))[0] ?? null
+  }, [])
+
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase()
     return events
       .filter(e => {
+        if (featuredEvent && e === featuredEvent) return false
         const st = getEventStatus(e)
         if (status === 'upcoming' && st === 'past') return false
         if (status === 'past' && st !== 'past') return false
@@ -121,7 +130,7 @@ export default function EventsPage() {
         return true
       })
       .sort((a, b) => a.start.localeCompare(b.start))
-  }, [status, region, category, search])
+  }, [status, region, category, search, featuredEvent])
 
   const grouped = useMemo(() => {
     const groups: { key: string; label: string; events: IndustryEvent[] }[] = []
@@ -159,6 +168,55 @@ export default function EventsPage() {
           budget — plus the ones that probably aren't, but you'll be asked about anyway.
         </p>
       </div>
+
+      {/* Featured event — where Mike will be next */}
+      {featuredEvent && (() => {
+        const date = formatDateRange(featuredEvent)
+        const venueDisplay = featuredEvent.venue
+          ? `${featuredEvent.venue}, ${featuredEvent.location}`
+          : featuredEvent.location
+        return (
+          <section className="relative bg-gradient-to-br from-brand-cream/60 to-brand-cream/20 border border-brand-cream rounded-2xl px-6 md:px-10 py-8 md:py-10 mb-8 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 items-center overflow-hidden">
+            <div className="absolute -top-6 -right-6 w-40 h-40 rounded-full bg-brand-terracotta/5 pointer-events-none" />
+            <div className="relative">
+              <div className="text-brand-terracotta text-xs uppercase tracking-widest font-bold mb-3">
+                Where you'll find me next
+              </div>
+              <div className="font-mono text-sm uppercase tracking-widest text-brand-dark/60 font-medium mb-2">
+                {date.day} {date.month} {date.year} · {date.duration}
+              </div>
+              <h2 className="font-serif text-3xl md:text-5xl font-bold leading-tight mb-3">
+                {featuredEvent.name}
+              </h2>
+              <div className="text-sm md:text-base italic text-brand-dark/70 mb-4">
+                <span className="text-brand-terracotta mr-1">◉</span>
+                {venueDisplay}
+              </div>
+              <p className="font-serif text-base md:text-lg text-brand-dark/80 leading-relaxed mb-6 max-w-2xl">
+                {featuredEvent.blurb}
+              </p>
+              <a
+                href={featuredEvent.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-brand-terracotta text-white text-sm font-bold uppercase tracking-widest px-5 py-3 rounded-lg hover:bg-brand-orange transition-colors shadow-sm"
+              >
+                Event details <ExternalLink size={14} />
+              </a>
+            </div>
+            <div className="relative flex flex-col items-center gap-3 shrink-0 md:pr-4">
+              <img
+                src="/mike-wood.jpg"
+                alt="Mike Wood"
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover ring-[6px] ring-white border-4 border-brand-terracotta shadow-[0_12px_28px_rgba(14,13,11,0.22)] -rotate-6"
+              />
+              <span className="bg-brand-terracotta text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-md -rotate-3">
+                I'll be there
+              </span>
+            </div>
+          </section>
+        )
+      })()}
 
       {/* Controls */}
       <div className="bg-white border border-brand-cream rounded-xl p-4 md:p-5 mb-6 space-y-4">
@@ -252,22 +310,15 @@ export default function EventsPage() {
               {group.events.map(event => {
                 const st = getEventStatus(event)
                 const date = formatDateRange(event)
-                const isImminent = st === 'imminent'
                 const isPast = st === 'past'
                 const cardClasses = [
-                  'relative flex flex-col bg-white rounded-xl p-5 transition-shadow',
-                  isImminent ? 'border-2 border-brand-terracotta shadow-sm' : 'border border-brand-cream',
+                  'relative flex flex-col bg-white border border-brand-cream rounded-xl p-5 transition-shadow',
                   isPast ? 'opacity-60 border-dashed' : 'hover:shadow-md',
                   event.mikeAttending && !isPast ? '!pr-24' : '',
                 ].join(' ')
                 return (
                   <article key={`${event.name}-${event.start}`} className={cardClasses}>
-                    {isImminent && (
-                      <span className="absolute -top-2.5 right-4 bg-brand-terracotta text-white text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full">
-                        Happening now
-                      </span>
-                    )}
-                    {event.tba && !isImminent && !event.mikeAttending && (
+                    {event.tba && !event.mikeAttending && (
                       <span className="absolute top-3 right-3 text-[10px] font-bold tracking-widest uppercase text-brand-muted border border-dashed border-brand-muted px-1.5 py-0.5 rounded">
                         TBA
                       </span>
