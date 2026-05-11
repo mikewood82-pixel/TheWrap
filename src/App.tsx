@@ -10,6 +10,7 @@ import AnnouncementsPage from './pages/AnnouncementsPage'
 import LaborMarketPage from './pages/LaborMarketPage'
 import SubscribePage from './pages/SubscribePage'
 import AboutPage from './pages/AboutPage'
+import EventsPage from './pages/EventsPage'
 import SponsorshipPage from './pages/SponsorshipPage'
 import ReferralPage from './pages/ReferralPage'
 import AssistantPage from './pages/AssistantPage'
@@ -51,6 +52,7 @@ function App() {
           <Route path="referral" element={<ReferralPage />} />
           <Route path="assistant" element={<AssistantPage />} />
           <Route path="labor-market" element={<LaborMarketPage />} />
+          <Route path="events" element={<EventsPage />} />
           <Route path="jobs" element={<JobsPage />} />
           <Route path="jobs/saved" element={<SavedJobsPage />} />
           <Route path="jobs/alerts" element={<AlertsPage />} />
