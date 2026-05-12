@@ -4,6 +4,7 @@ import { ArrowLeft, Clock } from 'lucide-react'
 import { newsletters } from '../data/newsletters'
 import { archive } from '../data/archive'
 import SEO from '../components/SEO'
+import InlineSubscribeForm from '../components/InlineSubscribeForm'
 
 function estimateReadTime(html: string): number {
   const text = html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
@@ -45,6 +46,10 @@ export default function NewsletterDetailPage() {
   const { slug } = useParams()
   const edition = [...newsletters, ...archive].find(n => n.slug === (slug ?? ''))
   const readTime = useMemo(() => edition ? estimateReadTime(edition.body) : 0, [edition])
+  const bodyHtml = useMemo(
+    () => edition ? edition.body.replace(/<img (?!loading=)/g, '<img loading="lazy" ') : '',
+    [edition],
+  )
 
   if (!edition) {
     return (
@@ -100,7 +105,13 @@ export default function NewsletterDetailPage() {
           prose-hr:border-brand-border
           prose-img:rounded-xl prose-img:w-full
           prose-blockquote:border-brand-terracotta prose-blockquote:text-brand-dark/70"
-        dangerouslySetInnerHTML={{ __html: edition.body }}
+        dangerouslySetInnerHTML={{ __html: bodyHtml }}
+      />
+
+      <InlineSubscribeForm
+        variant="compact"
+        headline="Get next Friday's Wrap in your inbox"
+        subhead="HR tech news, reviews, and analysis — free, every Friday."
       />
 
       <ShareButtons title={edition.title} />
