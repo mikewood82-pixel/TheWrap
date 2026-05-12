@@ -104,6 +104,9 @@ export default function HomePage() {
                 <div className="text-brand-terracotta text-xs font-semibold tracking-[0.2em] uppercase mt-1">
                   HR Tech News
                 </div>
+                <p className="text-brand-dark/70 text-sm md:text-base mt-3 max-w-xs leading-snug">
+                  News, reviews, and more, tightly wrapped each week.
+                </p>
               </div>
             </div>
 
@@ -151,6 +154,7 @@ export default function HomePage() {
                   <img
                     src={latestEditions[0].image}
                     alt={latestEditions[0].title}
+                    loading="lazy"
                     className="w-full rounded-xl mb-6 object-cover max-h-64"
                   />
                 </Link>
