@@ -56,7 +56,13 @@ export default function VoicesPage() {
   // simply doesn't render.
   useEffect(() => {
     if (!voicesStaffPick.enabled) return
-    const qs = new URLSearchParams({ source: voicesStaffPick.sourceSlug, per_page: '50' })
+    // per_source=50 bypasses the hub's default one-per-source cap so
+    // matchTitle has enough candidates to resolve against.
+    const qs = new URLSearchParams({
+      source: voicesStaffPick.sourceSlug,
+      per_page: '50',
+      per_source: '50',
+    })
     fetch(`/api/voices/feed?${qs}`)
       .then(r => r.ok ? r.json() : Promise.reject(`pick ${r.status}`))
       .then((d: FeedResponse) => {

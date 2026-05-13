@@ -33,7 +33,7 @@ export default function VoiceSourcePage() {
     Promise.all([
       fetch(`/api/voices/source/${encodeURIComponent(slug)}`)
         .then(r => r.status === 404 ? null : r.ok ? r.json() : Promise.reject(r.statusText)),
-      fetch(`/api/voices/feed?source=${encodeURIComponent(slug)}&per_page=30`)
+      fetch(`/api/voices/feed?source=${encodeURIComponent(slug)}&per_page=30&per_source=30`)
         .then(r => r.ok ? r.json() : Promise.reject(r.statusText)),
     ])
       .then(([src, feed]) => {

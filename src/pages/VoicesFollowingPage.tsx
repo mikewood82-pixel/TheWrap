@@ -44,7 +44,7 @@ export default function VoicesFollowingPage() {
     }
 
     setLoading(true)
-    fetch(`/api/voices/feed?source=${encodeURIComponent(sourceFilter)}&per_page=30`)
+    fetch(`/api/voices/feed?source=${encodeURIComponent(sourceFilter)}&per_page=30&per_source=30`)
       .then(r => r.ok ? r.json() : Promise.reject(r.statusText))
       .then((d: FeedResponse) => { setItems(d.items); setLoading(false) })
       .catch(() => { setItems([]); setLoading(false) })
