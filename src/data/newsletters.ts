@@ -9,6 +9,151 @@ export interface Newsletter {
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'hiring-funnel-collapsed',
+    date: 'May 15, 2026',
+    title: 'The Hiring Funnel Collapsed',
+    tag: 'AI & Future of Work',
+    excerpt: 'By 2030, the seven-stage hiring funnel has collapsed into three — and the only step left for humans is whether they want to work together.',
+    body: `
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image1.png" alt="The Hiring Funnel Collapsed" />
+
+<p>It's 2030 and I wake up to a beep from my iPhone 22 to see that Ziggy, my work agent, has had a busy night. He's completed two interviews with corporate agents while I slept. He passed one and declined another because it was a Director role at a Series C. Normally, this job would be a "rocket ship," but Ziggy remembers I told it eighteen months ago that I wanted to stay an individual contributor so I had flexibility while my kids are in high school, and it took me at my word. Additionally, Ziggy flagged an interesting opportunity at a company adjacent to my industry, in a city I've been quietly Googling for the past 6 months. Ziggy put it in the "worth a look" bucket.</p>
+
+<p>Underneath the hiring brief, the rest of my morning summary. My 401(k) is 4% behind the glide path Ziggy set when I turned 40, but it's already rebalanced and flagged a backdoor Roth discussion for next quarter. My dental claim from March finally cleared. My fractional invoice to Intellihire is 2 days late, and Ziggy has already sent the second nudge in a tone I would have written myself if I'd had the energy. Need coffee. And sugar. Now.</p>
+
+<p>As I wait for my Dunkin Cookie Coolatta with Ozempic chaser, I remember the last time I updated a resume. It was late 2026, and I was doing it the way everyone did it then — frantically, at the kitchen table, late at night, pasting the job description into a Claude tab and having him match the keywords a model on the other side was going to score me on anyway. Peak Application Inflation, though we didn't have the term for it yet. Every applicant getting cheaper by the week, every bullet point worth a little less than the one before it. I'd been laid off in the wave that took out most of the middle of the org chart in tech that year, and did what everyone else did — pivoted to fractional. I picked up three clients in a quarter, at roughly half the hourly rate and a third of the stability I'd had as a full-time employee. I told myself it was a bridge.</p>
+
+<p>It may still be a bridge. But by now I'm starting to think it's just the path to a new destination.</p>
+
+<p>The reason my morning looks like this, with searching for work being not as important as searching for coffee, is that the hiring funnel I knew in 2026 doesn't exist anymore. The whole shape of how work gets matched to workers collapsed somewhere between the layoffs and the agents.</p>
+
+<p>The old recruiting funnel had seven stages and most of them were friction. Job posting. Application. Resume screen. Phone screen. Assessment. Interview loop. Offer. Seven steps all reliant on the previous steps with a lot of uncertainty and waiting in-between.</p>
+
+<p>This new pipeline? It's not even a pipeline. It's three stages with the only friction at the end.</p>
+
+<p>Here's how hiring works in 2030:</p>
+
+<p><strong>Stage One — The Listen</strong></p>
+
+<p>The first is continuous. Your agent is in the market every day, whether you are or not. There is no job posting in the way you remember it — the static description, the careful keywords, the application portal that asked you to upload a resume and then asked you to type the same information into seven separate fields. Roles exist as structured intent inside corporate agents: this is the work, this is the team, this is the constraint, this is the budget. Your agent reads them the way you used to read a job board on Sunday night, except it reads all of them, all the time, and it already knows which ones are worth your attention.</p>
+
+<p><strong>Stage Two — The Match</strong></p>
+
+<p>Your agent has been in conversation with three corporate agents and you didn't write a single bullet point to make it happen. None of them asked for a resume. The resume was, at best, a list — a flattened export of a career with texture in fifty places the format couldn't hold. The career LLM doesn't have that problem. It's been reading your actual work for years. The projects you forgot to put on LinkedIn. The meeting transcripts where you talked a client off a ledge. The code, the writing, the way you describe problems in Slack. It knows you're better at ambiguous-stakeholder work than you'd ever claim, and worse at structured operational rollouts than you'd ever admit. It knows you, in other words, better than any document you would have produced about yourself.</p>
+
+<p>When the corporate agent wants depth, your agent provides it. A values inventory from 2028. A structured cognitive sample from 2029. A verified-skills graph built from six years of real output, not a forty-five-minute take-home you spent your Saturday on. Real examples — <em>show me how she handles a customer escalation that turns political</em> — pulled from the last two years of actual work, anonymized, consented, verified. The agents negotiate the level of disclosure. You set the privacy posture. You almost never get involved.</p>
+
+<p><strong>Stage Three — The Meeting</strong></p>
+
+<p>By the time the opportunity gets to the actual people involved, the corporate agent has narrowed 1,400 applicants to four humans, and you're one of them. You walk in at 11 AM and there is no ambiguity left to manage. No mystery about whether you'd be a fit on paper — the paper is gone, and the fit was confirmed three layers of machine ago. No anxious week of waiting by the phone. No rewriting your bullets at midnight to match a keyword. No researching the company at 2 AM, trying to convince yourself you wanted it. No printed list on the kitchen counter. None of the small, accumulated indignities that used to make up the experience of looking for work.</p>
+
+<p>What's left is the only thing the agents can't do. Two humans, in a room, deciding whether they want to work together. The thing your agent doesn't have and never will — intuition, gut, the read across the table, the feel of the way someone answers a hard question. The LLMs are extraordinary, and they are not this. Everything before this moment was machine. This part is still yours.</p>
+
+<p>You feel like you really connect with this team and are excited to start. You shake hands, sign the offer and rush to LinkedIn to tell everyone how "excited you are to announce that you'll be joining X company," and watch the likes pour in.</p>
+
+<p>Now, I know I have an overactive imagination, but this feels like where the industry is moving. Instead of recruiters drowning in applicants, and applicants waiting for any communication from a job posting they applied to back in March, the friction just… goes away. Walk back through the old seven stages and tell me which of them actually created value.</p>
+
+<p>The job posting? We all knew those were cut-and-pasted from the last req or generated by an AI that hallucinated four required certifications and a tech stack the team doesn't actually use. Pretty standard.</p>
+
+<p>The application? Anyone who's submitted one through Workday knows the joke. You upload the resume, the parser shreds it into the wrong fields, and then you re-type the same information into a form designed in 2011. Fifteen minutes per application, thousands of applications a month, a full workday of data entry on a document you already uploaded.</p>
+
+<p>The resume itself? Whatever passes for one in this world, Ziggy assembles on demand — pulled live from years of verified work, configured for the opportunity in front of him. No more <em>managed</em> versus <em>led</em>. No more six-month gaps to explain. No more keyword roulette.</p>
+
+<p>The screen? Done at the agent layer, instantly. No time wasted on the wrong fit, and no candidate getting in the door with credentials they exaggerated, because the agent verified them before the conversation started.</p>
+
+<p>The assessment? Either Ziggy already carries the proof — the actual work, anonymized and consented — or the corporate agent quizzes him to see if I'd pass. I never spent a Saturday on a take-home.</p>
+
+<p>The interview loop? Mostly the agents. What's left is one conversation, with two humans, in a room.</p>
+
+<p>The offer? That's the only thing left. Whether they want you. Whether you want them. Everything else was overhead.</p>
+
+<p>That's the world Ziggy's getting me ready for. Meanwhile, we're still in 2026 and have a whole week of news to catch up on.</p>
+
+<p>This week's Wrap is loaded with juicy content. Intuit brings their 18M payroll customers an HCM, Workday rolls their Sana agent into Microsoft 365 Copilot, Eightfold launches TalentForge, UKG goes agentic in payroll, Built In wants to be the Glassdoor for ChatGPT, Ashby buys Talent Llama, The Labor Market in 5 minutes, Interviews on workforce management with Sandra Moran and Marcus Mossberger, and your boss's new AI wants to know why you're scowling.</p>
+
+<p>Enjoy and have a great weekend!</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Intuit Drops QuickBooks Workforce, Buys Itself an HCM Customer Base</h3>
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image2.jpg" alt="Intuit QuickBooks Workforce" />
+<p>Intuit announced QuickBooks Workforce on May 6 — a full end-to-end HCM platform built on QuickBooks Payroll, which already processes pay for 18 million U.S. workers. That number is the story. Gusto, Rippling, Paylocity, and BambooHR have spent years trying to land SMB customers one at a time; Intuit just turned on an HCM stack inside the accounting platform they already use. <a href="https://quickbooks.intuit.com/r/news/intuit-unveils-quickbooks-workforce/">Read more</a>.</p>
+
+<h3>Workday Goes Where the Workers Are: Inside Microsoft 365 Copilot</h3>
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image3.jpg" alt="Workday Sana Self-Service Agent in Microsoft 365 Copilot" />
+<p>Workday announced this week that its Sana Self-Service Agent is now generally available inside Microsoft 365 Copilot — meaning employees can check vacation balances, request time off, look up an expense, or kick off a performance review without ever opening Workday.</p>
+<p>The smart move here is distribution. Microsoft has spent two years pushing Copilot into the enterprise, and the install base is enormous — wherever an employee already has a Microsoft 365 license, Workday is now a prompt away. No new login to roll out, no separate app to train people on, no change management. It's the same play Intuit is running at the top of this section with QuickBooks Workforce: when you have a partner with reach, you ship your product through their pipes instead of building your own. <a href="https://newsroom.workday.com/2026-05-13-Workday-Brings-Sana-Self-Service-Agent-for-HR-and-Finance-Into-Microsoft-365-Copilot"><strong>Read the release</strong></a>.</p>
+
+<h3>Eightfold Launches TalentForge, Bets the Industry on Custom-Built HR Software</h3>
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image4.png" alt="Eightfold TalentForge" />
+<p>Eightfold AI used its Cultivate 2026 conference to launch TalentForge — a platform designed to let enterprises build custom HR software on top of Eightfold's talent intelligence layer. In the announcement, CEO Ashutosh Garg stated that 90% of enterprise software will be custom-built in the future. You know what? It's a bold prediction but he's probably right. Additionally, Eightfold rolled out 360 Interview and Workforce Readiness, an AI interviewer built in house and an "AI coach" that may be a coach, but it's also a spy. <a href="https://eightfold.ai/blog/introducing-talentforge/">Read the CEO blog</a>.</p>
+
+<h3>Oracle Tells Laid-Off Workers: Take It or Leave It</h3>
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image5.png" alt="Oracle severance dispute" />
+<p>TechCrunch's Julie Bort reported this week that the 20,000 to 30,000 employees Oracle cut via email on March 31 tried to organize for better severance terms — and Oracle flatly refused to negotiate. The terms explain the revolt: four weeks of pay plus one week per additional year, capped at 26 weeks, one month of COBRA, no acceleration of unvested RSUs. One long-tenured employee told Time he lost $1 million in stock that was four months from vesting. Then there's the WARN Act workaround: hybrid workers near offices discovered Oracle had quietly classified them as remote, sidestepping the 50-person-per-location threshold that triggers two-month notice. <a href="https://techcrunch.com/2026/05/08/laid-off-oracle-workers-tried-to-negotiate-better-severance-oracle-said-no/">Read the article</a>.</p>
+
+<h3>UKG Goes Full Agentic on Payroll</h3>
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image6.jpg" alt="UKG Pro Pay with Workforce AI" />
+<p>UKG used Payroll Congress 2026 to unveil Pro Pay with Workforce AI — a six-feature stack the company describes as combining "agentic, assistive, and generative AI" to overhaul payroll processing. Six features, six variations on "AI," one product. Worth holding next to UKG's 950 job cuts from a few weeks back — the company is automating the back-office function while doing the same to itself. <a href="https://www.businesswire.com/news/home/20260511304428/en/UKG-Unveils-Agentic-powered-UKG-Pro-Pay-with-Workforce-AI-at-Payroll-Congress-2026">Read more</a>.</p>
+
+<h3>Workvivo Launches Seer, Reunites the Glint Band</h3>
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image7.png" alt="Workvivo Seer" />
+<p>Workvivo (by Zoom) rolled out Seer this week — a standalone "people intelligence" platform built on the employee listening capabilities Workvivo had previously bundled into its broader product. The org chart behind it is the actual story: Justin Black, who ran Glint at LinkedIn and Microsoft, is now Head of Seer; Phil Murphy from Qualtrics and Jaime Gonzales (also ex-Glint) round out the leadership. Workvivo's own survey of 4,736 frontline and desk workers backs the framing: 62% are comfortable giving feedback, but only 49% see meaningful change. "The industry doesn't have a listening problem, it has an execution problem," Black said — and the Glint alumni building it have earned the benefit of the doubt. <a href="https://www.workvivo.com/newsroom/workvivo-launches-seer/">Read more</a>.</p>
+
+<h3>Built In Bets on Being the Glassdoor for ChatGPT</h3>
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image8.png" alt="Built In Employer Intelligence Platform" />
+<p>Built In launched its Employer Intelligence Platform last week, pitched as the first platform designed to help companies control how they're represented when candidates ask ChatGPT, Claude, or Google's AI Overviews about employers. The "first" claim is doing some marketing work — generative engine optimization has been a quietly growing category for over a year — but the underlying shift is real. Candidate research used to start at Glassdoor and end at LinkedIn; now it starts with "tell me about working at [Company]" typed into a chat window. CEO Maria Christopoulos Katris leans on the moat that LLMs already cite Built In as a trusted source on tech employers. I love this move to integrate your unique data into LLMs that people are already using. Go where your audience is! <a href="https://employers.builtin.com/built-in-launches-the-first-employer-intelligence-platform-for-the-ai-driven-hiring-era/">Read more</a>.</p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions 🤝</h2>
+
+<h3>Ashby Buys Talent Llama, Joins the AI Interviewer Parade</h3>
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image9.jpg" alt="Ashby acquires Talent Llama" />
+<p>Of course I published last week's Wrap before this news dropped, but wanted to note that Ashby has bought Talent Llama as their AI interview layer, joining the AI interview acquisition parade in hiring. Congrats to both teams. As for the other 30 AI interview startups that I know of? The clock is ticking to either get acquired or fade away. <a href="https://www.ashbyhq.com/blog/culture/talent-llama">Read more from Ashby's CEO</a>.</p>
+
+<hr />
+
+<h2>📊 Research &amp; Reports</h2>
+
+<h3>Labor Market in Five Numbers · April 2026</h3>
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image10.png" alt="Labor Market in Five Numbers — April 2026" />
+<p>Over on <a href="https://ilovethewrap.com">ilovethewrap.com</a>, I've built out a section highlighting the latest labor market numbers from the government (like the BLS and JOLTS reports), as well as vendors (ADP, Aspen Tech Lab, Revelio Labs) to try and figure out what's happening in the labor market.</p>
+<p>The April numbers are in (hooray) and taken together, its telling the story beyond a flat unemployment market. Here are five stats that show what's going on:</p>
+<p><strong>+115K</strong> — BLS nonfarm payrolls in April, more than double the 55K consensus, with March revised up to +185K. But the household survey shed 226K workers in the same month and labor force participation slipped to 61.8%, the lowest since October 2021. Headline says the bounce is real. Internals say fewer people are even trying.</p>
+<p><strong>6.6% vs. 4.4%</strong> — ADP's job-changer wage premium is now just 2.2 points above job-stayers, the narrowest gap since 2020. Switching used to be the fastest raise in town. It barely beats staying put now, which is why JOLTS quits remain 285K below a year ago even after ticking up to 2.0% in March.</p>
+<p><strong>+76.9% YoY</strong> — AI Specialist postings per Aspen Tech Labs' JobMarketPulse (tracking 275,000+ career sites direct from source), while overall U.S. postings fell 2.0% in the same period. Two labor markets running in parallel: one for AI and skilled trades (Electrician wages +8.7%), one for everyone else (Nursing −5.6%, Marketing −6.4%, Admin Support −5.7%).</p>
+<p><strong>+66.4K jobs / −0.1% posting salaries</strong> — Revelio Labs' RPLS, built from 100M+ profiles covering ~67% of U.S. workers vs. BLS's ~27%, shows hiring ticked up in April with attrition flat. But it's the second consecutive monthly decline in new-posting salaries. Demand is creeping back; employers aren't paying up for it.</p>
+<p><strong>59</strong> — The Conference Board's CHRO Confidence Index, a new series record and the highest reading since Q1 2023. The hiring sub-index hit 63, and 59% of CHROs plan to increase hiring in H1 2026, up from 54% in Q4. This is the only forward-looking indicator on the dashboard, and it called the turn before BLS and ADP confirmed it.</p>
+<p>Four signals up, one market split in two. It's a hiring market for AI specialists and electricians. For everyone else, it's still a decision market. Check out the full numbers at <a href="https://ilovethewrap.com/labor-market">https://ilovethewrap.com/labor-market</a>.</p>
+
+<hr />
+
+<h2>🎙️ Podcasts</h2>
+
+<h3>Sandra Moran, Chief Marketing Officer at Schoox</h3>
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image11.png" alt="Sandra Moran on Totally Talent" />
+<p>Recorded in the Schoox booth at UNLEASH, this conversation with Sandra is one of the cleaner cases I've heard for why talent acquisition and learning need to stop running parallel tracks. Three years ago you couldn't hire someone with AI skills, she points out — which means hiring for "experience doing this" is a worse bet by the year. The hire becomes about demonstrated adaptability, ability to deal with ambiguity, and institutional knowledge. By the time you onboard, the skills you needed may have already changed. <a href="https://www.hr.com/en/resources/podcasts/talent/hire-less-grow-more_mowtbl8w.html">Watch on Totally Talent</a></p>
+
+<h3>Marcus Mossberger, Chief Strategy Officer at LYTIQS</h3>
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image12.png" alt="Marcus Mossberger on Totally Talent" />
+<p>Did you know that per Gartner, 86% of organizations don't do any form of strategic workforce planning? With hiring slowing and AI exposure rates rewriting which roles get automated versus augmented, that gap is no longer ignorable — and it's the opening LYTIQS is sprinting into. We also got into authenticity as the only real differentiator in a sea-of-sameness expo hall ("they got the same marketing plan from ChatGPT"), why HR needs to stop being the risk-mitigation function and start taking some, and Marcus's side hustle building a Hope at Work newsletter and podcast. <a href="https://www.hr.com/en/resources/podcasts/talent/ai-is-forcing-a-new-era-of-workforce-planning_mp3im34q.html">Watch on Totally Talent</a></p>
+
+<hr />
+
+<h2>👇 Worth a Click</h2>
+
+<h3>Your Boss's New AI Wants to Know Why You're Scowling</h3>
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image13.png" alt="Emotion AI in the workplace" />
+<p>Buried in my HR Tech Brew was this piece about the Atlantic's reporting on "emotion AI" creeping into the workday. Imagine Slack integrations scoring your chats for "sentiment and toxicity," Zoom extensions reading your face (and rolling eyes) in real time. Remember Burger King's OpenAI headset "Patty" grading drive-thru workers on friendliness?</p>
+<p>Research in the piece noted that Americans only scowl when angry about a third of the time, which means the bot watching you is probably misreading the face you make when you're concentrating. Important to note that the EU banned this stuff in workplaces last year. The US? Haha, you should really smile more. <a href="https://www.techbrew.com/stories/emotion-ai-workplace-surveillance">Read More</a></p>
+    `,
+  },
+  {
     slug: 'application-inflation',
     date: 'May 8, 2026',
     title: 'Application Inflation Is Devaluing Every Candidate',
