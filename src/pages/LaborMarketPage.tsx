@@ -232,10 +232,9 @@ function WUISection() {
         </div>
         <h2 className="font-serif text-3xl font-bold mb-2">The Wrap Underemployment Index (WUI)</h2>
         <p className="text-brand-dark/60 text-base leading-relaxed">
-          A 0–100 monthly composite that captures real labor-market slack from the HR-tech buyer's
-          perspective. Blends broad underemployment (U-6), the gap between official and broad
-          unemployment, and the JOLTS quits rate — each normalized against the trailing decade.
-          Higher = more slack.
+          A 0–100 monthly composite that captures real labor-market slack. Blends broad
+          underemployment (U-6), the gap between official and broad unemployment, and the JOLTS
+          quits rate — each normalized against the trailing decade. Higher = more slack.
         </p>
       </div>
 
