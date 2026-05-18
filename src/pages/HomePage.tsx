@@ -154,7 +154,10 @@ export default function HomePage() {
                   <img
                     src={latestEditions[0].image}
                     alt={latestEditions[0].title}
-                    loading="lazy"
+                    width={1280}
+                    height={720}
+                    fetchPriority="high"
+                    decoding="async"
                     className="w-full rounded-xl mb-6 object-cover max-h-64"
                   />
                 </Link>
