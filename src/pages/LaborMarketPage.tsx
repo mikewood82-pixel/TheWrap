@@ -230,7 +230,7 @@ function WUISection() {
         <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">
           Wrap proprietary index · Updated monthly
         </div>
-        <h2 className="font-serif text-3xl font-bold mb-2">The Wrap Underemployment Index</h2>
+        <h2 className="font-serif text-3xl font-bold mb-2">The Wrap Underemployment Index (WUI)</h2>
         <p className="text-brand-dark/60 text-base leading-relaxed">
           A 0–100 monthly composite that captures real labor-market slack from the HR-tech buyer's
           perspective. Blends broad underemployment (U-6), the gap between official and broad
