@@ -238,6 +238,21 @@ function WUISection() {
         </p>
       </div>
 
+      {/* "What is slack?" primer — sits between the intro and the headline number so first-time
+          readers understand what the 62.5 actually represents before they see it. */}
+      <div className="bg-brand-cream/40 border border-brand-cream rounded-xl px-5 py-3 mb-5">
+        <div className="text-xs uppercase tracking-wide font-medium text-brand-dark/60 mb-1.5">
+          What is slack?
+        </div>
+        <p className="text-sm text-brand-dark/75 leading-relaxed">
+          Unused worker capacity in the economy — the gap between the workforce we have and
+          how much of it is fully employed at the hours people want. <strong>High slack</strong>{' '}
+          means employers have the upper hand: easier hiring, slower wage growth, fewer quits.{' '}
+          <strong>Low slack</strong> means workers do: harder hiring, wage pressure, more
+          turnover.
+        </p>
+      </div>
+
       {/* Hero card — current reading + deltas */}
       <div className="bg-white border-2 border-brand-terracotta rounded-xl px-6 py-5 mb-5 shadow-sm">
         <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 mb-4">
