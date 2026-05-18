@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react'
 import SEO from '../components/SEO'
 import BLSTrendChart from '../components/BLSTrendChart'
 import SectorBarChart from '../components/SectorBarChart'
 import PayGrowthComparison from '../components/PayGrowthComparison'
+import WUITrendChart from '../components/WUITrendChart'
 
 // ─── BLS Key Metrics ──────────────────────────────────────────────────────────
 const blsMetrics = [
@@ -137,6 +139,193 @@ function TrendIndicator({ direction }: { direction: string }) {
   return <span className="text-brand-dark/40 font-bold">→</span>
 }
 
+// ─── The Wrap Underemployment Index (WUI) ─────────────────────────────────────
+// Proprietary 0–100 composite of three FRED series. Fetched client-side from
+// /api/bls/wui. Section hides silently on fetch failure so the rest of the
+// page still renders.
+
+type WuiSnapshot = {
+  date: string
+  wui: number
+  u6: number
+  u3: number
+  spread: number
+  quits: number
+  pctU6: number
+  pctSpread: number
+  pctQuits: number
+}
+
+type WuiResponse = {
+  latest: WuiSnapshot
+  prior_month: WuiSnapshot | null
+  year_ago: WuiSnapshot | null
+  series: { date: string; wui: number }[]
+}
+
+function ordinal(n: number): string {
+  const v = n % 100
+  if (v >= 11 && v <= 13) return `${n}th`
+  switch (n % 10) {
+    case 1: return `${n}st`
+    case 2: return `${n}nd`
+    case 3: return `${n}rd`
+    default: return `${n}th`
+  }
+}
+
+function formatMonth(date: string): string {
+  const [y, m] = date.split('-')
+  const months = ['January', 'February', 'March', 'April', 'May', 'June',
+                  'July', 'August', 'September', 'October', 'November', 'December']
+  const idx = Math.max(0, Math.min(11, parseInt(m, 10) - 1))
+  return `${months[idx]} ${y}`
+}
+
+function DeltaPill({ from, to, suffix }: { from: number | undefined; to: number; suffix?: string }) {
+  if (from == null) return null
+  const delta = to - from
+  const sign = delta > 0 ? '+' : ''
+  const cls =
+    delta > 0 ? 'text-amber-600'
+    : delta < 0 ? 'text-green-600'
+    : 'text-brand-dark/40'
+  return (
+    <span className={`text-xs font-medium ${cls}`}>
+      {sign}{delta.toFixed(1)}{suffix ?? ''}
+    </span>
+  )
+}
+
+function WUISection() {
+  const [data, setData] = useState<WuiResponse | null>(null)
+  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
+
+  useEffect(() => {
+    let cancelled = false
+    fetch('/api/bls/wui')
+      .then(r => r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`)))
+      .then((j: WuiResponse) => { if (!cancelled) { setData(j); setStatus('ready') } })
+      .catch(() => { if (!cancelled) setStatus('error') })
+    return () => { cancelled = true }
+  }, [])
+
+  if (status === 'error') return null // Hide gracefully — page still works.
+
+  if (status === 'loading') {
+    return (
+      <div className="bg-white border border-brand-cream rounded-xl px-6 py-5 mb-10 animate-pulse">
+        <div className="h-4 w-32 bg-brand-cream rounded mb-3" />
+        <div className="h-10 w-48 bg-brand-cream rounded mb-3" />
+        <div className="h-40 bg-brand-cream/60 rounded" />
+      </div>
+    )
+  }
+
+  const { latest, prior_month, year_ago, series } = data!
+
+  return (
+    <section className="mb-12">
+      <div className="mb-4">
+        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">
+          Wrap proprietary index · Updated monthly
+        </div>
+        <h2 className="font-serif text-3xl font-bold mb-2">The Wrap Underemployment Index</h2>
+        <p className="text-brand-dark/60 text-base leading-relaxed">
+          A 0–100 monthly composite that captures real labor-market slack from the HR-tech buyer's
+          perspective. Blends broad underemployment (U-6), the gap between official and broad
+          unemployment, and the JOLTS quits rate — each normalized against the trailing decade.
+          Higher = more slack.
+        </p>
+      </div>
+
+      {/* Hero card — current reading + deltas */}
+      <div className="bg-white border-2 border-brand-terracotta rounded-xl px-6 py-5 mb-5 shadow-sm">
+        <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 mb-4">
+          <div>
+            <div className="text-xs uppercase tracking-widest font-bold text-brand-terracotta mb-1">
+              Current reading
+            </div>
+            <div className="flex items-baseline gap-2">
+              <span className="font-serif text-5xl font-bold text-brand-dark tabular-nums">
+                {latest.wui.toFixed(1)}
+              </span>
+              <span className="text-brand-dark/40 text-base">/ 100</span>
+            </div>
+            <div className="text-xs text-brand-dark/50 mt-1">as of {formatMonth(latest.date)}</div>
+          </div>
+          <div className="flex gap-5 text-sm">
+            <div>
+              <div className="text-[11px] uppercase tracking-wide text-brand-dark/40 font-medium mb-0.5">vs. prior month</div>
+              <DeltaPill from={prior_month?.wui} to={latest.wui} />
+            </div>
+            <div>
+              <div className="text-[11px] uppercase tracking-wide text-brand-dark/40 font-medium mb-0.5">vs. year ago</div>
+              <DeltaPill from={year_ago?.wui} to={latest.wui} />
+            </div>
+          </div>
+        </div>
+
+        <WUITrendChart data={series} />
+      </div>
+
+      {/* Component breakdown — three cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+        <div className="bg-white border border-brand-cream rounded-xl p-4">
+          <div className="text-xs text-brand-dark/40 mb-1">U-6 underemployment</div>
+          <div className="font-serif text-3xl font-bold mb-1 tabular-nums">{latest.u6.toFixed(1)}%</div>
+          <div className="text-xs text-brand-dark/40">{ordinal(latest.pctU6)} pct vs. last 10y · weight 50%</div>
+        </div>
+        <div className="bg-white border border-brand-cream rounded-xl p-4">
+          <div className="text-xs text-brand-dark/40 mb-1">U-6 minus U-3 spread</div>
+          <div className="font-serif text-3xl font-bold mb-1 tabular-nums">{latest.spread.toFixed(1)} pp</div>
+          <div className="text-xs text-brand-dark/40">{ordinal(latest.pctSpread)} pct · weight 30%</div>
+        </div>
+        <div className="bg-white border border-brand-cream rounded-xl p-4">
+          <div className="text-xs text-brand-dark/40 mb-1">Quits rate (JOLTS)</div>
+          <div className="font-serif text-3xl font-bold mb-1 tabular-nums">{latest.quits.toFixed(1)}%</div>
+          <div className="text-xs text-brand-dark/40">{ordinal(latest.pctQuits)} pct · inverted · weight 20%</div>
+        </div>
+      </div>
+
+      {/* Methodology */}
+      <details className="bg-brand-cream/40 border border-brand-cream rounded-xl px-5 py-3 mb-3">
+        <summary className="text-sm font-medium text-brand-dark cursor-pointer select-none">
+          Methodology
+        </summary>
+        <div className="text-sm text-brand-dark/70 leading-relaxed mt-3 space-y-2">
+          <p>
+            Each of the three components is converted to a percentile against its own trailing
+            120 months. The WUI is then a weighted blend:
+          </p>
+          <p className="font-mono text-xs bg-white border border-brand-cream rounded px-3 py-2">
+            WUI = 0.50 × pct(U-6) + 0.30 × pct(U-6 − U-3) + 0.20 × (100 − pct(quits))
+          </p>
+          <p>
+            The quits rate is inverted because <em>low</em> quits indicate workers are stuck —
+            a proxy for unmeasured underemployment. By construction the WUI sits in 0–100,
+            where ~50 is in line with the last decade, &gt;75 signals elevated slack, and
+            &lt;25 signals an unusually tight market.
+          </p>
+          <p>
+            Source series, all from FRED: <code>U6RATE</code>, <code>UNRATE</code>,
+            <code> JTSQUR</code>. Updated on the 7th of each month once the prior month's
+            JOLTS release is in. Historical FRED revisions are pulled in on each run.
+          </p>
+        </div>
+      </details>
+
+      <p className="text-xs text-brand-dark/40">
+        Sourced from{' '}
+        <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-terracotta transition-colors">
+          FRED (Federal Reserve Bank of St. Louis)
+        </a>.
+        Index methodology by The Wrap.
+      </p>
+    </section>
+  )
+}
+
 export default function LaborMarketPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 py-12">
@@ -152,6 +341,9 @@ export default function LaborMarketPage() {
         <h1 className="font-serif text-4xl font-bold mb-3">U.S. Labor Market</h1>
         <p className="text-brand-dark/60 text-lg">BLS, ADP, Conference Board CHRO Index, Revelio Labs, and Aspen Tech Labs — what the numbers mean for HR leaders.</p>
       </div>
+
+      {/* The Wrap Underemployment Index — proprietary composite, fetched live from /api/bls/wui */}
+      <WUISection />
 
       {/* Latest release hero — most recent data drop, called out at the top */}
       <div className="bg-white border-2 border-brand-terracotta rounded-xl px-6 py-5 mb-5 shadow-sm">
