@@ -1,28 +1,45 @@
+import { useState } from 'react'
+
 type Point = { date: string; wui: number }
 
 type Props = {
   data: Point[]
-  monthsShown?: number
 }
 
-// Wrap brand terracotta — matches the rest of /labor-market.
 const STROKE = '#B8561C'
 
+const RANGES = [
+  { label: '1Y',  months: 12 },
+  { label: '3Y',  months: 36 },
+  { label: '5Y',  months: 60 },
+  { label: '10Y', months: 120 },
+  { label: 'All', months: Infinity },
+] as const
+
+type RangeLabel = (typeof RANGES)[number]['label']
+
 function formatTick(date: string): string {
-  // YYYY-MM-01 → "Jan ’24"
   const [y, m] = date.split('-')
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   const idx = Math.max(0, Math.min(11, parseInt(m, 10) - 1))
   return `${months[idx]} ’${y.slice(2)}`
 }
 
-export default function WUITrendChart({ data, monthsShown = 60 }: Props) {
-  const trimmed = data.slice(-monthsShown)
+export default function WUITrendChart({ data }: Props) {
+  const [range, setRange] = useState<RangeLabel>('5Y')
+
+  const monthsToShow = RANGES.find(r => r.label === range)!.months
+  const trimmed = monthsToShow === Infinity ? data : data.slice(-monthsToShow)
+
   const W = 720
   const H = 220
   const pad = { top: 18, right: 18, bottom: 28, left: 36 }
   const cW = W - pad.left - pad.right
   const cH = H - pad.top - pad.bottom
+
+  // Disable a range pill if we don't have enough history for it. Always allow
+  // "All" since it's the no-op view of whatever data exists.
+  const isDisabled = (months: number) => months !== Infinity && data.length < months
 
   if (trimmed.length < 2) {
     return (
@@ -35,10 +52,10 @@ export default function WUITrendChart({ data, monthsShown = 60 }: Props) {
   // Fixed 0–100 scale — WUI is by construction in that range.
   const minV = 0
   const maxV = 100
-  const range = maxV - minV
+  const vRange = maxV - minV
 
   const x = (i: number) => pad.left + (i / (trimmed.length - 1)) * cW
-  const y = (v: number) => pad.top + cH - ((v - minV) / range) * cH
+  const y = (v: number) => pad.top + cH - ((v - minV) / vRange) * cH
 
   const pts = trimmed.map((p, i) => ({ x: x(i), y: y(p.wui), v: p.wui, date: p.date }))
   const linePath = pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ')
@@ -53,13 +70,40 @@ export default function WUITrendChart({ data, monthsShown = 60 }: Props) {
 
   return (
     <div className="bg-white border border-brand-cream rounded-xl p-4">
-      <div className="flex items-baseline justify-between mb-1">
-        <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">
-          WUI · last {trimmed.length} months
-        </span>
-        <span className="text-xs text-brand-dark/40 tabular-nums">
-          {formatTick(trimmed[0].date)} → {formatTick(trimmed[trimmed.length - 1].date)}
-        </span>
+      <div className="flex items-baseline justify-between mb-2 flex-wrap gap-2">
+        <div className="flex items-baseline gap-3 flex-wrap">
+          <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">
+            WUI trend
+          </span>
+          <span className="text-xs text-brand-dark/40 tabular-nums">
+            {formatTick(trimmed[0].date)} → {formatTick(trimmed[trimmed.length - 1].date)}
+          </span>
+        </div>
+        <div className="flex gap-0.5" role="group" aria-label="Select chart range">
+          {RANGES.map(r => {
+            const active = r.label === range
+            const disabled = isDisabled(r.months)
+            return (
+              <button
+                key={r.label}
+                type="button"
+                onClick={() => setRange(r.label)}
+                disabled={disabled}
+                aria-pressed={active}
+                className={
+                  'text-xs px-2 py-1 rounded font-medium tabular-nums transition-colors ' +
+                  (active
+                    ? 'bg-brand-terracotta text-white'
+                    : disabled
+                      ? 'text-brand-dark/20 cursor-not-allowed'
+                      : 'text-brand-dark/50 hover:text-brand-terracotta hover:bg-brand-cream/50')
+                }
+              >
+                {r.label}
+              </button>
+            )
+          })}
+        </div>
       </div>
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ overflow: 'visible' }}>
         <title>The Wrap Underemployment Index over time</title>

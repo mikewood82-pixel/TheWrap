@@ -24,7 +24,7 @@ const SERIES = {
 
 const WEIGHTS = { u6: 0.5, spread: 0.3, quitsInv: 0.2 }
 const WINDOW_MONTHS = 120 // trailing-10y percentile window
-const READ_MONTHS = 240 // enough history to compute 60-month chart + 120-month window
+const READ_MONTHS = 600 // returns full history (back to FRED start) for the "All" range pill; payload stays ~30KB
 
 export const onRequestGet: PagesFunction<Env> = async ({ env }) => {
   const { results } = await env.JOBS_DB.prepare(

@@ -230,12 +230,26 @@ function WUISection() {
         <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">
           Wrap proprietary index · Updated monthly
         </div>
-        <h2 className="font-serif text-3xl font-bold mb-2">The Wrap Underemployment Index</h2>
+        <h2 className="font-serif text-3xl font-bold mb-2">The Wrap Underemployment Index (WUI)</h2>
         <p className="text-brand-dark/60 text-base leading-relaxed">
-          A 0–100 monthly composite that captures real labor-market slack from the HR-tech buyer's
-          perspective. Blends broad underemployment (U-6), the gap between official and broad
-          unemployment, and the JOLTS quits rate — each normalized against the trailing decade.
-          Higher = more slack.
+          A 0–100 monthly composite that captures real labor-market slack. Blends broad
+          underemployment (U-6), the gap between official and broad unemployment, and the JOLTS
+          quits rate — each normalized against the trailing decade. Higher = more slack.
+        </p>
+      </div>
+
+      {/* "What is slack?" primer — sits between the intro and the headline number so first-time
+          readers understand what the 62.5 actually represents before they see it. */}
+      <div className="bg-brand-cream/40 border border-brand-cream rounded-xl px-5 py-3 mb-5">
+        <div className="text-xs uppercase tracking-wide font-medium text-brand-dark/60 mb-1.5">
+          What is slack?
+        </div>
+        <p className="text-sm text-brand-dark/75 leading-relaxed">
+          Unused worker capacity in the economy — the gap between the workforce we have and
+          how much of it is fully employed at the hours people want. <strong>High slack</strong>{' '}
+          means employers have the upper hand: easier hiring, slower wage growth, fewer quits.{' '}
+          <strong>Low slack</strong> means workers do: harder hiring, wage pressure, more
+          turnover.
         </p>
       </div>
 
