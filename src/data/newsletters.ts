@@ -15,7 +15,7 @@ export const newsletters: Newsletter[] = [
     tag: 'AI & Future of Work',
     excerpt: 'By 2030, the seven-stage hiring funnel has collapsed into three — and the only step left for humans is whether they want to work together.',
     body: `
-<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image1.png" alt="The Hiring Funnel Collapsed" />
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image1.webp" alt="The Hiring Funnel Collapsed" />
 
 <p>It's 2030 and I wake up to a beep from my iPhone 22 to see that Ziggy, my work agent, has had a busy night. He's completed two interviews with corporate agents while I slept. He passed one and declined another because it was a Director role at a Series C. Normally, this job would be a "rocket ship," but Ziggy remembers I told it eighteen months ago that I wanted to stay an individual contributor so I had flexibility while my kids are in high school, and it took me at my word. Additionally, Ziggy flagged an interesting opportunity at a company adjacent to my industry, in a city I've been quietly Googling for the past 6 months. Ziggy put it in the "worth a look" bucket.</p>
 
@@ -89,7 +89,7 @@ export const newsletters: Newsletter[] = [
 <p>The smart move here is distribution. Microsoft has spent two years pushing Copilot into the enterprise, and the install base is enormous — wherever an employee already has a Microsoft 365 license, Workday is now a prompt away. No new login to roll out, no separate app to train people on, no change management. It's the same play Intuit is running at the top of this section with QuickBooks Workforce: when you have a partner with reach, you ship your product through their pipes instead of building your own. <a href="https://newsroom.workday.com/2026-05-13-Workday-Brings-Sana-Self-Service-Agent-for-HR-and-Finance-Into-Microsoft-365-Copilot"><strong>Read the release</strong></a>.</p>
 
 <h3>Eightfold Launches TalentForge, Bets the Industry on Custom-Built HR Software</h3>
-<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image4.png" alt="Eightfold TalentForge" />
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image4.webp" alt="Eightfold TalentForge" />
 <p>Eightfold AI used its Cultivate 2026 conference to launch TalentForge — a platform designed to let enterprises build custom HR software on top of Eightfold's talent intelligence layer. In the announcement, CEO Ashutosh Garg stated that 90% of enterprise software will be custom-built in the future. You know what? It's a bold prediction but he's probably right. Additionally, Eightfold rolled out 360 Interview and Workforce Readiness, an AI interviewer built in house and an "AI coach" that may be a coach, but it's also a spy. <a href="https://eightfold.ai/blog/introducing-talentforge/">Read the CEO blog</a>.</p>
 
 <h3>Oracle Tells Laid-Off Workers: Take It or Leave It</h3>
@@ -101,7 +101,7 @@ export const newsletters: Newsletter[] = [
 <p>UKG used Payroll Congress 2026 to unveil Pro Pay with Workforce AI — a six-feature stack the company describes as combining "agentic, assistive, and generative AI" to overhaul payroll processing. Six features, six variations on "AI," one product. Worth holding next to UKG's 950 job cuts from a few weeks back — the company is automating the back-office function while doing the same to itself. <a href="https://www.businesswire.com/news/home/20260511304428/en/UKG-Unveils-Agentic-powered-UKG-Pro-Pay-with-Workforce-AI-at-Payroll-Congress-2026">Read more</a>.</p>
 
 <h3>Workvivo Launches Seer, Reunites the Glint Band</h3>
-<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image7.png" alt="Workvivo Seer" />
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image7.webp" alt="Workvivo Seer" />
 <p>Workvivo (by Zoom) rolled out Seer this week — a standalone "people intelligence" platform built on the employee listening capabilities Workvivo had previously bundled into its broader product. The org chart behind it is the actual story: Justin Black, who ran Glint at LinkedIn and Microsoft, is now Head of Seer; Phil Murphy from Qualtrics and Jaime Gonzales (also ex-Glint) round out the leadership. Workvivo's own survey of 4,736 frontline and desk workers backs the framing: 62% are comfortable giving feedback, but only 49% see meaningful change. "The industry doesn't have a listening problem, it has an execution problem," Black said — and the Glint alumni building it have earned the benefit of the doubt. <a href="https://www.workvivo.com/newsroom/workvivo-launches-seer/">Read more</a>.</p>
 
 <h3>Built In Bets on Being the Glassdoor for ChatGPT</h3>
@@ -148,7 +148,7 @@ export const newsletters: Newsletter[] = [
 <h2>👇 Worth a Click</h2>
 
 <h3>Your Boss's New AI Wants to Know Why You're Scowling</h3>
-<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image13.png" alt="Emotion AI in the workplace" />
+<img src="/newsletters/may-15-2026-hiring-funnel-collapsed/image13.webp" alt="Emotion AI in the workplace" />
 <p>Buried in my HR Tech Brew was this piece about the Atlantic's reporting on "emotion AI" creeping into the workday. Imagine Slack integrations scoring your chats for "sentiment and toxicity," Zoom extensions reading your face (and rolling eyes) in real time. Remember Burger King's OpenAI headset "Patty" grading drive-thru workers on friendliness?</p>
 <p>Research in the piece noted that Americans only scowl when angry about a third of the time, which means the bot watching you is probably misreading the face you make when you're concentrating. Important to note that the EU banned this stuff in workplaces last year. The US? Haha, you should really smile more. <a href="https://www.techbrew.com/stories/emotion-ai-workplace-surveillance">Read More</a></p>
     `,
@@ -160,7 +160,7 @@ export const newsletters: Newsletter[] = [
     tag: 'AI & Hiring',
     excerpt: "AI just 4x'd the application volume — and the resume that ran the ATS industry for two decades has been neutralized as a hiring signal.",
     body: `
-<img src="/newsletters/may-8-2026-application-inflation/image1.png" alt="Application Inflation Is Devaluing Every Candidate" />
+<img src="/newsletters/may-8-2026-application-inflation/image1.webp" alt="Application Inflation Is Devaluing Every Candidate" />
 
 <p>You all know that I read a lot of press releases each week. Well, "read" is a loose term. Most of the information about the release is right in the first two paragraphs. And that's fine. Press releases are mostly boring, "on-the-record" information that companies need to get out in the public. But every once in a while, you catch something that sticks with you. That happened to me this week with Greenhouse's latest release with this simple line:</p>
 
@@ -203,7 +203,7 @@ export const newsletters: Newsletter[] = [
 <h2>📰 HR Tech News</h2>
 
 <h3>Greenhouse goes voice-first with Ezra AI Labs</h3>
-<img src="/newsletters/may-8-2026-application-inflation/image2.png" alt="Greenhouse acquires Ezra AI Labs" />
+<img src="/newsletters/may-8-2026-application-inflation/image2.webp" alt="Greenhouse acquires Ezra AI Labs" />
 <p>Greenhouse signed a definitive agreement to acquire Ezra AI Labs, a voice AI interviewing platform that only launched in 2024.</p>
 <p>Pay attention to this one. Greenhouse has spent the last year building the loudest "responsible AI" pitch in the category — ISO 42001 certified, monthly Warden AI bias audits, the AI Principles framework we covered in #73. The bet is that <strong>structured voice conversations at the top of the funnel — where fewer than 7% of applicants currently get any human contact — are the actual upgrade.</strong> That should also help the candidate volume problem. Good move. <a href="https://www.prnewswire.com/news-releases/greenhouse-has-entered-into-a-definitive-agreement-to-acquire-ezra-ai-labs-bringing-conversational-ai-to-the-hiring-process-302762658.html">Read More</a></p>
 
@@ -213,7 +213,7 @@ export const newsletters: Newsletter[] = [
 <p>Read this one in context. TA Associates took iCIMS private back in 2020. Since then, the platform has had its AI overhaul, a brand refresh, and now a CFO running the show. <strong>That's not the playbook for an indefinite hold — that's the playbook for getting dressed up before the dance.</strong> The question is who asks. Workday already grabbed Paradox. SAP has SmartRecruiters. Greenhouse just bought their voice AI play. The list of dance partners with both the cash and the ATS gap to fill is getting short. Oracle is the obvious one. Whoever it is, the clock is ticking. <a href="https://hrtechfeed.com/icims-names-new-ceo/">Read More</a></p>
 
 <h3>ERIN goes free</h3>
-<img src="/newsletters/may-8-2026-application-inflation/image4.jpg" alt="ERIN free AI referral platform" />
+<img src="/newsletters/may-8-2026-application-inflation/image4.webp" alt="ERIN free AI referral platform" />
 <p>ERIN launched a free version of its AI-powered employee referral platform this week — connect your ATS or HRIS, brand a referral program, go live in minutes. No credit card. You pay nothing until your first three referral hires. Paid plans start at $349/month after that.</p>
 <p>The mechanics are the story. ERIN is shifting referral software from six-week implementations and upfront contracts to instant activation and pay-after-results pricing. The other piece worth flagging: AI Campaigns. Instead of waiting for employees to remember to refer someone, the platform identifies who in the workforce is most likely to know qualified candidates for specific roles and reaches them on SMS, email, Slack, or Teams. <strong>That's how this gets to frontline workers</strong> — the population that traditional referral programs have historically left out because they don't live in the corporate inbox.</p>
 <p>Worth watching. Frontline hiring is one of the last real growth sectors, and a free, AI-driven referral channel that meets workers where they actually are is a credible play for it. <a href="https://apnews.com/press-release/ein-presswire-newsmatics/erin-launches-free-ai-employee-referral-platform-that-goes-live-in-minutes-0a31706f36ba984dcb82605285696d05">Read More</a></p>
@@ -227,7 +227,7 @@ export const newsletters: Newsletter[] = [
 <h2>📊 Research &amp; Reports</h2>
 
 <h3>ADP: 109,000 jobs added in April, but the middle is hollowing</h3>
-<img src="/newsletters/may-8-2026-application-inflation/image6.png" alt="ADP April National Employment Report" />
+<img src="/newsletters/may-8-2026-application-inflation/image6.webp" alt="ADP April National Employment Report" />
 <p>ADP's April National Employment Report dropped this morning — 109,000 private sector jobs added, the fastest pace since January 2025. Pay for job-stayers up 4.4%, job-changers up 6.6%. Health care and education carried the report at +61,000, with trade/transportation/utilities rebounding at +25,000. Professional and business services lost 8,000.</p>
 <p>The line worth circling came from ADP chief economist Dr. Nela Richardson: "Small and large employers are hiring, but we're seeing softness in the middle." The numbers back it up — small establishments added 65,000, large added 42,000, and medium-sized companies (50–499 employees) added a combined two thousand. Two. Thousand. <strong>The Middle Migration showing up in the actual data, on the actual day the BLS keeps making harder to trust.</strong> <a href="https://www.prnewswire.com/news-releases/adp-national-employment-report-private-sector-employment-increased-by-109-000-jobs-in-april-annual-pay-was-up-4-4-302764101.html">Read More</a></p>
 
@@ -267,7 +267,7 @@ export const newsletters: Newsletter[] = [
 <p>Keep your eye on this one. The case will get litigated on its merits, and maybe there's something there. But the pattern is the part that should make every HR leader uncomfortable: the agency that's supposed to be enforcing civil rights law is now picking targets that look an awful lot like the targets the White House has been naming out loud. That's not enforcement. That's something else. <a href="https://www.nytimes.com/2026/05/05/business/economy/eeoc-nyt-investigation.html">Read More</a></p>
 
 <h3>Coworkers are bonding over Botox now</h3>
-<img src="/newsletters/may-8-2026-application-inflation/image11.png" alt="Coworkers bonding over Botox" />
+<img src="/newsletters/may-8-2026-application-inflation/image11.webp" alt="Coworkers bonding over Botox" />
 <p>HR Brew dispatch from the new frontier of work-life integration: getting injected with your colleagues. The whiskey rooms of Mad Men gave way to pickleball, pickleball gave way to book club, and now book club has apparently given way to wrinkle paralysis as a team-building exercise.</p>
 <p>I had to share this crazy article just because I can't imagine a world where this is normal. As a 43-year-old man, I may be under a rock with the whole Botox craze, but listen to some of this:</p>
 <p>Sarah Mahoney, a Massachusetts hairdresser, told HR Brew about going for Botox with a new coworker. Her takeaway: it felt "almost like a really vulnerable situation" and brought them closer. They made a day of it. Drinks after.</p>
@@ -404,7 +404,7 @@ export const newsletters: Newsletter[] = [
     tag: 'Inside The Wrap',
     excerpt: 'A full website, a free jobs board across 28 HR tech vendors, a Voices hub, a Vendor Pulse preview — and a premium tier launching May 1.',
     body: `
-<img src="/newsletters/april-24-2026-expanded-wrap/image1.png" alt="Introducing the expanded Wrap" />
+<img src="/newsletters/april-24-2026-expanded-wrap/image1.webp" alt="Introducing the expanded Wrap" />
 
 <p>Hi everyone. I don't have a hot take on the industry this week, but I am very excited to share that I've built The Wrap out to be a full website! Head over to <a href="https://ilovethewrap.com">ilovethewrap.com</a> and check it out. In building the website, I wanted to include everything I would want to know if I was in HR tech.</p>
 
@@ -436,11 +436,11 @@ export const newsletters: Newsletter[] = [
 <p>I like the people I've worked with at UKG, but this is the sad reality of software companies at the moment, especially ones with PE backing. Chop off an entire layer of talent expenses, and lean into what's left with AI. Instead of having a team working on a project, just have one person playing conductor to an orchestra of agents. Having actual employees doing the task is a financial liability when AI is cheap and scalable. <a href="https://hrexecutive.com/ukg-cuts-950-jobs-in-latest-round-of-restructuring/">Read More</a></p>
 
 <h3>SeekOut taps Sean Thompson as CEO as founder moves to chairman</h3>
-<img src="/newsletters/april-24-2026-expanded-wrap/image3.png" alt="SeekOut CEO transition" />
+<img src="/newsletters/april-24-2026-expanded-wrap/image3.webp" alt="SeekOut CEO transition" />
 <p>SeekOut announced that Sean Thompson will take over as CEO on May 4, with co-founder Anoop Gupta transitioning to Executive Chairman after leading the company since 2017. Co-founder Aravind Bala stays on as CTO. I had the chance to interview Anoop last fall at HR Tech, and it was genuinely one of my more interesting conversations — talking with him was like getting a lesson from a favorite college professor. Cheers on the transition, Anoop, and we'll be keeping an eye on SeekOut under Thompson. <a href="https://www.seekout.com/blog/seekout-welcomes-new-ceo/">Read More</a></p>
 
 <h3>Greenhouse plants a flag with AI Principles Framework</h3>
-<img src="/newsletters/april-24-2026-expanded-wrap/image4.png" alt="Greenhouse AI Principles Framework" />
+<img src="/newsletters/april-24-2026-expanded-wrap/image4.webp" alt="Greenhouse AI Principles Framework" />
 <p>Greenhouse dropped its AI Principles Framework this week — five pillars covering structured hiring, reimagined workflows, human-centered design, explicit decision ownership, and explainability. CEO Daniel Chait's framing: AI hasn't delivered on the hype in hiring, and that's a failure of application, not the technology. The receipts back it up: ISO 42001 certification, no customer data used to train models, no composite candidate scores, monthly Warden AI bias audits across ten protected classes with public results, and org-level toggles. In a market where every vendor chants "responsible AI" the way restaurants claim "farm-to-table," Greenhouse is actually publishing the farm address. <a href="https://www.greenhouse.com/newsroom/greenhouse-launches-ai-principles-framework-setting-the-standard-for-responsible-hiring-in-the-ai-era">Read More</a></p>
 
 <hr />
@@ -464,13 +464,13 @@ export const newsletters: Newsletter[] = [
 <h2>🔥 HR Hot Takes</h2>
 
 <h3>Steve Smith: The SaaSpocalypse isn't a disruption, it's a climate change</h3>
-<img src="/newsletters/april-24-2026-expanded-wrap/image6.png" alt="Steve Smith on the SaaSpocalypse" />
+<img src="/newsletters/april-24-2026-expanded-wrap/image6.webp" alt="Steve Smith on the SaaSpocalypse" />
 <p>Steve Smith at Work Tech Weekly put language to something the enterprise SaaS world hasn't fully admitted out loud yet. His line of the week:</p>
 <blockquote><p>"ServiceNow, Salesforce, and the whole Cretaceous layer of enterprise workflow software aren't being disrupted by a better version of themselves. The environment just shifted. AI agents don't just replace the worker. They replace the software that the worker used to need. That's a different kind of disruption than most enterprise SaaS companies are modeled for."</p></blockquote>
 <p>The asteroid didn't pick a fight with the dinosaurs — it changed the climate they were built for. Every HR tech vendor pitching "workflow automation" as their moat should sit with that one for a minute. If the job of the software was to coordinate the humans, and the humans aren't coordinating the work anymore, what exactly are you selling? <a href="https://www.linkedin.com/pulse/ai-and-jobs-convo-gets-real-talking-layoffs-brain-fry-steve-smith-bedjc/">Read More</a></p>
 
 <h3>Lance Haun: You can't automate your way to employee trust</h3>
-<img src="/newsletters/april-24-2026-expanded-wrap/image7.png" alt="Lance Haun on AI and employee trust" />
+<img src="/newsletters/april-24-2026-expanded-wrap/image7.webp" alt="Lance Haun on AI and employee trust" />
 <p>Lance Haun torched Meta's latest solution to the scale problem: an AI avatar of Zuckerberg trained on his mannerisms and internal writings so that 79,000 employees can interact with a simulation of the founder. Haun's diagnosis is brutal but accurate: the more power someone accumulates, the less accurate their read of other people becomes — they stop picking up social cues and start confusing their own perspective with reality. Meta has been here before — the metaverse lost $80 billion, Workplace from Meta got shuttered, and now they're building AI Zuck because the pattern never changes, only the technology does. <a href="https://www.reworked.co/employee-experience/meta-mark-zuckerberg-ai-ceo-employee-trust/">Read More</a></p>
 
 <hr />
@@ -487,7 +487,7 @@ export const newsletters: Newsletter[] = [
 <p><em>Interesting stories outside of HR</em></p>
 
 <h3>US talent is quietly exiting</h3>
-<img src="/newsletters/april-24-2026-expanded-wrap/image9.png" alt="US talent exiting — Revelio Labs" />
+<img src="/newsletters/april-24-2026-expanded-wrap/image9.webp" alt="US talent exiting — Revelio Labs" />
 <p>Revelio Labs tracked what's been happening under the radar: the share of US workers who switch jobs abroad has doubled since 2021, from just under 3% to nearly 6% in 2025. The outflow is led by tech and digital sectors — IT consulting is at nearly 16% of job switchers going abroad, with remote roles significantly more likely to lead to exits. Both US-born and foreign-born workers are leaving, and the pattern is structural, not cyclical. The regression analysis lands where you'd expect: remote work capability and weak internal promotion paths drive exits, while firms with stronger advancement opportunities retain talent. <a href="https://www.reveliolabs.com/news/macro/us-talent-is-quietly-exiting/">Read More</a></p>
     `,
   },
@@ -545,7 +545,7 @@ export const newsletters: Newsletter[] = [
 <p>Nickle LaMoreaux, IBM's CHRO and 2024 HR Executive of the Year, went to the Wall Street Journal's CPO Council Summit and said the quiet part out loud: if your entire AI strategy is built around productivity, you're going to miss the moment. Her argument is that enterprise workflow transformation — not individual task optimization — is where the real value lives. IBM's own AI journey generated $4.5 billion in free cash flow and saved 22 million people hours over three years, but here is where they are different. LaMoreaux's point isn't to pocket the savings. It's to redeploy them. <strong>IBM is tripling entry-level hiring over the next three years precisely because they think freed-up human capacity should be pointed at growth, not just cost reduction</strong>. Sounds promising until you realize it will probably will be outsourcing everything. But I hope I'm wrong! <a href="https://hrexecutive.com/ibm-chro-focus-on-ai-productivity-at-your-own-risk/">Read More</a></p>
 
 <h3>Upwork Comes to ChatGPT</h3>
-<img src="/newsletters/april-18-2026-moviephone-moment/image4.png" alt="Upwork ChatGPT Integration" />
+<img src="/newsletters/april-18-2026-moviephone-moment/image4.webp" alt="Upwork ChatGPT Integration" />
 <p>Wizehire did it for job seekers, now Upwork is doing it for the people doing the hiring. Their new ChatGPT integration lets businesses describe what they need, surface relevant freelance talent from Upwork's 18 million-person marketplace, and draft a job post without ever leaving the conversation. From there, Upwork's AI agent Uma picks up the handoff — scoping projects, generating contracts, getting work started. The throughline here is the same one we saw with Wizehire last week: if people are already starting their work conversations in AI chat, the platforms that show up inside that conversation win. <a href="https://investors.upwork.com/news-releases/news-release-details/upworks-work-marketplace-comes-chatgpt">Read More</a></p>
 
 <h3>Fountain Launches Cue</h3>
@@ -585,7 +585,7 @@ export const newsletters: Newsletter[] = [
 <h2>🎙️ Podcasts</h2>
 
 <h3>How Acadia Healthcare uses Phenom to recruit talent and stay true to their mission</h3>
-<img src="/newsletters/april-18-2026-moviephone-moment/image9.png" alt="Totally Talent podcast - Acadia Healthcare" />
+<img src="/newsletters/april-18-2026-moviephone-moment/image9.webp" alt="Totally Talent podcast - Acadia Healthcare" />
 <p>In this episode of Totally Talent (filmed at IAMPHENOM), I sat down for a quick discussion with Gareth Holdstock about how Acadia uses Phenom to build talent pipelines ahead of new facility openings, why speed to execution is the difference between a filled role and an empty one, and how leaning into a genuine sense of purpose — "we provide light in people's darkest moments" — has become their most effective recruiting tool. <a href="https://www.hr.com"><strong>Listen Now</strong></a></p>
 
 <hr />
@@ -594,7 +594,7 @@ export const newsletters: Newsletter[] = [
 <p><em>Interesting stories outside of HR</em></p>
 
 <h3>Burger King Is Hiring 60,000</h3>
-<img src="/newsletters/april-18-2026-moviephone-moment/image10.png" alt="Burger King Hiring 60,000" />
+<img src="/newsletters/april-18-2026-moviephone-moment/image10.webp" alt="Burger King Hiring 60,000" />
 <p>While white-collar workers are watching AI eat their calendars, someone's actually hiring. Burger King announced plans to bring on up to 60,000 workers across its roughly 6,500 U.S. locations — crew and management alike — off the back of its "Reclaim the Flame" turnaround. Frontline hiring is so hot, you might say it's flame-broiled. <a href="https://www.newsweek.com/burger-king-begins-huge-hiring-blitz-11787056">Read More</a></p>
     `,
   },
@@ -647,11 +647,11 @@ export const newsletters: Newsletter[] = [
 <p>Paylocity picked up Grayscale Labs, an AI-powered recruiting automation platform built for high-volume, high-turnover hiring environments. The pitch is speed without chaos — Grayscale keeps candidates moving through the funnel before they ghost you for another offer, while leaving the actual hiring decisions to the humans in the room. <a href="https://investors.paylocity.com/news-releases/news-release-details/paylocity-acquires-grayscale-expand-ai-powered-recruiting">Read More</a></p>
 
 <h3>SmartRecruiters goes fully agentic</h3>
-<img src="/newsletters/april-11-2026/image7.png" alt="SmartRecruiters agentic platform" />
+<img src="/newsletters/april-11-2026/image7.webp" alt="SmartRecruiters agentic platform" />
 <p>SmartRecruiters, now an SAP company, rolled out a sweeping product vision this week centered on its AI hiring companion Winston — which is evolving from a recruiting assistant into a full orchestration layer across the entire hiring funnel. New capabilities include an agentic interviewer that handles first-round screening at scale, in-chat assessments to cut candidate drop-off, and a CRM that actually does something instead of just sitting there collecting dust. Early numbers are hard to ignore: a 75% reduction in time-to-decision and candidates recommended by Winston were twice as likely to make it to interview. They also debuted a fraud detection tool that flags suspicious applications using behavioral signals and device intelligence — a quiet acknowledgment that fake candidates are now a big enough problem to build a product around. <a href="https://www.globenewswire.com/news-release/2026/04/07/3269187/0/en/SmartRecruiters-Introduces-the-Future-of-Hiring-From-AI-Agents-to-Autonomous-Talent-Acquisition.html">Read More</a></p>
 
 <h3>VirgilHR launches SkillPath LMS</h3>
-<img src="/newsletters/april-11-2026/image5.png" alt="VirgilHR SkillPath LMS" />
+<img src="/newsletters/april-11-2026/image5.webp" alt="VirgilHR SkillPath LMS" />
 <p>Jocelyn King and the team at VirgilHR just stepped into the learning management space with SkillPath — a new LMS that combines compliance training and employee development into one place. The pitch is pretty straightforward: 650+ courses, automated reminders, completion tracking, and certificates, all without the administrative circus that usually comes with managing training programs across departments, roles, and locations. For a platform that already helps HR teams navigate the legal minefield of multistate compliance, adding an LMS is a logical next step — one fewer tab open, one fewer vendor to manage. <a href="https://apnews.com/press-release/ein-presswire-newsmatics/virgilhr-launches-skillpath-lms-to-streamline-employee-training-and-compliance-in-one-platform-fa5af9e42950590e7226cdd6b4ab1eb6">Read More</a></p>
 
 <h3>Cangrade's Gen Z and Millennial workforce report</h3>
@@ -677,7 +677,7 @@ export const newsletters: Newsletter[] = [
 <p>Josh Bersin dropped his HR 2030 vision this week, and the short version is: AI agents are coming for the org chart. His framework imagines a world where agentic HR systems know everything about every employee — skills, schedules, performance patterns, pay equity gaps — while also pulling in external benchmarks on competitors, compensation trends, and regulatory changes in real time. He's also projecting HR teams shrinking by 30–40%, which is either a threat or a business case depending on who's reading it. Four years sounds far away until you remember where we were four years ago. <a href="https://joshbersin.com/2026/04/introducing-hr-2030-a-vision-for-agentic-human-resources/">Read More</a></p>
 
 <h3>Quiet Hiring Is Exploding on LinkedIn</h3>
-<img src="/newsletters/april-11-2026/image10.png" alt="Quiet hiring on LinkedIn" />
+<img src="/newsletters/april-11-2026/image10.webp" alt="Quiet hiring on LinkedIn" />
 <p>J.T. O'Donnell makes a point worth paying attention to this week — quiet hiring is accelerating, and most job seekers are still playing by the old rules. Recruiters are increasingly bypassing public postings altogether, searching LinkedIn privately for candidates who already look like the answer to their problem. If you're not visible, you're not in the running — and "visible" no longer means a polished profile collecting dust. It means showing up consistently, posting with intention, and demonstrating how you think before anyone ever asks. The hidden job market has always existed. It's just getting louder. <a href="https://www.linkedin.com/pulse/quiet-hiring-exploding-linkedin-most-job-seekers-j-t-o-donnell-qh6de/">Read More</a></p>
 
 <hr />
@@ -686,7 +686,7 @@ export const newsletters: Newsletter[] = [
 <p><em>Don't just read me, listen to me!</em></p>
 
 <h3>Hiring Quality Over Quantity</h3>
-<img src="/newsletters/april-11-2026/image8.png" alt="Totally Talent podcast with Joel Kirk" />
+<img src="/newsletters/april-11-2026/image8.webp" alt="Totally Talent podcast with Joel Kirk" />
 <p>It's not a volume problem — it's a quality problem. In this episode of Totally Talent, I sit down with Joel Kirk of Blue Cross Blue Shield Massachusetts to talk about how one of the country's largest health insurers is rethinking talent acquisition from the ground up. Joel breaks down how his team moved from a static career site to a full candidate experience overhaul, why he thinks about automation the way most people think about a pizza tracker, and how AI is finally giving recruiters permission to stop scheduling 400 interviews and start having actual strategic conversations. <a href="https://www.hr.com/en/resources/podcasts/talent/hiring-quality-over-quantity_mnhqx0es.html">Listen Now</a></p>
 
 <hr />

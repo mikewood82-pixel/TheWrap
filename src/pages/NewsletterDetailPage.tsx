@@ -46,10 +46,20 @@ export default function NewsletterDetailPage() {
   const { slug } = useParams()
   const edition = [...newsletters, ...archive].find(n => n.slug === (slug ?? ''))
   const readTime = useMemo(() => edition ? estimateReadTime(edition.body) : 0, [edition])
-  const bodyHtml = useMemo(
-    () => edition ? edition.body.replace(/<img (?!loading=)/g, '<img loading="lazy" ') : '',
-    [edition],
-  )
+  const bodyHtml = useMemo(() => {
+    if (!edition) return ''
+    // First image is the LCP hero — give it priority. All subsequent images
+    // are below the fold and should lazy-load. Previously every <img> got
+    // loading="lazy" which deprioritized the hero and tanked LCP.
+    let seenFirst = false
+    return edition.body.replace(/<img (?![^>]*\bloading=)/g, () => {
+      if (!seenFirst) {
+        seenFirst = true
+        return '<img fetchpriority="high" decoding="async" '
+      }
+      return '<img loading="lazy" decoding="async" '
+    })
+  }, [edition])
 
   if (!edition) {
     return (
