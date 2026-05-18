@@ -1673,7 +1673,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['QuickBooks', 'Xero', 'FreshBooks', 'Slack', 'Greenhouse', 'BambooHR'],
     news: [
-      { headline: 'Gusto reaches 500,000 customers and unveils Spring Showcase with nearly 75 new SMB features', date: 'Apr 2026', source: 'CPA Practice Advisor' },
+      { headline: 'Gusto crosses $1B in revenue — AI handles ~50% of code generation and support, IPO chatter resumes', date: 'May 2026', source: 'TechCrunch' },
       { headline: 'Gusto brings payroll into Claude and Slack — enabling pay runs without leaving the conversation', date: 'Apr 2026', source: 'CPA Practice Advisor' },
       { headline: 'Gusto acquires Mosey to close the compliance gap for small businesses with AI-powered state filings', date: 'Apr 2026', source: 'PR Newswire' },
     ],
@@ -2183,8 +2183,8 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Salesforce', 'Microsoft Teams', 'Slack', 'Workday', 'Cornerstone', 'Zoom'],
     news: [
+      { headline: 'Docebo acquires 365Talents to embed skills intelligence into its AI LMS', date: 'May 2026', source: 'UNLEASH' },
       { headline: 'Docebo unveils most significant release in company history at Inspire 2026 — Companion, MCP Server, AI Tutor, AgentHub', date: 'Apr 2026', source: 'Docebo' },
-      { headline: 'Docebo reaches 3,600 customers after strong growth in customer training and partner enablement use cases', date: 'Feb 2026', source: 'Docebo Blog' },
       { headline: 'Docebo adds gamification engine with leaderboards and badges to boost learner completion rates', date: 'Mar 2026', source: 'Docebo Newsroom' },
     ],
   },
@@ -2515,7 +2515,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Workday', 'SAP SuccessFactors', 'Microsoft Teams', 'Slack', 'Qualtrics', 'Medallia'],
     news: [
-      { headline: 'Perceptyx acquires Cultivate to add AI-powered behavioural nudges for managers based on survey data', date: 'Jan 2026', source: 'Perceptyx Newsroom' },
+      { headline: 'Perceptyx acquires AI-native learning platform Lyceum to extend listening into L&D', date: 'May 2026', source: 'UNLEASH' },
       { headline: 'Perceptyx launches Workforce Intelligence Platform combining listening, action, and outcomes in one dashboard', date: 'Feb 2026', source: 'Perceptyx Blog' },
       { headline: 'Perceptyx surpasses 700 enterprise customers across 160 countries managing 10M+ active employees', date: 'Mar 2026', source: 'Perceptyx Newsroom' },
     ],
