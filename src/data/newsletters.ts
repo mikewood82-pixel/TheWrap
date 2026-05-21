@@ -9,6 +9,109 @@ export interface Newsletter {
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'generation-ai-graduates',
+    date: 'May 22, 2026',
+    title: 'Generation AI Graduates',
+    tag: 'AI & Future of Work',
+    excerpt: "Stanford's Class of '26 — the cohort that spent all four years alongside ChatGPT — graduates into a labor market that taught them to read work as a pure transaction. The day the cycle turns, what will they be loyal to?",
+    body: `
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image1.png" alt="Generation AI Graduates" />
+
+<p>This week a few million people will pick up a diploma and become job seekers. Caps, gowns, a name read aloud (unless their college outsourced that to AI, which <a href="https://www.nbcnews.com/video/graduation-ceremony-disrupted-by-ai-name-reading-system-263678021508">happened at one school this week</a>), and that timeless photo with their parents. As the parties die down, they move toward the next phase of life — applying for jobs and desperately hoping their degree was worth the price of admission.</p>
+
+<p>One of those students is Theo Baker, graduating from Stanford. You may know the name — he's the freshman who broke the research-misconduct story that ended his university president's tenure, and he has a book out this week about his experience at Stanford. He's a real journalist who finds a thread and pulls it just to see what will unravel.</p>
+
+<p>In an interview with the New York Times (included in the Worth a Click section), Baker describes his class as the first to spend all four years of college alongside ChatGPT, which landed on campus two months after he did. Looking back, he realizes they were an experiment — not a class that simply adopted a tool, but a cohort that was run through one.</p>
+
+<p>These kids aren't stupid; it's Stanford, after all. But what caught me is how they adapted to a college life with AI in it. Coursework? Trivial. Internships? Meh. They switched from caring about whether something would be on a test to how they could get paid. Why spend a semester in advanced coding — learning, testing, building the slow way — when you could ship something now, raise millions, and learn as you go?</p>
+
+<p>So here is the cohort, diploma in hand. And here is what's waiting for them.</p>
+
+<p>The offer to a young worker used to start with mission — the pitch, however oversold, that the work meant something, that you were here to do a thing worth doing. You don't need to canonize anyone to see how much that pitch has thinned. Go back ten or fifteen years and the founder archetype, whatever its hypocrisies, at least pointed at the world — at disease, at literacy, at clean water, at problems with body counts (Bill Gates did a lot of philanthropy before philandering).</p>
+
+<p>You could be cynical about the marketing and still concede the marketing was aimed somewhere outward. The dominant founder energy now points inward: at valuation, at extraction, at the personal balance sheet, at the increasingly literal project of accumulating enough to wall yourself off from the consequences.</p>
+
+<p>A young person deciding where to spend their twenties can read that shift as clearly as Baker's classmates read theirs. The "change the world" pitch still gets made, but it has to be made now to an audience that has watched where the money actually goes.</p>
+
+<p>The job market is bad right now, and it will not be bad forever. Labor markets are cyclical; that is the one thing they reliably are. The rung gets sawed off and, eventually, in some form, gets rebuilt. The hiring freeze thaws. And on the day it does, the people who today have no leverage at all get something back: the ability to say no.</p>
+
+<p>So here's the question I keep turning over. We have spent a few years training an entire generation — the sharp ones, the Stanford ones — to read work as a pure transaction, because that is what we showed them it was. When the cycle turns and that cohort, a few years more experienced and considerably less frightened, finally gets to choose, what exactly will they be loyal to? You cannot spend a generation's whole entry into the workforce teaching it to follow the money and then act surprised when that's the only thing it follows.</p>
+
+<p>On to this week's news while I dream of getting Theo Baker to come on the show. This week's Wrap features SAP's autonomous enterprise, OpenAI creepin' into HR consulting, Juicebox launching always-on sourcing agents, more funding for Humanly, cool launches from Robin Schooling and Orlando Haynes, talking AI interviews with Aaron Wang of Alex AI and Yazad Dalal of Joveo, and a look at what's happening with the next generation of tech founders at Stanford.</p>
+
+<p>Have a great weekend!</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Bersin on SAP's Autonomous Enterprise — required reading</h3>
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image2.png" alt="SAP Autonomous Enterprise" />
+<p>At Sapphire, SAP laid out its "Autonomous Enterprise" — the pitch that the ERP stops being software you operate and becomes a system that runs business processes itself. The scaffolding for it: 224 agents and 51 assistants across finance, HR, and the rest of the suite; a proprietary tabular data model built to reason over the massive structured data that trips up ordinary LLMs; a Knowledge Graph as the semantic layer that lets agents understand how SAP's data actually connects; and Joule Studio, a developer environment for building agents on top. CEO Christian Klein is now calling SAP an AI company.</p>
+<p>Josh Bersin's breakdown is fantastic and I love the analogy with Waymo and Zoox. Waymo is a normal car that drives itself — the existing vehicle, automated. Zoox threw out the car and redesigned the whole thing around the passenger, no steering wheel, no driver's seat. Bersin's read is that SAP's Autonomous Enterprise is a Waymo. It automates existing SAP processes brilliantly, but it doesn't reimagine how the work gets done — the underlying process is still the SAP process, now with agents driving. <a href="https://joshbersin.com/2026/05/saps-autonomous-enterprise-it-now-calls-itself-an-ai-company/">Read more</a>.</p>
+
+<h3>OpenAI launches $4B Deployment Company</h3>
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image3.jpg" alt="OpenAI Deployment Company" />
+<p>OpenAI rolled out the OpenAI Deployment Company on May 15, backed by more than $4 billion in initial investment. The unit will embed "Forward Deployed Engineers" inside customer organizations to redesign workflows around AI, and OpenAI is folding in AI consulting shop Tomoro — about 150 specialists with prior work at Tesco and Virgin Atlantic — to staff it up. It follows OpenAI's February Frontier Alliances with McKinsey, BCG, Accenture, and Capgemini, and lands alongside Anthropic's own ~$1.5B services venture backed by Blackstone, Goldman Sachs, and Hellman &amp; Friedman.</p>
+<p>HR Executive's Jill Barth flagged the part HR leaders should sit up for: the FDEs are explicitly being pointed at hiring pipelines, performance management, and workforce planning, and OpenAI's announcement names zero CHROs as stakeholders.</p>
+<p>The foundation model providers are scaling new heights, moving another level up. They already aren't content to sell APIs — they're encroaching on the platform layer where HR tech vendors used to be safe. Now they're eating the consulting layer that translated vendor product into HR workflow too. The model maker, the SI, and the change management partner are increasingly the same logo. <a href="https://hrexecutive.com/openais-new-4b-consulting-venture-lands-squarely-in-hr-territory/">Read more</a>.</p>
+
+<h3>Juicebox launches always-on sourcing agents</h3>
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image4.jpg" alt="Juicebox sourcing agents" />
+<p>Juicebox rolled out AI agents that continuously source candidates across every open role — mapping a talent graph, surfacing matches, and running targeted outreach at a speed no human team could keep up. Founder David Paffenholz frames the agents as exhaustive: map everyone in a role, find the top ones, reach the ones who fit. The company has powered 560,000+ searches and engaged 3M+ candidates, with Ramp, Cursor, and Cognition among the named customers. Juicebox's own framing of the problem is the part worth sitting with: the average opening now draws nearly 250 applications, inbound pipelines are buckling under low-intent candidates, and the companies responding best have stopped trying to fix inbound altogether.</p>
+<p>I had a chance to sit down briefly with Paffenholz and the Juicebox team at UNLEASH, and they are great. I love this direction. It's the exact move predicted last week — when the front door is jammed, sourcing moves to the top of the funnel and goes continuous. The agent doesn't wait for the flood of applications; it goes and finds the candidate before they ever apply. <a href="https://www.businesswire.com/news/home/20260520017045/en/Juicebox-Launches-AI-Agents-That-Continuously-Source-Top-Talent-Across-Every-Open-Role">Read more</a>.</p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions 🤝</h2>
+
+<p><strong>Humanly raises $25M Series B</strong> — Seattle-based Humanly closed a $25M Series B with SEEK Investments, Drive Capital, MassMutual Catalyst Fund, and Zeal Capital Partners. The conversational-AI platform handles hourly and high-volume hiring across chat, phone, and video, and reports 250,000+ candidates engaged a month. The detail worth marking: CEO Prem Kumar is pushing a "service-as-software" model — pay-per-candidate and pay-per-hire, billing for outcomes instead of seat licenses. <a href="https://www.hrtechnologywire.com/press-releases/humanly-raises-25m-series-b-to-help-companies-hire-faster-retain-and-stay-fully-staffed">Read More</a></p>
+
+<p><strong>Findd raises $21M</strong> — Provo-based Findd pulled in a $21M growth investment from Unbundled Capital for its AI-native workforce management platform for frontline workers — scheduling, time capture, compliance, payroll prep — with a natural-language agent layer that checks every action against labor rules before it executes. Frontline remains the segment where the funding keeps flowing. <a href="https://hrtechfeed.com/workforce-management-platform-raises-21m/">Read More</a></p>
+
+<p><strong>Deel acquires Sastrify</strong> — Deel scooped up Cologne-based SaaS procurement platform Sastrify, terms undisclosed. It's Deel's 10th acquisition since 2022 and folds into Deel IT alongside the 2024 Hofy pickup: hire them on Deel, ship them a laptop through Deel, now manage their software stack through Deel too. <a href="https://www.staffingindustry.com/news/global-daily-news/deel-acquires-sastrify-a-saas-procurement-and-management-platform">Read More</a></p>
+
+<p><strong>Saile raises $2.2M pre-seed</strong> — Saile, a physician-founded healthcare staffing platform, emerged from stealth with a $2.2M pre-seed led by Matchstick Ventures. Its pitch is a "universal credential passport" — a portable verified-credentials vault that lets vetted physicians move across locum, per diem, and telemedicine work without restarting onboarding. Matchstick's Ryan Broshar framed it as the infrastructure layer beneath every healthcare staffing decision. <a href="https://hrtechfeed.com/healthcare-staffing-platform-lands-2-2m/">Read More</a></p>
+
+<hr />
+
+<h2>🔥 HR Hot Takes</h2>
+
+<h3>Two prominent voices in the HR space are rolling out fresh initiatives</h3>
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image5.png" alt="Robin Schooling and Orlando Haynes launches" />
+<p>I always like to highlight the wonderful people in this space as they launch cool endeavors and what's better than promoting people you genuinely like?</p>
+<p>Longtime friend of the program Robin Schooling has teamed with BelleSage Partners and they are announcing a new recruitment on demand team, headed by Managing Director Rachel Cote. Did you just eliminate your recruiting team because of AI and are now realizing you might have jumped the gun? Give them a call.</p>
+<p>Orlando Haynes of the CareerTalks Podcast has launched Career Capital, an AI-powered platform for employees that captures and articulates workplace wins in real time so a professional has structured evidence when a review or a job search arrives. This is like the career agent in your pocket I mentioned last week!</p>
+<p>Congrats to both and check out the announcements below.</p>
+<p><a href="https://www.linkedin.com/posts/bellesagepartners_bellesage-partners-rod-press-release-may-activity-7463206946461081600-CJJb">BelleSage Partners Announcement on LinkedIn</a> · <a href="https://hrtechfeed.com/talent-acquisition-leader-launches-career-capital-an-ai-powered-platform-to-help-professionals-document-and-leverage-workplace-achievements/">Career Capital</a></p>
+
+<hr />
+
+<h2>🎙️ Podcasts</h2>
+
+<h3>Totally Talent: Two AI interviewers, two theories of the candidate flood</h3>
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image6.png" alt="Totally Talent: AI interviewers" />
+<p>I've been rolling through the interviews I did in Vegas this spring at UNLEASH and Transform, and two quick podcasts are worth your time: Aaron Wang, CEO of Alex AI, and Yazad Dalal, Chief Growth Officer at Joveo. Both companies have an AI interviewer, and both make the same counterintuitive pitch — interview every single candidate who applies — but they've arrived from opposite ends of the funnel.</p>
+<p>Alex starts the moment an application lands: it calls the candidate, leaves the voicemail, chases the email, runs the screening conversation autonomously. Wang's case for why this is suddenly necessary is the Application Inflation I mentioned weeks ago. When every resumé is AI-polished and reads the same, the keyword match carries no signal, so differentiation has to move to a live conversation.</p>
+<p>Joveo wants the flood to never form. Its name is a contraction of "job for everyone," and its stated ambition is a 4-3-2-1 ratio — four apply clicks, three applications, two shortlists, one hire. Rather than absorb tens of thousands of applicants and sort them, Joveo targets precisely enough that the wide net is never cast. Dalal's "sludge" image stuck with me: for forty years an application has gone into a drain, and the candidate never learns whether it moved while the recruiter sits in the exact same sludge.</p>
+<p>Same problem, two cures.</p>
+<p><a href="https://www.hr.com/en/resources/podcasts/talent/everyone-gets-an-interview_mpbirb9k.html">Totally Talent with Aaron Wang, Alex AI</a> · <a href="https://www.hr.com/en/resources/podcasts/talent/4-3-2-1-hiring_mp5xv6xb.html">Totally Talent with Yazad Dalal, Joveo</a></p>
+
+<hr />
+
+<h2>👇 Worth a Click</h2>
+
+<h3>The Stanford inside Stanford</h3>
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image7.png" alt="Theo Baker — How to Rule the World" />
+<p>I referenced this in the lead, but Theo Baker, the freshman who broke the Marc Tessier-Lavigne research-integrity story (Polk Award, Warner Bros. option, the works), is graduating with a book out Tuesday about the innerworkings of Stanford and how new tech leaders are formed. <em>How to Rule the World</em> describes a Stanford where VCs hire upperclassmen to scout freshmen and actually joining the startup club is a negative sign.</p>
+<p>I want to highlight this line about the current labor market.</p>
+<p><em>"There's a common refrain among people in this world that it's easier to raise money for a startup right now than to get an internship."</em></p>
+<p>If I was in college at this time, I would try to get an internship for real on-the-ground experience, but I'd also start a side hustle with Claude. <a href="https://techcrunch.com/2026/05/18/theo-baker-spent-four-years-investigating-stanford-before-he-leaves-heres-what-he-found/">Read more</a>.</p>
+    `,
+  },
+  {
     slug: 'hiring-funnel-collapsed',
     date: 'May 15, 2026',
     title: 'The Hiring Funnel Collapsed',
