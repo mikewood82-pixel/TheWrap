@@ -15,7 +15,7 @@ export const newsletters: Newsletter[] = [
     tag: 'AI & Future of Work',
     excerpt: "Stanford's Class of '26 — the cohort that spent all four years alongside ChatGPT — graduates into a labor market that taught them to read work as a pure transaction. The day the cycle turns, what will they be loyal to?",
     body: `
-<img src="/newsletters/may-22-2026-generation-ai-graduates/image1.png" alt="Generation AI Graduates" />
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image1.webp" alt="Generation AI Graduates" />
 
 <p>This week a few million people will pick up a diploma and become job seekers. Caps, gowns, a name read aloud (unless their college outsourced that to AI, which <a href="https://www.nbcnews.com/video/graduation-ceremony-disrupted-by-ai-name-reading-system-263678021508">happened at one school this week</a>), and that timeless photo with their parents. As the parties die down, they move toward the next phase of life — applying for jobs and desperately hoping their degree was worth the price of admission.</p>
 
@@ -48,18 +48,18 @@ export const newsletters: Newsletter[] = [
 <h2>📰 HR Tech News</h2>
 
 <h3>Bersin on SAP's Autonomous Enterprise — required reading</h3>
-<img src="/newsletters/may-22-2026-generation-ai-graduates/image2.png" alt="SAP Autonomous Enterprise" />
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image2.webp" alt="SAP Autonomous Enterprise" />
 <p>At Sapphire, SAP laid out its "Autonomous Enterprise" — the pitch that the ERP stops being software you operate and becomes a system that runs business processes itself. The scaffolding for it: 224 agents and 51 assistants across finance, HR, and the rest of the suite; a proprietary tabular data model built to reason over the massive structured data that trips up ordinary LLMs; a Knowledge Graph as the semantic layer that lets agents understand how SAP's data actually connects; and Joule Studio, a developer environment for building agents on top. CEO Christian Klein is now calling SAP an AI company.</p>
 <p>Josh Bersin's breakdown is fantastic and I love the analogy with Waymo and Zoox. Waymo is a normal car that drives itself — the existing vehicle, automated. Zoox threw out the car and redesigned the whole thing around the passenger, no steering wheel, no driver's seat. Bersin's read is that SAP's Autonomous Enterprise is a Waymo. It automates existing SAP processes brilliantly, but it doesn't reimagine how the work gets done — the underlying process is still the SAP process, now with agents driving. <a href="https://joshbersin.com/2026/05/saps-autonomous-enterprise-it-now-calls-itself-an-ai-company/">Read more</a>.</p>
 
 <h3>OpenAI launches $4B Deployment Company</h3>
-<img src="/newsletters/may-22-2026-generation-ai-graduates/image3.jpg" alt="OpenAI Deployment Company" />
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image3.webp" alt="OpenAI Deployment Company" />
 <p>OpenAI rolled out the OpenAI Deployment Company on May 15, backed by more than $4 billion in initial investment. The unit will embed "Forward Deployed Engineers" inside customer organizations to redesign workflows around AI, and OpenAI is folding in AI consulting shop Tomoro — about 150 specialists with prior work at Tesco and Virgin Atlantic — to staff it up. It follows OpenAI's February Frontier Alliances with McKinsey, BCG, Accenture, and Capgemini, and lands alongside Anthropic's own ~$1.5B services venture backed by Blackstone, Goldman Sachs, and Hellman &amp; Friedman.</p>
 <p>HR Executive's Jill Barth flagged the part HR leaders should sit up for: the FDEs are explicitly being pointed at hiring pipelines, performance management, and workforce planning, and OpenAI's announcement names zero CHROs as stakeholders.</p>
 <p>The foundation model providers are scaling new heights, moving another level up. They already aren't content to sell APIs — they're encroaching on the platform layer where HR tech vendors used to be safe. Now they're eating the consulting layer that translated vendor product into HR workflow too. The model maker, the SI, and the change management partner are increasingly the same logo. <a href="https://hrexecutive.com/openais-new-4b-consulting-venture-lands-squarely-in-hr-territory/">Read more</a>.</p>
 
 <h3>Juicebox launches always-on sourcing agents</h3>
-<img src="/newsletters/may-22-2026-generation-ai-graduates/image4.jpg" alt="Juicebox sourcing agents" />
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image4.webp" alt="Juicebox sourcing agents" />
 <p>Juicebox rolled out AI agents that continuously source candidates across every open role — mapping a talent graph, surfacing matches, and running targeted outreach at a speed no human team could keep up. Founder David Paffenholz frames the agents as exhaustive: map everyone in a role, find the top ones, reach the ones who fit. The company has powered 560,000+ searches and engaged 3M+ candidates, with Ramp, Cursor, and Cognition among the named customers. Juicebox's own framing of the problem is the part worth sitting with: the average opening now draws nearly 250 applications, inbound pipelines are buckling under low-intent candidates, and the companies responding best have stopped trying to fix inbound altogether.</p>
 <p>I had a chance to sit down briefly with Paffenholz and the Juicebox team at UNLEASH, and they are great. I love this direction. It's the exact move predicted last week — when the front door is jammed, sourcing moves to the top of the funnel and goes continuous. The agent doesn't wait for the flood of applications; it goes and finds the candidate before they ever apply. <a href="https://www.businesswire.com/news/home/20260520017045/en/Juicebox-Launches-AI-Agents-That-Continuously-Source-Top-Talent-Across-Every-Open-Role">Read more</a>.</p>
 
@@ -80,7 +80,7 @@ export const newsletters: Newsletter[] = [
 <h2>🔥 HR Hot Takes</h2>
 
 <h3>Two prominent voices in the HR space are rolling out fresh initiatives</h3>
-<img src="/newsletters/may-22-2026-generation-ai-graduates/image5.png" alt="Robin Schooling and Orlando Haynes launches" />
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image5.webp" alt="Robin Schooling and Orlando Haynes launches" />
 <p>I always like to highlight the wonderful people in this space as they launch cool endeavors and what's better than promoting people you genuinely like?</p>
 <p>Longtime friend of the program Robin Schooling has teamed with BelleSage Partners and they are announcing a new recruitment on demand team, headed by Managing Director Rachel Cote. Did you just eliminate your recruiting team because of AI and are now realizing you might have jumped the gun? Give them a call.</p>
 <p>Orlando Haynes of the CareerTalks Podcast has launched Career Capital, an AI-powered platform for employees that captures and articulates workplace wins in real time so a professional has structured evidence when a review or a job search arrives. This is like the career agent in your pocket I mentioned last week!</p>
@@ -92,7 +92,7 @@ export const newsletters: Newsletter[] = [
 <h2>🎙️ Podcasts</h2>
 
 <h3>Totally Talent: Two AI interviewers, two theories of the candidate flood</h3>
-<img src="/newsletters/may-22-2026-generation-ai-graduates/image6.png" alt="Totally Talent: AI interviewers" />
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image6.webp" alt="Totally Talent: AI interviewers" />
 <p>I've been rolling through the interviews I did in Vegas this spring at UNLEASH and Transform, and two quick podcasts are worth your time: Aaron Wang, CEO of Alex AI, and Yazad Dalal, Chief Growth Officer at Joveo. Both companies have an AI interviewer, and both make the same counterintuitive pitch — interview every single candidate who applies — but they've arrived from opposite ends of the funnel.</p>
 <p>Alex starts the moment an application lands: it calls the candidate, leaves the voicemail, chases the email, runs the screening conversation autonomously. Wang's case for why this is suddenly necessary is the Application Inflation I mentioned weeks ago. When every resumé is AI-polished and reads the same, the keyword match carries no signal, so differentiation has to move to a live conversation.</p>
 <p>Joveo wants the flood to never form. Its name is a contraction of "job for everyone," and its stated ambition is a 4-3-2-1 ratio — four apply clicks, three applications, two shortlists, one hire. Rather than absorb tens of thousands of applicants and sort them, Joveo targets precisely enough that the wide net is never cast. Dalal's "sludge" image stuck with me: for forty years an application has gone into a drain, and the candidate never learns whether it moved while the recruiter sits in the exact same sludge.</p>
@@ -104,7 +104,7 @@ export const newsletters: Newsletter[] = [
 <h2>👇 Worth a Click</h2>
 
 <h3>The Stanford inside Stanford</h3>
-<img src="/newsletters/may-22-2026-generation-ai-graduates/image7.png" alt="Theo Baker — How to Rule the World" />
+<img src="/newsletters/may-22-2026-generation-ai-graduates/image7.webp" alt="Theo Baker — How to Rule the World" />
 <p>I referenced this in the lead, but Theo Baker, the freshman who broke the Marc Tessier-Lavigne research-integrity story (Polk Award, Warner Bros. option, the works), is graduating with a book out Tuesday about the innerworkings of Stanford and how new tech leaders are formed. <em>How to Rule the World</em> describes a Stanford where VCs hire upperclassmen to scout freshmen and actually joining the startup club is a negative sign.</p>
 <p>I want to highlight this line about the current labor market.</p>
 <p><em>"There's a common refrain among people in this world that it's easier to raise money for a startup right now than to get an internship."</em></p>
