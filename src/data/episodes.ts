@@ -15,6 +15,14 @@ export interface Episode {
 
 export const episodes: Episode[] = [
   {
+    number: 77,
+    date: 'May 22, 2026',
+    title: 'Generation AI Graduates',
+    youtubeId: 'usDNrqQEdvY',
+    description: "Theo Baker's Stanford class is the first cohort to spend all four years alongside ChatGPT. We taught them work is a pure transaction — when the cycle turns and they get to choose, what will they be loyal to? Plus SAP's Autonomous Enterprise, OpenAI's $4B Deployment Company, Juicebox always-on sourcing, and Humanly's $25M.",
+    newsletterSlug: 'generation-ai-graduates',
+  },
+  {
     number: 75,
     date: 'May 8, 2026',
     title: 'Application Inflation Is Devaluing Every Candidate',

@@ -8,7 +8,7 @@ import HiringPulseStrip from '../components/HiringPulseStrip'
 import { newsletters } from '../data/newsletters'
 
 // Swap this URL out when the latest episode is ready
-const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/kG7h1oKWUA8'
+const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/usDNrqQEdvY'
 
 // Pull the first <img src=...> out of a newsletter body HTML string. Used as
 // the hero image for the top "latest edition" tile.
