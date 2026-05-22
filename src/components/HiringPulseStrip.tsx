@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { TrendingUp, TrendingDown, Snowflake, Briefcase, ArrowRight } from 'lucide-react'
-import { FEATURES } from '../config/features'
 
 type Pulse = {
   verdicts: { trending_up: number; stable: number; slowing: number; freeze: number }
@@ -79,22 +78,15 @@ export default function HiringPulseStrip() {
           </div>
         </div>
 
-        {/* CTA: teases Wrap+ before launch, deep-links after. */}
+        {/* CTA: deep-link to Vendor Pulse. */}
         <div className="mt-3 text-xs text-brand-muted">
-          {FEATURES.PLUS_ENABLED ? (
-            <Link
-              to="/vendors"
-              className="inline-flex items-center gap-1 text-brand-terracotta font-semibold hover:underline"
-            >
-              See which vendors in Vendor Pulse
-              <ArrowRight size={12} />
-            </Link>
-          ) : (
-            <span>
-              Named vendor breakdowns, verdict alerts, and live sparklines arrive
-              with <span className="font-semibold text-brand-dark">Wrap+ on May 1</span>.
-            </span>
-          )}
+          <Link
+            to="/vendors"
+            className="inline-flex items-center gap-1 text-brand-terracotta font-semibold hover:underline"
+          >
+            See which vendors in Vendor Pulse
+            <ArrowRight size={12} />
+          </Link>
         </div>
       </div>
     </section>

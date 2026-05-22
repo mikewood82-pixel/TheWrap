@@ -1,36 +1,27 @@
-import Stripe from 'stripe'
+// ─── Wrap+ is free for all subscribers (2026-05-22 pivot) ─────────────
+// Stripe checkout is permanently disabled. Wrap+ launched 2026-05-01 at
+// $10/mo, hit ~zero conversion, and pivoted to free-for-everyone on
+// 2026-05-22. This route stays alive so any stale "Upgrade to Wrap+"
+// button still in the wild returns a meaningful response instead of
+// a 500. The full plan lives at
+// C:\Users\mikew\.claude\plans\elegant-crafting-gizmo.md
+//
+// stripe-webhook.ts is intentionally left running so existing paid
+// subscriptions (a handful of friends) can wind down cleanly via
+// cancel_at_period_end. Once those expire (~30 days) the whole Stripe
+// integration can be deleted.
+// ──────────────────────────────────────────────────────────────────────
 
-interface Env {
-  STRIPE_SECRET_KEY: string
-  STRIPE_MONTHLY_PRICE_ID: string
-  STRIPE_ANNUAL_PRICE_ID: string
-  SITE_URL: string
+const GONE_BODY = {
+  error: 'gone',
+  message: 'Wrap+ is now free for all subscribers. No checkout needed — just subscribe to the newsletter at https://ilovethewrap.com.',
 }
 
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
-  try {
-    const { plan, clerkUserId, email } = await request.json() as {
-      plan: 'monthly' | 'annual'
-      clerkUserId: string
-      email: string
-    }
+const onGone: PagesFunction = async () =>
+  new Response(JSON.stringify(GONE_BODY), {
+    status: 410,
+    headers: { 'content-type': 'application/json' },
+  })
 
-    const stripe = new Stripe(env.STRIPE_SECRET_KEY)
-    const priceId = plan === 'monthly' ? env.STRIPE_MONTHLY_PRICE_ID : env.STRIPE_ANNUAL_PRICE_ID
-
-    const session = await stripe.checkout.sessions.create({
-      mode: 'subscription',
-      line_items: [{ price: priceId, quantity: 1 }],
-      customer_email: email,
-      metadata: { clerkUserId, plan },
-      allow_promotion_codes: true,
-      subscription_data: { metadata: { clerkUserId, plan } },
-      success_url: `${env.SITE_URL}/subscribe?success=true`,
-      cancel_url: `${env.SITE_URL}/subscribe`,
-    })
-
-    return Response.json({ url: session.url })
-  } catch (err) {
-    return Response.json({ error: 'Failed to create checkout session' }, { status: 500 })
-  }
-}
+export const onRequestPost = onGone
+export const onRequestGet = onGone

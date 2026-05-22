@@ -2,8 +2,14 @@ import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { SignInButton, UserButton, useUser } from '@clerk/clerk-react'
 import { Menu, X } from 'lucide-react'
-import { useWrapPlus } from '../context/WrapPlusContext'
 import { FEATURES } from '../config/features'
+
+// ─── Wrap+ is free for all subscribers (2026-05-22 pivot) ─────────────
+// The nav used to include a "Wrap+" upsell link + a "Wrap+" badge for
+// signed-in paying users. After the free-for-all pivot, both are gone —
+// every nav slot is the same for everyone. See the plan at
+// C:\Users\mikew\.claude\plans\elegant-crafting-gizmo.md
+// ──────────────────────────────────────────────────────────────────────
 
 const baseLinks = [
   { to: '/newsletter',    label: 'Archive'       },
@@ -19,26 +25,21 @@ const plusLinks = [
 ]
 
 const voicesLink = { to: '/voices', label: 'Voices' }
-const wrapPlusUpsellLink = { to: '/subscribe#plans', label: 'Wrap+', highlight: true as const }
 
 type NavLinkItem = { to: string; label: string; highlight?: boolean }
 
 export default function Nav() {
-  const { isPro } = useWrapPlus()
   const { isSignedIn } = useUser()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   // Compose the nav in reading order. Voices sits immediately after Archive
-  // when enabled; Vendor Pulse slots in next when PLUS_ENABLED. Wrap+ upsell
-  // link is appended last for non-Pro users so it sits closest to the
-  // right-side CTA.
+  // when enabled; Vendor Pulse slots in next when PLUS_ENABLED.
   const links: NavLinkItem[] = (() => {
     const [archive, jobs, events, laborMarket, about, sponsorship] = baseLinks
     const out: NavLinkItem[] = [archive]
     if (FEATURES.VOICES_ENABLED) out.push(voicesLink)
     if (FEATURES.PLUS_ENABLED) out.push(...plusLinks)
     out.push(jobs, events, laborMarket, about, sponsorship)
-    if (FEATURES.PLUS_ENABLED && !isPro) out.push(wrapPlusUpsellLink)
     return out
   })()
 
@@ -78,18 +79,12 @@ export default function Nav() {
                 </button>
               </SignInButton>
             )}
-            {isPro ? (
-              <span className="bg-brand-orange/10 text-brand-terracotta text-xs font-bold px-3 py-1.5 rounded-full border border-brand-orange/20">
-                Wrap+
-              </span>
-            ) : (
-              <Link
-                to="/subscribe"
-                className="bg-brand-terracotta text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-brand-orange transition-colors"
-              >
-                Subscribe
-              </Link>
-            )}
+            <Link
+              to="/subscribe"
+              className="bg-brand-terracotta text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-brand-orange transition-colors"
+            >
+              Subscribe
+            </Link>
             {FEATURES.PLUS_ENABLED && isSignedIn && <UserButton afterSignOutUrl="/" />}
 
             <button

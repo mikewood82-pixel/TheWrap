@@ -1,5 +1,5 @@
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react'
-import { useAuth, useUser } from '@clerk/clerk-react'
+import { createContext, useContext, type ReactNode } from 'react'
+import { useAuth } from '@clerk/clerk-react'
 
 interface WrapPlusContextType {
   isPro: boolean
@@ -7,45 +7,26 @@ interface WrapPlusContextType {
   refetch: () => Promise<boolean>
 }
 
+// ─── Wrap+ is free for all subscribers (2026-05-22 pivot) ──────────────────
+// Wrap+ launched as a $10/mo paid tier on 2026-05-01. Three weeks of zero
+// conversion → Mike pivoted to making every Wrap+ feature free for everyone.
+// This provider now unconditionally returns `isPro: true`. The `/api/subscription`
+// fetch is gone; the KV `SUBSCRIPTIONS` namespace is no longer consulted
+// (it stays populated for ~30 days as a safety net before final cleanup).
+//
+// To reverse the pivot: revert this file and the server-side requirePlus.ts
+// flip. The full plan lives at C:\Users\mikew\.claude\plans\elegant-crafting-gizmo.md
+// ───────────────────────────────────────────────────────────────────────────
+
 const WrapPlusContext = createContext<WrapPlusContextType>({
-  isPro: false,
-  isLoaded: false,
-  refetch: async () => false,
+  isPro: true,
+  isLoaded: true,
+  refetch: async () => true,
 })
 
 export function WrapPlusProvider({ children }: { children: ReactNode }) {
-  const { user, isLoaded: clerkLoaded } = useUser()
-  const [isPro, setIsPro] = useState(false)
-  const [isLoaded, setIsLoaded] = useState(false)
-
-  const refetch = useCallback(async () => {
-    if (!user) {
-      setIsPro(false)
-      return false
-    }
-    try {
-      const r = await fetch(`/api/subscription?userId=${user.id}`)
-      const data = (await r.json()) as { active: boolean }
-      const active = data.active === true
-      setIsPro(active)
-      return active
-    } catch {
-      return false
-    }
-  }, [user])
-
-  useEffect(() => {
-    if (!clerkLoaded) return
-    if (!user) {
-      setIsPro(false)
-      setIsLoaded(true)
-      return
-    }
-    refetch().finally(() => setIsLoaded(true))
-  }, [user, clerkLoaded, refetch])
-
   return (
-    <WrapPlusContext.Provider value={{ isPro, isLoaded, refetch }}>
+    <WrapPlusContext.Provider value={{ isPro: true, isLoaded: true, refetch: async () => true }}>
       {children}
     </WrapPlusContext.Provider>
   )

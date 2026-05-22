@@ -55,23 +55,13 @@ export async function requirePlus(
     return unauthorized('token missing subject')
   }
 
-  // Confirm the user actually has an active Wrap+ subscription. The same KV
-  // record that powers the /api/subscription endpoint — see stripe-webhook.ts
-  // for how it's written.
-  const raw = await env.SUBSCRIPTIONS.get(`user_${userId}`)
-  if (!raw) {
-    return forbidden('Wrap+ membership required')
-  }
-  let sub: { active?: boolean }
-  try {
-    sub = JSON.parse(raw) as { active?: boolean }
-  } catch {
-    // Corrupted KV value — fail closed.
-    return forbidden('Wrap+ membership required')
-  }
-  if (sub.active !== true) {
-    return forbidden('Wrap+ membership inactive')
-  }
+  // ─── Wrap+ is free for all subscribers (2026-05-22 pivot) ─────────────
+  // The KV `active` check has been removed: any signed-in Clerk user now
+  // counts as "Plus." See WrapPlusContext.tsx and the plan at
+  // C:\Users\mikew\.claude\plans\elegant-crafting-gizmo.md for context.
+  // The KV namespace + stripe-webhook.ts still run so existing paid subs
+  // can wind down cleanly via cancel_at_period_end.
+  // ──────────────────────────────────────────────────────────────────────
 
   return { userId }
 }

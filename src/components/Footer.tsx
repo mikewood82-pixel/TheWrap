@@ -44,9 +44,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm">
               {[
                 ['/sponsorship', 'Sponsorship'],
-                ...(FEATURES.PLUS_ENABLED ? [
-                  ['/subscribe', 'Wrap+ Membership'],
-                ] : []),
+                ['/subscribe', 'Subscribe'],
               ].map(([href, label]) => (
                 <li key={href}>
                   <a href={href} className="text-white/50 hover:text-white transition-colors">{label}</a>
