@@ -351,55 +351,81 @@ export default function LaborMarketPage() {
 
       {/* Header */}
       <div className="mb-6">
-        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Data · Updated May 2026</div>
+        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Data · Updated May 8, 2026</div>
         <h1 className="font-serif text-4xl font-bold mb-3">U.S. Labor Market</h1>
         <p className="text-brand-dark/60 text-lg">BLS, ADP, Conference Board CHRO Index, Revelio Labs, and Aspen Tech Labs — what the numbers mean for HR leaders.</p>
       </div>
 
+      {/* In-page nav — jump straight to a data source. Small, eyebrow-weight, doesn't compete with H1. */}
+      <nav aria-label="Jump to section" className="flex flex-wrap items-center gap-x-1 gap-y-1 text-xs uppercase tracking-widest font-medium text-brand-dark/50 mb-10">
+        {[
+          { href: '#bls',          label: 'BLS' },
+          { href: '#chro',         label: 'CHRO' },
+          { href: '#adp',          label: 'ADP' },
+          { href: '#revelio',      label: 'Revelio' },
+          { href: '#aspen',        label: 'Aspen' },
+          { href: '#implications', label: 'Implications' },
+        ].map((item, i, arr) => (
+          <span key={item.href} className="flex items-center gap-1">
+            <a href={item.href} className="hover:text-brand-terracotta transition-colors">{item.label}</a>
+            {i < arr.length - 1 && <span className="text-brand-dark/25" aria-hidden="true">·</span>}
+          </span>
+        ))}
+      </nav>
+
+      {/* ── Release calendar ─────────────────────────────────────────────────
+          Top-of-page cluster: what just dropped + what's coming. Lifted above
+          WUI so readers see the most time-sensitive thing first. */}
+      <section className="mb-12">
+        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-3">
+          Release calendar · BLS · ADP · JOLTS
+        </div>
+
+        {/* Latest release hero — most recent data drop */}
+        <div className="bg-white border-2 border-brand-terracotta rounded-xl px-6 py-5 mb-5 shadow-sm">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+            <span className="text-xs uppercase tracking-widest font-bold text-brand-terracotta">Just released</span>
+            <span className="text-xs text-brand-dark/40">{latestRelease.releasedOn}</span>
+          </div>
+          <div className="flex flex-wrap items-baseline gap-x-3 mb-3">
+            <h2 className="font-serif text-2xl font-bold text-brand-dark">{latestRelease.source} — {latestRelease.period}</h2>
+          </div>
+          <p className="text-base text-brand-dark/80 mb-4 leading-relaxed">{latestRelease.headline}.</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+            {latestRelease.stats.map(s => (
+              <div key={s.label} className="bg-brand-cream/40 rounded-lg px-3 py-2.5">
+                <div className="text-[11px] uppercase tracking-wide text-brand-dark/40 font-medium mb-0.5">{s.label}</div>
+                <div className="font-serif text-2xl font-bold text-brand-dark leading-tight">{s.value}</div>
+                <div className="text-xs text-brand-dark/50 mt-0.5">{s.detail}</div>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-brand-dark/60 leading-relaxed italic">{latestRelease.takeaway}</p>
+        </div>
+
+        {/* Upcoming releases callout — next data drops on the calendar */}
+        <div className="bg-brand-cream/60 border border-brand-cream rounded-xl px-5 py-4">
+          <div className="text-xs text-brand-dark/50 uppercase tracking-wide font-semibold mb-2">Upcoming releases</div>
+          <ul className="space-y-1.5">
+            {upcomingReleases.map(r => (
+              <li key={r.date} className="text-sm flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
+                <span className="font-semibold text-brand-dark whitespace-nowrap">{r.date}</span>
+                <span className="text-brand-dark/70">
+                  <span className="font-medium">{r.source}</span>
+                  <span className="text-brand-dark/40"> · </span>
+                  {r.what}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* The Wrap Underemployment Index — proprietary composite, fetched live from /api/bls/wui */}
       <WUISection />
 
-      {/* Latest release hero — most recent data drop, called out at the top */}
-      <div className="bg-white border-2 border-brand-terracotta rounded-xl px-6 py-5 mb-5 shadow-sm">
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
-          <span className="text-xs uppercase tracking-widest font-bold text-brand-terracotta">Just released</span>
-          <span className="text-xs text-brand-dark/40">{latestRelease.releasedOn}</span>
-        </div>
-        <div className="flex flex-wrap items-baseline gap-x-3 mb-3">
-          <h2 className="font-serif text-2xl font-bold text-brand-dark">{latestRelease.source} — {latestRelease.period}</h2>
-        </div>
-        <p className="text-base text-brand-dark/80 mb-4 leading-relaxed">{latestRelease.headline}.</p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-          {latestRelease.stats.map(s => (
-            <div key={s.label} className="bg-brand-cream/40 rounded-lg px-3 py-2.5">
-              <div className="text-[11px] uppercase tracking-wide text-brand-dark/40 font-medium mb-0.5">{s.label}</div>
-              <div className="font-serif text-2xl font-bold text-brand-dark leading-tight">{s.value}</div>
-              <div className="text-xs text-brand-dark/50 mt-0.5">{s.detail}</div>
-            </div>
-          ))}
-        </div>
-        <p className="text-sm text-brand-dark/60 leading-relaxed italic">{latestRelease.takeaway}</p>
-      </div>
-
-      {/* Upcoming releases callout — next data drops on the calendar */}
-      <div className="bg-brand-cream/60 border border-brand-cream rounded-xl px-5 py-4 mb-10">
-        <div className="text-xs text-brand-dark/50 uppercase tracking-wide font-semibold mb-2">Upcoming releases</div>
-        <ul className="space-y-1.5">
-          {upcomingReleases.map(r => (
-            <li key={r.date} className="text-sm flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
-              <span className="font-semibold text-brand-dark whitespace-nowrap">{r.date}</span>
-              <span className="text-brand-dark/70">
-                <span className="font-medium">{r.source}</span>
-                <span className="text-brand-dark/40"> · </span>
-                {r.what}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
       {/* ── BLS ─────────────────────────────────────────────────────────────── */}
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-3 mb-4 scroll-mt-6" id="bls">
         <h2 className="font-serif text-2xl font-bold">Bureau of Labor Statistics</h2>
         <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Official · April 2026</span>
       </div>
@@ -446,7 +472,7 @@ export default function LaborMarketPage() {
       </div>
 
       {/* ── CHRO Confidence Index ───────────────────────────────────────────── */}
-      <div className="flex items-center gap-3 mb-2">
+      <div className="flex items-center gap-3 mb-2 scroll-mt-6" id="chro">
         <h2 className="font-serif text-2xl font-bold">CHRO Confidence Index</h2>
         <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Conference Board · Q1 2026</span>
       </div>
@@ -478,7 +504,7 @@ export default function LaborMarketPage() {
       </div>
 
       {/* ── ADP ─────────────────────────────────────────────────────────────── */}
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-3 mb-4 scroll-mt-6" id="adp">
         <h2 className="font-serif text-2xl font-bold">ADP Research</h2>
         <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Private Sector · April 2026</span>
       </div>
@@ -509,7 +535,7 @@ export default function LaborMarketPage() {
       </div>
 
       {/* ── Revelio Labs ─────────────────────────────────────────────────────── */}
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-3 mb-4 scroll-mt-6" id="revelio">
         <h2 className="font-serif text-2xl font-bold">Revelio Labs — RPLS</h2>
         <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">100M+ Profiles · April 2026</span>
       </div>
@@ -543,7 +569,7 @@ export default function LaborMarketPage() {
       </div>
 
       {/* ── Aspen Tech Labs ───────────────────────────────────────────────────── */}
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-3 mb-4 scroll-mt-6" id="aspen">
         <h2 className="font-serif text-2xl font-bold">Aspen Tech Labs — JobMarketPulse</h2>
         <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">275K+ Career Sites · Q1 2026</span>
       </div>
@@ -561,7 +587,7 @@ export default function LaborMarketPage() {
       </div>
 
       {/* ── HR Implications ───────────────────────────────────────────────────── */}
-      <h2 className="font-serif text-2xl font-bold mb-4">What This Means for HR</h2>
+      <h2 id="implications" className="font-serif text-2xl font-bold mb-4 scroll-mt-6">What This Means for HR</h2>
       <div className="space-y-4 mb-4">
         {implications.map(imp => (
           <div key={imp.headline} className="bg-brand-cream rounded-xl p-5 border-l-4 border-brand-terracotta">
@@ -570,7 +596,7 @@ export default function LaborMarketPage() {
           </div>
         ))}
       </div>
-      <p className="text-xs text-brand-dark/30 mt-4">Sources: U.S. Bureau of Labor Statistics · ADP National Employment Report · Revelio Public Labor Statistics (RPLS) · Aspen Tech Labs JobMarketPulse. Updated May 2026.</p>
+      <p className="text-xs text-brand-dark/30 mt-4">Sources: U.S. Bureau of Labor Statistics · ADP National Employment Report · Revelio Public Labor Statistics (RPLS) · Aspen Tech Labs JobMarketPulse. Updated May 8, 2026.</p>
     </div>
   )
 }
