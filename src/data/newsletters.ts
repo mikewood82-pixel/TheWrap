@@ -9,6 +9,96 @@ export interface Newsletter {
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'salt-in-the-eyes',
+    date: 'May 29, 2026',
+    title: 'Salt in the Eyes',
+    tag: 'Labor Policy',
+    excerpt: "The EEOC is moving to kill EEO-1 reporting just as a federal judge signals Workday must face its AI-bias class action. One arm of government sharpens the penalty for hiring discrimination; the other unscrews the smoke detector that proves it happens.",
+    body: `
+<img src="/newsletters/may-29-2026-salt-in-the-eyes/image1.webp" alt="Salt in the Eyes" />
+
+<p>If you watched WWF in the early '90s, you'll immediately remember this, but for those of you who had lives, I'll paint the picture for you. It's 1993. Hero Brett "the Hitman" Hart has a gigantic sumo wrestler villain (or heel) Yokozuna on the mat and is trying to put Yokozuna's big, beefy legs into his Sharpshooter finisher. The ref's attention gets pulled to the far turnbuckle by some manufactured nonsense, and Yokozuna's manager (also evil) Mr. Fuji reaches his hands into his "ceremonial" salt bucket and flings a bunch of it into Brett Hart's face. Yokozuna pins him and wins the title while the crowd goes nuts.</p>
+
+<p>Hulk Hogan then pins Yokozuna and gets awarded the title for some reason, but if he didn't, the ref completely blew it. I remember little Mike yelling at the TV at the blatant cheating and feeling cheated because it was so blatant and there were absolutely no consequences.</p>
+
+<p>There are a couple of work trends happening in the US right now that make me feel like we got the WWF refs running the show.</p>
+
+<p>On May 14, the EEOC, under acting chair Andrea Lucas, sent the White House a proposal to end EEO-1 reporting — the sixty-year-old data collection requirement on race, sex, and national origin. Then this week a federal judge in California issued a tentative ruling that Workday will likely have to face a nationwide class action arguing its AI screening tools filtered out applicants by race, age, and disability. Derek Mobley's case keeps surviving the motions designed to end it, and Judge Rita Lin signaled that California's discrimination statute may reach every hiring decision the vendor's software touched, anywhere in the country.</p>
+
+<p>Seeing them side by side shows the dueling realities in America right now. One arm of the government agrees in open court that an algorithm can discriminate and somebody can be held accountable, while the other arm moves to switch off the dataset that has historically been how anyone proved discrimination happened at scale. We are both sharpening the penalty and unscrewing the smoke detectors.</p>
+
+<p>So why are they moving in different directions? The courts and the EEOC are independent. No one is coordinating this, which is somehow worse, and worse is the theme of the times. Remember in June of 2020 when President Trump said Covid testing was "a double-edged sword?" That "when you do testing to that extent, you're going to find more people, you're going to find more cases. So I said to my people, slow the testing down."</p>
+
+<p>Massage the data to make the problem go away. EEO-1 is the testing regime for hiring discrimination. The problem doesn't vanish; the reporting does, so no one has to answer for it.</p>
+
+<p>So, what do we do? For vendors, the Workday lawsuit is an alarm. It doesn't just say "this employer discriminated" — it advances the theory that the vendor is an agent of every employer that uses its tool, which turns a screening company into a single point of legal liability for its entire customer base. You don't sue a thousand employers one at a time; you sue Workday once and reach all of them. That's a company-ending liability that, until it's solved, will hang over any hiring vendor, especially new entrants to the space that don't have the resources for all the enhanced compliance to move forward.</p>
+
+<p>For candidates, protection itself is being privatized. EEO-1 was a standing, public, systematic record; a regulator could watch the patterns without anyone filing a thing. Now, good luck partner, you're on your own.</p>
+
+<p>We look like we're about to find out whether that algorithm actually discriminated, right as we turn off the one tool that could prove it did. I don't know yet whether that's the beginning of real accountability or the most sophisticated salt-in-the-eyes we've run yet.</p>
+
+<p>On to this week's HR Tech News. This week's Wrap features good news and bad news for Workday, EEO-1 data disappearing, JobGet acquires RippleMatch, the rise of the software engineer job posting with Brian Fink, AI interviewing with RightMatch and Fountain, a nervous Fed, and Monkeys in Florida?</p>
+
+<p>Have a great weekend,</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Workday makes Gemini its default brain</h3>
+<img src="/newsletters/may-29-2026-salt-in-the-eyes/image2.webp" alt="Workday makes Gemini its default brain" />
+<p>Workday announced this week that it has expanded its Google Cloud partnership to include Gemini, and that Gemini is now the default AI model inside Sana for Workday. We've been watching the big three of OpenAI, Anthropic, and Google move into a foundational layer within HR tech all year, and now the system of record for 65% of the Fortune 500 is tied to Google's AI 👀. <a href="https://newsroom.workday.com/2026-05-28-Workday-and-Google-Cloud-Expand-Strategic-Partnership-to-Bring-AI-Agents-for-HR-and-Finance-Into-Employees-Daily-Workflows">Read more</a>.</p>
+
+<h3>Workday's AI discrimination case clears another hurdle</h3>
+<img src="/newsletters/may-29-2026-salt-in-the-eyes/image3.webp" alt="Workday AI discrimination case" />
+<p>A federal judge appeared to signal this week that Workday will likely have to defend the class action claiming its AI hiring tools screened out applicants by race, age, and disability. In a tentative ruling, US District Judge Rita Lin found California's Fair Employment and Housing Act appears to apply nationally to the class led by Derek Mobley, citing two state appeals decisions. Oral arguments are set for June 15th, so this isn't final, but it's still going. <a href="https://www.mlex.com/mlex/articles/2482646/workday-likely-must-face-employment-discrimination-claims-on-ai-tools-us-judge-says">Read more</a>.</p>
+
+<h3>EEOC moves to kill discrimination data</h3>
+<img src="/newsletters/may-29-2026-salt-in-the-eyes/image4.webp" alt="EEOC moves to end EEO-1 reporting" />
+<p>She's BAAACCK! I missed this last week, but the EEOC sent a proposal to the White House on May 14 to end EEO-1 reporting. EEO-1 is a requirement dating back to the Civil Rights Movement that obligates companies with 100+ employees, and federal contractors with 50+, to file annual workforce data on race, sex, and national origin. Chair Andrea Lucas also wants to roll back unspecified requirements under Title VII, the ADA, and the Pregnant Workers Fairness Act. Former EEOC chair Jenny Yang called the filing a critical tool for identifying hiring discrimination that's otherwise hard to surface, pointing to the 2017 Bass Pro Shops case where EEO-1 patterns helped drive a $10.5M settlement. Remember, if we stop testing for Covid, the cases will go down 🙄. <a href="https://www.hr-brew.com/stories/eeoc-moves-to-end-eeo-1-reporting-on-race-and-gender">Read more</a>.</p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions 🤝</h2>
+
+<p><strong>JobGet acquires RippleMatch</strong> — JobGet bought early-career and campus recruiting platform RippleMatch, folding its student talent pool and matching tech into JobGet's stated 100M+ candidate network. <a href="https://www.prnewswire.com/news-releases/jobget-acquires-ripplematch-expanding-its-ai-powered-hiring-platform-across-hourly-and-early-career-talent-302783859.html">Read More</a></p>
+
+<p><strong>Joblist acquired by BOLD</strong> — Job-seeker-first search platform Joblist, launched by Wilbur Labs in 2019, sold to career-tech holding company BOLD, terms undisclosed. Built by ZipRecruiter and Google veterans, Joblist treated the candidate as the customer rather than the employer buying postings, scaling to 100M+ job searches over seven years. <a href="https://www.wilburlabs.com/announcements/joblist-acquired-by-bold">Read More</a></p>
+
+<hr />
+
+<h2>🔥 HR Hot Takes</h2>
+
+<h3>The Jevons Paradox vs. the doom narrative</h3>
+<img src="/newsletters/may-29-2026-salt-in-the-eyes/image5.webp" alt="The Jevons Paradox vs. the doom narrative" />
+<p>Great post from Brian Fink this week on software engineering jobs rising. The frame is the Jevons Paradox — make a resource more efficient and total consumption rises — applied to code: AI made software cheap, so every law firm and regional manufacturer can suddenly afford bespoke builds, and someone has to architect them. <a href="https://fwdmotion.substack.com/p/the-jevons-paradox-is-having-its">Read more</a>.</p>
+
+<hr />
+
+<h2>🎙️ Podcasts</h2>
+
+<h3>RightMatch and Fountain in Vegas</h3>
+<img src="/newsletters/may-29-2026-salt-in-the-eyes/image6.webp" alt="RightMatch and Fountain podcasts" />
+<p>Hard to believe I'm still rolling through Transform interviews, but I got a couple of good ones this week.</p>
+<p>First, I talked with RightMatch CEO Sterling Smith about the crazy application inflation happening right now and how solutions like RightMatch are thinning the herd by moving the interview to day 1 as an AI screen/verification. Their agent autonomously invites the most qualified applicants to a 5–15 minute video-first interview, ranked and scored, and integrated with their ATS.</p>
+<p>Next, I talked to Fountain's Peter Eisenman about who really blocks AI adoption inside big enterprises and how the CHRO can be a "tinkerer in chief." Also fun fact: 75% of applicants now pick an immediate AI interview over scheduling a human one.</p>
+<p><a href="https://www.hr.com/en/resources/podcasts/talent/volume-without-quality-is-killing-recruiting_mpejb5rt.html">Totally Talent with Sterling Smith, RightMatch</a> · <a href="https://www.hr.com/en/resources/podcasts/talent/start-small-win-big_mpmv9fz1.html">Totally Talent with Peter Eisenman, Fountain</a></p>
+
+<hr />
+
+<h2>👇 Worth a Click</h2>
+
+<h3>The Fed's forecasters are getting nervous</h3>
+<p>The Philadelphia Fed's Survey of Professional Forecasters took a turn: the panel cut GDP growth to a 2.1% annualized rate for Q2 and 2.2% for the year, while pushing the inflation forecast toward 6% for Q2. Expected monthly job creation was revised down to 43,000 from 70,000, projected unemployment moved to 4.5%, and recession odds over the next year ticked from 25% to 30%. Weaker growth, hotter prices, fewer jobs — the rare forecast where every needle moves the wrong way at once. If you've been telling yourself the labor market just feels soft, here's 37 economists agreeing with you in a spreadsheet. <a href="https://www.staffingindustry.com/news/global-daily-news/philadelphia-fed-expects-weaker-us-economy-surging-inflation">Read more</a>.</p>
+
+<h3>Monkeys in Florida!</h3>
+<img src="/newsletters/may-29-2026-salt-in-the-eyes/image7.webp" alt="Monkeys in Florida" />
+<p>I caught this story of a Florida woman who looked into the preserve behind her house this week at what she figured was a large cat, and watched it stand up — only to be a monkey. A rhesus macaque, to be exact. But Mike, don't those monkeys live in Asia? Yes, so I went down a rabbit hole to find out how they got there and it's great. In 1938 a tour-boat operator named Colonel Tooey released six of them on a Silver Springs island to make the place feel more Tarzan — not knowing rhesus macaques are strong swimmers. They were gone within minutes. He bought six more. Those escaped too. Nearly a century later there are hundreds of them, a chunk carrying Herpes B, spreading across the state one preserve at a time. Awesome. <a href="https://www.upi.com/Odd_News/2026/05/28/monkey-rhesus-macaque-Longwood-Florida/5251779975577/">Read more</a> · <a href="https://springsinflorida.com/blog/why-are-there-monkeys-at-silver-springs/">The backstory</a></p>
+    `,
+  },
+  {
     slug: 'generation-ai-graduates',
     date: 'May 22, 2026',
     title: 'Generation AI Graduates',
