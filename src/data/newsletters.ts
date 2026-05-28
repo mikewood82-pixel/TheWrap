@@ -80,9 +80,10 @@ export const newsletters: Newsletter[] = [
 <h2>🎙️ Podcasts</h2>
 
 <h3>RightMatch and Fountain in Vegas</h3>
-<img src="/newsletters/may-29-2026-salt-in-the-eyes/image6.webp" alt="RightMatch and Fountain podcasts" />
 <p>Hard to believe I'm still rolling through Transform interviews, but I got a couple of good ones this week.</p>
+<img src="/newsletters/may-29-2026-salt-in-the-eyes/image6.webp" alt="Sterling Smith — RightMatch on Totally Talent" />
 <p>First, I talked with RightMatch CEO Sterling Smith about the crazy application inflation happening right now and how solutions like RightMatch are thinning the herd by moving the interview to day 1 as an AI screen/verification. Their agent autonomously invites the most qualified applicants to a 5–15 minute video-first interview, ranked and scored, and integrated with their ATS.</p>
+<img src="/newsletters/may-29-2026-salt-in-the-eyes/image7.webp" alt="Peter Eisenman — Fountain on Totally Talent" />
 <p>Next, I talked to Fountain's Peter Eisenman about who really blocks AI adoption inside big enterprises and how the CHRO can be a "tinkerer in chief." Also fun fact: 75% of applicants now pick an immediate AI interview over scheduling a human one.</p>
 <p><a href="https://www.hr.com/en/resources/podcasts/talent/volume-without-quality-is-killing-recruiting_mpejb5rt.html">Totally Talent with Sterling Smith, RightMatch</a> · <a href="https://www.hr.com/en/resources/podcasts/talent/start-small-win-big_mpmv9fz1.html">Totally Talent with Peter Eisenman, Fountain</a></p>
 
@@ -94,7 +95,7 @@ export const newsletters: Newsletter[] = [
 <p>The Philadelphia Fed's Survey of Professional Forecasters took a turn: the panel cut GDP growth to a 2.1% annualized rate for Q2 and 2.2% for the year, while pushing the inflation forecast toward 6% for Q2. Expected monthly job creation was revised down to 43,000 from 70,000, projected unemployment moved to 4.5%, and recession odds over the next year ticked from 25% to 30%. Weaker growth, hotter prices, fewer jobs — the rare forecast where every needle moves the wrong way at once. If you've been telling yourself the labor market just feels soft, here's 37 economists agreeing with you in a spreadsheet. <a href="https://www.staffingindustry.com/news/global-daily-news/philadelphia-fed-expects-weaker-us-economy-surging-inflation">Read more</a>.</p>
 
 <h3>Monkeys in Florida!</h3>
-<img src="/newsletters/may-29-2026-salt-in-the-eyes/image7.webp" alt="Monkeys in Florida" />
+<img src="/newsletters/may-29-2026-salt-in-the-eyes/image8.webp" alt="Monkeys in Florida" />
 <p>I caught this story of a Florida woman who looked into the preserve behind her house this week at what she figured was a large cat, and watched it stand up — only to be a monkey. A rhesus macaque, to be exact. But Mike, don't those monkeys live in Asia? Yes, so I went down a rabbit hole to find out how they got there and it's great. In 1938 a tour-boat operator named Colonel Tooey released six of them on a Silver Springs island to make the place feel more Tarzan — not knowing rhesus macaques are strong swimmers. They were gone within minutes. He bought six more. Those escaped too. Nearly a century later there are hundreds of them, a chunk carrying Herpes B, spreading across the state one preserve at a time. Awesome. <a href="https://www.upi.com/Odd_News/2026/05/28/monkey-rhesus-macaque-Longwood-Florida/5251779975577/">Read more</a> · <a href="https://springsinflorida.com/blog/why-are-there-monkeys-at-silver-springs/">The backstory</a></p>
     `,
   },
