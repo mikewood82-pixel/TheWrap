@@ -1,10 +1,16 @@
 # Cloudflare Pages cache headers
-# Newsletter images are content-addressed-ish (per-edition folder) and
-# never change after publish — safe to cache for a year at the edge.
+# Newsletter images REUSE filenames (image1.webp, image2.webp, ...) across the
+# Thu->Fri publish window and during image re-map fixes, so they are NOT
+# immutable. Serve fast from cache but revalidate so a swapped image can never
+# stick at the edge for more than a few minutes (was max-age=1yr+immutable,
+# which stranded the wrong "Salt in the Eyes" images at the edge on 2026-05-28).
+# This rule is more specific than the /*.webp rule below, so it wins for
+# /newsletters/** assets.
 /newsletters/*
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=300, stale-while-revalidate=2592000
 
-# Same for static visual assets
+# Truly-static brand/build visual assets keep the long immutable cache.
+# (These live outside /newsletters/ and never get their bytes swapped.)
 /*.png
   Cache-Control: public, max-age=31536000, immutable
 /*.jpg
