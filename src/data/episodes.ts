@@ -15,12 +15,28 @@ export interface Episode {
 
 export const episodes: Episode[] = [
   {
+    number: 78,
+    date: 'May 29, 2026',
+    title: 'Salt in the Eyes',
+    youtubeId: 'XFkHdIrnO0M',
+    description: "The courts are about to make vendors pay for AI hiring discrimination — while the EEOC moves to switch off the EEO-1 data that historically proved it. Plus Workday makes Gemini its default brain, the Mobley case clears another hurdle, JobGet/RippleMatch and Joblist/BOLD, Brian Fink on the Jevons Paradox, two AI-interview founders from Vegas, and the monkeys of Silver Springs.",
+    newsletterSlug: 'salt-in-the-eyes',
+  },
+  {
     number: 77,
     date: 'May 22, 2026',
     title: 'Generation AI Graduates',
     youtubeId: 'usDNrqQEdvY',
     description: "Theo Baker's Stanford class is the first cohort to spend all four years alongside ChatGPT. We taught them work is a pure transaction — when the cycle turns and they get to choose, what will they be loyal to? Plus SAP's Autonomous Enterprise, OpenAI's $4B Deployment Company, Juicebox always-on sourcing, and Humanly's $25M.",
     newsletterSlug: 'generation-ai-graduates',
+  },
+  {
+    number: 76,
+    date: 'May 15, 2026',
+    title: 'The Hiring Funnel Collapsed',
+    youtubeId: 'kG7h1oKWUA8',
+    description: "By 2030 your work agent runs the search while you sleep — the seven-stage hiring funnel collapses to three, and the only step left is two humans deciding if they want to work together. Plus Intuit drops QuickBooks Workforce, Workday goes where the workers are, Eightfold's TalentForge, Oracle's take-it-or-leave-it relocation, UKG goes full agentic on payroll, Ashby buys Talent Llama, and five April labor-market numbers.",
+    newsletterSlug: 'hiring-funnel-collapsed',
   },
   {
     number: 75,
