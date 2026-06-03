@@ -1,0 +1,23 @@
+<!--
+  WRAPLINE — one-time in-issue special section.
+
+  Paste this block near the TOP of the chosen edition's `body` in
+  src/data/newsletters.ts (after the opening hero <img>/intro paragraphs,
+  before the "On to this week's HR Tech News" line). Intended for THIS WEEK'S
+  upcoming edition (the send that actually reaches inboxes).
+
+  Notes:
+  - This is a clickable THUMBNAIL, not an iframe. Email clients don't render
+    iframes, and functions/api/send-newsletter.ts (prepHtmlForEmail) only
+    absolute-ifies root-relative src/href and stamps a uniform <img> width —
+    it does not touch iframes.
+  - The thumbnail is committed at public/wrapline/kristy-mccann-skillcycle.webp
+    (1200x675 WebP). Regenerate with: node scripts/make-wrapline-thumb.mjs
+  - Edit the teaser line to taste.
+-->
+<h2>🎬 Wrapline</h2>
+<p>This week we're trying something new — <strong>Wrapline</strong>, a news-magazine segment going deeper on the people and stories behind HR tech. First up: how SkillCycle founder Kristy McCann lost the company she built.</p>
+<a href="https://youtu.be/bJCsX7kVMxY">
+  <img src="/wrapline/kristy-mccann-skillcycle.webp" alt="Wrapline — Kristy McCann Built SkillCycle. Then Her Investor Took It" />
+</a>
+<p><a href="https://youtu.be/bJCsX7kVMxY">Watch the segment →</a></p>

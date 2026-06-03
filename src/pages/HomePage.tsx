@@ -6,9 +6,14 @@ import SEO from '../components/SEO'
 import JobCard, { type JobListItem } from '../components/jobs/JobCard'
 import HiringPulseStrip from '../components/HiringPulseStrip'
 import { newsletters } from '../data/newsletters'
+import { wrapline } from '../data/wrapline'
 
 // Swap this URL out when the latest episode is ready
 const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/XFkHdIrnO0M'
+
+// Latest Wrapline segment for the homepage band. Reads the top of the catalog
+// so a new entry in src/data/wrapline.ts lights up the homepage automatically.
+const latestWrapline = wrapline[0]
 
 // Pull the first <img src=...> out of a newsletter body HTML string. Used as
 // the hero image for the top "latest edition" tile.
@@ -208,6 +213,48 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Wrapline band — occasional news-magazine segment. Auto-hides when the
+          catalog is empty. Distinct from the Show hero above; embeds the latest
+          segment and links to the full /wrapline catalog. */}
+      {latestWrapline && (
+        <section className="border-b border-brand-border bg-brand-dark">
+          <div className="max-w-6xl mx-auto px-4 py-14 md:py-16">
+            <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-center">
+              <div className="md:col-span-2">
+                <div className="text-brand-gold text-xs uppercase tracking-widest font-medium mb-3">
+                  🎬 Wrapline
+                </div>
+                <h2 className="font-serif text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+                  {latestWrapline.title}
+                </h2>
+                {latestWrapline.description && (
+                  <p className="text-white/60 leading-relaxed mb-6">
+                    {latestWrapline.description}
+                  </p>
+                )}
+                <Link
+                  to="/wrapline"
+                  className="inline-flex items-center gap-2 text-brand-gold font-semibold hover:text-white transition-colors"
+                >
+                  Watch all Wrapline <ArrowRight size={16} />
+                </Link>
+              </div>
+              <div className="md:col-span-3">
+                <div className="relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: '56.25%' }}>
+                  <iframe
+                    src={`https://www.youtube.com/embed/${latestWrapline.youtubeId}`}
+                    title={`Wrapline — ${latestWrapline.title}`}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* This-week pulse strip — aggregate counts, visible to all visitors.
           Teases the named/personal view sitting behind Wrap+. */}

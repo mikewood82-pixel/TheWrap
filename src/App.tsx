@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import NewsletterPage from './pages/NewsletterPage'
 import NewsletterDetailPage from './pages/NewsletterDetailPage'
 import ShowPage from './pages/ShowPage'
+import WraplinePage from './pages/WraplinePage'
 import VendorPulsePage from './pages/VendorPulsePage'
 import VendorDeepDivePage from './pages/VendorDeepDivePage'
 import AnnouncementsPage from './pages/AnnouncementsPage'
@@ -33,6 +34,7 @@ function App() {
           <Route path="newsletter" element={<NewsletterPage />} />
           <Route path="newsletter/:slug" element={<NewsletterDetailPage />} />
           <Route path="show" element={<ShowPage />} />
+          <Route path="wrapline" element={<WraplinePage />} />
           {FEATURES.PLUS_ENABLED ? (
             <>
               <Route path="vendors" element={<VendorPulsePage />} />
