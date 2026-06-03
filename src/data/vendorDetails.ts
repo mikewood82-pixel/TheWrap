@@ -110,7 +110,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'Salesforce', 'ServiceNow', 'Microsoft Teams', 'Okta', 'ADP'],
     news: [
-      { headline: 'Co-founder Aneel Bhusri returns as Workday CEO as Carl Eschenbach steps down amid steep share decline', date: 'Feb 2026', source: 'CNBC' },
+      { headline: 'Workday raises FY27 margin outlook on AI agent demand; Q1 revenue $2.54B', date: 'May 2026', source: 'CNBC' },
       { headline: 'Workday expands Illuminate AI assistant across HCM, Finance, and Analytics modules', date: 'Mar 2026', source: 'Workday Newsroom' },
       { headline: 'Workday flagged worst for enterprise data access in Fivetran ODI benchmark, raising AI integration concerns', date: 'Apr 2026', source: 'The Register' },
     ],
@@ -179,7 +179,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'Rippling appoints Sonia Parandekar as SVP Engineering and India site lead to accelerate global product expansion', date: 'Apr 2026', source: 'Business Wire' },
       { headline: 'Rippling launches Spend Management module to consolidate corporate cards and expense reporting', date: 'Mar 2026', source: 'TechCrunch' },
-      { headline: 'Rippling announces native EOR capabilities in 50 additional countries', date: 'Feb 2026', source: 'Rippling Newsroom' },
+      { headline: 'Rippling expands Dublin HQ, expects up to 150 new jobs', date: 'May 2026', source: 'The Irish Times' },
     ],
     financialHealth: {
       fundingStage: 'Private (Venture-backed)',
@@ -410,7 +410,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['SAP S/4HANA', 'Microsoft Teams', 'Concur', 'Qualtrics', 'ServiceNow', 'Okta'],
     news: [
-      { headline: 'SAP SuccessFactors embeds Joule AI copilot across all HCM modules for real-time HR guidance', date: 'Feb 2026', source: 'SAP Newsroom' },
+      { headline: 'SAP unveils autonomous HCM and new Joule HR assistants at Sapphire 2026', date: 'May 2026', source: 'SAP News' },
       { headline: 'SAP SuccessFactors 1H 2026 release expands agentic AI suite-wide and adds EU pay transparency reporting tools', date: 'Apr 2026', source: 'SAP News Center' },
       { headline: 'SmartRecruiters now integrated with SAP SuccessFactors with single login, unified navigation, and aligned data', date: 'Apr 2026', source: 'SAP News Center' },
     ],
@@ -858,7 +858,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Workday', 'SAP SuccessFactors', 'LinkedIn', 'Microsoft Teams', 'Paradox', 'DocuSign'],
     news: [
       { headline: 'iCIMS named Best Comprehensive TA Solution by Lighthouse for third year; TechTarget lists Top AI Recruiting Tool', date: 'Apr 2026', source: 'PR Newswire' },
-      { headline: 'iCIMS Talent Cloud surpasses 600 enterprise customers and 4M annual hires processed', date: 'Mar 2026', source: 'iCIMS Newsroom' },
+      { headline: 'iCIMS appoints Marc Thompson as CEO to drive AI-led growth', date: 'May 2026', source: 'NJBIZ' },
       { headline: 'iCIMS Copilot AI recruiting assistant debuts at HR Tech — automates JD optimization and interview guides', date: 'Apr 2026', source: 'iCIMS Newsroom' },
     ],
     financialHealth: {
@@ -1335,7 +1335,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['QuickBooks', 'Microsoft 365', 'ADP', 'Salesforce', 'Indeed', 'Workato'],
     news: [
-      { headline: 'Paycom launches GONE, an AI system that approves time-off requests automatically based on business rules', date: 'Oct 2025', source: 'Paycom Newsroom' },
+      { headline: "Paycom earns top payroll provider spot in G2's Summer 2026 Grid Reports", date: 'May 2026', source: 'Business Wire' },
       { headline: 'Paycom Beti payroll self-service reaches 80% employee adoption across its customer base', date: 'Feb 2026', source: 'Paycom Newsroom' },
       { headline: 'Paycom reports Q4 2025 revenue of $349M, exceeding analyst consensus for third consecutive quarter', date: 'Jan 2026', source: 'Paycom Investor Relations' },
     ],
@@ -1540,7 +1540,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'Google Workspace', 'Xero', 'Salesforce', 'LinkedIn', 'Zapier'],
     news: [
-      { headline: 'Factorial raises €120M Series C to accelerate expansion in Latin America and Southern Europe', date: 'Jan 2026', source: 'TechCrunch' },
+      { headline: 'Factorial raises $150M Series D at $2.5B valuation to expand across Europe', date: 'Jun 2026', source: 'Tech.eu' },
       { headline: 'Factorial launches Factorial AI, automating absence management and shift planning for frontline teams', date: 'Feb 2026', source: 'Factorial Blog' },
       { headline: 'Factorial surpasses 10,000 customers across 65 countries, citing strong traction in Brazil and Mexico', date: 'Mar 2026', source: 'Factorial Newsroom' },
     ],
@@ -1628,7 +1628,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Sage Accounting', 'Sage Payroll', 'Slack', 'Google Workspace', 'Microsoft 365', 'Zapier'],
     news: [
-      { headline: 'Sage HR deepens integration with Sage Payroll for fully automated pay run reconciliation', date: 'Jan 2026', source: 'Sage Newsroom' },
+      { headline: 'Sage appoints new Chief Product Officer and Chief Strategy Officer', date: 'May 2026', source: 'Sage' },
       { headline: 'Sage HR launches performance review automation for companies with dispersed workforces', date: 'Feb 2026', source: 'Sage Blog' },
       { headline: 'Sage HR adds e-signature for contracts and policies, eliminating paper-based HR processes for SMBs', date: 'Mar 2026', source: 'Sage Newsroom' },
     ],
@@ -1805,7 +1805,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['QuickBooks Online', 'QuickBooks Desktop', 'TurboTax', 'Square', 'Shopify', 'Gusto'],
     news: [
-      { headline: 'Intuit QuickBooks Payroll adds AI-powered tax penalty protection with automatic correction filing', date: 'Jan 2026', source: 'Intuit Newsroom' },
+      { headline: 'Intuit unveils QuickBooks Workforce with agentic AI Payroll Agent', date: 'May 2026', source: 'Intuit' },
       { headline: 'QuickBooks Payroll integrates next-day direct deposit for all Premium plan customers at no extra cost', date: 'Feb 2026', source: 'QuickBooks Blog' },
       { headline: 'Intuit bundles QuickBooks Payroll with QuickBooks Money for an all-in-one small business finance solution', date: 'Mar 2026', source: 'Intuit Newsroom' },
     ],
@@ -1850,7 +1850,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Slack', 'Workday', 'Greenhouse', 'Rippling', 'BambooHR', 'Okta'],
     news: [
       { headline: 'Remote expands EOR coverage to 30 new countries including Saudi Arabia, Vietnam, and Colombia', date: 'Jan 2026', source: 'Remote Blog' },
-      { headline: 'Remote reaches $1B ARR milestone driven by rapid adoption of global payroll consolidation', date: 'Mar 2026', source: 'TechCrunch' },
+      { headline: 'Remote surpasses $300M ARR and turns cash-flow positive', date: 'May 2026', source: 'TechCrunch' },
       { headline: 'Remote acquires Bravas to bring identity and device management into its global employment platform', date: 'Apr 2026', source: 'PR Newswire' },
     ],
   },
@@ -1871,7 +1871,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Workday', 'SAP SuccessFactors', 'Oracle HCM', 'ADP', 'NetSuite', 'HiBob'],
     news: [
-      { headline: 'Papaya Global achieves $100M quarterly processing in payments network across 160 countries', date: 'Feb 2026', source: 'Papaya Global Blog' },
+      { headline: 'Papaya Global partners with Reindeer to automate finance ops with AI', date: 'Jun 2026', source: 'PR Newswire' },
       { headline: 'Papaya Global partners with HSBC to offer embedded global payroll payments within banking infrastructure', date: 'Mar 2026', source: 'Business Wire' },
       { headline: 'Papaya Global and Tech Mahindra partner to modernize global workforce operations and cross-border payments', date: 'Apr 2026', source: 'PR Newswire' },
     ],
@@ -1940,7 +1940,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Slack', 'Workday', 'BambooHR', 'Rippling', 'Google Workspace', 'Microsoft Teams'],
     news: [
       { headline: 'Lattice Spring/Summer 2026 release embeds AI into growth moments — Agent drafts Growth Areas from review data', date: 'Apr 2026', source: 'Lattice Newsroom' },
-      { headline: 'Lattice adds HRIS functionality to its platform, becoming a full people management suite', date: 'Feb 2026', source: 'TechCrunch' },
+      { headline: 'Lattice ships reimagined Reviews with faster calibrations and inline comp editing', date: 'May 2026', source: 'Lattice' },
       { headline: 'Lattice crosses $200M ARR with 6,000 customers, citing strong adoption of engagement pulse surveys', date: 'Mar 2026', source: 'Lattice Blog' },
     ],
   },
@@ -2163,7 +2163,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'Cornerstone showcases Galaxy Workforce Agility platform at Learning Technologies London — 7,000 customers, 140M users', date: 'Apr 2026', source: 'Learning Technologies' },
       { headline: 'Cornerstone announces global Connect Tour kicking off May 20 in New York City across 15+ cities', date: 'Apr 2026', source: 'Cornerstone Newsroom' },
-      { headline: 'Cornerstone reports 40M active learners on platform as compliance training adoption grows post-regulation', date: 'Mar 2026', source: 'Cornerstone Newsroom' },
+      { headline: 'Cornerstone launches Workforce AI, an intelligence platform for workforce readiness', date: 'May 2026', source: 'Business Wire' },
     ],
   },
 
