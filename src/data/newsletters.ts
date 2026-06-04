@@ -1,3 +1,11 @@
+export interface Sponsor {
+  name: string      // "Acme HR"
+  logo: string      // "/sponsors/acme.webp" — WebP or SVG, see public/sponsors/
+  blurb: string     // 1–2 sentence value prop, sponsor-supplied
+  url: string       // landing page
+  cta?: string      // CTA label, defaults to "Learn more"
+}
+
 export interface Newsletter {
   slug: string
   date: string
@@ -5,9 +13,134 @@ export interface Newsletter {
   tag: string
   excerpt: string
   body: string // HTML string
+  sponsor?: Sponsor // optional — editions without a sponsor render no ad
 }
 
 export const newsletters: Newsletter[] = [
+  {
+    slug: 'the-house-always-trades-up',
+    date: 'June 5, 2026',
+    title: 'The House Always Trades Up',
+    tag: 'Labor Market',
+    excerpt: "McDonald's, Vegas, and your employer are all running the same play — premiumize the top, automate the bottom, and quietly evict the dependable middle everyone actually used.",
+    body: `
+<img src="/newsletters/june-5-2026-the-house-always-trades-up/image1.webp" alt="The House Always Trades Up" />
+
+<p>There's a moment in every parent's life where the menu stops mattering. You already know the order, because your toddler will eat exactly one food on this earth (chicken, but ONLY in nugget form), and you just care that she eats something. It's 6:30, the day is over, the drive-thru is open, and you want one thing in your life to be cheap, fast, and exactly what you expected. That was the deal McDonald's made with America for seventy years. It was never a culinary delight. It was certain – a happy meal in Leominster, Massachusetts, tastes the same as a happy meal in Tucson, Arizona. Sameness, comfort, absence of surprise, that was the product.</p>
+
+<p>This month McDonald's had their <a href="https://corporate.mcdonalds.com/corpmcd/investors/events-and-presentations.html">annual meeting</a> and announced a move in a new direction. Their new strategy is called McDonald's Next, and the headlines are new items such as bone-in wings, a “hand-breaded” McCrispy that is more like rival Popeyes, and the Big Arch – the chain's biggest, most premium burger, running around $9 ($13 in some markets). In parallel, they are introducing McValue 2.0, a new version of the dollar menu with items as low as $3. Note: McValue 2.0 sounds a lot cooler when you don't remember that it is the same items on the Dollar Menu 5 years ago, just tripled in price.</p>
+
+<p>Read these two announcements together and their whole strategy comes into place: a premium ceiling and a bargain-basement floor, launched simultaneously with no middle ground. McDonald's looked at the customer who just wants the certainty it spent seventy years selling, and decided that customer was worth less than the one who will spring for artisanal poultry.</p>
+
+<p>McDonald's didn't invent this move, it's happening across the board. Because we HR Tech veterans are always trapped in Las Vegas, we're seeing the endgame of this strategy. For decades, Las Vegas had the most democratic business model in selling a “good time.” You could get a hotel on the strip for less than $100 WITH the insane resort fees. For food, you could hit a cheap buffet. If you wanted to gamble, there were $5 craps tables. It was priced to get you there. The middle class made the Strip, but for the past few years, the Strip has been pushing them out the door. Those insane resort fees (I dare you to visit the gym at Circus Circus), paid parking everywhere, table limits of $25, the Sphere (which I like), F1 races every fall. The buffet died so the bottle service could live.</p>
+
+<p>Yet Vegas is struggling. Last year, they drew 38.5 million visitors, down 7.5% from 2024. It's the first year-over-year decline in the post-COVID era and the lowest total since 2021. It's not entirely Vegas' fault – President Trump and ICE most definitely contributed to the drop in foreign visits (Canadian visits alone dropped 17%).</p>
+
+<p>But here's what I love – while the premium Strip is sagging, the value end of town is thriving. Locals casinos were up nearly 6% in December, and the amazing people-watching experience that is Fremont Street set an annual revenue record north of $950 million. What the executives have to realize is that demand for value never went anywhere. Priced out of the Strip, the middle found somewhere else to spend its money.</p>
+
+<p>This is the defining economic move of the moment, and once you see the pattern, you can't unsee it. Premiumize the top, abandon the bottom to a stripped-down budget tier, and hollow out the reliable middle everyone actually used. Airlines did it — the front of the plane is the business now, the back is a fee-extraction machine. Groceries did it — the premium line expands as the package shrinks.</p>
+
+<p>It's a barbell, and the thing being optimized away is the boring, dependable, you-could-count-on-it middle that used to be the entire point. When you hear about the disappearing middle class, this is where it's coming from, and the data backs it up.</p>
+
+<p>Moody's chief economist Mark Zandi found the top 10% of earners accounted for 49.2% of all consumer spending in Q2 2025 — the highest in data going back to 1989, up from about 43% in 2020 and roughly 35% in the early '90s. The kicker: from late 2023 to late 2024, the top 10% grew their spending 12% while lower- and middle-income spending actually declined. So when McDonald's and Vegas chase the high end, they're not being gratuitously cruel — they're following the only customer whose spending is still growing.</p>
+
+<p>I know that this is an HR newsletter, not a personal grievance against high prices, so here's why it's relevant: employers are running the same play on workers that McDonald's and Vegas are running on customers. Premiumize the top, automate the bottom, hollow out the middle (on both sides of the counter).</p>
+
+<p>Watch it happen in this very issue. The data this week describes a labor market propped open but frozen solid: JOLTS shows openings spiking to 7.6 million while actual hires fell. The doors are open, but almost nobody's walking through. Revelio and ADP both peg May growth at a near-identical ~122–124K, but jammed into a narrow strip of sectors — health care, public administration, professional services — while retail and hospitality bleed. The broad, shared, middle-of-the-economy hiring is the thing disappearing. Meanwhile, Oracle is cutting 30,000 people — 18% of its workforce — not because it's struggling, but to redirect the payroll into AI infrastructure, the premium tier it would rather invest in than you. And McDonald's? It's testing an AI voice in the drive-thru and telling franchisees, in writing, that “as more of the customer journey becomes automated, there are fewer opportunities for guests to connect with crew.” Translation: we are removing the humans. Premiumize the customer, automate the worker — same company, same week.</p>
+
+<p>The cruelest part is the bet underneath all of it: that the machine is cheaper than the person. It might not even be true. As Lance Haun pointed out this week, the companies furthest down the automation road are finding their AI to be a wildly more expensive and less predictable line item than the humans it replaced. We are evicting the middle on both sides of the counter on the theory that we'll save money, and we don't actually know that we will.</p>
+
+<p>Somewhere there's a parent in that drive-thru line buying the one cheap, certain thing left in the day — who's about to find out their own job is the next thing getting premiumized out of existence. The customer priced out of the experience and the candidate frozen out of the market are the same person. Same eviction, different doorman.</p>
+
+<p>On to the week in HR Tech. This week's Wrap features Ziprecruiter launching Smart Outreach, Joveo's AI Campaigns, Connecticut's new AI law, the latest employment data from Revelio Labs and ADP, how to use Oracle layoffs to boost your LinkedIn profile, Lance Haun on Tokenmaxxing, a conversation with Jennifer Ravalli, and the premiere of The Wrap's new segment, Wrapline.</p>
+
+<p>Join me at 10am Friday for the live show, but if I don't see you, have a great weekend.</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>🎬 Wrapline</h2>
+
+<h3>Introducing Wrapline</h3>
+<a href="https://youtu.be/bJCsX7kVMxY"><img src="/newsletters/june-5-2026-the-house-always-trades-up/image2.webp" alt="Wrapline — Kristy McCann Built SkillCycle. Then Her Investor Took It" /></a>
+<p>I've been bouncing the idea around in my head of creating longer-form storytelling for The Wrap, something as informative and entertaining as Dateline, I just didn't know where to start, until I read Kristy's story in my LinkedIn algorithm. Kristy is an HR Tech founder just like the many other startup founders I interview and follow in the space, and we know some of the same people, so I reached out to learn more. Once I heard her story, I knew it couldn't fit into the standard "just record an interview on screen" template. It deserved something deeper.</p>
+<p>Introducing Wrapline, a news magazine-style look into what's happening in our space. It's a lot of editing so I can't do this every week, but check it out and look for more episodes to come. If you have an idea for a future episode, reach out!</p>
+<p>Here's the short version of what you'll see. Kristy bootstrapped SkillCycle with $500,000 of her own money, and in April 2026 she filed a federal lawsuit in the Southern District of New York alleging that one of her investors used a predatory "loan to own" playbook to seize control of the company she built. In this first episode, she walks through what she says happened, what she wishes she'd known, and what every founder should check before signing a term sheet. The case is now in federal court; we're telling Kristy's side of it.</p>
+<p><a href="https://youtu.be/bJCsX7kVMxY">Watch: Wrapline — Kristy McCann Built SkillCycle. Then Her Investor Took It →</a></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>ZipRecruiter launches Smart Outreach</h3>
+<img src="/newsletters/june-5-2026-the-house-always-trades-up/image3.webp" alt="ZipRecruiter launches Smart Outreach" />
+<p>ZipRecruiter (<a href="https://finance.yahoo.com/quote/ZIP">NYSE: ZIP</a>) added automated candidate outreach to its Resume Database (50M+ job seekers) via a new feature, Smart Outreach, that uses AI to turn a job description into a personalized, editable message series — then fires up to three messages automatically, or until the candidate replies. CPO Megan Allen pitches it as freeing recruiters from chasing responses so they can focus on “the relationships that lead to great hires.”</p>
+<p>It's a good move to appease their clients, but I don't see it mattering. Ask anyone which messages they delete first and it's the obviously automated “new opportunity” pings; for high-volume, high-turnover roles where a fast ping beats silence, fine, but for everything else the candidates worth hiring can tell a read profile from a keyword match and that just cheapens the whole interaction to where it's almost worthless (like their stock price). This will go right into the spam folder next to coupon codes for things I don't want.</p>
+<p><a href="https://ziprecruiter-investors.com/news/news-details/2026/ZipRecruiter-Launches-New-AI-Feature-to-Automate-Recruiter-Outreach/default.aspx">Read more</a>.</p>
+
+<h3>Joveo makes the prompt box the front door</h3>
+<img src="/newsletters/june-5-2026-the-house-always-trades-up/image4.webp" alt="Joveo makes the prompt box the front door" />
+<p>Joveo launched AI Talent Campaigns this week which builds on that prompt box idea I mentioned in the <a href="https://ilovethewrap.com/newsletter/hr-techs-moviephone-moment">Moviephone essay</a>. Go into the prompt box, state what you are looking for in plain language, and it will build an entire campaign for you. You can also search your talent pool just like you would an LLM. Great move.</p>
+<p><a href="https://www.joveo.com/press/joveo-introduces-ai-talent-campaigns/">Read more</a>.</p>
+
+<h3>Connecticut quietly kills the “the algorithm did it” defense</h3>
+<img src="/newsletters/june-5-2026-the-house-always-trades-up/image5.webp" alt="Connecticut signs the CART Act into law" />
+<p>Connecticut Gov. Lamont signed the Connecticut Artificial Intelligence Responsibility and Transparency (CART) Act into law this week. In the law they left a clause that you have to be clear with candidates over what tools you are using and how, and if you get sued for discrimination, you can no longer just blame the tool. I am not an expert, but Claude tells me that's Connecticut answering by statute the exact question Mobley v. Workday is still grinding through court and siding against employers. Worth keeping an eye on as it goes into effect in October.</p>
+<p><a href="https://fastdemocracy.com/bill-search/ct/2026/bills/CTB00033095/">Read more</a>.</p>
+
+<hr />
+
+<h2>📊 Research &amp; Reports</h2>
+
+<h3>Revelio: healthcare is the labor market</h3>
+<img src="/newsletters/june-5-2026-the-house-always-trades-up/image6.webp" alt="Revelio: healthcare is the labor market" />
+<p>Revelio Labs ran the numbers and the takeaway is stark. Since January 2025, the healthcare sector has added 410.7k jobs, nearly double the 208.8k of total net job growth across the entire economy combined. Strip healthcare out and 2025 wasn't a slowdown, it was a contraction; the sector single-handedly kept the headline number from going negative. And it isn't administrative bloat — healthcare practitioners (physicians, nurses, surgeons) account for the largest share of the growth, nearly three times the next category, with home care aides close behind. Nearly half the new jobs came from small employers under 500 workers — community clinics and physician offices, not hospital megasystems. Revelio's read is that the pandemic catch-up phase is over and what comes next is slower, demand-driven growth.</p>
+<p><a href="https://www.reveliolabs.com/news/macro/healthcare-job-growth-is-propping-up-the-labor-market-but-can-it-last/">Read more</a>.</p>
+
+<h3>JOLTS: a record pile of openings nobody's filling</h3>
+<img src="/newsletters/june-5-2026-the-house-always-trades-up/image7.webp" alt="JOLTS: a record pile of openings nobody's filling" />
+<p>The April JOLTS dropped Tuesday and while the headline looks like good news (job openings jumped to 7.6 million, up 731,000 on the month, with the openings rate climbing to 4.6%), as you read it gets worse. Hires fell to 5.1 million, down 419,000, with the hires rate dropping to 3.2% — and hires were little changed across essentially every industry. That's the whole labor market in one chart. Doors are being propped open everywhere; almost no one is walking through them. Quits held flat at 3.0 million and layoffs barely moved at 1.7 million — the “low-hire, low-fire” freeze, now in its second year, where nobody's getting cut but nobody's moving either. The openings surge is concentrated and a little suspicious: professional and business services alone added 668,000 openings while finance and insurance shed 135,000, and openings at the smallest employers (1–9 workers) more than doubled the prior month's pace. A posted job is not a hired person — and in a market where AI can spin up a req in seconds, the gap between “we're hiring” and “you're hired” has never been wider.</p>
+<p><a href="https://www.hiringlab.org/2026/06/02/april-2026-jolts-report-the-bigger-they-are-the-harder-they-hire/">Read more</a>.</p>
+
+<h3>ADP and Revelio private hiring numbers are out</h3>
+<img src="/newsletters/june-5-2026-the-house-always-trades-up/image8.webp" alt="ADP and Revelio private hiring numbers are out" />
+<p>Both ADP and Revelio dropped their private labor numbers for May this week. Both of them have private jobs added as 122-124K. Both are saying that growth is real but narrow, and concentrated heavily in health care, public administration and professional services, while retail, leisure, and hospitality keep bleeding.</p>
+<p>ADP's Nela Richardson called it the most broad-based hiring "in the last few years" — but underneath, the market is frozen, with hiring and attrition both falling and the reward for job-hopping shrinking. The official May jobs report drops Friday morning, the same day this hits your inbox, to say whether the government concurs. I'll cover the full labor-market picture in next week's Wrap.</p>
+<p><a href="https://www.cnbc.com/2026/06/03/adp-jobs-report-may-2026-payrolls-increase-by-122000.html">ADP May Report</a> · <a href="https://www.prnewswire.com/news-releases/revelio-public-labor-statistics-reports-123-7k-us-jobs-gained-in-may-302791664.html">Revelio May Report</a></p>
+
+<hr />
+
+<h2>🔥 HR Hot Takes</h2>
+
+<h3>Oracle finishes the job</h3>
+<img src="/newsletters/june-5-2026-the-house-always-trades-up/image9.webp" alt="Oracle finishes the job" />
+<p>Oracle is wrapping the final phase of one of the largest workforce reductions in its history — roughly 30,000 jobs, about 18% of its global workforce, with final separation dates landing between June 1 and June 15. This isn't a company in trouble: Oracle posted around $17.2 billion in quarterly revenue. So why cut a fifth of your workforce? Capital reallocation for the over $50 billion they already committed to AI data centers and buildouts.</p>
+<p>So here's my hot take. Another wave of separation notices is going to hit LinkedIn over the next couple of weeks. How can you leverage someone else's misfortune to promote yourself?</p>
+<p>A quick refresher on best practices for performative empathy on LinkedIn:</p>
+<ul>
+<li>Forget the actual Oracle employees — how does this affect you? Open with your own feelings about their layoff. That's leadership.</li>
+<li>Offer up your “network.” Not a job. Not a referral. The network. Gesture at it vaguely and let them come to you.</li>
+<li>Deploy #oraclelayoffs. The algorithm can't reward compassion it can't index.</li>
+<li>Hit the support emoji on every layoff post. One tap. You've done your part.</li>
+</ul>
+<p>It's hard to put yourself out there, but it shows what a great leader you are. Together, we can maximize our performative compassion — one support emoji at a time.</p>
+
+<h3>The tokenmaxxing hangover</h3>
+<img src="/newsletters/june-5-2026-the-house-always-trades-up/image10.webp" alt="The tokenmaxxing hangover" />
+<p>I've been highlighting Lance Haun on the Wrap since day one for good reason. Check out his take on “tokenmaxxing” - where companies tell employees to use AI, incentivize the top users, and act surprised when the bill comes. We cut headcount and somehow spent more? That's half this edition in seven words. We're watching companies shed people to fund AI infrastructure that turns out to be a more expensive and less predictable line item than the humans were, and the layoffs continue mostly because the infrastructure has to be paid for somehow.</p>
+<p><a href="https://news.beaconturn.com/p/the-turn-to-the-maxxxxx">Read more</a>.</p>
+
+<hr />
+
+<h2>🎙️ Podcasts</h2>
+
+<h3>Peer Networks are Better than Demos</h3>
+<img src="/newsletters/june-5-2026-the-house-always-trades-up/image11.webp" alt="Peer Networks Are Better Than Demos in HR Tech — Jennifer Ravalli on Totally Talent" />
+<p>In a market where every vendor sounds the same, the ones who win will be the ones willing to go under the hood. I got some hallway time with one of my favorite people in the space, Jennifer Ravalli, founder of Maverick Meridian for a candid conversation about what's really happening in HR tech with vendor differentiation, the death of best-of-breed, pricing strategy, and why the human element of sales and service is about to become the biggest differentiator of all.</p>
+<p><a href="https://www.hr.com/en/resources/podcasts/talent/peer-networks-are-better-than-demos-in-hr-tech_mpy03vn8.html">Listen to the full interview on hr.com</a></p>
+  `,
+  },
   {
     slug: 'salt-in-the-eyes',
     date: 'May 29, 2026',

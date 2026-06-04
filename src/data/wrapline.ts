@@ -23,5 +23,6 @@ export const wrapline: WraplineSegment[] = [
     youtubeId: 'bJCsX7kVMxY',
     description:
       'The story of how SkillCycle founder Kristy McCann lost the company she built — and what it says about power, capital, and founders in HR tech.',
+    newsletterSlug: 'the-house-always-trades-up',
   },
 ]
