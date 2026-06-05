@@ -57,23 +57,6 @@ const revelioSectors = [
   { sector: 'Leisure & Hospitality', trend: 'Declining (−30.7K)', direction: 'down' },
 ]
 
-// ─── CHRO Confidence Index ────────────────────────────────────────────────────
-// Conference Board, Q1 2026 release (Apr 23, 2026). 114 CHROs surveyed.
-// Leading indicator — measures HR-leader sentiment vs. BLS/ADP backward-
-// looking actuals. Highest reading since the index began in Q1 2023.
-const chroIndex = [
-  { label: 'Overall Index',      value: '59', change: 'High since Q1 2023', trend: 'up',   note: 'New series record' },
-  { label: 'Hiring component',   value: '63', change: '+3 vs. Q4 2025',     trend: 'up',   note: 'Strongest of the three' },
-  { label: 'Engagement',         value: '60', change: '+4 vs. Q4 2025',     trend: 'up',   note: 'Solid improvement' },
-  { label: 'Retention',          value: '55', change: '+2 vs. Q4 2025',     trend: 'up',   note: 'Modest — the laggard' },
-]
-
-const chroHiringPlans = [
-  { label: '% planning to increase hiring (H1 2026)', value: '59%', note: 'Up from 54% in Q4 2025' },
-  { label: '% expecting retention improvement',        value: '34%', note: 'Half expect no change' },
-  { label: 'Top workforce investment',                  value: 'Leadership dev (50%)', note: 'AI/automation second at 36%' },
-]
-
 // ─── Latest Release ───────────────────────────────────────────────────────────
 // Hero callout for the most recent data drop — surfaces fresh numbers above
 // the fold. Refresh every release cycle.
@@ -98,22 +81,6 @@ const upcomingReleases = [
   { date: 'Tue Jun 30', source: 'BLS JOLTS',       what: 'May 2026 job openings, hires, quits' },
   { date: 'Wed Jul 1',  source: 'ADP NER',         what: 'June 2026 private payrolls + pay growth' },
   { date: 'Thu Jul 2',  source: 'BLS Employment',  what: 'June 2026 nonfarm payrolls + unemployment' },
-]
-
-// ─── Aspen Tech Labs ──────────────────────────────────────────────────────────
-const aspenInsights = [
-  {
-    headline: 'AI Specialist roles up 76.9% YoY — divergence from the broader market',
-    body: 'JobMarketPulse data from 275,000+ career sites shows AI Specialist postings grew 76.9% year-over-year while overall U.S. postings fell 2.0%. Engineering roles broadly grew +8.0% YoY. Demand in AI continues to defy the cooling trend across the rest of the labor market.',
-  },
-  {
-    headline: 'Remote work rebounds — 12.3% YoY, 22.6% QoQ',
-    body: 'Remote postings now make up 2.43% of all U.S. vacancies, up from 2.12% a year ago. Remote roles rebounded 22.6% quarter-over-quarter, growing faster than the overall market. IT leads remote postings, followed by Marketing and Legal.',
-  },
-  {
-    headline: 'Two-speed wage market — Electricians +8.7%, Nursing roles −5.6%',
-    body: 'Median full-time advertised salaries hit $64,147 in March (+4.3% YoY), but the average masks sharp role-by-role swings. Skilled trades like Electricians saw +8.7% wage growth while Nursing postings fell 5.6% and Marketing roles dropped 6.4% YoY.',
-  },
 ]
 
 // ─── HR Implications ──────────────────────────────────────────────────────────
@@ -356,17 +323,15 @@ export default function LaborMarketPage() {
       <div className="mb-6">
         <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Data · Updated June 5, 2026</div>
         <h1 className="font-serif text-4xl font-bold mb-3">U.S. Labor Market</h1>
-        <p className="text-brand-dark/60 text-lg">BLS, ADP, Conference Board CHRO Index, Revelio Labs, and Aspen Tech Labs — what the numbers mean for HR leaders.</p>
+        <p className="text-brand-dark/60 text-lg">BLS, ADP, and Revelio Labs — what the numbers mean for HR leaders.</p>
       </div>
 
       {/* In-page nav — jump straight to a data source. Small, eyebrow-weight, doesn't compete with H1. */}
       <nav aria-label="Jump to section" className="flex flex-wrap items-center gap-x-1 gap-y-1 text-xs uppercase tracking-widest font-medium text-brand-dark/50 mb-10">
         {[
           { href: '#bls',          label: 'BLS' },
-          { href: '#chro',         label: 'CHRO' },
           { href: '#adp',          label: 'ADP' },
           { href: '#revelio',      label: 'Revelio' },
-          { href: '#aspen',        label: 'Aspen' },
           { href: '#implications', label: 'Implications' },
         ].map((item, i, arr) => (
           <span key={item.href} className="flex items-center gap-1">
@@ -474,38 +439,6 @@ export default function LaborMarketPage() {
         </table>
       </div>
 
-      {/* ── CHRO Confidence Index ───────────────────────────────────────────── */}
-      <div className="flex items-center gap-3 mb-2 scroll-mt-6" id="chro">
-        <h2 className="font-serif text-2xl font-bold">CHRO Confidence Index</h2>
-        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Conference Board · Q1 2026</span>
-      </div>
-      <p className="text-sm text-brand-dark/60 mb-4">Leading indicator — measures HR-leader sentiment vs. backward-looking BLS/ADP actuals. 114 CHROs surveyed; released April 23, 2026.</p>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5">
-        {chroIndex.map(m => (
-          <div key={m.label} className="bg-white border border-brand-cream rounded-xl p-4">
-            <div className="text-xs text-brand-dark/40 mb-1">{m.label}</div>
-            <div className="font-serif text-3xl font-bold mb-1">{m.value}</div>
-            <div className="text-xs font-medium text-green-600 mb-1">{m.change}</div>
-            <div className="text-xs text-brand-dark/40 leading-relaxed">{m.note}</div>
-          </div>
-        ))}
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
-        {chroHiringPlans.map(p => (
-          <div key={p.label} className="bg-white border border-brand-cream rounded-xl p-4">
-            <div className="text-xs text-brand-dark/40 mb-1.5">{p.label}</div>
-            <div className="font-serif text-xl font-bold text-brand-dark mb-1">{p.value}</div>
-            <div className="text-xs text-brand-dark/40 leading-relaxed">{p.note}</div>
-          </div>
-        ))}
-      </div>
-      <div className="bg-brand-cream/40 border-l-4 border-brand-terracotta rounded-r-lg px-5 py-3 mb-12">
-        <p className="text-sm text-brand-dark/80 italic">
-          "Hiring momentum is back, but retention is where the real work begins."
-        </p>
-        <p className="text-xs text-brand-dark/40 mt-1">— Diana Scott, US Human Capital Center Leader, The Conference Board</p>
-      </div>
-
       {/* ── ADP ─────────────────────────────────────────────────────────────── */}
       <div className="flex items-center gap-3 mb-4 scroll-mt-6" id="adp">
         <h2 className="font-serif text-2xl font-bold">ADP Research</h2>
@@ -522,7 +455,7 @@ export default function LaborMarketPage() {
       </div>
 
       {/* Pay Growth Comparison */}
-      <PayGrowthComparison stayer={4.4} changer={6.6} />
+      <PayGrowthComparison stayer={4.4} changer={6.5} />
 
       {/* ADP Sector Bar Chart */}
       <SectorBarChart
@@ -571,24 +504,6 @@ export default function LaborMarketPage() {
         </div>
       </div>
 
-      {/* ── Aspen Tech Labs ───────────────────────────────────────────────────── */}
-      <div className="flex items-center gap-3 mb-4 scroll-mt-6" id="aspen">
-        <h2 className="font-serif text-2xl font-bold">Aspen Tech Labs — JobMarketPulse</h2>
-        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">275K+ Career Sites · Q1 2026</span>
-      </div>
-      <p className="text-sm text-brand-dark/50 mb-5 leading-relaxed">JobMarketPulse tracks live job postings directly from 275,000+ employer career sites globally — capturing hiring intent at the source before aggregators pick it up.</p>
-      <div className="space-y-4 mb-12">
-        {aspenInsights.map(item => (
-          <div key={item.headline} className="bg-white border border-brand-cream rounded-xl p-5 border-l-4 border-l-brand-gold">
-            <div className="font-serif font-semibold mb-1">{item.headline}</div>
-            <p className="text-sm text-brand-dark/60 leading-relaxed">{item.body}</p>
-          </div>
-        ))}
-        <div className="px-1 pt-1">
-          <a href="https://aspentechlabs.com" target="_blank" rel="noopener noreferrer" className="text-xs text-brand-dark/40 hover:text-brand-terracotta transition-colors">Full JobMarketPulse data at aspentechlabs.com →</a>
-        </div>
-      </div>
-
       {/* ── HR Implications ───────────────────────────────────────────────────── */}
       <h2 id="implications" className="font-serif text-2xl font-bold mb-4 scroll-mt-6">What This Means for HR</h2>
       <div className="space-y-4 mb-4">
@@ -599,7 +514,7 @@ export default function LaborMarketPage() {
           </div>
         ))}
       </div>
-      <p className="text-xs text-brand-dark/30 mt-4">Sources: U.S. Bureau of Labor Statistics · ADP National Employment Report · Revelio Public Labor Statistics (RPLS) · Aspen Tech Labs JobMarketPulse. Updated June 5, 2026.</p>
+      <p className="text-xs text-brand-dark/30 mt-4">Sources: U.S. Bureau of Labor Statistics · ADP National Employment Report · Revelio Public Labor Statistics (RPLS). Updated June 5, 2026.</p>
     </div>
   )
 }
