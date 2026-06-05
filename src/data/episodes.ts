@@ -15,6 +15,14 @@ export interface Episode {
 
 export const episodes: Episode[] = [
   {
+    number: 79,
+    date: 'June 5, 2026',
+    title: 'The House Always Trades Up',
+    youtubeId: 'G5blofPtNcY',
+    description: "McDonald's launched a $9 burger and a $3 value menu with nothing in between — and employers are running the same barbell play on workers: premiumize the top, automate the bottom, hollow out the middle. Plus the premiere of Wrapline (the SkillCycle story), ZipRecruiter Smart Outreach, Joveo's prompt-box pivot, Connecticut's CART Act, a frozen JOLTS/ADP labor market, Oracle's 30K layoffs to fund AI, Lance Haun on 'tokenmaxxing,' and Jennifer Ravalli on why the human touch is the premium product.",
+    newsletterSlug: 'the-house-always-trades-up',
+  },
+  {
     number: 78,
     date: 'May 29, 2026',
     title: 'Salt in the Eyes',

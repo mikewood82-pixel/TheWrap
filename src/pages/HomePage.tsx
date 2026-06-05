@@ -9,7 +9,7 @@ import { newsletters } from '../data/newsletters'
 import { wrapline } from '../data/wrapline'
 
 // Swap this URL out when the latest episode is ready
-const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/XFkHdIrnO0M'
+const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/G5blofPtNcY'
 
 // Latest Wrapline segment for the homepage band. Reads the top of the catalog
 // so a new entry in src/data/wrapline.ts lights up the homepage automatically.
