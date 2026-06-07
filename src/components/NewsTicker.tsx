@@ -1,11 +1,11 @@
 const headlines = [
+  { text: 'Jobs report · US adds 172K in May, beats estimates, jobless rate holds at 4.3%', url: 'https://www.cnbc.com/2026/06/05/jobs-report-may-2026.html' },
+  { text: 'Phenom acquires Plum · third 2026 deal adds behavioral science to AI hiring', url: 'https://www.businesswire.com/news/home/20260428121064/en/Phenom-Acquires-Plum-to-Verify-What-AI-Cant-Fake-Human-Behavior-at-Work' },
   { text: 'Factorial · $150M Series D at $2.5B valuation, expanding across Europe', url: 'https://tech.eu/2026/06/03/factorial-raises-150m-series-d-at-25b-valuation-to-expand-across-europe/' },
-  { text: 'HeroHire launches autonomous AI recruiter · voice sourcing across 800M profiles', url: 'https://www.globenewswire.com/news-release/2026/05/17/3296256/0/en/HeroHire-Launches-Autonomous-AI-Recruiter-to-Fix-Hiring-for-the-99.html' },
-  { text: 'Workday · raises FY27 margin outlook on AI agent demand, Q1 revenue $2.54B', url: 'https://www.cnbc.com/2026/05/21/workday-wday-q1-earnings-report-2027.html' },
+  { text: 'Workday DevCon · Agent Passport + MCP tools to verify and govern HR AI agents', url: 'https://www.prnewswire.com/news-releases/workday-launches-new-tools-for-developers-to-build-connect-and-verify-ai-agents-for-hr-finance-and-it-302787997.html' },
+  { text: 'Workday × Google Cloud · HR & finance AI agents arrive in Gemini Enterprise', url: 'https://www.ciodive.com/news/Google-Cloud-Workday-agentic-HR-finance/821405/' },
+  { text: 'Alex · AI recruiter lands $20M Series A backed by Fortune 500 CHROs', url: 'https://hrtechfeed.com/ai-powered-recruiting-startup-lands-20-million/' },
   { text: 'SAP Sapphire · 50+ Joule HR Assistants land June, Claude powers the agents', url: 'https://news.sap.com/2026/05/sap-successfactors-innovations-new-era-autonomous-hcm/' },
-  { text: 'Greenhouse launches MCP · governed connector for AI tools to the ATS, June rollout', url: 'https://www.prnewswire.com/news-releases/greenhouse-launches-mcp-giving-hiring-teams-a-governed-way-to-connect-ai-tools-to-greenhouse-302765361.html' },
-  { text: 'Remote · passes $300M ARR and turns cash-flow positive without adding headcount', url: 'https://techcrunch.com/2026/05/27/payroll-startup-remote-says-it-grew-revenue-50-per-employee-without-adding-headcount/' },
-  { text: 'Rippling lands #11 on CNBC Disruptor 50 · AI hits unified HR-IT-finance data', url: 'https://www.cnbc.com/2026/05/19/rippling-cnbc-disruptor-50-ranking.html' },
   { text: 'Pay transparency · Virginia + Maine join 17-state club, MA & NJ start enforcing', url: 'https://www.jdsupra.com/legalnews/state-pay-transparency-laws-in-2026-mai-64088/' },
 ]
 
