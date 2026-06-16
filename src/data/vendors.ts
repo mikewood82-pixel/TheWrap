@@ -56,7 +56,7 @@ const rawVendors = [
   { name: 'Homebase',             slug: 'homebase',             category: 'Payroll',   g2: 4.5, capterra: 4.6, reviews: 1100,  employees: '1,000+',   news: 3,  deepDive: false, website: 'joinhomebase.com',                   description: 'Scheduling, time tracking, and payroll for hourly workers and shift-based teams.' },
   { name: 'QuickBooks Payroll',   slug: 'quickbooks-payroll',   category: 'Payroll',   g2: 3.9, capterra: 4.5, reviews: 900,   employees: '21,000+',  news: 6,  deepDive: false, website: 'intuit.com',                         description: 'Integrated payroll solution for businesses already running on QuickBooks.' },
   { name: 'Patriot Software',     slug: 'patriot-software',     category: 'Payroll',   g2: 4.8, capterra: 4.8, reviews: 400,   employees: '100+',     news: 1,  deepDive: false, website: 'patriotsoftware.com',                description: 'Affordable payroll and accounting software designed for small businesses.' },
-  { name: 'Remote',               slug: 'remote',               category: 'Payroll',   g2: 4.6, capterra: 4.8, reviews: 1600,  employees: '1,000+',   news: 10, deepDive: false, website: 'remote.com',                         description: 'Global payroll, benefits, and compliance platform for distributed teams.' },
+  { name: 'Remote',               slug: 'remote',               category: 'Payroll',   g2: 4.6, capterra: 4.8, reviews: 1600,  employees: '1,000+',   news: 11, deepDive: false, website: 'remote.com',                         description: 'Global payroll, benefits, and compliance platform for distributed teams.' },
   { name: 'Papaya Global',        slug: 'papaya-global',        category: 'Payroll',   g2: 4.3, capterra: 4.4, reviews: 300,   employees: '700+',     news: 6,  deepDive: false, website: 'papayaglobal.com',                   description: 'Automated global payroll and workforce management platform for multinational companies.' },
   { name: 'Wagepoint',            slug: 'wagepoint',            category: 'Payroll',   g2: 4.6, capterra: 4.7, reviews: 250,   employees: '100+',     news: 1,  deepDive: false, website: 'wagepoint.com',                      description: 'Simple payroll software built for small businesses in Canada and the US.' },
   // Perf Mgmt
@@ -146,6 +146,7 @@ export const vendors: Vendor[] = rawVendors.map(v => ({
 }))
 
 export const activityFeed = [
+  { headline: "Remote sweeps G2's Summer 2026 Global Employment Platform category — #1 across all four segments", source: 'PR Newswire', date: 'Jun 4', vendor: 'Remote' },
   { headline: 'Factorial raises $150M Series D at $2.5B valuation to expand across Europe', source: 'Tech.eu', date: 'Jun 3', vendor: 'Factorial' },
   { headline: 'Workday raises FY27 margin outlook on AI agent demand; Q1 revenue $2.54B', source: 'CNBC', date: 'May 21', vendor: 'Workday' },
   { headline: 'Cornerstone launches Workforce AI, an intelligence platform for workforce readiness', source: 'Business Wire', date: 'May 20', vendor: 'Cornerstone OnDemand' },
@@ -159,6 +160,4 @@ export const activityFeed = [
   { headline: 'BambooHR partners with Turn to deliver native AI-driven background checks via TurnOS', source: 'GlobeNewswire', date: 'Apr 28', vendor: 'BambooHR' },
   { headline: 'Paychex declares 10% dividend hike to $1.19/share — fifth consecutive double-digit raise', source: 'Paychex IR', date: 'May 1', vendor: 'Paychex' },
   { headline: 'Revelio Labs / CBS News: share of US workers leaving for jobs abroad doubled to 6% (2021–2025)', source: 'CBS News', date: 'May 1', vendor: 'Revelio Labs' },
-  { headline: 'Thoma Bravo hands Medallia to creditor consortium in debt-for-equity swap, wiping out $5.1B of $6.4B 2021 take-private', source: 'Reuters', date: 'Apr 22', vendor: 'Medallia' },
-  { headline: 'Personio achieves profitability and acquires Munich AI startup aurio to accelerate recruiting AI roadmap', source: 'Personio Newsroom', date: 'Apr 22', vendor: 'Personio' },
 ]

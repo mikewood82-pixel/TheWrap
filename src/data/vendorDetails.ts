@@ -1849,7 +1849,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'Workday', 'Greenhouse', 'Rippling', 'BambooHR', 'Okta'],
     news: [
-      { headline: 'Remote expands EOR coverage to 30 new countries including Saudi Arabia, Vietnam, and Colombia', date: 'Jan 2026', source: 'Remote Blog' },
+      { headline: "Remote sweeps G2's Summer 2026 Global Employment Platform category — #1 across all four segments", date: 'Jun 2026', source: 'PR Newswire' },
       { headline: 'Remote surpasses $300M ARR and turns cash-flow positive', date: 'May 2026', source: 'TechCrunch' },
       { headline: 'Remote acquires Bravas to bring identity and device management into its global employment platform', date: 'Apr 2026', source: 'PR Newswire' },
     ],
