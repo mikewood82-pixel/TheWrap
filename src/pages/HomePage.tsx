@@ -16,10 +16,12 @@ const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/G5blofPtNcY'
 // so a new entry in src/data/wrapline.ts lights up the homepage automatically.
 const latestWrapline = wrapline[0]
 
-// Pull the first <img src=...> out of a newsletter body HTML string. Used as
-// the hero image for the top "latest edition" tile.
+// Pull the hero image out of a newsletter body HTML string for the top "latest
+// edition" tile. Skips the in-edition sponsor callout logo (/sponsors/...) that
+// can lead the body — the hero is the first content image under /newsletters/.
 function firstImageInBody(html: string): string | undefined {
-  return html.match(/<img[^>]+src="([^"]+)"/)?.[1]
+  const srcs = [...html.matchAll(/<img[^>]+src="([^"]+)"/g)].map((m) => m[1])
+  return srcs.find((s) => s.includes('/newsletters/')) ?? srcs[0]
 }
 
 // Derived from src/data/newsletters.ts so the homepage can never drift out of
