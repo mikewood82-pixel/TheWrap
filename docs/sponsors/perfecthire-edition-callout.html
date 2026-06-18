@@ -1,0 +1,38 @@
+<!--
+  PerfectHire / Agency+ — in-edition sponsor callout (THE WRAP'S FIRST SPONSOR).
+
+  HOW TO USE: paste the <table>...</table> block below at the TOP of the new
+  edition's `body` string in src/data/newsletters.ts, ABOVE the hero <img>.
+  It renders in BOTH the Friday email and the edition's web page from this single
+  source ("dedicated sponsor callout at the top of the edition", as sold on
+  /sponsorship). Keep the copy in sync with `currentSponsor` in newsletters.ts.
+
+  WHY THE MARKUP IS LIKE THIS (do not "tidy" these without understanding):
+  - src is ROOT-RELATIVE (/sponsors/...): prepHtmlForEmail() in
+    functions/api/send-newsletter.ts rewrites it to https://ilovethewrap.com/...
+    for email clients (which can't resolve root-relative URLs).
+  - the logo <img> carries an explicit style=: prepHtmlForEmail() only stamps its
+    default 600px-wide image style on <img> tags that have NO style attr, so the
+    explicit style keeps the logo at 200px; on the web, the detail page's
+    prose-img:w-full can't stretch it either (inline style wins over the class).
+  - loading="eager": NewsletterDetailPage.tsx's LCP regex only rewrites <img>
+    tags WITHOUT a loading attr, so this makes it SKIP the logo entirely and the
+    real hero image below still earns fetchpriority="high".
+  - href is absolute (https://theperfecthire.co): already absolute, so the
+    root-relative rewriter leaves it alone.
+  - <table> layout + inline styles: Outlook-safe colored box (HR audience skews
+    Outlook). #F5EDD6 = brand-cream, #E5E7EB = brand-border, #c0623a = the
+    terracotta the email wrapper already uses for links/CTAs.
+-->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 8px;border-collapse:collapse;">
+  <tr>
+    <td style="background-color:#F5EDD6;border:1px solid #E5E7EB;border-radius:12px;padding:24px;text-align:center;">
+      <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a8a8a;font-family:Georgia,serif;margin-bottom:12px;">Presented by</div>
+      <a href="https://theperfecthire.co" style="text-decoration:none;">
+        <img src="/sponsors/perfecthire.webp" alt="PerfectHire" loading="eager" style="width:200px;max-width:60%;height:auto;display:block;margin:0 auto 14px;" />
+      </a>
+      <p style="font-size:15px;line-height:1.5;color:#1a1a1a;font-family:Georgia,serif;margin:0 auto 18px;max-width:460px;">Agency+ is the first AI-native CRM + ATS + BD engine built for agency recruiters — it auto-surfaces your most placeable candidates and pitches them to the companies hiring right now.</p>
+      <a href="https://theperfecthire.co" style="display:inline-block;background-color:#c0623a;color:#ffffff;font-family:Georgia,serif;font-size:14px;font-weight:bold;text-decoration:none;padding:11px 22px;border-radius:8px;">See Agency+ &rarr;</a>
+    </td>
+  </tr>
+</table>

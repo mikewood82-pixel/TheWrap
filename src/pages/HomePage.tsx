@@ -5,7 +5,8 @@ import { useEffect, useState } from 'react'
 import SEO from '../components/SEO'
 import JobCard, { type JobListItem } from '../components/jobs/JobCard'
 import HiringPulseStrip from '../components/HiringPulseStrip'
-import { newsletters } from '../data/newsletters'
+import SponsorSlot from '../components/SponsorSlot'
+import { newsletters, currentSponsor } from '../data/newsletters'
 import { wrapline } from '../data/wrapline'
 
 // Swap this URL out when the latest episode is ready
@@ -142,6 +143,14 @@ export default function HomePage() {
               )}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* This week's sponsor — paid placement. Renders currentSponsor from
+          src/data/newsletters.ts. */}
+      <section className="border-b border-brand-border bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-8">
+          <SponsorSlot sponsor={currentSponsor} label="This week's sponsor" />
         </div>
       </section>
 

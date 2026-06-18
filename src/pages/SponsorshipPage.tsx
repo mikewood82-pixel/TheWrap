@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import SEO from '../components/SEO'
+import SponsorSlot from '../components/SponsorSlot'
+import { currentSponsor } from '../data/newsletters'
 
 const packages = [
   {
@@ -62,6 +64,12 @@ export default function SponsorshipPage() {
         <p className="text-brand-dark/60 text-lg leading-relaxed max-w-xl">
           Reach HR tech practitioners who actually make buying decisions. No fluff, no inflated numbers — just an engaged audience that reads every word.
         </p>
+      </div>
+
+      {/* Currently sponsored by — social proof that slots are filling */}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-brand-border py-4 mb-12">
+        <span className="text-xs uppercase tracking-widest text-brand-muted font-medium">Currently sponsored by</span>
+        <SponsorSlot sponsor={currentSponsor} variant="inline" />
       </div>
 
       {/* Packages */}

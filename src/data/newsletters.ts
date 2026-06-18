@@ -16,7 +16,151 @@ export interface Newsletter {
   sponsor?: Sponsor // optional — editions without a sponsor render no ad
 }
 
+// The current presenting sponsor, shown in the website chrome (homepage strip +
+// /sponsorship). This is web-only: the Friday email is built from each edition's
+// `body` HTML (scripts/deploy.mjs), so the IN-EDITION sponsor callout is pasted
+// as inline HTML at the top of that edition's body — see
+// docs/sponsors/perfecthire-edition-callout.html. Keep the two in sync by hand.
+export const currentSponsor: Sponsor = {
+  name: 'PerfectHire',
+  logo: '/sponsors/perfecthire.webp',
+  blurb: 'Agency+ is the first AI-native CRM + ATS + BD engine built for agency recruiters — it auto-surfaces your most placeable candidates and pitches them to the companies hiring right now.',
+  url: 'https://theperfecthire.co',
+  cta: 'See Agency+',
+}
+
 export const newsletters: Newsletter[] = [
+  {
+    slug: 'the-graveyard-of-sameness',
+    date: 'June 19, 2026',
+    title: 'The Graveyard of Sameness',
+    tag: 'AI & Future of Work',
+    excerpt:
+      'Casual dining died of a thousand sensible cuts toward the average — now AI offers every industry the same erosion at machine speed and near-zero cost. Hold onto your red roof.',
+    body: `
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 8px;border-collapse:collapse;">
+  <tr>
+    <td style="background-color:#F5EDD6;border:1px solid #E5E7EB;border-radius:12px;padding:24px;text-align:center;">
+      <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a8a8a;font-family:Georgia,serif;margin-bottom:12px;">Presented by</div>
+      <a href="https://theperfecthire.co" style="text-decoration:none;">
+        <img src="/sponsors/perfecthire.webp" alt="PerfectHire" loading="eager" style="width:200px;max-width:60%;height:auto;display:block;margin:0 auto 14px;" />
+      </a>
+      <p style="font-size:15px;line-height:1.5;color:#1a1a1a;font-family:Georgia,serif;margin:0 auto 18px;max-width:460px;">Agency+ is the first AI-native CRM + ATS + BD engine built for agency recruiters — it auto-surfaces your most placeable candidates and pitches them to the companies hiring right now.</p>
+      <a href="https://theperfecthire.co" style="display:inline-block;background-color:#c0623a;color:#ffffff;font-family:Georgia,serif;font-size:14px;font-weight:bold;text-decoration:none;padding:11px 22px;border-radius:8px;">See Agency+ &rarr;</a>
+    </td>
+  </tr>
+</table>
+
+<img src="/newsletters/june-19-2026-the-graveyard-of-sameness/image1.webp" alt="The Graveyard of Sameness" />
+
+<p>I used to love Chipotle. Not a casual love like “hey, good to see you,” it was borderline obsession. White rice, pinto beans, shredded beef (Barbacoa), green salsa (red if I don’t have anywhere to be for the rest of the day), sour cream and cheese. Fresh ingredients and spices exploding through a tightly wrapped tortilla? I couldn’t get enough. I even learned how to recreate it in a slow cooker at home.</p>
+
+<p>I say I used to love Chipotle because times have changed. That same burrito now costs $16 and is hardly bursting at the seams. The ingredients have been trimmed back and everything is an upcharge. I told myself that I was imagining it, that I’d just gotten fatter and greedier with age, but this is a thing. Look it up and you’ll see tons of videos complaining about the shrinking portions and inflated price.</p>
+
+<p>In 2025, Chipotle posted its first annual same-store sales decline in more than two decades of public data, a streak that had survived even a 2015 E. coli outbreak. Foot traffic fell as transactions dropped more than 3% on the year, the portion-size backlash became its own genre on TikTok, and the CEO’s advice to customers who felt shorted was, more or less, to ask for more. He also mentioned on an earnings call that 60% of Chipotle’s core customers now earn over $100,000, and that the company plans to “lean into” them — translation: We can squeeze more money out of people.</p>
+
+<p>This week, Pizza Hut became the newest headstone in the graveyard of destroyed brands. Yum! Brands sold it off for $2.7 billion — most of it to a private equity firm, which means it’s never coming back. Sad, because I remember what made Pizza Hut fun – the building with the red roof (anything without it is just a pizza place, not a hut), the red soda cups, a fresh, personal-pan pizza just for reading. I’d fake-read so many books to fill up my Book It! pin.</p>
+
+<p>I could write this whole article about why Pizza Hut failed, but I’ll sum it up for you. The Pizza Huts of today are tucked into Targets and gas station rest stops, where stale pizza and breadsticks sit for hours under a hot lamp. That personal pan pizza that you read 5 books for? It’s now only what you grab in an emergency.</p>
+
+<p>What made Pizza Hut unique has long been gone and the casual-dining cemetery is getting new entrants every day. In 2024 alone, around 348 full-service chain locations closed amid bankruptcy, the worst year since the pandemic. Red Lobster collapsed after an owner cut its longtime suppliers and turned $20 endless shrimp into a permanent margin wound. TGI Fridays filed Chapter 11 and has been shedding locations ever since. Hooters filed in 2025. On The Border and Buca di Beppo, gone or going. Denny’s is closing dozens. Applebee’s, Outback, and Red Robin are all bleeding traffic. The shared diagnosis, in plain English: the food got more expensive, the customer got squeezed, and none of these places were special enough anymore to be worth the trip.</p>
+
+<p>A strong brand is built on the deviation from the mean. The specific thing people love – bigger portions, fresh hand-cut meat, the cool building – is by definition the part that’s above average and therefore, more expensive to maintain. Every pressure on a maturing business pushes in the same direction: cost accounting trims the distinctive thing, value-engineering standardizes it, the broadline distributor optimizes the supply chain, and the consultant benchmarks you against peers until you become your peers. Each cut on its own is rational, but collectively, they’re suicide. The brand doesn’t die in one bad decision; it dies of a thousand sensible ones. The mean isn’t a neutral resting place — it’s the cheapest defensible version of yourself, and gravity only runs one way.</p>
+
+<p>You can taste that convergence literally. Three companies — Sysco, US Foods, and Performance Food Group — distribute most of what American restaurants serve, the big chains and the “local” spots alike. The mozzarella sticks, the boneless wings, the fries: more and more the same components, through the same pipes, reheated under different logos.</p>
+
+<p>Instead of eating out being a moderately priced evening out with kids, the experience has become ordering by kiosk the same reheated Sysco food you can get anywhere.</p>
+
+<p>For twenty years, navigation toward the mean was slow, because it was human. It took committees and consultants and quarterly margin pressure and a thousand small meetings to grind a distinctive brand down into a generic portfolio asset. AI has removed that friction and an LLM is by definition predicting the most statistically probable outcome based on the average of everything it has ever seen.</p>
+
+<p>I worry that the same erosion that took casual dining two decades of human penny-pinching, AI now offers to every industry at once — at machine speed and near-zero cost. Remember how nobody picks beige? The danger of AI was never that it would be bad at things. The danger is that it is excellent at average — and average is precisely the quality that makes nobody care.</p>
+
+<p>I keep seeing HR Tech companies expand to the point where they’re unrecognizable. Everyone wants to be Workday and I get it — they are an IPO dream. But do you really want to build something that people just tolerate? Or, can you stand on your unique strengths and use AI to amplify them?</p>
+
+<p>I’m asking you to do something I’ve had to do myself. When I started The Wrap, it was mostly a clean rundown of HR Tech news with a little commentary stapled on — generic, and that was fine for a while, until I realized I was just one more voice drowned out in a sea of HR Tech newsletters. (There are more of those than you could possibly imagine. Seriously, tons.) So when I launched the website in April, I started figuring out how to be different. You still get the news, but now I have some fun with it — pulling in trends from well outside the HR Tech bubble, running a weekly live rundown that kicks off with an 80s hair band wailing my theme song, even shooting a Dateline-style spoof. I’d rather be somebody’s favorite weird newsletter than everybody’s forgettable one.</p>
+
+<p>The red roof was never really about the pizza. It was about being somewhere instead of anywhere. Hold onto your red roof.</p>
+
+<p>On to this week’s news. This week’s Wrap features a look at a labor market that is “strong” while paychecks are weak, Phenom plugs their AI agents into ServiceNow, Meta training data-center workers, Indeed killing organic job postings, new research from PwC showing a two-tiered AI jobpocalypse, insight into Oracle’s agentic roadmap with Stacia Garr, an interview with former TA pro turned Mitratech product manager Rachel Wyngaard about their Leave of Absence product, and SpaceX buying Cursor.</p>
+
+<p>Have a great weekend,</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📉 Labor Market</h2>
+
+<h3>The Labor Market Is “Strong.” Your Paycheck Didn’t Get the Memo.</h3>
+<img src="/newsletters/june-19-2026-the-graveyard-of-sameness/image2.webp" alt="BLS Employment Situation — May 2026: nonfarm payrolls +172K, unemployment 4.3%, average hourly wage $37.53, participation 61.8%" />
+<p>Ok, we’ve collected all we can for the labor market this month, here’s what the tea leaves are telling us.</p>
+<p>The May employment report looked like a clean win. Employers added a seasonally adjusted 172,000 jobs — far above the Dow Jones consensus of around 80,000 — with unemployment holding at 4.3%, and March and April were revised up by a combined 93,000. However, if you look at where the jobs actually came from, leisure and hospitality led with 70,000, state and local government added about 50,000 (mostly education), and health care chipped in roughly 47,000 — while private payrolls outside those buckets were comparatively thin.</p>
+<p>The “low-hire, low-fire” pattern that’s defined this market for a year is still firmly in place. These are not the jobs a freshly minted analyst or coordinator is fighting over. We’re adding shifts at the restaurant and aides at the clinic.</p>
+<p>And there’s more. Average hourly earnings rose 3.4% over the year. The May CPI landed at 4.2% — inflation above 4% for the first time in three years and the highest reading since April 2023, driven largely by the energy shock from the war with Iran. Do the subtraction. Wages up 3.4%, prices up 4.2%: the average worker took a real pay cut while the headline screamed full employment. Annualized wage growth is now running at its weakest pace since the recovery from the pandemic.</p>
+<p>This month’s <a href="https://ilovethewrap.com/labor-market">Wrap Underemployment Index</a>, also known as the Worker Misery Index, has increased to 71.4, +8.9% from March (these numbers are a month behind).</p>
+<img src="/newsletters/june-19-2026-the-graveyard-of-sameness/image3.webp" alt="The Wrap Underemployment Index — current reading 71.4 of 100" />
+<p><em>Don’t expect a fed rate cut this year with these numbers.</em></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Phenom plugs its hiring agents into ServiceNow</h3>
+<img src="/newsletters/june-19-2026-the-graveyard-of-sameness/image4.webp" alt="Phenom plugs its hiring agents into ServiceNow" />
+<p>Phenom announced that its AI agents now operate inside the ServiceNow AI Platform, including ServiceNow’s “Otto” assistant. The agents can autonomously run intake meetings, generate job descriptions, source and screen candidates, and move the top of the pile to the interview stage — while compliance checks, stakeholder notifications, and approvals stay inside ServiceNow and candidate engagement runs through Phenom.</p>
+<p><a href="https://www.businesswire.com/news/home/20260610841935/en/Phenom-Partners-with-ServiceNow-to-Introduce-AI-Hiring-Agents">Read more</a>.</p>
+
+<h3>Meta launches the largest trades-training job guarantee in U.S. history (to staff its own data centers)</h3>
+<img src="/newsletters/june-19-2026-the-graveyard-of-sameness/image5.webp" alt="Meta launches America’s Workforce Academy" />
+<p>Meta is putting $115 million into year one of America’s Workforce Academy, a cost-free program that supports participants while they train for skilled trades and guarantees a job for every graduate, handing them a portable NCCER credential and an “America’s Workforce Certificate” built to travel across employers. It’s billed as the largest private-sector skilled-trades commitment with a job guarantee in American history, launching as a 2026 pilot in Louisiana, Ohio, Indiana, and Texas alongside the National Urban League, the Associated Builders and Contractors, and CBRE.</p>
+<p>On its face this is the rare corporate workforce play that’s genuinely good for workers — no debt, real pay during training, a credential you keep, and explicit reach into communities historically shut out of these careers — which is a generous look for a company that has been a poster-child for exploitation. It will be interesting to see this play out. AI infrastructure needs to be built, but call me skeptical that the job guarantee outlasts the builds. Nevertheless, the Pharaoh needs his pyramids built!</p>
+<p><a href="https://about.fb.com/news/2026/06/americas-workforce-academy-free-skilled-trade-training/">Read more</a>.</p>
+
+<h3>Indeed makes you pay to be seen</h3>
+<img src="/newsletters/june-19-2026-the-graveyard-of-sameness/image6.webp" alt="Sure, Jan." />
+<p>Indeed has spent 2026 tightening the screws on its customers and trying to combat having a job board full of scams and fluff. As a result, they’ve quietly announced this month that jobs fed in through single-source XML or API feeds without a proper ATS integration no longer get free organic visibility, with sponsored placement now the dependable path to the top of search.</p>
+<p>The timing is the real tell. Indeed is monetizing organic reach at the exact moment the underlying asset is cratering: application inflation has already driven the value of any single application toward zero, and trust in the listings is going with it — Greenhouse’s 2025 AI in Hiring report found 69% of U.S. job seekers believe they’ve encountered fake postings, and 46% say their trust in hiring dropped over the past year. So employers are being asked to pay more to stand out on a platform candidates increasingly don’t believe, in order to harvest applications worth less than they’ve ever been. Sure, Jan.</p>
+<p><a href="https://www.ere.net/articles/indeed-turns-up-the-heat-on-free-job-postings">Read more</a>.</p>
+
+<hr />
+
+<h2>📊 Research &amp; Reports</h2>
+
+<h3>PwC’s 2026 AI Jobs Barometer: the workforce is splitting, not flattening</h3>
+<img src="/newsletters/june-19-2026-the-graveyard-of-sameness/image7.webp" alt="PwC’s 2026 AI Global Jobs Barometer — two futures for jobs in an AI era" />
+<p>PwC’s new Global AI Jobs Barometer, built on more than a billion job ads across 27 countries, finds that AI isn’t homogenizing the labor market, it’s cleaving it in two. “Professionalised” roles — where AI handles the routine work and humans supply judgment, with recruiters and radiologists among the examples — are seeing twice the job growth and 42% faster salary growth than “democratised” roles, where AI mostly makes the job easier for non-experts to do. The same split runs through companies: the most AI-capable firms grew headcount 52% against 36% for the least exposed, and the top 20% most AI-exposed posted labor-productivity gains of 163% relative to 2018. The skills premium tells the same story — postings demanding AI skills are growing roughly eight times faster than the broader market, carrying a 62% average wage premium, up from 57% a year ago.</p>
+<p>That sounds great, but check this out. Across 2.4 million U.S. entry-level jobs, the roles most exposed to AI are now seven times more likely to demand traditionally senior skills — judgment, leadership, face-to-face presence — and those “seniorised” entry roles grew 35% since 2019 while ordinary entry-level work shrank 10%. PwC’s own workforce lead names the cost: AI is “removing some of the routine work that once acted as an apprenticeship.” The bottom rung of the ladder is being sawed off and reattached higher up — and nobody has explained how a new grad is supposed to reach it.</p>
+<p><a href="https://www.pwc.com/gx/en/news-room/press-releases/2026/pwc-2026-ai-jobs-barometer.html">Read more</a>.</p>
+
+<hr />
+
+<h2>🔥 HR Hot Takes</h2>
+
+<h3>Oracle’s “free AI” isn’t free, and the riskiest part ships without a seatbelt</h3>
+<img src="/newsletters/june-19-2026-the-graveyard-of-sameness/image8.webp" alt="Road Dispatch: The Five Big Bets Behind Oracle’s Agentic Push" />
+<p>Friend of the program Stacia Garr of RedThread Research posted her read on Oracle’s strategy after their April analyst day and it’s a great picture of the company’s HCM strategy. Five interlocking bets on agentic AI, fronted by a pricing pivot that reframes AI as a bundled feature rather than a line item — unlimited deployed agents, 20,000 AI Units a month included, what Oracle’s Yvette Cameron pitched as the only “unmetered use of an OpenAI LLM for general use.”</p>
+<p>There’s a lot in here and it is well worth the read for anyone wondering where agentic AI in HR is going, but this part jumped out at me because I mainly cover TA. The plan is to hand over agentic hiring to people like store managers. Sure, that would be great, but these are often the least-trained, most time-pressed decision makers in the building. There needs to be extensive training or look out for lawsuits.</p>
+<p><a href="https://www.linkedin.com/pulse/road-dispatch-five-big-bets-behind-oracles-agentic-push-stacia-garr-rvw0c/">Read more</a>.</p>
+
+<hr />
+
+<h2>🎙️ Podcasts</h2>
+
+<h3>Totally Talent: “Fear-Free Leave,” with Rachel Wyngaard of Mitratech</h3>
+<img src="/newsletters/june-19-2026-the-graveyard-of-sameness/image9.webp" alt="Totally Talent — Fear-Free Leave, with Rachel Wyngaard of Mitratech" />
+<p>Leave of absence is the corner of HR nobody raises their hand for: a thicket of overlapping federal, state, and local rules, usually run on spreadsheets and good intentions, where one wrong step turns somebody’s hardest personal moment into a compliance headache. I sat down with Rachel Wyngaard — a former TA pro now spearheading Mitratech’s new AI-guided leave solution — to get into why leave became such a minefield, and whether AI can take the fear out of it without taking the humanity out.</p>
+<p><a href="https://www.hr.com/en/resources/podcasts/talent/fear-free-leave_mqh3qdqg.html">Listen to the full conversation on hr.com</a></p>
+
+<hr />
+
+<h2>🔗 Worth a Click</h2>
+
+<h3>Elon buys Cursor for $60 billion</h3>
+<img src="/newsletters/june-19-2026-the-graveyard-of-sameness/image10.webp" alt="SpaceX to acquire Cursor" />
+<p>SpaceX has agreed to acquire AI coding startup Cursor for $60 billion in stock — days after its historic IPO, and less than two months after the two first announced a tie-up. The logic, to the extent there is any: SpaceX folded Musk’s xAI into itself earlier this year and now needs that AI division to catch up to the actual AI labs, having told IPO investors it’s chasing a $26 trillion addressable market — roughly the entire GDP of the United States.</p>
+<p><a href="https://techcrunch.com/2026/06/16/spacex-to-acquire-cursor-for-60b-in-stock-days-after-blockbuster-ipo">Read more</a>.</p>
+  `,
+  },
   {
     slug: 'the-house-always-trades-up',
     date: 'June 5, 2026',
