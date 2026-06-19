@@ -15,6 +15,14 @@ export interface Episode {
 
 export const episodes: Episode[] = [
   {
+    number: 80,
+    date: 'June 19, 2026',
+    title: 'The Graveyard of Sameness',
+    youtubeId: '02U5vqIpsSM',
+    description: "Chipotle shrank the burrito and Pizza Hut became a $2.7B private-equity headstone — because brands don't die in one bad decision, they die of a thousand sensible cuts toward the average, and AI is the most powerful averaging machine ever built. Plus a 'strong' labor market where your paycheck didn't get the memo, the Wrap Underemployment Index at 71.4, Phenom's agents inside ServiceNow, Meta's trades-training job guarantee, Indeed making you pay to be seen, PwC's two-tier AI Jobs Barometer, Oracle's agentic roadmap, 'Fear-Free Leave' with Rachel Wyngaard, and SpaceX buying Cursor for $60B.",
+    newsletterSlug: 'the-graveyard-of-sameness',
+  },
+  {
     number: 79,
     date: 'June 5, 2026',
     title: 'The House Always Trades Up',
