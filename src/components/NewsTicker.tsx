@@ -1,11 +1,11 @@
 const headlines = [
   { text: 'Orbio · $21M Series A from Dawn Capital puts AI agents in KFC & Taco Bell hiring', url: 'https://techcrunch.com/2026/06/14/orbio-raises-21-million-to-automate-hiring-and-onboarding-for-frontline-workers/' },
-  { text: 'Phenom acquires Plum · third 2026 deal adds behavioral science to AI hiring', url: 'https://www.businesswire.com/news/home/20260428121064/en/Phenom-Acquires-Plum-to-Verify-What-AI-Cant-Fake-Human-Behavior-at-Work' },
+  { text: 'Medallia · $150M and a Blackstone-led group take over from Thoma Bravo', url: 'https://www.cmswire.com/customer-experience/medallia-lands-150m-new-owners-and-a-fresh-ai-roadmap-after-thoma-bravos-historic-loss/' },
   { text: 'Factorial · $150M Series D at $2.5B valuation, expanding across Europe', url: 'https://tech.eu/2026/06/03/factorial-raises-150m-series-d-at-25b-valuation-to-expand-across-europe/' },
-  { text: 'Omni HR launches Mino · first AI agent built on unified APAC HR + payroll data', url: 'https://www.prnewswire.com/apac/news-releases/omni-hr-launches-mino-the-first-ai-agent-built-on-unified-apac-hr-data-302792888.html' },
+  { text: 'Fed · holds rates at 3.50–3.75%, signals a possible hike at Warsh\'s first meeting', url: 'https://www.cnbc.com/2026/06/17/fed-interest-rate-decision-june-2026.html' },
   { text: 'Workday DevCon · Agent Passport + MCP tools to verify and govern HR AI agents', url: 'https://www.prnewswire.com/news-releases/workday-launches-new-tools-for-developers-to-build-connect-and-verify-ai-agents-for-hr-finance-and-it-302787997.html' },
   { text: 'Josh Bersin · HR 2030 blueprint maps the shift to agentic HR and "superagents"', url: 'https://www.prnewswire.com/news-releases/the-josh-bersin-company-launches-bold-blueprint-for-agentic-ai-hr-2030-302793868.html' },
-  { text: 'Jobs report · US adds 172K in May, beats estimates, jobless rate holds at 4.3%', url: 'https://www.cnbc.com/2026/06/05/jobs-report-may-2026.html' },
+  { text: 'Jobless claims · US weekly claims edge down to 226K as layoffs stay low', url: 'https://money.usnews.com/investing/news/articles/2026-06-18/us-weekly-jobless-claims-fall-amid-low-layoffs' },
   { text: 'Pay transparency · Virginia + Maine join 17-state club, MA & NJ start enforcing', url: 'https://www.jdsupra.com/legalnews/state-pay-transparency-laws-in-2026-mai-64088/' },
 ]
 

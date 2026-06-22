@@ -735,7 +735,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'LinkedIn', 'Workday', 'BambooHR', 'HireEZ', 'DocuSign'],
     news: [
-      { headline: 'Greenhouse launches AI Principles Framework, setting standard for responsible hiring in the AI era', date: 'Apr 2026', source: 'PR Newswire' },
+      { headline: 'Greenhouse ships six AI features for structured hiring — Analytics Agent, Notetaker, MCP', date: 'Jun 2026', source: 'PR Newswire' },
       { headline: 'Greenhouse 2026 Candidate AI Interview Report — 63% have faced an AI interview, 38% walked away', date: 'May 2026', source: 'PR Newswire' },
       { headline: 'Greenhouse ranked #1 ATS in G2 Spring 2026 Reports across Overall, Enterprise, Mid-Market, and EMEA', date: 'Apr 2026', source: 'PR Newswire' },
     ],
@@ -859,7 +859,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'iCIMS named Best Comprehensive TA Solution by Lighthouse for third year; TechTarget lists Top AI Recruiting Tool', date: 'Apr 2026', source: 'PR Newswire' },
       { headline: 'iCIMS appoints Marc Thompson as CEO to drive AI-led growth', date: 'May 2026', source: 'NJBIZ' },
-      { headline: 'iCIMS Copilot AI recruiting assistant debuts at HR Tech — automates JD optimization and interview guides', date: 'Apr 2026', source: 'iCIMS Newsroom' },
+      { headline: 'iCIMS June Workforce Report: tech-layoff headlines mask a surge in AI-driven hiring demand', date: 'Jun 2026', source: 'iCIMS' },
     ],
     financialHealth: {
       fundingStage: 'Private (PE-backed: Vista Equity, TA Associates)',
@@ -1033,7 +1033,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Indeed', 'LinkedIn', 'QuickBooks', 'Google Workspace', 'Slack', 'Zapier'],
     news: [
-      { headline: 'JazzHR introduces AI job description generator and candidate ranking for teams under 100 employees', date: 'Jan 2026', source: 'JazzHR Blog' },
+      { headline: 'JazzHR goes live with VONQ responsible-AI candidate screening', date: 'Jun 2026', source: 'ERE' },
       { headline: 'JazzHR integrates with Checkr for one-click background screening directly in the ATS', date: 'Feb 2026', source: 'JazzHR Newsroom' },
       { headline: 'JazzHR parent company Employ Inc. merges JazzHR, Lever, and NXTThing RPO into single platform offering', date: 'Mar 2026', source: 'Business Wire' },
     ],
@@ -1229,7 +1229,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'LinkedIn', 'Greenhouse', 'Okta', 'Rippling', 'Carta'],
     news: [
-      { headline: 'HiBob launches Bob AI, a conversational HR assistant for managers to get instant workforce insights', date: 'Feb 2026', source: 'HiBob Newsroom' },
+      { headline: 'HiBob brings People Intelligence into Slack to turn workforce insights into action', date: 'Jun 2026', source: 'GlobeNewswire' },
       { headline: 'HiBob launches native US Payroll to cut complexity and drive confidence for SMBs', date: 'Apr 2026', source: 'HiBob Newsroom' },
       { headline: 'HiBob expands payroll integrations to cover 50 countries in partnership with Papaya Global', date: 'Mar 2026', source: 'HiBob Blog' },
     ],
@@ -1291,7 +1291,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Slack', 'LinkedIn', 'DATEV', 'Workday', 'Greenhouse', 'Okta'],
     news: [
       { headline: 'Personio achieves profitability and acquires Munich AI startup aurio to accelerate recruiting AI roadmap', date: 'Apr 2026', source: 'Personio Newsroom' },
-      { headline: 'Personio expands into UK and Iberian markets with localised compliance and payroll partnerships', date: 'Feb 2026', source: 'Personio Blog' },
+      { headline: 'Personio appoints Philipp Richter as Chief People Officer', date: 'Jun 2026', source: 'Personio Newsroom' },
       { headline: 'Personio surpasses 15,000 customers and €1B ARR milestone, announces IPO consideration for 2027', date: 'Mar 2026', source: 'Financial Times' },
     ],
     financialHealth: {
@@ -1394,7 +1394,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'QuickBooks', 'Xero', 'Workday', 'Greenhouse', 'Rippling'],
     news: [
-      { headline: 'Deel acquires HR intelligence platform Zavvy to add learning and development to its global HR suite', date: 'Jan 2026', source: 'Deel Newsroom' },
+      { headline: 'Deel research: 68% of UK employers are dropping experience requirements for early-career roles', date: 'Jun 2026', source: 'Enterprise Times' },
       { headline: 'Deel reaches $800M ARR and announces plans for direct listing on NYSE in late 2026', date: 'Feb 2026', source: 'Bloomberg' },
       { headline: 'Deel launches Deel AI, automating compliance risk assessment for 150+ countries in real time', date: 'Mar 2026', source: 'Deel Blog' },
     ],
@@ -1455,7 +1455,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['QuickBooks', 'ADP', 'Microsoft 365', 'Slack', 'Indeed', 'Checkr'],
     news: [
       { headline: 'Paylocity launches Elevate Solutions to help HR and payroll teams scale more efficiently', date: 'Apr 2026', source: 'GlobeNewswire' },
-      { headline: 'Paylocity reports fiscal Q2 2026 revenue of $380M, citing 19% growth in total HCM customers', date: 'Mar 2026', source: 'Paylocity Investor Relations' },
+      { headline: 'Paylocity embeds Vestwell to connect retirement, payroll, and HR in one experience', date: 'Jun 2026', source: 'GlobeNewswire' },
       { headline: 'Paylocity acquires Grayscale to expand AI-powered recruiting automation for high-volume hiring', date: 'Apr 2026', source: 'Globe Newswire' },
     ],
     financialHealth: {
@@ -1941,7 +1941,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'Lattice Spring/Summer 2026 release embeds AI into growth moments — Agent drafts Growth Areas from review data', date: 'Apr 2026', source: 'Lattice Newsroom' },
       { headline: 'Lattice ships reimagined Reviews with faster calibrations and inline comp editing', date: 'May 2026', source: 'Lattice' },
-      { headline: 'Lattice crosses $200M ARR with 6,000 customers, citing strong adoption of engagement pulse surveys', date: 'Mar 2026', source: 'Lattice Blog' },
+      { headline: 'Lattice launches Workforce Intelligence at Lattiverse, adding Lattice MCP and AI Leverage Insights', date: 'Jun 2026', source: 'PR Newswire' },
     ],
   },
 
@@ -1963,7 +1963,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: '15Five launches Transform coaching marketplace connecting managers with executive coaches on demand', date: 'Feb 2026', source: '15Five Blog' },
       { headline: '15Five adds AI Meeting Prep to help managers have more effective 1-on-1 conversations using data', date: 'Jan 2026', source: '15Five Newsroom' },
-      { headline: '15Five recognized as a Leader in Gartner Magic Quadrant for Voice of the Employee 2025', date: 'Dec 2025', source: 'Gartner' },
+      { headline: '15Five launches new AI capabilities for a continuous performance-management feedback loop', date: 'Jun 2026', source: 'Business Wire' },
     ],
   },
 
@@ -2005,7 +2005,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Workday', 'SAP SuccessFactors', 'Salesforce', 'Microsoft Teams', 'Slack', 'Okta'],
     news: [
-      { headline: 'Betterworks launches AI Goal Assistant to help employees write SMART OKRs aligned to company objectives', date: 'Jan 2026', source: 'Betterworks Newsroom' },
+      { headline: 'Betterworks acquires Rypple to advance AI-native performance management and manager effectiveness', date: 'Jun 2026', source: 'Business Wire' },
       { headline: 'Betterworks releases Performance Intelligence dashboard for CHROs to benchmark talent health company-wide', date: 'Feb 2026', source: 'Betterworks Blog' },
       { headline: 'Betterworks expands enterprise footprint with three Fortune 100 wins in Q4 2025', date: 'Mar 2026', source: 'Business Wire' },
     ],
@@ -2205,7 +2205,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'Salesforce', 'Zoom', 'BambooHR', 'Zapier', 'Google Workspace'],
     news: [
-      { headline: 'TalentLMS launches AI Course Creator enabling non-technical trainers to build courses from scratch in hours', date: 'Jan 2026', source: 'TalentLMS Blog' },
+      { headline: 'TalentLMS Speed-to-Skill report: work is changing faster than companies can build skills', date: 'Jun 2026', source: 'PR Newswire' },
       { headline: 'TalentLMS reaches 90,000 teams on platform, driven by SMB demand for fast onboarding solutions', date: 'Feb 2026', source: 'TalentLMS Newsroom' },
       { headline: 'TalentLMS parent company Epignosis launches TalentCards mobile microlearning as standalone product', date: 'Mar 2026', source: 'Epignosis Newsroom' },
     ],
@@ -2293,7 +2293,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Microsoft Teams', 'Workday', 'SAP SuccessFactors', 'Cornerstone', 'Degreed', 'Okta'],
     news: [
-      { headline: 'LinkedIn Learning launches AI Coach, a personalised learning companion that curates paths based on career goals', date: 'Jan 2026', source: 'LinkedIn Blog' },
+      { headline: 'LinkedIn and Adobe launch AI Essentials for Marketers courses on LinkedIn Learning', date: 'Jun 2026', source: 'Social Media Today' },
       { headline: 'LinkedIn Learning reaches 1 billion course completions milestone and adds 5,000 new AI skill courses', date: 'Feb 2026', source: 'LinkedIn Newsroom' },
       { headline: 'LinkedIn Learning expands integration with Microsoft Copilot for just-in-time learning suggestions in workflow', date: 'Mar 2026', source: 'Microsoft Blog' },
     ],
@@ -2450,7 +2450,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Workday', 'SAP SuccessFactors', 'Oracle HCM', 'Tableau', 'Power BI', 'ServiceNow'],
     news: [
       { headline: 'OrgVue launches AI Org Design Advisor to model workforce restructuring scenarios in minutes rather than weeks', date: 'Feb 2026', source: 'OrgVue Newsroom' },
-      { headline: 'OrgVue secures £40M Series C funding to expand strategic workforce planning capabilities globally', date: 'Jan 2026', source: 'TechCrunch' },
+      { headline: 'OrgVue study: AI cited in under 10% of 2026 restructurings as headcount-cutters see slower growth', date: 'Jun 2026', source: 'PR Newswire' },
       { headline: 'OrgVue adds dynamic skills taxonomy mapping to connect role profiles to labour market data in real time', date: 'Mar 2026', source: 'OrgVue Blog' },
     ],
   },
@@ -2516,7 +2516,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Workday', 'SAP SuccessFactors', 'Microsoft Teams', 'Slack', 'Qualtrics', 'Medallia'],
     news: [
       { headline: 'Perceptyx acquires AI-native learning platform Lyceum to extend listening into L&D', date: 'May 2026', source: 'UNLEASH' },
-      { headline: 'Perceptyx launches Workforce Intelligence Platform combining listening, action, and outcomes in one dashboard', date: 'Feb 2026', source: 'Perceptyx Blog' },
+      { headline: 'Perceptyx 2026 benchmark: employee engagement ticks up to 81% across 23M responses', date: 'Jun 2026', source: 'Perceptyx Newsroom' },
       { headline: 'Perceptyx surpasses 700 enterprise customers across 160 countries managing 10M+ active employees', date: 'Mar 2026', source: 'Perceptyx Newsroom' },
     ],
   },
@@ -2561,7 +2561,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'Thoma Bravo hands Medallia to creditor consortium in debt-for-equity swap, wiping out $5.1B of $6.4B 2021 take-private', date: 'Apr 2026', source: 'Reuters' },
       { headline: 'Bloomberg: Thoma Bravo refuses fresh capital in Medallia, creditors expected to take keys', date: 'Apr 2026', source: 'Bloomberg' },
-      { headline: 'Medallia closes $200M strategic investment from Permira to accelerate AI and global growth initiatives', date: 'Mar 2026', source: 'Business Wire' },
+      { headline: 'Medallia secures $150M as a Blackstone-led group takes ownership from Thoma Bravo', date: 'Jun 2026', source: 'CMSWire' },
     ],
     financialHealth: {
       fundingStage: 'Private (Creditor-owned after Apr 2026 debt-for-equity swap)',
