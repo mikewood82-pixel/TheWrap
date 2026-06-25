@@ -37,14 +37,6 @@ export const voicesSources: VoiceSourceSeed[] = [
     description: 'HR industry analysis from the Josh Bersin Company.',
   },
   {
-    slug: 'tim-sackett',
-    name: 'Tim Sackett',
-    kind: 'blog',
-    site_url: 'https://timsackett.com',
-    feed_url: 'https://timsackett.com/feed/',
-    description: 'HR + talent acquisition commentary.',
-  },
-  {
     slug: 'laurie-ruettimann',
     name: 'Laurie Ruettimann',
     kind: 'newsletter',
@@ -85,28 +77,12 @@ export const voicesSources: VoiceSourceSeed[] = [
     description: 'Words on Work \u2014 Robin Schooling on HR and leadership.',
   },
   {
-    slug: 'trish-steed',
-    name: 'Trish Steed',
-    kind: 'newsletter',
-    site_url: 'https://trishsteed.substack.com',
-    feed_url: 'https://trishsteed.substack.com/feed',
-    description: 'HR industry insight from the co-host of At Work in America.',
-  },
-  {
     slug: 'work-tech-weekly',
     name: 'Work Tech Weekly',
     kind: 'podcast',
     site_url: 'https://podcasts.apple.com/us/podcast/work-tech-weekly/id1867039410',
     feed_url: 'https://go.repcap.com/podcasts/204382303635/rss.xml',
     description: 'Steve Smith\u2019s weekly conversations on the business of HR tech.',
-  },
-  {
-    slug: 'matt-charney',
-    name: 'Matt Charney',
-    kind: 'blog',
-    site_url: 'https://mattcharney.com',
-    feed_url: 'https://mattcharney.com/feed/',
-    description: 'Snark Attack \u2014 pointed commentary on recruiting and HR tech.',
   },
   {
     slug: 'brian-fink',

@@ -26,6 +26,17 @@ const MAX_AGE_DAYS = 45
 // Concurrent feed fetches. Modest to stay polite to upstream hosts.
 const FETCH_CONCURRENCY = 6
 const FETCH_TIMEOUT_MS = 15_000
+// Substack rate-limits our shared Cloudflare egress (HTTP 429) when several of
+// its feeds are fetched at once. Retry those (and transient 503s) within the
+// same run with jittered backoff so a published post lands now instead of
+// waiting hours for the next cron pass.
+const RETRYABLE_STATUS = new Set([429, 503])
+const MAX_FETCH_ATTEMPTS = 4
+const RETRY_BASE_MS = 2_000
+const RETRY_MAX_MS = 12_000
+// Desynchronize the concurrent burst so feeds on the same host don't all hit
+// the rate limiter in the same instant.
+const STARTUP_JITTER_MS = 750
 
 export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const auth = request.headers.get('authorization') ?? ''
@@ -56,6 +67,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
   const tasks = (srcRows ?? []).map(row => async () => {
     try {
+      // Stagger the opening burst so same-host feeds don't fire in lockstep.
+      await sleep(Math.floor(Math.random() * STARTUP_JITTER_MS))
       const fetched = await fetchFeed(row.feed_url, row.etag, row.last_modified)
 
       // 304 path: just bump bookkeeping, no items to process.
@@ -203,33 +216,59 @@ async function fetchFeed(
   etag: string | null,
   lastModified: string | null,
 ): Promise<{ text: string; etag: string | null; lastModified: string | null; notModified: boolean }> {
-  const ctrl = new AbortController()
-  const to = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS)
-  try {
-    const headers: Record<string, string> = {
-      // Substack rejects non-browser UAs. "compatible; ..." is the standard
-      // way to pass the filter while still self-identifying.
-      'user-agent': 'Mozilla/5.0 (compatible; TheWrapVoicesBot/1.0; +https://ilovethewrap.com/voices)',
-      accept: 'application/rss+xml, application/atom+xml, application/xml;q=0.9, */*;q=0.8',
-    }
-    if (etag)          headers['if-none-match']     = etag
-    if (lastModified)  headers['if-modified-since'] = lastModified
+  for (let attempt = 1; ; attempt++) {
+    const ctrl = new AbortController()
+    const to = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS)
+    try {
+      const headers: Record<string, string> = {
+        // Substack rejects non-browser UAs. "compatible; ..." is the standard
+        // way to pass the filter while still self-identifying.
+        'user-agent': 'Mozilla/5.0 (compatible; TheWrapVoicesBot/1.0; +https://ilovethewrap.com/voices)',
+        accept: 'application/rss+xml, application/atom+xml, application/xml;q=0.9, */*;q=0.8',
+      }
+      if (etag)          headers['if-none-match']     = etag
+      if (lastModified)  headers['if-modified-since'] = lastModified
 
-    const r = await fetch(url, { headers, redirect: 'follow', signal: ctrl.signal })
-    if (r.status === 304) {
-      return { text: '', etag, lastModified, notModified: true }
+      const r = await fetch(url, { headers, redirect: 'follow', signal: ctrl.signal })
+      if (r.status === 304) {
+        return { text: '', etag, lastModified, notModified: true }
+      }
+      if (RETRYABLE_STATUS.has(r.status) && attempt < MAX_FETCH_ATTEMPTS) {
+        // Honor Retry-After when the host sends it; otherwise jittered backoff.
+        await sleep(retryDelayMs(r.headers.get('retry-after'), attempt))
+        continue
+      }
+      if (!r.ok) throw new Error(`http ${r.status}`)
+      const text = await r.text()
+      return {
+        text,
+        etag: r.headers.get('etag'),
+        lastModified: r.headers.get('last-modified'),
+        notModified: false,
+      }
+    } finally {
+      clearTimeout(to)
     }
-    if (!r.ok) throw new Error(`http ${r.status}`)
-    const text = await r.text()
-    return {
-      text,
-      etag: r.headers.get('etag'),
-      lastModified: r.headers.get('last-modified'),
-      notModified: false,
-    }
-  } finally {
-    clearTimeout(to)
   }
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+// Backoff for a retryable response. Prefers the server's Retry-After (seconds
+// or HTTP-date), clamped to RETRY_MAX_MS; falls back to exponential backoff
+// with full jitter so concurrent retries on the same host don't realign.
+function retryDelayMs(retryAfter: string | null, attempt: number): number {
+  if (retryAfter) {
+    const secs = Number(retryAfter)
+    const ms = Number.isFinite(secs)
+      ? secs * 1000
+      : new Date(retryAfter).getTime() - Date.now()
+    if (Number.isFinite(ms) && ms > 0) return Math.min(ms, RETRY_MAX_MS)
+  }
+  const ceiling = Math.min(RETRY_BASE_MS * 2 ** (attempt - 1), RETRY_MAX_MS)
+  return Math.floor(Math.random() * ceiling)
 }
 
 async function runWithConcurrency(tasks: Array<() => Promise<void>>, limit: number): Promise<void> {
