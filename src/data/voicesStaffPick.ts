@@ -17,8 +17,10 @@ export type VoicesStaffPick = {
 
 export const voicesStaffPick: VoicesStaffPick = {
   enabled: true,
-  sourceSlug: 'work-tech-weekly',
-  matchTitle: 'every vendor sounds the same',
+  sourceSlug: 'laurie-ruettimann',
+  // Matches "You don't have to say yes to money." (2026-06-21). Substring is
+  // quote-free so the title's curly apostrophe can't break the match.
+  matchTitle: 'say yes to money',
 }
 
 // Normalize smart quotes and case so config written with plain ASCII still
