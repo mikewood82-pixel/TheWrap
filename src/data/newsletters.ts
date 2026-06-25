@@ -14,6 +14,12 @@ export interface Newsletter {
   excerpt: string
   body: string // HTML string
   sponsor?: Sponsor // optional — editions without a sponsor render no ad
+  /**
+   * Optional wide banner for the homepage "Latest Edition" tile (object-cover,
+   * ~2.7:1). Use when the body hero is a tall/poster image whose center-crop cuts
+   * off baked-in branding. Falls back to the first body image when omitted.
+   */
+  tileImage?: string
 }
 
 // The current presenting sponsor, shown in the website chrome (homepage strip +
@@ -30,6 +36,137 @@ export const currentSponsor: Sponsor = {
 }
 
 export const newsletters: Newsletter[] = [
+  {
+    slug: 'we-know-where-were-going',
+    date: 'June 26, 2026',
+    title: "We Know Exactly Where We’re Going. Nobody Will Say What Happens When We Get There.",
+    tag: 'AI & Future of Work',
+    tileImage: '/newsletters/june-26-2026-we-know-where-were-going/image1-tile.webp',
+    excerpt:
+      'The largest construction project of our lifetime is hiring at both ends of the wage ladder — trades training at the bottom, AI-labeling at the top — and nobody building it will say what happens to you the day it’s finished.',
+    body: `
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 8px;border-collapse:collapse;">
+  <tr>
+    <td style="background-color:#F5EDD6;border:1px solid #E5E7EB;border-radius:12px;padding:24px;text-align:center;">
+      <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#8a8a8a;font-family:Georgia,serif;margin-bottom:12px;">Presented by</div>
+      <a href="https://theperfecthire.co" style="text-decoration:none;">
+        <img src="/sponsors/perfecthire.webp" alt="PerfectHire" loading="eager" style="width:200px;max-width:60%;height:auto;display:block;margin:0 auto 14px;" />
+      </a>
+      <p style="font-size:15px;line-height:1.5;color:#1a1a1a;font-family:Georgia,serif;margin:0 auto 18px;max-width:460px;">Agency+ is the first AI-native CRM + ATS + BD engine built for agency recruiters — it auto-surfaces your most placeable candidates and pitches them to the companies hiring right now.</p>
+      <a href="https://theperfecthire.co" style="display:inline-block;background-color:#c0623a;color:#ffffff;font-family:Georgia,serif;font-size:14px;font-weight:bold;text-decoration:none;padding:11px 22px;border-radius:8px;">See Agency+ &rarr;</a>
+    </td>
+  </tr>
+</table>
+
+<img src="/newsletters/june-26-2026-we-know-where-were-going/image1.webp" alt="We Know Exactly Where We’re Going" />
+
+<p>The pyramids were the most ambitious construction projects of the ancient world — monuments that took a mobilized workforce years to raise, and when the last stone went in, they belonged to one man. The laborers who hauled the granite got the privilege of having hauled the granite. But to get them to the quarry in the first place, somebody had to sell the work, and if you could hear that ancient herald working the crowd, you’d swear he was reading from a modern workforce-development press release.</p>
+
+<p>Steady work and a full belly through the lean season. A trade in your hands — masonry, hauling, surveying — skills that travel, skills the kingdom will need for generations. A paycheck you can count on while the fields are underwater. Dignity. Purpose. A foot on the ladder. Come build the future; the Pharaoh is investing in his people.</p>
+
+<p>That’s the press release I’ve been reading all month, but I’m not falling for it.</p>
+
+<p>Yes, the investment is real. That’s what makes it work. The upcoming data center build-out is the largest construction project of our lifetimes, and the hyperscalers genuinely need bodies to raise it: pour the concrete, pull the power, wire the racks. So the money is actually moving. In the past month alone, we’ve learned that:</p>
+
+<ul>
+  <li>Google is spending $50 million to train 300,000 electricians and pipefitters.</li>
+  <li>Meta is spending $115 million to create America’s Workforce Academy.</li>
+</ul>
+
+<p>These are real jobs, they pay real wages, and the trades pointing their kids toward them are not wrong to. I won’t pretend otherwise. The pharaoh’s heralds weren’t lying either — there was work, and it did feed your family, right up until the capstone.</p>
+
+<p>But what none of the heralds mention — either ancient ones, or the ones today with LinkedIn Top Voice badges — is the only question that matters to the person hauling the stone: what happens after the pyramid is built?</p>
+
+<p>There are two lifelines being thrown to American workers right now, and they sit at opposite ends of the wage ladder. At the bottom: the hyperscalers need someone to physically build the AI, so they’re funding trades training across twenty-plus states. At the top: they need someone to teach the AI, so they’re taking their own senior engineers — the people who used to do the interesting work — and reassigning them to label data and grade model outputs. At Meta, engineers reassigned to the work started calling themselves draftees; one told Wired that the unit was “literally the gulag. You have zero purpose in life all of a sudden, you barely interact with anyone, you just have these tasks every week.”</p>
+
+<p>Two different stories of the future of work. Different collars, different zip codes, different paychecks. Except they’re the same story. The electrician wiring the data center and the engineer training the model are doing the same job from opposite ends — raising a monument that needs them only until it’s raised. The scaffolding always comes down. The pyramid was never going to belong to the men who built it.</p>
+
+<p>Here’s the thing everyone gets wrong about the pyramids. They weren’t built by slaves. That’s the Hollywood version — the whips, the chains, Charlton Heston. The granite tells a different story. The people who raised those monuments were paid: organized into work crews, housed in a village beside the site, fed from the state’s stores, even tended by the state’s physicians when a block came down on the wrong foot. A lot of them weren’t even full-timers — they were conscripts rotating through during flood season, when the Nile drowned the fields and there was no farming to do anyway. Paid, housed, fed, seasonal. By the standards of the third millennium BC, a decent gig.</p>
+
+<p>And here is what they were paid: bread and beer. Rations. Enough calories to haul the next stone and come back tomorrow. They built the most valuable objects in the ancient world — monuments that would outlast every empire that followed — and they walked away with a full belly and the right to say they’d been there. The pharaoh got eternity. The workers got lunch.</p>
+
+<p>That’s not slavery. It’s worse, in a way, because it’s defensible. Nobody had to be chained to the work. The work fed you. You showed up willingly, because showing up beat the alternative, and in exchange you poured your back into an asset you would never own a single stone of.</p>
+
+<p>So when I see $50 million spread across 300,000 workers — $166 a head, against the $180-to-$190 billion in capital expenditure Google has slated for AI in 2026 — I don’t see a workforce investment. I see rations. I see bread and beer with a hard hat on. Enough to get you to the site, train you up, keep you hauling until the thing is built. It was slave wages then. Dressed up in a press release, it’s slave wages now. The only thing that’s changed in five thousand years is that the pharaoh puts out videos of him awkwardly learning Jiu-Jitsu.</p>
+
+<p>So here’s the question I can’t get anyone to answer — what happens next? You have a new data center and models trained off of real people. Then what? You don’t need the people who poured the foundation once it’s poured, or the ones who trained the model once it’s trained. The two best-paid lifelines in this economy both terminate the moment the project they’re attached to succeeds. What does work look like on that morning — the day the building is done, the machine is taught, and the scaffolding comes down? Sure there will be maintenance, but the majority of the work is done.</p>
+
+<p>I have a guess and I don’t love it because I see signs of it everywhere. Look around LinkedIn at the army of fractional workers, a generation cobbling a living together through whatever gig they can get while just trying to reclaim some of the wage/life security they had a decade ago. And in the US, fractional work doesn’t come with benefits, so be prepared to pay any extra wages towards health premiums, meager retirement, and other savings contributions. The Digital Day Laborers I’ve been writing about for a year, now with company at every income level.</p>
+
+<p>Whatever you are at either end of this, you don’t own a brick of what you built. Every dollar of that capex converts distributed human work — millions of people, each holding a little leverage — into one centralized capability owned by about five companies. You come out the far side with fewer people who have any bargaining power and a very short list of firms that have all of it.</p>
+
+<p>Now the honest counterargument, because the essay’s worthless without it. People have screamed this exact scream before. The loom. The tractor. The spreadsheet. Every wave of automation arrived with a prophet promising the end of work, and every time, labor reallocated to jobs nobody could have named in advance. The optimists have a perfect historical record, and I’m not going to insult you by pretending they don’t.</p>
+
+<p>I’ll just point at the one thing that’s different, and let you sit with it. Every prior wave automated muscle and routine, and in doing so, it pushed humans upward — toward judgment, toward creativity, toward the work that supposedly only we could do. That upward staircase is the entire basis of the reassurance. It’s why “they’ll find new work” was always true. This is the first wave built to climb the staircase itself. It’s not coming for the muscle. It’s coming for the judgment — the safe harbor every previous generation fled toward. You don’t have to believe the harbor falls. You just have to notice it’s the first time the water’s risen this high.</p>
+
+<p>Which brings me, finally, to Rosie.</p>
+
+<p>The whole promise of automation, from the Jetsons forward, was beautifully simple: the machine does the dishes so the family gets to live. Rosie handles the drudgery; the humans get the afternoon. That was the deal. That was always the deal.</p>
+
+<p>Look at what’s actually on the table and tell me it isn’t the deal run exactly backwards. The machine gets the generative, creative, interesting work — the writing, the designing, the building. And the human gets handed a labeling queue. The human gets the dredge work that AI was explicitly, top-of-the-brochure sold as the cure for. We were promised the robot would do the dishes so we could paint. Instead, the robot paints, and we annotate its brushstrokes.</p>
+
+<p>The pyramid laborer at least got a monument. He could walk out into the desert at the end of it, point at the thing scraping the sky, and say I built that. It’s probably how the workers who built the Empire State Building felt. Yet, the version arriving now doesn’t even leave you the monument. You build the thing, it belongs to the pharaoh, and the one genuinely interesting job inside it — the creating — goes to Rosie. You’re left annotating her brushstrokes for bread and beer. And the Jetsons, remember, owned Rosie. She worked for them. The version arriving now is one where you don’t own the robot. You train it, on someone else’s payroll, building someone else’s asset, right up until the day it doesn’t need you.</p>
+
+<p>We know exactly where we’re going. We’re pouring the foundation, teaching the replacement, cashing the checks, and calling it a jobs program. The only thing nobody building it will tell you is what we’re supposed to do once we arrive. Is it because they don’t know, or because they do? Which is worse?</p>
+
+<p>While you ponder that wonderful thought, it’s time to move on to this week’s highlights. This week’s Wrap features Google’s investment in skilled-trades training, Workvivo HQ, the Workday lawsuit that won’t go away, more funding aimed at deleting the apply button, a hot take on integrity from Laurie Ruettimann, and I discuss the changing entry level employee with Susan Hanold on Totally Talent.</p>
+
+<p>Enjoy and have a great week. I’m off to a week in Stowe Vermont with some special Wrap activities planned. Stay tuned!</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Google commits $50M to skilled-trades training</h3>
+<img src="/newsletters/june-26-2026-we-know-where-were-going/image2.webp" alt="Google commits $50M to skilled-trades training" />
+<p>Through Google.org, the company pledged an additional $50 million to train as many as 300,000 workers — electricians, welders, pipefitters, HVAC and sheet-metal techs — across more than 20 states, framed as a public-private partnership to fill the labor shortage behind its AI data center and grid buildouts. TechRadar ran the math: spread across 300,000 “or more” workers, that’s roughly $166 a head, against the $180–190 billion in AI capex the company has slated for 2026. It lands a week after Meta’s America’s Workforce Academy and the same week Adobe and LinkedIn announced their own AI-skills tie-up.</p>
+<p><a href="https://blog.google/company-news/outreach-and-initiatives/google-org/skilled-trades/">Read more</a>.</p>
+
+<h3>Workvivo launches Workvivo HQ</h3>
+<img src="/newsletters/june-26-2026-we-know-where-were-going/image3.webp" alt="Workvivo launches Workvivo HQ" />
+<p>Workvivo, the employee-experience platform Zoom acquired in 2023, unveiled Workvivo HQ, an “AI-native digital headquarters” that folds communication, knowledge, and action into one surface, built on Zoom’s AI and the same federated foundation as ZoomMate (drawing on Zoom’s own models plus OpenAI, Anthropic, and others). The launch includes HQ Agent, an agentic layer that reaches into 60+ enterprise systems — Gmail, Google Drive, Jira, Salesforce, ServiceNow, Workday — to retrieve information and act on an employee’s behalf. Workvivo says it now serves 10M+ users across 1,300+ organizations. The product matters less than the distribution behind it: Zoom is one of the most widely installed tools in the enterprise, and HQ is its bid to convert meeting ubiquity into ownership of the daily work surface — the screen every employee opens first — rather than the app they open only for a call.</p>
+<p><a href="https://www.workvivo.com/newsroom/hq/">Read more</a>.</p>
+
+<h3>Workday must face AI-bias class action</h3>
+<img src="/newsletters/june-26-2026-we-know-where-were-going/image4.webp" alt="Workday must face AI-bias class action" />
+<p>A federal judge in San Francisco ruled June 22 that Workday must answer claims its AI screening software weeded out applicants in ways that violated California law and the federal Americans with Disabilities Act, mostly denying the company’s bid to dismiss recent amendments to the 2023 proposed class action. Judge Rita Lin rejected Workday’s argument that California’s anti-discrimination laws don’t apply to out-of-state applicants, ruling that because the alleged conduct originated at its California headquarters, the company could be held liable under state law. She also let stand a claim that the software can screen out candidates using proxy indicators of disability or illness, such as gaps in employment history. Workday says the claims are false and that its tools look only at job qualifications, not protected traits.</p>
+<p><a href="https://reut.rs/4ahahSB">Read more</a>.</p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions</h2>
+
+<p>We told you the hiring funnel was collapsing — this week, more funding to kill the apply button.</p>
+
+<p><strong>WhyBrilliant</strong> raises €1M pre-seed to build an AI agent–driven recruitment platform that matches candidates to employers without traditional applications. <a href="https://tech.eu/2026/06/16/whybrilliant-raises-eur1m-to-scale-ai-job-matching-backed-by-merantix/">Read more</a>.</p>
+
+<p><strong>Orbio</strong> raises $21M Series A to scale its AI agents (Maria, Daniel, and Claire) that interview, onboard, and manage hourly workers. <a href="https://techcrunch.com/2026/06/14/orbio-raises-21-million-to-automate-hiring-and-onboarding-for-frontline-workers/">Read more</a>.</p>
+
+<p><strong>Fika Jobs</strong> raises $4M pre-seed to build a video-first hiring platform where candidates complete a roughly 10-minute AI interview (powered by Google’s Gemini) that’s turned into a short-form video profile employers browse, rather than a resume they apply with. The platform is free for job seekers and takes 10% of a successful hire’s first-year salary. <a href="https://techcrunch.com/2026/06/23/fika-jobs-raises-4m-to-build-a-video-first-hiring-platform-where-ai-agents-interview-candidates/">Read more</a>.</p>
+
+<p><strong>Niural</strong> raises $52M Series A for its AI-native global payroll and benefits platform. <a href="https://hrtechfeed.com/global-payroll-and-benefits-platfom-lands-52m/">Read more</a>.</p>
+
+<hr />
+
+<h2>🔥 Hot Takes</h2>
+
+<h3>You don’t have to say yes to money</h3>
+<img src="/newsletters/june-26-2026-we-know-where-were-going/image5.webp" alt="Punk Rock HR with Laurie Ruettimann" />
+<p>My buddy Laurie Ruettimann of Punk Rock HR published a sharp piece this week aimed at the leadership and “good life” speaking circuit: the people who build careers preaching integrity carry an extraordinary burden to know where their money comes from and whose check they’re signing. Her news hook is the data leak that exposed the membership of Dialog, Peter Thiel’s invitation-only society for the global elite. Worth a read if you’ve been to any large HR conference lately.</p>
+<p><a href="https://laurieruettimann.substack.com/p/you-dont-have-to-say-yes-to-money">Read more</a>.</p>
+
+<hr />
+
+<h2>🎙️ Podcasts</h2>
+
+<h3>Redesigning the entry-level role in an AI-first world</h3>
+<img src="/newsletters/june-26-2026-we-know-where-were-going/image6.webp" alt="Totally Talent — Redesigning the entry-level role, with Susan Hanold" />
+<p>I sat down with Susan Hanold, VP of Organizational People and Change at People Results, to talk about something every talent leader is quietly wrestling with: what happens to the entry-level job when AI does the work we used to hand to new grads? Worth a listen if you’re trying to figure out where the next generation of talent actually comes from.</p>
+<p><a href="https://www.hr.com/en/resources/podcasts/talent/redesign-the-entry_mqjiu8n8.html">Listen here</a>.</p>
+  `,
+  },
   {
     slug: 'the-graveyard-of-sameness',
     date: 'June 19, 2026',

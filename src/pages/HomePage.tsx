@@ -33,7 +33,7 @@ const latestEditions = newsletters.slice(0, 3).map((n, idx) => ({
   excerpt: n.excerpt,
   slug: n.slug,
   tag: n.tag,
-  image: idx === 0 ? firstImageInBody(n.body) : undefined,
+  image: idx === 0 ? (n.tileImage ?? firstImageInBody(n.body)) : undefined,
 }))
 
 const featuredVendors = [
