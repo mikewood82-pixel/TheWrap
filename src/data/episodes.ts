@@ -15,6 +15,14 @@ export interface Episode {
 
 export const episodes: Episode[] = [
   {
+    number: 81,
+    date: 'June 26, 2026',
+    title: 'Bread and Beer',
+    youtubeId: '9WkuqiqoOgk',
+    description: "The largest construction project of our lifetime — the AI data-center buildout — is hiring at both ends of the wage ladder: trades training at the bottom, AI-labeling at the top, and both lifelines terminate the day the thing they're building succeeds. The pyramids weren't built by slaves; they were built by paid workers who got bread and beer and walked away owning nothing. Plus Google's $50M skilled-trades pledge, Workvivo HQ, the Workday AI-bias class action that won't go away, more funding to kill the apply button (WhyBrilliant, Orbio, Fika Jobs, Niural), Laurie Ruettimann on saying no to money, and Susan Hanold on redesigning the entry-level role.",
+    newsletterSlug: 'we-know-where-were-going',
+  },
+  {
     number: 80,
     date: 'June 19, 2026',
     title: 'The Graveyard of Sameness',
