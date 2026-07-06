@@ -7,54 +7,56 @@ import WUITrendChart from '../components/WUITrendChart'
 
 // ─── BLS Key Metrics ──────────────────────────────────────────────────────────
 const blsMetrics = [
-  { label: 'Unemployment Rate', value: '4.3%',   change: 'unchanged', trend: 'flat', note: 'Steady for third consecutive month' },
-  { label: 'Job Openings',      value: '7.6M',   change: '+731K',     trend: 'up',   note: 'April JOLTS · highest since May 2024' },
-  { label: 'Avg. Hourly Wage',  value: '$37.53', change: '+0.3%',     trend: 'up',   note: '+3.4% YoY · 12¢ gain' },
-  { label: 'Layoffs Rate',      value: '1.1%',   change: '−0.1%',     trend: 'down', note: 'April JOLTS · 1.7M, little changed' },
-  { label: 'Quits Rate',        value: '1.9%',   change: '−0.1%',     trend: 'down', note: 'April JOLTS · −183K, biggest drop in a year' },
-  { label: 'Jobs Added (BLS)',  value: '172K',   change: 'similar',   trend: 'flat', note: 'Apr revised up to +179K · +93K w/ Mar' },
+  { label: 'Unemployment Rate', value: '4.2%',   change: '−0.1%',     trend: 'down', note: 'Fell as participation dropped to 61.5% (lowest since Mar 2021)' },
+  { label: 'Job Openings',      value: '7.6M',   change: 'unchanged', trend: 'flat', note: 'May JOLTS · steady at ~2-year high' },
+  { label: 'Avg. Hourly Wage',  value: '$37.64', change: '+0.3%',     trend: 'up',   note: '+3.5% YoY · 13¢ gain' },
+  { label: 'Layoffs Rate',      value: '1.1%',   change: 'unchanged', trend: 'flat', note: 'May JOLTS · 1.7M, still historically low' },
+  { label: 'Quits Rate',        value: '1.9%',   change: 'unchanged', trend: 'flat', note: 'May JOLTS · 3.1M · third month stuck at 1.9%' },
+  { label: 'Jobs Added (BLS)',  value: '+57K',   change: 'below trend', trend: 'flat', note: 'Apr revised to +148K, May to +129K (−74K combined)' },
 ]
 
 const historical = [
-  { month: 'Jan 2026', unemployment: '4.4%', openings: '7.2M', wages: '$37.01', quits: '2.0%' },
   { month: 'Feb 2026', unemployment: '4.4%', openings: '6.9M', wages: '$37.29', quits: '1.9%' },
   { month: 'Mar 2026', unemployment: '4.3%', openings: '6.9M', wages: '$37.38', quits: '2.0%' },
   { month: 'Apr 2026', unemployment: '4.3%', openings: '7.6M', wages: '$37.45', quits: '1.9%' },
-  { month: 'May 2026', unemployment: '4.3%', openings: '7.6M', wages: '$37.53', quits: '1.9%', current: true },
+  { month: 'May 2026', unemployment: '4.3%', openings: '7.6M', wages: '$37.51', quits: '1.9%' },
+  { month: 'Jun 2026', unemployment: '4.2%', openings: '7.6M', wages: '$37.64', quits: '1.9%', current: true },
 ]
 
 // ─── ADP ──────────────────────────────────────────────────────────────────────
 const adpMetrics = [
-  { label: 'Private Jobs Added', value: '122K', note: 'May 2026 · strongest pace since January 2025' },
-  { label: 'Job-Stayer Pay Growth', value: '4.4%', note: 'YoY · unchanged from April' },
-  { label: 'Job-Changer Pay Growth', value: '6.5%', note: 'YoY · job-switcher premium narrowest since 2020' },
-  { label: 'Annual Pay (All)',    value: '4.4%',  note: 'YoY overall pay growth, May 2026' },
+  { label: 'Private Jobs Added', value: '98K', note: 'June 2026 · below +110K consensus, down from May +122K' },
+  { label: 'Job-Stayer Pay Growth', value: '4.4%', note: 'YoY · unchanged for third straight month' },
+  { label: 'Job-Changer Pay Growth', value: '6.6%', note: 'YoY · edged up from 6.5% but premium still narrow' },
+  { label: 'Annual Pay (All)',    value: '4.4%',  note: 'YoY overall pay growth, June 2026' },
 ]
 
-// Broad-based May: 8 of ADP's 10 tracked sectors added jobs.
+// Services carried the entire June print — 96K of 98K came from service-providing sectors,
+// with Education/Health alone doing nearly half. Goods-producing was flat.
 const adpSectors = [
-  { sector: 'Education & Health', jobs: '+57K', direction: 'up' },
-  { sector: 'Trade, Transport & Utilities', jobs: '+36K', direction: 'up' },
-  { sector: 'Professional & Business Services', jobs: '+11K', direction: 'up' },
-  { sector: 'Construction', jobs: '+8K', direction: 'up' },
-  { sector: 'Leisure & Hospitality', jobs: '+8K', direction: 'up' },
+  { sector: 'Education & Health', jobs: '+48K', direction: 'up' },
+  { sector: 'Trade, Transport & Utilities', jobs: '+15K', direction: 'up' },
+  { sector: 'Financial Activities', jobs: '+14K', direction: 'up' },
+  { sector: 'Other Services', jobs: '+8K', direction: 'up' },
+  { sector: 'Information', jobs: '+7K', direction: 'up' },
+  { sector: 'Natural Resources & Mining', jobs: '−5K', direction: 'down' },
 ]
 
 // ─── Revelio Labs ─────────────────────────────────────────────────────────────
 const revelioMetrics = [
-  { label: 'RPLS Jobs Gained (May)', value: '+123.7K', note: 'Derived from 100M+ U.S. LinkedIn-style profiles' },
-  { label: 'New Posting Salaries',   value: '−0.4%',   note: 'MoM · continued downward trend' },
-  { label: 'Hiring Rate',            value: 'Steady',  note: 'Held steady through May' },
-  { label: 'Attrition Rate',         value: 'Down',    note: 'Attrition declined = net positive month' },
+  { label: 'RPLS Jobs Gained (June)', value: '+258.8K', note: 'Derived from 100M+ U.S. LinkedIn-style profiles' },
+  { label: 'New Posting Salaries',    value: '+3.0%',   note: 'MoM rebound · led by Leisure/Hospitality + Prof Services' },
+  { label: 'Hiring Rate',             value: '+0.4pp',  note: 'Ticked up modestly, continuing the 2026 stable trend' },
+  { label: 'Attrition Rate',          value: '−0.8pp',  note: 'Sharp drop · biggest declines in Info + Manufacturing' },
 ]
 
 const revelioSectors = [
   { sector: 'Public Administration', trend: 'Growing', direction: 'up' },
   { sector: 'Health Care & Social Assistance', trend: 'Growing', direction: 'up' },
-  { sector: 'Professional & Business Services', trend: 'Growing (+18.6K)', direction: 'up' },
-  { sector: 'Construction', trend: 'Growing (+15.3K)', direction: 'up' },
-  { sector: 'Retail Trade', trend: 'Declining (−22.9K)', direction: 'down' },
-  { sector: 'Leisure & Hospitality', trend: 'Declining (−30.7K)', direction: 'down' },
+  { sector: 'Professional & Business Services', trend: 'Growing (strongest YoY)', direction: 'up' },
+  { sector: 'Manufacturing', trend: 'Growing YoY', direction: 'up' },
+  { sector: 'Retail Trade', trend: 'Declining (double-digit YoY)', direction: 'down' },
+  { sector: 'Transportation & Warehousing', trend: 'Declining (−24% YoY)', direction: 'down' },
 ]
 
 // ─── Latest Release ───────────────────────────────────────────────────────────
@@ -62,44 +64,44 @@ const revelioSectors = [
 // the fold. Refresh every release cycle.
 const latestRelease = {
   source: 'BLS Employment Situation',
-  period: 'May 2026',
-  releasedOn: 'Fri Jun 5, 2026',
-  headline: 'Nonfarm payrolls +172K and March/April revised up a combined 93K; unemployment holds at 4.3%',
+  period: 'June 2026',
+  releasedOn: 'Thu Jul 2, 2026',
+  headline: 'Payrolls slow to +57K and April/May revised down a combined 74K; unemployment falls to 4.2% as participation drops to a 5-year low',
   stats: [
-    { label: 'Nonfarm Payrolls', value: '+172K',  detail: 'similar to April’s +179K' },
-    { label: 'Unemployment',     value: '4.3%',   detail: 'unchanged · third month' },
-    { label: 'Avg. Hourly Wage', value: '$37.53', detail: '+0.3% MoM · +3.4% YoY' },
-    { label: 'Participation',    value: '61.8%',  detail: 'held · U-6 eased to 8.1%' },
+    { label: 'Nonfarm Payrolls', value: '+57K',   detail: 'well below +115K consensus' },
+    { label: 'Unemployment',     value: '4.2%',   detail: '−0.1pp · for the wrong reason' },
+    { label: 'Avg. Hourly Wage', value: '$37.64', detail: '+0.3% MoM · +3.5% YoY' },
+    { label: 'Participation',    value: '61.5%',  detail: '−0.3pp · lowest since Mar 2021' },
   ],
-  takeaway: 'The “April cooling” was a mirage: April was revised up from +115K to +179K and March to +214K — 93K stronger than first reported — and May added another +172K. Unemployment held at 4.3% for a third month, U-6 eased to 8.1%, and participation steadied at 61.8%. The catch is mobility: April JOLTS openings spiked to a near-two-year-high 7.6M while quits fell to 1.9%. Employers are posting, but workers aren’t moving — a low-hire, low-fire freeze.',
+  takeaway: 'The May story reversed. April was revised down from +179K to +148K and May from +172K to +129K — 74K weaker than first reported — and June added only +57K, less than half the +115K consensus. The drop in unemployment to 4.2% wasn’t strength: participation cratered 0.3pp to 61.5%, the lowest since March 2021, meaning workers left the labor force rather than found jobs. May JOLTS confirmed the freeze — openings, hires, quits, and layoffs all unchanged, quits stuck at 1.9% for a third month. The “low-hire, low-fire” market is still in place; the difference now is that the payroll ceiling is being written down.',
 }
 
 // ─── Upcoming Releases ────────────────────────────────────────────────────────
 // Surfaces the next-on-the-calendar BLS/ADP/JOLTS releases so readers know
 // when fresher data lands. Curated manually — refresh dates each cycle.
 const upcomingReleases = [
-  { date: 'Tue Jun 30', source: 'BLS JOLTS',       what: 'May 2026 job openings, hires, quits' },
-  { date: 'Wed Jul 1',  source: 'ADP NER',         what: 'June 2026 private payrolls + pay growth' },
-  { date: 'Thu Jul 2',  source: 'BLS Employment',  what: 'June 2026 nonfarm payrolls + unemployment' },
+  { date: 'Tue Jul 29', source: 'BLS JOLTS',       what: 'June 2026 job openings, hires, quits' },
+  { date: 'Wed Aug 5',  source: 'ADP NER',         what: 'July 2026 private payrolls + pay growth' },
+  { date: 'Fri Aug 7',  source: 'BLS Employment',  what: 'July 2026 nonfarm payrolls + unemployment' },
 ]
 
 // ─── HR Implications ──────────────────────────────────────────────────────────
 const implications = [
   {
-    headline: 'The “April cooling” was a revision artifact — the floor is firmer',
-    body: 'The weak +115K April print that landed a month ago has been revised up to +179K, and March to +214K — a combined 93K stronger than first reported. May added another +172K. ADP (+122K, its best since January 2025) and Revelio (+123.7K) corroborate the strength, and both show gains broadening beyond healthcare — ADP counted gains in 8 of its 10 sectors. Workforce plans written off the original cooling headline were reacting to noise, not signal.',
+    headline: 'The strength was the mirage — 74K of prior jobs have quietly evaporated',
+    body: 'Last cycle’s revision surprise pushed April up +64K to +179K and made the market look firm. This cycle: April was revised back down to +148K and May from +172K to +129K — a combined 74K weaker than first reported — and June added only +57K, less than half the +115K consensus. ADP corroborated the softness (+98K, down from +122K in May), and June was the third straight month of shrinking payroll totals. The “April cooling” that got waved off in June is now the trend. HR leaders who unfroze headcount plans on the summer revisions have three weaker months of hard data to explain.',
   },
   {
-    headline: 'Low-hire, low-fire — openings spike but quits collapse',
-    body: 'April JOLTS openings jumped 731K to 7.6M, the highest since May 2024, yet quits fell to 1.9% (−183K, the largest monthly drop in a year) and layoffs held at a low 1.1%. Employers are advertising but few workers are moving, and few are being cut. That paradox is why The Wrap Underemployment Index climbed to 71.4 for April: with quits in the 5th percentile of the past decade, the market is frozen, not loose. A freeze flatters retention costs today but stores up turnover risk for whenever mobility thaws.',
+    headline: 'Unemployment fell for the wrong reason — participation cratered to a 5-year low',
+    body: 'The U-3 dropped to 4.2% from 4.3%, but not because workers found jobs. Participation fell 0.3pp to 61.5% — the lowest since March 2021 — as roughly half a million people effectively left the labor force. When people stop looking, the numerator falls and the denominator falls faster. The U-6 also eased (8.2% → 8.1% → 7.9% over three months), which nudged The Wrap Underemployment Index down from 71.4 to 68.9 for May, but the underlying signal is discouragement, not tightening. The market didn’t get better; some of its workers gave up.',
   },
   {
-    headline: 'The switching premium keeps narrowing — retention pressure is inverted',
-    body: 'ADP’s job-changer pay growth edged down again to 6.5% while job-stayers held at 4.4%, and Revelio reports new-posting salaries fell another 0.4% in May. The reward for switching jobs is the weakest in years, and with quits already at 1.9% the incentive to move barely exists. The risk for HR isn’t poaching today — it’s the backlog of would-be switchers that releases once elevated openings finally translate into hires.',
+    headline: 'The low-hire, low-fire freeze locked in for a third straight month',
+    body: 'May JOLTS delivered no motion in any direction — openings, hires, quits, and layoffs all unchanged. Openings held at 7.6M (still near a two-year high), quits stuck at 1.9% for a third consecutive month (5th percentile of the last decade), layoffs steady at 1.1%. Employers are advertising jobs they aren’t filling, workers who want to leave are staying, and companies aren’t cutting. That is the entire market in one sentence — and it’s now the durable regime, not a one-month artifact. Retention costs stay flat; the backlog of would-be switchers keeps building.',
   },
   {
-    headline: 'Two-speed market persists — gains concentrated, losses pointed',
-    body: 'Even in a broad-based month the splits are sharp. Revelio shows Public Administration, Health Care, Professional & Business Services (+18.6K) and Construction (+15.3K) adding workers while Retail Trade (−22.9K) and Leisure & Hospitality (−30.7K) shed them. (BLS and ADP, working from payroll rather than profile data, actually show leisure & hospitality gaining in May — a methodology gap worth watching.) HR leaders in the growth pockets face a supply squeeze; consumer-facing sectors remain a buyer’s market for talent.',
+    headline: 'Two-speed sector split hardens — services carrying, goods-producing stalling',
+    body: 'ADP counted 96K of its 98K gain in service-providing sectors, with Education/Health (+48K) doing nearly half the work. Goods-producing added a rounding-error 2K on ADP and BLS reported Leisure/Hospitality shed 61K jobs in June — the biggest sector loss on the report. Revelio’s picture is broadly consistent: Public Admin, Healthcare, and Professional Services growing; Transportation/Warehousing (−24% YoY) and Retail declining. If your headcount plan is in an ADP-strong sector you can still hire; if it’s in leisure, retail, or goods-producing, you are now competing with a shrinking wage floor.',
   },
 ]
 
@@ -321,7 +323,7 @@ export default function LaborMarketPage() {
 
       {/* Header */}
       <div className="mb-6">
-        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Data · Updated June 5, 2026</div>
+        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Data · Updated July 6, 2026</div>
         <h1 className="font-serif text-4xl font-bold mb-3">U.S. Labor Market</h1>
         <p className="text-brand-dark/60 text-lg">BLS, ADP, and Revelio Labs — what the numbers mean for HR leaders.</p>
       </div>
@@ -395,7 +397,7 @@ export default function LaborMarketPage() {
       {/* ── BLS ─────────────────────────────────────────────────────────────── */}
       <div className="flex items-center gap-3 mb-4 scroll-mt-6" id="bls">
         <h2 className="font-serif text-2xl font-bold">Bureau of Labor Statistics</h2>
-        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Official · May 2026</span>
+        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Official · June 2026</span>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
         {blsMetrics.map((m) => (
@@ -442,7 +444,7 @@ export default function LaborMarketPage() {
       {/* ── ADP ─────────────────────────────────────────────────────────────── */}
       <div className="flex items-center gap-3 mb-4 scroll-mt-6" id="adp">
         <h2 className="font-serif text-2xl font-bold">ADP Research</h2>
-        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Private Sector · May 2026</span>
+        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Private Sector · June 2026</span>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5">
         {adpMetrics.map(m => (
@@ -455,14 +457,14 @@ export default function LaborMarketPage() {
       </div>
 
       {/* Pay Growth Comparison */}
-      <PayGrowthComparison stayer={4.4} changer={6.5} />
+      <PayGrowthComparison stayer={4.4} changer={6.6} />
 
       {/* ADP Sector Bar Chart */}
       <SectorBarChart
-        title="Sector Breakdown — May 2026"
+        title="Sector Breakdown — June 2026"
         data={adpSectors.map(s => ({
           sector: s.sector,
-          value: parseInt(s.jobs.replace(/[+K]/g, ''), 10),
+          value: parseInt(s.jobs.replace(/[+K]/g, '').replace(/−/g, '-'), 10),
           label: s.jobs,
         }))}
       />
@@ -473,7 +475,7 @@ export default function LaborMarketPage() {
       {/* ── Revelio Labs ─────────────────────────────────────────────────────── */}
       <div className="flex items-center gap-3 mb-4 scroll-mt-6" id="revelio">
         <h2 className="font-serif text-2xl font-bold">Revelio Labs — RPLS</h2>
-        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">100M+ Profiles · May 2026</span>
+        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">100M+ Profiles · June 2026</span>
       </div>
       <p className="text-sm text-brand-dark/50 mb-5 leading-relaxed">Revelio Public Labor Statistics (RPLS) is built from 100M+ U.S. workforce profiles — covering ~67% of employed Americans vs. ~27% for BLS establishment surveys. It captures workforce transitions that official surveys miss.</p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-5">
@@ -486,7 +488,7 @@ export default function LaborMarketPage() {
         ))}
       </div>
       <div className="bg-white border border-brand-cream rounded-xl overflow-hidden mb-12">
-        <div className="px-5 py-3 bg-brand-cream/50 text-xs text-brand-dark/50 uppercase tracking-wide font-medium">Sector Employment Trends — May 2026</div>
+        <div className="px-5 py-3 bg-brand-cream/50 text-xs text-brand-dark/50 uppercase tracking-wide font-medium">Sector Employment Trends — June 2026</div>
         {revelioSectors.map(s => (
           <div key={s.sector} className="flex items-center justify-between px-5 py-3 border-t border-brand-cream">
             <span className="text-sm text-brand-dark/70">{s.sector}</span>
@@ -514,7 +516,7 @@ export default function LaborMarketPage() {
           </div>
         ))}
       </div>
-      <p className="text-xs text-brand-dark/30 mt-4">Sources: U.S. Bureau of Labor Statistics · ADP National Employment Report · Revelio Public Labor Statistics (RPLS). Updated June 5, 2026.</p>
+      <p className="text-xs text-brand-dark/30 mt-4">Sources: U.S. Bureau of Labor Statistics · ADP National Employment Report · Revelio Public Labor Statistics (RPLS). Updated July 6, 2026.</p>
     </div>
   )
 }
