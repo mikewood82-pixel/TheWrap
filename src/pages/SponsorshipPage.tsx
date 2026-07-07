@@ -66,11 +66,13 @@ export default function SponsorshipPage() {
         </p>
       </div>
 
-      {/* Currently sponsored by — social proof that slots are filling */}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-brand-border py-4 mb-12">
-        <span className="text-xs uppercase tracking-widest text-brand-muted font-medium">Currently sponsored by</span>
-        <SponsorSlot sponsor={currentSponsor} variant="inline" />
-      </div>
+      {/* Currently sponsored by — hidden when no active sponsor */}
+      {currentSponsor && (
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-y border-brand-border py-4 mb-12">
+          <span className="text-xs uppercase tracking-widest text-brand-muted font-medium">Currently sponsored by</span>
+          <SponsorSlot sponsor={currentSponsor} variant="inline" />
+        </div>
+      )}
 
       {/* Packages */}
       <div className="space-y-6 mb-14">

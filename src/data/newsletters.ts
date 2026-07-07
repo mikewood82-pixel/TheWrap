@@ -22,18 +22,12 @@ export interface Newsletter {
   tileImage?: string
 }
 
-// The current presenting sponsor, shown in the website chrome (homepage strip +
-// /sponsorship). This is web-only: the Friday email is built from each edition's
-// `body` HTML (scripts/deploy.mjs), so the IN-EDITION sponsor callout is pasted
-// as inline HTML at the top of that edition's body — see
-// docs/sponsors/perfecthire-edition-callout.html. Keep the two in sync by hand.
-export const currentSponsor: Sponsor = {
-  name: 'PerfectHire',
-  logo: '/sponsors/perfecthire.webp',
-  blurb: 'Agency+ is the first AI-native CRM + ATS + BD engine built for agency recruiters — it auto-surfaces your most placeable candidates and pitches them to the companies hiring right now.',
-  url: 'https://theperfecthire.co',
-  cta: 'See Agency+',
-}
+// Set to a Sponsor object when a sponsor is active; null when no active sponsor.
+// This drives the website chrome only (homepage strip + /sponsorship). The Friday
+// email is built from each edition's `body` HTML (scripts/deploy.mjs), so the
+// in-edition sponsor callout is pasted as inline HTML in that edition's body —
+// see docs/sponsors/perfecthire-edition-callout.html.
+export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {

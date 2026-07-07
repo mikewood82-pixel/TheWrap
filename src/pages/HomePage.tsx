@@ -149,12 +149,14 @@ export default function HomePage() {
       </section>
 
       {/* This week's sponsor — paid placement. Renders currentSponsor from
-          src/data/newsletters.ts. */}
-      <section className="border-b border-brand-border bg-white">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <SponsorSlot sponsor={currentSponsor} label="This week's sponsor" />
-        </div>
-      </section>
+          src/data/newsletters.ts. Hidden when currentSponsor is null. */}
+      {currentSponsor && (
+        <section className="border-b border-brand-border bg-white">
+          <div className="max-w-6xl mx-auto px-4 py-8">
+            <SponsorSlot sponsor={currentSponsor} label="This week's sponsor" />
+          </div>
+        </section>
+      )}
 
       {/* Latest newsletter */}
       <section className="border-b border-brand-border">
