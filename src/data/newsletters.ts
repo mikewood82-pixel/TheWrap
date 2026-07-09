@@ -31,6 +31,143 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'where-did-half-a-million-people-go',
+    date: 'July 9, 2026',
+    title: "Where Did Half a Million People Just Go? Most of Them Were Already Here.",
+    tag: 'Labor Market',
+    tileImage: '/newsletters/edition-80/wrap-80-cover-tile.webp',
+    excerpt:
+      'The June jobs report “improved” to 4.2% while half a million people quietly dropped out of the workforce — they didn’t stop looking, they were removed. Here’s where they went, why native workers aren’t backfilling, and why your facilities line feels it before payroll does.',
+    body: `
+<img src="/newsletters/edition-80/wrap-80-cover.webp" alt="The Wrap — HR Tech News: Uncovering the Truth Behind Work. Cover collage of farm workers, a dissolving silhouette, construction crews, a Help Wanted sign, June 2026 labor numbers, and a young adult at home." />
+
+<p>Something is wrong with the June jobs report, and it isn't the usual unemployment figures. In June, according to the BLS, unemployment "dropped" a tenth of a percentage point to 4.2% and payrolls added a soft +57K. The headlines you see mostly point to things being pretty much the same. But hiding behind that headline, the household survey shows <strong>half a million fewer people employed than a month earlier</strong>.</p>
+
+<p>Labor force participation is now 61.5%, the lowest since March 2021. And once you set aside the pandemic disruption — when the rate briefly cratered and clawed its way back through 2021 — 61.5% is the lowest participation has been in roughly half a century. Remember the last recession? Surprisingly, the post-2008 slump never took it below about 62.4%. The last time this share of Americans was genuinely on the sidelines outside a crisis, Gerald Ford was in the White House and Apple was still in a garage.</p>
+
+<p>Half a million people were in the American workforce in May. They aren't in June. Where did they go? Let's dig into the data to rule out some assumptions.</p>
+
+<img src="/newsletters/edition-80/half-million.webp" alt="The Wrap graphic: Unemployment Fell for the Wrong Reason — 4.3% to 4.2%, while 507,000 fewer people were employed and participation fell to 61.5%" />
+
+<p>Is it due to retirements? No. If this were Boomers aging into Medicare, you'd see the damage concentrate at the top of the age range and leave the core alone. Yet, we're seeing the opposite. Prime-age participation, the 25-54 age crowd that is the load-bearing middle of the workforce, fell twice as fast as the overall number. Whatever pulled these people out, it went straight for the workers least likely to leave. (Side note: not the best seeing 90K older workers return to work, probably due to increased costs of living.)</p>
+
+<p>Ok, so is AI to blame? Not really, at least not yet and not at this scale. For all the eulogies, including those I've written for The Wrap, the employment data still show no mass AI displacement event. You can find AI's fingerprints on slower entry-level growth for young workers in exposed occupations, but a bit less hiring at the bottom isn't 500K people vanishing from employment in 30 days.</p>
+
+<p>So what is it? Remember the past year of immigration enforcement? It's showing up in the data. When people give up looking, BLS has a bucket for them — "discouraged workers." That count didn't move. Neither did the "marginally attached." These people didn't stop looking; they left the labor force entirely. But there is one group that is walking out in numbers big enough to bend the whole report: the foreign-born workforce is down roughly a million since January, with independent trackers putting the total population drop closer to two million.</p>
+
+<p>Those jobs aren't being backfilled; they're gone. If native-born workers were stepping in, you'd see it — native participation rising, native unemployment falling, the hole closing. Instead, native participation is flat to falling over the same window. Nobody's rushing in. That's the difference between a market that's rebalancing and one that's contracting — this is subtraction, with no one behind them in line.</p>
+
+<p>Turns out, we've already seen what happens in immigration crackdowns. In 2011, Georgia and Alabama took a hard stance and watched their crops rot. Sure, they got a few locals to fill in at two or three times the wage, but it was nowhere near enough. Pull these workers out and the work doesn't transfer. It just doesn't get done.</p>
+
+<p>You've probably already seen the signs. If you touch construction, agriculture, food service, hospitality, warehousing, or home care, it shows up first in your facilities line, not payroll — every vendor and staffing agency you use just got more expensive to fulfill. And if you hire skilled immigrant talent — healthcare, engineering, STEM — it shows up in your pipeline: Indeed reports visa-sponsorship postings have tripled since before the pandemic while foreign interest in US jobs has slumped to a six-year low. Employers are shouting sponsorship offers into a room that's emptying out.</p>
+
+<p>Back on June 5, I wrote about the barbell economy — premiumize the top, automate the bottom, hollow out the middle. This is the labor-side cut of the same play. The bottom rung isn't being automated away; it's being physically removed, and native workers aren't stepping onto it. Same eviction, different doorman.</p>
+
+<p>The unemployment rate might keep looking better while the labor market keeps getting worse.</p>
+
+<p>Buckle up.</p>
+
+<hr />
+
+<p>On to the week that was in HR Tech. This week's Wrap highlights Korn Ferry buying AMS for 1.1 billion dollars, Amazon automating HR, Employ partners with ID.me, Kevin McDonough making a great argument for transparency, that Stanford AI bias research isn't what you think it is, great podcasts with Jason Gorham and Stéphane Rivard, and a third of young adults living with their parents.</p>
+
+<p>Have a great weekend!</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<p><em>This week's throughline: automate the function, keep the liability.</em></p>
+
+<h3>Korn Ferry buys AMS for $1.1B, discovers recurring revenue</h3>
+<img src="/newsletters/edition-80/korn-ferry-ams.webp" alt="Korn Ferry and AMS logos over a backdrop of glass office towers" />
+<p>Korn Ferry is spending ~$1.1B to pull UK-based AMS out of OMERS Private Equity's portfolio, and what it's really buying is predictability. AMS brings ~$650M in fee revenue and, more to the point, $1.5B+ in contracted fees still on the books — a textbook cyclicality hedge for a firm whose executive-search business swings with every market hiccup.</p>
+<p>Here's the part recruiters should sit with: a sophisticated buyer just paid a billion dollars, partly borrowed, for 8,000 people whose entire job is sourcing and screening — the exact work everyone insists AI is about to vaporize. You don't lever up to buy a melting ice cube. If you've been refreshing your résumé every time a "recruiting is dead" take crosses your feed, the biggest check in the room just voted the other way.</p>
+<p><a href="https://www.kornferry.com/about-us/press/korn-ferry-announces-definitive-agreement-to-acquire-ams">Read more</a>.</p>
+
+<h3>Amazon reinvents the phone tree, calls it HR</h3>
+<img src="/newsletters/edition-80/amazon-ask-aza.webp" alt="An 'Ask Aza' self-service kiosk beside an empty HR desk chair in an Amazon warehouse aisle" />
+<p>Amazon has shipped the customer-service death spiral as its HR strategy. Per a Fast Company exclusive, it's replaced on-site warehouse HR with its A to Z app and a chatbot named Aza — which workers describe as little more than a chatbot in company branding — and rebranded the whole function "PXT" (People Experience and Technology), the kind of name you give a department right before you delete the "people" part. Warehouses that once had three to six HR staff are down to one on a good day, with no coverage nights or weekends.</p>
+<p>The damage concentrates exactly where you'd fear: accommodations and medical leave. One worker with a concussion was disciplined for working too slowly while her accommodation sat unapproved for a month — the chatbot had generated the wrong form. A stroke survivor was fired for absences after the app repeatedly denied her requests. The EEOC has already found Amazon violated the ADA on warehouse accommodations, and a lawsuit alleges the app isn't built to permit the interactive dialogue the law requires. One former investigator's line should hang over every "AI-powered employee experience" demo this year: "I watched the human get sucked out of the job."</p>
+<p><a href="https://www.fastcompany.com/91565321/amazon-is-taking-human-out-of-hr-ai-chatbot-app-aza">Read more</a>.</p>
+
+<h3>The ATS becomes a checkpoint</h3>
+<img src="/newsletters/edition-80/employ-idme.webp" alt="Employ logo with JazzHR, Lever, and Jobvite wordmarks over a handshake" />
+<p>Employ — the parent of JazzHR, Lever, and Jobvite — is embedding ID.me's identity verification directly into its applicant tracking systems, with rollout to customers in the second half of 2026. The stated reason is that AI has made résumés, credentials, and even live interviews forgeable. Employ's own Recruiter Nation research found 23% of recruiters have already hit candidate fraud, and Gartner expects one in four applicants to be fake by 2028. Candidates verify through ID.me directly; Employ never sees the underlying data, just a pass.</p>
+<p>Note the pattern, because this is the second major ATS to bolt an identity checkpoint onto the front of the funnel — Greenhouse did it with CLEAR back in June 2025, and now Employ with ID.me. Different vendors, same conclusion: the application itself is no longer evidence of anything. We spent a decade making it frictionless to apply, and the arms race that followed means the industry's fix is to make you prove you're a person before anyone reads your résumé. We've flipped that to the top and if it can get rid of the application bloat, we may be saved.</p>
+<p><a href="https://www.prnewswire.com/news-releases/employ-and-idme-partner-to-prevent-ai-driven-candidate-fraud-302821472.html">Read more</a>.</p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions</h2>
+
+<ul>
+  <li>Paris-based HR Path — the consulting-and-outsourcing shop you call when your SAP, Oracle, Workday, Dayforce, or UKG rollout goes sideways — closed a transaction valued near $1B, led by private-equity firm Ardian, to fund a global push aimed at the US, Canada, Germany, the Nordics, Australia, and the Middle East. <a href="https://hrtechfeed.com/hr-path-secures-1-billion-transaction-led-by-ardian-to-drive-international-expansion/">Read more</a>.</li>
+</ul>
+
+<hr />
+
+<h2>🔥 HR Hot Takes</h2>
+
+<h3>"We can't fix what we can't see"</h3>
+<img src="/newsletters/edition-80/workday-hot-take.webp" alt="Kevin McDonough's LinkedIn article, 'The Workday Ruling Isn't Really About AI. It's About What We Can't See,' shown above an image of the Workday headquarters building" />
+<p>Great piece from Kevin McDonough on LinkedIn. Everyone's covering the headline: a federal judge ruled Workday must face claims that its AI screening discriminated by disability, race, age, and gender — a potential class reaching into the hundreds of millions of rejected applicants. McDonough's take cuts past it. The wrong question, he argues, is "Is AI biased?" The right one is "Can anyone explain how the decision was made?"</p>
+<p>His core insight: the AI never has to see a protected characteristic to create legal exposure — it just has to weight a proxy for one. An employment gap, a graduation year, a job title. The court zeroed in on exactly that, declining to dismiss the claim that Workday's tool flags applicants using proxy indicators of disability, like a two-year gap — which could be cancer treatment or caregiving, or could be a sabbatical. The algorithm can't tell the difference. And unlike a Boolean string you can read and debate, the model's weighting is invisible: when a recruiter passes on a gapped résumé, you can ask them why; when the algorithm does it, the reasoning is buried. Hiring needs real transparency right now.</p>
+<p>&rarr; <a href="https://www.linkedin.com/pulse/workday-ruling-isnt-really-ai-its-what-we-cant-see-mcdonough-sphr-kn7ge/">Read Kevin McDonough's piece on LinkedIn</a></p>
+
+<hr />
+
+<h2>🔬 Research &amp; Reports</h2>
+
+<h3>Stanford's "AI is biased" study says something narrower (and smarter) than the headline</h3>
+<img src="/newsletters/edition-80/stanford-digital-economy-lab.webp" alt="Stanford Digital Economy Lab logo" />
+<p>The headline making the rounds last week is "AI hiring tools are biasing job decisions." The actual paper is titled "Algorithmic Monocultures in Hiring" — and that gap is the story. Researchers (including Percy Liang and Dan Jurafsky) analyzed 4 million applications <strong>screened by a single vendor</strong>. The real finding isn't "the robots are racist." It's that when everyone rents screening from the same vendor, you don't get rejected by <em>a</em> company — you get rejected by the <em>market</em>: 4% of applicants to 10 jobs were flagged for rejection from all of them, higher than chance. The racial-bias angle is real but fragile — disparities only surface job-by-job, it's one vendor, and they can't say <em>why</em>. The practitioner takeaway holds: the liability is yours, not the vendor's. <a href="https://digitaleconomy.stanford.edu/publication/algorithmic-monocultures-in-hiring/">Read more</a>.</p>
+
+<h3>The other side of the ledger: AI adopters are hiring more, not less?</h3>
+<img src="/newsletters/edition-80/ramp-economics-lab.webp" alt="Ramp Economics Lab banner" />
+<p>Right as everyone queues up the "AI is coming for your job" eulogies, Ramp's Economics Lab dropped a working paper cutting the other way — with the author's own caveat about no promises on your specific job. Pairing spend data with Revelio workforce records across 21,000+ firms, it found AI adopters actually grew headcount 10.2% over two years, with entry-level growing <em>faster</em>, up 12% — a shot at my own narrative that AI eats the bottom rung first 🤷. Take every vendor-sponsored research piece with a grain of salt. The gains show up only for the top third by AI spend, causation is shaky (adopters were already bigger and faster-growing), and Ramp <em>sells</em> to these firms. Take a look and see what you think.</p>
+<p><a href="https://ramp.com/data/ai-jobs-impact">Read more.</a></p>
+
+<hr />
+
+<h2>🎙️ Podcasts of the Week</h2>
+
+<h3>Pre-Passive Hiring — with Jason Gorham</h3>
+<img src="/newsletters/edition-80/totally-talent-pre-passive-hiring.webp" alt="Totally Talent podcast episode artwork: 'Pre-Passive Hiring' with guest Jason Gorham" />
+<p>In 2003, Jason Gorham posted a job, got 100 mismatched applicants, quit, and went on to invent programmatic job advertising — technology later licensed by LinkedIn and Indeed. He's back with TalentXi, and his argument is that the job board model he helped build is broken.</p>
+<p>On this episode of <em>Totally Talent</em>, we get into what comes next: true programmatic advertising for talent, Amazon DSP data, pre-passive candidates, and why your Vizio TV is quietly harvesting your data for Walmart. The takeaway for TA and recruitment marketing leaders — cost-per-application is on its way out, data layering and audience targeting can surface candidates before they know they're looking, and the future of recruiting looks a lot more like precision advertising than job boards.</p>
+<p>&rarr; <a href="https://www.hr.com/en/resources/podcasts/talent/pre-passive-hiring_mrcjjoyy.html">Listen to the episode</a></p>
+
+<h3>Beyond the Resume with Stéphane Rivard</h3>
+<img src="/newsletters/edition-80/totally-talent-beyond-the-resume.webp" alt="Totally Talent podcast episode artwork: 'Beyond the Resume' with guest Stéphane Rivard" />
+<p>The resume is broken and everyone knows it. I sat down with Stéphane Rivard, CEO and co-founder of HiringBranch, to talk about what happens when you replace traditional screening with something that actually predicts performance.</p>
+<p>HiringBranch drops candidates into realistic, role-based scenarios and evaluates soft skills, critical thinking, and linguistic ability using a proprietary small language model — not a generic LLM wrapper. The result is a 10-minute assessment they say correlates to on-the-job performance at 80%. We get into why the AI interview space is crowded with lookalike tools, how acoustic signals and multi-dimensional skill profiling change what "candidate data" even means, and why HiringBranch users are eliminating most of their interviews — because they no longer need them.</p>
+<p>&rarr; <a href="https://www.hr.com/en/resources/podcasts/talent/beyond-the-resume_mrapy2c5.html">Listen to the episode</a></p>
+
+<hr />
+
+<h2>🔗 Worth a Click</h2>
+
+<h3>The AI layoff list nobody at these companies wants framed this way</h3>
+<img src="/newsletters/edition-80/techcrunch-ai-layoffs.webp" alt="Satirical illustration: a humanoid robot labeled 'I love AI' kicks a worker out of a 'big tech' office beneath a sign reading 'Build the future. Automate the rest.'" />
+<p>TechCrunch is keeping a running tally of the big-name tech firms that cut staff this year and blamed AI. Roughly 120,000 tech jobs are gone in 2026 — Microsoft, Oracle, Block, Amazon, Meta, PayPal and a dozen more — and per Challenger, Gray &amp; Christmas, AI was the most-cited reason in the worst single month for tech cuts in years.</p>
+<p>Here's why it's worth the click and not just the doomscroll: the tell is the pattern, not the number. These are companies posting <em>record</em> revenue while cutting headcount and crediting AI for both. TechCrunch itself notes the teams getting cut are often the ones that ballooned during the pandemic hiring binge — a very different story than "the model replaced them." Read alongside this edition's lead essay, it completes the picture: at the bottom of the ladder, workers are being <em>removed</em> from the labor supply; at the top, they're being <em>reclassified</em> as AI casualties to make a margin story sound like a vision. Either way, "AI did it" is doing work it didn't necessarily do.</p>
+<p><a href="https://techcrunch.com/2026/07/06/the-running-list-major-tech-layoffs-in-2026-where-employers-cited-ai/">Read more.</a></p>
+
+<h3>A third of young adults are back in their childhood bedrooms</h3>
+<img src="/newsletters/edition-80/nyt-young-adults-home.webp" alt="A young adult sits on the edge of a bed looking out a bedroom window" />
+<p>File this under "the dashboard looks fine." A third of adults under 35 are living with their parents — right back to the 2020 pandemic peak, about 25 million people — per a Realtor.com analysis the <em>New York Times</em> picked up this week. The reflexive read is a housing story, and the report leans that way: roughly 70% of these young adults are employed, and a rising share hold degrees. The economist behind it frames it as a problem of affordability and supply, not jobs.</p>
+<p>But look at what that actually says. These kids aren't unemployed — they're employed and <em>still</em> can't afford to move out. But affordability is a made-up issue, right?</p>
+<p><a href="https://www.nytimes.com/2026/07/08/realestate/a-third-of-young-adults-still-live-with-their-parents.html">Read More.</a></p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+  `,
+  },
+  {
     slug: 'we-know-where-were-going',
     date: 'June 26, 2026',
     title: "We Know Exactly Where We’re Going. Nobody Will Say What Happens When We Get There.",
