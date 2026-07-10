@@ -15,6 +15,14 @@ export interface Episode {
 
 export const episodes: Episode[] = [
   {
+    number: 82,
+    date: 'July 10, 2026',
+    title: 'Half a Million Workers Just Vanished. Nobody’s Replacing Them',
+    youtubeId: 'dKIGauonsCc',
+    description: "The June jobs report “improved” to 4.2% while half a million people quietly dropped out of the workforce — they didn't stop looking, they were removed. Where they went, why native workers aren't backfilling, and why your facilities line feels it before payroll does.",
+    newsletterSlug: 'where-did-half-a-million-people-go',
+  },
+  {
     number: 81,
     date: 'June 26, 2026',
     title: 'Bread and Beer',
