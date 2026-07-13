@@ -1,7 +1,7 @@
 const headlines = [
-  { text: 'Skello · €200M raise to scale AI tools for frontline workforce teams', url: 'https://www.eu-startups.com/2026/07/frances-skello-secures-e200-million-to-grow-its-ai-tools-for-frontline-workforce-management/' },
-  { text: 'Orbio · $21M Series A from Dawn Capital puts AI agents in KFC & Taco Bell hiring', url: 'https://techcrunch.com/2026/06/14/orbio-raises-21-million-to-automate-hiring-and-onboarding-for-frontline-workers/' },
-  { text: 'Factorial · $150M Series D at $2.5B valuation, led by General Catalyst', url: 'https://www.peoplematters.in/news/funding-and-investment/hr-tech-unicorn-factorial-raises-dollar150-million-at-dollar25-billion-valuation-50127' },
+  { text: 'Sona · $45M Series B to bring AI to the frontline workforce economy', url: 'https://www.prnewswire.com/news-releases/sona-raises-45m-series-b-to-bring-ai-to-the-frontline-economy-302730478.html' },
+  { text: 'Multiverse · $70M raise values AI upskilling platform at $2.1B', url: 'https://resiliencemedia.co/multiverse-raises-70m-to-help-future-proof-workforces-in-areas-like-ai/' },
+  { text: 'Remote · buys Atlas as EOR platforms consolidate for scale', url: 'https://www.unleash.ai/hr-technology/the-five-2026-hr-tech-acquisitions-that-put-hr-buyers-in-a-strong-position/' },
   { text: 'Rippling · launches AI-powered Data Cloud, taking on the BI stack', url: 'https://techcrunch.com/2026/06/25/parker-conrad-knows-which-employees-are-worth-their-ai-spend-and-says-rippling-can-help-you-too/' },
   { text: 'Lattice · AI Agent now joins 1:1s with auto summaries + coaching insights', url: 'https://lattice.com/blog/june-2026-product-updates' },
   { text: 'Workday · Agent Passport ships to test & govern every enterprise AI agent', url: 'https://newsroom.workday.com/2026-06-02-Workday-Launches-Agent-Passport-to-Test,-Verify,-and-Continuously-Monitor-Every-AI-Agent-in-the-Enterprise' },
