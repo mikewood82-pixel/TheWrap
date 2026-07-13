@@ -51,7 +51,7 @@ const rawVendors = [
   // Payroll
   { name: 'ADP',                  slug: 'adp',                  category: 'Payroll',   g2: 4.0, capterra: 4.3, reviews: 17500, employees: '60,000+',  news: 19, deepDive: false, website: 'adp.com',                            description: 'The market leader in payroll and HCM solutions for businesses of all sizes.' },
   { name: 'Paychex',              slug: 'paychex',              category: 'Payroll',   g2: 4.2, capterra: 4.1, reviews: 5400,  employees: '16,000+',  news: 9,  deepDive: false, website: 'paychex.com',                        description: 'Full-service payroll and HR solutions for small to large businesses.' },
-  { name: 'Paylocity',            slug: 'paylocity',            category: 'Payroll',   g2: 4.5, capterra: 4.3, reviews: 3600,  employees: '6,000+',   news: 10, deepDive: false, website: 'paylocity.com',                      description: 'Cloud-based payroll and HCM with a focus on employee communication and engagement.' },
+  { name: 'Paylocity',            slug: 'paylocity',            category: 'Payroll',   g2: 4.5, capterra: 4.3, reviews: 3600,  employees: '6,000+',   news: 11, deepDive: false, website: 'paylocity.com',                      description: 'Cloud-based payroll and HCM with a focus on employee communication and engagement.' },
   { name: 'OnPay',                slug: 'onpay',                category: 'Payroll',   g2: 4.8, capterra: 4.8, reviews: 700,   employees: '200+',     news: 2,  deepDive: false, website: 'onpay.com',                          description: 'Simple, accurate payroll with strong customer support built for small businesses.' },
   { name: 'Homebase',             slug: 'homebase',             category: 'Payroll',   g2: 4.5, capterra: 4.6, reviews: 1100,  employees: '1,000+',   news: 3,  deepDive: false, website: 'joinhomebase.com',                   description: 'Scheduling, time tracking, and payroll for hourly workers and shift-based teams.' },
   { name: 'QuickBooks Payroll',   slug: 'quickbooks-payroll',   category: 'Payroll',   g2: 3.9, capterra: 4.5, reviews: 900,   employees: '21,000+',  news: 6,  deepDive: false, website: 'intuit.com',                         description: 'Integrated payroll solution for businesses already running on QuickBooks.' },
@@ -146,6 +146,8 @@ export const vendors: Vendor[] = rawVendors.map(v => ({
 }))
 
 export const activityFeed = [
+  { headline: 'Paylocity acquires AI-native Aidora to automate complex, highly regulated leave management', source: 'GlobeNewswire', date: 'Jul 9', vendor: 'Paylocity' },
+  { headline: 'Rippling launches Data Cloud, an AI-powered BI platform that unifies workforce and business data', source: 'TechCrunch', date: 'Jun 25', vendor: 'Rippling' },
   { headline: 'Medallia secures $150M as a Blackstone-led group takes ownership from Thoma Bravo', source: 'CMSWire', date: 'Jun 17', vendor: 'Medallia' },
   { headline: 'HiBob brings People Intelligence into Slack to turn workforce insights into action', source: 'GlobeNewswire', date: 'Jun 18', vendor: 'HiBob' },
   { headline: 'Deel research: 68% of UK employers are dropping experience requirements for early-career roles', source: 'Enterprise Times', date: 'Jun 22', vendor: 'Deel' },
@@ -153,8 +155,6 @@ export const activityFeed = [
   { headline: 'LinkedIn and Adobe launch AI Essentials for Marketers courses on LinkedIn Learning', source: 'Social Media Today', date: 'Jun 16', vendor: 'LinkedIn Learning' },
   { headline: "Remote sweeps G2's Summer 2026 Global Employment Platform category — #1 across all four segments", source: 'PR Newswire', date: 'Jun 4', vendor: 'Remote' },
   { headline: 'Factorial raises $150M Series D at $2.5B valuation to expand across Europe', source: 'Tech.eu', date: 'Jun 3', vendor: 'Factorial' },
-  { headline: 'Workday raises FY27 margin outlook on AI agent demand; Q1 revenue $2.54B', source: 'CNBC', date: 'May 21', vendor: 'Workday' },
-  { headline: 'Cornerstone launches Workforce AI, an intelligence platform for workforce readiness', source: 'Business Wire', date: 'May 20', vendor: 'Cornerstone OnDemand' },
   { headline: 'Remote surpasses $300M ARR and turns cash-flow positive', source: 'TechCrunch', date: 'May 27', vendor: 'Remote' },
   { headline: 'Intuit unveils QuickBooks Workforce with an agentic AI Payroll Agent for SMBs', source: 'Intuit', date: 'May 2026', vendor: 'QuickBooks Payroll' },
   { headline: 'Gusto crosses $1B in revenue — AI now drives ~50% of code generation and customer support handling', source: 'TechCrunch', date: 'May 7', vendor: 'Gusto' },

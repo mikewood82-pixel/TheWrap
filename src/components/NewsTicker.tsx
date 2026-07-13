@@ -1,6 +1,6 @@
 const headlines = [
   { text: 'Sona · $45M Series B to bring AI to the frontline workforce economy', url: 'https://www.prnewswire.com/news-releases/sona-raises-45m-series-b-to-bring-ai-to-the-frontline-economy-302730478.html' },
-  { text: 'Multiverse · $70M raise values AI upskilling platform at $2.1B', url: 'https://resiliencemedia.co/multiverse-raises-70m-to-help-future-proof-workforces-in-areas-like-ai/' },
+  { text: 'Paylocity · acquires AI-native Aidora to automate complex leave management', url: 'https://www.paylocity.com/company/about-us/newsroom/press-releases/paylocity-acquires-ai-native-aidora-to-simplify-leave-management/' },
   { text: 'Remote · buys Atlas as EOR platforms consolidate for scale', url: 'https://www.unleash.ai/hr-technology/the-five-2026-hr-tech-acquisitions-that-put-hr-buyers-in-a-strong-position/' },
   { text: 'Rippling · launches AI-powered Data Cloud, taking on the BI stack', url: 'https://techcrunch.com/2026/06/25/parker-conrad-knows-which-employees-are-worth-their-ai-spend-and-says-rippling-can-help-you-too/' },
   { text: 'Lattice · AI Agent now joins 1:1s with auto summaries + coaching insights', url: 'https://lattice.com/blog/june-2026-product-updates' },

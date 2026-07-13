@@ -178,7 +178,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Slack', 'GitHub', 'Google Workspace', 'Salesforce', 'QuickBooks', 'Okta'],
     news: [
       { headline: 'Rippling appoints Sonia Parandekar as SVP Engineering and India site lead to accelerate global product expansion', date: 'Apr 2026', source: 'Business Wire' },
-      { headline: 'Rippling launches Spend Management module to consolidate corporate cards and expense reporting', date: 'Mar 2026', source: 'TechCrunch' },
+      { headline: 'Rippling launches Data Cloud to bring AI-powered BI to workforce and operational data', date: 'Jun 2026', source: 'TechCrunch' },
       { headline: 'Rippling expands Dublin HQ, expects up to 150 new jobs', date: 'May 2026', source: 'The Irish Times' },
     ],
     financialHealth: {
@@ -1456,7 +1456,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'Paylocity launches Elevate Solutions to help HR and payroll teams scale more efficiently', date: 'Apr 2026', source: 'GlobeNewswire' },
       { headline: 'Paylocity embeds Vestwell to connect retirement, payroll, and HR in one experience', date: 'Jun 2026', source: 'GlobeNewswire' },
-      { headline: 'Paylocity acquires Grayscale to expand AI-powered recruiting automation for high-volume hiring', date: 'Apr 2026', source: 'Globe Newswire' },
+      { headline: 'Paylocity acquires AI-native Aidora to automate complex, regulated leave management', date: 'Jul 2026', source: 'GlobeNewswire' },
     ],
     financialHealth: {
       fundingStage: 'Public (NASDAQ: PCTY)',
