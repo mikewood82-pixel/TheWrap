@@ -206,7 +206,7 @@ export default function EventsPage() {
             </div>
             <div className="relative flex flex-col items-center gap-3 shrink-0 md:pr-4">
               <img
-                src="/mike-wood.jpg"
+                src={featuredEvent.attendingImage ?? '/mike-wood.jpg'}
                 alt="Mike Wood"
                 className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover ring-[6px] ring-white border-4 border-brand-terracotta shadow-[0_12px_28px_rgba(14,13,11,0.22)] -rotate-6"
               />

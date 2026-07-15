@@ -13,6 +13,8 @@ export interface IndustryEvent {
   blurb: string
   tba?: boolean
   mikeAttending?: boolean
+  /** Overrides the default headshot in the "where you'll find me next" hero. */
+  attendingImage?: string
 }
 
 export const CATEGORY_LABELS: Record<EventCategory, string> = {
@@ -125,6 +127,7 @@ export const events: IndustryEvent[] = [
     url: 'https://recfest.com/',
     blurb: 'The US edition, now stretched to two days. Same festival energy, with cowboy boots.',
     mikeAttending: true,
+    attendingImage: '/mike-cowboy.webp',
   },
   {
     name: 'Gartner HR Symposium/Xpo (EMEA)',
