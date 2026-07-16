@@ -69,7 +69,7 @@ export default function SubscribePage() {
               Get The Wrap in your inbox
             </h1>
             <p className="text-brand-dark/60 mb-5 md:mb-6 text-base md:text-lg">
-              HR tech news, vendor signals, and the labor market — every Friday. Joining 2,300+ HR pros.
+              HR tech news, vendor signals, and the labor market — every Friday. Joining 2,100+ HR pros.
             </p>
             {subState === 'success' ? (
               <div className="bg-green-50 border border-green-200 text-green-800 rounded-lg px-5 py-3 text-sm max-w-md mx-auto md:mx-0">

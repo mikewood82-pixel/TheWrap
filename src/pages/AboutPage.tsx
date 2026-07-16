@@ -30,7 +30,7 @@ export default function AboutPage() {
         {/* Stats row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
-            { value: '2,300+', label: 'Subscribers' },
+            { value: '2,100+', label: 'Subscribers' },
             { value: '70+',    label: 'Editions Published' },
             { value: '1,000+', label: 'Open Roles' },
             { value: '29',     label: 'HR Tech Vendors' },
