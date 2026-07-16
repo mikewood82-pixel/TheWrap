@@ -31,6 +31,112 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'are-we-all-just-a-number-now',
+    date: 'July 16, 2026',
+    title: 'Are We All Just a Number Now?',
+    tag: 'AI & Future of Work',
+    excerpt:
+      'Leapsome shipped a “talent density score” that reduces every employee to a single number, with an AI flagging who’s quietly disengaged. We already run this play in hiring — and we know how that turned out. Black Mirror filmed the rest.',
+    body: `
+<img src="/newsletters/edition-81/leapsome-talent-density.webp" alt="Leapsome product screenshot: employee Lena Hartmann’s profile showing a Talent Density Score of 72, up 6 points, beside an AI suggestion box reading “Three engineers show early signs of disengagement.”" />
+
+<p>You all know I look at press releases in our space each week, and just when I thought there wasn’t a lot to write about in mid-July (unless I can somehow conflate the Canadian wildfires to hiring pipelines), I came across a new release from Leapsome about their new “talent density” metric. This was a new term for me, so I went right to the website to see just what it is.</p>
+
+<p>In the image above, an employee (Lena Hartmann) has a profile page, and on that page is a number for her Talent Density Score, 72. A solid C minus, but look at the positive as she’s up 6 points. Just below it, an AI suggestion box reports that “three engineers show early signs of disengagement” and recommends the manager start “growth conversations,” complete with a nice green checkmark.</p>
+
+<p>But how were those engineers disengaged? Did the red flags appear once the system detected a disturbance in the force? The site notes that Leapsome unifies goals, reviews, feedback, surveys, and learning into one intelligent platform — so this score is essentially an aggregate of all of that. Ok, so they’ve reduced every employee to a proprietary number.</p>
+
+<p>I’m not saying we don’t need to measure success. But are we really going to slap a magical number on employees now? We’re already doing it in hiring, and see how well that’s turned out. Applicants are scored according to how well they match the keywords of the job description, and if the organization has access to deeper people analytics tools, like Eightfold or Phenom, that score expands to include other personally identifiable information (PII) gathered across the web.</p>
+
+<p>The teams behind hiring can always say “it’s just the computer looking at the data, it doesn’t create bias.” Well, just look at the Workday lawsuit to see the problem here. The system doesn’t have nuance. It doesn’t know if your employment gap was to care for a dying parent — it just knows you were out of the labor force and assumes the worst. And you know what happens when you assume? You get sued in the state of California.</p>
+
+<p>So which business oracle came up with the latest tech buzzword? Turns out it’s Netflix. Reed Hastings built a whole management religion around talent density: a team’s performance isn’t the sum of its people, it’s the concentration of top performers. Pay top of market, run the keeper test, and cut the merely adequate with a generous check. This is the AI era’s version of Rank and Yank, except instead of dodging the yearly purge, it’s a real-time ranking of employees. It’s making your candidate match score continuous.</p>
+
+<p>As we move to quantify everything, I have to ask: is this how people want to live? Your worth attached to a number?</p>
+
+<p>If you want to see where this road goes, Black Mirror already filmed it. In <a href="https://www.imdb.com/title/tt5497778/">“Nosedive,”</a> Lacie Pound lives in a world where every human interaction gets rated out of five stars, and your running average determines everything — your apartment, your flight upgrades, whether the good hospital takes you. Lacie sits at a 4.2 and needs a 4.5 to qualify for the apartment she wants, so she starts performing niceness at everyone: the calibrated laugh, the rehearsed charm, rating everyone five stars and praying they reciprocate. Then one bad morning snowballs — a spilled coffee, a snippy exchange, a downrated outburst — and once she dips below the threshold, people stop seeing her. Not metaphorically. She can’t board the flight. She can’t enter the building. She’s the same person she was on Tuesday, but the number says otherwise, and the number is the only version of her anyone consults.</p>
+
+<img src="/newsletters/edition-81/black-mirror-nosedive.webp" alt="Black Mirror “Nosedive”: Lacie Pound smiling in a bathrobe beside her 4.2 rating, and later mid-meltdown holding a microphone" />
+
+<p>Now look back at Lena’s 72 and tell me we’re not building the workplace pilot episode. Because here’s what happens the day employees learn there’s a score: they stop being engaged and start performing engagement. Calibrated survey answers. Healthy-looking activity patterns. Never let the metrics dip in a way that draws a flag — because everyone will figure out real fast what that flag feeds into when layoff season arrives and somebody sorts the dashboard by score. Lacie’s rehearsed laugh, ported to your engagement survey.</p>
+
+<p>Right now, Lena’s 72 lives inside one company’s walls. But look at what our industry has spent 2026 building: portable verified identity. The optimistic version is genuinely good — verified skills and work history that travel with you, killing resume fraud and repetitive background checks.</p>
+
+<p>The dark version is that the judgments travel too. A disengagement flag. A low score. A “growth conversation” on the record. Following you from employer to employer like a credit score you’ve never seen and can’t dispute. That’s the part Nosedive got exactly right: the score wasn’t scary because it existed — it was scary because it was portable. Every stranger you met already knew your number before you said a word.</p>
+
+<p>If that sounds paranoid, I’d point you first to your credit score, then to Mobley v. Workday, which we’ve been tracking for almost 2 years now. The reason that case matters is the court’s willingness to treat an AI vendor as an agent in the hiring decision — which means one vendor’s algorithm isn’t one company’s bad process, it’s a systemic gatekeeper operating across hundreds of employers simultaneously. One model’s inference about you, everywhere at once.</p>
+
+<p>To be fair, managers already make these judgments — badly, on vibes and recency bias — and a system that nudges someone to actually go talk to a struggling engineer could be the good version of this. Nothing in the product forces the dark timeline. The same dashboard is a coaching aid at one company and a pre-sorted layoff list at another, and nothing in the software decides which one you’re buying.</p>
+
+<p>But look around at your own life and see how much of it is already governed by a number you didn’t choose and can’t inspect. Your credit score decides your house. Your ATS score decides your job. Now your talent density score determines whether you keep it.</p>
+
+<hr />
+
+<p>On to the rest of the week in HR Tech News. This week’s Wrap features LinkedIn under investigation over ghost jobs, Eightfold creating an AI agent to lead you to the AI agent, iHire creating a job board for gigs, hot takes from James Ellis and Steve Smith, an interview with Orion Talent about hiring former military, and Gen Z pivoting to the trades.</p>
+
+<p>Enjoy and have a great weekend!</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Texas Investigates LinkedIn Over Fake Job Listings</h3>
+<img src="/newsletters/edition-81/paxton-linkedin.webp" alt="Texas Attorney General Ken Paxton in a blue suit and orange tie, outdoors" />
+<p><em>Texas Attorney General “Honest” Ken Paxton</em></p>
+<p>Texas AG Ken Paxton opened an investigation into LinkedIn, issuing a Civil Investigative Demand over allegations the platform advertised and profited from fake or misleading job opportunities — “ghost jobs” — while marketing itself as a trusted platform for finding employment. The investigation is framed around premium subscribers ($40 a month!) and what people are getting for the service — besides learning who’s peepin’ on your profile.</p>
+<p>Think about where that $40 a month is coming from — right from the light pockets of displaced workers, recent grads, and anyone desperate for a job. Selling hope to the unemployed at $40 a month while not independently verifying whether most listings represent an actual job is a genuinely ugly moneygrab, especially when independent estimates put ghost jobs at one-fifth to one-third of online listings. More and more we’re seeing an environment where candidates have stopped trusting the system and the system keeps giving them reasons.</p>
+<p><a href="https://www.texasattorneygeneral.gov/news/releases/attorney-general-ken-paxton-investigates-linkedin-advertising-fake-and-misleading-job-opportunities">Read more</a>.</p>
+
+<h3>Eightfold’s New AI Agent to Talk You Into the AI Interview</h3>
+<img src="/newsletters/edition-81/eightfold-talent-agents.webp" alt="Eightfold.ai logo above an illustration of a man in a drawn graduation cap pointing at a thought bubble full of charts and diagrams" />
+<p>Eightfold released Talent Agents 2.0, headlined by Candidate Agent — a conversational AI that replaces the application form (and the silence after it) with an adaptive, 24/7 conversation across SMS and WhatsApp in 24+ languages, handling job discovery, scheduling, status updates, and the handoff into its AI Interviewer. Also in the release: Avatar, a digital-human persona candidates will face during AI interviews, with 360 Interview (multiple interview types compressed into one AI-led session) coming end of July.</p>
+<p><a href="https://finance.yahoo.com/technology/ai/articles/eightfold-ai-grows-talent-agents-170000877.html">Read more</a>.</p>
+
+<h3>iHire Bets the Job Board Can Do Gigs Too</h3>
+<img src="/newsletters/edition-81/ihire-freelance.webp" alt="A laptop on a desk showing a job search interface, surrounded by notebooks and pens" />
+<p>iHire launched an industry-focused freelance marketplace connecting employers with vetted, U.S.-based independent contractors for defined, project-based work — a direct shot at the Upwork/Fiverr model, minus the global talent pool sprawl. The pitch leans on iHire’s existing footprint of 57 industry-specific talent networks (think iHireDental, iHireConstruction), betting that vertical focus beats gig-platform volume. Worth watching whether the industry-vertical angle actually differentiates or just fragments an already crowded gig market.</p>
+<p><a href="https://www.prnewswire.com/news-releases/ihire-launches-industry-focused-freelance-marketplace-302824052.html">Read more</a>.</p>
+
+<hr />
+
+<h2>🔥 Hot Takes</h2>
+
+<h3>The Obsolescence Map: What Does Leadership Think You Do All Day?</h3>
+<img src="/newsletters/edition-81/obsolescence-map.webp" alt="“The Obsolescence Map” title art: a silhouetted head filled with machinery against a stylized city skyline" />
+<p>James Ellis is one of the sharpest voices in employer brand, and his latest is great. His argument: the threat to recruiting isn’t that AI eliminates the function — it’s that your future gets set by what the business can see you doing, not what you actually do. He sorts TA work into four zones (automatable, administrative, advisory, strategic) and names the trap most teams are in: doing advisory and strategic work while leadership only sees dashboards and req movement. His fix isn’t a rebrand or a title change — it’s smuggling the strategic read inside the operational answers you’re already giving. Go read the whole thing, and follow James if you don’t already.</p>
+<p>&rarr; <a href="https://choosable.ai/the-obsolescence-map">Read The Obsolescence Map</a></p>
+
+<h3>Steve Smith: The AI Arms Race Is Confusing Speed With Productivity</h3>
+<img src="/newsletters/edition-81/steve-smith-worktech.webp" alt="Two Starbucks baristas in green aprons laughing together while marking cups behind the counter" />
+<p>RepCap’s Steve Smith uses his WorkTech Weekly to capture the whiplash of the current moment: product roadmaps compressed from 18 months to what feels like 18 days, and an OpenAI-vs.-Anthropic race he compares to WarGames simulating every World War III scenario in 30 seconds — winner: none. Check out the full edition and subscribe if you haven’t.</p>
+<p>&rarr; <a href="https://www.linkedin.com/pulse/starbucks-says-coffee-vibe-coders-steve-smith-9toke/">Read Steve Smith’s WorkTech Weekly</a></p>
+
+<hr />
+
+<h2>🎙️ Podcast of the Week</h2>
+
+<h3>Unlocking Military Talent: How Orion Talent Bridges the Gap</h3>
+<img src="/newsletters/edition-81/orion-talent-podcast.webp" alt="Totally Talent podcast episode artwork: “Unlocking Military Talent: How Orion Talent Bridges the Gap” with guest Greg Summers" />
+<p>Every year, roughly 200,000 service members transition out of the military into a civilian labor market that has no idea how to read their resumes. On this week’s <em>Totally Talent</em>, I sat down with Greg Summers, CEO of Orion Talent — the firm that’s been translating military experience into civilian hiring for 30+ years — to talk about what employers consistently get wrong about veteran talent, how skills-based hiring maps naturally onto military experience, and why the companies that figure this out get access to a disciplined, mission-driven talent pool everyone else is overlooking.</p>
+<p>&rarr; <a href="https://www.hr.com/en/resources/podcasts/talent/unlocking-military-talent-how-orion-talent-bridges_mrneshl2.html">Listen to the episode</a></p>
+
+<hr />
+
+<h2>🖱️ Worth a Click</h2>
+
+<h3>Gen Z’s AI-Proof Career Plan: Learn a Trade</h3>
+<img src="/newsletters/edition-81/gen-z-trades.webp" alt="Trade school students gathered around a vehicle on a lift in an auto shop classroom" />
+<p>The New York Times looks at Gen Z’s pivot from lecture halls to trade schools, and the logic is hard to argue with: nobody’s figured out how to get an LLM to rewire a panel or unclog a drain. Filed under the Style section, which tells you something about how quickly “learn to weld” went from career advice to cultural moment. Worth reading alongside the entry-level hiring crisis we’ve been tracking — the kids can see the same funnel collapse we can.</p>
+<p><a href="https://www.nytimes.com/2026/07/13/style/gen-z-trade-school-careers-ai-college.html">Read more</a>.</p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+  `,
+  },
+  {
     slug: 'where-did-half-a-million-people-go',
     date: 'July 9, 2026',
     title: "Where Did Half a Million People Just Go? Most of Them Were Already Here.",

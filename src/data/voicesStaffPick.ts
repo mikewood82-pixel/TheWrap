@@ -17,10 +17,12 @@ export type VoicesStaffPick = {
 
 export const voicesStaffPick: VoicesStaffPick = {
   enabled: true,
-  sourceSlug: 'laurie-ruettimann',
-  // Matches "You don't have to say yes to money." (2026-06-21). Substring is
-  // quote-free so the title's curly apostrophe can't break the match.
-  matchTitle: 'say yes to money',
+  sourceSlug: 'josh-bersin',
+  // Matches "Multi-Agent AI For Talent Acquisition Arrives: Eightfold, Paradox,
+  // Maki, And More" (2026-07-15). Pairs with edition #81's Eightfold Talent
+  // Agents 2.0 story. Substring is quote-free and avoids the vendor list, which
+  // is the part most likely to get edited.
+  matchTitle: 'multi-agent ai for talent acquisition',
 }
 
 // Normalize smart quotes and case so config written with plain ASCII still
