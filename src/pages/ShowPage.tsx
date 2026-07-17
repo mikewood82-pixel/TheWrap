@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Mail, Play } from 'lucide-react'
+import { Play } from 'lucide-react'
 import { episodes } from '../data/episodes'
 
 export default function ShowPage() {
@@ -84,20 +84,6 @@ export default function ShowPage() {
         </div>
       )}
 
-      {/* Sponsorship CTA */}
-      <div className="bg-brand-dark text-white rounded-xl p-8 text-center">
-        <div className="text-brand-gold text-xs uppercase tracking-widest font-medium mb-3">Sponsorship</div>
-        <h2 className="font-serif text-2xl font-bold mb-2">Sponsor The Wrap Show</h2>
-        <p className="text-white/60 mb-6 max-w-md mx-auto">
-          $500 per episode. Your brand in front of HR tech decision-makers every week. Limited to one sponsor per episode.
-        </p>
-        <a
-          href="mailto:mike@thewrap.com?subject=Show Sponsorship"
-          className="inline-flex items-center gap-2 bg-brand-terracotta text-white font-medium px-6 py-3 rounded-lg hover:bg-brand-orange transition-colors"
-        >
-          <Mail size={16} /> Get in touch
-        </a>
-      </div>
     </div>
   )
 }

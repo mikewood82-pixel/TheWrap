@@ -43,7 +43,8 @@ export default function Footer() {
             <div className="text-white/30 text-xs uppercase tracking-widest font-medium mb-4">Work With Us</div>
             <ul className="space-y-2.5 text-sm">
               {[
-                ['/sponsorship', 'Sponsorship'],
+                // Sponsorship unlisted while paused — page still lives at
+                // /sponsorship and is reachable by direct URL.
                 ['/subscribe', 'Subscribe'],
               ].map(([href, label]) => (
                 <li key={href}>

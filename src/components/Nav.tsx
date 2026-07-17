@@ -11,6 +11,9 @@ import { FEATURES } from '../config/features'
 // C:\Users\mikew\.claude\plans\elegant-crafting-gizmo.md
 // ──────────────────────────────────────────────────────────────────────
 
+// /sponsorship is intentionally absent: the page and its route still exist and
+// are reachable by direct URL (so it can be sent to a prospect), but it's
+// unlisted from nav, footer, and sitemap while sponsorship is paused.
 const baseLinks = [
   { to: '/newsletter',    label: 'Archive'       },
   { to: '/wrapline',      label: 'Wrapline'      },
@@ -18,7 +21,6 @@ const baseLinks = [
   { to: '/events',        label: 'Events'        },
   { to: '/labor-market',  label: 'Labor Market'  },
   { to: '/about',         label: 'About'         },
-  { to: '/sponsorship',   label: 'Sponsorship'   },
 ]
 
 const plusLinks = [
@@ -36,11 +38,11 @@ export default function Nav() {
   // Compose the nav in reading order. Voices sits immediately after Archive
   // when enabled; Vendor Pulse slots in next when PLUS_ENABLED.
   const links: NavLinkItem[] = (() => {
-    const [archive, wraplineLink, jobs, events, laborMarket, about, sponsorship] = baseLinks
+    const [archive, wraplineLink, jobs, events, laborMarket, about] = baseLinks
     const out: NavLinkItem[] = [archive, wraplineLink]
     if (FEATURES.VOICES_ENABLED) out.push(voicesLink)
     if (FEATURES.PLUS_ENABLED) out.push(...plusLinks)
-    out.push(jobs, events, laborMarket, about, sponsorship)
+    out.push(jobs, events, laborMarket, about)
     return out
   })()
 

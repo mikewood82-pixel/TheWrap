@@ -20,7 +20,8 @@ const STATIC_ROUTES = [
   { path: '/show',         changefreq: 'monthly', priority: 0.7 },
   { path: '/wrapline',     changefreq: 'monthly', priority: 0.7 },
   { path: '/events',       changefreq: 'monthly', priority: 0.6 },
-  { path: '/sponsorship',  changefreq: 'monthly', priority: 0.6 },
+  // /sponsorship deliberately omitted: the page still exists and is reachable
+  // by direct URL for prospects, but it's unlisted while sponsorship is paused.
   { path: '/about',        changefreq: 'monthly', priority: 0.6 },
   { path: '/referral',     changefreq: 'monthly', priority: 0.4 },
 ]
