@@ -14,16 +14,6 @@ const packages = [
       'Two slots available per month',
     ],
   },
-  {
-    name: 'Show Sponsorship',
-    description: 'Sponsor a weekly episode of The Wrap Show — short-form video covering the week in HR tech. One sponsor per episode.',
-    details: [
-      'Verbal mention at the top of the episode',
-      'Logo in the video and description',
-      'Shared to all distribution channels',
-      'One sponsor per episode, no pre-roll ads',
-    ],
-  },
 ]
 
 export default function SponsorshipPage() {
@@ -53,7 +43,7 @@ export default function SponsorshipPage() {
     <div className="max-w-3xl mx-auto px-4 py-12">
       <SEO
         title="Sponsorship"
-        description="Reach 2,100+ HR tech professionals with The Wrap. Sponsorship opportunities for the newsletter and show."
+        description="Reach 2,100+ HR tech professionals with The Wrap. Sponsorship opportunities for the newsletter."
         url="/sponsorship"
       />
 
@@ -174,8 +164,6 @@ export default function SponsorshipPage() {
                   className="w-full px-4 py-2.5 rounded-lg border border-brand-border text-sm focus:outline-none focus:ring-2 focus:ring-brand-terracotta/30 bg-white"
                 >
                   <option>Newsletter Sponsorship</option>
-                  <option>Show Sponsorship</option>
-                  <option>Both</option>
                   <option>Something else</option>
                 </select>
               </div>

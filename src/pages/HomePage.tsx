@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Play, TrendingUp, Briefcase } from 'lucide-react'
+import { ArrowRight, TrendingUp, Briefcase } from 'lucide-react'
 import { FEATURES } from '../config/features'
 import { useEffect, useState } from 'react'
 import SEO from '../components/SEO'
@@ -7,14 +7,6 @@ import JobCard, { type JobListItem } from '../components/jobs/JobCard'
 import HiringPulseStrip from '../components/HiringPulseStrip'
 import SponsorSlot from '../components/SponsorSlot'
 import { newsletters, currentSponsor } from '../data/newsletters'
-import { wrapline } from '../data/wrapline'
-
-// Swap this URL out when the latest episode is ready
-const LATEST_EPISODE_URL = 'https://www.youtube.com/embed/dKIGauonsCc'
-
-// Latest Wrapline segment for the homepage band. Reads the top of the catalog
-// so a new entry in src/data/wrapline.ts lights up the homepage automatically.
-const latestWrapline = wrapline[0]
 
 // Pull the hero image out of a newsletter body HTML string for the top "latest
 // edition" tile. Skips the in-edition sponsor callout logo (/sponsors/...) that
@@ -88,61 +80,30 @@ export default function HomePage() {
     <div className="bg-white">
       <SEO />
 
-      {/* Hero — latest episode + logo */}
+      {/* Hero — logo + tagline masthead */}
       <section className="border-b border-brand-border bg-[#fef9f6]">
         <div className="max-w-6xl mx-auto px-4 py-10 md:py-14">
-          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-
-            {/* Logo */}
-            <div className="shrink-0 flex flex-col items-center md:items-start gap-3">
-              <div
-                style={{
-                  width: '180px',
-                  height: '180px',
-                  backgroundImage: 'url(/logo.png)',
-                  backgroundSize: '380px auto',
-                  backgroundPosition: 'center top',
-                  backgroundRepeat: 'no-repeat',
-                }}
-              />
-              <div>
-                <div className="font-serif text-3xl md:text-4xl font-bold text-brand-dark leading-none tracking-tight">
-                  The Wrap
-                </div>
-                <div className="text-brand-terracotta text-xs font-semibold tracking-[0.2em] uppercase mt-1">
-                  HR Tech News
-                </div>
-                <p className="text-brand-dark/70 text-sm md:text-base mt-3 max-w-xs leading-snug">
-                  News, reviews, and more, tightly wrapped each week.
-                </p>
+          <div className="flex flex-col items-center text-center gap-3">
+            <div
+              style={{
+                width: '180px',
+                height: '180px',
+                backgroundImage: 'url(/logo.png)',
+                backgroundSize: '380px auto',
+                backgroundPosition: 'center top',
+                backgroundRepeat: 'no-repeat',
+              }}
+            />
+            <div>
+              <div className="font-serif text-3xl md:text-4xl font-bold text-brand-dark leading-none tracking-tight">
+                The Wrap
               </div>
-            </div>
-
-            {/* Video embed */}
-            <div className="w-full flex-1">
-              <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-3">
-                Latest Episode
+              <div className="text-brand-terracotta text-xs font-semibold tracking-[0.2em] uppercase mt-1">
+                HR Tech News
               </div>
-              {LATEST_EPISODE_URL ? (
-                <div className="relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: '56.25%' }}>
-                  <iframe
-                    src={LATEST_EPISODE_URL}
-                    title="Latest episode of The Wrap Show"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="absolute inset-0 w-full h-full"
-                  />
-                </div>
-              ) : (
-                <div className="relative w-full rounded-xl overflow-hidden bg-brand-dark flex items-center justify-center" style={{ paddingBottom: '56.25%' }}>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                    <div className="w-14 h-14 rounded-full bg-brand-terracotta/20 flex items-center justify-center">
-                      <Play size={24} className="text-brand-terracotta ml-1" />
-                    </div>
-                    <div className="text-white/50 text-sm">New episode dropping this week</div>
-                  </div>
-                </div>
-              )}
+              <p className="text-brand-dark/70 text-sm md:text-base mt-3 max-w-xs mx-auto leading-snug">
+                News, reviews, and more, tightly wrapped each week.
+              </p>
             </div>
           </div>
         </div>
@@ -226,48 +187,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Wrapline band — occasional news-magazine segment. Auto-hides when the
-          catalog is empty. Distinct from the Show hero above; embeds the latest
-          segment and links to the full /wrapline catalog. */}
-      {latestWrapline && (
-        <section className="border-b border-brand-border bg-brand-dark">
-          <div className="max-w-6xl mx-auto px-4 py-14 md:py-16">
-            <div className="grid md:grid-cols-5 gap-8 md:gap-12 items-center">
-              <div className="md:col-span-2">
-                <div className="text-brand-gold text-xs uppercase tracking-widest font-medium mb-3">
-                  🎬 Wrapline
-                </div>
-                <h2 className="font-serif text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
-                  {latestWrapline.title}
-                </h2>
-                {latestWrapline.description && (
-                  <p className="text-white/60 leading-relaxed mb-6">
-                    {latestWrapline.description}
-                  </p>
-                )}
-                <Link
-                  to="/wrapline"
-                  className="inline-flex items-center gap-2 text-brand-gold font-semibold hover:text-white transition-colors"
-                >
-                  Watch all Wrapline <ArrowRight size={16} />
-                </Link>
-              </div>
-              <div className="md:col-span-3">
-                <div className="relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: '56.25%' }}>
-                  <iframe
-                    src={`https://www.youtube.com/embed/${latestWrapline.youtubeId}`}
-                    title={`Wrapline — ${latestWrapline.title}`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="absolute inset-0 w-full h-full"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* This-week pulse strip — aggregate counts, visible to all visitors.
           Teases the named/personal view sitting behind Wrap+. */}
