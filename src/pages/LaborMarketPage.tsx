@@ -59,6 +59,44 @@ const revelioSectors = [
   { sector: 'Transportation & Warehousing', trend: 'Declining (−24% YoY)', direction: 'down' },
 ]
 
+// ─── Aspen Tech Labs — JobMarketPulse ─────────────────────────────────────────
+// Demand-side lens: job-posting counts scraped daily from 300k+ employer career
+// sites (225k+ U.S.). Complements the payroll surveys above. Q2 2026 report.
+const aspenMetrics = [
+  { label: 'U.S. Job Postings',       value: '6.45M',   note: '+3.7% YoY · every month of Q2 held above 6.4M' },
+  { label: 'Median Full-Time Salary', value: '$62,234', note: '+6.1% YoY · +$3,578' },
+  { label: 'Salary Transparency',     value: '53.6%',   note: '+5.0pp YoY · disclosure still climbing' },
+  { label: 'White-Collar Demand',     value: '+6.3%',   note: 'YoY · led by IT, Business Svcs, Engineering' },
+  { label: 'Blue-Collar Demand',      value: '+2.7%',   note: 'YoY · Warehouse, Transport, Production' },
+  { label: 'Healthcare Demand',       value: '+2.8%',   note: 'YoY · broader healthcare outpacing clinical nursing' },
+]
+
+// Category growth chart — YoY % change. Value drives the bar, label is the display.
+const aspenCategoryGrowth = [
+  { sector: 'Engineering',           value: 20.7, label: '+20.7%' },
+  { sector: 'Information Technology', value: 15.1, label: '+15.1%' },
+  { sector: 'Warehouse',             value: 13.6, label: '+13.6%' },
+  { sector: 'Production',            value: 11.4, label: '+11.4%' },
+  { sector: 'Business Services',     value: 10.4, label: '+10.4%' },
+  { sector: 'Transportation',        value: 8.9,  label: '+8.9%' },
+  { sector: 'Restaurants',           value: -2.3, label: '−2.3%' },
+  { sector: 'Education',             value: -3.0, label: '−3.0%' },
+]
+
+// Top categories by posting volume (Q2 2026), with YoY direction.
+const aspenTopCategories = [
+  { category: 'Restaurants',            postings: '782,468', yoy: '−2.3%', direction: 'down' },
+  { category: 'Retail',                 postings: '724,553', yoy: '+1.2%', direction: 'up' },
+  { category: 'Healthcare',             postings: '586,779', yoy: '+3.1%', direction: 'up' },
+  { category: 'Nursing',                postings: '517,722', yoy: '+1.1%', direction: 'up' },
+  { category: 'Education',              postings: '356,632', yoy: '−3.0%', direction: 'down' },
+  { category: 'Business Services',      postings: '283,306', yoy: '+10.4%', direction: 'up' },
+  { category: 'Sales',                  postings: '248,585', yoy: '−2.7%', direction: 'down' },
+  { category: 'Maintenance',            postings: '223,931', yoy: '+5.5%', direction: 'up' },
+  { category: 'Transportation',         postings: '212,259', yoy: '+8.9%', direction: 'up' },
+  { category: 'Information Technology',  postings: '188,711', yoy: '+15.1%', direction: 'up' },
+]
+
 // ─── Latest Release ───────────────────────────────────────────────────────────
 // Hero callout for the most recent data drop — surfaces fresh numbers above
 // the fold. Refresh every release cycle.
@@ -102,6 +140,10 @@ const implications = [
   {
     headline: 'Two-speed sector split hardens — services carrying, goods-producing stalling',
     body: 'ADP counted 96K of its 98K gain in service-providing sectors, with Education/Health (+48K) doing nearly half the work. Goods-producing added a rounding-error 2K on ADP and BLS reported Leisure/Hospitality shed 61K jobs in June — the biggest sector loss on the report. Revelio’s picture is broadly consistent: Public Admin, Healthcare, and Professional Services growing; Transportation/Warehousing (−24% YoY) and Retail declining. If your headcount plan is in an ADP-strong sector you can still hire; if it’s in leisure, retail, or goods-producing, you are now competing with a shrinking wage floor.',
+  },
+  {
+    headline: 'Hiring intent is recovering even as payrolls stall — postings up 3.7% while jobs added shrank to +57K',
+    body: 'The payroll and posting sides of the market are pulling apart. Aspen’s JobMarketPulse — demand-side counts scraped from 300k+ employer career sites — has U.S. postings at 6.45M for Q2, up 3.7% YoY, with every month of the quarter above 6.4M and ahead of its 2025 counterpart. Yet BLS payrolls added just +57K in June and ADP +98K. Employers are advertising more, especially in tech: Engineering postings jumped +20.7% YoY and IT +15.1%, with white-collar demand up +6.3% overall. This is the low-hire, low-fire freeze seen from the intent side — the reqs are real and rising, but the constraint is conversion (time-to-fill, candidate competition, budget sign-off), not a shortage of openings. For HR leaders, don’t read the payroll slowdown as demand drying up; the demand is on the board, it just isn’t closing. Salary transparency also crossed 53.6% of postings (+5.0pp YoY), so that widening req volume is increasingly public.',
   },
 ]
 
@@ -325,7 +367,7 @@ export default function LaborMarketPage() {
       <div className="mb-6">
         <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Data · Updated July 6, 2026</div>
         <h1 className="font-serif text-4xl font-bold mb-3">U.S. Labor Market</h1>
-        <p className="text-brand-dark/60 text-lg">BLS, ADP, and Revelio Labs — what the numbers mean for HR leaders.</p>
+        <p className="text-brand-dark/60 text-lg">BLS, ADP, Revelio Labs, and Aspen Tech Labs — what the numbers mean for HR leaders.</p>
       </div>
 
       {/* In-page nav — jump straight to a data source. Small, eyebrow-weight, doesn't compete with H1. */}
@@ -334,6 +376,7 @@ export default function LaborMarketPage() {
           { href: '#bls',          label: 'BLS' },
           { href: '#adp',          label: 'ADP' },
           { href: '#revelio',      label: 'Revelio' },
+          { href: '#aspen',        label: 'Aspen' },
           { href: '#implications', label: 'Implications' },
         ].map((item, i, arr) => (
           <span key={item.href} className="flex items-center gap-1">
@@ -506,6 +549,59 @@ export default function LaborMarketPage() {
         </div>
       </div>
 
+      {/* ── Aspen Tech Labs ──────────────────────────────────────────────────── */}
+      <div className="flex items-center gap-3 mb-4 scroll-mt-6" id="aspen">
+        <h2 className="font-serif text-2xl font-bold">Aspen Tech Labs — JobMarketPulse</h2>
+        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">Job Postings · Q2 2026</span>
+      </div>
+      <p className="text-sm text-brand-dark/50 mb-5 leading-relaxed">JobMarketPulse tracks the demand side of the market — unique job postings deduplicated daily from 300k+ employer career sites (225k+ in the U.S.), agency listings excluded. Where BLS, ADP, and Revelio measure jobs <em>filled</em>, this measures hiring <em>intent</em>: what employers are actively advertising.</p>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-5">
+        {aspenMetrics.map(m => (
+          <div key={m.label} className="bg-white border border-brand-cream rounded-xl p-4">
+            <div className="text-xs text-brand-dark/40 mb-1">{m.label}</div>
+            <div className="font-serif text-2xl font-bold mb-1">{m.value}</div>
+            <div className="text-xs text-brand-dark/40 leading-relaxed">{m.note}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Aspen category growth — YoY % change by category */}
+      <div className="mb-5">
+        <SectorBarChart title="Vacancies by Category — YoY % Change, Q2 2026" data={aspenCategoryGrowth} />
+      </div>
+
+      {/* Aspen top categories by volume */}
+      <div className="bg-white border border-brand-cream rounded-xl overflow-hidden mb-3">
+        <div className="px-5 py-3 bg-brand-cream/50 text-xs text-brand-dark/50 uppercase tracking-wide font-medium">Top Categories by Posting Volume — Q2 2026</div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-xs text-brand-dark/40 uppercase tracking-wide">
+                <th className="text-left px-5 py-2.5 font-medium">Category</th>
+                <th className="text-right px-5 py-2.5 font-medium">Postings</th>
+                <th className="text-right px-5 py-2.5 font-medium">YoY</th>
+              </tr>
+            </thead>
+            <tbody>
+              {aspenTopCategories.map(c => (
+                <tr key={c.category} className="border-t border-brand-cream">
+                  <td className="px-5 py-2.5 text-brand-dark/70">{c.category}</td>
+                  <td className="px-5 py-2.5 text-right tabular-nums text-brand-dark/70">{c.postings}</td>
+                  <td className={`px-5 py-2.5 text-right tabular-nums font-semibold ${
+                    c.direction === 'up' ? 'text-green-600' :
+                    c.direction === 'down' ? 'text-red-500' :
+                    'text-brand-dark/40'
+                  }`}>{c.yoy}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div className="px-1 pt-1 pb-12">
+        <a href="https://aspentechlabs.com/jobmarketpulse-reports/2026/jobmarketpulse-report-q2-2026" target="_blank" rel="noopener noreferrer" className="text-xs text-brand-dark/40 hover:text-brand-terracotta transition-colors">Full JobMarketPulse Q2 2026 report at aspentechlabs.com →</a>
+      </div>
+
       {/* ── HR Implications ───────────────────────────────────────────────────── */}
       <h2 id="implications" className="font-serif text-2xl font-bold mb-4 scroll-mt-6">What This Means for HR</h2>
       <div className="space-y-4 mb-4">
@@ -516,7 +612,7 @@ export default function LaborMarketPage() {
           </div>
         ))}
       </div>
-      <p className="text-xs text-brand-dark/30 mt-4">Sources: U.S. Bureau of Labor Statistics · ADP National Employment Report · Revelio Public Labor Statistics (RPLS). Updated July 6, 2026.</p>
+      <p className="text-xs text-brand-dark/30 mt-4">Sources: U.S. Bureau of Labor Statistics · ADP National Employment Report · Revelio Public Labor Statistics (RPLS) · Aspen Tech Labs JobMarketPulse (Q2 2026). Updated July 6, 2026.</p>
     </div>
   )
 }
