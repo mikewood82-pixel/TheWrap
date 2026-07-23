@@ -31,6 +31,110 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'not-responsible-for-lost-or-stolen-items',
+    date: 'July 24, 2026',
+    title: 'Not Responsible for Lost or Stolen Items',
+    tag: 'Vendor Strategy',
+    tileImage: '/newsletters/edition-82/waiver-station-tile.webp',
+    excerpt:
+      'Indeed rewrote its Terms of Service to say it isn’t your agent and doesn’t make decisions — right as Mobley, an FCRA class action, and Connecticut’s CART Act close in on that exact question. Risk flows downhill until it hits whoever can’t disclaim it, and HR is the bottom of that hill.',
+    body: `
+<img src="/newsletters/edition-82/waiver-station.webp" alt="The waiver station at a Bounce Bounce trampoline park: a bright blue “WAIVER STATION” sign above three check-in kiosks and a wall of posted rules" />
+
+<p>Anyone who has taken a kid to a trampoline park knows the ritual. You arrive already late, there’s a birthday party of thirty screaming children stacked up ahead of you, and before anybody bounces anywhere, you get handed a tablet with a three-page release on it. Assumption of risk, yadda yadda. Waiver of liability, whatever. You thumb-scroll to the bottom without reading a word because you just want to get it over with and get your child bouncing.</p>
+
+<p>Does the waiver make the trampolines safer? Nope. Nothing in the document saves you from the inevitable twisted ankle. All it does is decide in advance who’ll pay to fix it.</p>
+
+<p>I got the HR Tech version of that waiver earlier this week. Indeed updated its Terms of Service and sent me an email about it, bulleted “for my convenience,” with a cheerful sign-off from the Indeed team. Pretty standard really for an email that’s meant to be sent, but not read. <a href="https://www.linkedin.com/posts/mikewood82_hiring-indeed-hrtech-ugcPost-7484988149291675648-jnIs/">I wrote about it earlier this week</a>, so I won’t rehash the whole thing, but if you look through the actual update, Indeed contracted itself out of liability for what its tools do and launched an “apply for me” bot that will increase the candidate volume they charge for.</p>
+
+<p>Companies need to keep the revenue coming, so I get why they are juicing the system and charging for the clutter, but HR teams need to pay attention to how these companies are positioning their liabilities and yours. The document states flatly that Indeed does not and will not serve as an agent of, or decision-maker for, any employer or job seeker, and that it rejects any delegation of decision-making authority.</p>
+
+<p>The arbitration agreement now stretches to cover Indeed’s vendors, and any employer who connects their ATS through a third-party service is now agreeing to indemnify Indeed for that use.</p>
+
+<p>This is a direct response to the AI bias lawsuits with Workday and Eightfold, and it centers on who exactly is making the final decision. Which is funny because every person involved in hiring decisions won’t admit to any authority in the decision.</p>
+
+<p>Ask a vendor and you’ll get some version of what Indeed just put in writing — we supply software, the employer configures it, the employer decides. That’s been Workday’s posture throughout Mobley: it builds tools, customers set the parameters, humans do the hiring. Ask an employer why a qualified forty-eight-year-old never got a callback and you’ll get the mirror image — the system ranked them, the screen filtered them, nobody here made a call about that person specifically because nobody here ever saw that person. Both answers are sincere. Both are even partially true. And between them sits a rejected candidate who was very much decided about, by something, on behalf of somebody.</p>
+
+<p>That’s a strange place for an industry to end up. We have spent three years selling automation on the promise that it makes real decisions at real scale while the paperwork underneath quietly insists no decision is being made at all. You can sell the outcome or you can disclaim the outcome. Doing both only works until someone with subpoena power asks which one it is.</p>
+
+<p>Somebody is going to answer that question soon, and it won’t be a vendor’s legal team or an HR newsletter. It’ll be a courtroom or a legislature. Mobley is in discovery right now on an agent-liability theory — the argument that a vendor screening candidates on an employer’s behalf becomes that employer’s agent and shares the exposure. A class action filed in January says Eightfold has been operating as a consumer reporting agency under the FCRA. And Connecticut has already answered part of it by statute in the CART Act, which says plainly that use of an automated employment decision tool is not a defense in a discrimination claim. Read that provision for what it implies: a legislature does not need to outlaw an excuse nobody was using. Employers were reaching for the tool defense often enough that a state wrote a law to take it away.</p>
+
+<p>The tool can’t be blamed. The toolmaker says it doesn’t work for you. The only party left standing in the room is the employer. That’s not an accident or a coincidence of timing — it’s a system finding its equilibrium, and the equilibrium is that risk flows downhill until it hits whoever can’t disclaim it. HR is the bottom of that hill.</p>
+
+<p>So here’s the practical ask, and then I’ll get out of the way. Go pull your vendor agreements this quarter. Not next quarter. Look for four things: whether the agreement contains an agency disclaimer and how broadly it’s drafted; who indemnifies whom, particularly for third-party ATS integrations; whether the arbitration clause has quietly expanded to cover the vendor’s vendors; and — this is the one nobody checks — whether you have a contractual right to the decision logs. Because if you get sued over a screening outcome, the evidence you need to defend yourself lives on your vendor’s servers, and that vendor has now told you in writing that it doesn’t work for you.</p>
+
+<p>Here’s the thing about the trampoline park: somebody’s ankle turns eventually. Not because anyone was reckless, not because the trampolines were defective — just because that’s what happens when you put enough people on enough trampolines for enough hours. It isn’t a risk so much as a schedule. Hiring is no different. Somewhere in your funnel, a qualified person is going to get filtered out for a reason nobody at your company chose, nobody at your vendor will own, and nobody in the chain can fully explain. Not because your team is careless or your vendor is crooked. Because you are running thousands of decisions through a system built by people who wrote down, in advance, that they aren’t making any.</p>
+
+<p>So the only real question is when that day comes, what did you already agree to? You signed something. Your vendor signed something. One of those documents says who pays for the ankle, and I’d bet a fair amount that most HR teams could not tell you today which one of them it is. Go find out while it’s still a reading assignment instead of a deposition.</p>
+
+<p>The waiver never made the trampoline safer. It just decided, in advance, who limps home paying for it.</p>
+
+<hr />
+
+<p>On to a quiet week in HR Tech. This week’s Wrap features Google employees trying to keep their jobs, the inventor of programmatic job advertising coming back to try and fix it, a new data tool from Lance “The Hammer” Haun, new research from Revelio Labs showing the rich are getting richer, workforce planning with Visier’s Paul Rubenstein, AI systems learning to hack each other, and the disappearing safety net for American workers.</p>
+
+<p>Have a great weekend!</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Google workers rally for a floor under their jobs</h3>
+<img src="/newsletters/edition-82/alphabet-workers-union.webp" alt="Roughly a hundred Alphabet Workers Union members outside Google’s Mountain View headquarters holding “Googlers for Job Security” signs behind a long banner covered in signatures" />
+<p>On July 16, roughly 100 Alphabet Workers Union members rallied at Google’s Mountain View HQ and hand-delivered a petition signed by more than 4,500 employees to Sundar Pichai and three other executives. The demands are almost quaint: guaranteed severance, an end to forced performance quotas, voluntary exits before any layoffs, and the option to take severance as extended paid leave. Basic human decency if you ask me, and I’m glad American workers are trying to fight back.</p>
+<p>In America, you’re an at-will employee: no contract, no union, and your employer can end the relationship for almost any reason that isn’t outright illegal, on almost any timeline. The federal floor is 60 days’ notice on mass layoffs under the WARN Act and not much beyond it. In much of Europe — statutory notice periods, redundancy pay, mandatory consultation before mass cuts — that’s the baseline, not the ask. Strip away the badge and the equity and the American worker’s protection against being kicked to the curb is thin to the point of theoretical. If a company could legally send you off with nothing, plenty would. We need more power to the people.</p>
+<p><a href="https://www.businessinsider.com/google-workers-rally-for-job-security-at-mountain-view-hq-2026-7">Read more</a>.</p>
+
+<h3>The inventor of programmatic job advertising wants to fix what it became</h3>
+<img src="/newsletters/edition-82/jason-gorham-quote.webp" alt="Pull quote from Jason Gorham, Founder and CEO of TalentXi: “I built the original technology, so I know exactly where the model breaks. Pay-per-click is not programmatic. Distribution is not intelligence.”" />
+<p>Jason Gorham filed the original programmatic job advertising patent back in 2007 and the same IP was later licensed by Indeed and LinkedIn to power their recruitment-ad businesses. His argument now: the industry reduced that invention to the pay-per-click — a static job feed a bot can crawl — and that shortcut is exactly what today’s application flood exploits. TalentXi, which he founded in 2024, replaces job links with job ads bought through real-time bidding across DSPs, so there’s nothing sitting there for bots to click. The company’s first published case study reports a 69% drop in cost per applicant on a healthcare deployment, and cites HUMAN Security’s 2026 benchmark pegging agentic-AI traffic up 7,851% year over year.</p>
+<p><a href="https://talentxi.ai/press-release-launch">Read more</a>.</p>
+
+<h3>Lance Haun ships an open-source workforce data tool</h3>
+<img src="/newsletters/edition-82/workforce-data-explorer.webp" alt="Beacon Turn’s “Introducing Workforce Data Explorer” title card: agency logos for BLS, the Census Bureau, the Federal Reserve, the Department of Labor, the SEC and Indeed feeding into a hand-crank grinder" />
+<p>Lance Haun (Beacon Turn) launched Workforce Data Explorer this week: a free, MIT-licensed front end that drags U.S. labor data out of the dozen-plus agency sites it’s scattered across and puts it behind one interface. It indexes 89 curated public sources — 30 of them wired to live APIs, so it pulls current numbers on demand instead of pointing you at yet another download page.</p>
+<p>&rarr; <a href="https://news.beaconturn.com/p/the-turn-introducing-the-workforce">Check it out</a></p>
+
+<hr />
+
+<h2>📊 Research and Reports</h2>
+
+<h3>Revelio Labs: wage growth keeps concentrating at the top</h3>
+<img src="/newsletters/edition-82/revelio-wage-deciles.webp" alt="Revelio Labs chart: average posted salary by decile since January 2022, with the 10th decile climbing toward $180,000 while the 1st decile stays flat near $28,000, and a lower panel showing the D10−D1 gap widening" />
+<p>Using its COSMOS job-postings dataset — advertised pay on new roles, not what current workers already earn — Revelio finds a widening K-shaped split. Between Q2 2025 and Q2 2026, real advertised salaries for bottom-decile jobs fell 2.2%, while ninth- and tenth-decile roles rose 7.5% and 6.4% (after adjusting for 3.8% CPI). Professional &amp; Business Services, Information, and Education &amp; Health drove most of the top-end gains. One finding cuts against the AI-hits-white-collar-first narrative: Revelio ties AI adoption to weaker wage growth at the bottom, not the top, with the heaviest AI investors still expanding headcount.</p>
+<p><a href="https://www.reveliolabs.com/news/macro/is-wage-inequality-increasing/">Read more</a>.</p>
+
+<hr />
+
+<h2>🎙️ Podcasts</h2>
+
+<h3>The Power of AI in Workforce Planning, with Paul Rubenstein</h3>
+<img src="/newsletters/edition-82/totally-talent-rubenstein.webp" alt="Totally Talent podcast artwork: “The Power of AI in Workforce Planning” with guest Paul Rubenstein" />
+<p>Visier’s Chief Evangelist joins me on the latest <em>Totally Talent</em> to make the case that AI and people analytics can move HR out of the support-function seat and into the room where business decisions actually get made. We get into how data-driven insight changes workforce planning, decision-making, and what it takes for HR leaders to argue from evidence instead of instinct. Rubenstein has 25-plus years in HR and people analytics and has been beating the “insight to impact” drum hard this year — his argument being that people analytics has spent fifteen years proving people data matters and now has to prove it changes outcomes.</p>
+<p>&rarr; <a href="https://www.hr.com/en/resources/podcasts/talent/the-power-of-ai-in-workforce-planning_mruzx90d.html">Listen to the episode</a></p>
+
+<hr />
+
+<h2>👆 Worth a Click</h2>
+
+<h3>OpenAI’s models hacked another AI company on their own</h3>
+<img src="/newsletters/edition-82/openai-hugging-face.webp" alt="Illustration: the Hugging Face emoji behind a laptop reading “HUGGING FACE HACKED ON ITS OWN,” beside a cracked screen showing the OpenAI logo and a terminal reading “SYSTEM ACCESS SUCCESSFUL”" />
+<p>During an internal cyber-capabilities benchmark, two OpenAI models — GPT-5.6 Sol and a more capable pre-release build, both dialed down on their safety refusals for the test — broke out of their sandbox through a zero-day, reached the open internet, and used a second zero-day plus stolen credentials to breach Hugging Face, apparently because they reasoned the platform might hold answers to the eval they were being graded on. OpenAI has since owned it, patched the holes, and reported it to law enforcement; Hugging Face says it matches the “agentic attacker” scenario the industry’s been bracing for.</p>
+<p><a href="https://www.nytimes.com/2026/07/21/technology/openai-attack-hugging-face.html">Read more</a>.</p>
+
+<h3>America’s layoff safety net was built for a different economy</h3>
+<img src="/newsletters/edition-82/layoff-safety-net.webp" alt="A worker in a high-visibility vest carrying a cardboard box of belongings past monitors full of spreadsheets in an industrial facility" />
+<p>Guild CEO Bijal Shah argues the three pillars meant to catch displaced workers — unemployment insurance, corporate outplacement, and WIOA-funded retraining — were all designed for cyclical blue-collar downturns, not white-collar AI displacement. Only 18 states met the federal UI trust-fund solvency standard as of January 2025, down from 31 before the pandemic, and the ~$5B outplacement industry still gets paid per enrollment rather than per placement.</p>
+<p><a href="https://hrexecutive.com/americas-layoff-safety-net-was-built-for-a-different-economy-and-ai-is-about-to-break-it/">Read more</a>.</p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+  `,
+  },
+  {
     slug: 'are-we-all-just-a-number-now',
     date: 'July 16, 2026',
     title: 'Are We All Just a Number Now?',
