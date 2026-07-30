@@ -31,6 +31,157 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'four-chord-resume',
+    date: 'July 31, 2026',
+    title: 'I Never Wanna Hear You Say, I Want It That Way',
+    tag: 'Hiring',
+    tileImage: '/newsletters/edition-83/i-want-it-that-way-tile.webp',
+    excerpt:
+      'Max Martin wrote thirty #1 hits with four chords and math — and GenAI just handed every applicant the same producer, so three thousand résumés now compress into one indistinguishable pile. The way out isn’t better résumé parsing; it’s running the AI interview first.',
+    body: `
+<img src="/newsletters/edition-83/i-want-it-that-way.webp" alt="The Backstreet Boys in all-white outfits standing in a curved chrome tunnel, with the title “I Want It That Way” across the frame" />
+
+<p>You know thirty of his songs by heart, but I know you couldn’t pick him out of a lineup.</p>
+
+<p>Karl Martin Sandberg, aka Max Martin, has written or co-written thirty number one hits on the Billboard Hot 100. Only the legendary Beatle himself, Paul McCartney, has more, at thirty-two, and he had a thirty-year head start.</p>
+
+<p>Here’s a sample of his impact just to blow your mind:</p>
+
+<img src="/newsletters/edition-83/four-chord-resume.webp" alt="Infographic, “The Music Industry’s Modern Anthems: Success Metrics of Four Global Hits,” mapping Britney Spears, the Backstreet Boys, Taylor Swift and The Weeknd against chart, Grammy and streaming milestones" />
+
+<p>If you want a successful pop single, you hire this guy. He’s the actual King of Pop and he does it with math. First, he starts with a simple melody, fitting syllable beats to the notes. The lyrics come last, serving the melody instead of the other way around. Songwriters call it melodic math.</p>
+
+<p>I was a dual English and music major in college (an overachievement I thought would make me more attractive to employers…), so bear with me as I nerd out a little. There’s a musical reason these songs are popular.</p>
+
+<p>Underneath all of it sits the same handful of chords, I-V-vi-IV. This pattern has been so successful that an Australian comedy trio the <a href="https://youtu.be/5pidokakU4I?si=lmDSINPaRJ8II_81">Axis of Awesome</a> built a career out of medleying forty hits over the single four-chord loop. If you don’t want to click the link and watch them, here’s an example of what I mean.</p>
+
+<img src="/newsletters/edition-83/axis-of-awesome-chords.webp" alt="Diagram of pop’s “Axis of Awesome” I–V–vi–IV chord loop, with dozens of hit songs mapped onto the same four repeating chords" />
+
+<p>Nobody owns those four chords. Everybody gets them free. What separated one song from the next was never the progression. It was the melody that got built on top of it. As for the lyrics, who cares (sorry Tim Rice!)?</p>
+
+<p>Look at “I Want It That Way.” It’s a song that roughly a billion people can sing from memory and not one of them can explain. “I never want to hear you say / I want it that way.” What? What way do you want it, and why don’t I want to hear it?</p>
+
+<p>The basic foundation for success is set and the lyrics don’t matter any more than the plot to a Hallmark Christmas movie. Do we essentially watch the same movie every year, where the busy city worker travels to a small, snowy town and meets a local who makes her want to stay? Is it a tired trope? Yes. But nobody cares. We just know that it makes Mrs. Wood and lots of others burst with joy for Christmas. It strikes a chord, pun intended.</p>
+
+<p>We’re seeing the same algorithmic formula hit everything with GenAI, and that includes hiring, but it’s missing a key part. Max Martin’s listeners and anyone who subscribes to the Hallmark Channel could feel the emotion before they ever noticed a strange lyric (hit me baby one more time?) or a plot hole.</p>
+
+<p>Recruiters? They hear nothing, feel nothing. It’s like looking at a lyric sheet without knowing the song. It’s just gibberish on a page that looks like it could be what you’re looking for.</p>
+
+<p>Everything that would actually tell you whether someone can do the job — judgment, how they handle being wrong, whether people want to work with them again — none of it survives transcription onto a page. What survives is the words. And every set of words in that stack of three thousand has now been run through the same producer, auto-tuned against the same progression, aimed at the same target.</p>
+
+<p>There’s a paper in Scientific Reports — Serrà and colleagues, 2012 — that ran 464,000 recordings from 1955 through 2010 through computational analysis. Pitch sequences got more restricted. Loudness kept climbing. And the timbral palette homogenized: frequent sounds became more frequent while rare ones became rarer still. The distribution collapsed toward its own center.</p>
+
+<p>Which is a very academic way of saying we spent thirty years loving multiple boy bands without ever noticing they were the same boy band.</p>
+
+<img src="/newsletters/edition-83/ai-resume-ats-scoring.webp" alt="Infographic contrasting old ATS scoring (human résumés, high variance, top candidates clear) with AI-generated résumés that compress into 88–92% scores where the top candidates are impossible to tell apart" />
+
+<p>A resume collapses under optimization because it has three properties, and it needs all three. It’s bounded — titles, tenure, employers, schools, a handful of skills, a few numbers about outcomes. Call it a few dozen slots, and that is the entire surface area of a human career as far as the machine is concerned. It’s self-authored — every input controlled by the person being measured. And it’s asynchronous — nobody gets to ask a second question.</p>
+
+<p>So a job description goes out, bounded and published and entirely predictable — because we’re using GenAI, or copying and pasting old job descriptions, since we’d rather die than write a job req from scratch ever again.</p>
+
+<p>You don’t need a model to see the ending. Three thousand people apply, all three thousand optimize against the identical target, and the top of that pile compresses like a mastered track. When the volume is this high, the candidate ranked first and the candidate ranked twenty-fifth are separated by less than the measurement error of the thing measuring them. They aren’t tied because they’re equally qualified. They’re tied because they all solved the same equation, and the equation only ever had one answer.</p>
+
+<p>Economists named this fifty years ago. Goodhart’s Law: when a measure becomes a target, it stops being a good measure. Nobody had to cheat. The score stopped meaning anything precisely because everyone got good at it.</p>
+
+<p>And before anyone writes in — yes, this predates ChatGPT. Obviously. Keyword stuffing goes back to the nineties. White text on a white background. Resume mills, career coaches, people online who will help you optimize your LinkedIn for only $400.</p>
+
+<p>Optimization was always available. What it was never was free. It was rationed by money and by knowing the game existed at all — which is its own kind of ugly, but functionally it preserved variance. Most people weren’t in the arms race, so the distribution stayed wide. Same as music: for most of pop history, the reason every record didn’t sound like a Max Martin record was that you couldn’t afford Max Martin.</p>
+
+<p>Generative AI didn’t invent the arms race. It handed everybody a producer and auto-tune.</p>
+
+<p>Now look at an open req. The problem was never three thousand applications (unless you are paying for them). The problem is twenty-five finalists who look identical, a hiring manager who asks to see a few more profiles, and a role that’s still open in November because no one can spot the difference between candidates. I do this all the time when I try to find something to watch on Netflix. I end up scrolling until I no longer want to make a decision.</p>
+
+<p>Picking a few candidates off the top of the pile isn’t new. Recruiters don’t have time, and when people are genuinely indistinguishable, the pick doesn’t matter. It’s a lottery most candidates lose, and many companies have buyer’s remorse, so they’re afraid to pick.</p>
+
+<p>The instinct is to go get more data about the resume. More attributes, better parsing, adjacent skills, inferred capabilities. Anything that might indicate a hit, but it’s the wrong direction. There are only so many variables you can optimize. You end up with a higher-resolution picture of exactly the thing that stopped being informative.</p>
+
+<p>Which is why I think the AI interview is the most underrated thing in this industry right now. Interviews were always the higher-dimensional instrument. That was never in dispute. The reason we didn’t run them at the top of the funnel is that they don’t scale. A recruiter can skim three thousand resumes badly, but nobody on earth can conduct three thousand interviews.</p>
+
+<img src="/newsletters/edition-83/ai-interview.gif" alt="Animated “ain’t nobody got time for that” reaction clip" />
+
+<p>So we built a funnel that runs the cheap, low-information step first and the expensive, high-information step last, and then acted shocked when the cheap step stopped telling us anything. AI doesn’t make an interview smarter. It makes the expensive step cheap enough to run first.</p>
+
+<p>That’s the unlock. For the first time, you can put the measurement that actually carries information at the front of the process instead of the end, and save human judgment for the twenty-five people who earned it based on the context they provide in the interview.</p>
+
+<p>We are standing at a turning point in hiring. We can infer the quality of a candidate using a lyric sheet and mountains of static data, or we can just talk to them. When we infer context, we get data the candidate never hands us. When we ask, the candidate is in the room, knowing it’s happening and taking part in it. The resume was just a starting point.</p>
+
+<p>Same destination. Opposite method. One route goes around the person. The other goes through them.</p>
+
+<p>We spent fifteen years building machinery to read the lyric sheet faster, and we got very good at it — right up to the moment every lyric sheet started saying the same thing. Maybe the answer was never a better reader.</p>
+
+<p>Maybe it was just letting them sing.</p>
+
+<hr />
+
+<p>On to this week’s HR Headlines. This week’s Wrap features OpenAI launching an enterprise agent platform for customer support, more fallout from SHRM’s discrimination judgement, the EU moving the deadline for AI compliance to next year, funding for a platform that will help you get a job if you pay them 20% of your first paycheck, Gartner and Teneo research reporting that AI is both slowing and accelerating hiring, shady Meta deals leading to data centers, and more Americans not being able to afford healthcare.</p>
+
+<p>Have a great weekend!</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>OpenAI Launches Presence, Its Enterprise Agent Platform for Voice and Chat</h3>
+<img src="/newsletters/edition-83/openai-presence.webp" alt="Screenshot of OpenAI’s Presence agent resolving a duplicate-subscription charge over voice and chat — looking up the order and processing a refund" />
+<p>OpenAI introduced Presence on July 22, a deployed product for building voice and chat agents that answer questions, use company systems, take approved actions, and escalate to a person when policy says they should. Deployments start with one specific job — billing issues, insurance claims, or employee IT service requests — and the company sets what the agent can do, when it needs approval, and when a human takes over. OpenAI runs it on its own English-language support line and says it resolves 75% of inbound issues without human assistance, after meeting or exceeding the benchmarks the company uses to grade frontline human support within weeks.</p>
+<p><a href="https://openai.com/index/introducing-openai-presence/">Read more</a>.</p>
+
+<h3>SHRM’s Insurance Carrier Sues to Get Out of Paying the $10M Punitive Award</h3>
+<img src="/newsletters/edition-83/shrm-insurance-suit.webp" alt="The SHRM logo sign mounted on the exterior of its headquarters, shot from below" />
+<p>Twin City Fire Insurance, the Hartford subsidiary that wrote SHRM’s employment practices liability policy, filed suit Tuesday asking a court to declare it isn’t responsible for the punitive damages in Mohamed v. SHRM. The argument is statutory: Virginia law bars insuring punitive damages awarded for intentional acts, and the jury found intentional race discrimination and retaliation. A jury awarded the former employee $1.5 million in compensatory and $10 million in punitive damages late last year, and a judge upheld the verdict in April after SHRM sought a new trial — arguing in part that evidence and arguments portraying SHRM as a “model employer” should have been excluded.</p>
+<p><a href="https://www.hrdive.com/news/insurance-company-sues-shrm-over-10m-race-bias-award/826513/">Read more</a>.</p>
+
+<h3>EU Pushes AI Act High-Risk Hiring Rules to December 2027</h3>
+<img src="/newsletters/edition-83/eu-ai-act.webp" alt="Illustration of AI regulation in the EU: a glowing scales-of-justice icon ringed by AI, gavel, document and institution icons over a field of EU stars" />
+<p>The Digital Omnibus on AI entered into force July 27, deferring the application date for standalone high-risk systems under Annex III — which covers employment use cases among others — from August 2, 2026 to December 2, 2027. Parliament endorsed the package 423-57 on June 16 and the Council gave final approval June 29, with AI embedded in regulated products such as medical devices and industrial machinery pushed to August 2, 2028. Only the clock moved: risk management, documentation, and conformity assessment obligations are unchanged, and breaches still carry fines up to €15 million or 3% of worldwide annual turnover.</p>
+<p><a href="https://www.lewissilkin.com/insights/2026/07/27/the-digital-omnibus-on-ai-enters-into-force-today-102nedo">Read more</a>.</p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions</h2>
+
+<p><strong>Refer Raises $7.5M Seed.</strong> Founder Andre Hamra’s model inverts agency economics: the service is free for employers, and the worker hands over 20% of their first paycheck after they land the job. <a href="https://www.staffingindustry.com/news/global-daily-news/refer-a-startup-that-charges-workers-for-placement-raises-75m">Read more</a>.</p>
+
+<p><strong>Recur Software Acquires PCRecruiter.</strong> <a href="https://www.businesswire.com/news/home/20260602995668/en/Recur-Software-Acquires-PCRecruiter-with-Long-Term-Commitment-to-Product-Investment">Read more</a>.</p>
+
+<p><strong>HeyMilo Reaches $6M in Total Funding, Ships Three New Recruiting Agents.</strong> <a href="https://www.staffingindustry.com/news/global-daily-news/ai-staffing-platform-raises-6-million-launches-new-tools">Read more</a>.</p>
+
+<p><strong>Buildforce Raises $10M Series A to Staff Electricians Nationally.</strong> <a href="https://hrtechfeed.com/buildforce-raises-10m-series-a-to-staff-electricians-nationally">Read more</a>.</p>
+
+<hr />
+
+<h2>📊 Research and Reports</h2>
+
+<h3>Gartner: AI Is Cutting Entry-Level Hiring at Nearly a Quarter of Organizations — Except When It Isn’t</h3>
+<img src="/newsletters/edition-83/gartner-entry-level.webp" alt="Two silver theatrical masks — one frowning, one smiling — against a black background, evoking two opposite readings of the same data" />
+<p>Gartner reports that 22% of CHROs say at least one business leader in their organization has stopped hiring for entry-level roles due to AI automation. The same 4Q25 survey of 110 heads of HR found 95% of organizations have implemented AI in some capacity over the past year, but only one in five has realized significant or transformational value. Gartner’s advice is to redefine early career roles rather than eliminate them, since gutting the pipeline forces companies to pay premiums for experienced talent they could have developed internally.</p>
+<p>Read the headline stat carefully, though, because it’s doing a lot of work. “At least one business leader” is a floor, not a rate. At a company with forty VPs, one of them freezing a single req counts as a yes — and the org could be growing entry-level headcount overall and still land in that 22%. It measures whether the phenomenon exists somewhere in the building, not how big it is. The sample is 110 HR heads, Gartner doesn’t disclose company size, revenue, industry, or geography, and the field window was the fourth quarter of last year — meaning this data sat for roughly eight months before the press release.</p>
+<p>And it lands in a genuinely contradictory pile. <a href="https://www.teneo.com/vision2026/">Teneo’s Vision 2026 survey</a> — 350-plus CEOs of global public companies with at least $1 billion in revenue, plus about 400 institutional investors — found 67% of CEOs expect AI to increase entry-level hiring, with 58% adding senior leadership roles. That survey ran October 14 to November 10, 2025. Same quarter as Gartner’s. Opposite finding. Teneo’s global head of AI, Ryan Cox, framed it as reshaping the workforce rather than wiping it out.</p>
+<p>Though you don’t have to leave the building to find the disagreement. This release links, in its own body copy, to Gartner’s May 13 research titled <a href="https://www.gartner.com/en/newsroom/press-releases/2026-05-13-gartner-hr-research-reveals-ai-will-create-more-jobs-than-it-eliminates-beginning-in-2028">“AI Will Create More Jobs Than It Eliminates Beginning in 2028.”</a> So which is it Gartner?</p>
+<p><a href="https://www.gartner.com/en/newsroom/press-releases/2026-7-27-gartner-survey-finds-ai-automation-is-reducing-some-entry-level-hiring-at-nearly-one-quarter-of-organizations">Read more</a>.</p>
+
+<hr />
+
+<h2>👆 Worth a Click</h2>
+
+<h3>Meta Hijacked a Fiber-Optic Tax Bill to Build a Six-Square-Mile Data Center in Rural Louisiana</h3>
+<img src="/newsletters/edition-83/meta-louisiana-data-center.webp" alt="A mother and her four children standing on a patchy lot in front of a row of aging single-wide trailer homes in rural Louisiana" />
+<p>The Times reconstructs, across 40-plus interviews, how the $50 billion Hyperion project got done: a pending tax rebate quietly rewritten mid-session at the governor’s urging, NDAs signed by more than 50 state officials, no public meetings before the reveal, and a risk structure that leaves Entergy ratepayers and a $27 billion Blue Owl bond issue holding the downside while Meta can exit after four years. Also inside: no insurer would fully cover a facility that size in a Delta flood plain, and a state senator who backed the enabling legislation sold 300 acres near the site to the power company. In Delhi, ten minutes away, Tracy Williams’s rent went from $250 to $1,495, and she and her four children slept in their car for three weeks. “Not everyone is making Meta money,” she said.</p>
+<p><a href="https://www.nytimes.com/2026/07/27/technology/meta-data-center-louisiana.html">Read more</a>.</p>
+
+<h3>Hospital Systems Are Reporting a One-for-One Conversion From ACA Coverage to Uninsured</h3>
+<img src="/newsletters/edition-83/aca-uninsured-hospitals.webp" alt="The ambulance entrance to the Eric Muñoz Trauma Center, with an ambulance and a police SUV parked outside" />
+<p>The New York Times’ Reed Abelson reports that earnings calls last week from HCA, Tenet, and Community Health Systems all described the same pattern: patients who had marketplace plans didn’t move to other coverage; they moved to no coverage. HCA’s CEO said they “migrated almost one for one to uninsured,” and the company warned investors of roughly a billion dollars less in operating profit this year. Community Health saw uninsured visits rise 20% year over year; SSM Health reported uninsured patients up almost 21% and bad debt up nearly 37%. Obamacare enrollment has fallen about three million, or 13%, since January. Experts expect hospitals to offset the losses by raising prices on commercial plans, aka the ones you sponsor.</p>
+<p><a href="https://www.nytimes.com/2026/07/30/business/aca-obamacare-health-insurance.html">Read more</a>.</p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+  `,
+  },
+  {
     slug: 'not-responsible-for-lost-or-stolen-items',
     date: 'July 24, 2026',
     title: 'Not Responsible for Lost or Stolen Items',

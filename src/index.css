@@ -57,3 +57,7 @@
     font-family: var(--font-family-serif);
   }
 }
+
+/* Cache-bust marker: forces a new hashed CSS filename so browsers request a
+   fresh /assets/ URL after an edge-cache SPA-fallback poisoning (2026-07-30). */
+:root { --wrap-build: 83; }
