@@ -126,22 +126,27 @@ const upcomingReleases = [
 // ─── HR Implications ──────────────────────────────────────────────────────────
 const implications = [
   {
+    tldr: '74K of prior job gains quietly revised away',
     headline: 'The strength was the mirage — 74K of prior jobs have quietly evaporated',
     body: 'Last cycle’s revision surprise pushed April up +64K to +179K and made the market look firm. This cycle: April was revised back down to +148K and May from +172K to +129K — a combined 74K weaker than first reported — and June added only +57K, less than half the +115K consensus. ADP corroborated the softness (+98K, down from +122K in May), and June was the third straight month of shrinking payroll totals. The “April cooling” that got waved off in June is now the trend. HR leaders who unfroze headcount plans on the summer revisions have three weaker months of hard data to explain.',
   },
   {
+    tldr: 'Jobless rate fell only because workers quit looking',
     headline: 'Unemployment fell for the wrong reason — participation cratered to a 5-year low',
     body: 'The U-3 dropped to 4.2% from 4.3%, but not because workers found jobs. Participation fell 0.3pp to 61.5% — the lowest since March 2021 — as roughly half a million people effectively left the labor force. When people stop looking, the numerator falls and the denominator falls faster. The U-6 also eased (8.2% → 8.1% → 7.9% over three months), which nudged The Wrap Underemployment Index down from 71.4 to 68.9 for May, but the underlying signal is discouragement, not tightening. The market didn’t get better; some of its workers gave up.',
   },
   {
+    tldr: 'Low-hire, low-fire freeze locks in for a third month',
     headline: 'The low-hire, low-fire freeze locked in for a third straight month',
     body: 'May JOLTS delivered no motion in any direction — openings, hires, quits, and layoffs all unchanged. Openings held at 7.6M (still near a two-year high), quits stuck at 1.9% for a third consecutive month (5th percentile of the last decade), layoffs steady at 1.1%. Employers are advertising jobs they aren’t filling, workers who want to leave are staying, and companies aren’t cutting. That is the entire market in one sentence — and it’s now the durable regime, not a one-month artifact. Retention costs stay flat; the backlog of would-be switchers keeps building.',
   },
   {
+    tldr: 'Services still hiring; goods-producing and leisure stalling',
     headline: 'Two-speed sector split hardens — services carrying, goods-producing stalling',
     body: 'ADP counted 96K of its 98K gain in service-providing sectors, with Education/Health (+48K) doing nearly half the work. Goods-producing added a rounding-error 2K on ADP and BLS reported Leisure/Hospitality shed 61K jobs in June — the biggest sector loss on the report. Revelio’s picture is broadly consistent: Public Admin, Healthcare, and Professional Services growing; Transportation/Warehousing (−24% YoY) and Retail declining. If your headcount plan is in an ADP-strong sector you can still hire; if it’s in leisure, retail, or goods-producing, you are now competing with a shrinking wage floor.',
   },
   {
+    tldr: 'Job postings up 3.7% even as hiring slows',
     headline: 'Hiring intent is recovering even as payrolls stall — postings up 3.7% while jobs added shrank to +57K',
     body: 'The payroll and posting sides of the market are pulling apart. Aspen’s JobMarketPulse — demand-side counts scraped from 300k+ employer career sites — has U.S. postings at 6.45M for Q2, up 3.7% YoY, with every month of the quarter above 6.4M and ahead of its 2025 counterpart. Yet BLS payrolls added just +57K in June and ADP +98K. Employers are advertising more, especially in tech: Engineering postings jumped +20.7% YoY and IT +15.1%, with white-collar demand up +6.3% overall. This is the low-hire, low-fire freeze seen from the intent side — the reqs are real and rising, but the constraint is conversion (time-to-fill, candidate competition, budget sign-off), not a shortage of openings. For HR leaders, don’t read the payroll slowdown as demand drying up; the demand is on the board, it just isn’t closing. Salary transparency also crossed 53.6% of postings (+5.0pp YoY), so that widening req volume is increasingly public.',
   },
@@ -385,6 +390,29 @@ export default function LaborMarketPage() {
           </span>
         ))}
       </nav>
+
+      {/* HR takeaways — condensed to the top so readers get the verdict before scrolling.
+          Bullets derive from implications[].tldr; full detail lives at #implications. */}
+      <a href="#implications" className="block group mb-12">
+        <div className="bg-brand-cream rounded-xl p-6 border-l-4 border-brand-terracotta transition-shadow group-hover:shadow-sm">
+          <div className="flex items-center justify-between mb-3">
+            <div className="text-brand-terracotta text-xs uppercase tracking-widest font-bold">
+              What this means for HR
+            </div>
+            <span className="text-xs text-brand-dark/40 group-hover:text-brand-terracotta transition-colors whitespace-nowrap">
+              Full breakdown ↓
+            </span>
+          </div>
+          <ul className="space-y-2">
+            {implications.map(imp => (
+              <li key={imp.headline} className="flex gap-2.5 text-sm text-brand-dark/80 leading-snug">
+                <span className="text-brand-terracotta font-bold shrink-0" aria-hidden="true">→</span>
+                <span>{imp.tldr}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </a>
 
       {/* ── Release calendar ─────────────────────────────────────────────────
           Top-of-page cluster: what just dropped + what's coming. Lifted above
