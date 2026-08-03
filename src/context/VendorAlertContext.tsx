@@ -2,8 +2,8 @@ import {
   createContext, useCallback, useContext, useEffect, useRef, useState,
   type ReactNode,
 } from 'react'
-import { useUser } from '@clerk/clerk-react'
 import { useAuthedFetch, useWrapPlus } from './WrapPlusContext'
+import { getRememberedEmail, setRememberedEmail, isValidEmail } from '../lib/rememberedEmail'
 
 export type VendorWatch = {
   vendor_slug: string
@@ -52,7 +52,6 @@ const VendorAlertContext = createContext<VendorAlertContextType>({
  */
 export function VendorAlertProvider({ children }: { children: ReactNode }) {
   const { isPro, isLoaded } = useWrapPlus()
-  const { user } = useUser()
   const authedFetch = useAuthedFetch()
   const authedFetchRef = useRef(authedFetch)
   authedFetchRef.current = authedFetch
@@ -99,11 +98,22 @@ export function VendorAlertProvider({ children }: { children: ReactNode }) {
 
   const toggle = useCallback(
     async (slug: string) => {
-      if (!isPro) return
-      const email = user?.primaryEmailAddress?.emailAddress ?? user?.emailAddresses?.[0]?.emailAddress
-      if (!email) return
-
       const wasWatching = watchedSlugs.has(slug)
+
+      // Adding a watch emails you, so we need a subscriber email. Reuse the
+      // remembered one; prompt on first use. (Removing needs no email.)
+      // Acquire before the optimistic flip so a cancel leaves the UI untouched.
+      let email = ''
+      if (!wasWatching) {
+        email = getRememberedEmail()
+        if (!isValidEmail(email)) {
+          email = (window.prompt(
+            'Enter your subscriber email to get alerts when this vendor’s hiring health changes:',
+            '',
+          ) ?? '').trim()
+          if (!isValidEmail(email)) return
+        }
+      }
 
       setWatchedSlugs(prev => {
         const next = new Set(prev)
@@ -125,7 +135,16 @@ export function VendorAlertProvider({ children }: { children: ReactNode }) {
             method: 'POST',
             body: JSON.stringify({ vendor_slug: slug, email }),
           })
-          if (!r.ok) throw new Error(String(r.status))
+          if (!r.ok) {
+            if (r.status === 403) {
+              const b = await r.json().catch(() => ({} as { error?: string }))
+              if (b.error === 'not_subscribed') {
+                window.alert('Vendor alerts are a free perk for subscribers. Subscribe at /subscribe with this email, then try again.')
+              }
+            }
+            throw new Error(String(r.status))
+          }
+          setRememberedEmail(email)
           void refresh()
         }
       } catch {
@@ -137,7 +156,7 @@ export function VendorAlertProvider({ children }: { children: ReactNode }) {
         })
       }
     },
-    [isPro, user, watchedSlugs, refresh],
+    [watchedSlugs, refresh],
   )
 
   const setAllActive = useCallback(async (active: boolean) => {

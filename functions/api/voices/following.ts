@@ -3,9 +3,9 @@
 // Returns the authenticated Wrap+ member's follow set + digest state.
 // Used by FollowContext on page load and by the /voices/following page.
 
-import { requirePlus, type RequirePlusEnv } from '../_lib/requirePlus'
+import { requireAnon } from '../_lib/requireAnon'
 
-interface Env extends RequirePlusEnv {
+interface Env {
   JOBS_DB: D1Database
 }
 
@@ -25,8 +25,8 @@ type StateRow = {
   last_sent_at: string | null
 }
 
-export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
-  const auth = await requirePlus(request, env)
+export const onRequestGet: PagesFunction<Env> = async ({ env, data }) => {
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   const [{ results: sourceRows }, stateRow] = await Promise.all([
@@ -59,8 +59,8 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
 // PATCH /api/voices/following
 // Toggle digest delivery on/off. Body: { active: boolean }. No-op if the
 // user has never followed anything (no digest_state row to update).
-export const onRequestPatch: PagesFunction<Env> = async ({ request, env }) => {
-  const auth = await requirePlus(request, env)
+export const onRequestPatch: PagesFunction<Env> = async ({ request, env, data }) => {
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   let body: { active?: unknown }

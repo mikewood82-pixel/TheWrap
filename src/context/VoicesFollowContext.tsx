@@ -2,8 +2,8 @@ import {
   createContext, useCallback, useContext, useEffect, useRef, useState,
   type ReactNode,
 } from 'react'
-import { useUser } from '@clerk/clerk-react'
 import { useAuthedFetch, useWrapPlus } from './WrapPlusContext'
+import { getRememberedEmail, setRememberedEmail, isValidEmail } from '../lib/rememberedEmail'
 
 /**
  * A followed voice source as returned by GET /api/voices/following. Mirrors
@@ -65,7 +65,6 @@ const VoicesFollowContext = createContext<VoicesFollowContextType>({
  */
 export function VoicesFollowProvider({ children }: { children: ReactNode }) {
   const { isPro, isLoaded } = useWrapPlus()
-  const { user } = useUser()
   const authedFetch = useAuthedFetch()
 
   const authedFetchRef = useRef(authedFetch)
@@ -114,11 +113,23 @@ export function VoicesFollowProvider({ children }: { children: ReactNode }) {
 
   const toggle = useCallback(
     async (slug: string) => {
-      if (!isPro) return
-      const email = user?.primaryEmailAddress?.emailAddress ?? user?.emailAddresses?.[0]?.emailAddress
-      if (!email) return
-
       const wasFollowing = followedSlugs.has(slug)
+
+      // Following opts you into the Tuesday digest, so we need a subscriber
+      // email. Reuse the remembered one; prompt on first use. (Unfollowing
+      // needs no email.) Acquire it before the optimistic flip so a cancel
+      // leaves the UI untouched.
+      let email = ''
+      if (!wasFollowing) {
+        email = getRememberedEmail()
+        if (!isValidEmail(email)) {
+          email = (window.prompt(
+            'Enter your subscriber email to follow this voice and get the Tuesday digest:',
+            '',
+          ) ?? '').trim()
+          if (!isValidEmail(email)) return
+        }
+      }
 
       setFollowedSlugs(prev => {
         const next = new Set(prev)
@@ -144,7 +155,16 @@ export function VoicesFollowProvider({ children }: { children: ReactNode }) {
             method: 'POST',
             body: JSON.stringify({ source_slug: slug, email }),
           })
-          if (!r.ok) throw new Error(String(r.status))
+          if (!r.ok) {
+            if (r.status === 403) {
+              const b = await r.json().catch(() => ({} as { error?: string }))
+              if (b.error === 'not_subscribed') {
+                window.alert('The Tuesday digest is a free perk for subscribers. Subscribe at /subscribe with this email, then follow.')
+              }
+            }
+            throw new Error(String(r.status))
+          }
+          setRememberedEmail(email)
           // Pull the freshly-followed source row so /voices/following can render it.
           void refresh()
         }
@@ -158,7 +178,7 @@ export function VoicesFollowProvider({ children }: { children: ReactNode }) {
         })
       }
     },
-    [isPro, user, followedSlugs, refresh],
+    [followedSlugs, refresh],
   )
 
   const setDigestActive = useCallback(async (active: boolean) => {

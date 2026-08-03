@@ -13,7 +13,6 @@ import SubscribePage from './pages/SubscribePage'
 import AboutPage from './pages/AboutPage'
 import EventsPage from './pages/EventsPage'
 import SponsorshipPage from './pages/SponsorshipPage'
-import ReferralPage from './pages/ReferralPage'
 import AssistantPage from './pages/AssistantPage'
 import JobsPage from './pages/JobsPage'
 import JobDetailPage from './pages/JobDetailPage'
@@ -51,7 +50,6 @@ function App() {
             </>
           )}
           <Route path="sponsorship" element={<SponsorshipPage />} />
-          <Route path="referral" element={<ReferralPage />} />
           <Route path="assistant" element={<AssistantPage />} />
           <Route path="labor-market" element={<LaborMarketPage />} />
           <Route path="events" element={<EventsPage />} />

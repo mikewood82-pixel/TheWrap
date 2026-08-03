@@ -3,20 +3,22 @@
 // POST   → follow a voice source. Body: { source_slug, email }
 // DELETE → unfollow a voice source. Body: { source_slug }
 //
-// Both require an active Wrap+ subscription (see requirePlus()).
-// On first follow, a voices_digest_state row is created so the Tuesday
-// digest cron knows where to email. Subsequent follows just upsert the
-// email (Clerk may have updated it in the meantime).
+// Identity is the anonymous wrap_anon cookie (see requireAnon.ts). The follow
+// email must belong to an active newsletter subscriber (the Tuesday digest is
+// a subscriber perk). On first follow, a voices_digest_state row is created so
+// the digest cron knows where to email; subsequent follows upsert the email.
 
-import { requirePlus, type RequirePlusEnv } from '../_lib/requirePlus'
+import { requireAnon } from '../_lib/requireAnon'
+import { isSubscriber } from '../_lib/isSubscriber'
 
-interface Env extends RequirePlusEnv {
+interface Env {
   JOBS_DB: D1Database
+  DB: D1Database
 }
 
 // -------- POST: follow --------
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
-  const auth = await requirePlus(request, env)
+export const onRequestPost: PagesFunction<Env> = async ({ request, env, data }) => {
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   let body: { source_slug?: unknown; email?: unknown }
@@ -29,6 +31,10 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : ''
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return json({ error: 'invalid_email' }, 400)
+  }
+  // The Tuesday digest is a newsletter-subscriber perk (no accounts anymore).
+  if (!(await isSubscriber(env.DB, email))) {
+    return json({ error: 'not_subscribed' }, 403)
   }
 
   const src = await env.JOBS_DB.prepare(
@@ -62,8 +68,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 }
 
 // -------- DELETE: unfollow --------
-export const onRequestDelete: PagesFunction<Env> = async ({ request, env }) => {
-  const auth = await requirePlus(request, env)
+export const onRequestDelete: PagesFunction<Env> = async ({ request, env, data }) => {
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   let body: { source_slug?: unknown }

@@ -1,14 +1,13 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { SignInButton, UserButton, useUser } from '@clerk/clerk-react'
 import { Menu, X } from 'lucide-react'
 import { FEATURES } from '../config/features'
 
-// ─── Wrap+ is free for all subscribers (2026-05-22 pivot) ─────────────
-// The nav used to include a "Wrap+" upsell link + a "Wrap+" badge for
-// signed-in paying users. After the free-for-all pivot, both are gone —
-// every nav slot is the same for everyone. See the plan at
-// C:\Users\mikew\.claude\plans\elegant-crafting-gizmo.md
+// ─── No accounts (2026-08-03) ─────────────────────────────────────────
+// Wrap+ went free for everyone on 2026-05-22, which left the Clerk "Sign in"
+// button with nothing to gate. Sign-in was removed entirely; per-user
+// features (saved jobs, alerts, follows) now hang off an anonymous cookie.
+// So the nav has no auth affordance — just links + Subscribe.
 // ──────────────────────────────────────────────────────────────────────
 
 // /sponsorship is intentionally absent: the page and its route still exist and
@@ -31,7 +30,6 @@ const voicesLink = { to: '/voices', label: 'Voices' }
 type NavLinkItem = { to: string; label: string; highlight?: boolean }
 
 export default function Nav() {
-  const { isSignedIn } = useUser()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   // Compose the nav in reading order. Voices sits immediately after Archive
@@ -74,20 +72,12 @@ export default function Nav() {
           </nav>
 
           <div className="flex items-center gap-3">
-            {FEATURES.PLUS_ENABLED && !isSignedIn && (
-              <SignInButton mode="modal">
-                <button className="hidden sm:inline text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">
-                  Sign in
-                </button>
-              </SignInButton>
-            )}
             <Link
               to="/subscribe"
               className="bg-brand-terracotta text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-brand-orange transition-colors"
             >
               Subscribe
             </Link>
-            {FEATURES.PLUS_ENABLED && isSignedIn && <UserButton afterSignOutUrl="/" />}
 
             <button
               onClick={() => setMobileOpen(o => !o)}

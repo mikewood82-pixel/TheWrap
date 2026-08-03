@@ -1,18 +1,18 @@
 // /api/jobs/watchlist
 //
-// GET  → list the authenticated Wrap+ member's saved jobs, newest first.
-// POST → save a job for the authenticated member. Idempotent (re-saving a
-//        job updates its saved_at and replaces the note rather than erroring).
+// GET  → list this browser's saved jobs, newest first.
+// POST → save a job for this browser. Idempotent (re-saving a job updates its
+//        saved_at and replaces the note rather than erroring).
 //
-// Both methods require a valid Clerk session JWT (Bearer) for a Plus-active
-// user — see functions/api/_lib/requirePlus.ts.
+// Identity is the anonymous wrap_anon cookie (see requireAnon.ts) — no account
+// and no email required; saving a job is open to everyone.
 //
 // Job rows include status so the client can badge closed-but-saved roles
 // differently instead of silently hiding them.
 
-import { requirePlus, type RequirePlusEnv } from '../../_lib/requirePlus'
+import { requireAnon } from '../../_lib/requireAnon'
 
-interface Env extends RequirePlusEnv {
+interface Env {
   JOBS_DB: D1Database
 }
 
@@ -35,8 +35,8 @@ type WatchlistJobRow = {
 }
 
 // -------- GET: list saved jobs --------
-export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
-  const auth = await requirePlus(request, env)
+export const onRequestGet: PagesFunction<Env> = async ({ env, data }) => {
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   const { results } = await env.JOBS_DB.prepare(
@@ -60,8 +60,8 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
 }
 
 // -------- POST: save a job --------
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
-  const auth = await requirePlus(request, env)
+export const onRequestPost: PagesFunction<Env> = async ({ request, env, data }) => {
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   let body: { job_id?: unknown; note?: unknown }
