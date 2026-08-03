@@ -5,17 +5,17 @@
 //
 // Both require the authed caller to own the alert row.
 
-import { requirePlus, type RequirePlusEnv } from '../../_lib/requirePlus'
+import { requireAnon } from '../../_lib/requireAnon'
 
-interface Env extends RequirePlusEnv {
+interface Env {
   JOBS_DB: D1Database
 }
 
 // ---- DELETE ------------------------------------------------------------------
 export const onRequestDelete: PagesFunction<Env, 'id'> = async ({
-  request, env, params,
+  env, params, data,
 }) => {
-  const auth = await requirePlus(request, env)
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   const alertId = Number(params.id)
@@ -35,9 +35,9 @@ export const onRequestDelete: PagesFunction<Env, 'id'> = async ({
 
 // ---- PATCH -------------------------------------------------------------------
 export const onRequestPatch: PagesFunction<Env, 'id'> = async ({
-  request, env, params,
+  request, env, params, data,
 }) => {
-  const auth = await requirePlus(request, env)
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   const alertId = Number(params.id)

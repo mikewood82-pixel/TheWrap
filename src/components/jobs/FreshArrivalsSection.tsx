@@ -1,27 +1,19 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { SignInButton, useAuth } from '@clerk/clerk-react'
-import { Sparkles, ArrowRight } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 import { FEATURES } from '../../config/features'
-import { useWrapPlus } from '../../context/WrapPlusContext'
 import JobCard, { type JobListItem } from './JobCard'
 
 const FRESH_HOURS = 24
 const PREVIEW_LIMIT = 6
 
 /**
- * Wrap+ "Early-bird" feed surfaced above the main /jobs listing.
+ * "Early-bird" feed surfaced above the main /jobs listing — the 6 most recent
+ * roles from the past 24h. Free for everyone (the old Wrap+ paywall variant
+ * was retired with sign-in on 2026-08-03).
  *
- * Renders nothing when Plus is globally disabled, when the viewer's Plus/auth
- * status hasn't hydrated yet, or when there are zero fresh roles. Otherwise:
- *   - Plus member → live grid of the 6 most recent roles from the past 24h
- *   - Signed-in free user → paywall card with the real count + subscribe CTA
- *   - Signed-out → paywall card with sign-in-to-subscribe CTA
- *
- * The underlying data comes from the public /api/jobs/search?fresh_hours=24
- * endpoint; gating is purely presentational. Moving gating to the API layer
- * buys nothing here (the filter is a trivial SQL predicate anyone could
- * construct) and would complicate caching.
+ * Renders nothing when there are zero fresh roles — an empty "Fresh arrivals"
+ * section would read as broken rather than as a quiet day. Data comes from the
+ * public /api/jobs/search?fresh_hours=24 endpoint.
  */
 export default function FreshArrivalsSection() {
   if (!FEATURES.PLUS_ENABLED) return null
@@ -29,9 +21,6 @@ export default function FreshArrivalsSection() {
 }
 
 function Inner() {
-  const { isPro, isLoaded: plusLoaded } = useWrapPlus()
-  const { isSignedIn, isLoaded: authLoaded } = useAuth()
-
   const [jobs, setJobs] = useState<JobListItem[]>([])
   const [total, setTotal] = useState<number | null>(null)
   const [loading, setLoading] = useState(true)
@@ -55,16 +44,10 @@ function Inner() {
     return () => ctrl.abort()
   }, [])
 
-  // Wait for Plus + auth hydration so we don't flash the wrong variant.
-  if (!plusLoaded || !authLoaded) return null
-  // No fresh roles → hide entirely. An empty "Fresh arrivals" section would
-  // read as broken rather than as a quiet day.
+  // No fresh roles → hide entirely.
   if (!loading && (total === null || total === 0)) return null
 
-  if (isPro) {
-    return <ProView jobs={jobs} total={total ?? 0} loading={loading} />
-  }
-  return <PaywallView total={total ?? 0} isSignedIn={!!isSignedIn} />
+  return <ProView jobs={jobs} total={total ?? 0} loading={loading} />
 }
 
 function ProView({
@@ -106,49 +89,6 @@ function ProView({
           ))}
         </div>
       )}
-    </section>
-  )
-}
-
-function PaywallView({ total, isSignedIn }: { total: number; isSignedIn: boolean }) {
-  return (
-    <section className="mb-8 bg-gradient-to-br from-amber-50 to-orange-50/70 border border-amber-200 rounded-xl p-6 md:p-8">
-      <div className="flex flex-col md:flex-row md:items-center gap-5 md:gap-8">
-        <div className="flex-1">
-          <div className="flex items-center gap-2 mb-2">
-            <Sparkles size={16} className="text-brand-terracotta" />
-            <span className="text-[10px] font-bold bg-brand-gold text-brand-dark rounded-full px-2 py-0.5 tracking-wide">
-              WRAP+
-            </span>
-          </div>
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-brand-dark leading-tight mb-2">
-            {total.toLocaleString()} fresh role{total === 1 ? '' : 's'} in the past 24 hours
-          </h2>
-          <p className="text-sm text-brand-muted max-w-prose leading-relaxed">
-            Wrap+ members see the Early-bird feed — roles that just hit the board,
-            separated from the full list so you don't have to scan through a thousand
-            listings to find what's new.
-          </p>
-        </div>
-        <div className="shrink-0">
-          {isSignedIn ? (
-            <Link
-              to="/subscribe"
-              className="inline-flex items-center justify-center gap-2 bg-brand-terracotta text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-orange transition-colors whitespace-nowrap"
-            >
-              Upgrade to Wrap+
-              <ArrowRight size={16} />
-            </Link>
-          ) : (
-            <SignInButton mode="modal">
-              <button className="inline-flex items-center justify-center gap-2 bg-brand-terracotta text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-orange transition-colors whitespace-nowrap">
-                Sign in to upgrade
-                <ArrowRight size={16} />
-              </button>
-            </SignInButton>
-          )}
-        </div>
-      </div>
     </section>
   )
 }

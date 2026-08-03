@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { SignInButton, useAuth } from '@clerk/clerk-react'
 import { ArrowLeft, ArrowRight, Bell, Trash2, Zap, ZapOff } from 'lucide-react'
 import SEO from '../components/SEO'
 import { FEATURES } from '../config/features'
-import { useAuthedFetch, useWrapPlus } from '../context/WrapPlusContext'
+import { useAuthedFetch } from '../context/WrapPlusContext'
 
 type SavedQuery = {
   q: string
@@ -30,18 +29,13 @@ type AlertItem = {
 /**
  * /jobs/alerts — manage saved searches.
  *
- * Same three-state gate as SavedJobsPage: signed-out → prompt, free →
- * upgrade, Plus → live list. Keeps the route registered for all users so
- * email deep-links don't 404 when someone isn't signed in.
+ * Alerts are keyed on the anonymous wrap_anon cookie (no sign-in). The list
+ * shows this browser's alerts; creating one (from the jobs board) requires a
+ * subscriber email. Route stays registered for all users so email deep-links
+ * don't 404.
  */
 export default function AlertsPage() {
   if (!FEATURES.PLUS_ENABLED) return <ComingSoon />
-  return <Gate />
-}
-
-function Gate() {
-  const { isPro, isLoaded: plusLoaded } = useWrapPlus()
-  const { isSignedIn, isLoaded: authLoaded } = useAuth()
 
   return (
     <div className="bg-brand-light min-h-screen">
@@ -57,15 +51,7 @@ function Gate() {
           </p>
         </header>
 
-        {!plusLoaded || !authLoaded ? (
-          <div className="text-brand-muted text-sm">Loading...</div>
-        ) : !isSignedIn ? (
-          <SignedOutPrompt />
-        ) : !isPro ? (
-          <UpgradePrompt />
-        ) : (
-          <AlertsList />
-        )}
+        <AlertsList />
       </div>
     </div>
   )
@@ -323,36 +309,6 @@ function QuerySummary({ query }: { query: SavedQuery }) {
           {c}
         </span>
       ))}
-    </div>
-  )
-}
-
-function UpgradePrompt() {
-  return (
-    <div className="bg-gradient-to-br from-amber-50 to-orange-50/70 border border-amber-200 rounded-xl p-8 text-center">
-      <Bell size={28} className="mx-auto text-brand-terracotta mb-3" />
-      <h2 className="font-serif text-2xl text-brand-dark mb-2">Alerts are a Wrap+ feature</h2>
-      <p className="text-sm text-brand-muted max-w-md mx-auto mb-6">
-        Save any filter combo — "Remote Senior PM", "Gusto + Lattice + Engineering", whatever — and
-        get a daily digest of new roles without re-scanning the board.
-      </p>
-      <Link to="/subscribe" className="inline-flex items-center gap-2 bg-brand-terracotta text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-orange transition-colors">
-        Upgrade to Wrap+ <ArrowRight size={16} />
-      </Link>
-    </div>
-  )
-}
-
-function SignedOutPrompt() {
-  return (
-    <div className="bg-white border border-brand-border rounded-xl p-8 text-center">
-      <Bell size={28} className="mx-auto text-brand-border mb-3" />
-      <h2 className="font-serif text-2xl text-brand-dark mb-2">Sign in to manage your alerts</h2>
-      <SignInButton mode="modal">
-        <button className="inline-flex items-center gap-2 bg-brand-terracotta text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-orange transition-colors">
-          Sign in <ArrowRight size={16} />
-        </button>
-      </SignInButton>
     </div>
   )
 }

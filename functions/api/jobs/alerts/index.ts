@@ -1,14 +1,19 @@
 // /api/jobs/alerts
 //
-// GET  → list the authenticated Wrap+ member's saved searches, newest first.
+// GET  → list this browser's saved searches (keyed on the wrap_anon cookie),
+//        newest first.
 // POST → create a new saved search from a filter payload + display name.
+//        Requires an email that belongs to an active newsletter subscriber.
 //
-// Both methods require an active Wrap+ subscription. See requirePlus().
+// Identity is the anonymous cookie (see functions/api/_lib/requireAnon.ts);
+// there are no accounts.
 
-import { requirePlus, type RequirePlusEnv } from '../../_lib/requirePlus'
+import { requireAnon } from '../../_lib/requireAnon'
+import { isSubscriber } from '../../_lib/isSubscriber'
 
-interface Env extends RequirePlusEnv {
+interface Env {
   JOBS_DB: D1Database
+  DB: D1Database
 }
 
 // ---- The canonical saved-search shape ---------------------------------------
@@ -45,8 +50,8 @@ type AlertPayload = Omit<AlertRow, 'clerk_user_id' | 'query_json'> & {
 }
 
 // ---- GET ---------------------------------------------------------------------
-export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
-  const auth = await requirePlus(request, env)
+export const onRequestGet: PagesFunction<Env> = async ({ env, data }) => {
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   const { results } = await env.JOBS_DB.prepare(
@@ -64,8 +69,8 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
 }
 
 // ---- POST --------------------------------------------------------------------
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
-  const auth = await requirePlus(request, env)
+export const onRequestPost: PagesFunction<Env> = async ({ request, env, data }) => {
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   let body: {
@@ -78,6 +83,10 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : ''
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return json({ error: 'invalid_email' }, 400)
+  }
+  // Alerts are a newsletter-subscriber perk (no accounts anymore).
+  if (!(await isSubscriber(env.DB, email))) {
+    return json({ error: 'not_subscribed' }, 403)
   }
   const name = typeof body.name === 'string' ? body.name.trim().slice(0, 120) : ''
   if (!name) return json({ error: 'missing_name' }, 400)

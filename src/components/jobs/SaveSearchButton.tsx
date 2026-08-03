@@ -1,18 +1,19 @@
 import { useState } from 'react'
-import { useUser } from '@clerk/clerk-react'
+import { Link } from 'react-router-dom'
 import { Bell, Check, X } from 'lucide-react'
 import { FEATURES } from '../../config/features'
 import { useAuthedFetch, useWrapPlus } from '../../context/WrapPlusContext'
+import { getRememberedEmail, setRememberedEmail, isValidEmail } from '../../lib/rememberedEmail'
 import type { JobsFilterState } from './JobsFilters'
 
 /**
- * "Save as alert" entry point on /jobs. Hidden entirely for non-Plus viewers
- * (Plus gating is UX-only — the underlying API already enforces requirePlus).
+ * "Save as alert" entry point on /jobs.
  *
- * Clicking opens a small modal prompt for a name. On submit the current
- * filters + the user's primary Clerk email are POSTed to /api/jobs/alerts
- * and the GHA cron will start including matching roles in tomorrow morning's
- * digest.
+ * Clicking opens a small modal prompting for a name + the email to send the
+ * digest to. Alerts are a newsletter-subscriber perk, so the email must belong
+ * to an active subscriber (the server enforces this and returns `not_subscribed`
+ * otherwise). On submit the current filters are POSTed to /api/jobs/alerts and
+ * the GHA cron starts including matching roles in tomorrow morning's digest.
  */
 export default function SaveSearchButton({ filters }: { filters: JobsFilterState }) {
   const { isPro, isLoaded } = useWrapPlus()
@@ -52,23 +53,23 @@ function SaveAlertModal({
   filters: JobsFilterState
   onClose: () => void
 }) {
-  const { user } = useUser()
   const authedFetch = useAuthedFetch()
   const [name, setName] = useState(() => suggestName(filters))
+  const [email, setEmail] = useState(getRememberedEmail)
   const [state, setState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
-
-  const email = user?.primaryEmailAddress?.emailAddress ?? ''
+  // When true, the error is "you're not a subscriber" — show a Subscribe CTA.
+  const [needsSubscribe, setNeedsSubscribe] = useState(false)
 
   async function submit() {
-    if (!email) { setErrorMsg('Your Clerk account has no email on file.'); setState('error'); return }
+    if (!isValidEmail(email)) { setErrorMsg('Enter a valid email.'); setNeedsSubscribe(false); setState('error'); return }
     if (!name.trim()) return
-    setState('saving'); setErrorMsg('')
+    setState('saving'); setErrorMsg(''); setNeedsSubscribe(false)
     try {
       const res = await authedFetch('/api/jobs/alerts', {
         method: 'POST',
         body: JSON.stringify({
-          email,
+          email: email.trim(),
           name: name.trim(),
           query: {
             q: filters.q,
@@ -83,17 +84,23 @@ function SaveAlertModal({
       })
       if (!res.ok) {
         const body = await res.json().catch(() => ({} as { error?: string; limit?: number }))
+        if (body.error === 'not_subscribed') {
+          setErrorMsg('Alerts are a free perk for subscribers. Subscribe with this email, then save your alert.')
+          setNeedsSubscribe(true); setState('error'); return
+        }
         const msg = body.error === 'alert_limit_reached'
           ? `You've reached the ${body.limit ?? 20}-alert limit.`
           : body.error === 'query_too_broad'
             ? 'Add at least one real filter before saving.'
             : `Couldn't save (${res.status}).`
-        setErrorMsg(msg); setState('error'); return
+        setErrorMsg(msg); setNeedsSubscribe(false); setState('error'); return
       }
+      setRememberedEmail(email)
       setState('saved')
       setTimeout(onClose, 1600)
     } catch {
       setErrorMsg('Network error. Try again.')
+      setNeedsSubscribe(false)
       setState('error')
     }
   }
@@ -116,7 +123,7 @@ function SaveAlertModal({
               Save this search as an alert
             </h2>
             <p className="text-xs text-brand-muted mt-1">
-              We'll email you matching roles once a day. Sent to <strong>{email || '(no email on file)'}</strong>.
+              We'll email you matching roles once a day. Free for newsletter subscribers.
             </p>
           </div>
           <button onClick={onClose} aria-label="Close" className="text-brand-muted hover:text-brand-dark shrink-0">
@@ -138,10 +145,28 @@ function SaveAlertModal({
           className="w-full px-3 py-2 bg-white border border-brand-border rounded-lg focus:outline-none focus:border-brand-terracotta text-sm"
         />
 
+        <label className="block text-xs font-semibold text-brand-muted uppercase tracking-wide mb-1.5 mt-4">
+          Email
+        </label>
+        <input
+          type="email"
+          value={email}
+          maxLength={200}
+          onChange={e => setEmail(e.target.value)}
+          onKeyDown={e => { if (e.key === 'Enter' && state !== 'saving') submit() }}
+          placeholder="you@example.com"
+          className="w-full px-3 py-2 bg-white border border-brand-border rounded-lg focus:outline-none focus:border-brand-terracotta text-sm"
+        />
+
         <FilterSummary filters={filters} />
 
         {state === 'error' && (
-          <p className="text-red-600 text-sm mt-3">{errorMsg || 'Something went wrong.'}</p>
+          <p className="text-red-600 text-sm mt-3">
+            {errorMsg || 'Something went wrong.'}
+            {needsSubscribe && (
+              <> <Link to="/subscribe" className="underline font-semibold hover:text-brand-terracotta">Subscribe free</Link>.</>
+            )}
+          </p>
         )}
         {state === 'saved' && (
           <p className="text-green-700 text-sm mt-3 flex items-center gap-1.5">

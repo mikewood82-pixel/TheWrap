@@ -6,12 +6,16 @@
 // DELETE → remove a watch. Body: { vendor_slug }
 // PATCH  → pause/resume. Body: { active: boolean } (scope: all user's watches)
 //
-// All methods require an active Wrap+ subscription.
+// Identity is the anonymous wrap_anon cookie (see requireAnon.ts). Adding a
+// watch (POST) requires an email that belongs to an active newsletter
+// subscriber, since the alerts are delivered by email.
 
-import { requirePlus, type RequirePlusEnv } from '../_lib/requirePlus'
+import { requireAnon } from '../_lib/requireAnon'
+import { isSubscriber } from '../_lib/isSubscriber'
 
-interface Env extends RequirePlusEnv {
+interface Env {
   JOBS_DB: D1Database
+  DB: D1Database
 }
 
 type WatchRow = {
@@ -26,8 +30,8 @@ type WatchRow = {
 }
 
 // -------- GET --------
-export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
-  const auth = await requirePlus(request, env)
+export const onRequestGet: PagesFunction<Env> = async ({ env, data }) => {
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   // For each watch, also pull the latest known verdict (if any) + live open_jobs
@@ -73,8 +77,8 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
 }
 
 // -------- POST --------
-export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
-  const auth = await requirePlus(request, env)
+export const onRequestPost: PagesFunction<Env> = async ({ request, env, data }) => {
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   let body: { vendor_slug?: unknown; email?: unknown }
@@ -87,6 +91,10 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : ''
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return json({ error: 'invalid_email' }, 400)
+  }
+  // Vendor alerts are a newsletter-subscriber perk (no accounts anymore).
+  if (!(await isSubscriber(env.DB, email))) {
+    return json({ error: 'not_subscribed' }, 403)
   }
 
   // Confirm vendor exists in vendor_ats (FK would catch it but an explicit
@@ -115,8 +123,8 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 }
 
 // -------- DELETE --------
-export const onRequestDelete: PagesFunction<Env> = async ({ request, env }) => {
-  const auth = await requirePlus(request, env)
+export const onRequestDelete: PagesFunction<Env> = async ({ request, env, data }) => {
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   let body: { vendor_slug?: unknown }
@@ -137,8 +145,8 @@ export const onRequestDelete: PagesFunction<Env> = async ({ request, env }) => {
 // Two shapes:
 //   { active: boolean }                      → pause/resume all watches
 //   { vendor_slug, webhook_url|null }         → set/clear webhook on one watch
-export const onRequestPatch: PagesFunction<Env> = async ({ request, env }) => {
-  const auth = await requirePlus(request, env)
+export const onRequestPatch: PagesFunction<Env> = async ({ request, env, data }) => {
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   let body: { active?: unknown; vendor_slug?: unknown; webhook_url?: unknown }

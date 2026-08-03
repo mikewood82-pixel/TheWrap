@@ -3,16 +3,16 @@
 // Removes a saved job for the authenticated Wrap+ member. Returns 204 whether
 // or not the row existed — idempotent un-save from the client's perspective.
 
-import { requirePlus, type RequirePlusEnv } from '../../_lib/requirePlus'
+import { requireAnon } from '../../_lib/requireAnon'
 
-interface Env extends RequirePlusEnv {
+interface Env {
   JOBS_DB: D1Database
 }
 
 export const onRequestDelete: PagesFunction<Env, 'job_id'> = async ({
-  request, env, params,
+  env, params, data,
 }) => {
-  const auth = await requirePlus(request, env)
+  const auth = requireAnon(data)
   if (auth instanceof Response) return auth
 
   const jobId = Number(params.job_id)
