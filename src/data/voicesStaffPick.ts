@@ -17,12 +17,9 @@ export type VoicesStaffPick = {
 
 export const voicesStaffPick: VoicesStaffPick = {
   enabled: true,
-  sourceSlug: 'beacon-turn',
-  // Matches "The Turn: Introducing the Workforce Data Explorer" (2026-07-21).
-  // Pairs with edition #82's Lance Haun story, which links the same post.
-  // Substring skips the "The Turn:" newsletter prefix, which is the part most
-  // likely to get reworded.
-  matchTitle: 'introducing the workforce data explorer',
+  sourceSlug: 'robin-schooling',
+  // Matches "Moths, Mason Jars and the Secret Lives of Our Coworkers" (2026-07-31).
+  matchTitle: 'moths, mason jars and the secret lives of our coworkers',
 }
 
 // Normalize smart quotes and case so config written with plain ASCII still
