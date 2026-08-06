@@ -31,6 +31,103 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'work-will-always-be-there',
+    date: 'August 7, 2026',
+    title: 'Work Will Always Be There. These Moments Won’t.',
+    tag: 'Life & Work',
+    excerpt:
+      'No pearls of HR tech wisdom this week — just a reminder, from the edge of the annual family beach trip, that the spreadsheet doesn’t know your kids’ names. Work will always be there; these moments won’t.',
+    body: `
+<img src="/newsletters/edition-84/corolla-family-beach.webp" alt="A family wading in the ocean surf at the Outer Banks — an older woman and a man each holding hands with two young children, beach houses lining the dunes behind them" />
+
+<p>All week I’ve been thinking about what I’m going to write before I head out for the Outer Banks for the annual Wood family gathering in Corolla, but alas, I don’t have any pearls of HR tech wisdom this week. Hiring is still broken. AI is still the hottest business topic since “leaning in.” It’s still trendy to lay off your workforce. So I’ll just take a moment to address what’s really important: having a life outside of work.</p>
+
+<p>As my buddy Laurie Ruettimann puts it in her book <em>Betting on You</em>, <a href="https://laurieruettimann.com/your-work-is-not-your-worth/">your work is not your worth</a>. As this newsletter tells you every week, your company will get rid of you without a second thought if it means saving a buck down the line with AI. It doesn’t matter if you feel integral to the company’s success, or that you have mouths to feed and bills to pay. You are a line item. The spreadsheet does not know your kids’ names.</p>
+
+<p>Here’s the part that gets me, though. This is an industry that sells belonging. There’s a whole category of software built on the premise that your employer is a community, that engagement is a number you can move, that culture is a thing you can procure. Somebody is right now building a dashboard to tell a CHRO how connected their people feel, and that dashboard will still be live and green on the morning the RIF notices go out.</p>
+
+<p>So to be clear: I’m not telling anyone to care less about a job they need. Plenty of you are reading this mid-layoff, or one reorg away from it, and “decouple from your paycheck” is easy advice to give and expensive advice to take. But there’s a difference between needing the job and letting it hold the deed to your identity.</p>
+
+<p>And I’m not saying don’t do good work, either. Do great work you’re proud of. Take the craft seriously, because the craft is yours and it travels with you. Then unplug. Go spend time with your kids, your friends, your community. Make real connections with people who don’t appear to you as a tile in a grid. Do something now that you won’t be able to do later, because no matter how hard we all work, time keeps on ticking.</p>
+
+<p>My parents are 76. My mom is slipping further down the Alzheimer’s pit. My dad surprised us last year by letting us know he got a pacemaker put in “but didn’t want us to worry.” My kids are 10 and 6. With my oldest, I used to dream of the days where she’d be more self sufficient and independent. Now I wonder where years 6-10 went.</p>
+
+<p>Time keeps moving and there’s no version of your career that buys this time back.</p>
+
+<p>So I’ll be in Corolla next week at the Sea Jar, the rented mansion my family gets every year, alternating from mornings at the pool to afternoons by the ocean. I’ll wow my siblings and their families with my perfect pancakes, a claim I stand behind and will defend. I’ll destroy my nieces and nephews in Mario Party, without disclosing that I’ve been secretly practicing. I’ll sit on the porch with my parents and laugh at the things I did as a teenager, which they remember in significantly more detail than I do. I’ll take my kids hunting for crabs, and I will be genuinely, embarrassingly invested in whether we find any. And I’ll go for a walk on the beach with no place to go but forward.</p>
+
+<p>No Slack. No email. No Vendor Intel. The Wrap will be back on the 20th.</p>
+
+<p>Work will always be there. These moments won’t.</p>
+
+<p>So — what are you doing this summer that you won’t be able to do later? Hit reply and tell me about it. I’ll run a few of my favorites when I’m back, and I’d rather fill that space with your beach houses and your porches than with another layoff round.</p>
+
+<hr />
+
+<p>Now, having just told you to close your laptop, here’s a whole newsletter to read first. In this week’s Wrap, Indeed pulled the plug on its apply-for-me bot about ten minutes after employers noticed they were being billed for it, Deel says it crossed $1.5 billion in ARR and celebrated by buying a company that catches fake job candidates on video calls, ADP says job-changers are pulling down 7% raises while everyone who stayed put got 4.4%, Korn Ferry found that almost nobody thinks their managers can explain any of this to anyone, and Stacia Garr got a first look at Darwinbox’s ground-up AI rebuild and came away impressed with a couple of very good questions.</p>
+
+<p>Have a great weekend and see you on the 20th!</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Indeed Pauses Auto-Apply After One Month — Application Inflation, Priced Per Unit</h3>
+<img src="/newsletters/edition-84/indeed-apply-for-me.webp" alt="A chrome robotic hand reaching toward a screen labeled “Resumes” with a checkmark, ringed by glowing search and profile icons" />
+<p>Indeed has paused the automatic application mode of Apply For Me, about a month after launching it as a limited test. In an August 4 update, the company said early results were promising — high-quality applications, strong matches, meaningful employer engagement — but that changing how applications get submitted requires new ways of engaging with AI alongside job seekers and employers, and that based on feedback received, automatic mode is off for now.</p>
+<p>I flagged this one in the July 24 edition, in the middle of the Terms of Service piece — an apply-for-me bot that increases the candidate volume Indeed charges employers for. That was the whole thing. You cannot raise the water level and then bill your customers by the gallon. Glad the customers said so out loud.</p>
+<p>This is Application Inflation with a rate card. Every AI-drafted application makes the individual application worth less, and the largest job board in the world briefly built a machine to print them, on a pricing model where the flood is the product.</p>
+<p><a href="https://hrtechfeed.com/indeed-hits-pause-on-apply-for-me-ai-feature-after-employer-pushback/">Read more</a>.</p>
+
+<h3>Deel Says It Crossed $1.5B ARR</h3>
+<img src="/newsletters/edition-84/deel-arr.webp" alt="Portrait of a smiling person in a white sweater seated in a photo studio" />
+<p>Deel announced it surpassed $1.5 billion in annual recurring revenue in the first half of 2026, up from the $1 billion mark it hit in 2025. The figure is company-reported and unaudited. Deel says it now serves more than 40,000 businesses and processes roughly $22 billion in annual payroll across 150-plus countries.</p>
+<p><a href="https://www.calcalistech.com/ctechnews/article/r1nhlgcsge">Read more</a>.</p>
+
+<hr />
+
+<h2>📉 Labor Market</h2>
+
+<h3>ADP: 44,000 Jobs in July, But Job-Changers Just Got a 7% Raise</h3>
+<img src="/newsletters/edition-84/adp-jobs-july.webp" alt="A close-up of a “JOBS — Apply Today, Start Tomorrow” staffing flyer held in someone’s hand at a job fair" />
+<p>Private employers added 44,000 jobs in July, with June revised down from 98,000 to 95,000. Education and health services accounted for 36,000 of the 47,000 service-sector gains. Goods-producing lost 3,000. Leisure and hospitality shed 11,000, trade/transportation/utilities lost 8,000, and professional and business services — the white-collar middle — added just 9,000. The number that matters is on the pay side: job-stayers held flat at 4.4% year-over-year while job-changers jumped to 7%, the largest annual increase since August 2025.</p>
+<p><a href="https://mediacenter.adp.com/2026-08-05-ADP-National-Employment-Report-Private-Sector-Employment-Increased-by-44,000-Jobs-in-July-Annual-Pay-was-Up-4-4">Read more</a>.</p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions</h2>
+
+<p><strong>Deel Acquires Clarity.</strong> Deel picked up Clarity, an Israeli identity-verification and deepfake-detection startup. Its technology is built to catch attackers who fake faces, voices and documents — including in live video interviews — to get hired and gain system access. <a href="https://www.calcalistech.com/ctechnews/article/bkeyex0sgl">Read more</a>.</p>
+
+<hr />
+
+<h2>📊 Research and Reports</h2>
+
+<h3>Korn Ferry: Only 16% of Organizations Think Their Managers Can Explain AI-Driven Pay Changes</h3>
+<img src="/newsletters/edition-84/korn-ferry-pay.webp" alt="A businessman in a suit touching a glowing green “PAYROLL” hexagon on a floating interface ringed with finance and calendar icons" />
+<p>Korn Ferry’s Global Total Rewards Pulse Survey found that just 16% of organizations are confident their managers can explain AI-related pay and work changes to employees. Only 43% agree managers understand reward strategy well enough to communicate it at all, and fewer than a third say managers can effectively explain pay decisions. The report frames the failure point plainly: managers are becoming the weakest link in the reward value chain, and if they can’t explain pay, equity, transparency and AI-related changes, the best-designed rewards strategy still fails at the moment of truth. Korn Ferry’s read on the broader shift is that companies are responding to economic volatility through targeted rewards optimization rather than broad cost cutting, and that AI is no longer a technology issue for rewards but the operating context for pay, skills, mobility and job architecture — with organizations treating it as a side topic likely to find their reward models obsolete. The stated risk isn’t losing on market competitiveness. It’s employee disbelief in whether rewards are credible at all.</p>
+<p><a href="https://hrexecutive.com/study-managers-cant-explain-ai-driven-pay-and-work-changes/">Read more</a>.</p>
+
+<hr />
+
+<h2>🔥 Hot Takes</h2>
+
+<h3>Stacia Garr on Darwinbox Cortex: A Real Leap, With the Data Question Still Open</h3>
+<img src="/newsletters/edition-84/darwinbox-cortex.webp" alt="Screenshot of Stacia Garr’s LinkedIn article “Darwinbox Launches Cortex: A First Look at an AI-Native HCM Rebuild,” with a “We reinvented HCM” banner" />
+<p>Friend of the program Stacia Garr got a first look at Darwinbox Cortex, which launched this week as a rebuild rather than a retrofit — a re-architected HCM built around what Darwinbox calls a Context Graph, the first in the category by its own claim. The system encodes tenant configuration and HR domain knowledge, then generates predicted “Moments” like flight risk, playbooks to act on them, an agent platform that builds workflows conversationally, and an autonomy model set per person and per scenario.</p>
+<p>The number worth stealing from her piece comes from RedThread’s 2026 People Analytics Tech research: 70% of vendors built copilots for 2026, but only 49% built agents. Nearly everyone has AI. Almost nobody has gotten past assist mode, and surfacing a recommendation no longer differentiates anyone from anyone. That’s the gap Cortex is aiming at.</p>
+<p>Garr’s verdict is a positive one — she calls it clearly a leap ahead, and notes the existing Darwinbox core still sits at the center, which she frames as a strength given a decade of encoded HR logic. Her reservation is about the fuel, not the engine: Phase 1 Moments run on HCM data alone, which she flags as a red flag for broad applicability. That’s rich enough for hourly and frontline workforces, but the data that explains a knowledge worker lives in code repositories, calendars and the CRM. RedThread’s 2026 Skills Data Architecture research argues the fix is a semantic layer that harmonizes and governs signals across the business — not another pile of connectors.</p>
+<p>Her closing concern is aimed at the whole market rather than one vendor: when AI moves faster than the humans reviewing it, “human in the loop” collapses into a <a href="https://estsjournal.org/index.php/ests/article/view/260">moral crumple zone</a>, and the practitioner who accepted the recommendation is the one who has to defend it to leadership. Her ask of every vendor in the category is to enable the people running the technology, not just the technology.</p>
+<p><a href="https://www.linkedin.com/pulse/darwinbox-launches-cortex-first-look-ai-native-hcm-rebuild-garr-lcsdc/">Read more</a>.</p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+  `,
+  },
+  {
     slug: 'four-chord-resume',
     date: 'July 31, 2026',
     title: 'I Never Wanna Hear You Say, I Want It That Way',
