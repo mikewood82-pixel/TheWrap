@@ -18,8 +18,10 @@ export type VoicesStaffPick = {
 export const voicesStaffPick: VoicesStaffPick = {
   enabled: true,
   sourceSlug: 'robin-schooling',
-  // Matches "Moths, Mason Jars and the Secret Lives of Our Coworkers" (2026-07-31).
-  matchTitle: 'moths, mason jars and the secret lives of our coworkers',
+  // No matchTitle: always feature Robin Schooling's LATEST post. As of the
+  // 2026-08-07 (#84) swap her newest is "Moths, Mason Jars and the Secret Lives
+  // of Our Coworkers" (2026-07-31); leaving matchTitle unset means the hero
+  // auto-follows any newer post the cron ingests during the 8/8–8/19 break.
 }
 
 // Normalize smart quotes and case so config written with plain ASCII still
