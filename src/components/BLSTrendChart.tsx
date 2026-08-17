@@ -86,7 +86,7 @@ function MiniChart({ data, s }: { data: HistoricalRow[]; s: Series }) {
               fill={s.color}
               fontWeight="600"
             >
-              {p.v}{s.unit}
+              {p.v.toFixed(1)}{s.unit}
             </text>
           </g>
         ))}

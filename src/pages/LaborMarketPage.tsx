@@ -352,7 +352,7 @@ export default function LaborMarketPage() {
       <BLSTrendChart data={bls.historical} />
 
       {/* BLS Historical table */}
-      <div className="overflow-x-auto rounded-xl border border-brand-cream mb-12">
+      <div className="overflow-x-auto rounded-xl border border-brand-cream mb-2">
         <table className="w-full text-sm">
           <thead className="bg-brand-dark text-brand-cream">
             <tr>
@@ -374,6 +374,7 @@ export default function LaborMarketPage() {
           </tbody>
         </table>
       </div>
+      <p className="text-xs text-brand-dark/40 leading-relaxed mb-12">{bls.historicalNote}</p>
 
       {/* ── ADP ─────────────────────────────────────────────────────────────── */}
       <div className="flex items-center gap-3 mb-4 scroll-mt-6" id="adp">

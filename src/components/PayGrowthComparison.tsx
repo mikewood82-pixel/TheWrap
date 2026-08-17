@@ -53,7 +53,7 @@ export default function PayGrowthComparison({ stayer, changer, caption }: Props)
         {/* Stayer bar */}
         <rect x={stayerX} y={stayerY} width={barW} height={stayerH} rx={4} fill={stayerColor} fillOpacity={0.85} />
         <text x={stayerX + barW / 2} y={stayerY - 8} textAnchor="middle" fontSize={18} fontWeight={700} fill={stayerColor}>
-          {stayer}%
+          {stayer.toFixed(1)}%
         </text>
         <text x={stayerX + barW / 2} y={pad.top + cH + 16} textAnchor="middle" fontSize={11} fill="#6b7280">
           Job-Stayers
@@ -65,7 +65,7 @@ export default function PayGrowthComparison({ stayer, changer, caption }: Props)
         {/* Changer bar */}
         <rect x={changerX} y={changerY} width={barW} height={changerH} rx={4} fill={changerColor} fillOpacity={0.85} />
         <text x={changerX + barW / 2} y={changerY - 8} textAnchor="middle" fontSize={18} fontWeight={700} fill={changerColor}>
-          {changer}%
+          {changer.toFixed(1)}%
         </text>
         <text x={changerX + barW / 2} y={pad.top + cH + 16} textAnchor="middle" fontSize={11} fill="#6b7280">
           Job-Changers
