@@ -1,12 +1,12 @@
 const headlines = [
-  { text: 'Sona · $45M Series B to bring AI to the frontline workforce economy', url: 'https://www.prnewswire.com/news-releases/sona-raises-45m-series-b-to-bring-ai-to-the-frontline-economy-302730478.html' },
-  { text: 'Paylocity · acquires AI-native Aidora to automate complex leave management', url: 'https://www.paylocity.com/company/about-us/newsroom/press-releases/paylocity-acquires-ai-native-aidora-to-simplify-leave-management/' },
-  { text: 'Remote · buys Atlas as EOR platforms consolidate for scale', url: 'https://www.unleash.ai/hr-technology/the-five-2026-hr-tech-acquisitions-that-put-hr-buyers-in-a-strong-position/' },
-  { text: 'Rippling · launches AI-powered Data Cloud, taking on the BI stack', url: 'https://techcrunch.com/2026/06/25/parker-conrad-knows-which-employees-are-worth-their-ai-spend-and-says-rippling-can-help-you-too/' },
-  { text: 'Lattice · AI Agent now joins 1:1s with auto summaries + coaching insights', url: 'https://lattice.com/blog/june-2026-product-updates' },
+  { text: 'Deel · buys deepfake-detection startup Clarity in ~$50M, its 15th deal', url: 'https://techfundingnews.com/deel-buys-deepfake-detection-startup-clarity-in-15th-acquisition-as-it-hits-1-5b-in-arr/' },
+  { text: 'Syndio · first-ever acquisition snaps up agentic AI shop Embrace.ai', url: 'https://www.geekwire.com/2026/syndio-bets-on-agentic-ai-with-first-acquisition-in-seattle-pay-equity-startups-history/' },
+  { text: 'Humanly · $25M Series B to deliver pre-vetted candidates on demand', url: 'https://www.geekwire.com/2026/humanly-raises-25m-to-put-ai-to-work-for-job-seekers-not-just-the-companies-hiring-them/' },
+  { text: 'Darwinbox · launches Cortex, an HCM rebuilt from the ground up for AI', url: 'https://techrseries.com/hcm-and-hris/darwinbox-launches-cortex-its-new-ai-native-hcm-platform/' },
+  { text: 'Rippling · AI Spend Console tracks token costs per employee and team', url: 'https://www.rippling.com/blog/introducing-ai-spend-console' },
   { text: 'Workday · Agent Passport ships to test & govern every enterprise AI agent', url: 'https://newsroom.workday.com/2026-06-02-Workday-Launches-Agent-Passport-to-Test,-Verify,-and-Continuously-Monitor-Every-AI-Agent-in-the-Enterprise' },
-  { text: 'Jobs report · US adds just 57K jobs in June, unemployment dips to 4.2%', url: 'https://www.cnbc.com/2026/07/02/jobs-report-june-2026-.html' },
-  { text: 'Non-competes · Tennessee\'s $70K pay floor lands July 1, Virginia bans widen', url: 'https://www.vaquill.ai/blog/non-compete-q3-state-updates' },
+  { text: 'Jobs report · US shed 23K jobs in July, unemployment eases to 4.1%', url: 'https://www.cnbc.com/2026/08/07/jobs-report-july-2026.html' },
+  { text: 'EU AI Act · high-risk hiring rules slip to Dec 2027, transparency lands now', url: 'https://www.joneswalker.com/en/insights/blogs/ai-law-blog/yes-august-2-still-matters-the-eu-approved-a-high-risk-ai-delay-but-most-trans.html' },
 ]
 
 export default function NewsTicker() {
