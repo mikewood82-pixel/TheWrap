@@ -1,9 +1,11 @@
 type Props = {
   stayer: number
   changer: number
+  /** Editorial read on the current premium. Changes cycle to cycle — never hardcode it here. */
+  caption?: string
 }
 
-export default function PayGrowthComparison({ stayer, changer }: Props) {
+export default function PayGrowthComparison({ stayer, changer, caption }: Props) {
   const W = 420
   const H = 200
   const pad = { top: 30, right: 20, bottom: 40, left: 20 }
@@ -51,7 +53,7 @@ export default function PayGrowthComparison({ stayer, changer }: Props) {
         {/* Stayer bar */}
         <rect x={stayerX} y={stayerY} width={barW} height={stayerH} rx={4} fill={stayerColor} fillOpacity={0.85} />
         <text x={stayerX + barW / 2} y={stayerY - 8} textAnchor="middle" fontSize={18} fontWeight={700} fill={stayerColor}>
-          {stayer}%
+          {stayer.toFixed(1)}%
         </text>
         <text x={stayerX + barW / 2} y={pad.top + cH + 16} textAnchor="middle" fontSize={11} fill="#6b7280">
           Job-Stayers
@@ -63,7 +65,7 @@ export default function PayGrowthComparison({ stayer, changer }: Props) {
         {/* Changer bar */}
         <rect x={changerX} y={changerY} width={barW} height={changerH} rx={4} fill={changerColor} fillOpacity={0.85} />
         <text x={changerX + barW / 2} y={changerY - 8} textAnchor="middle" fontSize={18} fontWeight={700} fill={changerColor}>
-          {changer}%
+          {changer.toFixed(1)}%
         </text>
         <text x={changerX + barW / 2} y={pad.top + cH + 16} textAnchor="middle" fontSize={11} fill="#6b7280">
           Job-Changers
@@ -92,7 +94,7 @@ export default function PayGrowthComparison({ stayer, changer }: Props) {
           strokeDasharray="3,3"
         />
       </svg>
-      <p className="text-xs text-brand-dark/40 mt-1 text-center">Narrowest premium since 2020 — weaker case for switching jobs.</p>
+      {caption && <p className="text-xs text-brand-dark/40 mt-1 text-center">{caption}</p>}
     </div>
   )
 }
