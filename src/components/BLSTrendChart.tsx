@@ -69,10 +69,10 @@ function MiniChart({ data, s }: { data: HistoricalRow[]; s: Series }) {
     <div className="bg-white border border-brand-cream rounded-xl p-4">
       <div className="flex items-baseline justify-between mb-1">
         <span className="text-xs text-brand-dark/40 uppercase tracking-wide font-medium">{s.label}</span>
-        <span className="text-xs text-brand-dark/40 tabular-nums">{trendLabel} / 5mo</span>
+        <span className="text-xs text-brand-dark/40 tabular-nums">{trendLabel} / {data.length}mo</span>
       </div>
       <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ overflow: 'visible' }}>
-        <title>{s.label} over 5 months</title>
+        <title>{s.label} over {data.length} months</title>
         <path d={areaPath} fill={s.color} fillOpacity={0.09} />
         <path d={linePath} fill="none" stroke={s.color} strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
         {pts.map((p, i) => (

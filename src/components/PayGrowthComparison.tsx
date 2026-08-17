@@ -1,9 +1,11 @@
 type Props = {
   stayer: number
   changer: number
+  /** Editorial read on the current premium. Changes cycle to cycle — never hardcode it here. */
+  caption?: string
 }
 
-export default function PayGrowthComparison({ stayer, changer }: Props) {
+export default function PayGrowthComparison({ stayer, changer, caption }: Props) {
   const W = 420
   const H = 200
   const pad = { top: 30, right: 20, bottom: 40, left: 20 }
@@ -92,7 +94,7 @@ export default function PayGrowthComparison({ stayer, changer }: Props) {
           strokeDasharray="3,3"
         />
       </svg>
-      <p className="text-xs text-brand-dark/40 mt-1 text-center">Narrowest premium since 2020 — weaker case for switching jobs.</p>
+      {caption && <p className="text-xs text-brand-dark/40 mt-1 text-center">{caption}</p>}
     </div>
   )
 }
