@@ -2,11 +2,20 @@ name: Ingest BLS / FRED for WUI
 
 on:
   schedule:
-    # 7th of each month at 14:30 UTC. BLS Employment Situation (U-3, U-6)
-    # publishes the first Friday; JOLTS (quits rate) for month M-2 is usually
-    # released in the first week of M, so by the 7th the latest WUI-eligible
-    # month should be complete.
-    - cron: '30 14 7 * *'
+    # Twice daily over the first 12 days of the month, 14:30 and 20:30 UTC.
+    #
+    # The WUI needs all three series for a month before it can score it, so the
+    # index only advances once the LAST of them lands. Those two releases move
+    # around: BLS Employment Situation (U-3, U-6) is the first Friday at 12:30
+    # UTC, while JOLTS (quits rate) drifts across the first week — June JOLTS
+    # came Aug 4, July JOLTS lands Sep 1. A single run on the 7th therefore left
+    # the index up to a week stale, depending on where the releases fell.
+    #
+    # The ingest is an idempotent upsert (~800 rows, ~10s), so extra runs are
+    # cheap and a repeat run is a no-op. Two runs a day bounds the lag between
+    # FRED publishing and the site updating to roughly six hours.
+    - cron: '30 14 1-12 * *'
+    - cron: '30 20 1-12 * *'
   workflow_dispatch:
     inputs:
       site_url:
