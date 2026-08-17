@@ -177,7 +177,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'GitHub', 'Google Workspace', 'Salesforce', 'QuickBooks', 'Okta'],
     news: [
-      { headline: 'Rippling appoints Sonia Parandekar as SVP Engineering and India site lead to accelerate global product expansion', date: 'Apr 2026', source: 'Business Wire' },
+      { headline: 'Rippling launches AI Spend Console, tying employee AI token spend to business output', date: 'Aug 2026', source: 'CPA Practice Advisor' },
       { headline: 'Rippling launches Data Cloud to bring AI-powered BI to workforce and operational data', date: 'Jun 2026', source: 'TechCrunch' },
       { headline: 'Rippling expands Dublin HQ, expects up to 150 new jobs', date: 'May 2026', source: 'The Irish Times' },
     ],
@@ -350,7 +350,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'ADP reports Q3 FY2026 results — revenue up 7% to $5.9B, EPS $3.37 beats; FY guidance raised', date: 'Apr 2026', source: 'ADP Investor Relations' },
       { headline: 'ADP DataCloud adds real-time compensation benchmarking for 140+ job families', date: 'Mar 2026', source: 'ADP Newsroom' },
-      { headline: 'ADP reports record Q2 FY2026 new business bookings, citing demand for compliance automation', date: 'Feb 2026', source: 'ADP Investor Relations' },
+      { headline: 'ADP closes FY2026 with revenue up 7% to $21.9B; Q4 adjusted EPS up 17% as AI lifts margins', date: 'Jul 2026', source: 'ADP Investor Relations' },
     ],
     financialHealth: {
       fundingStage: 'Public (NASDAQ: ADP)',
@@ -645,7 +645,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Microsoft Teams', 'Slack', 'SAP', 'Salesforce', 'Workato', 'Zoho'],
     news: [
-      { headline: 'Darwinbox launches GenAI HR assistant in 14 languages for frontline worker accessibility', date: 'Jan 2026', source: 'Darwinbox Blog' },
+      { headline: 'Darwinbox launches Cortex, an AI-native HCM rebuilt around a live organizational Context Graph', date: 'Aug 2026', source: 'People Matters' },
       { headline: 'Darwinbox surpasses 3 million employees managed on platform, doubling from 2024', date: 'Mar 2026', source: 'Darwinbox Newsroom' },
       { headline: 'Darwinbox raises $40M from Ontario Teachers to accelerate North America expansion and AI features', date: 'Apr 2026', source: 'Outlook Business' },
     ],
@@ -737,7 +737,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'Greenhouse ships six AI features for structured hiring — Analytics Agent, Notetaker, MCP', date: 'Jun 2026', source: 'PR Newswire' },
       { headline: 'Greenhouse 2026 Candidate AI Interview Report — 63% have faced an AI interview, 38% walked away', date: 'May 2026', source: 'PR Newswire' },
-      { headline: 'Greenhouse ranked #1 ATS in G2 Spring 2026 Reports across Overall, Enterprise, Mid-Market, and EMEA', date: 'Apr 2026', source: 'PR Newswire' },
+      { headline: 'Greenhouse CEO Daniel Chait argues AI interviews could make the resume obsolete', date: 'Aug 2026', source: 'Forbes' },
     ],
     financialHealth: {
       fundingStage: 'Private (Venture-backed)',
@@ -1337,7 +1337,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: "Paycom earns top payroll provider spot in G2's Summer 2026 Grid Reports", date: 'May 2026', source: 'Business Wire' },
       { headline: 'Paycom Beti payroll self-service reaches 80% employee adoption across its customer base', date: 'Feb 2026', source: 'Paycom Newsroom' },
-      { headline: 'Paycom reports Q4 2025 revenue of $349M, exceeding analyst consensus for third consecutive quarter', date: 'Jan 2026', source: 'Paycom Investor Relations' },
+      { headline: 'Paycom Q2 2026 revenue up 10% to $531M; raises full-year outlook on 44% adjusted EBITDA margin', date: 'Aug 2026', source: 'Paycom Investor Relations' },
     ],
     financialHealth: {
       fundingStage: 'Public (NYSE: PAYC)',
@@ -1395,7 +1395,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Slack', 'QuickBooks', 'Xero', 'Workday', 'Greenhouse', 'Rippling'],
     news: [
       { headline: 'Deel research: 68% of UK employers are dropping experience requirements for early-career roles', date: 'Jun 2026', source: 'Enterprise Times' },
-      { headline: 'Deel reaches $800M ARR and announces plans for direct listing on NYSE in late 2026', date: 'Feb 2026', source: 'Bloomberg' },
+      { headline: 'Deel crosses $1.5B ARR and acquires deepfake-detection startup Clarity — its 15th acquisition', date: 'Aug 2026', source: 'Calcalist' },
       { headline: 'Deel launches Deel AI, automating compliance risk assessment for 150+ countries in real time', date: 'Mar 2026', source: 'Deel Blog' },
     ],
     financialHealth: {
@@ -1454,7 +1454,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['QuickBooks', 'ADP', 'Microsoft 365', 'Slack', 'Indeed', 'Checkr'],
     news: [
-      { headline: 'Paylocity launches Elevate Solutions to help HR and payroll teams scale more efficiently', date: 'Apr 2026', source: 'GlobeNewswire' },
+      { headline: 'Paylocity closes FY2026 with revenue up 11% to $1.77B; guides FY27 to $1.88B–$1.90B', date: 'Aug 2026', source: 'GlobeNewswire' },
       { headline: 'Paylocity embeds Vestwell to connect retirement, payroll, and HR in one experience', date: 'Jun 2026', source: 'GlobeNewswire' },
       { headline: 'Paylocity acquires AI-native Aidora to automate complex, regulated leave management', date: 'Jul 2026', source: 'GlobeNewswire' },
     ],
@@ -1674,7 +1674,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['QuickBooks', 'Xero', 'FreshBooks', 'Slack', 'Greenhouse', 'BambooHR'],
     news: [
       { headline: 'Gusto crosses $1B in revenue — AI handles ~50% of code generation and support, IPO chatter resumes', date: 'May 2026', source: 'TechCrunch' },
-      { headline: 'Gusto brings payroll into Claude and Slack — enabling pay runs without leaving the conversation', date: 'Apr 2026', source: 'CPA Practice Advisor' },
+      { headline: 'Xero launches integrated US payroll powered by Gusto, bundling payroll with accounting', date: 'Aug 2026', source: 'CPA Practice Advisor' },
       { headline: 'Gusto acquires Mosey to close the compliance gap for small businesses with AI-powered state filings', date: 'Apr 2026', source: 'PR Newswire' },
     ],
     financialHealth: {
@@ -1939,7 +1939,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'Workday', 'BambooHR', 'Rippling', 'Google Workspace', 'Microsoft Teams'],
     news: [
-      { headline: 'Lattice Spring/Summer 2026 release embeds AI into growth moments — Agent drafts Growth Areas from review data', date: 'Apr 2026', source: 'Lattice Newsroom' },
+      { headline: 'Lattice HRIS reaches end of life July 31, completing its exit from core HR and payroll', date: 'Jul 2026', source: 'Lattice' },
       { headline: 'Lattice ships reimagined Reviews with faster calibrations and inline comp editing', date: 'May 2026', source: 'Lattice' },
       { headline: 'Lattice launches Workforce Intelligence at Lattiverse, adding Lattice MCP and AI Leverage Insights', date: 'Jun 2026', source: 'PR Newswire' },
     ],
@@ -2185,7 +2185,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'Docebo acquires 365Talents to embed skills intelligence into its AI LMS', date: 'May 2026', source: 'UNLEASH' },
       { headline: 'Docebo unveils most significant release in company history at Inspire 2026 — Companion, MCP Server, AI Tutor, AgentHub', date: 'Apr 2026', source: 'Docebo' },
-      { headline: 'Docebo adds gamification engine with leaderboards and badges to boost learner completion rates', date: 'Mar 2026', source: 'Docebo Newsroom' },
+      { headline: 'Docebo Q2 2026: ARR up 9.5% to $255M, FY guidance raised, substantial issuer bid announced', date: 'Aug 2026', source: 'Docebo Investor Relations' },
     ],
   },
 
@@ -2603,7 +2603,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Snowflake', 'Microsoft Power BI', 'Tableau', 'Databricks', 'Workday', 'Python/R APIs'],
     news: [
       { headline: 'Revelio Labs / CBS News: share of US workers leaving for jobs abroad doubled to 6% (2021–2025)', date: 'May 2026', source: 'CBS News' },
-      { headline: 'Revelio Labs partners with BlackRock and Fidelity to provide workforce analytics for ESG investment scoring', date: 'Feb 2026', source: 'Revelio Labs Blog' },
+      { headline: 'Revelio Labs launches the Revelio Terminal and a real-time AI Labor Market Tracker', date: 'Jul 2026', source: 'PR Newswire' },
       { headline: 'Revelio Labs raises $30M Series B to expand global labour market data coverage to 90 countries', date: 'Mar 2026', source: 'TechCrunch' },
     ],
   },
