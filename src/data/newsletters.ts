@@ -31,6 +31,154 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'radiator-hose-middle-of-nowhere',
+    date: 'August 21, 2026',
+    title: 'My Radiator Hose Blew in the Middle of Nowhere',
+    tag: 'Life & Work',
+    excerpt:
+      'A blown radiator hose on the Delmarva Peninsula, a screaming six-year-old, ninety-degree heat, and two men in a sketchy Dodge van who owed me nothing and spent an hour fixing my car anyway. Plus: Joveo puts job reqs inside ChatGPT, DeepMind’s own team routes around Google’s screening, and hireEZ goes agentic.',
+    tileImage: '/newsletters/edition-85/roadside-rescue-tile.webp',
+    body: `
+<img src="/newsletters/edition-85/roadside-rescue.webp" alt="Mike standing arm-in-arm with the grandson and grandfather who repaired his car, in front of their weathered blue-green Dodge van at a gas station" />
+
+<p>The Wrap is back! You may remember that the last Wrap edition stated that I was on my way to the Outer Banks for the annual Wood family migration from Massachusetts to North Carolina.</p>
+
+<p>We’ve been doing this trip for a little over a decade. It’s a long drive — 13 to 15 hours — but it’s really great once you get there.</p>
+
+<p>As a veteran of this trip, I wanted to get out on the road as early as possible on Saturday. Beat the traffic, or become the traffic. We left shortly after four and I was able to keep my promise to my kids that when they woke up, we’d already be in New York. Nobody clapped, but I was riding high as Super Dad.</p>
+
+<p>After a quick pit stop at one of the horrible rest stops on the New Jersey Turnpike, I handed the keys over to my wife to try and catch some zzz’s. Luckily, I slept through New Jersey and the Delaware Memorial Bridge, the unofficial halfway point to vacation paradise.</p>
+
+<p>Then we were in Delaware. Anyone who has driven through Delaware knows it’s when your trip stops being a trip and becomes a commitment. It’s a long, flat road of absolutely nothing. And when Delaware finally runs out of nothing, it hands you off to the Delmarva Peninsula, which somehow has less. Eventually, you hit the Chesapeake Bay Bridge-Tunnel and once you’re over that, you’re in the home stretch.</p>
+
+<p>We were still deep in the nothing when we decided to stop for lunch at a real establishment — a small diner off the side of the road, where we could get real food from real people. We got into the diner and there were a couple of groups eating, good sign, but flies everywhere, bad sign. My plan, formed roughly four seconds after we sat down, was to eat fast and leave faster. I ordered a wrap (see what I did there), which was the correct order in a place with flies on the table.</p>
+
+<p>But that was based on years of experience eating at the wrong places. My ten-year-old Emma opened the menu like she was being seated at a steakhouse.</p>
+
+<p>“I’ll have the chicken and shrimp Alfredo.”</p>
+
+<p>Shrimp. In a diner on a peninsula in the middle of nowhere. The single most expensive item on the menu, ordered for lunch, by a fifth grader.</p>
+
+<p>The waitress didn’t blink. “Comes with a soup or salad.”</p>
+
+<p>Emma, delighted: “Ooh — soup sounds lovely.”</p>
+
+<p>I taught her a quick lesson about ordering seafood at a roadside diner, which would have landed a lot better if the Alfredo hadn’t been outstanding.</p>
+
+<img src="/newsletters/edition-85/family-road-trip-singing.gif" alt="Animated clip of a family belting out a song together in a moving car" />
+
+<p>We got back on the road with full bellies and a funny story to tell the family when we met up that night. I remember pulling back onto the highway with smiles all around and glad everything worked out. That lasted maybe two minutes tops.</p>
+
+<p>A red temperature light came on the dashboard and the AC cut out, which is how a modern car tells you the situation is serious. I pulled over to the nearest gas station I could find and popped the hood.</p>
+
+<p>Coolant everywhere. I don’t know much about cars except from minor things I’ve tried to fix on my own because I’m poor. I started to analyze the coolant splatter like Dexter when my wife noticed there was a tear in the radiator hose. Laura is no Mona Lisa Vito, but I was impressed that she saw it. We called Triple A and they could tow us somewhere, but there weren’t many places to go, and the ones nearby were closed for the weekend.</p>
+
+<p>So there I am in a gas station lot on the Delmarva Peninsula, standing over an engine bay in the universal posture of a man who knows precisely what is wrong and precisely nothing about how to fix it. It’s ninety degrees out. My six-year-old is in the back seat and has decided — reasonably, honestly — that this is the moment to completely lose it. She is screaming. We are four hours from the beach and about ten hours from home.</p>
+
+<p>This was not a “safe” area either. The closest town was Onley, Virginia, population five hundred and thirty-two as of the 2020 census, and I’d wager they count every head by hand. That’s when I heard “Can we help?”</p>
+
+<p>I looked up to see two men walking over from a sketchy old Dodge van. I’ll be honest with you. These are not the people I would have asked for help. One was wearing a Care Bears shirt that says “I’m Grumpy,” and the other looked like he might have died and no one told him.</p>
+
+<p>They’d seen the hood up. They’d heard my kid. They came over, looked at the engine for about fifteen seconds, and one of them said there’s an AutoZone a few miles down the road, we can get you that part. Come with us.</p>
+
+<p>Seeing that the alternative was staying at the gas station with my screaming six-year-old and hoping for a miracle, I took my chances and got in the sketchy van.</p>
+
+<p>My wife had taken the kids inside the gas station to find a distraction, and I was so locked in on the problem that I never thought about what it looked like from where she was standing — her husband climbing into a strange van with two men she’d never met. She snapped this photo just in case I never made it back.</p>
+
+<img src="/newsletters/edition-85/green-van-gas-station.webp" alt="A weathered green Dodge van parked outside a roadside gas station, photographed from behind a post" />
+
+<p>Inside the van, I was on high alert. First thing I noticed was there was a wooden cabinet built into the center console, an Audiovox VHS deck sitting on top of it, and a television sitting underneath. I had my phone so I felt slightly safe, but I was at the mercy of people who still had a VCR in 2026.</p>
+
+<img src="/newsletters/edition-85/van-interior-vhs-console.webp" alt="The van’s interior: a wooden cabinet built into the center console with an Audiovox VHS deck on top, the two men in the front seats" />
+
+<p>Normally this is the part of the story where I’m never heard from again. I’ve listened to enough Dateline to know good things don’t happen when you get into strange vans, but we got to the AutoZone. I got the new hose, some clamps, coolant, and we had an uneventful drive back.</p>
+
+<p>Then those two men — who owed me nothing, who were on their way somewhere else before I existed to them — spent the next hour in the heat putting that hose on my car. Hood up, both of them leaning into the engine bay, one working the clamp while the other held the line steady. Sweating through it. Doing the actual work while I stood there in flip-flops and tried to help or get out of the way.</p>
+
+<img src="/newsletters/edition-85/fixing-the-radiator-hose.webp" alt="The two men leaning into the engine bay under a raised hood, working the clamp onto the new radiator hose" />
+
+<p>Somewhere in that hour I found out they were grandfather and grandson.</p>
+
+<p>The younger one has kids of his own, and we stood there in the heat doing the thing parents do, comparing ages and sleep schedules and what they will and won’t eat. The older one I could not get a name out of, partly because the dialect was pure Boomhauer and I was catching about one word in four. He told me to call him Pops. So Pops it is.</p>
+
+<p>Two families at a gas station on the Delmarva Peninsula. One of them was trying to get to the beach. The other one stopped what they were doing to make that happen.</p>
+
+<p>We thanked them profusely and managed to get them to accept $100 as a thank you. Before they left, I told them that they were now officially part of Wood family lore. That my kids would be telling this story for the next thirty years and that I would never forget their kindness.</p>
+
+<p>I couldn’t help but think that in all the division that’s shoved in our faces every day, there are still good people in the world. I had judged these people without even talking to them and it turns out they were the best people I could have run into.</p>
+
+<hr />
+
+<p>Oh yeah, this newsletter is supposed to be about HR Tech, so here’s what’s on my radar this week. This week’s Wrap features Joveo putting job reqs inside ChatGPT, Google telling their own jobseekers hiring is broken and to fill out a form to get through, HireEZ going agentic, public shaming for ghosting companies, Metaview picking up Reval, Thomas Otter’s hot take on the Workday Silver Lake talks, YouTube dumbing down what a view is, and nobody believes Zuckerberg’s vision of the future.</p>
+
+<p>Have a great week!</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Joveo Puts Employer Job Reqs Inside ChatGPT</h3>
+<img src="/newsletters/edition-85/joveo-chatgpt-jobs.webp" alt="A laptop showing ChatGPT surfacing Vitalia Health registered-nurse listings as interactive job cards with View &amp; Apply buttons" />
+<p>Joveo announced Tuesday that employers can now make their live job openings discoverable inside ChatGPT as an on-brand conversational experience, without touching their career site, ATS, or apply flow. Reqs pull from the employer’s existing job feed, candidates explore and refine roles through interactive job cards in the conversation, and every listing clicks through to the employer’s own career site to apply.</p>
+<p>The premise is that job search is migrating into conversation — more than 800 million people now use ChatGPT weekly, and candidates describe what they want in plain language rather than working a search box. This is where things are going — everything connecting directly into an AI hub, with the career site demoted from destination to landing page. Kudos to the Joveo team for getting there first.</p>
+<p><a href="https://www.joveo.com/press/joveo-introduces-job-discovery-for-employers-in-chatgpt/">Read more</a>.</p>
+
+<h3>Google DeepMind’s Own Team Built a Workaround for Google’s Application Screening</h3>
+<img src="/newsletters/edition-85/deepmind-application-workaround.webp" alt="Illustration of a hand dropping a crumpled résumé into a wastebasket" />
+<p>An internal HR memo viewed by Bloomberg shows Google DeepMind’s AGI Safety and Alignment Team directing job seekers to fill out a separate form on top of the standard application so a human on the team actually sees it. The memo’s stated reason: there’s a non-trivial probability a CV gets screened out incorrectly or takes too long to reach them. It also carries the instruction not to share the document widely. A DeepMind spokesperson told Bloomberg the form was set up to route resumes past recruiter review directly to the team, and added that there are no shortcuts to getting hired. BUT, the fact that they had to put a manual process on top of it is a clear indication no one trusts the filters to get it right.</p>
+<p><a href="https://futurism.com/future-society/google-hr-resume-applicants-deepmind-ai-hiring">Read more</a>.</p>
+
+<h3>hireEZ Goes Agentic</h3>
+<img src="/newsletters/edition-85/hireez-agentic.webp" alt="A man in sunglasses and a navy speakEZ T-shirt holding up an old flip phone, shot from above" />
+<p>hireEZ announced Monday it has rebuilt its platform from the ground up on agents, with access opening August 27, just in time for their SpeakEZ event (free by the way, <a href="https://explore.hireez.com/speakez-summit-registration">register here</a>). Their pitch inverts the standard AI-in-recruiting promise: rather than giving recruiters their time back, the company says its users will spend more time in the product.</p>
+<p>In the new version, a recruiter briefs the agent on a role, the agent returns a sourcing plan across a claimed 1 billion-plus professional profiles plus the customer’s own ATS and talent community, and the recruiter approves, sharpens, or overrides it. hireEZ says judgment stays with the recruiter, every agent action is logged and explainable for audit purposes, and the system learns from each team’s corrections without that learning crossing into other customers’ accounts.</p>
+<p>Check out their live demo on stage at the SpeakEZ Summit on the 27th as well as a cast of great speakers.</p>
+<p><a href="https://www.prnewswire.com/news-releases/the-new-hireez-built-for-8-hours-a-day-not-8-minutes-302853467.html">Read more</a>.</p>
+
+<h3>A Website Now Keeps a Public List of Employers Who Ghost Candidates</h3>
+<img src="/newsletters/edition-85/did-they-ghost-you.webp" alt="The didtheyghostyou.com homepage: “Interviews deserve an ending” beside anonymous candidate reports of being ghosted" />
+<p>Gary Meyer, a fractional marketing executive in Toronto, launched didtheyghostyou.com in mid-July, partly as a joke, after hearing the same story from too many friends. More than 2,000 companies are now listed, including Apple, Microsoft, Capital One, JPMorgan, Condé Nast, and CNN. Meyer acknowledges recruiters are buried in applicant volume, but his position is that a candidate who has completed interviews, assessments, or an on-site visit is “owed something” regardless of how the last interview went. I agree.</p>
+<p><a href="https://www.hr-brew.com/stories/ghosting-website-takes-aim-at-employers">Read more</a>.</p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions</h2>
+
+<p><strong>Metaview picked up Reval</strong>, an AI-native recruiting firm founded in 2023 that came at autonomous recruiting from the services side rather than the software side. <a href="https://www.businesswire.com/news/home/20260811079976/en/Metaview-Acquires-Reval-to-Accelerate-the-Shift-From-AI-Assistants-to-AI-Coworkers">Read more</a>.</p>
+
+<p><strong>zvoove acquired Pixi</strong>, a WhatsApp-based onboarding and support agent for temp workers. <a href="https://www.prnewswire.com/news-releases/zvoove-acquires-pixi-the-ai-agent-to-automate-administrative-work-for-staffing-agencies-302848167.html">Read more</a>.</p>
+
+<hr />
+
+<h2>🔥 Hot Takes</h2>
+
+<h3>Thomas Otter: Workday Going Private Is the Right Call, and Everyone Panicking Has the Deal Structure Wrong</h3>
+<img src="/newsletters/edition-85/thomas-otter-workday.webp" alt="The Silver Lake and Workday logos stacked against a blue sky-and-clouds graphic" />
+<p>While startup founders declared Workday dead and industry analysts warned customers about life under the yoke of private equity, Otter spent a Sunday working through the actual mechanics and landed somewhere else entirely. His core argument: Bhusri and Duffield control 68% of Workday’s voting rights — a structure built specifically to prevent a repeat of Oracle’s hostile run at PeopleSoft — so nothing happens here unless the founders want it to. That makes this a management buyout on the 2013 Dell template, not a PE firm seizing the wheel, and Bhusri has worked with Egon Durban, the Silver Lake partner who ran the Dell deal. Otter models roughly a 30% markup on the pre-rumor price, around $230 a share, which at a ~$60B equity value would be the largest enterprise SaaS take-private ever and bigger than the Twitter deal. His read on the debt: no more onerous than the buyback obligations Workday is already carrying, with better than a billion in tax advantage over four or five years. The Greta Garbo of it is the point — Bhusri never loved the quarterly Bloomberg circuit, and going private buys room to build without sell-side analysts grading every 90 days.</p>
+<p><a href="https://thomasotter.substack.com/p/workday-silver-lake-greta-garbo-and">Read more</a>.</p>
+
+<hr />
+
+<h2>🔗 Worth a Click</h2>
+
+<h3>YouTube Will Now Count a View the Instant a Video Starts Playing</h3>
+<img src="/newsletters/edition-85/youtube-view-count.webp" alt="TechCrunch article header, “YouTube will now count a view as soon as a video starts playing,” beside a YouTube play-button sign" />
+<p>Starting August 24, a view registers the moment playback begins or someone enters a live broadcast. YouTube never published its old rule, but the working understanding was roughly 30 seconds of watch time. The company’s stated reason is that it ran multiple counting systems across formats and creators wanted the metric confusion gone so they could understand their true exposure. What creators get instead is a number that will go up without anything actually changing, since view counts will inflate most for videos that barely hold attention — the old metric survives as “Engaged views,” visible to creators in Analytics but no longer the number the public sees. TikTok and Instagram already count this way. Monetization eligibility and earnings are unaffected, though that lands a week after YouTube doubled the watch-hour threshold for new creators to enter the Partner Program.</p>
+<p><a href="https://techcrunch.com/2026/08/17/youtube-will-now-count-a-view-as-soon-as-a-video-starts-playing/">Read more</a>.</p>
+
+<h3>Why People Aren’t Buying Mark Zuckerberg’s AI Future</h3>
+<img src="/newsletters/edition-85/zuckerberg-ai-future.webp" alt="Mark Zuckerberg wearing smart glasses walking across a stage lit in pink and purple" />
+<p>Zuckerberg published a 6,500-word essay titled “The Future is for Everyone,” promising a world where everyone has an exceptionally capable personal agent that understands their goals. Sounds ok on the surface, but Zuck no longer has any credibility. With Facebook, he promised more empowerment and connection, but what we have now is ragebaiting and advertisements. Check out this great analysis on the TechCrunch Equity podcast.</p>
+<p><a href="https://techcrunch.com/2026/08/16/why-people-arent-buying-mark-zuckerbergs-ai-future/">Listen to the full episode</a>.</p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+  `,
+  },
+  {
     slug: 'work-will-always-be-there',
     date: 'August 7, 2026',
     title: 'Work Will Always Be There. These Moments Won’t.',
