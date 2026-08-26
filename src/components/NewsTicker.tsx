@@ -1,12 +1,12 @@
 const headlines = [
-  { text: 'Deel · buys deepfake-detection startup Clarity in ~$50M, its 15th deal', url: 'https://techfundingnews.com/deel-buys-deepfake-detection-startup-clarity-in-15th-acquisition-as-it-hits-1-5b-in-arr/' },
-  { text: 'Syndio · first-ever acquisition snaps up agentic AI shop Embrace.ai', url: 'https://www.geekwire.com/2026/syndio-bets-on-agentic-ai-with-first-acquisition-in-seattle-pay-equity-startups-history/' },
-  { text: 'Humanly · $25M Series B to deliver pre-vetted candidates on demand', url: 'https://www.geekwire.com/2026/humanly-raises-25m-to-put-ai-to-work-for-job-seekers-not-just-the-companies-hiring-them/' },
-  { text: 'Darwinbox · launches Cortex, an HCM rebuilt from the ground up for AI', url: 'https://techrseries.com/hcm-and-hris/darwinbox-launches-cortex-its-new-ai-native-hcm-platform/' },
-  { text: 'Rippling · AI Spend Console tracks token costs per employee and team', url: 'https://www.rippling.com/blog/introducing-ai-spend-console' },
-  { text: 'Workday · Agent Passport ships to test & govern every enterprise AI agent', url: 'https://newsroom.workday.com/2026-06-02-Workday-Launches-Agent-Passport-to-Test,-Verify,-and-Continuously-Monitor-Every-AI-Agent-in-the-Enterprise' },
-  { text: 'Jobs report · US shed 23K jobs in July, unemployment eases to 4.1%', url: 'https://www.cnbc.com/2026/08/07/jobs-report-july-2026.html' },
-  { text: 'EU AI Act · high-risk hiring rules slip to Dec 2027, transparency lands now', url: 'https://www.joneswalker.com/en/insights/blogs/ai-law-blog/yes-august-2-still-matters-the-eu-approved-a-high-risk-ai-delay-but-most-trans.html' },
+  { text: 'Alliant · acquires Nava Benefits to go AI-native on employee benefits', url: 'https://techrseries.com/hrtechnology/alliant-insurance-services-to-acquire-nava-creating-an-ai-native-model-for-the-future-of-employee-benefits/' },
+  { text: 'Jem HR · $8.4M Series A for WhatsApp HR serving 250K frontline workers', url: 'https://disruptafrica.com/2026/08/19/sa-hr-startup-jem-raises-8-4m-series-a-funding-round-to-support-product-expansion/' },
+  { text: 'Workday · stands up an AI research team for trustworthy enterprise agents', url: 'https://techrseries.com/artificial-intelligence/workday-introduces-ai-research-team-dedicated-to-advancing-reliable-trustworthy-and-efficient-enterprise-ai/' },
+  { text: 'Xero · adds embedded payroll and payments in a US growth push', url: 'https://techrseries.com/payroll-and-compensation-management/xero-accelerates-us-growth-adds-new-payments-capabilities-and-embedded-payroll-offering/' },
+  { text: 'Culture Amp · pipes manager team insights into Claude and ChatGPT', url: 'https://hrtechfeed.com/culture-amp-adds-missing-context-to-ai/' },
+  { text: 'Otter.ai ruling · AI notetakers now on the hook for recording consent', url: 'https://hrexecutive.com/otter-ai-ruling-puts-ai-meeting-assistants-on-the-hook-for-consent/' },
+  { text: 'AI hiring law · state rules pile up as federal preemption stalls', url: 'https://hrexecutive.com/state-vs-federal-ai-law-the-map-and-takeaways-every-hr-executive-needs-to-study-today/' },
+  { text: 'Jobless claims · dip to 206K despite the July payroll contraction', url: 'https://www.bloomberg.com/news/articles/2026-08-20/us-weekly-jobless-claims-edged-lower-to-206-000-in-latest-week' },
 ]
 
 export default function NewsTicker() {
