@@ -17,11 +17,11 @@ export type VoicesStaffPick = {
 
 export const voicesStaffPick: VoicesStaffPick = {
   enabled: true,
-  sourceSlug: 'robin-schooling',
-  // No matchTitle: always feature Robin Schooling's LATEST post. As of the
-  // 2026-08-07 (#84) swap her newest is "Moths, Mason Jars and the Secret Lives
-  // of Our Coworkers" (2026-07-31); leaving matchTitle unset means the hero
-  // auto-follows any newer post the cron ingests during the 8/8–8/19 break.
+  sourceSlug: 'josh-bersin',
+  // No matchTitle: always feature Josh Bersin's LATEST post. Swapped in for the
+  // 2026-08-28 (#86) edition — his feed was the freshest of the nine sources at
+  // the time (last item 2026-08-27). Leaving matchTitle unset means the hero
+  // auto-follows whatever newer post the cron ingests during the week.
 }
 
 // Normalize smart quotes and case so config written with plain ASCII still
