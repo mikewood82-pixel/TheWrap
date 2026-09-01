@@ -17,11 +17,11 @@ export type VoicesStaffPick = {
 
 export const voicesStaffPick: VoicesStaffPick = {
   enabled: true,
-  sourceSlug: 'josh-bersin',
-  // No matchTitle: always feature Josh Bersin's LATEST post. Swapped in for the
-  // 2026-08-28 (#86) edition — his feed was the freshest of the nine sources at
-  // the time (last item 2026-08-27). Leaving matchTitle unset means the hero
-  // auto-follows whatever newer post the cron ingests during the week.
+  sourceSlug: 'jess-von-bank',
+  // Pinned to a specific post rather than her latest: this one is a genuine
+  // argument piece, and it pairs with edition #86 ("We Automated Distrust").
+  // Swapped in 2026-09-01, rotating off Josh Bersin (held the slot for #86).
+  matchTitle: 'Purge the Business Before You Sprinkle AI Glitter',
 }
 
 // Normalize smart quotes and case so config written with plain ASCII still
