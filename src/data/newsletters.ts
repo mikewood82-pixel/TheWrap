@@ -31,6 +31,137 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'a-wall-of-95s',
+    date: 'September 4, 2026',
+    title: 'A Wall of 95s',
+    tag: 'AI & Hiring',
+    excerpt:
+      'You could sort a video store from six feet away because the cover carried real information. We have now built a hiring stack where every box comes out of the machine looking like a new release, and the recruiter is standing in front of a wall of 95s with no idea which one is actually worth renting.',
+    tileImage: '/newsletters/edition-87/video-store-new-release-wall-tile.webp',
+    body: `
+<img src="/newsletters/edition-87/video-store-new-release-wall.webp" alt="The new release wall of a video rental store, rows of DVD cases on wire shelves under a hand-lettered NEW RELEASE sign" />
+
+<p>I apologize in advance for any of the younger readers who may not know this was possible, but years ago, before the internet, there used to be something called a “video store” where you could walk in and pick out a movie to rent just as if you were checking a book out of the library. In a library, they say not to judge a book by its cover, but that is exactly what we did at video stores. The front wall was new releases (who remembers renting a 2 (!) tape VHS of Titanic in 1997?), with other releases on racks by genre. Most of the time, people picked from the new releases, featuring a movie they had seen a trailer for, knew the actors, and even had a good sense of how critics reviewed it. You came into the store with some context of the movie you wanted. However, let’s say you wanted to try something new. You’d go to one of those back racks and try to find a movie you’d like, but there was always a clue to the quality. The real garbage movies were the ones that looked like a popular movie imposter. These movies had cover art that was a little too airbrushed, the font did too much, and they had an actor on the box I almost recognized. If you saw any of these movies, you would think it was an obvious rip-off. You didn’t pick it up. You didn’t read the back. You just knew, and the thing is, you were probably right.</p>
+
+<p>That’s not snobbery; if you want to see a crap movie, go ahead. Some filter in your brain spotted the clues and immediately put it in the “ignore” section. Low budget correlated with low quality often enough that the cover became sufficient evidence. Your brain built a shortcut, and the shortcut worked.</p>
+
+<p>Hang with me, because this ends up in your ATS.</p>
+
+<p>I think the same thing is starting to happen with generative AI content. AI slop is everywhere, and it all looks the same. Same cadence, same structure, same three-item lists and em dashes. Open LinkedIn, and you can spot it in the first line and a half. The hook. The line break. It’s a formula, and it’s so prevalent that LinkedIn had to add an option to flag it. The “Seems like AI slop” button has been used over a million times since it was announced, and posts flagged by it have seen views drop by as much as 40%. (LinkedIn also killed its own “enhance your post” AI writer and replaced it with a proofreader, which tells you something about how that experiment went.)</p>
+
+<p>Nobody reads to the end and then decides it was slop. They recognize the pattern and zone out at the beginning. Once your brain is trained to ignore the humblebrag, the personal vulnerability, the number of times they write “As a leader…,” it becomes worthless.</p>
+
+<p>And once that pattern is learned, it doesn’t matter how much better the next one is. It’s seen for what it is — a low-quality shortcut.</p>
+
+<h2>This happened before with banner ads</h2>
+
+<p>History is cyclical (and cynical), so this isn’t new. Just look at what happened to banner ads. Because I have Claude, I looked into the background of banner ads and found this tidbit. On October 27, 1994, AT&amp;T paid HotWired thirty grand to put a banner at the top of the page. The copy read “Have you ever clicked your mouse right HERE? You will.” Forty-four percent of the people who saw it clicked.</p>
+
+<p>Today the number is a fraction of a percent, and if we’re honest, a good chunk of those are fat thumbs on a phone. The ads didn’t get worse; in fact, they got much better with targeting and creative as technology advanced, but they still get passed over.</p>
+
+<p>In 1998, two researchers at Rice, Jan Panero Benway and David Lane, <a href="https://www.ruf.rice.edu/~lane/papers/banner_blindness.pdf">figured out why</a>. They ran 72 people through a series of searches on a website where the fastest route to the answer sat in a banner right at the top of the page. Afterward, only 17 of them remembered seeing the banners at all. Only 20% recalled seeing any advertisements during the entire study. Benway and Lane tried everything to fix it — moved the banners closer to the menu, shrank them, added animation, made them look less like ads. Nothing worked.</p>
+
+<p>Guess what else. It wasn’t even about ads. They tested plain blue text that looked nothing like advertising, and people skipped that too. Their conclusion was that anything set apart from what you’re scanning gets ignored when you’re hunting for something specific.</p>
+
+<p>So what happened? They called it banner blindness. Nobody evaluated them and decided against them. They stopped perceiving them.</p>
+
+<h2>Your brain is doing this on purpose</h2>
+
+<p>Here’s the part I find genuinely interesting. There’s a well-documented phenomenon in neuroscience called repetition suppression (thanks Claude — and yes, I’m aware of the irony, but there’s a difference between having AI dig up a 1998 Rice paper for me and having it write this paragraph). Neurons fire less when a stimulus repeats. It shows up in vision, hearing, smell, and touch, in single-cell recordings and in brain imaging. It’s why if you live next to a paper plant, you stop noticing that your town stinks.</p>
+
+<p>Suppressing the familiar frees up the capacity to notice what’s different. It’s why you stop hearing the refrigerator and why you’d hear a strange footstep in the next room instantly. Being ignored is what happens to the generic.</p>
+
+<p>That’s a great system when the thing you’re tuning out is a shit movie. It’s a much bigger problem when the thing you’re tuning out is a person who applied for a job.</p>
+
+<h2>How this is affecting hiring</h2>
+
+<p>Here’s what’s different about hiring, though. Banner blindness happens when one thing stands out and gets skipped. What we’ve built in recruiting is the opposite problem — nothing stands out at all.</p>
+
+<p>We know recruiters don’t have time to read 900 resumes, so we built filters to narrow the field to something manageable. The filter works. It does exactly what we asked. And what comes out the other side is a hundred candidates who all look the same, which means they hold no value.</p>
+
+<p>When everyone has a match score of 95, you can’t tell them apart.</p>
+
+<p>And that’s not the filter breaking. That’s the filter working correctly in a world where both sides are running the same models. Candidates are optimizing their resumes against the same criteria the screener is scoring against, using the same tools that built the screener. Everybody has the answer key now. So of course they all come back at 95 (that’s what happens when the test is open book on both ends).</p>
+
+<p>Our brains are wired to detect what’s different. When every item in the stack carries the same shape and the same number, there’s nothing for attention to land on. The recruiter isn’t evaluating a hundred finalists and choosing one. They’re staring at a wall of 95s, and at that point they’re picking, not deciding.</p>
+
+<p>Somebody in that stack is actually the best person for the job, but the system moved them closer to the front and made them invisible at the same time. Resume scoring isn’t wrong. It’s just no longer decisive, and both the candidates and hiring managers are stuck.</p>
+
+<h3>Before I get too pleased with myself</h3>
+
+<p>Two problems with everything I just wrote.</p>
+
+<p>The first is that banner blindness didn’t kill the banner. Display advertising is a several-hundred-billion-dollar business running at a tenth-of-a-percent response rate, because the math still works when production costs almost nothing. AI content costs almost nothing. So the realistic forecast is not that slop gets ignored into extinction. It gets ignored into abundance. Nobody reads it, everybody keeps making it, and it forever floods the market and cheapens it.</p>
+
+<p>The second is harder. Structured interviews, scorecards, validated assessments — all of it exists because unstructured human judgment turned out to be inconsistent and biased in ways that were worse. We didn’t build the score for fun. We built it because the thing it replaced was failing people, and I’m not going to stand here and get nostalgic about the era of the hiring manager who went with his gut.</p>
+
+<p>So the industry has been trying to manufacture difference where the score can’t produce any. That’s what Greenhouse’s Dream Job is doing — candidates mark one application a month as their top pick, which gives the hiring team one more thing to look at when everything else has flattened out. It’s a real attempt at a real problem, and it’s also an admission that the number stopped separating people.</p>
+
+<img src="/newsletters/edition-87/flex-tape-pipeline.gif" alt="Flex Tape infomercial clip: tape slapped over a gushing pipe, with water still bubbling out from behind the patch" />
+
+<p>We threw our Flex Tape on the pipeline, but the water’s still rising. Behind the fix, it’s already starting to bubble out. We’ve slowed the problem. We’re still drowning in candidates.</p>
+
+<p>Because here’s the thing about that shortcut in your brain at the video store. It worked. It was a good filter, and it was a good filter because the cover carried real information. Garbage looked like garbage. The front wall looked like the front wall. You could sort the whole store from six feet away, and you’d be right most of the time.</p>
+
+<p>That’s not what we built. We built a store where every single box came out of the machine looking like a new release.</p>
+
+<p>There’s no back rack anymore. There’s just a wall of covers that all look the same, and a recruiter standing in front of it with no idea which one is actually worth renting.</p>
+
+<hr />
+
+<p>On to the week in HR Tech news. This week’s Wrap features iCIMS rolling out its intelligent hiring platform, I make my annual way-too-early HR Tech preview, ADP reports we only added 38K jobs last month, Steve Smith breaks down the Salesforce investment in HiBob, and the New York Times profiles the spiraling life of the influencer.</p>
+
+<p>Have a great weekend!</p>
+
+<p><strong>Mike</strong></p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>iCIMS repackages its agent strategy as the Intelligent Hiring Platform</h3>
+<img src="/newsletters/edition-87/icims-intelligent-hiring-platform.webp" alt="The iCIMS team posing with arms raised in front of a purple booth reading iCIMS — Exceptional hiring with the power of AI" />
+<p>iCIMS announced the iCIMS Intelligent Hiring Platform on September 1, along with a Hiring Agent and an Interview Scheduling Agent. The Hiring Agent puts candidate review, feedback, and approvals inside Microsoft Teams so hiring managers never open the ATS, and ships in October; the Interview Scheduling Agent is expected by year-end. The Sourcing Agent, in early access since the October 2025 Fall Release, is now generally available.</p>
+<p>The company first announced its “intelligent network of agents” in June 2025 under prior CEO Jason Edelboim, naming six agents including a Sourcing Pipeline Agent and a Frontline Manager Hiring Agent. Current CEO Marc Thompson now frames the differentiator not as the agents but as the context underneath them — intelligence built on the company’s own hiring data. I’ll be checking them out at HR Tech and you should too.</p>
+<p><a href="https://www.prnewswire.com/news-releases/icims-debuts-its-vision-for-the-future-of-hiring-the-intelligent-hiring-platform-302865673.html">Read more</a>.</p>
+
+<h3>A way too early HR Tech preview</h3>
+<img src="/newsletters/edition-87/hr-tech-preview-elvis.webp" alt="Mike wearing a light-up cowboy hat and an ADP lanyard, posing in a hotel lobby with an Elvis impersonator in a white rhinestone jumpsuit" />
+<p>My fall conference season predictions, written for hr.com ahead of RecFest Nashville, Workday Rising, and my twelfth HR Tech. Seven things I expect to see: agents everywhere despite only 12% of companies reporting agentic AI in use, a wave of trademarked “proprietary intelligence” (see note above), healthcare logos on every booth, MCP servers as candidates start their search inside a model instead of a job board, verification moving to the front of the funnel, digital twins expanding into records of how employees work, and real customer proof points instead of launch-partner name drops.</p>
+<p><a href="https://www.hr.com/en/app/blog/2026/08/a-way-too-early-hr-tech-preview_mthti71s.html">Read more</a>.</p>
+
+<h3>ADP: private payrolls added 38,000 in August, the slowest month since January</h3>
+<img src="/newsletters/edition-87/adp-august-payrolls.webp" alt="A red line chart arrow bending sharply downward over a faded American flag, with a silhouetted man walking beside it" />
+<p>Private employers added just 38,000 jobs in August, below the 47,000 consensus and down from an upwardly revised 46,000 in July. Education and health services carried the entire print with 45,000, followed by leisure and hospitality at 16,000 and construction at 12,000. Everything else went the other way: manufacturing shed 17,000, professional and business services lost 16,000, trade and transportation lost 5,000, and information lost 4,000. Firms with 500 or more employees accounted for 34,000 of the 38,000, leaving small and medium businesses essentially flat.</p>
+<p><a href="https://www.prnewswire.com/news-releases/adp-national-employment-report-private-sector-employment-increased-by-38-000-jobs-in-august-302867661.html">Read more</a>.</p>
+
+<hr />
+
+<h2>🔥 Hot Takes</h2>
+
+<h3>Talent Management May Be Dead, But HiBob Just Moved to the Front of Whatever It’s Called Next</h3>
+<img src="/newsletters/edition-87/hibob-salesforce-investment.webp" alt="A pink and orange graphic reading $166M — HiBob secures investment, with the HiBob and Salesforce logos below" />
+<p>Steve Smith had an obituary for the talent management category half-written — SuccessFactors, Cornerstone, Taleo, Saba, SumTotal, the whole SaaS-era roster — when Salesforce announced a $166 million investment in HiBob and made him reconsider the thesis. His read is that the category label is finished but the data asset those twenty years produced is not: workforce data, skills, roles, and capabilities still matter, and the manual ritual of the performance review was never what generated them.</p>
+<p>Smith notes Salesforce is effectively paying for access to workforce context, and points to Deloitte’s 2026 Human Capital Trends finding that organizations taking a tech-first approach to AI are 1.6x more likely to miss expected returns, with only 6% making real progress on designing how humans and AI work together. His closer is that the front door to the enterprise has moved from talent management to the AI orchestration layer — ServiceNow, Microsoft, and the agent tiers inside the old HCM incumbents.</p>
+<p><a href="https://worktechweekly.substack.com/p/talent-management-may-be-dead-but">Read more</a>.</p>
+
+<hr />
+
+<h2>🖱️ Worth a Click</h2>
+
+<h3>He Was a Top Lawn Care Influencer on YouTube. Then Everything Went Haywire.</h3>
+<img src="/newsletters/edition-87/lawn-care-youtuber.webp" alt="A man in a green shirt leaping horizontally behind a red walk-behind lawn mower on a wide green lawn" />
+<p>Greg Chism built a following filming lawn care videos, stumbled into a 10-million-view toy unboxing clip almost by accident, and got invited into a YouTube coaching program that taught him keyword-loaded titles and algorithm-friendly formats. Between January 2016 and June 2017 his family channel Toy Freaks pulled 13 billion views, with a single video hitting 622 million, before it was demonetized and banned as the #Elsagate scandal engulfed YouTube Kids. His explanation is that each “season” stopped working and he had to escalate — food fights, then baby costumes, then putting himself in the onesie — because that’s what the platform paid for. The piece is less about one man’s judgment than about what happens when the only viable career ladder left is one the algorithm designs for you.</p>
+<p>This hits home as a sort-of creator. I could do the influencer thing, but I’d have to constantly be filming and constantly be dealing with trolls, and that’s no way to live. I recently wrote about my mother and her Alzheimer’s and it got the most impressions I’ve had in a long time — which is exactly the problem. Cross that line once, and the incentive is to keep going until I end up like this guy and my family hates me.</p>
+<p><a href="https://www.nytimes.com/2026/08/30/magazine/greg-chism-youtube-bad-baby.html">Read more</a>.</p>
+
+<h3>MapQuest’s app surges to No. 1 in Navigation after refusing to rename Lake Ontario</h3>
+<img src="/newsletters/edition-87/mapquest-lake-ontario.webp" alt="A MapQuest map of Lake Ontario with Toronto, Rochester and Buffalo visible, the lake still labeled Lake Ontario" />
+<p>Hooray for standing up to the nonsense. MapQuest posted on August 27 that it would not rename Lake Ontario to Lake America on its maps, despite an executive order directing the Interior Department to update the name in the federal geographic naming system. By Monday morning, the app was No. 1 in Navigation in the U.S., No. 4 among all non-game apps, and No. 2 overall in Canada’s App Store. Sensor Tower counted 184,000 global and 162,000 U.S. downloads for the week of August 24, each more than 10x the prior week, with daily U.S. installs up 128% from August 26 to August 30. Turns out integrity sells.</p>
+<p><a href="https://techcrunch.com/2026/08/31/mapquests-app-surges-to-no-1-in-navigation-after-refusing-to-rename-lake-ontario/">Read more</a>.</p>
+`,
+  },
+  {
     slug: 'we-automated-distrust',
     date: 'August 28, 2026',
     title: 'We Automated Distrust',
