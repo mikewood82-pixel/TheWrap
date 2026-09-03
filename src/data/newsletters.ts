@@ -37,6 +37,7 @@ export const newsletters: Newsletter[] = [
     tag: 'AI & Hiring',
     excerpt:
       'You could sort a video store from six feet away because the cover carried real information. We have now built a hiring stack where every box comes out of the machine looking like a new release, and the recruiter is standing in front of a wall of 95s with no idea which one is actually worth renting.',
+    tileImage: '/newsletters/edition-87/video-store-new-release-wall-tile.webp',
     body: `
 <img src="/newsletters/edition-87/video-store-new-release-wall.webp" alt="The new release wall of a video rental store, rows of DVD cases on wire shelves under a hand-lettered NEW RELEASE sign" />
 
@@ -159,7 +160,6 @@ export const newsletters: Newsletter[] = [
 <p>Hooray for standing up to the nonsense. MapQuest posted on August 27 that it would not rename Lake Ontario to Lake America on its maps, despite an executive order directing the Interior Department to update the name in the federal geographic naming system. By Monday morning, the app was No. 1 in Navigation in the U.S., No. 4 among all non-game apps, and No. 2 overall in Canada’s App Store. Sensor Tower counted 184,000 global and 162,000 U.S. downloads for the week of August 24, each more than 10x the prior week, with daily U.S. installs up 128% from August 26 to August 30. Turns out integrity sells.</p>
 <p><a href="https://techcrunch.com/2026/08/31/mapquests-app-surges-to-no-1-in-navigation-after-refusing-to-rename-lake-ontario/">Read more</a>.</p>
 `,
-    tileImage: '/newsletters/edition-87/video-store-new-release-wall-tile.webp',
   },
   {
     slug: 'we-automated-distrust',
