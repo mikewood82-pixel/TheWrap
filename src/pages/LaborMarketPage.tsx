@@ -7,6 +7,7 @@ import WUITrendChart from '../components/WUITrendChart'
 import {
   LAST_UPDATED,
   bls,
+  revisions,
   adp,
   revelio,
   aspen,
@@ -242,6 +243,7 @@ export default function LaborMarketPage() {
       <nav aria-label="Jump to section" className="flex flex-wrap items-center gap-x-1 gap-y-1 text-xs uppercase tracking-widest font-medium text-brand-dark/50 mb-10">
         {[
           { href: '#bls',          label: 'BLS' },
+          { href: '#revisions',    label: 'Revisions' },
           { href: '#adp',          label: 'ADP' },
           { href: '#revelio',      label: 'Revelio' },
           { href: '#aspen',        label: 'Aspen' },
@@ -375,6 +377,91 @@ export default function LaborMarketPage() {
         </table>
       </div>
       <p className="text-xs text-brand-dark/40 leading-relaxed mb-12">{bls.historicalNote}</p>
+
+      {/* ── Revisions tracker ───────────────────────────────────────────────
+          Every payroll month is published three times. This section tracks the
+          gap between the first print (the one that makes headlines) and the
+          settled figure, and separates the monthly revisions from the annual
+          benchmark — which is where the large 2024/2025 corrections lived. */}
+      <div className="flex items-center gap-3 mb-4 scroll-mt-6" id="revisions">
+        <h2 className="font-serif text-2xl font-bold">Revisions Tracker</h2>
+        <span className="text-xs bg-brand-cream text-brand-dark/50 px-2.5 py-1 rounded-full">First print vs. final · {revisions.period}</span>
+      </div>
+
+      <p className="text-sm text-brand-dark/70 leading-relaxed mb-5">
+        Every payroll month is published three times — an initial estimate, then two revisions. The first print is the one that moves markets and headlines, and it is built on roughly half the survey sample. Here is how far each month of 2026 travelled.
+      </p>
+
+      <div className="overflow-x-auto rounded-xl border border-brand-cream mb-3">
+        <table className="w-full text-sm">
+          <thead className="bg-brand-dark text-brand-cream">
+            <tr>
+              {['Month', 'First print', '2nd est.', '3rd est.', 'Net revision'].map(h => (
+                <th key={h} className="text-left px-4 py-3 font-medium whitespace-nowrap">{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {revisions.rows.map(row => (
+              <tr key={row.month} className="bg-white even:bg-brand-light">
+                <td className="px-4 py-3 whitespace-nowrap">{row.month}</td>
+                <td className="px-4 py-3 font-medium whitespace-nowrap">{row.first}</td>
+                <td className="px-4 py-3 text-brand-dark/60 whitespace-nowrap">{row.second}</td>
+                <td className="px-4 py-3 text-brand-dark/60 whitespace-nowrap">{row.third}</td>
+                <td className={`px-4 py-3 font-bold whitespace-nowrap ${
+                  row.direction === 'up' ? 'text-green-600' :
+                  row.direction === 'down' ? 'text-red-500' :
+                  'text-brand-dark/30'
+                }`}>
+                  {row.direction !== 'pending' && <TrendIndicator direction={row.direction} />}
+                  <span className={row.direction !== 'pending' ? 'ml-1.5' : ''}>{row.net}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="bg-brand-cream rounded-xl p-5 mb-6">
+        <div className="font-serif text-lg font-bold mb-1.5">{revisions.summary.headline}</div>
+        <p className="text-sm text-brand-dark/70 leading-relaxed">{revisions.summary.detail}</p>
+      </div>
+
+      {/* Annual benchmark — the separate, larger correction */}
+      <h3 className="font-serif text-lg font-bold mb-1.5">The annual benchmark is a different animal</h3>
+      <p className="text-sm text-brand-dark/70 leading-relaxed mb-4">
+        Once a year the BLS recounts payrolls against actual unemployment-insurance tax records. That correction is separate from the monthly revisions above — and it is where the headline-grabbing downward restatements of the last two years actually came from.
+      </p>
+      <div className="overflow-x-auto rounded-xl border border-brand-cream mb-3">
+        <table className="w-full text-sm">
+          <thead className="bg-brand-dark text-brand-cream">
+            <tr>
+              {['Benchmark', 'Preliminary', 'Final', ''].map((h, i) => (
+                <th key={i} className="text-left px-4 py-3 font-medium whitespace-nowrap">{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {revisions.benchmarks.map(row => (
+              <tr key={row.benchmark} className="bg-white even:bg-brand-light">
+                <td className="px-4 py-3 whitespace-nowrap">{row.benchmark}</td>
+                <td className="px-4 py-3 font-bold text-red-500 whitespace-nowrap">{row.preliminary}</td>
+                <td className="px-4 py-3 font-medium whitespace-nowrap">{row.final}</td>
+                <td className="px-4 py-3 text-xs text-brand-dark/50">{row.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="bg-white border-l-4 border-brand-terracotta rounded-r-xl px-5 py-4 mb-3">
+        <div className="text-brand-terracotta text-xs uppercase tracking-widest font-bold mb-2">Why this happens</div>
+        <p className="text-sm text-brand-dark/80 leading-relaxed">{revisions.takeaway}</p>
+      </div>
+      <p className="text-xs text-brand-dark/40 leading-relaxed mb-2">{revisions.note}</p>
+      <div className="px-1 pb-12">
+        <a href={revisions.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-brand-dark/40 hover:text-brand-terracotta transition-colors">Archived Employment Situation releases at bls.gov →</a>
+      </div>
 
       {/* ── ADP ─────────────────────────────────────────────────────────────── */}
       <div className="flex items-center gap-3 mb-4 scroll-mt-6" id="adp">

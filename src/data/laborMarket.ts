@@ -55,6 +55,28 @@ export type Implication = {
   body: string
 }
 
+/**
+ * One reference month's journey from first print to final estimate. Every
+ * payroll month is published three times: the initial estimate, then two
+ * revisions in the following two releases. `net` is third-minus-first.
+ */
+export type RevisionRow = {
+  month: string
+  first: string
+  second: string
+  /** '—' while the third estimate is still pending. */
+  third: string
+  net: string
+  direction: 'up' | 'down' | 'pending'
+}
+
+export type BenchmarkRow = {
+  benchmark: string
+  preliminary: string
+  final: string
+  note: string
+}
+
 /** Stamped in the page header and the source footer. */
 export const LAST_UPDATED = 'September 8, 2026'
 
@@ -80,6 +102,51 @@ export const bls = {
   ] satisfies HistoricalRow[],
   historicalNote:
     'Unemployment and wages are the Employment Situation reference month. Job openings and quits come from JOLTS, which trails by one month — the August row carries July JOLTS, the latest published. The July row was marked down to 7.2M when June JOLTS was revised. August JOLTS releases Sep 29.',
+}
+
+// ─── Payroll Revisions Tracker ────────────────────────────────────────────────
+// Every payroll month is published three times — the first print, then two
+// revisions — and the first print is the one that moves markets and headlines.
+// This block tracks the gap. Figures are read straight off the archived
+// Employment Situation releases at bls.gov/bls/news-release/empsit.htm; each
+// release states its own headline print plus the revisions to the prior two
+// months, so the chain reconstructs exactly.
+//
+// REFRESH: each cycle, fill in the two months the new release revised, add the
+// new month at the bottom with direction 'pending', and recompute `summary`.
+// Do NOT fold benchmark revisions into these rows — the benchmark is a separate
+// level correction on a different schedule, tracked in `benchmarks` below.
+export const revisions = {
+  period: 'Jan – Aug 2026',
+  rows: [
+    { month: 'Jan 2026', first: '+130K', second: '+126K', third: '+160K', net: '+30K',  direction: 'up' },
+    { month: 'Feb 2026', first: '−92K',  second: '−133K', third: '−156K', net: '−64K',  direction: 'down' },
+    { month: 'Mar 2026', first: '+178K', second: '+185K', third: '+214K', net: '+36K',  direction: 'up' },
+    { month: 'Apr 2026', first: '+115K', second: '+179K', third: '+148K', net: '+33K',  direction: 'up' },
+    { month: 'May 2026', first: '+172K', second: '+129K', third: '+63K',  net: '−109K', direction: 'down' },
+    { month: 'Jun 2026', first: '+57K',  second: '+20K',  third: '+31K',  net: '−26K',  direction: 'down' },
+    { month: 'Jul 2026', first: '−23K',  second: '+21K',  third: '—',     net: '+44K',  direction: 'up' },
+    { month: 'Aug 2026', first: '+162K', second: '—',     third: '—',     net: '—',     direction: 'pending' },
+  ] satisfies RevisionRow[],
+  summary: {
+    up: 4,
+    down: 3,
+    headline: 'Four up, three down — net −56K across seven months',
+    detail:
+      'First prints have averaged +77K a month this year; the revised figures average +69K. That is a mild downward tilt, but it is roughly a tenth the size of last year’s benchmark correction and the direction is genuinely mixed. July is the cleanest counterexample: a headline that looked bad at −23K was revised up to +21K.',
+  },
+  // The annual benchmark recounts payrolls against actual unemployment-insurance
+  // tax records. This — not the monthly revisions — is where the large downward
+  // corrections of 2024 and 2025 actually lived.
+  benchmarks: [
+    { benchmark: 'March 2024', preliminary: '−818K', final: '−598K', note: 'Final came in less negative than the preliminary' },
+    { benchmark: 'March 2025', preliminary: '−911K', final: '−898K', note: 'Largest since 2002 · cut 2025 growth from +584K to +181K' },
+    { benchmark: 'March 2026', preliminary: '−79K',  final: 'Feb 2027', note: 'Smallest since 2021 · −0.1% vs a 10-yr absolute average of 0.2%' },
+  ] satisfies BenchmarkRow[],
+  takeaway:
+    'The systematic overstatement was real, but it lived in the annual benchmark rather than the monthly revisions — and it has largely closed. Two mechanisms drive it, and both are conditional on the cycle rather than constant. First, collection: the initial print rests on about 55% of the survey sample, the second on 91%, the third on 93%, and late reporters skew smaller and more distressed. Second, the birth-death model, which imputes jobs at new firms net of closures and keeps adding them when business formation stalls. Both bite hardest at a turning point, which is why 2024 and 2025 produced corrections of −598K and −898K while March 2026 produced −79K. The Cleveland Fed tested for a structural break in 2026 and found none: recent revisions ran above the historical mean but stayed inside the normal range. Treat the first print as an estimate with a wide error bar in both directions, not as a number with a thumb on the scale.',
+  sourceUrl: 'https://www.bls.gov/bls/news-release/empsit.htm',
+  note: 'Monthly figures from the archived Employment Situation releases. The March 2026 benchmark is preliminary and will be folded into the official series with the January 2027 report in February 2027, so early-2026 months will move once more.',
 }
 
 // ─── ADP ──────────────────────────────────────────────────────────────────────
