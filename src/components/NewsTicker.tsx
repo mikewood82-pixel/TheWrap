@@ -1,12 +1,12 @@
 const headlines = [
-  { text: 'Alliant · acquires Nava Benefits to go AI-native on employee benefits', url: 'https://techrseries.com/hrtechnology/alliant-insurance-services-to-acquire-nava-creating-an-ai-native-model-for-the-future-of-employee-benefits/' },
-  { text: 'Jem HR · $8.4M Series A for WhatsApp HR serving 250K frontline workers', url: 'https://disruptafrica.com/2026/08/19/sa-hr-startup-jem-raises-8-4m-series-a-funding-round-to-support-product-expansion/' },
-  { text: 'Workday · stands up an AI research team for trustworthy enterprise agents', url: 'https://techrseries.com/artificial-intelligence/workday-introduces-ai-research-team-dedicated-to-advancing-reliable-trustworthy-and-efficient-enterprise-ai/' },
-  { text: 'Xero · adds embedded payroll and payments in a US growth push', url: 'https://techrseries.com/payroll-and-compensation-management/xero-accelerates-us-growth-adds-new-payments-capabilities-and-embedded-payroll-offering/' },
-  { text: 'Culture Amp · pipes manager team insights into Claude and ChatGPT', url: 'https://hrtechfeed.com/culture-amp-adds-missing-context-to-ai/' },
-  { text: 'Otter.ai ruling · AI notetakers now on the hook for recording consent', url: 'https://hrexecutive.com/otter-ai-ruling-puts-ai-meeting-assistants-on-the-hook-for-consent/' },
-  { text: 'AI hiring law · state rules pile up as federal preemption stalls', url: 'https://hrexecutive.com/state-vs-federal-ai-law-the-map-and-takeaways-every-hr-executive-needs-to-study-today/' },
-  { text: 'Jobless claims · dip to 206K despite the July payroll contraction', url: 'https://www.bloomberg.com/news/articles/2026-08-20/us-weekly-jobless-claims-edged-lower-to-206-000-in-latest-week' },
+  { text: 'HiBob · Salesforce leads $166M round at a $3.2B valuation', url: 'https://hrtechfeed.com/salesforce-leads-166-million-investment-in-hr-platform-hibob/' },
+  { text: 'Recruiter.com · acquires Feenyx for anti-fraud interview screening', url: 'https://hrtechfeed.com/recruiter-com-acquires-ai-interview-tool/' },
+  { text: 'XShift AI · Autopilot enforces scheduling rules without a manager', url: 'https://techrseries.com/employee-engagement/xshift-ai-expands-ai-copilot-and-autopilot-for-ai-native-employee-shift-scheduling/' },
+  { text: 'Eightfold AI · free AI practice interviews for job seekers', url: 'https://techrseries.com/artificial-intelligence/eightfold-ai-launches-ai-career-day-offering-free-practice-interviews-on-labor-day/' },
+  { text: 'UKG · named a Leader in the 2026 Gartner Magic Quadrant for HCM', url: 'https://techrseries.com/hcm-and-hris/ukg-named-a-leader-in-the-2026-gartner-magic-quadrant-for-hcm/' },
+  { text: 'Payrolls · August adds 162K vs 53K forecast; jobless rate holds 4.1%', url: 'https://www.cnbc.com/2026/09/04/jobs-report-august-2026.html' },
+  { text: 'Job cuts · 52,881 in August, up 58% — but hiring plans jump 725%', url: 'https://hrexecutive.com/august-job-cuts-up-nearly-60-but-its-not-all-bad-news/' },
+  { text: 'California SB 947 · Newsom has until Sept 30 to sign AI-firing limits', url: 'https://www.ebglaw.com/insights/publications/workplace-ai-regulation-in-2026-how-employers-can-navigate-the-changing-legal-landscape' },
 ]
 
 export default function NewsTicker() {
