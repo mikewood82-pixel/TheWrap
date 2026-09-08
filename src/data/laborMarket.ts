@@ -8,8 +8,11 @@
 //   1. LAST_UPDATED
 //   2. bls / adp / revelio / aspen — bump `period` + the metrics beneath it
 //   3. bls.historical — roll the window forward, correct any revised months
-//   4. latestRelease + upcomingReleases
-//   5. implications — rewrite the narrative to the new story
+//   4. revisions — fill in the two months this release revised, append the new
+//      month as 'pending', recompute `summary`. Benchmark rows change once a
+//      year (preliminary each September, final each February).
+//   5. latestRelease + upcomingReleases
+//   6. implications — rewrite the narrative to the new story
 //
 // The Wrap Underemployment Index is NOT here: it renders live from
 // /api/bls/wui. Never hardcode a WUI reading in prose below — it will
