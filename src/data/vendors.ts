@@ -16,7 +16,7 @@ export type Vendor = {
 
 const rawVendors = [
   // HCM
-  { name: 'Workday',              slug: 'workday',              category: 'HCM',       g2: 4.1, capterra: 4.4, reviews: 2800,  employees: '18,000+',  news: 14, deepDive: false, website: 'workday.com',                       description: 'Enterprise-grade HCM suite covering HR, finance, and planning in a single cloud platform.' },
+  { name: 'Workday',              slug: 'workday',              category: 'HCM',       g2: 4.1, capterra: 4.4, reviews: 2800,  employees: '18,000+',  news: 16, deepDive: false, website: 'workday.com',                       description: 'Enterprise-grade HCM suite covering HR, finance, and planning in a single cloud platform.' },
   { name: 'SAP SuccessFactors',   slug: 'sap-successfactors',   category: 'HCM',       g2: 3.9, capterra: 4.0, reviews: 1000,  employees: '100,000+', news: 18, deepDive: false, website: 'successfactors.com',                 description: 'Cloud-based HCM suite from SAP for global enterprise workforce management.' },
   { name: 'Oracle HCM Cloud',     slug: 'oracle-hcm-cloud',     category: 'HCM',       g2: 3.7, capterra: 4.0, reviews: 700,   employees: '150,000+', news: 13, deepDive: false, website: 'oracle.com',                         description: "Oracle's global HR platform integrating talent, payroll, and workforce management." },
   { name: 'UKG Pro',              slug: 'ukg-pro',              category: 'HCM',       g2: 4.3, capterra: 4.3, reviews: 2100,  employees: '15,000+',  news: 11, deepDive: false, website: 'ukg.com',                            description: 'Comprehensive HCM platform built from the merger of Ultimate Software and Kronos.' },
@@ -39,7 +39,7 @@ const rawVendors = [
   { name: 'Oracle Taleo',         slug: 'oracle-taleo',         category: 'ATS',       g2: 3.4, capterra: 3.6, reviews: 500,   employees: '150,000+', news: 7,  deepDive: false, website: 'oracle.com',                         description: "Enterprise ATS embedded in Oracle's broader HCM ecosystem." },
   // HRIS
   { name: 'BambooHR',             slug: 'bamboohr',             category: 'HRIS',      g2: 4.4, capterra: 4.6, reviews: 5200,  employees: '1,200+',   news: 9,  deepDive: false, website: 'bamboohr.com',                       description: 'HR software for small and mid-sized companies with a well-earned reputation for great UX.' },
-  { name: 'Rippling',             slug: 'rippling',             category: 'HRIS',      g2: 4.8, capterra: 4.9, reviews: 8000,  employees: '3,000+',   news: 25, deepDive: false, website: 'rippling.com',                       description: 'Unified workforce platform connecting HR, IT, and finance in one system.' },
+  { name: 'Rippling',             slug: 'rippling',             category: 'HRIS',      g2: 4.8, capterra: 4.9, reviews: 8000,  employees: '3,000+',   news: 26, deepDive: false, website: 'rippling.com',                       description: 'Unified workforce platform connecting HR, IT, and finance in one system.' },
   { name: 'Gusto',                slug: 'gusto',                category: 'HRIS',      g2: 4.6, capterra: 4.6, reviews: 6100,  employees: '2,500+',   news: 17, deepDive: false, website: 'gusto.com',                          description: 'Payroll, benefits, and HR platform built for SMBs and their teams.' },
   { name: 'Zenefits',             slug: 'zenefits',             category: 'HRIS',      g2: 4.0, capterra: 4.2, reviews: 800,   employees: '1,000+',   news: 5,  deepDive: false, website: 'zenefits.com',                       description: 'HR platform focused on benefits administration and compliance for SMBs.' },
   { name: 'Personio',             slug: 'personio',             category: 'HRIS',      g2: 4.3, capterra: 4.6, reviews: 900,   employees: '2,000+',   news: 9,  deepDive: false, website: 'personio.com',                       description: 'European all-in-one HR platform for small and mid-sized companies.' },
@@ -57,7 +57,7 @@ const rawVendors = [
   { name: 'QuickBooks Payroll',   slug: 'quickbooks-payroll',   category: 'Payroll',   g2: 3.9, capterra: 4.5, reviews: 900,   employees: '21,000+',  news: 6,  deepDive: false, website: 'intuit.com',                         description: 'Integrated payroll solution for businesses already running on QuickBooks.' },
   { name: 'Patriot Software',     slug: 'patriot-software',     category: 'Payroll',   g2: 4.8, capterra: 4.8, reviews: 400,   employees: '100+',     news: 1,  deepDive: false, website: 'patriotsoftware.com',                description: 'Affordable payroll and accounting software designed for small businesses.' },
   { name: 'Remote',               slug: 'remote',               category: 'Payroll',   g2: 4.6, capterra: 4.8, reviews: 1600,  employees: '1,000+',   news: 11, deepDive: false, website: 'remote.com',                         description: 'Global payroll, benefits, and compliance platform for distributed teams.' },
-  { name: 'Papaya Global',        slug: 'papaya-global',        category: 'Payroll',   g2: 4.3, capterra: 4.4, reviews: 300,   employees: '700+',     news: 6,  deepDive: false, website: 'papayaglobal.com',                   description: 'Automated global payroll and workforce management platform for multinational companies.' },
+  { name: 'Papaya Global',        slug: 'papaya-global',        category: 'Payroll',   g2: 4.3, capterra: 4.4, reviews: 300,   employees: '700+',     news: 7,  deepDive: false, website: 'papayaglobal.com',                   description: 'Automated global payroll and workforce management platform for multinational companies.' },
   { name: 'Wagepoint',            slug: 'wagepoint',            category: 'Payroll',   g2: 4.6, capterra: 4.7, reviews: 250,   employees: '100+',     news: 1,  deepDive: false, website: 'wagepoint.com',                      description: 'Simple payroll software built for small businesses in Canada and the US.' },
   // Perf Mgmt
   { name: 'Lattice',              slug: 'lattice',              category: 'Perf Mgmt', g2: 4.7, capterra: 4.5, reviews: 4000,  employees: '600+',     news: 9,  deepDive: false, website: 'lattice.com',                        description: 'Performance management and engagement platform with OKR and people analytics features.' },
@@ -146,6 +146,9 @@ export const vendors: Vendor[] = rawVendors.map(v => ({
 }))
 
 export const activityFeed = [
+  { headline: 'Silver Lake in talks to take Workday private in one of the largest software buyouts ever', source: 'Reuters', date: 'Aug 13', vendor: 'Workday' },
+  { headline: 'Workday Q2 FY27 revenue up 13% to $2.65B; AI drives 25%+ of new ACV across 5,500 customers', source: 'Workday IR', date: 'Aug 27', vendor: 'Workday' },
+  { headline: 'Rippling launches Helpdesk, agentic IT support that resolves tickets on arrival', source: 'Rippling', date: 'Aug 25', vendor: 'Rippling' },
   { headline: 'Deel crosses $1.5B ARR and acquires deepfake-detection startup Clarity — its 15th acquisition', source: 'HR Tech Feed', date: 'Aug 3', vendor: 'Deel' },
   { headline: 'Rippling launches AI Spend Console, tying employee AI token spend to measurable business output', source: 'CPA Practice Advisor', date: 'Aug 6', vendor: 'Rippling' },
   { headline: 'Paycom Q2 revenue up 10% to $531M; outlook raised as adjusted EBITDA margin reaches 44%', source: 'Paycom IR', date: 'Aug 5', vendor: 'Paycom' },
@@ -158,7 +161,4 @@ export const activityFeed = [
   { headline: 'HiBob brings People Intelligence into Slack to turn workforce insights into action', source: 'GlobeNewswire', date: 'Jun 18', vendor: 'HiBob' },
   { headline: 'Deel research: 68% of UK employers are dropping experience requirements for early-career roles', source: 'Enterprise Times', date: 'Jun 22', vendor: 'Deel' },
   { headline: 'JazzHR goes live with VONQ responsible-AI candidate screening for SMB recruiters', source: 'ERE', date: 'Jun 17', vendor: 'JazzHR' },
-  { headline: 'LinkedIn and Adobe launch AI Essentials for Marketers courses on LinkedIn Learning', source: 'Social Media Today', date: 'Jun 16', vendor: 'LinkedIn Learning' },
-  { headline: "Remote sweeps G2's Summer 2026 Global Employment Platform category — #1 across all four segments", source: 'PR Newswire', date: 'Jun 4', vendor: 'Remote' },
-  { headline: 'Factorial raises $150M Series D at $2.5B valuation to expand across Europe', source: 'Tech.eu', date: 'Jun 3', vendor: 'Factorial' },
 ]

@@ -110,8 +110,8 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'Salesforce', 'ServiceNow', 'Microsoft Teams', 'Okta', 'ADP'],
     news: [
-      { headline: 'Workday raises FY27 margin outlook on AI agent demand; Q1 revenue $2.54B', date: 'May 2026', source: 'CNBC' },
-      { headline: 'Workday expands Illuminate AI assistant across HCM, Finance, and Analytics modules', date: 'Mar 2026', source: 'Workday Newsroom' },
+      { headline: 'Silver Lake in talks to take Workday private in one of the largest software buyouts ever', date: 'Aug 2026', source: 'Reuters' },
+      { headline: 'Workday Q2 FY27 revenue up 13% to $2.65B; AI drives 25%+ of new ACV across 5,500 customers', date: 'Aug 2026', source: 'Workday Investor Relations' },
       { headline: 'Workday flagged worst for enterprise data access in Fivetran ODI benchmark, raising AI integration concerns', date: 'Apr 2026', source: 'The Register' },
     ],
     financialHealth: {
@@ -179,7 +179,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'Rippling launches AI Spend Console, tying employee AI token spend to business output', date: 'Aug 2026', source: 'CPA Practice Advisor' },
       { headline: 'Rippling launches Data Cloud to bring AI-powered BI to workforce and operational data', date: 'Jun 2026', source: 'TechCrunch' },
-      { headline: 'Rippling expands Dublin HQ, expects up to 150 new jobs', date: 'May 2026', source: 'The Irish Times' },
+      { headline: 'Rippling launches Helpdesk, agentic IT support that resolves tickets on arrival', date: 'Aug 2026', source: 'Rippling' },
     ],
     financialHealth: {
       fundingStage: 'Private (Venture-backed)',
@@ -1872,7 +1872,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Workday', 'SAP SuccessFactors', 'Oracle HCM', 'ADP', 'NetSuite', 'HiBob'],
     news: [
       { headline: 'Papaya Global partners with Reindeer to automate finance ops with AI', date: 'Jun 2026', source: 'PR Newswire' },
-      { headline: 'Papaya Global partners with HSBC to offer embedded global payroll payments within banking infrastructure', date: 'Mar 2026', source: 'Business Wire' },
+      { headline: 'Papaya Global launches 360 AI, answering payroll and compliance questions from live workforce data', date: 'Jul 2026', source: 'Papaya Global' },
       { headline: 'Papaya Global and Tech Mahindra partner to modernize global workforce operations and cross-border payments', date: 'Apr 2026', source: 'PR Newswire' },
     ],
   },

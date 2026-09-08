@@ -1,7 +1,7 @@
 const headlines = [
   { text: 'HiBob · Salesforce leads $166M round at a $3.2B valuation', url: 'https://hrtechfeed.com/salesforce-leads-166-million-investment-in-hr-platform-hibob/' },
-  { text: 'Recruiter.com · acquires Feenyx for anti-fraud interview screening', url: 'https://hrtechfeed.com/recruiter-com-acquires-ai-interview-tool/' },
-  { text: 'XShift AI · Autopilot enforces scheduling rules without a manager', url: 'https://techrseries.com/employee-engagement/xshift-ai-expands-ai-copilot-and-autopilot-for-ai-native-employee-shift-scheduling/' },
+  { text: 'Workday · Silver Lake in talks to take it private in a mega software buyout', url: 'https://www.cnbc.com/2026/08/13/workday-skyrockets-25percent-before-trading-halted-on-report-of-silver-lake-takeover.html' },
+  { text: 'Workday · Q2 revenue up 13% to $2.65B; AI drives 25%+ of new ACV', url: 'https://newsroom.workday.com/2026-08-27-Workday-Announces-Fiscal-2027-Second-Quarter-Financial-Results' },
   { text: 'Eightfold AI · free AI practice interviews for job seekers', url: 'https://techrseries.com/artificial-intelligence/eightfold-ai-launches-ai-career-day-offering-free-practice-interviews-on-labor-day/' },
   { text: 'UKG · named a Leader in the 2026 Gartner Magic Quadrant for HCM', url: 'https://techrseries.com/hcm-and-hris/ukg-named-a-leader-in-the-2026-gartner-magic-quadrant-for-hcm/' },
   { text: 'Payrolls · August adds 162K vs 53K forecast; jobless rate holds 4.1%', url: 'https://www.cnbc.com/2026/09/04/jobs-report-august-2026.html' },
