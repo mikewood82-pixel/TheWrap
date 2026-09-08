@@ -423,6 +423,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
         'SAP cloud revenue grew 25% in Q4 2025',
         'Heavy investment in RISE with SAP and BTP integration',
         'SuccessFactors being repositioned as part of broader SAP HXM suite',
+        'SuccessFactors Recruiting is being retired — pulled from the price list Jan 2026 and replaced by SAP-owned SmartRecruiters over a 3–5 year migration',
       ],
     },
     supportQuality: {
@@ -984,24 +985,23 @@ export const vendorDetails: Record<string, VendorDetail> = {
     idealCustomer: {
       size: '1,000–20,000 employees',
       industries: ['Retail', 'Healthcare', 'Technology', 'Financial Services'],
-      useCase: 'Global enterprises seeking a Talent Acquisition Suite with marketplace of 600+ partner integrations',
+      useCase: 'Global enterprises seeking a Talent Acquisition Suite with marketplace of 600+ partner integrations — now the strategic recruiting path for SAP SuccessFactors customers',
     },
     integrations: ['SAP SuccessFactors', 'Workday', 'LinkedIn', 'Microsoft Teams', 'Docusign', 'Paradox'],
     news: [
-      { headline: 'SmartRecruiters launches SmartAssistant AI to automate candidate screening and scheduling across 40 languages', date: 'Feb 2026', source: 'SmartRecruiters Newsroom' },
-      { headline: 'SmartRecruiters expands SmartCRM module with predictive talent pipeline forecasting capabilities', date: 'Mar 2026', source: 'SmartRecruiters Blog' },
+      { headline: 'SAP completes acquisition of SmartRecruiters, folding it into the SuccessFactors HCM suite', date: 'Sep 2025', source: 'SAP News Center' },
+      { headline: 'SAP sets 3–5 year timeline for SmartRecruiters to fully replace SuccessFactors Recruiting', date: 'Oct 2025', source: 'CIO' },
       { headline: 'SmartRecruiters unveils autonomous AI hiring agents and deep SAP SuccessFactors integration', date: 'Apr 2026', source: 'Globe Newswire' },
     ],
     financialHealth: {
-      fundingStage: 'Private (Venture-backed)',
-      lastRaise: '$110M Series E — 2021',
-      headcountTrend: '-7% YoY',
-      recentLayoffs: 'Reduced workforce ~10% — 2023',
-      acquisitionRisk: 'Medium',
+      fundingStage: 'Acquired (SAP SE — completed Sep 2025)',
+      lastRaise: '$110M Series E — 2021 (pre-acquisition)',
+      headcountTrend: 'Stable under SAP ownership',
+      acquisitionRisk: 'None — already acquired',
       keySignals: [
-        'Strong enterprise client base but growth has slowed',
-        'Marketplace model differentiates but adds integration complexity',
-        'Potential M&A target as enterprise ATS market consolidates',
+        'Acquired by SAP in Sep 2025; terms undisclosed. Now SAP\'s strategic recruiting product, not an independent ATS',
+        'SuccessFactors Recruiting was pulled from SAP\'s price list Jan 2026 and will be replaced by SmartRecruiters over a 3–5 year migration window',
+        'SAP has committed to keeping SmartRecruiters usable alongside non-SAP HCM platforms, but roadmap priorities now follow SAP',
       ],
     },
     supportQuality: {
