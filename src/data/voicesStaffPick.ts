@@ -17,11 +17,10 @@ export type VoicesStaffPick = {
 
 export const voicesStaffPick: VoicesStaffPick = {
   enabled: true,
-  sourceSlug: 'jess-von-bank',
-  // Pinned to a specific post rather than her latest: this one is a genuine
-  // argument piece, and it pairs with edition #86 ("We Automated Distrust").
-  // Swapped in 2026-09-01, rotating off Josh Bersin (held the slot for #86).
-  matchTitle: 'Purge the Business Before You Sprinkle AI Glitter',
+  sourceSlug: 'laurie-ruettimann',
+  // No matchTitle: the hero auto-follows her latest post, so it can't go stale
+  // mid-week. Swapped in 2026-09-10 for edition #88, rotating off Jess Von Bank
+  // (held the slot for #87).
 }
 
 // Normalize smart quotes and case so config written with plain ASCII still
