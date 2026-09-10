@@ -31,6 +31,75 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'come-from-away',
+    date: 'September 11, 2026',
+    title: 'Come From Away — 9/11 in Canada',
+    tag: 'Life & Work',
+    excerpt:
+      'Twenty-five years after 9/11, the story I keep coming back to happened 1,100 miles from the towers — in Gander, Newfoundland, a town of 10,000 that had about an hour to decide what kind of town it was going to be when 6,600 stranded strangers landed on its runway.',
+    tileImage: '/newsletters/edition-88/gander-airport-group-photo-tile.webp',
+    body: `
+<img src="/newsletters/edition-88/gander-airport-group-photo.webp" alt="Dozens of Gander airport workers and volunteers posed on the tarmac and a boarding stair beside a jet’s nose, with the GANDER terminal sign behind them" />
+
+<p>Today is September 11, 2026 and we’re officially 25 years past one of the saddest days in our lifetimes. I was a freshman in college that day and vividly remember watching the events unfold helplessly on my VCR/TV combo while my dorm mates at Assumption College in Worcester frantically called relatives to make sure they were ok. After the towers fell, I remember just sitting on my bed wondering what was going to happen next. It was clear this was an event where everything was going to change. I remember my mother telling me that she was in school when Kennedy was shot and that she always remembered that day. This was that day for my generation.</p>
+
+<p>In the years since, I’ve had a quiet fascination with it and tried to read as much as I could about what happened overall and the human stories on the ground. I wondered, if I was in that building, what would I have done? Would I have run in fear or tried to help as much as I could?</p>
+
+<p>Around the 20th anniversary, I picked up <a href="https://www.amazon.com/Only-Plane-Sky-Oral-History/dp/150118220X"><em>The Only Plane in the Sky</em></a>, an oral history by journalist Garrett M. Graff. What Graff does in the book is interview as many people as he can find that were there — everyday citizens, first responders, military, government. Everyone had a story and he compiled them into an oral history of what happened that day from the POV of the people who lived it. It’s not an easy read, there are horrific sections that continue to stay with me today, but even more so, I remember the individual profiles of humanity that surface. Strangers who survived and were forever linked.</p>
+
+<p>I’m not going to detail everything; I encourage you to either read the book or watch the National Geographic six-part series <a href="https://www.hulu.com/series/911-one-day-in-america-3f28088f-e73c-420a-b25c-44c0b9e1542a"><em>9/11: One Day in America</em></a> that came out years ago that contains many of the same people and stories, but I want to focus on what our friends to the north in Canada did.</p>
+
+<p>Many Americans like myself are appalled by how the Trump regime has treated Canada. Canada is known throughout the world for its kindness, and our corrupt government is shaking them down. But Canada has always looked out for America, and there is no greater example of their humanity than what the citizens of Gander, Newfoundland did during the tragedy.</p>
+
+<p>At 9:26 that morning, the FAA grounded every civilian aircraft over the United States. A few minutes later it closed American airspace entirely. That left roughly 500 planes already over the Atlantic with nowhere to go but forward, and Canada took them. Transport Minister David Collenette called it Operation Yellow Ribbon, and over the next several hours, seventeen Canadian airports absorbed somewhere between 225 and 240 diverted flights. Halifax took 47. Vancouver took 34.</p>
+
+<p>Gander, Newfoundland, took 38.</p>
+
+<p>Gander had the runways because it used to be the last stop before the ocean. Before jets could cross the Atlantic without refueling, everything came through Gander — Sinatra, Churchill, Castro, the Beatles. During the war it was a staging point for aircraft heading to Europe yet by 2001 the jets flew right over it, and the airport was mostly a memory with a very long runway attached.</p>
+
+<img src="/newsletters/edition-88/newfoundland-iceberg-coast.webp" alt="A towering iceberg drifts past red rock cliffs and old stone fortifications on the Newfoundland coast, with a small red fishing boat below" />
+
+<p>Thirty-eight wide-body aircraft came down on it. About 6,600 people when the town’s population was only around 10,000. Gander also only had 500 hotel rooms.</p>
+
+<p>The passengers sat on those planes for the better part of a day while customs and security worked through them one aircraft at a time. They couldn’t get to their checked bags. Most of them didn’t know why they’d landed. Some found out from the flight deck, some from strangers on the tarmac, some not until they got inside and saw a television.</p>
+
+<p>Newfoundlanders have a term for anyone not from there. You’re a come from away. Gander had just taken on 6,600 of them at once, and started calling them the “plane people.”</p>
+
+<p>By the time the “plane people” came down the steps and onto the runway, the town had already started. Mayor Claude Elliott went door to door asking people for blankets, pillows, towels, sleeping bags, cots — and telling them, up front, that they probably weren’t getting any of it back. People gave anyway. Schools, church halls, Legion branches, and the community centers opened up. The Salvation Army and the Red Cross set up. The high school in Lewisporte took a planeload. The college in Gander put people on classroom floors.</p>
+
+<p>The only bus service in town was the school buses, and the drivers were in the middle of a strike. A bad one. When the town asked, they put the signs down and drove for five days straight. Their fight was with their employer. It was never with the people who had just landed. The union didn’t take a meeting about it. They just went.</p>
+
+<p>The Canadian Tire store was authorized to give people whatever they needed at no charge, and when it ran out of something, to go buy it from a competitor. Pharmacists filled prescriptions for free — thousands of them, for people whose medication was locked in a cargo hold. Eithne Smith, the principal at Gander Collegiate, tracked down kosher food for observant Jewish passengers and opened her school so they could keep the Sabbath.</p>
+
+<p>Bonnie Harris, who ran the local animal shelter, went through the plane manifests herself and found nineteen animals sitting in the cargo holds. Twelve dogs. Five cats. And two bonobos. Bonobos! Unga and Kosana were flying from a zoo in Belgium to new homes in Columbus and Milwaukee. Harris and the town veterinarian moved all nineteen into a hangar and cared for them around the clock for five days. Every animal survived. Unga was pregnant when she landed and lost the baby, but two years later she had another one at the Columbus Zoo, and the staff named him Gander. He is still there today.</p>
+
+<img src="/newsletters/edition-88/gander-and-unga-bonobos.webp" alt="Two bonobos walking on all fours through a sunlit, leafy zoo enclosure" />
+<p><em>Gander and his mother, Unga, at the Columbus Zoo before her passing in 2021.</em></p>
+
+<p>Beulah Cooper was volunteering at the Royal Canadian Legion, which took in 67 people off an Aer Lingus flight. She made sandwiches. She drove people around town to find pay phones so they could call home. She brought strangers back to her house to shower and sleep, which is stranger danger 101.</p>
+
+<p>Two of the people she looked after were Hannah and Dennis O’Rourke, who had flown out of Dublin that morning. Their son Kevin was 44, a New York City firefighter, and they had no idea where he was. Cooper’s own son was a firefighter. So she sat with them and they talked about the job. She kept in touch after they got home. Two weeks later, the O’Rourkes learned Kevin had died at the World Trade Center. Cooper stayed in their lives for the rest of theirs.</p>
+
+<p>Nobody in Gander asked for a purchase order. Nobody ran a liability review. One of the volunteers described it to the CBC years later as nobody questioning anything — people just did.</p>
+
+<p>And the passengers noticed.</p>
+
+<p>Before they left, they emptied their pockets into donation boxes around town, more than $60,000 from people who had spent five days with no access to their luggage or their bank accounts. On one of the flights out, a passenger stood up in the aisle and asked the cabin to fund a scholarship for Gander-area kids. He got commitments before the plane landed. That fund still exists, and it has now put a couple of generations of Newfoundland students through school on money raised by people who were only ever supposed to be flying over.</p>
+
+<p>Just like the grandfather and grandson had helped me last month <a href="https://ilovethewrap.com/newsletter/radiator-hose-middle-of-nowhere">when my car broke down</a>, they saw a problem and let their humanity shine through.</p>
+
+<p>I’ve spent 25 years wondering what I would have done in that building. I’m not sure that’s the right question anymore. Nobody in Gander was in the building. They were 1,100 miles away, watching it on a television the same way I was from a dorm room in Worcester. The difference is that a few hours later a problem landed on their runway and they had about an hour to decide what kind of town they were going to be.</p>
+
+<p>They didn’t run into a fire. They gave up a bed. They opened a school. They put down a picket sign. They handed a stranger the keys to a store and told him to take what he needed. Every one of those was a choice somebody made while tired, inconvenienced, and scared about what was happening 1,100 miles to the south.</p>
+
+<p>So as you watch the remembrances today, don’t just ask whether you would have run toward the towers. Almost none of us will ever get that question. Ask the smaller one — the one you will actually get handed some day. When a stranger arrives, will you open your door?</p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+  `,
+  },
+  {
     slug: 'a-wall-of-95s',
     date: 'September 4, 2026',
     title: 'A Wall of 95s',
