@@ -148,6 +148,7 @@ export const events: IndustryEvent[] = [
     category: 'vendor',
     url: 'https://rising.workday.com/us.html',
     blurb: "Workday's annual love-in for 10,000+ customers. The place where the agent pivot becomes operational — or, more likely, where we find out what 'operational' is supposed to mean.",
+    mikeAttending: true,
   },
   {
     name: 'HR Technology Conference & Exposition',
