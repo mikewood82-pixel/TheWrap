@@ -31,6 +31,142 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'the-wrap-heads-to-recfest',
+    date: 'September 18, 2026',
+    title: 'The Wrap heads to RecFest',
+    tag: 'Events',
+    excerpt:
+      'RecFest Nashville is next week and it’s the one conference I genuinely look forward to — six stages in an open field instead of another expo hall next to a casino — so here’s every session, vendor, and after-party I’m circling before I get on the plane.',
+    body: `
+<img src="/newsletters/edition-89/recfest-nashville-hero.webp" alt="A RecFest Nashville banner reading “Heading to RecFest — Nashville, Sept 23-24 2026,” with Mike in a brown cowboy hat in front of the Nashville skyline, a Music City guitar case, and festival tents at dusk" />
+
+<p>It’s back-to-school season for recruiters next week as everyone heads to Nashville for RecFest. I’ll be on the ground for my third one.</p>
+
+<p>Of all the events I go to, this is my favorite for two reasons:</p>
+
+<p>Number one: It’s outside!</p>
+
+<p>Number two: IT’S OUTSIDE!</p>
+
+<p>I can’t tell you how refreshing it is not to be stuck in an expo hall next to a casino. In Nashville it’s still mostly summer, and this is my last chance to enjoy shorts before four months of cold and sunsets starting at 5.</p>
+
+<img src="/newsletters/edition-89/recfest-nashville-site-map.webp" alt="The RecFest Nashville site map of Fair Park showing the Inspire, Innovate, Disrupt and Unplugged stages, Pavilion North and South, the TA Leaders Lounge and numbered exhibitor stands arranged around a central green" />
+
+<p>The setup is brilliant. There’s a big circle with enough space to catch up with a friend while you traverse the vendor booths, and six stages tucked throughout with some of the best recruiting content you’ll find. Real practitioners sharing their best practices, what they’re worried about, and what they’re excited about. You’ll have the opportunity to join a community that just wants to make the function better.</p>
+
+<p>Post-event, the festivities move to Broadway, where you can hit one of the many vendor-sponsored parties that always have lots of music, libations, and laughs. I’m already looking forward to heading to the Redneck Riviera for another PerfectHire party with Monte and the Monsters.</p>
+
+<img src="/newsletters/edition-89/monte-and-the-monsters.webp" alt="Monte &amp; The Monsters playing a packed stage at Johnny Cash’s Bar in Nashville, the singer mid-headbang under red lights" style="display:block;width:100%;max-width:400px;height:auto;margin:16px auto 8px;border-radius:4px;" />
+
+<p>I’ll be on the ground conducting interviews for Totally Talent, but I plan to drop into as many sessions and meet as many people as I can. Here’s what I’m on the lookout for.</p>
+
+<h3>The Sessions</h3>
+
+<ul>
+  <li><strong>Inspire Stage</strong> — Hung Lee is always connected to the latest happenings in the space, and he’s on at 1:30 Thursday with John Vlastelica — “The Future Called. Talent Acquisition Needs a New Job Description.” I’d follow that up at 2:15 with Matt Charney for real talk and real snark, though he’s bringing data this time: original findings from “The State of Interview Intelligence 2026.”</li>
+  <li><strong>Pavilion South</strong> — Emily Paik’s Thursday morning session on building rec ops from scratch. If you are not testing out AI to see what it can do for you, you need to be.</li>
+  <li><strong>Innovate Stage</strong> — A ton of great sessions on employer branding, something that matters more in the AI slop era. Day 1 brings “EB teams are being reorganized and reduced — the best ones are using it as a chance to refocus.” Day 2 runs employer brand nearly all day: measuring brand as a business driver, preference as the missing middle, EVP stress-testing.</li>
+  <li><strong>Pavilion North</strong> — Sam Fitzroy of Dalia on breaking free of the job board giants, Wednesday at 10:30. Unless you want “auto-apply” upping your clutter and cost. If so, you do you.</li>
+  <li><strong>Disrupt Stage</strong> (Chad and Cheese hosting Day 1) — “The Funnel Isn’t Dead. It’s Missing the Point” at 11:15 — I need to be convinced it isn’t. Then “The Invisible Employer Brand: What AI Tells Candidates About You” at 1:30, and at 3:00, what Achilles is doing for frontline hiring.</li>
+</ul>
+
+<h3>The Vendors</h3>
+
+<ul>
+  <li><strong>Shaker Recruitment Marketing</strong> — Great people, always a great booth. They’re coming off their 75th anniversary — and the exaqueo acquisition — so I’m excited to see what they’re working on next.</li>
+  <li><strong>Juicebox</strong> has been all over my LinkedIn feed with good news after good news. CEO David Paffenholz is on the Innovate Stage Wednesday at 11:15 on building a recruiting engine with AI agents.</li>
+  <li><strong>Ashby</strong> seems to be gaining market share. I’ll look for the latest in their ATS.</li>
+  <li><strong>Joveo</strong> always has tremendous tech. I want to see how their voice agent is being adopted with customers.</li>
+  <li><strong>HiringBranch</strong> is another favorite. CEO Stephane Rivard is on Disrupt Thursday at 11:15 with William Tincup on skills-based hiring signals.</li>
+  <li><strong>PerfectHire</strong> — Matt Schalsey throws a great party and he’s bringing back the great band from last year. He’s also speaking Wednesday at 3:00 on Pavilion South — “Hiring Wars: When Recruiters Fight Back.”</li>
+  <li><strong>SCALIS</strong> keeps popping up in my feeds. CEO Brandon Amoroso is on the Innovate Stage Wednesday at noon with a session titled “AI’s made recruiting WORSE! Here’s why.”</li>
+  <li><strong>ZoomInfo</strong> — Shannon Pritchett is there now and I know she’s working on something great that I can’t wait to see.</li>
+  <li><strong>ClearCo</strong> was the clear winner of Spring conference season with their diamond hunt booth. I’m loving the rebrand — ClearCompany to ClearCo, repositioning as an AI- and agent-powered unified talent platform — and looking to see what they have in store this year.</li>
+  <li><strong>Criteria Corp</strong> — I recently interviewed CEO Josh Millet, and their assessments are top notch in a world where every candidate looks the same.</li>
+  <li><strong>AI interviewers</strong> — They were what everyone was rolling out last Spring. What’s the next feature everyone races toward?</li>
+  <li><strong>Purple Acorn (Media)</strong> — Always good to see the whole team. Keep putting out great content.</li>
+</ul>
+
+<p>If you are heading to RecFest, please shoot me a note and say hello. I’ll be back with a full report post-event.</p>
+
+<p>In the meantime, let’s get into some HR Tech news that piqued my interest this week. This week’s Wrap highlights Oracle laying off its HR Tech staff, Boomband launching in New England, Recruitics rebranding, Workday getting a new CMO, a new jobs report from 12Twenty, Kristy McCann and I tearing into the BLS numbers, and AI just might kill us all.</p>
+
+<p>Enjoy and have a great weekend!</p>
+
+<p>Mike</p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Oracle layoffs reach HR Tech teams</h3>
+<img src="/newsletters/edition-89/oracle-larry-ellison.webp" alt="Larry Ellison speaking into a handheld microphone on stage in front of an enormous red backdrop with the ORACLE wordmark" />
+<p>I was on the fence about writing yet another Oracle layoff post, so hat-tip to the always informative Steve Smith for tackling it for me. Steve notes that this latest round hits home as it includes enterprise engineering and HR Tech, following 5,000-7,000 ERP consulting and Fusion Cloud roles earlier this year. Oracle’s Recruiting module has been highly rated by both analysts and customers, but if you are one of them, you might want to be alert as they are now “doing more with less.” Oh, and what did those workers get for building a product that actually works and is loved by their customers? A 6am mass email and 4 weeks of severance (plus one week for each year). Woof.</p>
+<p><a href="https://worktechweekly.substack.com/p/more-oracle-layoffs-what-it-means">Read more</a>.</p>
+
+<h3>Jeff Taylor launches Boomband across New England</h3>
+<img src="/newsletters/edition-89/boomband-jeff-taylor-profile.webp" alt="A Boomband profile page for Jeff Taylor on a dark interface, showing his headshot, a welcome note, Boom Moments, experience highlights and a circular skills Power Lab graphic" />
+<p>Jeff Taylor, who helped put jobs on the internet with Monster, has launched his AI-native talent marketplace in the New England area. I’ve been keeping an eye on Boomband while cheering them on from the sidelines as they are one of the few solutions left doing something really innovative. I’ve been championing the fact that we need something more than a resume for years. What Boomband does for candidates is it lets them build their own dossier at a claimable URL that they own and keep between roles and is indexed for Google and LLM discovery. It’s a portfolio on the go that gives employers a better sense of a person’s skills and ambitions than what’s out there and I’m excited to see it take off.</p>
+<p><a href="https://www.prnewswire.com/news-releases/boomband-launches-new-englands-own-talent-intelligence-platform-as-existing-talent-solutions-struggle-across-the-board-302880080.html">Read more</a>.</p>
+
+<h3>Recruitics rebrands</h3>
+<img src="/newsletters/edition-89/recruitics-frontline-imagery.webp" alt="Two pizza makers in matching maroon caps and white tees working a counter, one tossing a large disc of dough into the air" />
+<p>Recruitics just got a refresh and added three new executives and while that’s great, I want to talk about positioning. This is another legacy brand moving closer towards frontline hiring. All the images on their homepage are frontline or gig work — delivery, call center, spinning pizza dough (with your twin brother?), and healthcare. They are a great company, so head over and check out the new look.</p>
+<p><a href="https://info.recruitics.com/resources/recruitics-announces-brand-refresh-and-addition-of-three-senior-executives-for-the-ai-era-of-hiring">Read more</a>.</p>
+
+<h3>Workday names Sarah Kennedy Ellis CMO</h3>
+<img src="/newsletters/edition-89/workday-sarah-kennedy-ellis.webp" alt="A Workday announcement graphic reading “Welcoming our new CMO — Sarah Kennedy Ellis, Chief Marketing Officer, Workday,” with her portrait in a black leather blazer" style="display:block;width:100%;max-width:440px;height:auto;margin:16px auto 8px;border-radius:4px;" />
+<p>Workday named Sarah Kennedy Ellis as their new CMO. Ellis joins from Google, where she led global marketing for Google Cloud and Google Workspace. Welcome to the HR Tech family, Sarah, see you at Workday Rising next month!</p>
+<p><a href="https://investor.workday.com/news-and-events/press-releases/news-details/2026/Workday-Names-Sarah-Kennedy-Ellis-Chief-Marketing-Officer/default.aspx">Read more</a>.</p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions</h2>
+
+<p><strong>Jack &amp; Jill raised a $40M Series A</strong>, eleven months after a $20M seed. The London and San Francisco hiring marketplace runs paired voice agents — Jack for candidates, Jill embedded with employers. Air Street Capital led, with Creandum and Madrona participating. <a href="https://hrtechfeed.com/jack-jill-secures-40m-series-a-to-replace-job-applications-with-ai-agents/">Read more</a>.</p>
+
+<p><strong>BoomerangHR closed a $12.7M seed</strong>, led by Kalos Ventures and Album Ventures, with Monta Vista Capital, Capital Eleven and Strada Education Foundation participating. The offboarding and alumni management platform is led by CEO Jeff Wald. <a href="https://www.globenewswire.com/news-release/2026/09/14/3361207/0/en/boomeranghr-closes-12m-seed-round-to-help-companies-build-and-maintain-talent-through-comprehensive-alumni-management-and-offboarding.html">Read more</a>.</p>
+
+<hr />
+
+<h2>📊 Research and Reports</h2>
+
+<h3>12Twenty 2026 Jobs Report</h3>
+<img src="/newsletters/edition-89/12twenty-jobs-report.webp" alt="A purple banner reading “The 2026 Jobs Report for the Early-Career Market” with a Download Now button, beside a fan of chart slides showing MBA and undergrad salary, internship and negotiation data" />
+<p>Wondering just how bad the job market is for recent graduates? 12Twenty released their jobs report showing a few sobering statistics:</p>
+<ul>
+  <li>MBA employment at graduation fell to 58.1% of job-seeking students, down from 66.5% the prior year and 83.6% in 2020-21 — yet average MBA starting salaries are up</li>
+  <li>Undergrad fell to 66.5%, from 71.2%, against an 87.8% peak in 2020-21</li>
+  <li>Converting a school-sourced internship rose to 16% of MBA job sources, the highest in the ten-year series, even while scheduled interviews kept declining</li>
+</ul>
+<p>There’s either not enough jobs available for the traditional MBA candidate, or they are finding as hard a time getting through hiring systems as everyone.</p>
+<p><a href="https://12twenty.com/blog/jobs-report-2026">Download the full report</a>.</p>
+
+<hr />
+
+<h2>🔥 Hot Takes</h2>
+
+<h3>The Real Story in the BLS Numbers</h3>
+<img src="/newsletters/edition-89/bls-exit-concentrated-chart.webp" alt="A bar chart titled “The exit is concentrated. Black workers and adult men left fastest,” plotting percentage-point changes in unemployment rate and labor force participation by group from August 2025 to August 2026" />
+<p>Kudos to friend-of-the-program Kristy McCann for putting together this collaboration. You know that I think there is a bigger story in the BS BLS numbers than “unemployment stayed the same.” In this piece, we chop up the data to see where the workforce is struggling and surprise, it’s worse for women and minorities. The biggest takeaway for me was something that I feel like I’ve been circling for months: most of the jobs added are neither high-paying nor careers for the people taking them.</p>
+<p><a href="https://kristys-newsletter-acd1bd.beehiiv.com/p/people-progress-special-addition">Read more</a>.</p>
+
+<hr />
+
+<h2>🖱️ Worth a Click</h2>
+
+<h3>OpenAI publishes six new cases of its models going around the guardrails</h3>
+<img src="/newsletters/edition-89/hal-9000.webp" alt="The glowing red camera eye of HAL 9000 against a black background" />
+<p>Another week, another story of AI going rogue and leading us closer to being hunted in the streets by those friendly robo-dogs you see at conferences. OpenAI just disclosed six fresh incidents where its model “escaped” and went rogue. In one case, “the system wrote hidden notes to remind itself to hide errors from users. Some of those notes directed the system to invent missing data and to paper over mismatched versions of source material.”</p>
+<p>The fact that OpenAI is even saying this publicly should concern you. I wouldn’t want to be using ChatGPT to research something and be worried that it is trying to trick me. Did we open up Pandora’s Box?</p>
+<p><a href="https://www.nytimes.com/2026/09/16/technology/openai-model-safety-guardrails.html">Read more</a>.</p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+`,
+  },
+  {
     slug: 'come-from-away',
     date: 'September 11, 2026',
     title: 'Come From Away — 9/11 in Canada',
