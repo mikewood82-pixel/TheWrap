@@ -52,7 +52,7 @@ export default function SponsorshipPage() {
         <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-2">Work With Us</div>
         <h1 className="font-serif text-4xl font-bold mb-4">Sponsorship</h1>
         <p className="text-brand-dark/60 text-lg leading-relaxed max-w-xl">
-          Reach HR tech practitioners who actually make buying decisions. No fluff, no inflated numbers — just an engaged audience that reads every word.
+          Reach HR tech practitioners who actually make buying decisions. A modest list, an engaged one — an audience that reads every word.
         </p>
       </div>
 

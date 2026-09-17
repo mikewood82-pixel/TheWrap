@@ -11,7 +11,7 @@ interface SEOProps {
 
 const SITE_NAME = 'The Wrap'
 const BASE_URL = 'https://ilovethewrap.com'
-const DEFAULT_DESCRIPTION = 'HR tech news, vendor signals, and the labor market — every Friday. No fluff, no vendor spin.'
+const DEFAULT_DESCRIPTION = 'HR tech news, vendor signals, and the labor market — every Friday. Uncovering the truth behind work.'
 const DEFAULT_IMAGE = `${BASE_URL}/og-default.png`
 
 export default function SEO({

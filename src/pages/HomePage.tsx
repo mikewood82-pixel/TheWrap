@@ -292,7 +292,7 @@ export default function HomePage() {
             Get The Wrap in your inbox
           </h2>
           <p className="text-white/60 mb-2 text-lg">
-            HR tech news, vendor signals, and the labor market — no fluff, no vendor spin.
+            HR tech news, vendor signals, and the labor market — uncovering the truth behind work.
           </p>
           <p className="text-white/40 text-sm mb-8">
             Join 2,100+ HR tech professionals who read The Wrap every Friday.
