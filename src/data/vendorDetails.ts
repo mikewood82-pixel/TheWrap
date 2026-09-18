@@ -112,7 +112,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'Silver Lake in talks to take Workday private in one of the largest software buyouts ever', date: 'Aug 2026', source: 'Reuters' },
       { headline: 'Workday Q2 FY27 revenue up 13% to $2.65B; AI drives 25%+ of new ACV across 5,500 customers', date: 'Aug 2026', source: 'Workday Investor Relations' },
-      { headline: 'Workday flagged worst for enterprise data access in Fivetran ODI benchmark, raising AI integration concerns', date: 'Apr 2026', source: 'The Register' },
+      { headline: 'Sana from Workday named a 2026 Top HR Product of the Year by HR Executive and HR Tech', date: 'Sep 2026', source: 'GlobeNewswire' },
     ],
     financialHealth: {
       fundingStage: 'Public (NYSE: WDAY)',
@@ -349,7 +349,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Workday', 'SAP SuccessFactors', 'Oracle HCM', 'QuickBooks', 'Microsoft Teams', 'Salesforce'],
     news: [
       { headline: 'ADP reports Q3 FY2026 results — revenue up 7% to $5.9B, EPS $3.37 beats; FY guidance raised', date: 'Apr 2026', source: 'ADP Investor Relations' },
-      { headline: 'ADP DataCloud adds real-time compensation benchmarking for 140+ job families', date: 'Mar 2026', source: 'ADP Newsroom' },
+      { headline: 'ADP DataCloud Talent and Compensation Benchmarks named a 2026 Top HR Product of the Year', date: 'Sep 2026', source: 'GlobeNewswire' },
       { headline: 'ADP closes FY2026 with revenue up 7% to $21.9B; Q4 adjusted EPS up 17% as AI lifts margins', date: 'Jul 2026', source: 'ADP Investor Relations' },
     ],
     financialHealth: {
@@ -457,7 +457,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'Oracle launches Fusion Agentic Applications for HR — 1,000+ AI agents now embedded across HCM at no extra cost', date: 'Apr 2026', source: 'UC Today' },
       { headline: 'Oracle announces deep integration between HCM Cloud and Oracle Analytics Cloud for workforce insights', date: 'Mar 2026', source: 'Oracle Newsroom' },
-      { headline: 'Oracle HCM Cloud adds payroll support for 12 Asia-Pacific countries in latest release', date: 'Feb 2026', source: 'Oracle Blog' },
+      { headline: 'Oracle Workforce Operations Command Center named a 2026 Top HR Product of the Year', date: 'Sep 2026', source: 'GlobeNewswire' },
     ],
     financialHealth: {
       fundingStage: 'Public (NYSE: ORCL)',
@@ -561,7 +561,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['QuickBooks', 'Xero', 'Indeed', 'Microsoft 365', 'Google Workspace', 'Clover'],
     news: [
       { headline: 'Paychex launches AI-powered HR Advisor to give small business owners instant compliance guidance', date: 'Feb 2026', source: 'Paychex Newsroom' },
-      { headline: 'Paychex Flex adds earned wage access feature in partnership with DailyPay', date: 'Jan 2026', source: 'Paychex Newsroom' },
+      { headline: 'Paychex WISE named a 2026 Top HR Product of the Year by HR Executive and HR Tech', date: 'Sep 2026', source: 'GlobeNewswire' },
       { headline: 'Paychex declares 10% dividend hike to $1.19/share — fifth consecutive double-digit raise', date: 'May 2026', source: 'Paychex IR' },
     ],
     financialHealth: {
@@ -737,7 +737,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Slack', 'LinkedIn', 'Workday', 'BambooHR', 'HireEZ', 'DocuSign'],
     news: [
       { headline: 'Greenhouse ships six AI features for structured hiring — Analytics Agent, Notetaker, MCP', date: 'Jun 2026', source: 'PR Newswire' },
-      { headline: 'Greenhouse 2026 Candidate AI Interview Report — 63% have faced an AI interview, 38% walked away', date: 'May 2026', source: 'PR Newswire' },
+      { headline: 'Greenhouse Real Talent named a 2026 Top HR Product of the Year by HR Executive and HR Tech', date: 'Sep 2026', source: 'GlobeNewswire' },
       { headline: 'Greenhouse CEO Daniel Chait argues AI interviews could make the resume obsolete', date: 'Aug 2026', source: 'Forbes' },
     ],
     financialHealth: {
@@ -858,7 +858,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Workday', 'SAP SuccessFactors', 'LinkedIn', 'Microsoft Teams', 'Paradox', 'DocuSign'],
     news: [
-      { headline: 'iCIMS named Best Comprehensive TA Solution by Lighthouse for third year; TechTarget lists Top AI Recruiting Tool', date: 'Apr 2026', source: 'PR Newswire' },
+      { headline: 'iCIMS AI Sourcing Agent named a 2026 Top HR Product of the Year by HR Executive and HR Tech', date: 'Sep 2026', source: 'GlobeNewswire' },
       { headline: 'iCIMS appoints Marc Thompson as CEO to drive AI-led growth', date: 'May 2026', source: 'NJBIZ' },
       { headline: 'iCIMS June Workforce Report: tech-layoff headlines mask a surge in AI-driven hiring demand', date: 'Jun 2026', source: 'iCIMS' },
     ],
@@ -1231,15 +1231,15 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'HiBob brings People Intelligence into Slack to turn workforce insights into action', date: 'Jun 2026', source: 'GlobeNewswire' },
       { headline: 'HiBob launches native US Payroll to cut complexity and drive confidence for SMBs', date: 'Apr 2026', source: 'HiBob Newsroom' },
-      { headline: 'HiBob expands payroll integrations to cover 50 countries in partnership with Papaya Global', date: 'Mar 2026', source: 'HiBob Blog' },
+      { headline: 'Salesforce leads $166M round in HiBob at a $3.2B valuation — its largest raise to date', date: 'Sep 2026', source: 'Bloomberg' },
     ],
     financialHealth: {
       fundingStage: 'Private (Series D)',
-      lastRaise: '$150M Series D at $2.6B valuation — 2024',
+      lastRaise: '$166M led by Salesforce at $3.2B valuation — Sep 2026',
       headcountTrend: '+15% YoY',
       acquisitionRisk: 'Low',
       keySignals: [
-        'Well-funded with strong mid-market traction globally',
+        'Raised $166M led by Salesforce (Sep 2026) at a $3.2B valuation; >$700M raised to date',
         'Expanding payroll capabilities market by market',
         'Differentiated UX and culture features driving word-of-mouth growth',
       ],
@@ -1455,7 +1455,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['QuickBooks', 'ADP', 'Microsoft 365', 'Slack', 'Indeed', 'Checkr'],
     news: [
       { headline: 'Paylocity closes FY2026 with revenue up 11% to $1.77B; guides FY27 to $1.88B–$1.90B', date: 'Aug 2026', source: 'GlobeNewswire' },
-      { headline: 'Paylocity embeds Vestwell to connect retirement, payroll, and HR in one experience', date: 'Jun 2026', source: 'GlobeNewswire' },
+      { headline: 'New York Jets select Paylocity as their official HCM platform', date: 'Sep 2026', source: 'GlobeNewswire' },
       { headline: 'Paylocity acquires AI-native Aidora to automate complex, regulated leave management', date: 'Jul 2026', source: 'GlobeNewswire' },
     ],
     financialHealth: {
@@ -2384,7 +2384,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Workday', 'SAP SuccessFactors', 'Oracle HCM', 'ADP', 'Tableau', 'Microsoft Power BI'],
     news: [
       { headline: 'Visier unveils next-gen Workforce AI at Outsmart 2026 with Glean MCP integration for in-flow people analytics', date: 'Apr 2026', source: 'PR Newswire' },
-      { headline: 'Visier acquires workforce management analytics vendor Yoi Corp to add capacity planning capabilities', date: 'Feb 2026', source: 'Business Wire' },
+      { headline: 'Visier Workforce Planning: Organization Design named a 2026 Top HR Product of the Year', date: 'Sep 2026', source: 'GlobeNewswire' },
       { headline: 'Visier surpasses 75,000 organisations and 25M employee records analysed on platform', date: 'Mar 2026', source: 'Visier Blog' },
     ],
   },
