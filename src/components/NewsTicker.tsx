@@ -1,12 +1,12 @@
 const headlines = [
-  { text: 'HiBob · Salesforce leads $166M round at a $3.2B valuation', url: 'https://hrtechfeed.com/salesforce-leads-166-million-investment-in-hr-platform-hibob/' },
-  { text: 'Workday · Silver Lake in talks to take it private in a mega software buyout', url: 'https://www.cnbc.com/2026/08/13/workday-skyrockets-25percent-before-trading-halted-on-report-of-silver-lake-takeover.html' },
-  { text: 'Workday · Q2 revenue up 13% to $2.65B; AI drives 25%+ of new ACV', url: 'https://newsroom.workday.com/2026-08-27-Workday-Announces-Fiscal-2027-Second-Quarter-Financial-Results' },
-  { text: 'Eightfold AI · free AI practice interviews for job seekers', url: 'https://techrseries.com/artificial-intelligence/eightfold-ai-launches-ai-career-day-offering-free-practice-interviews-on-labor-day/' },
-  { text: 'UKG · named a Leader in the 2026 Gartner Magic Quadrant for HCM', url: 'https://techrseries.com/hcm-and-hris/ukg-named-a-leader-in-the-2026-gartner-magic-quadrant-for-hcm/' },
-  { text: 'Payrolls · August adds 162K vs 53K forecast; jobless rate holds 4.1%', url: 'https://www.cnbc.com/2026/09/04/jobs-report-august-2026.html' },
-  { text: 'Job cuts · 52,881 in August, up 58% — but hiring plans jump 725%', url: 'https://hrexecutive.com/august-job-cuts-up-nearly-60-but-its-not-all-bad-news/' },
-  { text: 'California SB 947 · Newsom has until Sept 30 to sign AI-firing limits', url: 'https://www.ebglaw.com/insights/publications/workplace-ai-regulation-in-2026-how-employers-can-navigate-the-changing-legal-landscape' },
+  { text: 'Harver · acquires Symphony Talent, forming a 1,500-client hiring platform', url: 'https://hrtechfeed.com/harver-acquires-symphony-talent/' },
+  { text: 'Jack & Jill · $40M Series A to swap job applications for AI agents', url: 'https://hrtechfeed.com/jack-jill-secures-40m-series-a-to-replace-job-applications-with-ai-agents/' },
+  { text: 'Workday · Silver Lake in talks to take the $51B HCM giant private', url: 'https://www.cnbc.com/2026/08/13/workday-skyrockets-25percent-before-trading-halted-on-report-of-silver-lake-takeover.html' },
+  { text: 'Crosschq · rebrands as Brilliant AI, folding in ApplicantX and Traitify', url: 'https://hrtechfeed.com/crosschq-rebrands-as-brilliant-ai-combining-three-hr-tech-platforms-to-create-hiring-intelligence-category/' },
+  { text: 'HR Tech · 14 Top HR Products of the Year named ahead of Vegas', url: 'https://www.globenewswire.com/news-release/2026/09/15/3361894/0/en/hr-executive-and-hr-tech-reveal-2026-top-hr-products-of-the-year.html' },
+  { text: 'iCIMS · Intelligent Hiring Platform brings hiring agents into Teams', url: 'https://hrtechfeed.com/new-hr-tech-from-icims-vervoe/' },
+  { text: 'Fed · first hike since 2023 lifts the benchmark to 3.75%-4%', url: 'https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html' },
+  { text: 'California SB 947 · Newsom has until Sept 30 to sign AI-firing limits', url: 'https://www.cdflaborlaw.com/blog/robots-can-recommend-but-real-people-must-pull-the-trigger-inside-sb-947' },
 ]
 
 export default function NewsTicker() {
