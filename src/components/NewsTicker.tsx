@@ -1,8 +1,8 @@
 const headlines = [
   { text: 'Harver · acquires Symphony Talent, forming a 1,500-client hiring platform', url: 'https://hrtechfeed.com/harver-acquires-symphony-talent/' },
-  { text: 'Jack & Jill · $40M Series A to swap job applications for AI agents', url: 'https://hrtechfeed.com/jack-jill-secures-40m-series-a-to-replace-job-applications-with-ai-agents/' },
+  { text: "Gartner · first WFM Magic Quadrant names Dayforce, Workday, UKG and Infor Leaders", url: 'https://www.globenewswire.com/news-release/2026/09/17/3364269/0/en/dayforce-recognized-as-a-leader-in-the-inaugural-gartner-magic-quadrant-for-workforce-management-technology.html' },
   { text: 'Workday · Silver Lake in talks to take the $51B HCM giant private', url: 'https://www.cnbc.com/2026/08/13/workday-skyrockets-25percent-before-trading-halted-on-report-of-silver-lake-takeover.html' },
-  { text: 'Crosschq · rebrands as Brilliant AI, folding in ApplicantX and Traitify', url: 'https://hrtechfeed.com/crosschq-rebrands-as-brilliant-ai-combining-three-hr-tech-platforms-to-create-hiring-intelligence-category/' },
+  { text: "Culture Amp · 85% of workers are told to use AI; 42% don't know why", url: 'https://www.prnewswire.com/news-releases/culture-amps-2026-ai-at-work-benchmark-85-are-encouraged-to-use-ai-42-dont-know-why-302881491.html' },
   { text: 'HR Tech · 14 Top HR Products of the Year named ahead of Vegas', url: 'https://www.globenewswire.com/news-release/2026/09/15/3361894/0/en/hr-executive-and-hr-tech-reveal-2026-top-hr-products-of-the-year.html' },
   { text: 'iCIMS · Intelligent Hiring Platform brings hiring agents into Teams', url: 'https://hrtechfeed.com/new-hr-tech-from-icims-vervoe/' },
   { text: 'Fed · first hike since 2023 lifts the benchmark to 3.75%-4%', url: 'https://www.cnbc.com/2026/09/16/fed-rate-decision-september-2026.html' },

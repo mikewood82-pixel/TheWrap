@@ -110,7 +110,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Slack', 'Salesforce', 'ServiceNow', 'Microsoft Teams', 'Okta', 'ADP'],
     news: [
-      { headline: 'Silver Lake in talks to take Workday private in one of the largest software buyouts ever', date: 'Aug 2026', source: 'Reuters' },
+      { headline: 'Workday named a Leader in the inaugural Gartner Magic Quadrant for Workforce Management', date: 'Sep 2026', source: 'Workday Newsroom' },
       { headline: 'Workday Q2 FY27 revenue up 13% to $2.65B; AI drives 25%+ of new ACV across 5,500 customers', date: 'Aug 2026', source: 'Workday Investor Relations' },
       { headline: 'Sana from Workday named a 2026 Top HR Product of the Year by HR Executive and HR Tech', date: 'Sep 2026', source: 'GlobeNewswire' },
     ],
@@ -305,7 +305,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     },
     integrations: ['Microsoft Teams', 'Salesforce', 'ADP', 'ServiceNow', 'Workato', 'Kronos (legacy)'],
     news: [
-      { headline: 'UKG Pro integrates Great Place To Work culture data directly into its HCM dashboard', date: 'Feb 2026', source: 'UKG Newsroom' },
+      { headline: 'UKG named a Leader in the inaugural Gartner Magic Quadrant for Workforce Management', date: 'Sep 2026', source: 'TechRSeries' },
       { headline: 'UKG cuts 950 jobs — 6% of workforce — as AI-driven restructuring hits frontline and Canadian staff', date: 'Apr 2026', source: 'HR Executive' },
       { headline: 'UKG acquires workforce analytics firm Immedis to strengthen global payroll intelligence', date: 'Mar 2026', source: 'Business Wire' },
     ],
@@ -499,7 +499,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Microsoft Teams', 'Workato', 'PowerBI', 'Salesforce', 'Okta', 'ADP'],
     news: [
       { headline: 'Dayforce launches Co-Pilot, an AI assistant for managers to handle schedule exceptions in real time', date: 'Feb 2026', source: 'Dayforce Newsroom' },
-      { headline: 'Dayforce reports 22% YoY cloud revenue growth driven by new enterprise wins in healthcare', date: 'Jan 2026', source: 'Dayforce Investor Relations' },
+      { headline: "Dayforce named a Leader in Gartner's first WFM Magic Quadrant, highest for Ability to Execute", date: 'Sep 2026', source: 'GlobeNewswire' },
       { headline: 'Canadian federal government awards Dayforce $350M contract to replace troubled Phoenix payroll system', date: 'Apr 2026', source: 'Globe and Mail' },
     ],
     financialHealth: {
@@ -605,7 +605,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     news: [
       { headline: 'Infor HCM embeds Coleman AI across workforce management for predictive scheduling recommendations', date: 'Jan 2026', source: 'Infor Newsroom' },
       { headline: 'Infor expands global payroll coverage to 35 countries with new CloudSuite HCM release', date: 'Mar 2026', source: 'Infor Newsroom' },
-      { headline: 'Infor HCM earns top marks in Gartner Magic Quadrant for Cloud HCM Suites, improving in Ability to Execute', date: 'Dec 2025', source: 'Gartner' },
+      { headline: 'Infor named a Leader in the inaugural Gartner Magic Quadrant for Workforce Management', date: 'Sep 2026', source: 'Infor' },
     ],
     financialHealth: {
       fundingStage: 'Private (Koch Industries subsidiary)',
@@ -647,7 +647,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Microsoft Teams', 'Slack', 'SAP', 'Salesforce', 'Workato', 'Zoho'],
     news: [
       { headline: 'Darwinbox launches Cortex, an AI-native HCM rebuilt around a live organizational Context Graph', date: 'Aug 2026', source: 'People Matters' },
-      { headline: 'Darwinbox surpasses 3 million employees managed on platform, doubling from 2024', date: 'Mar 2026', source: 'Darwinbox Newsroom' },
+      { headline: "Ontario Teachers' Venture Growth adds to its Darwinbox stake via a secondary share purchase", date: 'Sep 2026', source: 'Inc42' },
       { headline: 'Darwinbox raises $40M from Ontario Teachers to accelerate North America expansion and AI features', date: 'Apr 2026', source: 'Outlook Business' },
     ],
     financialHealth: {
@@ -1984,7 +1984,7 @@ export const vendorDetails: Record<string, VendorDetail> = {
     integrations: ['Slack', 'Microsoft Teams', 'Workday', 'BambooHR', 'Greenhouse', 'Okta'],
     news: [
       { headline: 'Culture Amp launches Generative AI insights to surface engagement drivers from free-text survey responses', date: 'Feb 2026', source: 'Culture Amp Newsroom' },
-      { headline: 'Culture Amp acquires employee coaching platform Timelycoach to add coaching to its engagement suite', date: 'Jan 2026', source: 'TechCrunch' },
+      { headline: "Culture Amp AI at Work benchmark: 85% encouraged to use AI, 42% don't know how it ties to goals", date: 'Sep 2026', source: 'PR Newswire' },
       { headline: 'Culture Amp surpasses 6,500 customers across 95 countries, reporting 30% growth in enterprise segment', date: 'Mar 2026', source: 'Culture Amp Blog' },
     ],
   },
