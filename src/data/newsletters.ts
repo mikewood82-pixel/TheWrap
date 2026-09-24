@@ -31,6 +31,96 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'road-report-recfest-usa-nashville',
+    date: 'September 25, 2026',
+    title: 'Road Report: RecFest USA, Nashville',
+    tag: 'Events',
+    excerpt:
+      'Back from RecFest Nashville, where the vendors pitched AI interviewing and the room applauded loudest for keeping interviews human. Here’s what the floor revealed about candidate data, quality of hire, and the legal gap nobody has closed.',
+    tileImage: '/newsletters/edition-90/recfest-road-report-tile.webp',
+    body: `
+<img src="/newsletters/edition-90/recfest-road-report-hero.webp" alt="Giant white marquee letters spelling RECFEST, studded with purple lights, standing on the grass in front of white event tents and Geodis Park in Nashville" />
+
+<p>Back on the road and reporting from one of my favorite events of the year — RecFest. Part party, part masterclass, this event never disappoints, and it was great to see what the vendors are launching and hear from the recruiting community about the struggles they’re facing.</p>
+
+<p>I always get the lay of the land when I first get to an event, so I do a loop to see who’s attending and what they’re pushing. You can learn a lot about what’s going on with a vendor from their booth, and I have to give a massive shout out to Juicebox. It helps to have the funding they do, and their booth had a massive glow-up — noise, fun, capybaras, and a mechanical bull for anyone with enough liquid courage.</p>
+
+<p>There were a lot of rebrands and launches. Findem had a new booth built around its AI Studio launch. Recruitics streamlined its brand to fit its strengths in frontline hiring. Shaker built a homestead walking you through the history of recruiting, which was a nice reminder that people have been trying to solve this problem for a very long time. ZoomInfo had a slick booth for Talent Autopilot, its new recruiting product built on the company and professional data they’ve spent years assembling. That last one gets at something the rest of the floor was mostly talking around: if you can’t trust your candidate data, you’re stuck. Every agent, every score, and every automated screen downstream inherits the problem.</p>
+
+<p>By the end of the day a few themes had surfaced, but one sat above the rest. We’re all still adapting to the technology, and recruiters are deeply protective of the parts of the job that made them stay in recruiting in the first place. Making the final call on a role. Actually talking to candidates.</p>
+
+<p>The moment that stuck with me most came during a session called “The Recruiter Role is Splitting: What Gets Automated, What Gets More Human?” A gentleman in the audience said candidate interviews should always be in person — not conducted by the AI interviewing software the entire industry is currently pushing. The room applauded. That wasn’t polite applause. That was a bunch of people cheering for something they’d been waiting to hear said out loud.</p>
+
+<p>The honest counterargument is real. In high-volume hiring you may not have the bandwidth to physically talk to everyone, and pretending otherwise is how teams end up drowning. But the sentiment in that room suggests personal interaction carries more weight than vendor messaging gives it credit for. The compromise is somewhere in the middle: automate the screen and the assessment, the top of the funnel, where the volume actually lives. Then the human comes in later, interviews a few candidates, and makes a human recommendation.</p>
+
+<p>Attendees were also clear on the other half of that equation. The best hiring processes are the ones where the candidate never feels automated, and you should always be collecting feedback on the process so you can fix what’s broken. AI should not replace what was fun about recruiting.</p>
+
+<p>Which brings up the harder question — what are you actually pointing all this technology at? The sharpest framing of the day came from a session with William Tincup and Stephane Rivard, CEO of HiringBranch. As Stephane put it, every piece of technology out there can solve the time-to-hire problem; it’s quality of hire that makes the difference. Think about skills as dimensions, not checkboxes. Skills lead to outcomes, and if the hiring manager can’t tell you what outcomes they want, you’re stuck before you start. No amount of tooling fixes that conversation. It’s also where the assessment question gets serious: valid and reliable, not one or the other. Their broader point was that TA has to be in service to the organization, helping it get where it’s trying to go, not just filling the reqs that come across the desk.</p>
+
+<p>The other theme was less fun and more urgent. There’s a massive disconnect between talent teams and legal on how employees and systems are actually using AI. Companies are understandably behind — this moved faster than governance ever does — and it’s about to get harder with EU AI regulations landing. One phrase from the day summed up the current state: “murky and ambiguous.” Which is the exact opposite of what you want out of legal.</p>
+
+<p>We seem to have solved the speed-to-hire problem with tech, but recruiters are still drowning in applications and wondering if they can trust what’s in front of them. Everyone is gaming the system, so trusting data, identifying bad actors, and adding assessments at the top of the funnel are all coming through. Speed is solved. The inputs aren’t. And I was happy to hear that recruiters still want to own the human-to-human conversation at the end of the process.</p>
+
+<p>A few non-conference observations from Nashville. I watched a Waymo driverless cab completely block in another car in the parking lot, with nothing the trapped driver could do but honk at a vehicle with nobody in it to honk at. I made a pilgrimage to Prince’s, the mecca of hot chicken, to run my own hot wings challenge for an upcoming interview with Jeff Riddlehoover of Skillframe. I closed the trip at the Nash Bash party with Monte and the Monsters. And somewhere in there was a fried rice food truck good enough that I’m still thinking about it.</p>
+
+<p>Ok, on to a big week of news in HR Tech, especially in the recruiting space. This week’s Wrap features big launches from ZoomInfo, Findem, Joveo, and HireClix, JobGet makes RippleMatch free for university students, Harver buys Symphony Talent, Fuel50 sells to the University of Phoenix, and Andreessen Horowitz launches an AI school as a college alternative.</p>
+
+<p>Enjoy and have a great weekend!</p>
+
+<p>Mike</p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>ZoomInfo launches Talent Autopilot</h3>
+<img src="/newsletters/edition-90/zoominfo-talent-autopilot.webp" alt="The ZoomInfo Talent Autopilot pipeline view for a Project Manager role, with AI-matched candidate cards in an Autopilot column beside Contacted, Triage and Phone Screen columns" />
+<p>ZoomInfo has launched Talent Autopilot, a recruiting product that pairs its professional and company data with autonomous candidate discovery and outreach. Instead of building title and keyword filters, recruiters describe the role and its hiring context, and the system reasons across skills, experience, career paths, and company data to surface candidates who don’t turn up in traditional search. Results can be refined through natural-language feedback, with personalized outreach sent through connected Gmail or Outlook accounts. It runs alongside existing ATSs, and ZoomInfo says recruiters keep control of who gets selected and contacted.</p>
+<p><a href="https://finance.yahoo.com/technology/articles/zoominfo-launches-talent-autopilot-most-124700362.html">Read more</a>.</p>
+
+<h3>Findem launches Studio</h3>
+<img src="/newsletters/edition-90/findem-studio.webp" alt="A Findem Studio succession planning report titled “Top candidates for VP of Sales” floating over pale yellow paper sculptures" style="display:block;width:100%;max-width:480px;height:auto;margin:16px auto 8px;border-radius:4px;" />
+<p>Findem has launched Studio, a set of AI agents that return finished talent work products rather than search results — succession plans, market maps, leadership benchmarks, hiring briefs, skills gap analyses, and org charts. Each agent pairs Findem’s labeled people data with a methodology from a named practitioner and evidence checks that tie conclusions back to source data. Ask for a succession plan and it evaluates candidates against expert-defined criteria and explains its reasoning, which teams can challenge before acting. Agents run inside the Findem platform, in environments including Claude, ChatGPT, Copilot, and Gemini, or through Findem MCP, and are free to try.</p>
+<p><a href="https://www.prnewswire.com/news-releases/findem-launches-studio-people-intelligence-built-for-ai-that-returns-finished-work-teams-can-trust-302885598.html">Read more</a>.</p>
+
+<h3>Joveo unveils an agentic recruiting platform</h3>
+<img src="/newsletters/edition-90/joveo-agentic-platform.webp" alt="An illustration of a stressed recruiter buried in flying résumés, with a Joveo column routing the pile into three eligible candidate cards and a note that time to hire dropped 32%" />
+<p>Joveo is introducing an agentic recruiting platform that spans attraction, sourcing, engagement, screening, scheduling, interviewing, and analytics, sitting on top of an employer’s existing ATS. Recruiting teams set goals — roles, volume, locations, time to hire — and the agents coordinate the work across the funnel rather than automating individual tasks in isolation. You know how much I am a fan of their tech. Check it out.</p>
+<p><a href="https://hrtechfeed.com/joveo-unveils-the-agentic-recruiting-platform-to-connect-the-full-hiring-funnel/">Read more</a>.</p>
+
+<h3>HireClix launches EBN 1:1 ad solution</h3>
+<img src="/newsletters/edition-90/hireclix-ebn.webp" alt="A HireClix press release card reading “HireClix Expands Employer Brand Network with Connected TV Advertising Solution” beside a TV showing a wall of digital screens" />
+<p>HireClix has expanded its Employer Brand Network with EBN 1:1, which serves job-level display ads to passive candidates on consumer sites — news, weather, media, and interest content — rather than job boards. The ads sync to the client’s live job feed, so creative updates or pauses automatically as roles open and close in the ATS, and a dynamic radius around each job site filters out impressions beyond the viable talent pool.</p>
+<p><a href="https://www.businesswire.com/news/home/20260923006550/en/HireClix-Launches-Expansion-of-its-Employer-Brand-Network-EBN-Solution-Providing-Dynamic-One-to-One-11-Job-Advertisements-Targeting-Passive-Candidates">Read more</a>.</p>
+
+<h3>JobGet makes RippleMatch free for universities</h3>
+<img src="/newsletters/edition-90/ripplematch-free-for-universities.webp" alt="A purple RippleMatch graphic reading “RippleMatch, Now Free for All Universities” above dashboard cards for top majors, top schools, interviews and most valuable skills" style="display:block;width:100%;max-width:500px;height:auto;margin:16px auto 8px;border-radius:4px;" />
+<p>RippleMatch, the early-career recruiting platform recently acquired by hourly-hiring platform JobGet, is making its university product free to all higher education institutions. Career services teams get real-time analytics on student engagement, verified skills, application volume, interview conversion, and placement outcomes, plus tools to message student cohorts directly. Students get a personalized job feed, verified skill badges, and applications that route straight to recruiters.</p>
+<p><a href="https://www.prnewswire.com/news-releases/jobget-announces-free-access-to-ripplematch-platform-for-universities-302881500.html">Read more</a>.</p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions</h2>
+
+<p><strong>Harver acquires Symphony Talent</strong> – Harver, which makes hiring assessments and is backed by Rubicon Technology Partners, has acquired Symphony Talent, a recruitment marketing, employer branding and CRM platform. <a href="https://hrtechfeed.com/harver-acquires-symphony-talent/">Read more</a>.</p>
+
+<p><strong>Fuel50 sold to Phoenix Education Partners</strong> – Phoenix Education Partners, the parent of the University of Phoenix, has agreed to buy Fuel50, a talent marketplace and workforce intelligence platform. <a href="https://hrtechfeed.com/univ-of-phoenix-buys-an-hr-tech-firm/">Read more</a>.</p>
+
+<hr />
+
+<h2>🖱️ Worth a Click</h2>
+
+<h3>Andreessen Horowitz launches an AI school as a college alternative</h3>
+<img src="/newsletters/edition-90/a16z-ai-school.webp" alt="Students working on laptops at tables in a warmly lit café-style study space with pendant lights" />
+<p>a16z is opening the Horowitz Andreessen Academy in San Francisco, an unaccredited, for-profit, tuition-free one-year program for aspiring AI founders — 50 slots, starting fall 2027, no tests and no homework, with students building real projects instead. Courses are taught by tech entrepreneurs, with Sam Altman named as an instructor or guest lecturer.</p>
+<p><a href="https://www.cbsnews.com/news/andreessen-horowitz-ai-school-college-alternative/">Read more</a>.</p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+`,
+  },
+  {
     slug: 'the-wrap-heads-to-recfest',
     date: 'September 18, 2026',
     title: 'The Wrap heads to RecFest',
