@@ -31,6 +31,123 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'surveillance-pricing-is-one-way-ai-is-destroying-us',
+    date: 'October 2, 2026',
+    title: 'Surveillance Pricing Is One Way AI Is Destroying Us',
+    tag: 'AI & Future of Work',
+    excerpt:
+      'Tee times and Big Macs are now priced by the hour and the zip code, and the next step is pricing by how desperate you are — the same math that sets prices near the most you’ll pay is setting wages near the least you’ll take.',
+    tileImage: '/newsletters/edition-91/golf-with-dad-tile.webp',
+    body: `
+<img src="/newsletters/edition-91/golf-with-dad-hero.webp" alt="Mike and his dad standing arm in arm with their clubs on a tee box, a green fairway winding through red desert rock formations behind them" />
+
+<p>I’ve always loved golf. My first job was picking up driving range balls as a 15-year-old at Stow Acres Country Club for $5 an hour. I’d get into “the picker,” the golf cart modified with eight baskets in the front and side that collected golf balls as you rolled over them. I would sit in the caged enclosure, put on my CD player, and huff the black smoke exhaust I can only imagine was crude oil powering this contraption. Once my baskets were full, I would unload them into the “ball washing” machine, dump them into a big Rubbermaid trash can on the back of another cart, and drive them up to this huge old guy with a cowboy hat (in Massachusetts) and struggle to lift a barrel of balls almost as big as me into the main bin. He would laugh (because I really looked like an ant lifting a sugar cube), give me $5, and tell me to go to the main clubhouse kitchen to get one of his “special Cokes.”</p>
+
+<p>One perk of the job was free golf, and I was immediately hooked. I was never anything remotely special at sports, but I was good at the individual hand-eye coordination parts, like darts, bowling and parking myself on the three-point line in basketball hoping for an uncontested shot. When it came to golf, I quickly learned that it doesn’t matter if you are the best athlete. I’m a short, “dad-bod” type of guy, but I can hit it straight and excel in the short game. It didn’t matter if my playing partners, or matches, were hitting 280 off the tee if that extra 50 yards past my ball was in the woods.</p>
+
+<p>I try to play when I can, but after having my first kid in 2016 and my second in late 2019, there was a good amount of time when I’d only be able to play a couple of times a year. I had a group of my three closest guy friends since childhood, and we would make it a point to get out together at a nice course at least twice a year. Heading into 2020, we had hoped to play more, but Covid came. Courses around me mainly struggled until the state said we could play outside if we wore a mask. One of my enduring memories of Covid was heading to Stow Acres and playing a round with my dad. We had been in lockdown for months, and I hadn’t really been able to see him. The man who showed up looked like he had been lost in the woods that whole time. My dad had the longest hair I’ve ever seen on him, a stark difference from the “Men’s Regular” cut he got every month at the same barber. It was weird. We had some normalcy back, but it wasn’t the same. It was a distorted shadow of what we once had.</p>
+
+<p>Once things started to open up, and my kids got older and more self-sufficient, I got back to playing a few rounds with my crew of childhood jokers. But in late 2021, courses started to change. The courses that were staples of my golfing experience started to go under or change hands.</p>
+
+<p>Stow Acres, where I learned the game, lost half its golf. The North course, which hosted the 1995 U.S. Amateur Public Links, was sold to the town for housing and conservation. It’s down to nine holes, and those are closed for all of 2026.</p>
+
+<p>Red Tail in Devens was bought by an investor group in 2021. Shaker Hills in Harvard also came under new ownership. What happened next is classic private equity. “Mild” investments were made in the courses — Stow Acres got new sand (definitely priority #1) and Shaker Hills got a slick new brand identity capped with a gimmicky par three shot off a roof. OK, that one is cool.</p>
+
+<p>Prices shot up, and it was like they were trying to make the experience worse for the majority of customers in hopes of bringing in the big spenders (much like what has happened to Vegas).</p>
+
+<p>Maybe it was just us normal weekend hackers, but a $90 round became $120–$150. The cart fee doubled, and you could no longer pay for half a cart if you had a group of three (that guy has to pay for the whole cart). On the driving ranges, the same worn knuckleballs I picked up nearly 30 years ago were 50% more expensive.</p>
+
+<p>Then, even finding a tee time became a nightmare. There have been so many times my buds and I were waiting for the earliest time we could book in advance, only to find the top spots already taken by someone who has to be gaming the system. We’d get stuck with an 11:00 a.m. tee time, still priced high thanks to the new dynamic pricing all the shops were using in their tee-time software, and sneaking out to play a round turned into an all-day excursion where we’d come home to angry families wondering where the hell we’d been all day.</p>
+
+<img src="/newsletters/edition-91/tee-time-dynamic-pricing.webp" alt="A tee-time booking grid for the morning of Wednesday, October 7, 2026, with most slots priced at $110.12 and later slots at $128.12 and $122.12" />
+
+<p>Red Tail, like many of the courses using an automated tee-time system, rolled out dynamic pricing. One morning tee time could be $110, while the one after it was $128. Is the dent in the consumer experience really worth the extra $18?</p>
+
+<p>Now the same logic is coming for lunch. Reuters reported this week that McDonald’s is pushing franchisees onto an AI engine that prices every item at every restaurant, based partly on “customer willingness to pay in your area.” In Fresno, a Big Mac costs $5.69 at one store and $6.89 two miles away.</p>
+
+<p>Tee times and Big Macs are priced by the hour and the zip code. If that’s not enough, the next level of dynamic pricing is surveillance pricing, where you’re tracked and monitored, and that activity is used to figure out how desperate you are.</p>
+
+<p>Nearly everything we do now gets logged: what we buy, where we go, how fast we say yes. More and more of it feeds back into what we’re offered, from the price on the screen to the shift in the app to the rate on the job.</p>
+
+<p>Instacart tested personalized prices on groceries last year. Consumer Reports had shoppers buy the same items from the same stores at the same time, and the same box of crackers came up at prices as much as 23% apart. Instacart ended the tests in December. New York now requires companies to say it on the spot: “THIS PRICE WAS SET BY AN ALGORITHM USING YOUR PERSONAL DATA.” I hope this stays in all caps.</p>
+
+<p>The same math runs on the other side of the paycheck. The gig economy sold us a trade: give up the steady wage and benefits, get flexibility in return. But the boss in that deal is an algorithm, and it’s built to pay as little as it can.</p>
+
+<p>When Uber moved drivers to algorithmic pay in 2022, per-trip pay fell 6% to 8%, according to a UC Riverside study of 1.9 million trips. The drivers who turned down the fewest rides lost the most. Nursing apps like ShiftKey have nurses bid against each other for shifts; one nursing assistant called it “a race to the bottom.”</p>
+
+<p>Put the two together and the squeeze comes from both ends: prices set near the most you’ll pay, wages near the least you’ll take. And it’s landing while real hourly pay is already going backward, down 0.3% over the past year after inflation.</p>
+
+<p>The problem is, no one has the discretionary income or stability the previous generation had. Despite what the BLS is telling you, we have been rapidly trading careers for jobs. Call it gig work or temp work, but no one taking these jobs has the luxury of saying no. No one signs up for DoorDash looking forward to it.</p>
+
+<p>So what can we do? Artificial intelligence (I refuse to call it superintelligence) is faster than the courts. One of the key pillars of the American Dream that we were all promised is that you can work your way up. Hard work, doing things the right way, can get you a life where your kids are set up better than you were. We’ve all heard the family stories of our ancestors coming here with only a suitcase and a dream. We can’t let AI improve the lives of the rich by standing on the poor. We need regulation before this spins out of control. Otherwise, this is our new reality until we get so frustrated we just unplug.</p>
+
+<p>On to the week in HR Tech. This week’s Wrap features LinkedIn launching Hiring Assistant 2 (Electric Boogaloo), job seekers walking away from AI interviews, PitchMe launching SONAR, funding for Metaview, Relay and HiringCafe, a great podcast with David Cohen of DCI Consulting about changing EEO requirements, the Mean Girls presidency, and the winner of Fat Bear Week.</p>
+
+<p>Enjoy and have a great weekend!</p>
+
+<p>Mike</p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>LinkedIn Launches Hiring Assistant 2</h3>
+<img src="/newsletters/edition-91/linkedin-hiring-assistant-2.webp" alt="A white pill-shaped badge with the LinkedIn logo reading “Hiring Assistant 2” on a dark blue dotted background" style="display:block;width:100%;max-width:560px;height:auto;margin:16px auto 8px;border-radius:4px;" />
+<p>LinkedIn announced Hiring Assistant 2, the next version of its AI recruiting agent, adding more advanced reasoning, memory and personalization, plus the ability to manage an entire talent pool in one place. It rolls out automatically and free, starting in November, to global customers already using Hiring Assistant in English.</p>
+<p>New features pull verification status, ATS insights, pre-screening responses and relevant work experience into a single candidate view. LinkedIn says more than 20,000 companies use its agentic hiring tools and that recruiters review 83% fewer profiles to find qualified matches.</p>
+<p><a href="https://news.linkedin.com/2026/hiring-assistant-2">Read more</a>.</p>
+
+<h3>Job Seekers Are Walking Away From AI Interviews</h3>
+<img src="/newsletters/edition-91/ai-interview-walkaways.webp" alt="An illustration of a puzzled person with red hair holding a phone to their ear, question marks floating on one side and a smiling chatbot in a speech bubble on the other" />
+<p>Some job seekers are refusing AI interviews, withdrawing as candidates, or blacklisting employers from future consideration. Nearly 4 in 10 U.S. job seekers have withdrawn from a hiring process over an AI interview, according to a Greenhouse survey cited by CNBC. One of the candidates profiled, Art Hebbeler, a 65-year-old IT program director, has sent 600+ applications since January and hung up on an AI interview after the bot repeated questions and talked over him. Another, Tammy Wright, has nystagmus (involuntary eye movement), and the AI software repeatedly told her to look straight at the camera. The piece also cites a May working paper that found “large-scale evidence of racial disparities” when many employers use the same hiring algorithms, which could lead to applicants rejected by one employer being rejected everywhere.</p>
+<p><a href="https://www.cnbc.com/2026/09/15/job-seekers-refusing-ai-interviews-blacklisting-employers.html">Read more</a>.</p>
+
+<h3>PitchMe Launches SONAR for Staffing Agencies</h3>
+<img src="/newsletters/edition-91/pitchme-sonar.webp" alt="The SONAR wordmark in a pink-to-orange gradient above the tagline “Find talent, without limits.” on a dark purple background" style="display:block;width:100%;max-width:480px;height:auto;margin:16px auto 8px;border-radius:4px;" />
+<p>PitchMe, a data enrichment and talent intelligence platform for recruitment and staffing agencies, launched SONAR, a search tool that finds candidates across public web data and returns enriched profiles.</p>
+<p>SONAR runs alongside existing systems like Bullhorn, Avionte and Vincere rather than replacing them. Recruiters can search in plain language or with a dozen-plus structured filters, and results include current role, tenure, location, contact details and a profile-completeness score. A second module in development will show candidates from an agency’s own ATS or CRM side by side with external ones. PitchMe is also building AI-agent access via Model Context Protocol (MCP).</p>
+<p><a href="https://tech.einnews.com/pr_news/945901495/pitchme-launches-sonar-to-bring-modern-talent-search-to-staffing-agencies">Read more</a>.</p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions</h2>
+
+<p><strong>Metaview</strong>, an AI recruiting platform, raised a $60M Series C led by Insight Partners, with participation from GV, Intrepid Growth Partners, Seedcamp, Vertex Ventures US, Plural and Garuda Ventures, bringing total funding to $110M. <a href="https://www.metaview.ai/resources/blog/metaview-raised-an-additional-60m-to-lead-the-shift-to-agentic-recruiting">Read more</a>.</p>
+
+<p><strong>Relay</strong>, a Raleigh, N.C.-based communications and workflow platform for frontline workers, raised $36M in a round led by International Paper. <a href="https://relaypro.com/">Read more</a>.</p>
+
+<p><strong>HiringCafe</strong>, a San Francisco-based AI-powered job-search platform, raised $6.8M in pre-seed funding led by Spark Capital, with participation from Nonfiction Capital, Silicon Gardens, and angel investors. <a href="https://hiringcafe.com/">Read more</a>.</p>
+
+<hr />
+
+<h2>🎙️ Podcasts</h2>
+
+<h3>EEO Is Not DEI</h3>
+<img src="/newsletters/edition-91/totally-talent-eeo-is-not-dei.webp" alt="Totally Talent, an HR.com podcast, episode art with a headshot of David Cohen and the title “EEO Is Not DEI”" />
+<p>Washington is rolling back civil rights enforcement and the data behind it, and David Cohen, president and CEO of DCI Consulting, says that’s exactly when employers should keep their dashboard on. I sat down with David to unpack what actually changed: Executive Order 11246 was dismantled, there’s a push to end the EEO-1 report, and disparate impact has been deprioritized.</p>
+<p>David explains why Title VII hasn’t moved an inch, how states are filling the federal void, and why the Justice Department’s use of the False Claims Act, with three settlements totaling $65 million so far, has made contractor certifications the new risk.</p>
+<p><a href="https://www.hr.com/en/resources/podcasts/talent/episode-82-eeo-is-not-dei_mulo2kfa.html">Listen on HR.com</a>.</p>
+
+<hr />
+
+<h2>🖱️ Worth a Click</h2>
+
+<h3>The Mean Girls Presidency</h3>
+<img src="/newsletters/edition-91/mean-girls.webp" alt="A still from the film Mean Girls: four students standing side by side in a crowded school hallway" style="display:block;width:100%;max-width:480px;height:auto;margin:16px auto 8px;border-radius:4px;" />
+<p>A New York Times column casts the Trump administration as a high school clique, with Trump as the Regina George at the top and a cabinet that competes for his approval. The details: matching $145 Florsheim oxfords gifted by the president, a shared all-meat-and-sauerkraut “living diet,” aide Natalie Harp passing him good polls like Gretchen Wieners, and cabinet picks reportedly vetted by cable news sizzle reels. The column calls it a “sycophancy Olympics” and argues the clique, not war or cost of living, will be what undoes him. It’s spot on, and I wish I’d written it.</p>
+<p><a href="https://www.nytimes.com/2026/09/27/opinion/donald-trump-administration-mean-girls.html">Read more</a>.</p>
+
+<h3>Fat Bear Week Has a Champion</h3>
+<img src="/newsletters/edition-91/fat-bear-week-backpack.webp" alt="A very large brown bear standing at the edge of a river on a gravel bank, looking toward the camera" style="display:block;width:100%;max-width:520px;height:auto;margin:16px auto 8px;border-radius:4px;" />
+<p>Bear 89, “Backpack,” won Fat Bear Week 2026 at Alaska’s Katmai National Park, beating Bear 910 in the final 103,344 votes to 98,253. He got his nickname from riding on his mother’s back through the Brooks River as a cub, and she’s Bear 435, “Holly,” the 2019 champ. The contest started in 2014 as a one-day Facebook event with fewer than 1,700 votes, and this year’s turnout crashed the voting site. Via the New York Times.</p>
+<p><a href="https://www.nytimes.com/2026/09/29/style/fat-bear-week-winner.html">Read more</a>.</p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+`,
+  },
+  {
     slug: 'road-report-recfest-usa-nashville',
     date: 'September 25, 2026',
     title: 'Road Report: RecFest USA, Nashville',
