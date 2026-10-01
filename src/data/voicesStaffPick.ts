@@ -17,10 +17,10 @@ export type VoicesStaffPick = {
 
 export const voicesStaffPick: VoicesStaffPick = {
   enabled: true,
-  sourceSlug: 'laurie-ruettimann',
-  // No matchTitle: the hero auto-follows her latest post, so it can't go stale
-  // mid-week. Swapped in 2026-09-10 for edition #88, rotating off Jess Von Bank
-  // (held the slot for #87).
+  sourceSlug: 'beacon-turn',
+  // No matchTitle: the hero auto-follows their latest post, so it can't go
+  // stale mid-week. Swapped in 2026-10-01 for edition #91, rotating off Laurie
+  // Ruettimann (held the slot for #88–#90).
 }
 
 // Normalize smart quotes and case so config written with plain ASCII still
