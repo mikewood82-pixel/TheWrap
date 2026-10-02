@@ -81,30 +81,30 @@ export type BenchmarkRow = {
 }
 
 /** Stamped in the page header and the source footer. */
-export const LAST_UPDATED = 'September 8, 2026'
+export const LAST_UPDATED = 'October 2, 2026'
 
 // ─── Bureau of Labor Statistics ───────────────────────────────────────────────
-// Employment Situation for August 2026, released Fri Sep 4. Openings/quits/layoffs
-// are July JOLTS (released Tue Sep 1) — August JOLTS lands Sep 29.
+// Employment Situation for September 2026, released Fri Oct 2. Openings/quits/
+// layoffs are August JOLTS (released Tue Sep 29) — September JOLTS lands Nov 3.
 export const bls = {
-  period: 'August 2026',
+  period: 'September 2026',
   metrics: [
-    { label: 'Unemployment Rate', value: '4.1%',   change: 'unchanged', trend: 'flat', note: 'Held at 4.1% · participation up 0.2pp to 61.6%' },
-    { label: 'Job Openings',      value: '7.3M',   change: '+71K',      trend: 'flat', note: 'July JOLTS · June revised down to 7.2M' },
-    { label: 'Avg. Hourly Wage',  value: '$37.75', change: '+10¢',      trend: 'up',   note: '+3.1% YoY · a new five-year low for wage growth' },
-    { label: 'Layoffs Rate',      value: '1.0%',   change: '−0.1pp',    trend: 'down', note: 'July JOLTS · 1.67M · lowest level since January' },
-    { label: 'Quits Rate',        value: '1.9%',   change: '−0.1pp',    trend: 'down', note: 'July JOLTS · 3.1M · workers still not moving' },
-    { label: 'Jobs Added (BLS)',  value: '+162K',  change: 'rebound',   trend: 'up',   note: 'June revised to +31K, July to +21K (+55K combined)' },
+    { label: 'Unemployment Rate', value: '4.2%',   change: '+0.1pp',    trend: 'up',   note: 'Rose as workers re-entered · participation up to 61.8%' },
+    { label: 'Job Openings',      value: '7.1M',   change: '−256K',     trend: 'down', note: 'August JOLTS · July revised up to 7.34M' },
+    { label: 'Avg. Hourly Wage',  value: '$37.81', change: '+5¢',       trend: 'up',   note: '+3.0% YoY · another new post-2021 low' },
+    { label: 'Layoffs Rate',      value: '1.0%',   change: '−0.1pp',    trend: 'down', note: 'August JOLTS · 1.64M · down 61K on the month' },
+    { label: 'Quits Rate',        value: '1.9%',   change: 'unchanged', trend: 'flat', note: 'August JOLTS · 3.1M · workers still not moving' },
+    { label: 'Jobs Added (BLS)',  value: '+29K',   change: 'weak',      trend: 'down', note: 'July revised to −10K, August to +133K (−60K combined)' },
   ] satisfies MetricCard[],
   historical: [
-    { month: 'Apr 2026', unemployment: '4.3%', openings: '7.6M', wages: '$37.45', quits: '1.9%' },
     { month: 'May 2026', unemployment: '4.3%', openings: '7.5M', wages: '$37.51', quits: '1.9%' },
     { month: 'Jun 2026', unemployment: '4.2%', openings: '7.4M', wages: '$37.60', quits: '2.0%' },
     { month: 'Jul 2026', unemployment: '4.1%', openings: '7.2M', wages: '$37.65', quits: '2.0%' },
-    { month: 'Aug 2026', unemployment: '4.1%', openings: '7.3M', wages: '$37.75', quits: '1.9%', current: true },
+    { month: 'Aug 2026', unemployment: '4.1%', openings: '7.3M', wages: '$37.75', quits: '1.9%' },
+    { month: 'Sep 2026', unemployment: '4.2%', openings: '7.1M', wages: '$37.81', quits: '1.9%', current: true },
   ] satisfies HistoricalRow[],
   historicalNote:
-    'Unemployment and wages are the Employment Situation reference month. Job openings and quits come from JOLTS, which trails by one month — the August row carries July JOLTS, the latest published. The July row was marked down to 7.2M when June JOLTS was revised. August JOLTS releases Sep 29.',
+    'Unemployment and wages are the Employment Situation reference month. Job openings and quits come from JOLTS, which trails by one month — the September row carries August JOLTS, the latest published. July JOLTS was revised up to 7.34M, so the August row still rounds to 7.3M. September JOLTS releases Nov 3.',
 }
 
 // ─── Payroll Revisions Tracker ────────────────────────────────────────────────
@@ -120,7 +120,7 @@ export const bls = {
 // Do NOT fold benchmark revisions into these rows — the benchmark is a separate
 // level correction on a different schedule, tracked in `benchmarks` below.
 export const revisions = {
-  period: 'Jan – Aug 2026',
+  period: 'Jan – Sep 2026',
   rows: [
     { month: 'Jan 2026', first: '+130K', second: '+126K', third: '+160K', net: '+30K',  direction: 'up' },
     { month: 'Feb 2026', first: '−92K',  second: '−133K', third: '−156K', net: '−64K',  direction: 'down' },
@@ -128,15 +128,16 @@ export const revisions = {
     { month: 'Apr 2026', first: '+115K', second: '+179K', third: '+148K', net: '+33K',  direction: 'up' },
     { month: 'May 2026', first: '+172K', second: '+129K', third: '+63K',  net: '−109K', direction: 'down' },
     { month: 'Jun 2026', first: '+57K',  second: '+20K',  third: '+31K',  net: '−26K',  direction: 'down' },
-    { month: 'Jul 2026', first: '−23K',  second: '+21K',  third: '—',     net: '+44K',  direction: 'up' },
-    { month: 'Aug 2026', first: '+162K', second: '—',     third: '—',     net: '—',     direction: 'pending' },
+    { month: 'Jul 2026', first: '−23K',  second: '+21K',  third: '−10K',  net: '+13K',  direction: 'up' },
+    { month: 'Aug 2026', first: '+162K', second: '+133K', third: '—',     net: '−29K',  direction: 'down' },
+    { month: 'Sep 2026', first: '+29K',  second: '—',     third: '—',     net: '—',     direction: 'pending' },
   ] satisfies RevisionRow[],
   summary: {
     up: 4,
     down: 3,
-    headline: 'Four up, three down — net −56K across seven months',
+    headline: 'Four up, three down — net −87K across seven settled months',
     detail:
-      'First prints have averaged +77K a month this year; the revised figures average +69K. That is a mild downward tilt, but it is roughly a tenth the size of last year’s benchmark correction and the direction is genuinely mixed. July is the cleanest counterexample: a headline that looked bad at −23K was revised up to +21K.',
+      'Across the seven months that have all three estimates in, first prints averaged +77K while the settled figures average +64K — a drag of about 12K a month, and the tilt has deepened since last cycle. July is the cautionary tale: it printed at −23K, was revised up to +21K, and then landed at −10K, so the month that looked like a clean counterexample last month turned out not to be one. August is two-thirds of the way through the same process and already down 29K. The direction still genuinely varies month to month, but the central tendency is negative.',
   },
   // The annual benchmark recounts payrolls against actual unemployment-insurance
   // tax records. This — not the monthly revisions — is where the large downward
@@ -147,66 +148,70 @@ export const revisions = {
     { benchmark: 'March 2026', preliminary: '−79K',  final: 'Feb 2027', note: 'Smallest since 2021 · −0.1% vs a 10-yr absolute average of 0.2%' },
   ] satisfies BenchmarkRow[],
   takeaway:
-    'The systematic overstatement was real, but it lived in the annual benchmark rather than the monthly revisions — and it has largely closed. Two mechanisms drive it, and both are conditional on the cycle rather than constant. First, collection: the initial print rests on about 55% of the survey sample, the second on 91%, the third on 93%, and late reporters skew smaller and more distressed. Second, the birth-death model, which imputes jobs at new firms net of closures and keeps adding them when business formation stalls. Both bite hardest at a turning point, which is why 2024 and 2025 produced corrections of −598K and −898K while March 2026 produced −79K. The Cleveland Fed tested for a structural break in 2026 and found none: recent revisions ran above the historical mean but stayed inside the normal range. Treat the first print as an estimate with a wide error bar in both directions, not as a number with a thumb on the scale.',
+    'Two mechanisms drive the drag, and both are conditional on the cycle rather than constant. First, collection: the initial print rests on about 55% of the survey sample, the second on 91%, the third on 93%, and late reporters skew smaller and more distressed. Second, the birth-death model, which imputes jobs at new firms net of closures and keeps adding them when business formation stalls. Both bite hardest at a turning point. That is why the big corrections of 2024 and 2025 came through the annual benchmark — −598K and −898K — while the March 2026 benchmark produced just −79K. The Cleveland Fed tested for a structural break in 2026 and found none: recent revisions ran above the historical mean but stayed inside the normal range. So this is not a thumb on the scale, and the revisions are published on a known schedule. It is a measurement lag that runs against you when hiring is decelerating. The practical response is to treat any single first print as an estimate with a wide error bar, and to wait for the third before moving headcount.',
   sourceUrl: 'https://www.bls.gov/bls/news-release/empsit.htm',
-  note: 'Monthly figures from the archived Employment Situation releases. The March 2026 benchmark is preliminary and will be folded into the official series with the January 2027 report in February 2027, so early-2026 months will move once more.',
+  note: 'Monthly figures from the archived Employment Situation releases. Net revision is third estimate minus first print; the summary averages cover only the months with all three estimates published. The March 2026 benchmark is preliminary and will be folded into the official series with the January 2027 report in February 2027, so early-2026 months will move once more.',
 }
 
 // ─── ADP ──────────────────────────────────────────────────────────────────────
-// National Employment Report for August 2026, released Wed Sep 2. ADP overhauled
-// the report with this release: it now publishes base pay alongside gross pay,
-// plus 56 metro areas. The cards below track GROSS pay, which is the series the
-// page has always shown — base pay runs roughly 1.4pp lower across the board.
+// National Employment Report for September 2026, released Wed Sep 30. Since the
+// August overhaul ADP publishes base pay alongside gross pay. The cards below
+// track GROSS pay, the series the page has always shown — base pay runs roughly
+// 1.4pp lower across the board.
 export const adp = {
-  period: 'August 2026',
+  period: 'September 2026',
   reportUrl: 'https://adpemploymentreport.com',
   metrics: [
-    { label: 'Private Jobs Added',     value: '38K',  note: 'August 2026 · slowest pace since January, below +47K consensus' },
-    { label: 'Job-Stayer Pay Growth',  value: '4.4%', note: 'YoY gross · flat for a fifth straight month (base pay 3.0%)' },
-    { label: 'Job-Changer Pay Growth', value: '7.3%', note: 'YoY gross · premium keeps widening (base pay 4.7%)' },
-    { label: 'Annual Pay (All)',       value: '4.7%', note: 'YoY gross pay growth, August 2026 (base pay 3.2%)' },
+    { label: 'Private Jobs Added',     value: '90K',  note: 'September 2026 · first acceleration since May, beat +68K consensus' },
+    { label: 'Job-Stayer Pay Growth',  value: '4.4%', note: 'YoY gross · flat for a sixth straight month (base pay 3.0%)' },
+    { label: 'Job-Changer Pay Growth', value: '7.3%', note: 'YoY gross · premium holding at its widest (base pay 4.8%)' },
+    { label: 'Annual Pay (All)',       value: '4.7%', note: 'YoY gross pay growth, September 2026 (base pay 3.2%)' },
   ] satisfies MetricCard[],
   // Single source of truth for the pay-growth chart — keep in lockstep with the
   // two pay-growth cards above.
   payGrowth: {
     stayer: 4.4,
     changer: 7.3,
-    caption: 'Switching premium widens again to 2.9pp — the widest gap yet in the job-changer series.',
+    caption: 'Switching premium holds at 2.9pp — still the widest gap in the job-changer series.',
   },
-  // Goods-producing went to −10K on a 17K manufacturing drop, and services only
-  // managed +48K. Education/Health (+45K) is doing essentially all the work;
-  // Professional & Business Services swung to −16K.
+  // Goods-producing swung back to +31K on manufacturing (+17K) and construction
+  // (+15K). Education/Health (+55K) is again bigger than the whole services
+  // total (+59K); Financial Activities (−16K) and Prof/Business (−11K) are the
+  // drags, which is the knowledge-economy weakness showing up again.
   sectors: [
-    { sector: 'Education & Health',           value: 45,  label: '+45K' },
-    { sector: 'Leisure & Hospitality',        value: 16,  label: '+16K' },
-    { sector: 'Construction',                 value: 12,  label: '+12K' },
-    { sector: 'Financial Activities',         value: 6,   label: '+6K' },
+    { sector: 'Education & Health',           value: 55,  label: '+55K' },
+    { sector: 'Leisure & Hospitality',        value: 22,  label: '+22K' },
+    { sector: 'Manufacturing',                value: 17,  label: '+17K' },
+    { sector: 'Construction',                 value: 15,  label: '+15K' },
     { sector: 'Other Services',               value: 6,   label: '+6K' },
-    { sector: 'Information',                  value: -4,  label: '−4K' },
-    { sector: 'Natural Resources & Mining',   value: -5,  label: '−5K' },
-    { sector: 'Trade, Transport & Utilities', value: -5,  label: '−5K' },
-    { sector: 'Professional & Business Svcs', value: -16, label: '−16K' },
-    { sector: 'Manufacturing',                value: -17, label: '−17K' },
+    { sector: 'Information',                  value: 3,   label: '+3K' },
+    { sector: 'Trade, Transport & Utilities', value: 0,   label: '0' },
+    { sector: 'Natural Resources & Mining',   value: -1,  label: '−1K' },
+    { sector: 'Professional & Business Svcs', value: -11, label: '−11K' },
+    { sector: 'Financial Activities',         value: -16, label: '−16K' },
   ] satisfies BarDatum[],
 }
 
 // ─── Revelio Labs ─────────────────────────────────────────────────────────────
-// RPLS for August 2026.
+// RPLS for September 2026. NOTE: Revelio reported hiring and attrition as sector
+// BREADTH this cycle (13 of 17 / 15 of 17) rather than publishing national rates,
+// so the rate cards carried in prior months have no September value. Breadth is
+// what is sourced; do not carry August's 19.7% / 19.4% forward as if current.
 export const revelio = {
-  period: 'August 2026',
+  period: 'September 2026',
   reportUrl: 'https://www.reveliolabs.com/public-labor-statistics/',
   metrics: [
-    { label: 'RPLS Jobs Gained (August)', value: '+36.5K', note: 'Down from +79.2K in July — a second straight slowdown' },
-    { label: 'New Posting Salaries',      value: '−3.4%',  note: 'MoM · wage competition easing as employers lose urgency' },
-    { label: 'Hiring Rate',               value: '19.7%',  note: 'Down 0.4pp from 20.1% — hiring keeps cooling' },
-    { label: 'Attrition Rate',            value: '19.4%',  note: 'Down 0.3pp from 19.7% · workers staying put' },
+    { label: 'RPLS Jobs Gained (September)', value: '+56.9K', note: 'Up from +36.5K in August · Public Admin and Health Care led' },
+    { label: 'Active Job Postings',          value: '18.12M', note: '−1.8% MoM · −1.3% YoY · Leisure/Hospitality −14.6%' },
+    { label: 'Low-Hire, Low-Fire Breadth',   value: '13 / 15', note: 'Of 17 sectors: hiring slowed in 13, attrition eased in 15' },
+    { label: 'New AI Adoption Pace',         value: '−48%',   note: 'Off its April peak · ~7% of eligible firms now adopters' },
   ] satisfies MetricCard[],
   sectors: [
-    { sector: 'Public Administration',            trend: 'Growing (largest gain)',     direction: 'up' },
-    { sector: 'Health Care & Social Assistance',  trend: 'Growing',                    direction: 'up' },
-    { sector: 'Professional & Business Services', trend: 'Growing · postings up most', direction: 'up' },
-    { sector: 'Leisure & Hospitality',            trend: 'Declining',                  direction: 'down' },
-    { sector: 'Retail Trade',                     trend: 'Declining',                  direction: 'down' },
+    { sector: 'Public Administration',           trend: 'Growing (largest gain)',  direction: 'up' },
+    { sector: 'Health Care & Social Assistance', trend: 'Growing',                 direction: 'up' },
+    { sector: 'Information',                     trend: 'Declining',               direction: 'down' },
+    { sector: 'Transportation',                  trend: 'Declining',               direction: 'down' },
+    { sector: 'Leisure & Hospitality',           trend: 'Postings down most (−14.6%)', direction: 'down' },
   ] satisfies SectorTrend[],
 }
 
@@ -214,10 +219,11 @@ export const revelio = {
 // Demand-side lens: job-posting counts scraped daily from 300k+ employer career
 // sites (225k+ U.S.). Quarterly, so it refreshes on its own cadence — `note`
 // flags when the next report is due so a lagging quarter doesn't read as stale.
-// Q3 was still unpublished as of the September refresh; Q2 numbers stand.
+// Q3 was still unpublished as of the Oct 2 refresh — the quarter only just
+// closed; Q2 numbers stand. Check again on the November pass.
 export const aspen = {
   period: 'Q2 2026',
-  note: 'Latest available — Q3 report publishes in October',
+  note: 'Latest available — Q3 report expected later in October',
   reportUrl: 'https://aspentechlabs.com/jobmarketpulse-reports/2026/jobmarketpulse-report-q2-2026',
   metrics: [
     { label: 'U.S. Job Postings',       value: '6.45M',   note: '+3.7% YoY · every month of Q2 held above 6.4M' },
@@ -257,57 +263,57 @@ export const aspen = {
 // the fold. Refresh every release cycle.
 export const latestRelease = {
   source: 'BLS Employment Situation',
-  period: 'August 2026',
-  releasedOn: 'Fri Sep 4, 2026',
-  headline: 'Payrolls rebound to +162K and July’s negative print is revised away — but wage growth slips to 3.1%, a fresh five-year low, and ADP sees almost none of the same strength',
+  period: 'September 2026',
+  releasedOn: 'Fri Oct 2, 2026',
+  headline: 'Payrolls slow to +29K and July flips back to negative at −10K as August is cut to +133K — but unemployment’s rise to 4.2% came from workers returning, and ADP saw its first acceleration since May',
   stats: [
-    { label: 'Nonfarm Payrolls', value: '+162K',  detail: 'strongest since March' },
-    { label: 'Prior Revisions',  value: '+55K',   detail: 'June up to +31K · July up to +21K' },
-    { label: 'Unemployment',     value: '4.1%',   detail: 'unchanged · participation 61.6%' },
-    { label: 'Avg. Hourly Wage', value: '$37.75', detail: '+10¢ MoM · +3.1% YoY' },
+    { label: 'Nonfarm Payrolls', value: '+29K',   detail: 'private +46K · government −17K' },
+    { label: 'Prior Revisions',  value: '−60K',   detail: 'July cut to −10K · August to +133K' },
+    { label: 'Unemployment',     value: '4.2%',   detail: '+0.1pp · participation up to 61.8%' },
+    { label: 'Avg. Hourly Wage', value: '$37.81', detail: '+5¢ MoM · +3.0% YoY' },
   ],
-  takeaway: 'A month after payrolls went negative, the negative went away. August came in at +162K — the strongest since March — and both prior months were revised up: June from +20K to +31K, July from −23K to +21K. The revision that erased 103K of jobs last cycle has now been partly handed back, 55K of it. Read the last three months as +31K, +21K, +162K. The catch is that almost nothing else corroborates the strength. ADP had private payrolls at just +38K, its slowest since January, and Revelio counted +36.5K. BLS itself puts private payrolls at +127K, with government adding 35K on a +42K bounce in local-government education that mostly reverses July’s cut. Wage growth cooled again to 3.1% YoY, a new five-year low. And July JOLTS, out three days earlier, showed the freeze deepening on both sides: hires down to a 3.2% rate, the weakest since February, and layoffs down to 1.0%, the lowest level since January. Openings were essentially flat at 7.3M.',
+  takeaway: 'September was soft at +29K, and the revisions went the other way again: July has been cut from +21K to −10K and August from +162K to +133K, 60K between them. Last month July looked like the clean counterexample to the revision story — a bad headline revised up. It has now landed negative after all. The underlying trend is the four-month run of +31K, −10K, +133K, +29K: positive on average, barely. Two things make this better than it reads. Unemployment rose to 4.2%, but it rose for the healthy reason — participation climbed 0.2pp to 61.8%, meaning people re-entered the labor force rather than employment collapsing. And ADP posted +90K, its first acceleration since May and a beat on consensus, led by education/health (+55K) and leisure/hospitality (+22K). That is the opposite of last month, when BLS ran hot and ADP ran cold; the two series have simply swapped sides, which is a reason to average them rather than trust either. The weak spots are consistent across sources: financial activities −16K and professional/business services −11K at ADP, information −10K and government −17K at BLS. Wage growth slipped again to 3.0% YoY. August JOLTS showed openings down 256K to 7.08M with the vacancy yield falling to 0.71 from 0.75 — postings exist, hiring is not following.',
 }
 
 // ─── Upcoming Releases ────────────────────────────────────────────────────────
 // Surfaces the next-on-the-calendar BLS/ADP/JOLTS releases so readers know
 // when fresher data lands. Curated manually — refresh dates each cycle.
 export const upcomingReleases = [
-  { date: 'Tue Sep 29', source: 'BLS JOLTS',      what: 'August 2026 job openings, hires, quits' },
-  { date: 'Wed Sep 30', source: 'ADP NER',        what: 'September 2026 private payrolls + pay growth' },
-  { date: 'Fri Oct 2',  source: 'BLS Employment', what: 'September 2026 nonfarm payrolls + unemployment' },
+  { date: 'Tue Nov 3', source: 'BLS JOLTS',      what: 'September 2026 job openings, hires, quits' },
+  { date: 'Wed Nov 4', source: 'ADP NER',        what: 'October 2026 private payrolls + pay growth' },
+  { date: 'Fri Nov 6', source: 'BLS Employment', what: 'October 2026 nonfarm payrolls + unemployment' },
 ]
 
 // ─── HR Implications ──────────────────────────────────────────────────────────
 export const implications: Implication[] = [
   {
-    tldr: 'July’s negative payroll print was revised away — revisions cut both ways',
-    headline: 'The negative month got revised out of existence',
-    body: 'Last cycle the story was that payrolls turned negative at −23K and that 103K prior jobs had been revised away. August rewrote both halves. July is now +21K, June is +31K, and the two revisions added 55K back. The three-month run reads +31K, +21K, +162K — a slow market, not a contracting one. Last month we told you to build a revision haircut into any headcount model keyed off monthly payroll prints. That advice holds, but the direction was wrong: revisions are noisy, not reliably pessimistic. The durable lesson is narrower and more useful — the first print is an estimate with a wide error bar in both directions, so do not let a single month, good or bad, trigger a hiring freeze or a hiring spree. Wait for the third estimate before you move headcount.',
+    tldr: 'July flipped back to negative — and the revision drag has deepened, not eased',
+    headline: 'The month that looked like a counterexample landed negative after all',
+    body: 'Last cycle July printed at −23K, got revised up to +21K, and we flagged it as the clean counterexample to the idea that first prints are too optimistic. It has now landed at −10K. August came down too, from +162K to +133K, for 60K between them. Zoom out and the record for 2026 is this: across the seven months with all three estimates published, first prints averaged +77K while the settled figures average +64K — a drag of roughly 12K a month, wider than the 8K we measured last cycle. The direction still genuinely varies, four months up and three down, so this is not a thumb on the scale. It is a measurement lag that runs against you specifically when hiring is decelerating, because the initial print rests on about 55% of the survey sample and late reporters skew smaller and more distressed. The operating rule stands and has now been tested twice: do not move headcount on a first print. Wait for the third.',
   },
   {
-    tldr: 'BLS says +162K, ADP says +38K — the gap between them is the real story',
-    headline: 'Three payroll counts disagree by a factor of four',
-    body: 'BLS put August at +162K. ADP put private-sector job creation at +38K, its slowest since January and below a +47K consensus. Revelio counted +36.5K. Even inside BLS, private payrolls were +127K against +35K from government. That is an unusually wide spread, and it means the honest answer for planning purposes is a range, not a number. The two independent private-sector reads both land in the high-30Ks, which is the number that should anchor your expectations if you hire in the private sector; the BLS headline is flattered by a +42K bounce in local-government education that mostly just reverses the cut it took in July. ADP and BLS also disagree outright on manufacturing — BLS has it +16K, ADP has it −17K. When the sources conflict this sharply, your own req-to-hire data is a better signal than any of them.',
+    tldr: 'BLS says +29K, ADP says +90K — the two series have swapped sides',
+    headline: 'The payroll counts disagree again, in the opposite direction from last month',
+    body: 'In August, BLS ran hot at +162K while ADP came in at +38K and we told you to anchor on the private-sector reads. This month it is exactly reversed: BLS has +29K while ADP posted +90K, its first acceleration since May and a beat on a +68K consensus. Revelio sits in between at +56.9K. Anyone who picked a favorite series last month and planned around it has now been wrong twice. The useful discipline is to treat the three as a range — call it +30K to +90K, centering somewhere near +55K — and to notice that the disagreement itself is information: when methodologies this different diverge this much, nobody has a clean read, and that is a reason to weight your own funnel data more heavily than any national print. Your req-to-offer conversion and time-to-fill are measured without a birth-death model.',
   },
   {
-    tldr: 'Wage growth hit 3.1% while the switching premium widened to 2.9pp',
-    headline: 'The raise you give is shrinking; the raise a switcher gets is still growing',
-    body: 'Average hourly earnings rose 3.1% YoY, down from 3.2% and the slowest since May 2021. Revelio has salaries on new postings down 3.4% month over month — employers are advertising less money because they feel less urgency. And yet ADP has job-changer gross pay growth at 7.3% against job-stayers flat at 4.4% for a fifth straight month. The switching premium widened to 2.9pp, the widest gap in the series. Note that ADP overhauled this report in August and now publishes base pay alongside gross pay; on the base-pay series the same gap is 4.7% versus 3.0%. Either way the shape is identical. Both things are true at once: the incumbent workforce is getting smaller raises, and the person who leaves is still paid materially more. If your comp planning is anchored to a 3.1% headline, you are budgeting for the people who stay and underpricing the ones most likely to go.',
+    tldr: 'Unemployment rose to 4.2%, but for the healthy reason this time',
+    headline: 'A rising unemployment rate that is good news, which is rarer than it sounds',
+    body: 'The unemployment rate went up 0.1pp to 4.2%. Read in isolation that is deterioration. It is not, and the distinction matters because it is the opposite of what we saw earlier this year. Participation climbed 0.2pp to 61.8% — people came back into the labor force and were counted as looking for work. Compare that with the spring, when the rate fell to 4.1% while participation dropped, meaning the improvement was people giving up rather than finding jobs. Same headline direction, opposite meaning. For recruiting, a rising participation rate is the single most useful thing in this report: your applicant pool is getting deeper, including people who had stopped looking. If you have roles that have been hard to fill all year, this is the month to re-open the search rather than the month to panic about a softening market.',
   },
   {
-    tldr: 'Hires fell to 3.2% and layoffs to 1.0% — the freeze deepened on both sides',
-    headline: 'Low-hire, low-fire is no longer a phase — it is the operating environment',
-    body: 'July JOLTS showed openings essentially flat at 7.3M, but the flow data moved. The hires rate fell 0.2pp to 3.2%, the weakest since February. Layoffs dropped 100K to 1.67M, a 1.0% rate and the lowest level since January. Quits ticked down to 1.9%. Revelio’s independent read matches: hiring down 0.4pp to 19.7% and attrition down 0.3pp to 19.4%. Every one of those numbers moved toward less movement. The layoffs figure is the genuinely reassuring one — employers are holding onto people harder than at any point this year, so your retention risk from the market is low right now. The cost is that your internal mobility and backfill pipelines are equally frozen, and the pool of workers who want to move but cannot keeps growing. That backlog releases the moment conditions turn, and it will not release gradually.',
+    tldr: 'Wage growth hit 3.0% — a new low — while switchers still get 7.3%',
+    headline: 'The gap between what you pay to keep someone and what they get for leaving has not budged',
+    body: 'Average hourly earnings rose 3.0% year over year, down from 3.1% and another post-2021 low. Meanwhile ADP has job-changer gross pay growth at 7.3% against job-stayers at 4.4% — flat for a sixth consecutive month, with the switching premium holding at 2.9pp, the widest in the series. On the base-pay series ADP introduced in August, the same comparison is 4.8% versus 3.0%. The pattern has now persisted long enough that it should change how you plan rather than just how you worry. Cooling headline wage growth gives you cover to hold merit budgets down, and most organizations will take it. But the premium for leaving has not compressed at all, which means the saving is being funded by your flight risks. If you are going to run a 3% merit cycle, pair it with off-cycle adjustments for the people whose market rate is set by that 7.3% number, because the headline is not describing them.',
   },
   {
-    tldr: 'Restaurants and local school districts carried August; information shed 23K',
-    headline: 'The August gain was narrow, and it was not white-collar',
-    body: 'Food services and drinking places added 59,000 — nearly five times its 12-month average of 12,000 — and local government education added 42,000. Those two lines are most of the month. Construction added 22K and manufacturing 16K. Meanwhile information shed 23,000 on losses across computing, publishing, and broadcasting, and health care managed only +13K against a 12-month average of +32K, which is a notable cooling in the sector that has carried this market all year. ADP’s cut is harsher on the knowledge economy: Professional & Business Services at −16K and Information at −4K. For anyone recruiting in tech, media, or professional services, the candidate market just got looser and your offers should be closing faster. If they are not, the constraint is your process, not supply. And if health care has been your one reliably tight lane, watch it — one soft month is not a trend, but it is the first crack.',
+    tldr: 'Education and health is the whole market; knowledge work is where the losses are',
+    headline: 'One sector is carrying the economy, and it is not the one hiring HR tech',
+    body: 'ADP has education and health services at +55K out of +59K for all service industries combined — the sector is, arithmetically, the entire services gain. BLS agrees in direction with health care +17K, alongside leisure and hospitality +10K, construction +11K, and manufacturing +9K. The losses cluster in white-collar work: ADP has financial activities at −16K and professional and business services at −11K, BLS has information at −10K and professional and business services at −9K, and Revelio independently records employment declines in Information and Transportation. Government shed 17K at BLS, reversing part of August’s local-education bounce. If you recruit in finance, consulting, tech, or media, the market has loosened for the third month running and your offer-acceptance rates should reflect that. If you recruit clinicians or teachers, you are competing in the only genuinely tight lane left and should expect none of the leverage the national headlines imply you have.',
   },
   {
-    tldr: 'Postings are retreating, and AI-exposed roles are hitting workers under 25 hardest',
-    headline: 'Demand is pulling back, and the pullback is not evenly distributed by age',
-    body: 'The demand side finally turned. Revelio has active U.S. postings down 3.0% month over month to 18.3M and down 2.2% year over year, with Transportation & Warehousing off 13.2% and Wholesale Trade off 11.3%. That is a change from the pattern we have flagged for months, where postings held up while payrolls sagged; the board is now thinning too. Aspen’s Q2 JobMarketPulse still shows 6.45M U.S. postings at +3.7% YoY with salary transparency at 53.6%, but that is a quarter old and the Q3 report in October is the one to watch. The finding HR leaders should actually sit with is Revelio’s AI analysis: employment in highly AI-exposed occupations is down roughly 6% relative to less-exposed roles since November 2022, and for workers aged 22 to 25 that gap is 19%. Firms adopting AI are still growing headcount overall — the displacement is concentrated at the entry level, in the roles that used to be how people got in. If you have quietly stopped backfilling junior analyst, coordinator, and associate roles because a tool covers the work, you have also quietly stopped building your own pipeline. That bill comes due in about three years.',
+    tldr: 'Openings fell 256K and postings keep thinning, while AI adoption cools but pays off',
+    headline: 'Demand is draining slowly, and the AI story got more interesting than "it takes jobs"',
+    body: 'August JOLTS had openings down 256K to 7.08M, with the vacancy yield — hires per opening — slipping to 0.71 from the 0.75 that held through 2025 and most of 2026. Layoffs fell to a 1.0% rate and quits held at 1.9%, so the freeze is intact on both sides while the pool of advertised work shrinks. Revelio has active postings down 1.8% on the month to 18.12M and down 1.3% year over year, with leisure and hospitality off 14.6%. Aspen’s Q2 JobMarketPulse still reads +3.7% YoY on 6.45M postings, but that is now two quarters stale and Q3 should land later this month. The genuinely new finding is Revelio’s AI data, and it complicates the usual narrative in both directions. The pace of new firm adoption is down 48% from its April peak and fell 17% from July to August, so the land-grab phase is over; cumulative adoption sits at roughly 7% of eligible US hiring firms. Yet adopters have expanded headcount 27% more than non-adopters since the pre-ChatGPT baseline, and 90% of the measured change in work activity is happening inside existing occupations rather than through jobs disappearing. Taken together: AI is reshaping what roles do far more than it is deleting them, the firms adopting it are growing faster, and the risk for HR is not mass displacement but job descriptions and skills frameworks that quietly stop matching the actual work.',
   },
 ]
