@@ -19,9 +19,9 @@
  */
 
 import './load-env.mjs'
-import { readFileSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { readLatestNewsletter } from './lib/latest-newsletter.mjs'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
@@ -47,20 +47,16 @@ if (!DEPLOY_SECRET) {
 
 const SITE_URL = (process.env.SITE_URL ?? 'https://ilovethewrap.com').replace(/\/$/, '')
 
-// ---------- read latest newsletter (same pattern as deploy.mjs) ----------
-const source = readFileSync(resolve(root, 'src/data/newsletters.ts'), 'utf8')
-const first = source.match(/newsletters:\s*Newsletter\[\]\s*=\s*\[\s*\{([\s\S]*?)\n  \},/)
-if (!first) { console.error('Could not locate first newsletter entry in newsletters.ts'); process.exit(1) }
-const entry = first[1]
-const slug = entry.match(/slug:\s*['"`]([^'"`]+)['"`]/)?.[1]
-const title = entry.match(/title:\s*['"`]([^'"`]+)['"`]/)?.[1]
-const body = source.match(/body:\s*`([\s\S]*?)`\s*,?\s*\n  \},/)?.[1]?.trim()
-if (!slug || !title || !body) {
-  console.error('Could not parse slug/title/body from latest newsletter.')
+// ---------- read latest newsletter (shared with deploy.mjs and send-latest.mjs) ----------
+let slug, title, body
+try {
+  ;({ slug, title, body } = readLatestNewsletter(resolve(root, 'src/data/newsletters.ts')))
+} catch (err) {
+  console.error(`❌  ${err.message}`)
   process.exit(1)
 }
 
-console.log(`📰  Latest newsletter: "${title}" (${slug})`)
+console.log(`📰  Latest newsletter: "${title}" (${slug}) — ${body.length.toLocaleString()} chars`)
 console.log(`📬  Sending test to: ${to}`)
 console.log(`🌐  Site: ${SITE_URL}\n`)
 
