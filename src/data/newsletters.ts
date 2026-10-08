@@ -31,6 +31,101 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'this-is-the-future-of-work',
+    date: 'October 9, 2026',
+    title: 'This Is the Future of Work',
+    tag: 'AI & Future of Work',
+    excerpt:
+      'Another wave of layoffs at HubSpot, Workday, UKG, and Amazon, 573,195 job cuts announced so far this year, and remote jobs growing 42% faster offshore than at home — is this the future of work?',
+    body: `
+<img src="/newsletters/edition-92/future-of-work-hero.webp" alt="A collage of security cameras, one with a glowing red light, over an overhead view of pedestrians each boxed in a white tracking square, with a rising line chart and a businessman on a tablet behind them" />
+
+<p>When I was laid off in 2022, before being laid off again in 2024, the number I remember most is $1,800. That’s what COBRA cost every month to keep our health insurance. At the time, my daughter was seeing a specialist at Children’s Hospital in Boston for asthma (she’s fine now), so I paid it to keep our current treatment plan.</p>
+
+<p>Today, it would be closer to $2,300. A month. Just for the opportunity to get healthcare that costs even more. I could write a whole essay about the U.S. healthcare system maximizing profits off of sick families, but that’s not news. I’ll just leave it at this — every other developed country can figure out a way to take care of its people, but here it would be “communism.” I can’t roll my eyes enough.</p>
+
+<p>What <strong><em>is</em></strong> news this week is yet another wave of layoffs. HubSpot, Workday, UKG, and Amazon all had another round of cuts. According to Challenger, Gray &amp; Christmas, employers have announced 573,195 job cuts so far this year. Tech accounts for 29% of them, more than any other industry, and some companies have named AI as the reason for more than 120,000.</p>
+
+<p>We are taking an entire generation of marketers, writers, software engineers, and account managers and telling them their work is worth less to us than a tool that came out a year ago.</p>
+
+<p>Makes me wonder… is this the future of work?</p>
+
+<p>Is working in tech now under a constant threat of downsizing?</p>
+
+<p>Are you going to have to do your job with an AI babysitter making sure you are “maximizing your time”?</p>
+
+<p>Has experience become a liability, the first thing cut when the spreadsheet says legacy?</p>
+
+<p>Have we switched off career growth and replaced it with a plug-and-play model, where we employ someone to do one thing just until AI can do it cheaper?</p>
+
+<p>And have we quietly decided that remote work just means outsourcing? My friends at Revelio Labs found that between 2019 and 2024, offshore headcount at U.S.-headquartered companies grew 32%. Jobs that can be done remotely grew 42% faster offshore than at home. Software engineers abroad were up 77%. Recruiters were up 69%. If you’re a remote worker in the U.S., you aren’t competing with the person in the next town. You’re competing with someone halfway around the world who has the same skills at a fraction of your cost.</p>
+
+<p>To be fair, the numbers don’t all point one way. Announced cuts are down 39% from last year’s pace. “AI” in a layoff memo can be a convenient label for ordinary cost-cutting. And the offshoring curve started bending in 2019, years before anyone had heard of ChatGPT.</p>
+
+<p>But that’s cold comfort to the person reading the email. We’re telling tech workers to watch their backs every year for the next RIF. Sure, they might get three to six months of severance and benefits, but then what? We’ve already tried to tell everyone that having two jobs is normal, that gig work is for “fun money,” not food money.</p>
+
+<p>Is the future of work sharing made-up stories on LinkedIn for engagement? Constantly dancing, hoping an employer notices?</p>
+
+<p>Is this the future of work? We should be asking ourselves that question every day, or the 2030 workplace is going to look a lot worse.</p>
+
+<p>Enough doom and gloom. On to the week’s HR tech news. In this week’s Wrap, SAP acquires TechWolf, Glassdoor launches Glassdoor Recruiter (with Indeed), candidates are abandoning applications at record speed, Juicebox buys Fetcher’s IP, we look at our future surveillance state, and The New York Times can depress you by showing how little ROI you got on your college degree.</p>
+
+<p>Have a great weekend, and I’ll see some of you at Workday Rising next week during my Vegas residency.</p>
+
+<p>Mike</p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>SAP to Acquire TechWolf</h3>
+<img src="/newsletters/edition-92/sap-techwolf.webp" alt="The TechWolf wordmark above a glowing purple X and the SAP logo, inside a rounded gradient-outlined panel on a dark navy background" />
+<p>SAP has agreed to acquire TechWolf, a Belgium-based AI “work intelligence” platform that maps an organization’s tasks, employee skills, and external labor-market data into what it calls a “context graph for work.”</p>
+<p>I’ll find out more from the team at HR Tech, but in the release, SAP says TechWolf will become “an intelligent core” of the SuccessFactors portfolio, supporting workforce planning, skills mapping, and organizational redesign. The release is linked below, but this is the important context layer that <a href="https://joshbersin.com/podcast/the-context-layer-semantic-layer-in-enterprise-ai-and-where-business-rules-go/">Josh Bersin</a> and <a href="https://news.beaconturn.com/p/everybody-wants-to-rule-the-context">Lance Haun</a> have been talking about. For more insight into the deal, check out <a href="https://www.linkedin.com/pulse/ship-more-staff-less-workday-layoffs-show-brutal-reality-steve-smith-bm2xc/">Steve Smith’s write-up</a>.</p>
+<p><a href="https://news.sap.com/2026/10/sap-to-acquire-techwolf-evidence-based-work-age-of-ai/">Read more</a>.</p>
+
+<h3>Glassdoor Launches Glassdoor Recruiter</h3>
+<img src="/newsletters/edition-92/glassdoor-recruiter.webp" alt="A white smartphone lying on a dark wood table, showing the Glassdoor mobile site with the headline “Find The Job That Fits Your Life”" />
+<p>Glassdoor launched Glassdoor Recruiter, a job-matching tool for U.S. job seekers. Users upload a résumé and add their priorities and must-haves. The tool then shows roles from Indeed’s job marketplace one at a time, each with a match score, a fit analysis (skills, compensation, culture), Glassdoor company ratings, and an “applicant experience” score based on how responsive the employer is. Users apply, save, or pass on each role. They can also opt in to make their profile visible so employers can contact them directly.</p>
+<p>I love the applicant experience score. If we can’t persuade companies to provide a positive experience, we can at least shame them into change.</p>
+<p><a href="https://www.businesswire.com/news/home/20261008948164/en/Glassdoor-Takes-Aim-at-the-Broken-Job-Search-with-Glassdoor-Recruiter">Read more</a>.</p>
+
+<h3>Nearly Half of Job Seekers Abandon Applications Over Tedious Processes</h3>
+<img src="/newsletters/edition-92/application-abandonment.webp" alt="A person in a pinstripe suit slumped face-down on a keyboard in front of a blank monitor, one hand on the back of their head" />
+<p>Indeed’s 2026 State of the Job Seeker survey found 46% have abandoned an application because it was too long or tedious. Younger candidates drop out most: Gen Z 52%, millennials 51%, Gen X 44%, boomers 32%.</p>
+<p>The fatigue goes beyond the application form. 47% paused their search for at least a week after feeling overwhelmed, rising to 67% among active seekers. 54% report financial fallout from the search, including 24% who took on debt (*cough* LinkedIn Premium) and 19% who put off medical or dental care.</p>
+<p><a href="https://www.staffingindustry.com/news/global-daily-news/nearly-half-abandon-applications-due-to-tedious-processes">Read more</a>.</p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions</h2>
+
+<p><strong>HiringCafe</strong>, an AI job search engine, raised a $6.8M pre-seed round led by Spark Capital, with Nonfiction Capital, Silicon Gardens, and angel investors from ZipRecruiter and Indeed also participating. It launched a free AI Talent Agent alongside the round. <a href="https://app.dealroom.co/news/note/hiringcafe-raises-6-8m-pre-seed-backed-by-ziprecruiter-and-indeed-angels">Read more</a>.</p>
+
+<p><strong>Spott</strong>, a Belgian startup building an AI-native ATS/CRM for recruitment agencies, raised a $21M Series A led by Balderton Capital, with Base10 Partners, Y Combinator, and Fortino participating. <a href="https://tech.eu/2026/09/22/spott-secures-21m-series-a-to-expand-its-ai-platform-for-recruitment-agencies/">Read more</a>.</p>
+
+<p><strong>Juicebox</strong> agreed to acquire IP and other assets from Fetcher, the sourcing and recruiting automation platform founded in 2016, which is winding down; Fetcher customers can move to Juicebox. <a href="https://www.businesswire.com/news/home/20261006182215/en/Juicebox-Announces-Agreement-to-Acquire-Fetcher-Assets">Read more</a>.</p>
+
+<hr />
+
+<h2>🖱️ Worth a Click</h2>
+
+<h3>Uganda’s Surveillance State, Built With Foreign Parts</h3>
+<img src="/newsletters/edition-92/uganda-surveillance.webp" alt="A halftone close-up of a single eye set inside a red grid, surrounded by dozens of small black-and-white surveillance crops of faces and a license plate" style="display:block;width:100%;max-width:520px;height:auto;margin:16px auto 8px;border-radius:4px;" />
+<p>I know I can be a doomer when it comes to AI, maybe because I’ve seen so many sci-fi movies where things don’t work out, but this caught my eye because it’s a look into our near future. If you want to see what’s coming to America, check out this New York Times piece about Uganda. License-plate tracking, phone-extraction tools, and more, all designed to crush anyone who speaks out against the regime. Worth reading before you see another photo of Trump smiling with all the AI leaders.</p>
+<p><a href="https://www.nytimes.com/2026/10/08/opinion/surveillance-autocrats-uganda.html">Read more</a>.</p>
+
+<h3>What Your Major Is Worth, College by College</h3>
+<img src="/newsletters/edition-92/college-major-earnings.webp" alt="A New York Times bar chart titled “Graduates from top-earning programs can earn over $200,000 after four years,” led by Duke mathematics at $297,029 against $64,500 for all institutions" style="display:block;width:100%;max-width:480px;height:auto;margin:16px auto 8px;border-radius:4px;" />
+<p>The New York Times built a searchable guide to median earnings by major at thousands of U.S. colleges, using an HEA Group analysis of IRS data on graduates four years out. Good thing I majored in both English and music. Still reaping the ROI on that.</p>
+<p><a href="https://www.nytimes.com/interactive/2026/10/07/your-money/college-degree-earnings-guide.html">Read more</a>.</p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+`,
+  },
+  {
     slug: 'surveillance-pricing-is-one-way-ai-is-destroying-us',
     date: 'October 2, 2026',
     title: 'Surveillance Pricing Is One Way AI Is Destroying Us',
