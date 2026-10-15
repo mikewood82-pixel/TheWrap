@@ -17,10 +17,10 @@ export type VoicesStaffPick = {
 
 export const voicesStaffPick: VoicesStaffPick = {
   enabled: true,
-  sourceSlug: 'robin-schooling',
-  // No matchTitle: the hero auto-follows the latest post, so it can't go
-  // stale mid-week. Swapped in 2026-10-07 to feature "The First Job: Lessons,
-  // With Interest", rotating off Beacon Turn (held the slot for #91).
+  sourceSlug: 'beacon-turn',
+  // No matchTitle: the hero auto-follows Lance Haun's latest Beacon Turn post,
+  // so it can't go stale mid-week. Swapped in 2026-10-15 for #93, rotating off
+  // Robin Schooling (held the slot for #92).
 }
 
 // Normalize smart quotes and case so config written with plain ASCII still
