@@ -31,6 +31,60 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'workday-rising-road-report',
+    date: 'October 16, 2026',
+    title: 'Workday Rising Road Report',
+    tag: 'Events',
+    excerpt:
+      'For years, every Workday conversation started with frustration. At Workday Rising this week, a single candidate profile, Sana as the front door, and a real talent acquisition pillar suggest that’s finally changing.',
+    body: `
+<img src="/newsletters/edition-93/workday-rising-hero.webp" alt="The Workday Rising broadcast set: a round white desk on a circular stage under a ring of studio lights, with two hosts and two guests seated, TV cameras on either side, and tall gradient panels reading RISING around a Workday logo" />
+
+<p>Frustration.</p>
+
+<p>I’ve been in HR tech since 2013, and whenever Workday came up, the conversation was about frustration. A clunky system that was a nightmare for candidates to apply through, for recruiters to learn, and for basically everyone to use. As Workday kept growing and landing bigger customers, the “turd in the punchbowl” got bigger too. Salesmen would point to all the delicious punch I could have, but I couldn’t get around the turd.</p>
+
+<p>At Workday Rising this week, it finally looks like we’re getting fresh punch.</p>
+
+<p>I’m both excited and relieved by how much work Workday has put into TA over the last couple of years. Its acquisitions of Paradox and Sana have completely changed the conversation about user experience and, frankly, about what work will look like in the near future.</p>
+
+<p>When co-founder Aneel Bhusri returned as CEO in February, you knew change was coming. He opened with the scale Workday is working from: 20 years, 80 million users, and 1.4 trillion transactions last year. “Data and context are everything,” he said, because AI needs to know how your organization works and who approves what. His keynote laid out the foundation for Workday’s vision:</p>
+
+<ul>
+  <li>Workday as the agent system of record. Agents, APIs, Data Cloud, and Extend AI all sit on one foundation: Workday’s data and business processes.</li>
+  <li>AI you can trust: lawful, reliable, and secure.</li>
+  <li>Sana as the new front door. Instead of digging for information in Workday, you can just talk to it.</li>
+  <li>Talent acquisition as its own product pillar.</li>
+</ul>
+
+<p>The strategy is smart for today’s landscape. Nobody trusts anything right now, and Workday has deliberately moved toward AI with guardrails. Pair that with being the agent system of record, and with legacy customers whose HR data lives almost entirely in Workday, and it gets even harder for companies to leave. In the past, Workday might have sat back on that advantage and chased growth. What I heard this week instead was overdue fixes paired with a long-term vision for a fast-changing world.</p>
+
+<p><strong>Fix #1: One candidate profile.</strong> Candidates applying through Workday will no longer have to create a separate login for every employer. That has been a major source of frustration for anyone who’s applied through Workday, and a recurring theme on Reddit’s <a href="https://www.reddit.com/r/recruitinghell/">r/recruitinghell</a>. Workday referenced that community from the main stage, and President of Product and Technology Gerrit Kazmaier acknowledged outright that applying through Workday is its #1 complaint. So if you’ve ever posted there, know they’re listening and working on it. Candidates will also be able to apply from inside ChatGPT using their Workday profile. And Adam Godson, who now runs Workday’s new talent acquisition pillar after coming over from Paradox, told me text-to-apply, LinkedIn apply, and HiredScore’s resume parser are coming across the system.</p>
+
+<p>Customers aren’t waiting. John Bruce, VP of People Innovation and Technology at OneDigital, cut his application down to contact info plus a resume for professional roles, and no required resume at all for hourly. Applications jumped. “Stop overengineering your solutions,” he told me.</p>
+
+<p><strong>Fix #2: Sana as the front door.</strong> Remember when I wrote that the prompt box is the new starting screen for the products of the future? It’s here, and Sana turbocharges it. Users type what they want to do or know, and agents (17 live so far) get to work. Workday shifts from digging for information and toggling switches to simply finding what you need. Sana’s concierge agent builds a new hire’s onboarding before day one: meetings, tasks, and tools. Sana Coach pulls together what a manager needs for reviews and gathers teammate feedback through a voice interview agent. Performance review season is still awful, but it’s easier when the awful is automated.</p>
+
+<p><strong>Fix #3: Identity governance for people and agents.</strong> How many hours have been wasted on IT tickets just to get access to a system? Too many! Workday agreed to acquire C1.ai, formerly ConductorOne, so access is granted and removed in real time instead of by IT ticket: the right access on day one, changes as roles change, and removal when someone leaves. That matters even more when agents need access too. As C1.ai CEO Alex Bovee put it, “Enterprises can’t secure the AI era using yesterday’s IT tickets.”</p>
+
+<p><strong>Innovation #1: Work Intelligence.</strong> This tool breaks every job in an organization into tasks and flags what to automate, augment, or keep human. It’s an amazingly intuitive tool that suggests redeployment paths based on how much work two roles share. In the demo, Security Engineers mapped to AI Safety Engineers at 84% task overlap. Across four roles, it proposed redeploying 120 FTEs and freeing 2,120 hours a week, all under a status line reading “Protecting roles that require human sign-off.”</p>
+
+<p><strong>Innovation #2: Talent Acquisition Agent.</strong> Imagine you have an always-on recruiting agent that sources, screens, drafts outreach, and flags any at-risk reqs. In the demo, the agent flagged an AI Safety Engineer req whose pipeline was too thin to hit the hire window, drafted outreach to 15 leads, and waited for the recruiter to approve each one. It’s a logical next step that is going to be crucial to top-performing TA teams and something all the TA vendors are racing towards. I can’t wait to see the feedback 6 months from now.</p>
+
+<p>Some customers are already showing what it looks like at scale. Accenture, which makes 190,000 hires a year, connected Workday, HiredScore, HackerRank, and Paradox into what it calls “frictionless recruiting” and reports 28% faster time to offer and 30% stronger candidate quality. Jillian Snavley, its Global Head of Recruiting and Onboarding, summed up the lesson: “Change your process to fit the tool.” Godson made the same point to me about Paradox: “It wasn’t ever the tech. It was the tech and the process together.”</p>
+
+<p><strong>Innovation #3: Self-Service.</strong> Through the Sana front door, employees can now ask the system about how to do a variety of things, such as ask about their benefits, pay, and any of the other things we used to have to ping HR about and wait. There were a bunch of great anecdotes from their customers on how much frustration and time they saved. BMO rolled its self-service agent out to 55,000 employees, after walking its risk, compliance, and responsible AI teams through exactly what the agent would and wouldn’t do. “We need to change people’s relationship with Workday,” said Sarah Clements, Head of HR and Shared Services. Employees can now not only go to Workday, they can ask it. Intermountain Health turned on its self-service agent just two weeks ago and already has many people using it. Mike Harmer, VP of Enterprise Business Platforms, admitted they’re “a little scared but excited” to see these tools reach their caregivers.</p>
+
+<p>Overall, I was very impressed with the technology and solutions coming to Workday users, especially in talent acquisition. Shoutout to the entire Workday team and especially Courtney Laub, who always kept me going in the right direction.</p>
+
+<p>I’m looking forward to a new era at Workday.</p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+`,
+  },
+  {
     slug: 'this-is-the-future-of-work',
     date: 'October 9, 2026',
     title: 'This Is the Future of Work',
