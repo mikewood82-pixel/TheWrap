@@ -31,6 +31,70 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'the-wrap-takes-an-epic-journey-to-hr-tech',
+    date: 'October 23, 2026',
+    title: 'The Wrap Takes an Epic Journey to HR Tech',
+    tag: 'Events',
+    excerpt:
+      'Two weeks, three Vegas hotels, and one long voyage through Workday Rising and HR Tech. Here’s what I’m bringing home: the tools are watching, the prompt box is here, everyone is building toward MCP, and nine conversations from the floor.',
+    tileImage: '/newsletters/edition-94/odyssey-mast-tile.webp',
+    body: `
+<img src="/newsletters/edition-94/odyssey-mast.gif" alt="Animated clip from The Odyssey: a gray-bearded sailor lashed to a ship’s mast with heavy rope, head thrown back, shouting" />
+
+<p>Like Matt Damon in <em>The Odyssey</em>, I spent the better part of two weeks on an epic journey in Las Vegas for Workday Rising and HR Tech. Along the way I had many ports of call: the Best Western Casino Royale, featuring $1 Busch Lights and an upcoming Clay Aiken Christmas concert next door at Harrah’s; the Stratosphere, whose observation deck let me look at the road ahead; and finally the Excalibur, a castle featuring Dick’s Last Resort and Thunder from Down Under.</p>
+
+<p>Classy.</p>
+
+<p>Yet, through the temptations and rough seas of Vegas, I longed for home. Away from the constant dance music, the musty carpet smell, and the loud people outside my hotel room door. I longed for the simple life of home.</p>
+
+<p>But before the voyage home, here’s what I’m bringing back from HR Tech 2026.</p>
+
+<h2>What I saw across the show</h2>
+
+<p><strong>Big Brother is here.</strong> The main theme in WorkTech this year: the tools are watching. Continuous performance management is still a thing. The case for it is fair: frequent check-ins are meant to replace the single high-stakes annual review that employees dread just as much. But I don’t know if being constantly critiqued is better for employees than just being unloaded on once a year. Put it alongside everything else on the floor, and we’re building systems that help managers corral employees into expected behaviors and do more with less. No one is building beyond manager control and thinking about the wellbeing of actually working under the thumb of these tools. Maybe it’s a sign of the times, and we’re just appeasing shareholders.</p>
+
+<p><strong>Are we still looking for potential?</strong> Beyond the work environment, I worry about how we’re identifying talent. Are we looking for potential anymore, or just plugging people into a role for a short tour of duty rather than a career that grows with the company? I’ve worked at many places where a person was hired for one small function and grew into an integral part of the company’s success. It’s like we gave up looking for diamonds in the rough and just settled on “the rough” because it was easier and faster.</p>
+
+<p><strong>The prompt box is here.</strong> The large vendors are all moving toward prompt-box interfaces. Announcement after announcement pitched the same idea: you don’t have to navigate the platform, you just tell it what you’re looking for. Back in April I wrote about HR Tech’s Moviephone moment and said we’d better get comfortable with the prompt box. It’s not a feature of AI tools. It’s the future of most software.</p>
+
+<p><strong>Everyone is building toward MCP.</strong> If the prompt box is the front door, MCP is the hallway connecting the rooms. Vendor after vendor talked about Model Context Protocol connectivity, the open standard that lets AI tools plug directly into their platforms. UKG launched UKG in Claude through an MCP connector. Eightfold says every agent it ships comes with an MCP layer. G-P has added one since launching Gia. Workday is bringing Sana into Claude, Gemini, Copilot, Teams and Slack, and Greenhouse launched its own MCP earlier this year. The platform you log into is becoming the platform your AI logs into.</p>
+
+<p><strong>Guardrails and trust.</strong> Echoing what I heard at Workday Rising: you need guardrails and trust in your AI platform. Sure, you can vibe code something, but would you want to assume the risk?</p>
+
+<p><strong>TA tech is getting crowded.</strong> The number of talent acquisition vendors keeps growing, and many are promising to do the same things. With all the options, it’s not an easy time for HR teams to pick the right solution.</p>
+
+<p><strong>Payroll was busy, recognition was quiet.</strong> There are a lot of players in the payroll space; look to my colleague Brent Skinner for his insights there. Having come from the recognition space myself, I found it quiet at this event, with only O.C. Tanner and Awardco standing out.</p>
+
+<h2>Conversations from the floor</h2>
+
+<p><strong>CLARA.</strong> I met up with Natasha Nuytten, CEO of CLARA, and loved her focus on the hiring manager first. Their reframe: it’s not a screening problem, it’s an alignment problem. The hiring manager talks into their phone for a minute or so about what they want, and CLARA builds a role description and six ideal worker personas before any sourcing happens. You have to get alignment with hiring managers first. I feel like everybody else is doing it backwards, and I’m excited to see this startup take off.</p>
+
+<p><strong>PageUp.</strong> It was great to catch up with Anush Alexander, CMO of PageUp, on their agents: Paige, their agentic hiring assistant, and their upcoming candidate-focused agent. The candidate agent is a prompt box on the careers page that shows candidates how their skills match a role, where they don’t, and which other open jobs might fit better.</p>
+
+<p><strong>CodeSignal.</strong> I interviewed Tigran Sloyan, co-founder and CEO of CodeSignal, about their hands-on skill assessments. He likened what talent teams face now to flying blind by relying only on countless resumes.</p>
+
+<p><strong>Eightfold.</strong> I sat down with new Eightfold CEO Joe Korngiebel, only eight days into the job. He has a solid vision of the future focused on his customers’ needs. Korngiebel was Workday’s CTO and most recently ran strategy, product and technology at Dayforce (<a href="https://www.techdogs.com/tech-news/globe-newswire/eightfold-ai-welcomes-joe-korngiebel-as-ceo-to-lead-its-next-chapter-of-growth">announcement</a>). His line that stayed with me? “If you really want to trust a platform, talk to the customers.”</p>
+
+<p><strong>Warden AI.</strong> Speaking of trust, I checked in with my friends at Warden AI, which has become a needed stamp of approval for anti-bias in the space. I’m impressed by their growth and vision for risk management as we navigate this new world.</p>
+
+<p><strong>Findem.</strong> Hari Kolam, CEO of Findem, walked me through Findem Studio, its new headless AI-work environment. It’s an impressive suite of applications to help talent teams narrow their search and find what they’re looking for.</p>
+
+<p><strong>G-P.</strong> GK Kondury of G-P talked about the company’s growth since it announced Gia last year, including the MCP layer they’ve since added.</p>
+
+<p><strong>Fama.</strong> I talked with Ben Mones, CEO of Fama, about their new policy-based screening, which evaluates candidates’ or employees’ public content directly against an organization’s own code of conduct. You may remember they pioneered social monitoring, and this is a nice expansion as competitors pop up in employee listening.</p>
+
+<p><strong>Yardstik.</strong> Andrew Johnson, CEO of Yardstik, is building continuous background checks, white-labeled inside marketplaces, ATS platforms, and vertical SaaS. A background check is stale the day after it’s run, and AI is making fake resumes, licenses, and IDs easier to produce. Think of an in-home care nurse looking after an elderly parent: you’d want to know if something changed.</p>
+
+<h2>The voyage home</h2>
+
+<p>As I head to the airport, I’m thankful once again for the tremendous HR Tech community I’ve been lucky to be a part of for the past 13 years. There are way too many people to mention, but it’s good to have a homecoming like this as I long for actual home. The Vegas red-eye back to Ithaca, or in my case central Massachusetts, takes off at midnight.</p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+`,
+  },
+  {
     slug: 'workday-rising-road-report',
     date: 'October 16, 2026',
     title: 'Workday Rising Road Report',
