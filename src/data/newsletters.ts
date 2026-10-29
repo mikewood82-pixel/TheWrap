@@ -31,6 +31,95 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'are-we-building-a-future-no-one-wants',
+    date: 'October 30, 2026',
+    title: 'Are We Building a Future No One Wants?',
+    tag: 'AI & Future of Work',
+    excerpt:
+      'Two weeks in Vegas at Workday Rising and HR Tech, and one thing was missing from the expo floor: employee experience. Break the job into tasks, measure every task, hand the measurable ones to agents, send the bill. So who is this future for?',
+    tileImage: '/newsletters/edition-95/malcolm-could-should-tile.webp',
+    body: `
+<img src="/newsletters/edition-95/malcolm-could-should.webp" alt="Jeff Goldblum as Dr. Ian Malcolm in Jurassic Park, in dark glasses and a black leather jacket in a lab, captioned “You were so preoccupied with whether or not you could, you didn’t stop to think if you should”" />
+
+<p>I’m back from a whirlwind two weeks in Vegas at Workday Rising and HR Tech, and I’ve finally had time to decompress and reflect on the tech powering the future of work. If you follow my writing, you know I’m naturally cynical about the WorkTech space. I write about dystopian futures because I’m worried we’re building one. I don’t want to be a curmudgeon, but my overwhelming takeaway from this glimpse into our work future was that we may have lost the point. To paraphrase Dr. Ian Malcolm in <em>Jurassic Park</em>, we’re so preoccupied with whether we can build it that we haven’t stopped to ask whether we should.</p>
+
+<p>We’re not running from dinosaurs yet, but we’re getting close: <a href="https://www.wcvb.com/article/ice-buys-robot-dogs-boston-dynamics/73960034">ICE is buying the robot dogs we saw dancing at HR Tech last year</a>. The rest of the changes are quieter, and they’re landing on the average worker. Amid all the announcements about agentic workflows and streamlined tasks, one thing was missing from the expo floor: employee experience.</p>
+
+<p>I started my HR tech career at Workhuman, a company built on recognizing people for their hard work, so I may be biased. I believe technology should actually help people, and that we should work hard to keep our best ones. That idea seems to have gone out the door.</p>
+
+<p>Let’s look at what’s actually being built. At Workday Rising, Workday introduced Work Intelligence, which breaks each job into tasks, maps them to skills, and sorts them into automate, augment, or keep with a human. Workday pitches it as a way to grow people’s skills as work changes, but it’s hard to look past the financial incentive of handing work to agents that don’t need a paycheck or health insurance. Once this gets implemented, expect more “voluntary” buyouts <a href="https://www.reuters.com/technology/microsoft-is-offering-buyouts-around-60000-employees-business-insider-reports-2026-10-26/">like Microsoft’s this week</a>.</p>
+
+<p>If you’re lucky enough to keep your job, expect more stress. Continuous performance management was all over the expo. In these systems, the annual performance conversation is replaced with feedback all year round. I’ve lived with this model, and it’s exhausting. My parents, bless them, were always trying to help: “Here’s what you did, here’s what you did wrong, and here’s how I would have handled it.” Guess who stopped asking for advice?</p>
+
+<p>That’s what the dashboards miss. Correct someone constantly and they don’t get better. They get quiet. They stop raising their hand, stop volunteering, stop doing anything that isn’t on the list. Which, conveniently, is exactly the kind of employee a task map assumes you have.</p>
+
+<p>So what are we even building? Put the announcements side by side and the blueprint is pretty clear:</p>
+
+<ul>
+  <li>Break the job into tasks.</li>
+  <li>Measure every task, all the time.</li>
+  <li>Hand the measurable ones to agents.</li>
+  <li>Send the bill.</li>
+</ul>
+
+<p>Workday’s CEO told investors he expects customers to pay for agents by consumption, with bills that grow as usage grows. His chief AI officer said the opportunity reaches beyond software budgets into labor budgets. Agents don’t need health insurance, but they do send an invoice. Which leaves me wondering: how many tokens am I worth?</p>
+
+<p>Here’s the problem. People aren’t a list of tasks. The best people I’ve worked with went above and beyond what their job description said. They covered for a colleague, fixed a process nobody asked them to fix, and grew into roles that didn’t exist when they were hired. That’s exactly what recognition was built to reward, and none of it shows up on a task map. It also doesn’t survive a team cut to the bare minimum. At HR Tech, I ran into an old colleague who’s now a salesperson of one: all sourcing and pipeline, no time left for the relationships that actually close deals. That’s what “efficient” looks like from the inside.</p>
+
+<p>To be fair, the vendors have a case. Workday says the task view is about reskilling. Annual reviews were no picnic either. And some candidates would honestly rather talk to an AI interviewer than a recruiter who isn’t listening. But “defensible” isn’t the same as “wanted.”</p>
+
+<p>So who is this future for? Not candidates. Gartner found 68% would rather deal with a human than a chatbot, and the recent grads the New York Times talked to this week describe applying into “the void.” Not employees. In APA’s research, 60% of monitored workers feel tense or stressed during the workday, versus 35% of those who aren’t monitored. Apparently not executives either. Gartner says only 3% of organizations have hit their AI productivity and cost targets, while 85% plan to spend more next year. Even Greenhouse opened its HR Tech launch by admitting AI has made hiring worse.</p>
+
+<p>Back to Ian Malcolm. We can clearly build this. The question is whether we should. Before you sign the next agentic contract, ask the Malcolm question: not “what can this automate?” but “what happens to the people who were doing that work, and to the ones left behind?”</p>
+
+<p>On to this week’s HR Tech news. This week’s Wrap features Microsoft offering buyouts to 25% of their staff, new research that shows AI hiring platforms can form their own bias, CodeSignal launching agentic skills intelligence, Dayforce acquiring Ribbon AI, and a New York Times piece on how bad it is to go through the hiring process.</p>
+
+<p>Have a great week!</p>
+
+<p>Mike</p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Microsoft Offers Voluntary Exit Packages to 60,000 Employees</h3>
+<img src="/newsletters/edition-95/microsoft-buyouts.webp" alt="A black Microsoft sign with the four-color logo on a lawn in front of a beige, glass-windowed office building" />
+<p>Microsoft is offering buyouts to about 60,000 employees, roughly a quarter of its 223,000-person workforce. There’s no age or tenure requirement, and performance isn’t a factor. Eligibility runs up to level 70, which includes general managers and some vice president titles but not corporate VPs. The package matches Microsoft’s standard severance and is open for a limited time.</p>
+<p>Chief People Officer Amy Coleman’s memo framed it as “giving employees considering a future elsewhere a supported way to leave now.” Expect the unsupported way to come soon.</p>
+<p><a href="https://www.ctvnews.ca/world/article/microsoft-offers-voluntary-exit-packages-to-60000-staff/">Read more</a>.</p>
+
+<h3>AI Hiring Tools Can Invent Their Own Bias</h3>
+<img src="/newsletters/edition-95/ai-hiring-bias.webp" alt="Illustration of a giant white robotic hand plucking a single red figure out of a row of identical navy-blue figures on a light blue background" />
+<p>Researchers at Princeton and the University of Chicago ran GPT, Claude, Gemini, and other large language models through a simulated hiring game adapted from a psychology study of how humans form stereotypes. Each round had a new job opening and four candidates, one from each of four invented demographic groups. Every candidate had an equal chance of succeeding, and the model was told after each pick whether the hire worked out.</p>
+<p>Guess what? The models still built occupation-linked stereotypes about the made-up groups, and did so more often than humans who had played the same game in earlier research.</p>
+<p><a href="https://hrexecutive.com/ai-hiring-tools-can-invent-their-own-bias-research-finds/">Read more</a>.</p>
+
+<h3>CodeSignal Launches Agentic Skills Intelligence</h3>
+<img src="/newsletters/edition-95/codesignal-skills-intelligence.webp" alt="CodeSignal’s Skills Intelligence landing page headlined “Your skills data should be proof, not a best guess,” beside a photo of a woman at a laptop overlaid with skills-tracked and observation stat cards" />
+<p>CodeSignal launched its agentic skills intelligence product this week. AI agents read employees’ work in systems they already use, including Gong, Salesforce, GitHub, Cursor, Claude, ChatGPT, Workday, Greenhouse and Google Workspace. The agents score that work against rubrics grounded in industrial-organizational psychology. The output is a skills profile for every employee that updates continuously from real work, not from performance reviews, self-ratings or course completions. Remember, someone is always watching you.</p>
+<p><a href="https://www.prnewswire.com/news-releases/codesignals-new-agentic-skills-intelligence-validates-employee-skills-from-the-work-they-actually-do-302921609.html">Read more</a>.</p>
+
+<hr />
+
+<h2>💰 Funding &amp; Acquisitions</h2>
+
+<p><strong>Dayforce</strong> signed an agreement to acquire Ribbon AI, a voice and video AI interviewing company with hundreds of customers and more than one million completed interviews, to be built into its new Agentic Recruiting experience. <a href="https://www.dayforce.com/who-we-are/newsroom/dayforce-to-acquire-ribbon-ai-inc-to-advance-agentic-recruiting">Read more</a>.</p>
+
+<hr />
+
+<h2>🖱️ Worth a Click</h2>
+
+<h3>Gen Z on Job Hunting: “Into the Void”</h3>
+<img src="/newsletters/edition-95/gen-z-into-the-void.webp" alt="Pixel-art illustration of dozens of white pointing-hand cursors, each clicking an APPLY button, piled on top of each other against a black background" style="display:block;width:100%;max-width:520px;height:auto;margin:16px auto 8px;border-radius:4px;" />
+<p>The New York Times asked Gen Z job seekers to describe their job search, and they kept using the same word: the void. One biology grad, 511 applications in, was rejected by a Whole Foods chatbot named Sage. Another got a rejection email two minutes after submitting a detailed application. Others described one-way video interviews recorded alone in their bedrooms, applications to every Starbucks in town, and the frustration of never reaching a person. Does anyone care about the candidate experience anymore?</p>
+<p><a href="https://www.nytimes.com/interactive/2026/10/28/style/gen-z-job-market.html">Read more</a>.</p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+`,
+  },
+  {
     slug: 'the-wrap-takes-an-epic-journey-to-hr-tech',
     date: 'October 23, 2026',
     title: 'The Wrap Takes an Epic Journey to HR Tech',
