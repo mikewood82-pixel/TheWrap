@@ -8,6 +8,11 @@ import HiringPulseStrip from '../components/HiringPulseStrip'
 import SponsorSlot from '../components/SponsorSlot'
 import { newsletters, currentSponsor } from '../data/newsletters'
 
+// Featured video in the homepage hero, beside the logo. Swap the embed URL to
+// feature a different video; set to '' to fall back to the centered masthead.
+const FEATURED_VIDEO_URL = 'https://www.youtube.com/embed/1ka9VOD7VP0'
+const FEATURED_VIDEO_TITLE = 'The Wrap Nashville Chicken Challenge'
+
 // Pull the hero image out of a newsletter body HTML string for the top "latest
 // edition" tile. Skips the in-edition sponsor callout logo (/sponsors/...) that
 // can lead the body — the hero is the first content image under /newsletters/.
@@ -80,31 +85,57 @@ export default function HomePage() {
     <div className="bg-white">
       <SEO />
 
-      {/* Hero — logo + tagline masthead */}
+      {/* Hero — logo + featured video (centered masthead when no video) */}
       <section className="border-b border-brand-border bg-[#fef9f6]">
         <div className="max-w-6xl mx-auto px-4 py-10 md:py-14">
-          <div className="flex flex-col items-center text-center gap-3">
-            <div
-              style={{
-                width: '180px',
-                height: '180px',
-                backgroundImage: 'url(/logo.png)',
-                backgroundSize: '380px auto',
-                backgroundPosition: 'center top',
-                backgroundRepeat: 'no-repeat',
-              }}
-            />
-            <div>
-              <div className="font-serif text-3xl md:text-4xl font-bold text-brand-dark leading-none tracking-tight">
-                The Wrap
+          <div className={FEATURED_VIDEO_URL
+            ? 'flex flex-col md:flex-row items-center gap-8 md:gap-12'
+            : 'flex flex-col items-center text-center gap-3'}>
+
+            {/* Logo */}
+            <div className={FEATURED_VIDEO_URL
+              ? 'shrink-0 flex flex-col items-center md:items-start gap-3'
+              : 'flex flex-col items-center gap-3'}>
+              <div
+                style={{
+                  width: '180px',
+                  height: '180px',
+                  backgroundImage: 'url(/logo.png)',
+                  backgroundSize: '380px auto',
+                  backgroundPosition: 'center top',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              />
+              <div>
+                <div className="font-serif text-3xl md:text-4xl font-bold text-brand-dark leading-none tracking-tight">
+                  The Wrap
+                </div>
+                <div className="text-brand-terracotta text-xs font-semibold tracking-[0.2em] uppercase mt-1">
+                  HR Tech News
+                </div>
+                <p className={`text-brand-dark/70 text-sm md:text-base mt-3 max-w-xs leading-snug ${FEATURED_VIDEO_URL ? '' : 'mx-auto'}`}>
+                  News, reviews, and more, tightly wrapped each week.
+                </p>
               </div>
-              <div className="text-brand-terracotta text-xs font-semibold tracking-[0.2em] uppercase mt-1">
-                HR Tech News
-              </div>
-              <p className="text-brand-dark/70 text-sm md:text-base mt-3 max-w-xs mx-auto leading-snug">
-                News, reviews, and more, tightly wrapped each week.
-              </p>
             </div>
+
+            {/* Featured video */}
+            {FEATURED_VIDEO_URL && (
+              <div className="w-full flex-1">
+                <div className="text-brand-terracotta text-xs uppercase tracking-widest font-medium mb-3">
+                  Featured Video
+                </div>
+                <div className="relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: '56.25%' }}>
+                  <iframe
+                    src={FEATURED_VIDEO_URL}
+                    title={FEATURED_VIDEO_TITLE}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
