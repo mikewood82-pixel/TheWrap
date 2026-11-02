@@ -5,13 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generate-sitemap.mjs && tsc -b && vite build",
+    "build": "node scripts/check-newsletters.mjs && node scripts/generate-sitemap.mjs && tsc -b && vite build",
     "pages:dev": "wrangler pages dev dist",
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "node scripts/deploy.mjs",
     "deploy:no-send": "node scripts/deploy.mjs --no-send",
-    "send-test": "node scripts/send-test.mjs"
+    "send-test": "node scripts/send-test.mjs",
+    "check:newsletters": "node scripts/check-newsletters.mjs",
+    "test:newsletters": "node scripts/test-latest-newsletter.mjs"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

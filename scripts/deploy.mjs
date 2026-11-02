@@ -12,9 +12,9 @@
 
 import './load-env.mjs'
 import { execSync } from 'child_process'
-import { readFileSync } from 'fs'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
+import { readLatestNewsletter } from './lib/latest-newsletter.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = resolve(__dirname, '..')
@@ -31,31 +31,17 @@ const SITE_URL = process.env.SITE_URL ?? 'https://ilovethewrap.com'
 
 console.log('\n📰  Reading latest newsletter...')
 
-const source = readFileSync(resolve(root, 'src/data/newsletters.ts'), 'utf-8')
-
-// Pull the first newsletter object out of the array
-const firstEntryMatch = source.match(/newsletters:\s*Newsletter\[\]\s*=\s*\[\s*\{([\s\S]*?)\n  \},/)
-if (!firstEntryMatch) {
-  console.error('❌  Could not locate first newsletter entry in newsletters.ts')
+// Parsing and validation live in scripts/lib/latest-newsletter.mjs — shared with
+// send-test.mjs and send-latest.mjs so the three cannot drift apart.
+let slug, title, body
+try {
+  ;({ slug, title, body } = readLatestNewsletter(resolve(root, 'src/data/newsletters.ts')))
+} catch (err) {
+  console.error('❌ ', err.message)
   process.exit(1)
 }
 
-const entry = firstEntryMatch[1]
-
-const slug  = entry.match(/slug:\s*['"`]([^'"`]+)['"`]/)?.[1]
-const title = entry.match(/title:\s*['"`]([^'"`]+)['"`]/)?.[1]
-
-// Body is a template literal — grab everything between the first ` after "body:" and the closing `
-const bodyMatch = source.match(/body:\s*`([\s\S]*?)`\s*,?\s*\n  \},/)
-const body = bodyMatch?.[1]?.trim()
-
-if (!slug || !title || !body) {
-  console.error('❌  Could not parse slug, title, or body from latest newsletter.')
-  console.error('    slug:', slug, '| title:', title, '| body length:', body?.length)
-  process.exit(1)
-}
-
-console.log(`    ✓ "${title}" (${slug})`)
+console.log(`    ✓ "${title}" (${slug}) — ${body.length.toLocaleString()} chars`)
 
 // ─── 2. Build ─────────────────────────────────────────────────────────────────
 
