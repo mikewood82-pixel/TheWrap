@@ -31,6 +31,76 @@ export const currentSponsor: Sponsor | null = null
 
 export const newsletters: Newsletter[] = [
   {
+    slug: 'superworker-super-tired',
+    date: 'November 20, 2026',
+    title: 'Superworker, Super Tired',
+    tag: 'AI & Future of Work',
+    excerpt:
+      'Back from a shoulder fix and a week off LinkedIn, one question won’t go away: the AI layoff survivors are doing a whole team’s work alone and drowning, so does anyone actually want the Superworker future we’re building?',
+    body: `
+<img src="/newsletters/edition-96/superworker-super-tired.webp" alt="A man in a white dress shirt asleep with his head on his arms at an office desk at night, beside a computer, a keyboard, a takeaway coffee cup and a pair of glasses" />
+
+<p>The Wrap is back from a mini-hiatus. I finally got my shoulder fixed after years of it letting me down – by locking so I couldn’t lift it above my head, by pinching me when I reached for things (at 5'7" it’s a lot), and simply quitting on me time after time. Luckily, it wasn’t as damaged as they thought, and I’m doing much better than I should be two weeks out. Hey, I’m typing with two hands!</p>
+
+<p>While exiled to my recliner, I spent a week unplugged from any work tech, especially LinkedIn. I know lots of people have to be on LinkedIn for their jobs, but it was really great taking a step away from the fake for a bit. No life lessons, no hustle culture, no videos about what I’m doing wrong, no flood of worried workers trying to prove their worth to an algorithm, and no one trying to convince me that “signal” is a normal term.</p>
+
+<p>I had time to think about what I’d write about when I got back to The Wrap. I don’t want to completely slam the tech industry, but I want to ask whether people actually believe in the future of work we are creating. In 2023, workers were told that AI wouldn’t replace them, but workers who knew how to use AI would. So everyone learned as much AI as they could, and over the last couple of years, all we’ve seen is: Sorry, you were right – the robots will take your job. Here’s two weeks' pay and the ability to keep your healthcare at $2K a month. If you were at Canva, at least you got the promise of a $10,000 grant to (checks notes) start a business? I’d check the fine print on that.</p>
+
+<p>And after all these layoffs and post after post on LinkedIn: Your Career Obituary, what are we left with? Long-term unemployment is the new norm. Underemployed fractional entrepreneurs fighting each other to survive. An entire generation of workers reassessing their education and employment choices.</p>
+
+<p>If you were lucky enough to survive your company’s pivot to AI, you’re in a better financial position than most, but you’re now picking up the work of a former team by yourself, with the only help being the promise of the AI that replaced your coworkers. Everyone I know who has survived this situation is drowning. Everyone is overworked, overcaffeinated, overstressed and overwhelmed. And through all of this, there is the lingering feeling that they could be next.</p>
+
+<p>In January 2025, <a href="https://joshbersin.com/2025/01/the-rise-of-the-superworker-delivering-on-the-promise-of-ai/">Josh Bersin wrote about the Superworker</a>. He predicted the future workplace would bring individuals whose productivity, performance, and creativity are dramatically amplified. As with most of his predictions, he was right, but my real question is whether people want a life of struggling to keep up with the pace of AI.</p>
+
+<p>We are all drowning and exhausted. It’s not just work – everything has been cranked up to 11. There is just way too much news, too much politics, too many notifications, too many alerts, and too much to do with not enough time. We’ve become over-connected people who can’t really connect with anything.</p>
+
+<p>I don’t know exactly where I am going with this, but I just want everyone to look at where this is trending and take a step back to see if we are moving in the right direction. If and when hiring comes back to the tech sector, will candidates come back too? As you ponder that question, I invite you to find your own recliner or quiet space and take a break from the noise. You’d be surprised how good it feels.</p>
+
+<p>On to this week’s news. This week’s Wrap features some screening resources from TechScreen, Napster returning as an AI workforce company, Joveo launching Tandem, PitchMe swooping up CandidateIQ, a look at who ultimately pays for AI tech, and Voyager 1 officially traveling 1 light-day.</p>
+
+<p>Enjoy!</p>
+
+<p>Mike</p>
+
+<hr />
+
+<h2>📰 HR Tech News</h2>
+
+<h3>Free interview protocol targets AI-assisted cheating</h3>
+<img src="/newsletters/edition-96/techscreen-interview-fraud.webp" alt="A recruiter watches a laptop video interview where a candidate on a cell phone is framed by face-tracking brackets, beside a checklist panel and books titled Zero Trust Recruiting, Interview Security and AI Candidate Fraud" />
+<p>Binance says a fake recruiting process aimed at one of its engineers opened the door to a $6.34 billion theft, and CYBR.SEC.Media uses that as the jumping-off point for a broader look at AI being used to game live job interviews. Mark Knowlton, founder and CEO of cybersecurity recruiting firm TechScreen, calls AI-enabled candidate fraud an “asymmetric DDoS on productivity.” His firm is giving away Integrity AI 360, a Zero Trust-based protocol that pairs structured technical questioning with a low-tech setup: a separate cell call, camera on, and a recruiter checking for earbuds and lip-sync mismatches. <a href="https://www.cybrsecmedia.com/beyond-binance-ai-is-gaming-job-interviews-and-companies-are-paying-the-price/">Read More</a></p>
+<p><strong>Affiliate</strong> - Want to try out Tech Screen? <a href="https://techscreen.com/contact-us/?ref=mikewood-ae1f90">Click here</a></p>
+
+<h3>Napster launches “Crews” of AI coworkers for employees</h3>
+<img src="/newsletters/edition-96/napster-crews.webp" alt="An early-2000s Internet Explorer window showing the blue-and-white Napster cat logo at napster.com, surrounded by file-sharing and P2P download sites" />
+<p>Music pirating pioneer Napster is the latest company trying to rebrand itself as “Workforce AI.” They’ve announced an Enterprise plan that gives every employee a “crew” of AI agents with names, faces, voices, and a memory that stays with the company when the employee leaves. I’m surprised they didn’t rebrand the name of the company. Napster in 2026? What’s next, agentic AI workflows from AOL? <a href="https://hrtechfeed.com/napster-pivots-from-music-pioneer-to-workplace-ai-launching-crews-of-digital-coworkers-for-every-employee">Read More</a></p>
+
+<h3>Joveo launches Tandem, a “prompt to hire” AI recruiting agent</h3>
+<img src="/newsletters/edition-96/joveo-tandem.webp" alt="Joveo landing page reading “Meet Tandem, your personal recruiting agent” above the headline “Recruiting agents that work alongside you,” with Start for Free and Get a Demo buttons" />
+<p>Joveo launched Tandem, an AI recruiting agent that takes a role described in plain English and handles the job description, global sourcing, email and SMS outreach, AI chat screening, and a recorded AI interview. Each candidate is scored out of 100 and gets a scorecard, and qualified candidates book time directly on the recruiter's or hiring manager's calendar. Joveo says candidates are told AI is involved, a human makes the final decision, and Tandem doesn't reject anyone. It's available now with a free plan and no contract, and CEO Kshitij Jain is calling it “the era of vibe recruiting.” <a href="https://www.globenewswire.com/news-release/2026/11/17/3405014/0/en/joveo-launches-tandem-the-ai-recruiting-agent-that-turns-prompts-into-hires.html">Read More</a></p>
+
+<h3>PitchMe acquires CandidateIQ's customer portfolio</h3>
+<img src="/newsletters/edition-96/pitchme-candidateiq.webp" alt="The PitchMe logo on a dark navy background, circled by its features: personal contact details, updated resumes, continuous enrichment, ATS integrations, candidate sourcing, talent data analytics and deduplication" />
+<p>CandidateIQ, the candidate data enrichment product from Seattle-based Vettd.ai, is ending its staffing data enrichment services, and PitchMe “has acquired CandidateIQ's customer portfolio and contracts,” co-founder and CEO Dina Bay told The Wrap. CandidateIQ kept candidate records in staffing firms' applicant tracking systems accurate and complete so those databases would be ready for AI. PitchMe, a UK-based data enrichment and talent intelligence platform for staffing agencies, will offer those customers enrichment plus SONAR, the sourcing tool it launched in October. <a href="https://www.einpresswire.com/shareable-preview/UjBiUNYE7EBPQUJ7Fy7r2Q">Read More</a></p>
+
+<hr />
+
+<h2>🖱️ Worth a Click</h2>
+
+<h3>NYT opinion: the AI boom might get paid for out of the wage bill</h3>
+<img src="/newsletters/edition-96/nyt-ai-wage-bill.webp" alt="Illustration on a blue background of rows of empty office desks and chairs with computer monitors, and a yellow robot vacuum cleaner rolling between them" />
+<p>A New York Times opinion piece argues the AI investment boom, possibly $5.3 trillion in tech spending from 2025 to 2030, may avoid a bust by paying for itself out of the roughly $8 trillion to $10 trillion Americans earn in white-collar wages each year. In one survey cited, 48% of American bosses expect AI to reduce employment at their companies in the next three years, while only 14% expect hiring to increase. Another survey of 1,300 large-company executives found AI budgets tripled in a year, with only 15 cents of each AI dollar sitting in IT and the rest in marketing, product, and sales. The column warns that a wage-funded boom would be quiet: job ads never posted, graduates who can't reach the first rung, and wages that slowly slip. <a href="https://www.nytimes.com/2026/11/17/opinion/ai-bubble-workers.html">Read More</a></p>
+
+<h3>Voyager 1 reaches one light-day from Earth</h3>
+<img src="/newsletters/edition-96/voyager-one-light-day.webp" alt="Diagram of the Voyager 1 and Voyager 2 trajectories past Jupiter, Saturn, Uranus and Neptune into interstellar space, marking Voyager 1 at one light-day (16 billion miles) from Earth" />
+<p>On November 18, NASA's Voyager 1 became the first human-made object to reach one light-day from Earth, about 16.1 billion miles away. A signal now takes a full 24 hours to travel each way, so every command and reply takes two days. Voyager 1 launched in 1977, flew past Jupiter and Saturn, and left the solar system in 2012; its twin, Voyager 2, won't reach the mark until 2035. For scale, the nearest star is still more than 1,500 light-days away. <a href="https://www.nytimes.com/2026/11/18/science/nasa-voyager-1-earth-light-day.html">Read More</a></p>
+
+<hr />
+
+<p><em>— The Wrap · ilovethewrap.com</em></p>
+`,
+  },
+  {
     slug: 'are-we-building-a-future-no-one-wants',
     date: 'October 30, 2026',
     title: 'Are We Building a Future No One Wants?',
